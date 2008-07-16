@@ -25,14 +25,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
             Active,
-            Paused,
-            New,
+            Queued,
+            Ready,
             Retry,
-            Stale,
+            Paused,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
