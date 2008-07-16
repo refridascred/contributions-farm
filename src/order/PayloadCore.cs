@@ -26,18 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry filter sample.</summary>
-        public static long LookupEntryFilterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 4501;
+        public const long IdleMetric = 8723;
+        public const long MinDepth = 4683;
+        public const long BatchMetric = 3387;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long floor, long origin)
