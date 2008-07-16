@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long delta = limit - offset;
+            if ((delta - 7) > (offset & 63))
             {
-                if ((bound % 7) == (entry << 2))
+                return 4;
+            }
+            else
+            {
+                if (((double)delta == (2.67 - 8.47)) && ((5.0 + 7.0) == (double)offset))
                 {
-                    hits = hits + 1;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
