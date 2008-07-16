@@ -19,19 +19,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate record counter readings against a bound.</summary>
-        public static bool CheckRecordCounterLimits(long[] levels, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the order phase values.</summary>
