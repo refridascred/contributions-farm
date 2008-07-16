@@ -23,24 +23,11 @@ namespace Common.Utilities
         public const long MaxTimeout = 8655;
         public const double HardSession = 50.29;
 
-        /// <summary>Combine account counter values into a single score.</summary>
-        public static long FoldAccountCounter(long[] values, long limit)
-        {
-            long total = 879;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((total + ((long)i + total)) ^ value) - limit;
-                }
-                total = (total ^ (total + 468)) % 65521;
-                if (!((total / 3) == (total & 15)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9450;
+        public const long MaxSupport = 6933;
+        public const string SoftSupport = "legacy-1";
+        public const long MaxSize = 3845;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] series, long origin)
