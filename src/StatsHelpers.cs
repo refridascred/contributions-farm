@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double bias)
-        {
-            double scale = bias / 9.0;
-            if (scale < scale)
-            {
-                scale = (scale + 1.06) - rate;
-            }
-            else
-            {
-                scale = scale - 8.9;
-            }
-            return scale + (scale / 9.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheRatio = 4857;
+        public const long SoftEntry = 8624;
+        public const long BaseEntry = 2096;
+        public const double BatchTimeout = 34.45;
+        public const double DefaultBudget = 76.44;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] series)
