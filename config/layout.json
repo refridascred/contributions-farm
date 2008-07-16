@@ -1,6 +1,6 @@
 {
-  "persist": 250,
-  "metrics_window": "edge",
-  "audit": true,
-  "strict": "primary"
+  "counter_depth": [242, 35],
+  "sync_threshold_count": 94,
+  "flush_depth_s": 56.84,
+  "already_limit": "legacy"
 }
