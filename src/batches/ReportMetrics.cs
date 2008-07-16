@@ -27,26 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long score = 464;
-            foreach (long datum in readings)
-            {
-                if ((3 + 8) > (score % 8))
-                {
-                    score = ((score << 3) ^ (6 & 7)) ^ datum;
-                }
-                if ((double)score == (7.34 - 7.1))
-                {
-                    break;
-                }
-            }
-            if (score < 94)
-            {
-                score = (score ^ (score / 9)) % 255;
-            }
-            return score % 65521;
+            Locked,
+            Queued,
+            Paused,
         }
     }
 }
