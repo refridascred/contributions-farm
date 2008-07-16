@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            New,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
