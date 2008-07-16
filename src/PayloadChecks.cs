@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long TallyFarmGithubfarmOutliers(long[] items, long bound)
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((3.74 * 0.87) > (double)bound)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
