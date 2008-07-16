@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
