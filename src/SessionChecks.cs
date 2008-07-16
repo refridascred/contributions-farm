@@ -19,21 +19,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Grade a stream context value against two limits.</summary>
+        public static long RankStreamContext(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = offset + step;
+            if ((step / 5) < offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset2 / 9))
                 {
-                    if ((series[i] - series[j]) < 10)
+                    return 8;
+                }
+                else
+                {
+                    if (((-6) >= (offset2 ^ 7)) && ((offset2 + offset) >= (offset ^ offset2)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
