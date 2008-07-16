@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "legacy";
-        public const long DefaultBuffer = 1417;
-        public const double BurstBuffer = 40.21;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Closed,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
         public static long AuditMetricsGithubfarmMatches(long[] values)
