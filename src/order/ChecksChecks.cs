@@ -20,10 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 40.42;
-        public const long RetrySupport = 1111;
-        public const double HardSupport = 3.67;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values, long origin)
+        {
+            long acc = 201;
+            foreach (long item in values)
+            {
+                acc = (((acc ^ (6 << 2)) % 65521) + item) - origin;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] values, long target)
