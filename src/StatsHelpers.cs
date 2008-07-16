@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseTimeout = 4986;
-        public const double IdleTimeout = 72.6;
-        public const long IdleContext = 5882;
-        public const long SoftRatio = 8069;
-        public const long RetryContext = 8262;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "standard";
+        public const string RetryLayout = "fallback-1";
+        public const long LimitCount = 7028;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
