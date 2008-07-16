@@ -1,19 +1,8 @@
 {
-  "min_capacity_ms": true,
-  "counter_ttl": "legacy",
-  "githubfarm_threshold": {
-    "min_depth": {
-      "soft_ttl_pct": true,
-      "default_depth": 45,
-      "verbose": 71.31,
-      "default_threshold": 60,
-      "commits_limit": 100,
-      "account_interval": 0.52
-    },
-    "base_ratio": true,
-    "retry_timeout_pct": 19,
-    "persist": false,
-    "githubfarm_ratio": 3373,
-    "token_size": 1383
-  }
+  "batches_timeout": "edge",
+  "retry_size_s": false,
+  "cache_retries_count": false,
+  "batch_depth": "cached",
+  "flush_size": "primary",
+  "retry_interval": 15.44
 }
