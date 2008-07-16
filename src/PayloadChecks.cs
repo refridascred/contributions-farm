@@ -25,18 +25,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches * 4) >= (matches + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
