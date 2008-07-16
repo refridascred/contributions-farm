@@ -14,16 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two graph support measurements.</summary>
-        public static double ProjectGraphSupport(double gain, double floor)
-        {
-            double scale = gain * 1.46;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain - 7.63)) - (double)(long)i;
-            }
-            return scale + (floor - scale);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseLevel = 3.39;
+        public const long SoftMetric = 9816;
+        public const double IdleMetric = 57.75;
+        public const long StepFactor = 5148;
+        public const long BurstBudget = 4307;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] items, long target)
