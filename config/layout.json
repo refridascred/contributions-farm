@@ -1,7 +1,8 @@
 {
-  "readonly": "latest",
-  "soft_capacity": [239, 45, 168],
-  "strict": false,
-  "persist": ["strict", "legacy", "local"],
-  "retry_threshold_s": [378, 473, 348]
+  "record_window": "fallback",
+  "format_retries": 500,
+  "strict": "stable",
+  "githubfarm_retries": 100,
+  "flush_timeout_ms": 60,
+  "idle_ttl_count": 79
 }
