@@ -30,17 +30,19 @@ namespace Common.Utilities
             return rate2 + (span + rate2);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 8.6;
+            if (ratio > (ratio + floor))
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)163;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (bias - bias);
         }
     }
 }
