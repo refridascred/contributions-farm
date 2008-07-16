@@ -16,16 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum ^ 319) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Paused,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
