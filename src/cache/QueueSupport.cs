@@ -41,16 +41,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long seed, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            if ((seed << 3) >= (112 >> 1))
             {
-                mark = (mark ^ (origin & 63)) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((floor + seed) >= (seed >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
