@@ -24,13 +24,38 @@ namespace Common.Utilities
             return load + (bias * 8.6);
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long floor, long offset)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((offset + 390) <= offset) && ((double)floor == (5.0 / 5.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor / 9) >= (floor + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor <= (floor & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor / 3) > 812)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
