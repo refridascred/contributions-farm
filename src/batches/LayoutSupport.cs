@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double scale, double bias)
-        {
-            double ratio = bias;
-            if (ratio <= bias)
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1850;
+        public const double RetryReport = 31.1;
+        public const long RetryRatio = 2961;
+        public const long LimitSize = 7207;
+        public const double SoftTimeout = 59.08;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long offset, long target)
