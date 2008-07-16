@@ -23,17 +23,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
