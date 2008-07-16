@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a cache route sample.</summary>
-        public static long SeekCacheRouteIndex(long[] series, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of checks counter entries.</summary>
