@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 73.03;
-        public const long LimitCommits = 5030;
-        public const double BatchCommits = 95.2;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate layout notes readings against a bound.</summary>
         public static bool ValidateLayoutNotesLimits(long[] data, long target)
