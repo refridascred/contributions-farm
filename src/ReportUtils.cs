@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const double IdleEditor = 8.48;
         public const long MinTimeout = 9774;
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long AuditRouteAccountHits(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit % 97) < limit)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepRatio = 3725;
+        public const string IdleScore = "legacy-v2";
+        public const long DefaultChecks = 1746;
+        public const long RetryChecks = 3586;
+        public const string SoftChecks = "local-1";
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long seed)
