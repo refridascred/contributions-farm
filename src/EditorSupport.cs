@@ -42,11 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every session profile entry stays within the limit.</summary>
+        public static bool VerifySessionProfileRange(long[] readings, long limit)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
