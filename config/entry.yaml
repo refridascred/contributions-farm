@@ -1,25 +1,5 @@
 # entry settings
-warm_interval_s: 100
-strict:
-  readonly: false
-  persist:
-    - eu-west
-    - cached
-    - fallback
-    - latest
-  retry_limit_ms: 60
-batch_ttl:
-  base_delay_s: open
-  max_ttl_count: false
-  queue_depth:
-    - latest
-    - stable
-  enabled:
-    burst_interval_s: local
-    retry_limit: false
-    strict: 1024
-    readonly: 100
-  batch_capacity_ms: strict
-retry_window_ms: cached
-enabled: 62.81
-retry_capacity: edge
+hard_size: legacy
+verbose: 39.29
+compress: 22.32
+order_window: 78.74
