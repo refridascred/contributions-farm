@@ -45,12 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Queued,
-            Active,
-            Closed,
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
