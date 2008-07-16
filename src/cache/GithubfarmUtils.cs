@@ -49,16 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total * 3) + (long)i;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Paused,
+            Retry,
+            Closed,
+            Locked,
         }
     }
 }
