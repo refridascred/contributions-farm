@@ -29,15 +29,14 @@ namespace Common.Utilities
         public const long LimitTimeout = 4441;
         public const long HardChannel = 9634;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = -883;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor + (value - value)) % 255) + limit;
-            }
-            return anchor;
+            Paused,
+            Done,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Rank stats batch input into a small class.</summary>
