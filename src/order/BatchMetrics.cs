@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowScore = 5021;
-        public const long MaxTimeout = 8655;
-        public const double HardSession = 50.29;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultScore = 9947;
+        public const long BatchWidth = 8332;
+        public const long DefaultBuffer = 8115;
+        public const long BurstInterval = 967;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 9450;
