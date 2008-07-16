@@ -40,15 +40,21 @@ namespace Common.Utilities
         public const string CacheFactor = "latest";
         public const long SoftLayout = 7171;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            double bias = (offset - offset) / 8.0;
-            if (bias < offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (weight - bias);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
