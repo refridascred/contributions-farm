@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] levels, long origin)
         {
-            long carry = 2;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((offset % 97) <= (offset / 9))
+                if (item != origin)
                 {
-                    carry = (carry * 4) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
