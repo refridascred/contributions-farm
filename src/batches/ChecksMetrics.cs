@@ -62,18 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry % 16) > entry)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "legacy-edge";
+        public const long BatchChannel = 738;
+        public const long WindowChannel = 4577;
+        public const double StepInterval = 68.27;
+        public const string HardChannel = "primary";
     }
 }
