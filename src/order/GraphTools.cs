@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every metric format entry stays within the limit.</summary>
-        public static bool CheckMetricFormatBounds(long[] samples, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
