@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Done,
-            Draft,
-            Idle,
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
