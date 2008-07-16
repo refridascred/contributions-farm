@@ -30,12 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 430;
-        public const long IdleCluster = 834;
-        public const string BaseCluster = "local";
-        public const double BurstSize = 80.32;
-        public const long BatchInterval = 3692;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinTimeout = "strict-edge";
+        public const long BatchChannel = 3516;
+        public const long StepFactor = 9059;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] data)
