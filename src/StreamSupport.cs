@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            Locked,
-            Synced,
-            Draft,
-            Idle,
-            Ready,
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
