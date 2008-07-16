@@ -44,21 +44,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Scale a graph commits figure with a bias.</summary>
+        public static double SmoothGraphCommits(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (ratio / 2.0)) - (double)(long)i;
             }
-            return seen;
+            return drift - (bias - drift);
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
