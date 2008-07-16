@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
