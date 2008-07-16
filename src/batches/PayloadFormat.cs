@@ -59,9 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 1819;
-        public const double DefaultAlready = 19.99;
-        public const long BatchAlready = 2603;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = mix ^ (seed >> 2);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
