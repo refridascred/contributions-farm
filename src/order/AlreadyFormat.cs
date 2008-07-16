@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item >= ((long)readings.Length + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
