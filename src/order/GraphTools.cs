@@ -33,18 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultScore = 2182;
+        public const long SoftSize = 7435;
+        public const long BatchRatio = 7394;
+        public const long IdleCount = 1224;
+        public const double BaseWidth = 94.62;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesHits(long[] levels, long step)
