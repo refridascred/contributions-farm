@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = 24;
-            foreach (long datum in readings)
-            {
-                if (!((4 - limit) >= limit))
-                {
-                    score = ((score - (score % 60)) % 255) ^ datum;
-                }
-                else
-                {
-                    score = (score ^ (limit / 4)) % 65521;
-                }
-            }
-            return score;
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
