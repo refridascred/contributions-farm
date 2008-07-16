@@ -73,12 +73,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Retry,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardSpan = 67.47;
+        public const long MaxOrder = 3840;
+        public const long HardDepth = 537;
     }
 }
