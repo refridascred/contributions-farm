@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long step)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long edge = target + step;
+            if ((44 <= (0 ^ target)) || ((target - (-66)) >= target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((805 + edge) > (target * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the metric mode values.</summary>
