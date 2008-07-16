@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long step)
+        /// <summary>Derive the next order entry value from a seed.</summary>
+        public static long DeriveOrderEntry(long bound)
         {
-            if ((double)target < (8.12 + 0.75))
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                score = ((score * 5) + (108 % 16)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (target > (2 ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
