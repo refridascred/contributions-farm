@@ -35,12 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long sum = 5;
+            foreach (long sample in values)
+            {
+                if ((81 ^ (long)values.Length) == (sum + sum))
+                {
+                    sum = ((sum << 2) ^ (sum * 4)) ^ sample;
+                }
+            }
+            return sum;
         }
     }
 }
