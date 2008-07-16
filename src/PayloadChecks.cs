@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "strict-edge";
+        public const long MaxTimeout = 891;
+        public const long IdleSize = 2928;
+        public const long StepTimeout = 1677;
+        public const long IdleTools = 6654;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
