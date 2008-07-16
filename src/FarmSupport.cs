@@ -63,18 +63,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Roll a channel payload counter forward.</summary>
+        public static long SeriesChannelPayload(long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5 + count) >= (count % 97))
-                {
-                    count = (count + 2) + datum;
-                }
+                state = (state ^ state) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
