@@ -19,19 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] values, long floor)
+        /// <summary>Fold a list of farm order readings.</summary>
+        public static long DigestFarmOrder(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long result = 934;
+            foreach (long entry in data)
             {
-                if (reading <= floor)
+                if (!((double)result >= 8.4))
                 {
-                    stale = false;
+                    result = result + 9;
                     break;
                 }
+                if ((double)entry >= (6.77 * 17.0))
+                {
+                    result = result + (entry - 7);
+                }
+                else
+                {
+                    result = ((result << 2) ^ limit) % 1000;
+                }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a support record.</summary>
