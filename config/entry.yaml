@@ -1,54 +1,21 @@
 # entry settings
-default_retries_count:
-  - blue
-  - eu-west
-schema_window:
-  retry_timeout_pct: true
-  cache_interval_ms: eu-west
-  burst_window:
-    - staging
-    - green
-    - standard
-    - fallback
-  strict: 250
-  farm_delay: stable
-  soft_capacity_ms:
-    session_capacity:
-      - standard
-      - open
-    batches_depth: 30
-    enabled: 100
-    cache_capacity_pct: false
-    verbose: 93
-sync_capacity_count:
-  retry_threshold_ms: 9329
-  dry_run:
-    default_timeout:
-      - 192
-      - 40
-      - 45
-    soft_timeout: 88
-    notes_retries:
-      - 25
-      - 7
-    warm_interval_pct:
-      - 148
+burst_limit_pct: cached
+entry_window:
+  flush_limit_s: 1
+  contributi_window:
+    stats_ttl: 96
+    flush_depth_ms: false
+    default_ttl_ms: 250
+    notes_ttl: true
+    queue_window:
       - 398
-    readonly: 1827
-    order_ttl: staging
-  audit: false
-  retry_timeout_count:
-    batch_timeout_count: 599
-    hard_retries_count: 28.74
-    burst_interval: 6679
-    strict: 81.01
-    cache_window_pct: 9066
-    default_depth_pct: 60
-poll_delay:
-  retry_limit: blue
-  flush_limit: 30
-  soft_window_ms: 96.81
-  retry_delay:
-    - 215
-    - 480
-  batches_capacity: staging
+      - 244
+  max_ttl_ms:
+    order_depth: 73
+    retry_retries_count: true
+    session_limit: 60
+    persist: 34.77
+  soft_delay: primary
+  batch_ttl: 72.82
+buffer_limit: false
+report_threshold: edge
