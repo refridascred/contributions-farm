@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long acc = 45;
-            foreach (long cell in samples)
-            {
-                acc = ((acc << 2) ^ (cell - 5)) + offset;
-            }
-            return acc % 4096;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
