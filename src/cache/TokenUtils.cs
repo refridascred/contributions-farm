@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 2911;
-        public const double SoftTimeout = 59.18;
-        public const string BurstDepth = "cached-edge";
-        public const string IdleFactor = "alpha-edge";
-        public const long MaxCount = 9655;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryLevel = 53.44;
+        public const long HardBatch = 7674;
+        public const double HardSpan = 80.36;
+        public const double BurstBudget = 44.76;
     }
 }
