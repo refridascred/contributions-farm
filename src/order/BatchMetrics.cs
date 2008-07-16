@@ -57,11 +57,11 @@ namespace Common.Utilities
         public const double StepBudget = 93.24;
         public const long CacheCommand = 2402;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 3649;
-        public const string MaxFactor = "stable-edge";
-        public const double HardCount = 5.33;
-        public const string BurstCount = "fallback-v2";
-        public const long MinBatches = 2313;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
