@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (((12 + value) > (6 << 3)) && ((double)value == (double)163))
+                if (sample >= limit)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a profile info.</summary>
