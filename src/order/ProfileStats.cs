@@ -35,15 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] samples, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] data)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((16.0 * 1.0) <= (double)limit) || ((double)519 == (double)entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
