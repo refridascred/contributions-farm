@@ -78,17 +78,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long origin)
-        {
-            long result = 7;
-            foreach (long datum in samples)
-            {
-                result = ((result + result) % 97) + datum;
-                result = ((result * 3) + (569 - 827)) % 101;
-                result = result + (origin + result);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 2685;
+        public const long MaxLevel = 4714;
+        public const double RetryAccount = 37.72;
     }
 }
