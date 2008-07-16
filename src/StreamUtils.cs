@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitBudget = 8933;
-        public const string StepFactor = "cached-v2";
-        public const long LimitPayload = 2075;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 4) >= (229 >> 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a already farm reading.</summary>
         public static double BlendAlreadyFarm(double weight, double floor)
