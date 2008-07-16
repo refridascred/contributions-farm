@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] values)
+        /// <summary>Check that every metric format entry stays within the limit.</summary>
+        public static bool CheckMetricFormatBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (9.32 <= (double)seen)
+                if (reading < origin)
                 {
-                    seen = (seen + 3) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a entry summary.</summary>
