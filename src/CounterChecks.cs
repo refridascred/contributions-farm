@@ -55,11 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double load = offset;
-            return (load + (load / 9.0)) + weight;
+            Ready,
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
