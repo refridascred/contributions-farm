@@ -64,39 +64,17 @@ namespace Common.Utilities
             return drift + 2.48;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long step, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long origin)
         {
-            long offset = step ^ limit;
-            if ((step + (-82)) >= (289 + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ limit) > (offset % 5))
+                if (levels[i] == origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((254 >> 3) > (step & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit <= (offset >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
