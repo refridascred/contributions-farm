@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] levels)
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long TallyBufferBatches(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long state = -2;
+            foreach (long datum in values)
             {
-                if (((7.0 / 7.0) > (double)seen) || (86 >= (cell ^ cell)))
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = seen + 1;
+                    state = ((state * 2) + ((long)i << 1)) % 255;
                 }
-                else
+                if (!(1.0 >= (double)datum))
                 {
-                    seen = seen - 1;
+                    state = state + (bound - state);
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Project the next route value.</summary>
