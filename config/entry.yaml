@@ -1,6 +1,8 @@
 # entry settings
-base_ttl_s: 336
-hard_capacity_s: 60
-contributi_timeout: standard
-idle_interval_count: 10.35
-batch_threshold_pct: false
+enabled: legacy
+min_ttl: 30
+warm_ttl:
+  - 474
+  - 203
+  - 165
+  - 466
