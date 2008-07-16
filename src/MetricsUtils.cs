@@ -55,10 +55,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseBudget = "staging-v2";
-        public const double StepBudget = 93.29;
-        public const long RetrySize = 6423;
-        public const long CacheWidth = 4070;
+        /// <summary>Project the next order commits value.</summary>
+        public static double ScaleOrderCommits(double ratio, double floor)
+        {
+            double mean = (double)(3 + 790);
+            return ((mean + (mean + 3.3)) + ratio) + floor;
+        }
     }
 }
