@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] levels, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (datum != seed)
+                if (value >= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
