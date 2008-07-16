@@ -41,15 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format queue counter forward.</summary>
-        public static long RollFormatQueue(long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
