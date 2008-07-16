@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MinFormat = 3874;
         public const string LimitCount = "open";
 
-        /// <summary>Locate a checks record reading by value.</summary>
-        public static long LocateChecksRecordIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 27.5;
+        public const string BaseBudget = "local-1";
+        public const long BurstCount = 2858;
+        public const string MinCount = "fallback-edge";
+        public const long IdleCount = 104;
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long AuditQueueTokenMatches(long[] readings)
