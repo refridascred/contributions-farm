@@ -96,21 +96,27 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2 << 1) != (acc >> 3))
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 2) + (entry - 0)) % 65521;
+                    break;
+                }
+                if ((entry << 2) >= (entry >> 4))
+                {
+                    acc = acc + (67 - entry);
+                }
+                if (acc <= entry)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
