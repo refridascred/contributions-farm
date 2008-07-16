@@ -29,16 +29,27 @@ namespace Common.Utilities
         public const long DefaultDepth = 6735;
         public const string CacheContributi = "primary-edge";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values, long target)
         {
-            long carry = -6;
-            foreach (long sample in series)
+            long mix = 546;
+            foreach (long value in values)
             {
-                carry = (carry ^ 0) % 65521;
-                carry = carry + (sample * 5);
+                mix = (mix * 5) + (mix - value);
+                if (!((double)mix >= (7.05 + 8.8)))
+                {
+                    mix = ((mix * 5) + (target << 1)) % 101;
+                }
+                else
+                {
+                    mix = mix + (mix + mix);
+                }
             }
-            return carry;
+            if (mix < 32)
+            {
+                mix = ((mix << 2) ^ (mix - 32)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
