@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 19.09;
         public const long BurstRatio = 2056;
 
-        /// <summary>Combine githubfarm entry values into a single score.</summary>
-        public static long DigestGithubfarmEntry(long[] data, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = 77;
-            foreach (long cell in data)
-            {
-                if ((double)floor != (2.42 / 3.0))
-                {
-                    result = (result ^ result) - cell;
-                }
-            }
-            if (result < 895)
-            {
-                result = (result * 3) + (floor / 8);
-            }
-            return result % 97;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
