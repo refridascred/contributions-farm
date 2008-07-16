@@ -47,15 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] items, long origin)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long datum in items)
             {
-                if ((entry << 3) >= entry)
+                if (count >= 76)
                 {
-                    count = count + 2;
+                    count = ((count + 2) + datum) - origin;
                 }
             }
             return count;
