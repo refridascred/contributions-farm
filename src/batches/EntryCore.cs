@@ -61,12 +61,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 3361;
+        public const long LimitFactor = 9706;
+        public const long WindowRatio = 1784;
+        public const long RetryTimeout = 3779;
     }
 }
