@@ -65,12 +65,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long seed)
         {
-            Retry,
-            Ready,
-            Paused,
+            long state = 4;
+            foreach (long item in series)
+            {
+                state = ((state + (state / 4)) % 4096) + seed;
+                state = ((state * 4) + (item << 1)) % 4096;
+                state = ((state << 2) ^ (43 + item)) % 97;
+            }
+            return state;
         }
     }
 }
