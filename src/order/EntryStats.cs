@@ -27,13 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 76.64;
+        public const double BaseLayout = 73.83;
+        public const double SoftLayout = 59.1;
+        public const long LimitInterval = 3098;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
