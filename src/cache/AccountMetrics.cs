@@ -48,20 +48,11 @@ namespace Common.Utilities
         public const long BurstSpan = 2565;
         public const long LimitStream = 2305;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((851 >> 5) <= (anchor + step))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstScore = 3878;
+        public const string DefaultScore = "legacy-1";
+        public const double MinRatio = 24.94;
+        public const long LimitWidth = 206;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamHits(long[] data, long offset)
