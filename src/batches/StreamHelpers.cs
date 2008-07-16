@@ -70,27 +70,14 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long acc = -7;
-            foreach (long entry in series)
-            {
-                if ((2 << 1) != (acc >> 3))
-                {
-                    acc = ((acc * 2) + (entry - 0)) % 65521;
-                    break;
-                }
-                if ((entry << 2) >= (entry >> 4))
-                {
-                    acc = acc + (67 - entry);
-                }
-                if (acc <= entry)
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Paused,
+            Failed,
+            Synced,
+            Locked,
         }
     }
 }
