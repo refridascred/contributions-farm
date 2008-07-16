@@ -45,19 +45,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 >= (target + target)) && ((target - (long)i) != ((long)i + acc)))
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    acc = (acc + 61) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
