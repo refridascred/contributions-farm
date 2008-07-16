@@ -1,7 +1,5 @@
 # entry settings
-strict:
-  - 234
-  - 466
-metric_ttl: 45
-persist: local
-enabled: open
+batch_interval_pct: primary
+dry_run: eu-west
+buffer_threshold: true
+stream_retries: open
