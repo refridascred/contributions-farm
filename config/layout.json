@@ -1,12 +1,5 @@
 {
-  "enabled": true,
-  "base_ratio_pct": 30,
-  "profile_window": 69,
-  "poll_timeout_pct": {
-    "idle_ttl": 1160,
-    "compress": true,
-    "persist": "primary",
-    "farm_ratio": 558
-  },
-  "dry_run": 30
+  "cache_limit_s": 22.86,
+  "max_ratio": "open",
+  "min_ttl_pct": "latest"
 }
