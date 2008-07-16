@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSpan = "legacy-edge";
-        public const long RetryContext = 755;
-        public const long MinContext = 4628;
-        public const string WindowContext = "open";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((double)8 > (double)value) || (((value / 5) == (matches & 127)) || ((matches ^ value) < (matches ^ matches))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] items, long step)
