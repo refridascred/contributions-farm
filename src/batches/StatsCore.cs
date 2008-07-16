@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Draft,
-            Stale,
-            Retry,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "legacy";
+        public const long DefaultBuffer = 1417;
+        public const double BurstBuffer = 40.21;
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
         public static long AuditMetricsGithubfarmMatches(long[] values)
