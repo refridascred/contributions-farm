@@ -10,24 +10,26 @@ namespace Common.Utilities
         public const double CacheChecks = 31.72;
         public const string RetryWidth = "alpha";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels, long floor)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            long mark = -21;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if (item < floor)
                 {
-                    score = (score + (long)i) % 255;
+                    mark = (mark << 2) ^ floor;
                 }
-                score = score + seed;
-                score = (score ^ cell) % 255;
+                else
+                {
+                    mark = mark - item;
+                }
             }
-            if (score > 6)
+            if (mark > 604)
             {
-                score = score - (421 / 7);
+                mark = ((mark << 3) ^ (mark + 2)) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
