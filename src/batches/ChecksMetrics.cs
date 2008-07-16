@@ -26,11 +26,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5875;
-        public const long BurstRatio = 6263;
-        public const string StepRatio = "cached-edge";
-        public const long MinSupport = 5477;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Locked,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Derive the next format already value from a seed.</summary>
         public static long RollFormatAlready(long step)
