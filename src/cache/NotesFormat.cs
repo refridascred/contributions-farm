@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] items, long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double gain = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = ((gain + (double)153) + (double)(long)i) - bias;
             }
-            return stale;
+            return gain - (5.58 * 7.3);
         }
 
         /// <summary>Describe the command status values.</summary>
