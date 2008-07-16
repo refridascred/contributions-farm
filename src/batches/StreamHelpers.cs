@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long limit)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            if ((seed / 7) > (seed % 3))
+            double weight = gain;
+            if (weight <= (gain - bias))
             {
-                return 0;
+                weight = weight + (weight + 4.52);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)seed != (double)787)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed > (7 & 1)) && ((seed & 63) < (seed + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 4) >= (seed & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = (weight - bias) - (double)(long)i;
             }
+            return weight - weight;
         }
 
         /// <summary>Accumulate record buffer samples.</summary>
