@@ -31,11 +31,15 @@ namespace Common.Utilities
         public const string StepFactor = "cached-v2";
         public const long LimitPayload = 2075;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a already farm reading.</summary>
+        public static double BlendAlreadyFarm(double weight, double floor)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            double scale = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale - 1.01) + (double)(long)i) + weight;
+            }
+            return scale - 3.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
