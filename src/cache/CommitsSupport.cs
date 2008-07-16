@@ -54,27 +54,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
-        {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (sum * 3))
-                {
-                    sum = ((sum * 2) + (sum ^ 7)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (entry - sum);
-                }
-            }
-            if (sum > 83)
-            {
-                sum = sum ^ (sum ^ 7);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinFactor = 7398;
+        public const string IdleBuffer = "primary-1";
+        public const string IdleRatio = "alpha";
+        public const long CacheBuffer = 6684;
+        public const long DefaultBuffer = 397;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryDepth = 613;
