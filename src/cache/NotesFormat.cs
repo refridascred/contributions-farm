@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long DefaultAccount = 5431;
         public const long MaxAccount = 1383;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of layout context readings.</summary>
+        public static long CombineLayoutContext(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            long state = 7;
+            foreach (long cell in items)
+            {
+                if ((double)target <= (double)(-2))
+                {
+                    state = (state - target) - cell;
+                }
+            }
+            return state;
         }
     }
 }
