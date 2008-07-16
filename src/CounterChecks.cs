@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Validate filter commits readings against a bound.</summary>
+        public static bool ValidateFilterCommitsRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((item * 5) < (hits << 3))
+                if (sample > target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a layout options.</summary>
