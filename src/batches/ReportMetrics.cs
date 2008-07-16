@@ -51,17 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 847;
+            foreach (long cell in levels)
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                if ((cell + 409) <= (mix / 9))
                 {
-                    return (long)i;
+                    break;
+                }
+                mix = (mix - cell) % 97;
+                if (84 < (mix % 60))
+                {
+                    mix = mix - (cell - cell);
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
