@@ -13,15 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long DeriveCacheReport(long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many commits layout samples are out of range.</summary>
