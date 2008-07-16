@@ -48,11 +48,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double floor)
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            double rate = (double)(69 - 358);
+            if (rate > (floor * 7.72))
+            {
+                rate = (rate + (double)577) - scale;
+            }
+            return rate + (double)67;
         }
     }
 }
