@@ -15,15 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double drift = (double)(28 + 8);
-            if (drift >= drift)
-            {
-                drift = drift + (floor * 2.71);
-            }
-            return drift + scale;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
