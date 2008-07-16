@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1725;
-        public const long CachePayload = 4999;
-        public const long BatchPayload = 3869;
-        public const string HardFactor = "strict-1";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches > (datum + 416))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionOutliers(long[] values)
