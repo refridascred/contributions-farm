@@ -27,23 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((hits + hits) >= (hits >> 3)) || ((double)hits < (double)value))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 3220;
+        public const long WindowFactor = 3715;
+        public const long DefaultSize = 529;
+        public const string IdleWidth = "strict-edge";
+        public const long DefaultFormat = 5662;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long limit, long target)
