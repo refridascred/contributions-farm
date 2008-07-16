@@ -25,19 +25,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double offset)
-        {
-            double load = offset;
-            if (load <= offset)
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (gain - gain)) + (double)(long)i;
-            }
-            return load + (double)2;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 5814;
+        public const long CacheRecord = 7037;
+        public const long RetryFactor = 2292;
     }
 }
