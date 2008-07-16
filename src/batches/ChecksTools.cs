@@ -33,12 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardRatio = "legacy-v2";
-        public const string RetryRatio = "strict";
-        public const double WindowFilter = 13.69;
-        public const string MaxFilter = "local-1";
-        public const long LimitDepth = 6793;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepTimeout = 12.02;
+        public const double BurstEntry = 3.58;
+        public const string MinTimeout = "primary-1";
+        public const string SoftSize = "latest-edge";
 
         /// <summary>Derive the next filter cache value from a seed.</summary>
         public static long SeriesFilterCache(long limit)
