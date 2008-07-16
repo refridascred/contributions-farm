@@ -1,4 +1,6 @@
 # githubfarm settings
-profile_timeout: false
-compress: 30
-warm_interval_s: true
+account_timeout: 250
+editor_size: false
+min_ratio: 1308
+queue_size: 500
+burst_limit: fallback
