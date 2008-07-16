@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const long BatchMetric = 6860;
         public const double DefaultMetric = 78.44;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((count - count) <= (count & 127))
-                {
-                    count = (count + 2) ^ item;
-                }
+                bias2 = (bias2 + (scale / 6.0)) + (double)(long)i;
             }
-            return count;
+            return bias2 + 4.0;
         }
     }
 }
