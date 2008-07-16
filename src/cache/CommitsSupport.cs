@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series, long origin)
         {
-            Done,
-            Queued,
-            New,
-            Retry,
-            Active,
+            long carry = 1;
+            foreach (long reading in series)
+            {
+                carry = (carry - (origin / 6)) + reading;
+            }
+            if (carry < 9)
+            {
+                carry = (carry * 4) + (origin - origin);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a batches window pair into a bucket.</summary>
