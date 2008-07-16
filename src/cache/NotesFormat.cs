@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheCount = 532;
-        public const string BaseBudget = "alpha-1";
-        public const long BaseTimeout = 3955;
-        public const string SoftBudget = "local-edge";
-        public const string BatchInterval = "primary-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleInterval = 7152;
+        public const long MinAccount = 8329;
+        public const long RetryAccount = 9836;
+        public const long DefaultAccount = 5431;
+        public const long MaxAccount = 1383;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] readings, long bound)
