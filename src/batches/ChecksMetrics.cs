@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm route sample.</summary>
-        public static long LocateFarmRouteIndex(long[] levels, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (levels[i] == floor)
+                if ((tally >> 3) != (step / 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
