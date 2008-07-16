@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] items, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)515 < (double)value)
+                if ((count + count) >= reading)
                 {
-                    seen = (seen + 1) - limit;
+                    count = (count + 3) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a layout options.</summary>
