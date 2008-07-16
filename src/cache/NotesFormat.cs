@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const double BatchTools = 79.9;
         public const long BaseLevel = 6715;
 
-        /// <summary>Fold a list of layout context readings.</summary>
-        public static long CombineLayoutContext(long[] items, long target)
+        /// <summary>Measure how many payload farm samples are out of range.</summary>
+        public static long MeasurePayloadFarmOutliers(long[] levels)
         {
-            long state = 7;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)target <= (double)(-2))
+                if (!((seen * 2) > (sample * 3)))
                 {
-                    state = (state - target) - cell;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
