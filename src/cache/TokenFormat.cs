@@ -35,21 +35,24 @@ namespace Common.Utilities
             return bias2 + gain;
         }
 
-        /// <summary>Match up entry token samples.</summary>
-        public static long PairEntryTokenCount(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit << 2) == (limit & 127))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (6.8 >= (double)limit)
                 {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
