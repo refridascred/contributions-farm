@@ -23,10 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "standard";
-        public const string RetryLayout = "fallback-1";
-        public const long LimitCount = 7028;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample * 5) == (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
