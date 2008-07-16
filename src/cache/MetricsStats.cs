@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Rank cache cluster input into a small class.</summary>
+        public static long ClassifyCacheCluster(long bound, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long span = bound - seed;
+            if ((716 + bound) < (bound - span))
             {
-                score = ((score << 3) ^ (origin + 8)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((bound % 5) == (bound + span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span >> 2) != (seed - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - span) == (514 - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order phase values.</summary>
