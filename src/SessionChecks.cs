@@ -47,13 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
             New,
-            Done,
-            Dropped,
-            Draft,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
