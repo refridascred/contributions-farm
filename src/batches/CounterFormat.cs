@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] values, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (reading > bound)
+                if (entry > bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Combine report values into a single score.</summary>
