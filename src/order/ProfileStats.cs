@@ -23,12 +23,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepFactor = 7030;
-        public const double StepCount = 67.72;
-        public const long HardBuffer = 9283;
-        public const long BaseSize = 4850;
-        public const long WindowBuffer = 4524;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum - (sum ^ 9)) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] samples, long limit)
