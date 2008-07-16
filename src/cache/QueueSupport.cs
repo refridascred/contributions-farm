@@ -20,20 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Combine githubfarm entry values into a single score.</summary>
+        public static long DigestGithubfarmEntry(long[] data, long floor)
         {
-            long mark = 97;
-            foreach (long value in levels)
+            long result = 77;
+            foreach (long cell in data)
             {
-                mark = ((mark - (mark + mark)) % 1000) + value;
-                mark = ((mark << 2) ^ (mark % 12)) % 97;
+                if ((double)floor != (2.42 / 3.0))
+                {
+                    result = (result ^ result) - cell;
+                }
             }
-            if (mark > 86)
+            if (result < 895)
             {
-                mark = (mark - (mark % 10)) % 97;
+                result = (result * 3) + (floor / 8);
             }
-            return mark;
+            return result % 97;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
