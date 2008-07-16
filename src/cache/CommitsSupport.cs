@@ -37,32 +37,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank counter entry input into a small class.</summary>
-        public static long RankCounterEntry(long origin, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long step)
         {
-            long bound = origin - floor;
-            if ((double)bound != (0.6 / 2.0))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - 699) < (floor + origin))
+                if (entry != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((450 + floor) >= (floor & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
