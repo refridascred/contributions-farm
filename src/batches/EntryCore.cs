@@ -34,15 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
         {
             long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 3)
+                    if ((series[i] + series[j]) == 6)
                     {
                         matches = matches + 1;
                     }
