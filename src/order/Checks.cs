@@ -41,21 +41,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Blend two buffer stats measurements.</summary>
+        public static double ScaleBufferStats(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(93 + 18);
+            if (mean <= 4.8)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean - (mean / 4.0)) + rate) - span;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 5.0) + (double)(long)i;
+            }
+            return mean + (double)59;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
