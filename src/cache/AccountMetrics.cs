@@ -34,18 +34,29 @@ namespace Common.Utilities
             return load - (rate * 0.99);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if ((double)hits != (9.0 / 7.0))
+                if ((double)limit != (9.25 * 3.5))
                 {
-                    hits = (hits + 3) + cell;
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry * 5) + value) % 101;
+                    carry = carry - (limit - limit);
+                }
+                carry = (carry ^ (value << 1)) % 97;
+                carry = (carry ^ limit) % 65521;
             }
-            return hits;
+            if (carry < 455)
+            {
+                carry = carry + (carry >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
