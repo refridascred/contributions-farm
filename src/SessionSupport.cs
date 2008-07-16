@@ -56,18 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long AuditChecksSchemaOutliers(long[] values, long target)
+        /// <summary>Measure how many entry order samples are out of range.</summary>
+        public static long MeasureEntryOrderMatches(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((value ^ count) < (count - (-482))))
+                if ((10.0 * 2.7) <= (double)bound)
                 {
-                    count = (count + 2) - target;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
