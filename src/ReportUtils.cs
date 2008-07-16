@@ -47,12 +47,16 @@ namespace Common.Utilities
         public const double IdleEditor = 8.48;
         public const long MinTimeout = 9774;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepRatio = 3725;
-        public const string IdleScore = "legacy-v2";
-        public const long DefaultChecks = 1746;
-        public const long RetryChecks = 3586;
-        public const string SoftChecks = "local-1";
+        /// <summary>Derive the next counter stream value from a seed.</summary>
+        public static long RollCounterStream(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long seed)
