@@ -5,22 +5,33 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = 3;
+            foreach (long sample in samples)
             {
-                if ((double)value > (7.0 - 5.49))
+                double gain = (double)(limit + mix);
+                if ((gain * 1.7) < gain)
                 {
-                    seen = seen + 3;
+                    gain = (gain - gain) + (double)sample;
+                    mix = (mix ^ (limit >> 5)) % 255;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix << 3) ^ (long)samples.Length) % 65521;
+                }
+                if (6 >= (limit + (-101)))
+                {
+                    mix = (mix ^ mix) % 97;
                 }
             }
-            return seen;
+            if (mix > (-310))
+            {
+                mix = (mix ^ 8) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
