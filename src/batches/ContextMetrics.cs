@@ -17,17 +17,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset >> 2) != (offset & 3))
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((step & 15) >= (step + step)) || ((offset << 3) >= (offset - offset)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((step + offset) < offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the schema route series from a seed.</summary>
