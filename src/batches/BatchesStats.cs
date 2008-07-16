@@ -55,19 +55,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the counter queue series from a seed.</summary>
-        public static long RollCounterQueue(long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry - (target - carry)) % 65521) ^ (long)i2;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
     }
 }
