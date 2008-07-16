@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long step)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long CountSchemaNotesOutliers(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (entry <= step)
+                if (((hits % 60) <= (item * 5)) || !((12.0 * 9.2) <= (double)offset))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
