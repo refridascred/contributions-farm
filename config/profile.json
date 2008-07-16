@@ -1,7 +1,5 @@
 {
-  "support_threshold": 40.75,
-  "retry_interval_count": "cached",
-  "readonly": "standard",
-  "stream_window": true,
-  "sync_capacity_s": true
+  "checks_window": 2474,
+  "batch_ttl": true,
+  "cache_depth_s": 100
 }
