@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 8617;
-        public const double HardRatio = 13.94;
-        public const long HardInterval = 4887;
-        public const string BurstSpan = "cached-1";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((bound - matches) == (matches ^ entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
