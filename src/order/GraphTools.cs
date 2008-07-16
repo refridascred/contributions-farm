@@ -23,17 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks record reading by value.</summary>
-        public static long FindChecksRecordIndex(long[] samples, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
