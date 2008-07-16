@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long total = 123;
+            foreach (long cell in data)
+            {
+                total = total ^ (total & 31);
+                if (!((cell << 3) < cell))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
