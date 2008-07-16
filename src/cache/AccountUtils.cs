@@ -30,32 +30,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a session format value against two limits.</summary>
-        public static long GradeSessionFormat(long origin, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] data)
         {
-            long prev = origin - limit;
-            if ((9.21 + 9.0) == (double)limit)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (prev >= (prev << 3))
+                if (!((sample * 5) < (tally / 8)))
                 {
-                    return 4;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((double)prev <= (5.0 - 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
