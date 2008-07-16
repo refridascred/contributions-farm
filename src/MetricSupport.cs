@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitScore = 7139;
-        public const double MinSpan = 43.37;
-        public const long HardBudget = 8286;
-        public const double StepOrder = 10.71;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                double ratio = (1.91 + 5.0) + (18.0 * 14.0);
+                double bias = ratio;
+                ratio = ratio - bias;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] samples, long offset)
