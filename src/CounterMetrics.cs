@@ -32,13 +32,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
