@@ -48,15 +48,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double floor)
-        {
-            double rate = (double)(69 - 358);
-            if (rate > (floor * 7.72))
-            {
-                rate = (rate + (double)577) - scale;
-            }
-            return rate + (double)67;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 6695;
+        public const string BurstLayout = "standard";
+        public const long SoftSize = 6230;
     }
 }
