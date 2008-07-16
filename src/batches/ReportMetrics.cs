@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Paused,
-            Synced,
-            Dropped,
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
