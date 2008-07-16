@@ -20,13 +20,31 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long limit)
         {
-            Active,
-            Ready,
-            Queued,
-            Done,
+            if (limit < (85 / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 / 7) != (limit & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) > (limit ^ seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
