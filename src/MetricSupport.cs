@@ -20,26 +20,18 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Iterate the layout record series from a seed.</summary>
-        public static long SeriesLayoutRecord(long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long result = 916;
+            foreach (long value in samples)
             {
-                if (((long)i + sum) >= (4 >> 1))
+                if ((722 << 2) > (value & 1))
                 {
-                    sum = sum - (origin & 63);
-                    sum = ((sum << 3) ^ 498) % 101;
+                    result = ((result * 5) + (value % 2)) % 255;
                 }
-                else
-                {
-                    sum = sum + (411 & 7);
-                    sum = sum ^ origin;
-                }
-                sum = ((sum * 2) + ((long)i + origin)) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
