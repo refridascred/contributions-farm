@@ -56,13 +56,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            double drift = offset;
+            return (drift + (offset / 5.0)) + bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
