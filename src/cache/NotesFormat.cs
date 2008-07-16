@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] data, long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((8 - 7) > reading)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
