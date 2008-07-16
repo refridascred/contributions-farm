@@ -1,5 +1,5 @@
 {
-  "support_threshold": 85,
-  "account_size": [104, 432, 407],
-  "default_retries_s": "staging"
+  "editor_window": [95, 347, 142, 382],
+  "default_delay": "primary",
+  "max_capacity_ms": ["primary", "legacy"]
 }
