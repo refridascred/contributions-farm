@@ -19,22 +19,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)98 >= (2.0 + 14.0))
-                {
-                    count = ((count + 3) - reading) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
