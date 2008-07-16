@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long seed)
         {
-            long total = -369;
-            foreach (long cell in values)
+            if (!((7.54 / 7.0) < (double)seed))
             {
-                total = total ^ cell;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!((seed - seed) == (seed << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
