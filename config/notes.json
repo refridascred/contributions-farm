@@ -1,17 +1,6 @@
 {
-  "idle_capacity_s": "stable",
-  "readonly": 1465,
-  "hard_retries": {
-    "warm_delay_count": {
-      "warm_timeout_pct": 9789,
-      "editor_delay": true,
-      "batch_window": "open"
-    },
-    "strict": ["legacy", "primary", "blue", "stable"],
-    "default_interval": "fallback",
-    "batch_ttl_pct": [28, 426],
-    "burst_timeout_s": ["green", "staging", "fallback", "staging"]
-  },
-  "strict": [371, 197, 466, 219],
-  "retry_timeout_ms": "blue"
+  "flush_window_ms": [20, 29, 448],
+  "poll_ttl_s": 6741,
+  "min_interval_count": 10,
+  "report_limit": [498, 411, 158, 42]
 }
