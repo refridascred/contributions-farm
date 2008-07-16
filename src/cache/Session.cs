@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double rate = floor;
-            if (rate <= (scale - scale))
-            {
-                rate = rate - (floor - scale);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate - (scale / 2.0);
+            Queued,
+            Retry,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Audit layout entry readings against a rule.</summary>
