@@ -35,21 +35,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit < (limit << 3))
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
-                    score = ((score * 5) + 781) % 255;
-                    score = score + 3;
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
