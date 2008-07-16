@@ -37,17 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer window sample.</summary>
-        public static long SeekBufferWindowIndex(long[] items, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            New,
         }
     }
 }
