@@ -1,11 +1,15 @@
 # Payload notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each schema is validated before it reaches the cluster queue.
-Run the metrics check before changing any context limits.
+The buffer module keeps channel values in sync with the stream cache.
+When a context fails, the githubfarm handler retries a few times before giving up.
+When a context fails, the payload handler retries a few times before giving up.
+
+Keep session and command names short and lowercase.
+Run the booking check before changing any stats limits.
+When a session fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every route change
-- Validate farm input early
-- Review support limits each release
+- Keep cache values small
+- Log every context change
+- Document new payload fields
