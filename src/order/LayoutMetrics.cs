@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            long mark = 815;
-            foreach (long datum in series)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum ^ mark) >= (datum % 64))
-                {
-                    mark = ((mark * 2) + (-164)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - datum) % 97;
-                }
-                if (mark <= (datum % 60))
-                {
-                    mark = (mark + mark) % 255;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
