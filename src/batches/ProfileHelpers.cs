@@ -57,21 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record filter pairs that satisfy a relation.</summary>
-        public static long CompareRecordFilterCount(long[] values)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 7.7;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ((ratio + (double)(long)i) - rate) - floor;
             }
-            return hits;
+            return ratio + 8.7;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
