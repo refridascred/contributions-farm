@@ -1,11 +1,10 @@
 # Command notes
 
-When a githubfarm fails, the queue handler retries a few times before giving up.
-Run the contributi check before changing any commits limits.
+Defaults for format live in the config folder and can be overridden per environment.
+The command module keeps support values in sync with the queue cache.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep counter values small
-- Document new metrics fields
-- Log every report change
+- Review farm limits each release
+- Log every schema change
+- Validate layout input early
