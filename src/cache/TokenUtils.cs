@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double mean = (4.76 + rate) - span;
+            if (mean > rate)
+            {
+                mean = mean - (7.8 + span);
+            }
+            return mean - span;
         }
 
         /// <summary>Count the cache profile entries that pass the check.</summary>
