@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Derive the next stats entry value from a seed.</summary>
+        public static long RollStatsEntry(long offset)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                carry = (carry ^ offset) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Look up the position of a account batch sample.</summary>
