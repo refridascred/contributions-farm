@@ -44,23 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema route series from a seed.</summary>
-        public static long DeriveSchemaRoute(long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.12 - 19.0) != (double)(long)i)
+                if (readings[i] > bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark ^ (offset + offset)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
