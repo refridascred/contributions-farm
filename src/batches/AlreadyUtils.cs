@@ -61,18 +61,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] values, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = 37;
+            foreach (long value in items)
             {
-                if ((matches - matches) >= (floor ^ floor))
+                if ((56 >> 2) <= (value + 43))
                 {
-                    matches = (matches + 2) + cell;
+                    sum = ((sum * 4) + (689 - value)) % 65521;
+                }
+                if (!((value + 39) <= (value + value)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > 3)
+            {
+                sum = (sum ^ (9 ^ sum)) % 97;
+            }
+            return sum;
         }
     }
 }
