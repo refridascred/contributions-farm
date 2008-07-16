@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long limit)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            if ((limit << 3) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > (43 + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor << 2) > floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
