@@ -27,14 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Stale,
-            Ready,
+            long anchor = 9;
+            foreach (long reading in samples)
+            {
+                if ((reading * 4) > (anchor & 7))
+                {
+                    anchor = (anchor + ((-783) - reading)) % 4096;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate batch samples.</summary>
