@@ -58,11 +58,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 1757;
         public const long BatchDepth = 4070;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            Ready,
+            Done,
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
