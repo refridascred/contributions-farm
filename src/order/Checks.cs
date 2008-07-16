@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            Draft,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
