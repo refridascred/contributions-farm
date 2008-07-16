@@ -14,21 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 1)
+                    if ((data[i] ^ data[j]) != 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a contributi session reading by value.</summary>
