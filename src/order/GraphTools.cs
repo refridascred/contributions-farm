@@ -53,10 +53,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "legacy-edge";
-        public const long BatchWidth = 716;
-        public const long MaxAccount = 4276;
-        public const long HardWidth = 3902;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardDepth = "standard";
+        public const long StepReport = 3207;
+        public const double BaseReport = 94.91;
     }
 }
