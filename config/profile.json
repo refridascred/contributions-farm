@@ -1,6 +1,13 @@
 {
-  "batch_ratio_count": "strict",
-  "sync_ratio_ms": "legacy",
-  "stats_retries": ["stable", "standard", "fallback"],
-  "already_depth": false
+  "persist": "strict",
+  "layout_depth": 3595,
+  "max_interval_ms": 37.56,
+  "base_threshold": true,
+  "metrics_size": {
+    "strict": 3251,
+    "audit": false,
+    "poll_limit_count": "latest",
+    "enabled": "staging",
+    "profile_threshold": [264, 56, 100]
+  }
 }
