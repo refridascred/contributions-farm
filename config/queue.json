@@ -1,8 +1,5 @@
 {
-  "burst_retries_count": "open",
-  "verbose": "eu-west",
-  "graph_size": 100,
-  "poll_retries_count": "local",
-  "persist": "blue",
-  "retry_retries_s": "open"
+  "soft_limit": false,
+  "verbose": "edge",
+  "strict": "staging"
 }
