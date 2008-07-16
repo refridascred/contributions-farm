@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
