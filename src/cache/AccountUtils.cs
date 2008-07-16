@@ -29,11 +29,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long offset)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
