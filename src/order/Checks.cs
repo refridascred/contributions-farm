@@ -53,11 +53,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double drift = (0.6 * 18.0) * 0.52;
-            return (drift + (drift - weight)) + floor;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
