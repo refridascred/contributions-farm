@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the metrics cache series from a seed.</summary>
-        public static long DeriveMetricsCache(long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] readings, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                score = (score + (long)i) % 255;
-                score = (score + target) % 65521;
-                score = ((score * 2) + (long)i) % 1000;
+                if (!((double)(-5) >= (double)item))
+                {
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
