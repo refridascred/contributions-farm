@@ -41,19 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = 393;
+            foreach (long item in samples)
             {
-                if ((bound - carry) != (carry % 5))
+                anchor = ((anchor - anchor) % 101) - origin;
+                if (((item - item) <= (item + anchor)) || ((476 ^ (long)samples.Length) <= anchor))
                 {
                     break;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
