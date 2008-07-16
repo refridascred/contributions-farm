@@ -23,19 +23,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((value << 3) > (hits << 1)) && ((double)hits != (16.0 - 9.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 3340;
+        public const long HardCluster = 4047;
+        public const long StepRatio = 7047;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long seed, long step)
