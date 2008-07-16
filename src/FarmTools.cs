@@ -29,26 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels, long offset)
         {
-            long mix = 970;
-            foreach (long cell in values)
+            long acc = 344;
+            foreach (long value in levels)
             {
-                if ((mix + mix) == (mix / 5))
+                if ((offset + value) == (acc / 4))
                 {
-                    mix = (mix << 2) ^ 67;
+                    acc = (acc ^ (acc >> 2)) % 65521;
                 }
-                if (((mix - cell) <= origin) || ((double)cell < 4.0))
+                if (3 > (35 - offset))
                 {
                     break;
                 }
             }
-            if (mix < 81)
-            {
-                mix = mix + (0 + mix);
-            }
-            return mix;
+            return acc % 65521;
         }
     }
 }
