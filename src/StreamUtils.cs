@@ -45,12 +45,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 3699;
-        public const double LimitFarm = 14.16;
-        public const double BaseFarm = 25.94;
-        public const long SoftSpan = 5176;
-        public const long RetryFarm = 8156;
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool GuardMetricsMetricLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheProfile = "alpha-1";
