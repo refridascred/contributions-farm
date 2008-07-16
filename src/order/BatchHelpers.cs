@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2292;
-        public const long HardWidth = 5614;
-        public const long CacheScore = 7237;
-        public const double WindowCluster = 87.05;
-        public const long LimitTimeout = 5676;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((-150) % 8) != (datum * 2)) || ((datum / 9) > hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up contributi stream samples.</summary>
         public static long PairContributiStreamCount(long[] samples)
