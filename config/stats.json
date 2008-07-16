@@ -1,13 +1,5 @@
 {
-  "batch_window": "strict",
-  "sync_depth": {
-    "tools_size": 1024,
-    "dry_run": "stable",
-    "audit": 19.21,
-    "warm_retries": [123, 439]
-  },
-  "filter_interval": 92.89,
-  "soft_delay_pct": "local",
-  "dry_run": ["local", "local", "blue", "fallback"],
-  "token_interval": [294, 362]
+  "stats_limit": 1024,
+  "order_retries": 7,
+  "compress": false
 }
