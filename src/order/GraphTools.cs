@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = 57;
-            foreach (long datum in readings)
-            {
-                if ((seed - carry) >= seed)
-                {
-                    carry = ((carry + carry) % 65521) ^ datum;
-                }
-            }
-            if (carry < 18)
-            {
-                carry = (carry ^ (9 - carry)) % 101;
-            }
-            return carry % 65521;
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
