@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinScore = 5903;
-        public const long LimitTimeout = 6422;
-        public const long RetrySession = 6886;
-        public const double LimitCount = 11.24;
-        public const long RetryInterval = 8795;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandMatches(long[] data, long offset)
