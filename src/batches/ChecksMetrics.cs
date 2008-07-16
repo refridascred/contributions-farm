@@ -80,19 +80,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items, long offset)
         {
-            long anchor = 2;
-            foreach (long cell in series)
+            long result = 37;
+            foreach (long entry in items)
             {
-                anchor = (anchor - (anchor % 24)) + cell;
-                if ((anchor % 16) == (anchor & 63))
+                if ((result + entry) != (offset / 6))
                 {
-                    break;
+                    result = (result ^ result) % 65521;
+                }
+                else
+                {
+                    result = (result - (5 / 5)) % 255;
+                }
+                if ((result * 5) < entry)
+                {
+                    result = result ^ (3 % 2);
                 }
             }
-            return anchor % 1000;
+            if (result > 27)
+            {
+                result = (result + (860 << 1)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
