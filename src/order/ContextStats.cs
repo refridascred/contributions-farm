@@ -33,27 +33,17 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const string IdleFactor = "cached";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long floor)
         {
-            long anchor = 1;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((origin + cell) >= (anchor + anchor)))
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    anchor = ((anchor * 5) + (anchor - anchor)) % 101;
-                    anchor = (anchor << 3) ^ cell;
-                }
-                if ((cell + cell) != (cell - origin))
-                {
-                    anchor = (anchor << 3) ^ (cell + origin);
-                }
-                if ((cell - anchor) <= (cell ^ anchor))
-                {
-                    anchor = ((anchor << 3) ^ (cell - origin)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
