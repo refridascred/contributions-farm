@@ -83,12 +83,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long origin)
         {
-            Paused,
-            Idle,
-            Active,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
