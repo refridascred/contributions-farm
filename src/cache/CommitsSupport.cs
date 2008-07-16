@@ -62,11 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (3.0 - 1.99))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
