@@ -52,18 +52,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches > (item & 255))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
