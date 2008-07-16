@@ -54,15 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route batch measurements.</summary>
-        public static double ScaleRouteBatch(double gain, double offset)
+        /// <summary>Match up window editor samples.</summary>
+        public static long OverlapWindowEditorCount(long[] readings)
         {
-            double rate = offset;
-            if (rate > (offset - gain))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (double)(-88);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (double)8;
+            return hits;
         }
     }
 }
