@@ -45,32 +45,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank stats batch input into a small class.</summary>
-        public static long ClassifyStatsBatch(long floor, long step)
+        /// <summary>Match up metrics account samples.</summary>
+        public static long OverlapMetricsAccountCount(long[] readings)
         {
-            long lane = floor - step;
-            if (((double)floor >= (7.18 + 9.0)) || (step <= (lane + step)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 + step) > (step << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((lane - floor) < (lane / 3)) || ((lane * 2) > (floor >> 2)))
+                    if ((readings[i] - readings[j]) > 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
