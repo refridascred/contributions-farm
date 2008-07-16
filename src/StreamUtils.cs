@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((0.9 / 6.0) < (double)matches)
+                total = ((total * 2) + (bound >> 2)) % 65521;
+                if (!(((long)i + bound) != (long)i))
                 {
-                    matches = (matches + 1) - reading;
+                    total = ((total << 2) ^ ((long)i + (long)i)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
