@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] items, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = 728;
+            foreach (long sample in items)
             {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - (state - state)) % 97) ^ sample;
             }
-            return flag;
+            if (state > 99)
+            {
+                state = (state - (floor - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
