@@ -72,15 +72,22 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Roll a queue support counter forward.</summary>
-        public static long IterateQueueSupport(long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] levels, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (2.0 > (double)entry)
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
