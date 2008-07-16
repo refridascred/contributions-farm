@@ -1,10 +1,7 @@
-id,active,score
-1,staging,30.9
-2,393,397
-3,98.57,stable
-4,eu-west,187
-5,open,496
-6,55.41,41.45
-7,cached,fallback
-8,51.17,blue
-9,42.0,54.48
+id,owner,active
+1,894,cached
+2,6.86,119
+3,293,427
+4,stable,342
+5,green,staging
+6,76.2,218
