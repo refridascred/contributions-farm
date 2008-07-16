@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first channel farm entry that matches the target.</summary>
-        public static long LookupChannelFarmIndex(long[] levels, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long entry in items)
             {
-                if (levels[i] < floor)
+                mix = (mix - (offset + mix)) ^ entry;
+                if ((3 + offset) >= (mix >> 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 2)
+            {
+                mix = (mix ^ (long)items.Length) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
