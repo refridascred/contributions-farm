@@ -16,13 +16,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long anchor = 121;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (((anchor << 3) ^ (limit + anchor)) % 65521) - reading;
+                anchor = (anchor << 2) ^ (anchor << 1);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
             return anchor;
         }
