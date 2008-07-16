@@ -71,20 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long bound)
-        {
-            long mark = 7;
-            foreach (long value in samples)
-            {
-                mark = ((mark - (mark >> 5)) - value) - bound;
-            }
-            if (mark < 55)
-            {
-                mark = (mark * 4) + (15 + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 4588;
+        public const string DefaultTimeout = "latest-1";
+        public const long RetryCount = 3437;
+        public const double CacheScore = 31.53;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileHits(long[] items)
