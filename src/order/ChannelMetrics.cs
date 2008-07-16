@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Queued,
-            Ready,
-            Draft,
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
