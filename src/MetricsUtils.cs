@@ -26,15 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = 129;
-            foreach (long sample in items)
-            {
-                result = (((result - (result << 3)) % 1000) ^ sample) + target;
-            }
-            return result;
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
