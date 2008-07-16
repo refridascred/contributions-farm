@@ -29,22 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] items, long target)
+        /// <summary>Iterate the already graph series from a seed.</summary>
+        public static long RollAlreadyGraph(long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4 / 6) > (count / 7))
+                total = (total ^ (origin % 16)) % 97;
+                if ((double)(long)i < (double)(-859))
                 {
-                    count = ((count + 2) + cell) + target;
+                    total = (total ^ (total + total)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
