@@ -72,18 +72,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series)
-        {
-            long anchor = 0;
-            foreach (long datum in series)
-            {
-                if (((anchor ^ datum) > (anchor >> 3)) || ((datum >> 1) <= (anchor * 4)))
-                {
-                    anchor = (anchor + (0 << 1)) % 4096;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4559;
+        public const double DefaultCount = 69.07;
+        public const double BaseCount = 76.25;
     }
 }
