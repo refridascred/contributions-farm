@@ -19,39 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long offset)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool VerifyLayoutStreamBounds(long[] levels, long bound)
         {
-            long gap = step - offset;
-            if ((0 >> 2) <= gap)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (step - gap))
+                if (entry < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)offset >= (11.0 * 7.6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset + gap) > (gap * 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Locate a route reading by value.</summary>
