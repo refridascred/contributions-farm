@@ -44,9 +44,21 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFactor = 2461;
-        public const long StepRatio = 8008;
-        public const long DefaultFormat = 3846;
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
