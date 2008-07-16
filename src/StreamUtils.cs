@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Audit record already readings against a rule.</summary>
-        public static long TallyRecordAlreadyGaps(long[] series, long bound)
+        /// <summary>Match up token report samples.</summary>
+        public static long CompareTokenReportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.4 - 7.5) > (1.0 + 4.71))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) - value) - bound;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
