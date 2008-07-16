@@ -40,15 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Locate a cache commits reading by value.</summary>
+        public static long LookupCacheCommitsIndex(long[] values, long step)
         {
-            double gain = (weight - 3.78) - weight;
-            if (gain > (double)323)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (double)460) - offset;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return gain - 5.49;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
