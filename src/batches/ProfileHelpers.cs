@@ -24,21 +24,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Validate cache support readings against a bound.</summary>
+        public static bool GuardCacheSupportRange(long[] readings, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                acc = (acc ^ ((long)i >> 4)) % 4096;
-                if ((seed / 8) >= (seed << 2))
+                if (cell > seed)
                 {
-                    acc = (acc ^ acc) % 65521;
-                    acc = ((acc << 2) ^ (acc / 4)) % 4096;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
