@@ -27,19 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support profile readings.</summary>
-        public static long ScoreSupportProfile(long[] series, long seed)
-        {
-            long total = 593;
-            foreach (long reading in series)
-            {
-                if ((seed + 60) != (total % 16))
-                {
-                    total = (total ^ reading) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleTimeout = "standard-edge";
+        public const long WindowRecord = 1432;
+        public const long DefaultWidth = 5087;
+        public const long BurstScore = 3695;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long target)
