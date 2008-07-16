@@ -20,10 +20,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2874;
-        public const string BatchFilter = "standard";
-        public const long LimitFilter = 779;
-        public const double WindowFilter = 1.08;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryFactor = 74.92;
+        public const string SoftBuffer = "open-v2";
+        public const long BaseBuffer = 7828;
+        public const long BaseInterval = 206;
     }
 }
