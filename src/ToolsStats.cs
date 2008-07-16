@@ -65,21 +65,17 @@ namespace Common.Utilities
         public const double StepAlready = 24.57;
         public const long HardAlready = 6035;
 
-        /// <summary>Compare every pair of route graph readings.</summary>
-        public static long CompareRouteGraphCount(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
