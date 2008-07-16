@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 2396;
-        public const double BatchTools = 79.9;
-        public const long BaseLevel = 6715;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            New,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Measure how many payload farm samples are out of range.</summary>
         public static long MeasurePayloadFarmOutliers(long[] levels)
