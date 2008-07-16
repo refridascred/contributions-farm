@@ -13,11 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 49.02;
-        public const string WindowStream = "legacy-edge";
-        public const double DefaultStream = 89.84;
-        public const string StepStream = "standard";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double gain, double span)
