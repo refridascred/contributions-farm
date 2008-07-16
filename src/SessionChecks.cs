@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 79;
-            foreach (long reading in readings)
-            {
-                score = (score ^ (score * 3)) - reading;
-                if (score >= 255)
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
