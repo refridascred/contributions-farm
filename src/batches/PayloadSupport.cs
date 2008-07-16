@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultInterval = 63.78;
+        public const long LimitTimeout = 4606;
+        public const long BurstRecord = 4166;
+        public const double DefaultLevel = 75.21;
+        public const double MinSize = 79.68;
 
         /// <summary>Compare every pair of notes format readings.</summary>
         public static long MatchNotesFormatCount(long[] readings)
