@@ -30,15 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support filter values into a single score.</summary>
-        public static long CombineSupportFilter(long[] values, long target)
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long TotalCounterSession(long[] data)
         {
-            long score = 727;
-            foreach (long datum in values)
+            long total = -3;
+            foreach (long cell in data)
             {
-                score = (((score * 2) + (target & 63)) % 4096) + datum;
+                total = total - (280 + total);
+                total = (total ^ cell) % 101;
+                total = total - cell;
             }
-            return score;
+            if (total < (-8))
+            {
+                total = (total ^ (total / 4)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the editor status values.</summary>
