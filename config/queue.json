@@ -1,5 +1,8 @@
 {
-  "hard_window": 3.96,
-  "base_ttl_count": "open",
-  "order_ttl": [50, 188]
+  "record_depth": true,
+  "burst_interval": 2019,
+  "idle_depth_s": ["staging", "strict"],
+  "cache_size_ms": 1883,
+  "soft_timeout_pct": ["standard", "green"],
+  "warm_limit_s": "fallback"
 }
