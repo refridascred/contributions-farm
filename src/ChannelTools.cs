@@ -25,13 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            Ready,
-            Retry,
-            Done,
-            Closed,
+            double bias2 = bias / 9.0;
+            return bias2 + scale;
         }
     }
 }
