@@ -1,8 +1,6 @@
 {
-  "record_window": "fallback",
-  "format_retries": 500,
-  "strict": "stable",
-  "githubfarm_retries": 100,
-  "flush_timeout_ms": 60,
-  "idle_ttl_count": 79
+  "flush_interval": false,
+  "soft_threshold": 1024,
+  "contributi_window": "legacy",
+  "compress": 3.06
 }
