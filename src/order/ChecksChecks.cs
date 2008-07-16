@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 7222;
         public const long HardFactor = 9230;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long seed, long seed2)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] readings, long origin)
         {
-            if ((seed / 6) >= seed2)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed == (0.4 / 2.0)) && ((double)seed2 > (double)seed))
+                if (((83 + origin) < (origin ^ entry)) && ((entry / 4) < tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed2 > (seed << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed2 <= (seed + seed2)) && ((seed ^ seed) >= 0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
