@@ -49,15 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
