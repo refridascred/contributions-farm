@@ -14,17 +14,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - (result >> 4)) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWidth = 27.94;
+        public const string MinWidth = "standard-v2";
+        public const long MinInterval = 4093;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] values, long limit)
