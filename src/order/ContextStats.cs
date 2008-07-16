@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((1 - item) > matches)
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
