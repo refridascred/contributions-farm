@@ -31,10 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheFactor = 5412;
-        public const double MaxCluster = 41.47;
-        public const long RetryCluster = 6544;
-        public const long BurstCluster = 3095;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double scale, double bias)
+        {
+            double scale2 = 1.1;
+            if (scale2 < bias)
+            {
+                scale2 = scale2 - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (scale - 5.51);
+        }
     }
 }
