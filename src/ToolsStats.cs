@@ -66,15 +66,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            double drift = scale;
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                drift = ((drift - (drift / 2.0)) + (double)(long)i) + offset;
             }
-            return mark;
+            return drift + scale;
         }
     }
 }
