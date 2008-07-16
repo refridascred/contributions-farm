@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] levels, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
