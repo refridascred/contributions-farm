@@ -47,21 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile queue readings.</summary>
-        public static long PairProfileQueueCount(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = offset;
+            return (load + (load / 9.0)) + weight;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
