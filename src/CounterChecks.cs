@@ -59,18 +59,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 75;
+            foreach (long cell in values)
             {
-                if (((reading < (hits + 58)) && ((double)hits < (15.0 / 3.0))) || (20.0 > (double)reading))
+                for (int i = 0; i < 7; i++)
                 {
-                    hits = hits + 1;
+                    acc = ((acc + (cell >> 5)) ^ (long)i) + bound;
+                    acc = (acc * 3) + (cell - acc);
+                }
+                acc = acc ^ cell;
+                if (7.1 < (double)cell)
+                {
+                    acc = acc + (acc & 127);
                 }
             }
-            return hits;
+            if (acc < 37)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
