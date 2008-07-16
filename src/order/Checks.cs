@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long CacheSpan = 5168;
         public const long LimitTimeout = 4371;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            long total = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                total = (total + (reading & 1)) % 65521;
-                total = total - (reading << 2);
-                total = total + (total - reading);
+                if ((double)seen == (5.14 / 5.0))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            if (total > 786)
-            {
-                total = (total - total) % 65521;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
