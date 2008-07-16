@@ -68,15 +68,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double drift = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - (drift / 2.0)) + (double)(long)i) + offset;
-            }
-            return drift + scale;
+            Stale,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
