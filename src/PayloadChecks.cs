@@ -25,11 +25,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Paused,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a stats record.</summary>
