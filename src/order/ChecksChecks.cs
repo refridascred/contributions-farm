@@ -21,25 +21,11 @@ namespace Common.Utilities
         public const long RetrySupport = 1111;
         public const double HardSupport = 3.67;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.0 * 12.0) >= (double)offset)
-                {
-                    state = (state + (76 >> 1)) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-                state = state - (state & 1);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
