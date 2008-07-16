@@ -31,12 +31,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultScore = 2182;
-        public const long SoftSize = 7435;
-        public const long BatchRatio = 7394;
-        public const long IdleCount = 1224;
-        public const double BaseWidth = 94.62;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesHits(long[] levels, long step)
