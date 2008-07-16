@@ -71,14 +71,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            Retry,
-            Closed,
-            Active,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((6.59 * 3.45) < (double)8))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
