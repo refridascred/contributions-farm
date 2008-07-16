@@ -24,16 +24,19 @@ namespace Common.Utilities
             return bias + (double)867;
         }
 
-        /// <summary>Derive the next layout channel value from a seed.</summary>
-        public static long DeriveLayoutChannel(long bound)
+        /// <summary>Validate record counter readings against a bound.</summary>
+        public static bool CheckRecordCounterLimits(long[] levels, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                sum = (sum - (sum + sum)) % 255;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a metrics entry.</summary>
