@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits ^ item) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double scale = (double)(373 / 4);
+            return (scale - (span / 5.0)) + rate;
         }
 
         /// <summary>Hold a already entry.</summary>
