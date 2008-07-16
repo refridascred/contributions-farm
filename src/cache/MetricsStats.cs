@@ -44,12 +44,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Match up channel record samples.</summary>
+        public static long CompareChannelRecordCount(long[] readings)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
