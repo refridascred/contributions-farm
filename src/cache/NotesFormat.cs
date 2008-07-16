@@ -39,24 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values)
         {
-            long carry = 696;
-            foreach (long cell in readings)
+            long mix = 29;
+            foreach (long item in values)
             {
-                carry = (carry - (carry & 7)) - cell;
-                carry = (carry ^ (step - 750)) % 101;
-                if ((carry * 3) >= carry)
-                {
-                    break;
-                }
+                mix = ((mix + mix) % 1000) ^ item;
+                mix = (mix + (mix / 2)) % 101;
             }
-            if (carry < 920)
-            {
-                carry = (carry * 3) + (long)readings.Length;
-            }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
