@@ -54,31 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels, long floor)
         {
-            if (!(limit > (limit / 3)))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - limit) <= 51) && ((double)origin > (6.0 - 20.0)))
+                if (!!((entry >> 2) == (entry - floor)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 3) >= ((-9) & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up support samples.</summary>
