@@ -1,8 +1,24 @@
 # githubfarm settings
-base_ratio:
-  - 336
-  - 274
-  - 416
-  - 437
-base_threshold: 57
-batch_size_pct: fallback
+dry_run:
+  enabled:
+    cache_capacity:
+      - fallback
+      - edge
+      - strict
+      - local
+    sync_ttl: 60
+    burst_retries: blue
+  max_window_s:
+    channel_retries: 51
+    max_interval:
+      - 355
+      - 192
+      - 34
+      - 138
+    compress: 93.47
+    sync_size_pct: 8145
+  flush_size_ms: green
+  cache_threshold: 719
+default_window: 92.96
+base_size_pct: 250
+soft_ratio_count: false
