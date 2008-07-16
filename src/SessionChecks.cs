@@ -52,21 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of githubfarm cluster readings.</summary>
-        public static long MatchGithubfarmClusterCount(long[] levels)
+        /// <summary>Fold a list of support profile readings.</summary>
+        public static long ScoreSupportProfile(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 593;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed + 60) != (total % 16))
                 {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ reading) % 1000;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
