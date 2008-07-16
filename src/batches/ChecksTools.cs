@@ -29,15 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long carry = 11;
-            foreach (long reading in series)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry << 2) ^ (bound + bound)) - reading;
+                long step2 = step;
+                if (((98 >> 2) < step2) && ((20.0 - 6.0) <= (double)mark))
+                {
+                    mark = (mark + (step + step2)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Match up metrics account samples.</summary>
