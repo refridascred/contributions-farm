@@ -60,19 +60,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] values, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long step, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long bound = step - seed;
+            if (!(9 < step))
             {
-                if (sample > target)
+                return 2;
+            }
+            else
+            {
+                if ((step - 63) <= (seed - 607))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (547 >= (bound ^ 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
