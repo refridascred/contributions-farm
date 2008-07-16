@@ -74,9 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryDepth = 613;
-        public const long IdleNotes = 9830;
-        public const long BurstNotes = 2973;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - datum) >= (count ^ target))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
