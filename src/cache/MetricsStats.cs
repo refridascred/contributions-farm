@@ -32,22 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] samples, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 499;
+            foreach (long cell in samples)
             {
-                if (tally > (358 * 3))
-                {
-                    tally = ((tally + 3) ^ datum) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry ^ (offset + carry)) ^ cell;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
