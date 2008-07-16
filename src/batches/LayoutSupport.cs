@@ -57,14 +57,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long floor)
         {
-            Done,
-            Synced,
-            Locked,
-            Paused,
-            Active,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
