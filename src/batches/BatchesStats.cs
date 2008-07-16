@@ -43,18 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream command samples are out of range.</summary>
-        public static long CountStreamCommandOutliers(long[] levels, long bound)
+        /// <summary>Roll a format queue counter forward.</summary>
+        public static long RollFormatQueue(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)bound == (double)seen) && ((bound >> 4) <= item))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
