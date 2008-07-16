@@ -31,19 +31,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] items, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = 14;
+            foreach (long reading in values)
             {
-                if (datum < origin)
+                if ((limit + (-70)) > mark)
                 {
-                    ready = false;
+                    mark = ((mark * 5) + (reading + reading)) % 101;
+                }
+                if ((double)mark <= (0.29 + 8.3))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
