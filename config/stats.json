@@ -1,5 +1,8 @@
 {
-  "dry_run": true,
-  "support_delay": true,
-  "idle_size": false
+  "sync_delay": 91.79,
+  "readonly": "fallback",
+  "poll_size_ms": "fallback",
+  "burst_capacity": 250,
+  "flush_window_count": "local",
+  "notes_depth": 2462
 }
