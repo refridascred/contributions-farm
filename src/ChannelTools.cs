@@ -24,21 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window farm readings.</summary>
-        public static long CompareWindowFarmCount(long[] items)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
