@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long MaxOrder = 7524;
         public const long BaseDepth = 1666;
 
-        /// <summary>Accumulate support tools samples.</summary>
-        public static long ScoreSupportTools(long[] readings)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mark = 922;
-            foreach (long value in readings)
-            {
-                if (value > (mark ^ value))
-                {
-                    mark = (mark + value) % 4096;
-                }
-            }
-            return mark % 65521;
+            New,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
