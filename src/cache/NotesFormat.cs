@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            Dropped,
-            Failed,
-            Active,
+            double bias = weight;
+            return (bias + weight) + span;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
