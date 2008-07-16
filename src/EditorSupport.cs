@@ -14,21 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell <= 0.38)
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a contributi session reading by value.</summary>
