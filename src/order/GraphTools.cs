@@ -34,31 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long seed, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series, long limit)
         {
-            if ((origin % 16) <= (origin & 255))
+            long anchor = 910;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin == (0.7 + 13.0))
+                if (((long)series.Length - limit) == (item + limit))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= (53 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor * 5) + (4 % 7)) % 1000;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
