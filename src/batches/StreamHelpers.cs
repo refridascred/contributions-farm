@@ -51,32 +51,12 @@ namespace Common.Utilities
             return gain - 5.49;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long offset)
-        {
-            if (!((step << 3) <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 15) > (step - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= (offset % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepRatio = 5.85;
+        public const long IdleLevel = 230;
+        public const string BurstCommits = "alpha-edge";
+        public const long WindowCommits = 3309;
+        public const double LimitSize = 2.68;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountHits(long[] levels, long seed)
