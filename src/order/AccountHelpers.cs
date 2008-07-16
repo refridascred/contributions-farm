@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels, long step)
         {
-            long score = 930;
-            foreach (long item in readings)
+            long total = 8;
+            foreach (long entry in levels)
             {
-                score = (score << 2) ^ (score - item);
+                total = (total - (entry / 7)) + step;
             }
-            return score % 97;
+            if (total > 6)
+            {
+                total = total ^ 91;
+            }
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
