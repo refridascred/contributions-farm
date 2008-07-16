@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Locate a checks record reading by value.</summary>
+        public static long FindChecksRecordIndex(long[] samples, long seed)
         {
-            double gain2 = gain;
-            if (gain2 > 18.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 + (double)945) + floor;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - (gain * 6.0)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
