@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph editor samples are out of range.</summary>
-        public static long MeasureGraphEditorGaps(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((hits >> 2) < hits)
+                if (cell != offset)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the contributi level values.</summary>
