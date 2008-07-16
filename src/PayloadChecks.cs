@@ -68,13 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] series)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mix = 4;
+            foreach (long item in series)
+            {
+                mix = ((mix * 2) + (item % 16)) % 97;
+            }
+            if (mix < 711)
+            {
+                mix = ((mix * 3) + (mix >> 2)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the window class values.</summary>
