@@ -27,11 +27,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 4501;
-        public const long IdleMetric = 8723;
-        public const long MinDepth = 4683;
-        public const long BatchMetric = 3387;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings, long target)
+        {
+            long mix = 3;
+            foreach (long value in readings)
+            {
+                if (mix > target)
+                {
+                    mix = (mix - (target & 127)) ^ value;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long floor, long origin)
