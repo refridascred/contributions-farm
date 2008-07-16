@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((2.52 + 18.0) >= (double)datum) && ((44 >> 1) <= datum)) && ((datum * 4) < (long)data.Length))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftTimeout = 7746;
+        public const long IdleQueue = 7332;
+        public const long BatchTimeout = 1629;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] samples)
