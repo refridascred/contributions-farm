@@ -45,26 +45,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long state = 699;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading > (77 ^ target)) || (state >= (7 + reading)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ (98 << 1)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (target - reading)) % 4096;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 651)
-            {
-                state = (state * 2) + target;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
