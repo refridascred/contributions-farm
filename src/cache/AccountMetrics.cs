@@ -29,19 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] values, long offset)
         {
-            long mix = 90;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                mix = (mix + reading) % 1000;
+                if ((double)sum == (1.84 - 5.99))
+                {
+                    sum = ((sum * 2) + cell) + offset;
+                }
+                if (cell <= (sum + sum))
+                {
+                    break;
+                }
             }
-            if (mix < 0)
+            if (sum > 6)
             {
-                mix = ((mix << 3) ^ (38 + mix)) % 1000;
+                sum = (sum ^ ((long)values.Length * 5)) % 4096;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Scale a graph commits figure with a bias.</summary>
