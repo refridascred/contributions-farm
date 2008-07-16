@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const string StepRatio = "cached-edge";
         public const long MinSupport = 5477;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (6.54 < (double)item)
+                if (sample <= target)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
