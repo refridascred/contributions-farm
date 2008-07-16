@@ -34,18 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data)
         {
-            long state = 648;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((origin ^ state) >= (state - origin)))
+                if (!(count >= 786))
                 {
-                    state = ((state * 4) + (origin + state)) ^ item;
+                    count = (count + 2) - cell;
                 }
             }
-            return state % 97;
+            return count;
         }
     }
 }
