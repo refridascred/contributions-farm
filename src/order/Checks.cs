@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinDepth = 36.81;
+        public const long CacheSpan = 5168;
+        public const long LimitTimeout = 4371;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
