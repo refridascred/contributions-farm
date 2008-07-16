@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Find the first editor schema entry that matches the target.</summary>
+        public static long FindEditorSchemaIndex(long[] levels, long bound)
         {
-            long anchor = 264;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(anchor >= (29 + datum)))
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
-                    continue;
-                }
-                if (datum >= (datum / 4))
-                {
-                    anchor = ((anchor << 2) ^ 78) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 93)
-            {
-                anchor = ((anchor << 3) ^ (anchor - (-186))) % 255;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
