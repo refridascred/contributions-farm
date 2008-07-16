@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long MinSize = 4267;
         public const string DefaultGithubfarm = "open-1";
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the support level values.</summary>
