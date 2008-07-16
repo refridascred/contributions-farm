@@ -55,18 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] values, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long score = 65;
+            foreach (long datum in samples)
             {
-                if (!(((long)values.Length + cell) > (count ^ (-152))) || (offset >= (count << 2)))
+                if ((origin & 3) >= (origin >> 5))
                 {
-                    count = count + 3;
+                    score = (score ^ (score / 7)) + datum;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
