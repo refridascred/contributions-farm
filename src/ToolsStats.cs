@@ -65,15 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long state = 79;
-            foreach (long datum in series)
-            {
-                state = (((state << 3) ^ (state - (long)series.Length)) % 97) ^ datum;
-            }
-            return state % 4096;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
