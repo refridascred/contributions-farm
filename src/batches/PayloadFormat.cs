@@ -59,16 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix ^ (seed >> 2);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxCount = 86.74;
+        public const string IdleFactor = "strict-1";
+        public const long DefaultCount = 1313;
+        public const double LimitDepth = 66.12;
     }
 }
