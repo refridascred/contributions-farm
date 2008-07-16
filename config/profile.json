@@ -1,5 +1,6 @@
 {
-  "soft_retries_count": 7271,
-  "route_limit": 100,
-  "readonly": 1024
+  "idle_limit": false,
+  "enabled": "cached",
+  "readonly": false,
+  "cache_timeout_s": 24.23
 }
