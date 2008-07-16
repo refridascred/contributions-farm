@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            Done,
-            Active,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + (long)samples.Length) >= ((long)samples.Length * 4))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
