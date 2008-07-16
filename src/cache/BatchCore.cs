@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next commits metric value.</summary>
-        public static double ProjectCommitsMetric(double weight, double offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double gain = (double)(282 >> 1);
-            if (gain < gain)
-            {
-                gain = gain - (offset * 1.08);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)807) + (double)(long)i;
-            }
-            return gain - (weight + weight);
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
