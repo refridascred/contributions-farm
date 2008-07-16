@@ -1,14 +1,8 @@
 # githubfarm settings
-burst_retries_pct: edge
-hard_retries_s:
-  schema_threshold:
-    - 493
-    - 33
-    - 243
-  hard_retries_count: 3485
-  persist:
-    - 329
-    - 194
-    - 495
-  compress: false
-cache_delay_s: eu-west
+base_ratio:
+  - 336
+  - 274
+  - 416
+  - 437
+base_threshold: 57
+batch_size_pct: fallback
