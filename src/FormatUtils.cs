@@ -21,31 +21,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long limit)
+        /// <summary>Measure how many buffer stream samples are out of range.</summary>
+        public static long TallyBufferStreamMatches(long[] readings)
         {
-            if (((double)limit == (5.03 * 4.2)) && ((step >> 4) >= (limit % 5)))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step < (step * 3)) || ((limit * 5) < (953 + step)))
+                if (!((value - tally) != (95 - (-51))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > (2.61 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
