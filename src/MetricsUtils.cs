@@ -36,13 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
