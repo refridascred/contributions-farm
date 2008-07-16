@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long TallyProfileFormatGaps(long[] values, long limit)
         {
-            New,
-            Retry,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((limit - tally) <= (73 - 9)) || ((12.0 / 6.0) <= (double)tally))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
