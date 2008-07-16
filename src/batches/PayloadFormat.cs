@@ -55,41 +55,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel route readings.</summary>
-        public static long DigestChannelRoute(long[] items)
-        {
-            long anchor = 502;
-            foreach (long datum in items)
-            {
-                anchor = (anchor + (datum - anchor)) % 1000;
-                if (!((17.0 / 6.0) < (double)anchor))
-                {
-                    anchor = (anchor + ((long)items.Length - anchor)) % 4096;
-                    anchor = (anchor ^ (datum / 7)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 7)) % 65521;
-                    anchor = anchor ^ (datum - anchor);
-                }
-                if ((anchor + datum) == (anchor * 3))
-                {
-                    anchor = anchor - (datum * 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + 24) % 1000;
-                }
-                if ((6.6 * 7.88) != (double)datum)
-                {
-                    break;
-                }
-            }
-            if (anchor < 459)
-            {
-                anchor = ((anchor * 5) + (anchor & 31)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 1819;
+        public const double DefaultAlready = 19.99;
+        public const long BatchAlready = 2603;
     }
 }
