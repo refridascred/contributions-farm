@@ -26,21 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total * 4) + floor;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
                 {
-                    total = ((total << 3) ^ (long)i2) % 255;
+                    return (long)i;
                 }
-                total = (total << 2) ^ 6;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
