@@ -1,7 +1,4 @@
 # support settings
-flush_delay: 60
-compress: 14.97
-default_ttl_pct:
-  - 434
-  - 191
-cluster_window: legacy
+default_limit_count: false
+metrics_ratio: legacy
+order_window: 5
