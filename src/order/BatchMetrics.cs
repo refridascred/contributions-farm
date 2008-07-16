@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
             public double Stamp { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
