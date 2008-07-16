@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long limit2)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double weight, double bias)
         {
-            if ((limit2 > (664 - limit2)) && ((limit2 & 63) >= (limit2 + limit)))
+            double scale = bias;
+            if (scale < (bias + 8.41))
             {
-                return 2;
+                scale = scale - (weight * 1.8);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)limit2 > (double)(-6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = (scale + (weight / 3.0)) + (double)(long)i;
             }
+            return scale - weight;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
