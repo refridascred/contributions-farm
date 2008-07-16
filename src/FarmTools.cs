@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            double scale = 11.0;
-            if (scale >= (double)13)
+            long seen = 0;
+            foreach (long value in items)
             {
-                scale = scale - (weight - weight);
+                if (((12 + value) > (6 << 3)) && ((double)value == (double)163))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale + 8.78;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (span / 6.0)) + (double)(long)i;
-            }
-            return scale - (double)461;
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
