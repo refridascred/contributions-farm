@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Audit support contributi readings against a rule.</summary>
+        public static long CountSupportContributiOutliers(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)value >= (8.9 * 7.18))
+                if ((reading & 31) < (floor >> 5))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
