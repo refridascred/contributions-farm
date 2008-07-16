@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] samples, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long carry = 664;
+            foreach (long value in samples)
             {
-                if (sample <= floor)
+                if (!((carry + carry) < (carry >> 5)))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry << 3) ^ (value - value)) % 255;
                 }
             }
-            return flag;
+            return carry % 97;
         }
 
         /// <summary>Validate record counter readings against a bound.</summary>
