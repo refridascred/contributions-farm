@@ -1,5 +1,8 @@
 {
-  "checks_window": 2474,
-  "batch_ttl": true,
-  "cache_depth_s": 100
+  "warm_retries_s": 7960,
+  "max_size_s": 500,
+  "hard_ttl": 67.16,
+  "soft_interval_pct": "blue",
+  "base_limit": 60,
+  "readonly": 2752
 }
