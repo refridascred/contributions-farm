@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double span)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double ratio = (double)452 / 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + (double)(long)i) - gain) - span;
-            }
-            return ratio + (ratio * 20.0);
+            Idle,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
