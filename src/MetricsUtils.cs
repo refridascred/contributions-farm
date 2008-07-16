@@ -55,9 +55,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 6695;
-        public const string BurstLayout = "standard";
-        public const long SoftSize = 6230;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double offset)
+        {
+            double scale = (double)(775 ^ 5);
+            if (scale < offset)
+            {
+                scale = scale - (offset * 1.24);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (gain * 4.05)) + (double)(long)i;
+            }
+            return scale - (6.0 - gain);
+        }
     }
 }
