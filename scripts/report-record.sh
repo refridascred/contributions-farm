@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=235
+RECORD_LIMIT=171
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in latest local eu-west edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
