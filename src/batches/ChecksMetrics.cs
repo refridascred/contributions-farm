@@ -65,18 +65,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 496;
+        public const string StepAccount = "open";
+        public const long BurstAccount = 3555;
+        public const long DefaultScore = 7678;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] samples, long origin)
