@@ -1,6 +1,22 @@
 {
-  "report_depth": true,
-  "compress": 30,
-  "hard_threshold": "strict",
-  "already_size": 80
+  "githubfarm_timeout": {
+    "base_ratio": {
+      "cache_threshold_s": true,
+      "default_timeout": 20.12,
+      "window_interval": "blue",
+      "audit": "staging",
+      "default_limit": ["cached", "open", "stable"],
+      "strict": false
+    },
+    "burst_limit": "latest",
+    "layout_ttl": "legacy",
+    "default_threshold": ["cached", "latest", "stable"],
+    "default_threshold_s": ["cached", "open", "latest", "edge"],
+    "base_delay_ms": false
+  },
+  "record_limit": 54.06,
+  "counter_delay": [349, 357],
+  "flush_delay": false,
+  "window_capacity": 73,
+  "warm_size_s": true
 }
