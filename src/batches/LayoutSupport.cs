@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of account entries.</summary>
