@@ -25,22 +25,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long MeasureGithubfarmQueueMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)count <= (15.0 / 9.0))
-                {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2874;
+        public const string BatchFilter = "standard";
+        public const long LimitFilter = 779;
+        public const double WindowFilter = 1.08;
     }
 }
