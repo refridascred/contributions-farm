@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long MinContext = 4628;
         public const string WindowContext = "open";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long bound)
         {
-            long seen = 0;
+            long anchor = 778;
             foreach (long sample in items)
             {
-                if ((double)seen != (9.39 + 6.9))
+                if ((double)anchor <= 5.74)
                 {
-                    seen = (seen + 3) + sample;
+                    anchor = (anchor - (bound & 3)) + sample;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the context status values.</summary>
