@@ -33,20 +33,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardTimeout = 7362;
+        public const long HardWidth = 9664;
+        public const long IdleCommits = 385;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] samples, long floor)
