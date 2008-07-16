@@ -37,17 +37,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (4 > seed)
             {
-                if (items[i] < origin)
+                return 6;
+            }
+            else
+            {
+                if ((step + seed) > seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
