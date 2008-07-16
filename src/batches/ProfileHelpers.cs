@@ -39,20 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long offset)
-        {
-            long sum = 21;
-            foreach (long datum in samples)
-            {
-                sum = (sum ^ offset) + datum;
-            }
-            if (sum < 72)
-            {
-                sum = (sum * 2) + ((long)samples.Length << 1);
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowBudget = 3444;
+        public const long BatchBudget = 5669;
+        public const long MaxCache = 5331;
+        public const double BaseInterval = 81.93;
+        public const long WindowRatio = 4751;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
