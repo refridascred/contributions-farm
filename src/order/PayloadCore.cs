@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 9;
+            foreach (long cell in samples)
+            {
+                result = (result - (cell & 255)) % 97;
+                result = ((result << 2) ^ (result << 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
