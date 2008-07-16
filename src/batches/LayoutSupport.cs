@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double load = scale;
-            if (load >= (double)8)
-            {
-                load = (load - 5.11) - bias;
-            }
-            return load - scale;
+            Dropped,
+            Retry,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Match up buffer record samples.</summary>
