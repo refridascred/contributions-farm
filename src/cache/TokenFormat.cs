@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long step)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long offset = limit + step;
+            if ((-20) > (offset / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((828 ^ 4) != (offset >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1.0 < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter stats.</summary>
