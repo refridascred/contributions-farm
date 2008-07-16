@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long state = 69;
+            foreach (long reading in samples)
+            {
+                state = (state + reading) + step;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
