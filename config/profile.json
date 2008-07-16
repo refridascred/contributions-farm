@@ -1,13 +1,9 @@
 {
-  "retry_threshold_pct": {
-    "sync_retries_ms": 94,
-    "batch_limit_ms": "local",
-    "warm_ttl_pct": ["fallback", "edge"],
-    "base_capacity_pct": 82,
-    "session_retries": "edge"
-  },
-  "batch_timeout": [377, 189],
-  "min_delay_count": 5989,
-  "hard_timeout_count": false,
-  "idle_threshold": 100
+  "sync_timeout_s": true,
+  "idle_interval_s": 6811,
+  "cache_ttl": {
+    "buffer_threshold": "open",
+    "hard_size_pct": 31,
+    "readonly": false
+  }
 }
