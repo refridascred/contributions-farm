@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((hits / 6) <= (item / 2))
+                if (!((item % 3) > (item % 10)))
                 {
-                    hits = (hits + 2) + step;
+                    count = (count + 1) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
