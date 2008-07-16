@@ -1,8 +1,7 @@
 {
-  "batch_size": 30,
-  "flush_threshold_ms": false,
-  "verbose": "strict",
-  "checks_timeout": 4636,
-  "strict": false,
-  "tools_interval": 565
+  "warm_size_pct": true,
+  "record_depth": ["blue", "local", "standard"],
+  "retry_ttl_pct": 60,
+  "warm_capacity_pct": 83.78,
+  "commits_window": 7088
 }
