@@ -50,35 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Audit counter channel readings against a rule.</summary>
+        public static long CountCounterChannelOutliers(long[] readings, long offset)
         {
-            long mark = 95;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                long gap = mark;
-                if ((gap - 28) != (value - gap))
+                if (6.06 > (double)(long)readings.Length)
                 {
-                    mark = ((mark * 5) + (10 - value)) % 65521;
-                }
-                if (!(mark < (mark >> 1)))
-                {
-                    mark = (mark ^ (mark / 7)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                if (!((value + mark) > (value >> 3)))
-                {
-                    break;
+                    count = ((count + 3) ^ entry) + offset;
                 }
             }
-            if (mark > 897)
-            {
-                mark = (mark + (mark + 68)) % 101;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
