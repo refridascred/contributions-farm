@@ -41,12 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            Failed,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine account values into a single score.</summary>
