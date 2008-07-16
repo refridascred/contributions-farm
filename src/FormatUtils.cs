@@ -35,24 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long target)
+        /// <summary>Count the stats record entries that pass the check.</summary>
+        public static long TallyStatsRecordMatches(long[] data, long step)
         {
-            if (6.85 > (double)target)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit > (5.0 / 2.0)))
+                if ((((sample - sample) >= (sample << 2)) || (377 <= (sample >> 1))) && ((331 + sample) == (step & 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
