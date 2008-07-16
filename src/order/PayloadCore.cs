@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((3.0 * 4.5) < (double)item)
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
