@@ -29,20 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the already graph series from a seed.</summary>
-        public static long RollAlreadyGraph(long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ (origin % 16)) % 97;
-                if ((double)(long)i < (double)(-859))
-                {
-                    total = (total ^ (total + total)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
