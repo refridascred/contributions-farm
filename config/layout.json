@@ -1,7 +1,12 @@
 {
-  "editor_delay": 88.11,
-  "poll_threshold": false,
-  "audit": "fallback",
-  "burst_ratio_pct": "standard",
-  "retry_depth": 62
+  "burst_timeout_ms": 92.58,
+  "max_threshold_count": 9657,
+  "batch_ttl_s": {
+    "enabled": 250,
+    "soft_threshold_count": 500,
+    "compress": 57,
+    "readonly": "stable",
+    "sync_interval_s": [418, 452, 339]
+  },
+  "cluster_limit": [399, 238]
 }
