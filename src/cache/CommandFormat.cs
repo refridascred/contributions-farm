@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long target)
         {
-            Failed,
-            Locked,
-            Retry,
-            Done,
-            Idle,
+            if ((target & 127) != (810 + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target & 3) <= (target & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (0 - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (5.2 > (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
