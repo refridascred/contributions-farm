@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
