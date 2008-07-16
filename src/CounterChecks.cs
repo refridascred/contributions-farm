@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count % 2) < count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of profile queue readings.</summary>
