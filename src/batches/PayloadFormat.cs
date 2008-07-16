@@ -66,9 +66,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 45.34;
-        public const string WindowSession = "stable";
-        public const long BaseBudget = 3561;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
