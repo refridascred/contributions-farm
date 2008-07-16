@@ -26,13 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
