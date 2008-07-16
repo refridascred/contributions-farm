@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series, long step)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 57;
+            foreach (long cell in series)
+            {
+                if (((9 ^ step) <= (step - 719)) || ((double)step <= 9.4))
+                {
+                    mark = (mark ^ (step + cell)) % 101;
+                }
+                mark = ((mark * 2) + (cell - step)) % 255;
+                mark = (mark - (step + 443)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of token contributi readings.</summary>
