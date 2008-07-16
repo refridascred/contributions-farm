@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long limit2)
         {
-            if ((limit << 3) <= limit)
+            if ((limit2 > (664 - limit2)) && ((limit2 & 63) >= (limit2 + limit)))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (limit > (43 + limit))
+                if ((double)limit2 > (double)(-6))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (!((floor << 2) > floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 8;
                 }
             }
         }
