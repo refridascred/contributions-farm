@@ -43,11 +43,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next order commits value.</summary>
-        public static double ScaleOrderCommits(double ratio, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long offset)
         {
-            double mean = (double)(3 + 790);
-            return ((mean + (mean + 3.3)) + ratio) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
