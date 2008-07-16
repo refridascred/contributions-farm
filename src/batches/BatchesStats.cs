@@ -53,13 +53,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long seed, long step)
         {
-            Queued,
-            Draft,
-            Synced,
-            Stale,
+            if ((double)seed > (9.96 - 7.9))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed < (614 + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step & 15) >= (789 * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.6 + 5.8) <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
