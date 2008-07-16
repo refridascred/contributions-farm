@@ -20,14 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            Active,
-            Idle,
-            Ready,
-            Done,
-            Paused,
+            double mean = 14.0 * 12.0;
+            if (mean < (8.74 - 17.0))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + (bias * 9.24);
+            }
+            return mean + span;
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
