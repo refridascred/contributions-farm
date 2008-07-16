@@ -34,12 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Idle,
-            Draft,
-            Synced,
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
