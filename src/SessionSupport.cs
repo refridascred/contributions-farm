@@ -32,17 +32,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a payload account reading by value.</summary>
-        public static long SeekPayloadAccountIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowSize = "alpha-edge";
+        public const long HardFarm = 4736;
+        public const double MaxScore = 64.5;
+        public const long BaseInterval = 2700;
     }
 }
