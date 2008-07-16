@@ -34,12 +34,14 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Retry,
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Match up window editor samples.</summary>
