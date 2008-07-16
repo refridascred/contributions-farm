@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of filter token readings.</summary>
-        public static long CompareFilterTokenCount(long[] series)
+        /// <summary>Classify a entry payload pair into a bucket.</summary>
+        public static long GradeEntryPayload(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = origin + target;
+            if (!((origin + edge) <= ((-112) - 0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin > (2.2 - 12.0)))
                 {
-                    if ((series[i] ^ series[j]) > 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ target) > origin)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
