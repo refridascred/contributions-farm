@@ -40,10 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 2070;
-        public const string MinWidth = "stable-1";
-        public const string StepTimeout = "local-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (6.54 < (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double IdleLevel = 93.61;
