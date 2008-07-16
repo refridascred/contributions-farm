@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] readings, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!((double)(-5) >= (double)item))
+                if (entry >= step)
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
