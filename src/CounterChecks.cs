@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the window report series from a seed.</summary>
-        public static long StepWindowReport(long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
