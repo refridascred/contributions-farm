@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (9.0 >= (double)seen)
+                if (reading >= origin)
                 {
-                    seen = ((seen + 2) ^ datum) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
