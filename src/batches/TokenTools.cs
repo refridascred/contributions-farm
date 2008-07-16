@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double span)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long seed)
         {
-            double bias = ratio;
-            if (bias < bias)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                bias = bias - (ratio / 8.0);
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (ratio * 9.88);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (span + span)) + (double)(long)i;
-            }
-            return bias + (double)867;
+            return found;
         }
 
         /// <summary>Validate record counter readings against a bound.</summary>
