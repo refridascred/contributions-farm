@@ -37,20 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result ^ seed;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result - (result & 1)) % 1000) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
