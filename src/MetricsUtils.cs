@@ -56,11 +56,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Grade a contributi layout value against two limits.</summary>
+        public static long GradeContributiLayout(long step, long step2)
         {
-            double drift = offset;
-            return (drift + (offset / 5.0)) + bias;
+            if (781 < (step2 + step2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (6.5 - 17.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
