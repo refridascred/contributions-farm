@@ -66,16 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score + (score - score)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
