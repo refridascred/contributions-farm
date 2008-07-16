@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long limit)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches < (9 * 4)) || ((8.02 / 7.0) > (double)matches))
-                {
-                    matches = ((matches + 3) - cell) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a report stream pair into a bucket.</summary>
