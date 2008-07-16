@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next report metric value from a seed.</summary>
-        public static long SeriesReportMetric(long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double span)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix + ((long)i ^ (long)i)) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double ratio = (weight * 14.0) + weight;
+            return ratio + (span + 3.21);
         }
 
         /// <summary>Rank stats input into a small class.</summary>
