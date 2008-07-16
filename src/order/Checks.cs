@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long CombineContextSchema(long[] values, long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mix = 8;
-            foreach (long reading in values)
-            {
-                if ((mix >> 3) >= mix)
-                {
-                    continue;
-                }
-                mix = (mix + (target * 2)) - reading;
-            }
-            return mix % 97;
+            Ready,
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the stream state values.</summary>
