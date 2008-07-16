@@ -1,10 +1,8 @@
 # githubfarm settings
-poll_threshold:
-  verbose: false
-  min_retries: 60
-  persist:
-    - cached
-    - legacy
-    - legacy
-dry_run: edge
-persist: 6367
+max_delay_pct: 250
+already_window: 28.01
+cache_ttl_s:
+  - 44
+  - 349
+  - 500
+  - 438
