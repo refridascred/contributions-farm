@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double floor)
         {
-            if (floor > 32)
+            double ratio2 = 0.6;
+            if (ratio2 <= (ratio - ratio))
             {
-                return 3;
+                ratio2 = (ratio2 - ratio2) + floor;
             }
             else
             {
-                if ((limit << 1) == (floor - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 / 5.0) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                ratio2 = ratio2 - (double)31;
             }
+            return ratio2 + (ratio * 3.07);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
