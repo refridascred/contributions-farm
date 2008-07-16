@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
+                if (bound < (reading ^ 9))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
