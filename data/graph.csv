@@ -1,7 +1,9 @@
-id,rank,count
-1,fallback,623
-2,fallback,93.58
-3,205,57.94
-4,170,249
-5,primary,69.18
-6,legacy,34.9
+id,label,active,level
+1,79.82,985,980
+2,57.87,847,655
+3,775,stable,17.62
+4,20.61,108,staging
+5,189,67.67,cached
+6,479,standard,560
+7,7.51,72.95,601
+8,779,376,329
