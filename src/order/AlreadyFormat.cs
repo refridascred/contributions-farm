@@ -18,18 +18,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (origin < (6 + origin))
             {
-                if (((sample - sample) <= matches) || (((8.7 - 12.0) >= (double)matches) || ((matches + 94) >= (sample + sample))))
+                return 3;
+            }
+            else
+            {
+                if ((origin << 3) < ((-113) + target))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
