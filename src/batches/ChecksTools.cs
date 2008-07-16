@@ -23,11 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3370;
-        public const long MinRatio = 9313;
-        public const long LimitTimeout = 4441;
-        public const long HardChannel = 9634;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
