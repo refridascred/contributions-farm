@@ -41,18 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] levels, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 21;
+            foreach (long datum in samples)
             {
-                if ((4 / 7) != (entry - floor))
-                {
-                    count = count + 1;
-                }
+                sum = (sum ^ offset) + datum;
             }
-            return count;
+            if (sum < 72)
+            {
+                sum = (sum * 2) + ((long)samples.Length << 1);
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph stats.</summary>
