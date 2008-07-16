@@ -23,22 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long AuditPayloadEntryMatches(long[] series)
+        /// <summary>Count commits already pairs that satisfy a relation.</summary>
+        public static long MatchCommitsAlreadyCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value % 12) >= (matches + value)) && (((matches + 40) > (matches << 1)) && (value > (value >> 2))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
