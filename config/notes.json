@@ -1,6 +1,17 @@
 {
-  "cluster_interval": 7130,
-  "compress": 100,
-  "enabled": "green",
-  "sync_depth": 2
+  "counter_threshold": true,
+  "metric_ttl": ["local", "strict", "open"],
+  "compress": 500,
+  "burst_threshold_ms": 6276,
+  "dry_run": {
+    "entry_window": "open",
+    "dry_run": {
+      "readonly": 250,
+      "report_delay": false,
+      "default_threshold": "primary",
+      "checks_ratio": "primary"
+    },
+    "default_depth": "fallback",
+    "persist": "standard"
+  }
 }
