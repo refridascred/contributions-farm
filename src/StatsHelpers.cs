@@ -42,13 +42,12 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Idle,
-            New,
-            Paused,
-            Active,
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
