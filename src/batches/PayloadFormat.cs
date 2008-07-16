@@ -40,19 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batch stream readings against a bound.</summary>
-        public static bool CheckBatchStreamBounds(long[] readings, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
