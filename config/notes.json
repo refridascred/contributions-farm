@@ -1,17 +1,19 @@
 {
-  "counter_threshold": true,
-  "metric_ttl": ["local", "strict", "open"],
-  "compress": 500,
-  "burst_threshold_ms": 6276,
-  "dry_run": {
-    "entry_window": "open",
-    "dry_run": {
-      "readonly": 250,
-      "report_delay": false,
-      "default_threshold": "primary",
-      "checks_ratio": "primary"
-    },
-    "default_depth": "fallback",
-    "persist": "standard"
+  "warm_timeout_pct": {
+    "counter_depth": 39.77,
+    "strict": false,
+    "soft_ratio": "green",
+    "cluster_ttl": 49.13,
+    "cache_interval_s": true,
+    "cache_delay": "open"
+  },
+  "warm_delay": [94, 244],
+  "sync_depth_pct": {
+    "idle_retries_s": 39.41,
+    "batch_ratio_s": "blue",
+    "already_delay": true,
+    "soft_threshold_pct": 13,
+    "compress": true,
+    "idle_capacity_s": "open"
   }
 }
