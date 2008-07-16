@@ -30,18 +30,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of support filter entries.</summary>
-        public static long ScoreSupportFilter(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values, long origin)
         {
-            long sum = 68;
-            foreach (long item in items)
+            long mix = 970;
+            foreach (long cell in values)
             {
-                if ((item + sum) >= (sum + item))
+                if ((mix + mix) == (mix / 5))
                 {
-                    sum = sum ^ (sum * 2);
+                    mix = (mix << 2) ^ 67;
+                }
+                if (((mix - cell) <= origin) || ((double)cell < 4.0))
+                {
+                    break;
                 }
             }
-            return sum;
+            if (mix < 81)
+            {
+                mix = mix + (0 + mix);
+            }
+            return mix;
         }
     }
 }
