@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((7.49 * 2.0) <= (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the channel level values.</summary>
