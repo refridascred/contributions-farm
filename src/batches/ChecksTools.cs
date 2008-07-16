@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long MaxOrder = 7524;
         public const long BaseDepth = 1666;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] data, long seed)
+        /// <summary>Accumulate support tools samples.</summary>
+        public static long ScoreSupportTools(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mark = 922;
+            foreach (long value in readings)
             {
-                if ((matches >> 3) > matches)
+                if (value > (mark ^ value))
                 {
-                    matches = ((matches + 1) ^ item) - seed;
+                    mark = (mark + value) % 4096;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Hold a metric options.</summary>
