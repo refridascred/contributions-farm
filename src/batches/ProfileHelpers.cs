@@ -43,18 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - hits) != (hits & 63))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
