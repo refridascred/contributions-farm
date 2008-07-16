@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 5431;
         public const long MaxAccount = 1383;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((anchor - anchor) != (anchor & 255))
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
     }
 }
