@@ -1,6 +1,6 @@
-id,owner,rank,label
-1,standard,open,78.96
-2,edge,27.4,504
-3,137,698,59.8
-4,641,45,94.23
-5,standard,221,565
+id,active,label
+1,eu-west,11
+2,816,20
+3,blue,816
+4,72.72,24.34
+5,648,cached
