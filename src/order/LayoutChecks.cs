@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
-        public static bool GuardRouteGithubfarmRange(long[] levels, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 9;
+            foreach (long entry in items)
             {
-                if (sample < step)
+                if ((373 < acc) || ((entry - entry) != (acc & 31)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ acc) % 65521;
                 }
             }
-            return stale;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
