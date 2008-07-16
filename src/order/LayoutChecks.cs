@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
