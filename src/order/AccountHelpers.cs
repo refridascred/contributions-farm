@@ -42,11 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 4588;
-        public const string DefaultTimeout = "latest-1";
-        public const long RetryCount = 3437;
-        public const double CacheScore = 31.53;
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double gain, double span)
+        {
+            double drift = span;
+            if (drift < span)
+            {
+                drift = (drift + (drift + 11.0)) - gain;
+            }
+            else
+            {
+                drift = drift - (drift * 5.0);
+            }
+            return drift + 2.48;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 6808;
