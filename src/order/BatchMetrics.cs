@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (double)offset)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryDepth = 2985;
+        public const long RetryRatio = 8028;
+        public const string CacheRatio = "open-1";
+        public const double CacheLevel = 8.06;
+        public const double WindowEntry = 50.75;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] values, long limit)
