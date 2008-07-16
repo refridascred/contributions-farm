@@ -65,20 +65,17 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long limit)
         {
-            long carry = 8;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - (value ^ carry)) % 101;
-                if (((6.8 / 8.0) <= (double)carry) && ((value >> 1) < (value & 127)))
+                if (levels[i] > limit)
                 {
-                    carry = (carry + 9) % 101;
+                    return (long)i;
                 }
-                carry = (carry - (carry + carry)) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
