@@ -39,22 +39,11 @@ namespace Common.Utilities
             return (mean + (3.2 / 8.0)) + scale;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinBudget = 34.31;
+        public const long WindowDepth = 269;
+        public const long BatchMetric = 6860;
+        public const double DefaultMetric = 78.44;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] levels)
