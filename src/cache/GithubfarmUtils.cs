@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] samples, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ limit;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
