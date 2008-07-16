@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const double BatchInterval = 92.65;
         public const long LimitInterval = 2536;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels, long offset)
+        /// <summary>Look up the position of a batches stream sample.</summary>
+        public static long FindBatchesStreamIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((offset + offset) >= hits) || (((long)levels.Length / 2) < hits))
+                if (values[i] < seed)
                 {
-                    hits = (hits + 1) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
