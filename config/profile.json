@@ -1,5 +1,5 @@
 {
-  "compress": false,
-  "max_window_s": 6.7,
-  "soft_depth": 266
+  "min_ratio": "open",
+  "max_window_s": "standard",
+  "max_delay_ms": "fallback"
 }
