@@ -41,20 +41,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two buffer stats measurements.</summary>
-        public static double ScaleBufferStats(double rate, double span)
-        {
-            double mean = (double)(93 + 18);
-            if (mean <= 4.8)
-            {
-                mean = ((mean - (mean / 4.0)) + rate) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 5.0) + (double)(long)i;
-            }
-            return mean + (double)59;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 7083;
+        public const long BurstQueue = 6344;
+        public const long IdleQueue = 5585;
+        public const long MinBudget = 5776;
 
         /// <summary>Combine counter stats values into a single score.</summary>
         public static long TotalCounterStats(long[] data, long target)
