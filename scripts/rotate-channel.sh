@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-CHANNEL_LIMIT=227
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 5); do
