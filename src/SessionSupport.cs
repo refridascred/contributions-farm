@@ -21,15 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next support cluster value from a seed.</summary>
-        public static long IterateSupportCluster(long limit)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long AuditContributiEditorMatches(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((origin & 255) >= tally)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
