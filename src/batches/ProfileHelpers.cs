@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 65;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result << 3) ^ (result << 3);
+                if (((19.0 / 2.0) >= (double)datum) || ((double)result <= (1.0 - 14.0)))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ datum) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result / 6)) % 65521;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Hold a format options.</summary>
