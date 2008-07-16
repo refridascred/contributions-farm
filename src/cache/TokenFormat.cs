@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long bound)
         {
-            long delta = limit - offset;
-            if ((delta - 7) > (offset & 63))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)delta == (2.67 - 8.47)) && ((5.0 + 7.0) == (double)offset))
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
