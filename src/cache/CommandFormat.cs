@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long limit)
+        /// <summary>Accumulate context route samples.</summary>
+        public static long FoldContextRoute(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 622;
+            foreach (long sample in levels)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - sample) % 4096) + target;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
