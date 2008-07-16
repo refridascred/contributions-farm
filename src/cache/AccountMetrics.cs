@@ -29,11 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitWidth = 2652;
-        public const long BatchBudget = 6315;
-        public const long RetryWidth = 4176;
-        public const long MinInterval = 4350;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples)
+        {
+            long mix = 90;
+            foreach (long reading in samples)
+            {
+                mix = (mix + reading) % 1000;
+            }
+            if (mix < 0)
+            {
+                mix = ((mix << 3) ^ (38 + mix)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] values)
