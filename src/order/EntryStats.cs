@@ -27,11 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 76.64;
-        public const double BaseLayout = 73.83;
-        public const double SoftLayout = 59.1;
-        public const long LimitInterval = 3098;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardBudget = 3826;
+        public const long WindowOrder = 3498;
+        public const string CacheOrder = "standard-edge";
+        public const string RetryFactor = "staging-v2";
+        public const long MinWidth = 2767;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
