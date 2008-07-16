@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command cache readings against a rule.</summary>
-        public static long MeasureCommandCacheHits(long[] readings)
+        /// <summary>Roll a profile stats counter forward.</summary>
+        public static long SeriesProfileStats(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((6.1 + 6.49) >= (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
