@@ -21,10 +21,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstWidth = 3432;
-        public const long StepContext = 217;
-        public const long CacheContext = 5018;
-        public const double WindowContext = 36.5;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
