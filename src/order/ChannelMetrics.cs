@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] data, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = 5;
+            foreach (long entry in levels)
             {
-                if (entry < target)
+                if (carry < (entry >> 4))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 3) + (9 * 4)) % 97;
                 }
             }
-            return found;
+            if (carry > (-4))
+            {
+                carry = (carry * 3) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
