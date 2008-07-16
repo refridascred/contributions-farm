@@ -56,19 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] readings, long bound)
         {
-            double mean = weight;
-            if (mean >= (double)439)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                mean = (mean - (weight * 9.5)) - bias;
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - mean;
+            return ready;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
