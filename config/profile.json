@@ -1,6 +1,7 @@
 {
-  "idle_limit": false,
-  "enabled": "cached",
-  "readonly": false,
-  "cache_timeout_s": 24.23
+  "support_threshold": 40.75,
+  "retry_interval_count": "cached",
+  "readonly": "standard",
+  "stream_window": true,
+  "sync_capacity_s": true
 }
