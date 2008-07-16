@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] data, long floor)
         {
-            Closed,
-            Paused,
-            Draft,
-            Active,
-            Done,
+            long score = 27;
+            foreach (long value in data)
+            {
+                score = ((score + score) ^ value) - floor;
+                score = (score * 3) + (-791);
+            }
+            if (score > 143)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
