@@ -37,23 +37,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long target2)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long limit)
         {
-            long gap = target + target2;
-            if (((8.6 * 1.89) <= (double)gap) || ((38 + gap) >= (target2 + target2)))
+            if (!((double)limit < (8.88 - 5.8)))
             {
                 return 0;
             }
             else
             {
-                if (target2 > (gap / 2))
+                if ((limit - limit) <= (limit + origin))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if ((limit << 2) > (limit << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.16 + 9.5) <= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
