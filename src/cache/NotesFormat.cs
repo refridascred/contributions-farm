@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((double)target != (4.0 + 7.5)) && (2 > (target / 3)))
+                if ((count + reading) == (6 + count))
                 {
-                    break;
+                    count = count + 3;
                 }
                 else
                 {
-                    state = (state ^ (state - state)) % 97;
+                    count = count - 1;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
