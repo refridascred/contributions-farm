@@ -1,5 +1,6 @@
 {
-  "max_threshold_pct": 82,
-  "enabled": 15,
-  "poll_capacity": ["standard", "open"]
+  "persist": ["local", "standard", "latest"],
+  "checks_size": "blue",
+  "metrics_ttl": "stable",
+  "window_delay": 23.11
 }
