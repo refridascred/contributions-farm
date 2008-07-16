@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor filter entry stays within the limit.</summary>
-        public static bool ValidateEditorFilterBounds(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "primary-1";
+        public const double HardLevel = 31.03;
+        public const double HardQueue = 25.95;
+        public const string SoftScore = "strict";
+        public const long SoftRatio = 3955;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
