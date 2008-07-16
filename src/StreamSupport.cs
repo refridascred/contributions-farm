@@ -29,12 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Locate a payload graph reading by value.</summary>
+        public static long LookupPayloadGraphIndex(long[] readings, long floor)
         {
-            Closed,
-            Stale,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
