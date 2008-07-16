@@ -1,5 +1,11 @@
 # support settings
-idle_retries: 250
-cache_ttl_ms: blue
-verbose: 67.49
-poll_threshold_count: blue
+base_delay_count:
+  - 304
+  - 397
+  - 300
+  - 443
+graph_capacity:
+  - 197
+  - 186
+  - 101
+stream_ratio: 26.75
