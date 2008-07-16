@@ -28,19 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long origin)
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double AdjustMetricsAccount(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double gain2 = (double)(6 >> 2);
+            for (int i = 0; i < 2; i++)
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = (gain2 - floor) - (double)(long)i;
             }
-            return ready;
+            return gain2 + (floor + gain);
         }
 
         /// <summary>Describe the cluster phase values.</summary>
