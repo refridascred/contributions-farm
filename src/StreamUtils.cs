@@ -52,12 +52,10 @@ namespace Common.Utilities
         public const long SoftSpan = 5176;
         public const long RetryFarm = 8156;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1307;
-        public const long HardCache = 2324;
-        public const long LimitTimeout = 8700;
-        public const long WindowCache = 9672;
-        public const string StepWidth = "staging-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "alpha-1";
+        public const long RetrySpan = 6532;
+        public const long BurstProfile = 5825;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
