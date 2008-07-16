@@ -23,14 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long floor)
         {
-            Paused,
-            Done,
-            Retry,
-            Draft,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
