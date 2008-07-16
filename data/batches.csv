@@ -1,10 +1,6 @@
-id,owner,label,region
-1,32.21,87.96,598
-2,202,56.36,890
-3,latest,110,337
-4,76.39,106,10.09
-5,47.42,128,standard
-6,0.37,blue,cached
-7,edge,26.24,554
-8,8,8.17,44.28
-9,82.81,stable,latest
+id,owner,rank,label
+1,standard,open,78.96
+2,edge,27.4,504
+3,137,698,59.8
+4,641,45,94.23
+5,standard,221,565
