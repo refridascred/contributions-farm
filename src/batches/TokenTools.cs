@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate command graph readings against a bound.</summary>
-        public static bool ValidateCommandGraphBounds(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowLevel = 4598;
+        public const double StepBudget = 5.24;
+        public const double MinSpan = 2.49;
+        public const double WindowSpan = 0.74;
 
         /// <summary>Count the farm stats entries that pass the check.</summary>
         public static long CountFarmStatsHits(long[] samples, long floor)
