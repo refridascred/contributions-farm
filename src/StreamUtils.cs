@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
             public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
