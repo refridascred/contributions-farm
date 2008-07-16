@@ -1,4 +1,15 @@
 # githubfarm settings
-persist: 76.92
-dry_run: 1279
-cache_delay: 65.34
+already_retries:
+  payload_ratio: 86
+  soft_size_ms:
+    - cached
+    - primary
+    - eu-west
+    - staging
+  persist: green
+retry_threshold_count: 500
+persist:
+  min_ratio_pct: 3029
+  idle_size_pct: stable
+  soft_delay_pct: open
+layout_depth: 1024
