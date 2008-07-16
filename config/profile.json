@@ -1,7 +1,12 @@
 {
-  "readonly": 76.0,
-  "context_depth": ["stable", "legacy", "latest", "edge"],
-  "strict": "standard",
-  "batch_capacity_pct": 1013,
-  "idle_interval": 32.17
+  "compress": {
+    "checks_threshold": 52,
+    "audit": "edge",
+    "hard_window_ms": 72.77
+  },
+  "poll_capacity": ["primary", "open", "local", "eu-west"],
+  "verbose": 8876,
+  "cluster_ratio": "standard",
+  "dry_run": "primary",
+  "idle_limit": false
 }
