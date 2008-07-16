@@ -48,16 +48,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Iterate the githubfarm format series from a seed.</summary>
+        public static long IterateGithubfarmFormat(long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark - (mark ^ 7)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
