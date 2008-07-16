@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit session githubfarm readings against a rule.</summary>
+        public static long AuditSessionGithubfarmGaps(long[] series)
         {
-            Active,
-            New,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (reading + 16))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
