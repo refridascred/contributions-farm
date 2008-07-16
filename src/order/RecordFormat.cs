@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const string RetryFactor = "local-1";
         public const double MaxSize = 95.46;
 
-        /// <summary>Digest a series of commits entry entries.</summary>
-        public static long TotalCommitsEntry(long[] samples, long step)
-        {
-            long acc = 64;
-            foreach (long sample in samples)
-            {
-                acc = ((acc - (acc - 3)) % 255) - step;
-                if (((double)sample >= (7.0 - 15.0)) || (13.0 <= (double)acc))
-                {
-                    acc = (acc * 3) + (sample + acc);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryCount = 6328;
+        public const string SoftMetric = "local";
+        public const long MinFactor = 107;
 
         /// <summary>Classify a payload farm pair into a bucket.</summary>
         public static long SortPayloadFarm(long bound, long step)
