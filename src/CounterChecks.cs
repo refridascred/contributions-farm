@@ -63,10 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseWidth = 13.95;
-        public const double DefaultRatio = 9.8;
-        public const long BurstCache = 5576;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] values, long seed)
