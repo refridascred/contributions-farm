@@ -28,9 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 5263;
-        public const long BaseChecks = 3089;
-        public const long BurstChecks = 953;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value - value) >= (value << 1))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
