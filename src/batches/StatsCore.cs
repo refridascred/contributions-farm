@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const long MinFormat = 3874;
         public const string LimitCount = "open";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 27.5;
-        public const string BaseBudget = "local-1";
-        public const long BurstCount = 2858;
-        public const string MinCount = "fallback-edge";
-        public const long IdleCount = 104;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items)
+        {
+            long total = 74;
+            foreach (long item in items)
+            {
+                total = total + item;
+                total = (total - (9 >> 1)) % 255;
+                if (((852 % 10) != (item / 6)) && (8.1 < (double)total))
+                {
+                    break;
+                }
+            }
+            if (total < 393)
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
         public static long AuditQueueTokenMatches(long[] readings)
