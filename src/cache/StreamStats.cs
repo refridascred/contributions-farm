@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long BaseFormat = 9788;
         public const long RetryFormat = 4092;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            Stale,
-            Idle,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
