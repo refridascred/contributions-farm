@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Roll a entry account counter forward.</summary>
+        public static long StepEntryAccount(long target)
         {
-            Retry,
-            Done,
-            Pending,
-            Failed,
-            Synced,
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark - target) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
