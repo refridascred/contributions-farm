@@ -33,10 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxInterval = 3715;
-        public const string BaseOrder = "primary-1";
-        public const long StepSpan = 2594;
-        public const long LimitWidth = 3665;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long bound)
+        {
+            if (((-72) >= (offset - bound)) && ((bound + 73) < bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((405 << 2) < (offset * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
