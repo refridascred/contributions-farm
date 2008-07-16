@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next already checks value from a seed.</summary>
-        public static long RollAlreadyChecks(long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long cur = step + limit;
+            if ((4.18 - 1.7) <= (double)step)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (!((155 % 24) != (cur - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
