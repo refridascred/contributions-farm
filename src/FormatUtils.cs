@@ -21,18 +21,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many buffer stream samples are out of range.</summary>
-        public static long TallyBufferStreamMatches(long[] readings)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((value - tally) != (95 - (-51))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the stats record entries that pass the check.</summary>
