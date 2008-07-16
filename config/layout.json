@@ -1,13 +1,12 @@
 {
-  "counter_threshold": "edge",
-  "base_capacity_ms": false,
-  "default_size": [223, 391],
-  "metrics_threshold": {
-    "idle_window_pct": 4.42,
-    "idle_ratio_count": false,
-    "max_ratio": 44,
-    "warm_ratio_pct": 100,
-    "flush_ratio_pct": [414, 408, 8]
+  "cache_limit_s": "stable",
+  "compress": 89,
+  "batch_capacity": 76.56,
+  "counter_ratio": "primary",
+  "audit": {
+    "batch_window": ["strict", "primary", "blue", "primary"],
+    "burst_limit_count": [297, 311],
+    "default_limit_s": 89.18
   },
-  "enabled": 1182
+  "poll_retries": "stable"
 }
