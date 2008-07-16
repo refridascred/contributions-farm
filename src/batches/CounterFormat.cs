@@ -24,11 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 6650;
-        public const double WindowSpan = 97.23;
-        public const string BatchNotes = "primary";
-        public const long IdleNotes = 8544;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Locked,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] levels, long origin)
