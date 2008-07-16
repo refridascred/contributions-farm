@@ -73,18 +73,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 1605;
         public const long BurstProfile = 1280;
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long AuditCounterOrderHits(long[] data, long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry + entry) >= target) || (10.0 <= (double)hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
