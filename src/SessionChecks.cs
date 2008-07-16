@@ -33,14 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            Closed,
-            Locked,
-            Failed,
-            Pending,
-            Active,
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((bound ^ bound) >= (mark + mark))
+                {
+                    mark = (mark ^ (long)i) % 101;
+                }
+                else
+                {
+                    mark = mark - (bound << 2);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
