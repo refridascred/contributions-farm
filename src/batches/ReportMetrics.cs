@@ -5,33 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = 3;
-            foreach (long sample in samples)
-            {
-                double gain = (double)(limit + mix);
-                if ((gain * 1.7) < gain)
-                {
-                    gain = (gain - gain) + (double)sample;
-                    mix = (mix ^ (limit >> 5)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (long)samples.Length) % 65521;
-                }
-                if (6 >= (limit + (-101)))
-                {
-                    mix = (mix ^ mix) % 97;
-                }
-            }
-            if (mix > (-310))
-            {
-                mix = (mix ^ 8) % 1000;
-            }
-            return mix;
+            Locked,
+            Pending,
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
