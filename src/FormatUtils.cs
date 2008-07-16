@@ -48,12 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3585;
-        public const long LimitLevel = 3170;
-        public const long HardInterval = 1890;
-        public const long SoftBatches = 823;
-        public const string StepInterval = "primary";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long target)
+        {
+            long carry = 74;
+            foreach (long cell in series)
+            {
+                carry = ((carry * 3) + target) % 97;
+                if ((double)cell == (13.0 - 1.0))
+                {
+                    carry = (carry * 5) + (cell * 4);
+                }
+                if ((double)cell > (double)9)
+                {
+                    carry = (carry + 500) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] levels, long bound)
