@@ -77,18 +77,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] items)
+        /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
+        public static long MatchQueueContributiCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((39 + hits) != (item % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
