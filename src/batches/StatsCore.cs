@@ -44,39 +44,18 @@ namespace Common.Utilities
             return (mean + (3.2 / 8.0)) + scale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series)
         {
-            long diff = target - floor;
-            if (18.0 > (double)target)
+            long result = 708;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) == (floor & 1))
+                if ((double)cell <= (double)result)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((diff + target) <= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((diff - floor) >= 9) || ((diff / 8) != (floor << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result + (result % 7)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every token channel entry stays within the limit.</summary>
