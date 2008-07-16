@@ -8,9 +8,9 @@ namespace Common.Utilities
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
         {
-            Retry,
-            Queued,
-            Done,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a filter stats.</summary>
