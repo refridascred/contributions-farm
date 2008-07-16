@@ -12,11 +12,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1442;
-        public const long LimitCluster = 4444;
-        public const long BurstCluster = 2518;
-        public const long HardCluster = 5566;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double bias)
+        {
+            double bias2 = (double)86;
+            if (bias2 >= bias2)
+            {
+                bias2 = (bias2 + (double)2) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 + gain;
+        }
 
         /// <summary>Match up entry token samples.</summary>
         public static long PairEntryTokenCount(long[] levels)
