@@ -32,17 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload stats sample.</summary>
-        public static long FindPayloadStatsIndex(long[] levels, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] == origin)
+                if ((431 + reading) < (-159))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
