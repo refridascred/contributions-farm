@@ -1,6 +1,6 @@
 {
-  "sync_ratio": 57,
-  "dry_run": "legacy",
-  "compress": true,
-  "poll_retries_s": false
+  "sync_capacity_pct": true,
+  "batches_depth": 4378,
+  "channel_interval": 5646,
+  "default_depth": "eu-west"
 }
