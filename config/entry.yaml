@@ -1,21 +1,5 @@
 # entry settings
-burst_limit_pct: cached
-entry_window:
-  flush_limit_s: 1
-  contributi_window:
-    stats_ttl: 96
-    flush_depth_ms: false
-    default_ttl_ms: 250
-    notes_ttl: true
-    queue_window:
-      - 398
-      - 244
-  max_ttl_ms:
-    order_depth: 73
-    retry_retries_count: true
-    session_limit: 60
-    persist: 34.77
-  soft_delay: primary
-  batch_ttl: 72.82
-buffer_limit: false
-report_threshold: edge
+readonly: true
+base_window_pct: open
+audit: 250
+compress: latest
