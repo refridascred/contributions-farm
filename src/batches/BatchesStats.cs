@@ -55,17 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long seed)
+        /// <summary>Iterate the counter queue series from a seed.</summary>
+        public static long RollCounterQueue(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] < seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry - (target - carry)) % 65521) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
