@@ -66,18 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((entry >> 2) == (entry - floor)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
