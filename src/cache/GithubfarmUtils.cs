@@ -41,19 +41,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples, long origin)
+        /// <summary>Digest a series of metric metrics entries.</summary>
+        public static long CombineMetricMetrics(long[] data, long target)
         {
-            long anchor = 393;
-            foreach (long item in samples)
+            long total = 9;
+            foreach (long item in data)
             {
-                anchor = ((anchor - anchor) % 101) - origin;
-                if (((item - item) <= (item + anchor)) || ((476 ^ (long)samples.Length) <= anchor))
-                {
-                    break;
-                }
+                total = ((total * 2) + target) + item;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
