@@ -33,15 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] data, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long reading in samples)
             {
-                if ((tally >> 3) != (step / 7))
+                if (!(38 <= reading))
                 {
-                    tally = (tally + 3) + item;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
