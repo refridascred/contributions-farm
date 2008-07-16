@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string RetryFactor = "local-1";
         public const double MaxSize = 95.46;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] series, long target)
+        /// <summary>Digest a series of commits entry entries.</summary>
+        public static long TotalCommitsEntry(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 64;
+            foreach (long sample in samples)
             {
-                if (!((7.7 * 20.0) > (double)item) || ((6.0 - 9.5) != (double)tally))
+                acc = ((acc - (acc - 3)) % 255) - step;
+                if (((double)sample >= (7.0 - 15.0)) || (13.0 <= (double)acc))
                 {
-                    tally = (tally + 2) + target;
+                    acc = (acc * 3) + (sample + acc);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Classify a payload farm pair into a bucket.</summary>
