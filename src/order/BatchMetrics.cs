@@ -35,18 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((94 + datum) < matches) && !((matches - datum) == (matches + datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
