@@ -64,11 +64,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2441;
-        public const long BatchFarm = 9197;
-        public const long CacheFarm = 7495;
-        public const long IdleScore = 3068;
-        public const long SoftFarm = 3534;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (seen > (entry - seen))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
