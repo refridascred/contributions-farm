@@ -35,11 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseScore = 47.03;
-        public const double HardDepth = 33.44;
-        public const double BatchEditor = 23.41;
-        public const long DefaultSize = 2227;
-        public const long LimitSpan = 9198;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
