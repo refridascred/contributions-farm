@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Compare every pair of window filter readings.</summary>
+        public static long OverlapWindowFilterCount(long[] readings)
         {
-            double scale = (double)(373 / 4);
-            return (scale - (span / 5.0)) + rate;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
