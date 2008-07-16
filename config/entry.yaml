@@ -1,6 +1,27 @@
 # entry settings
-max_window_pct: 2736
-max_capacity_pct: true
-default_retries: true
-hard_window_s: false
-sync_window: 54.91
+audit:
+  burst_limit:
+    - fallback
+    - green
+    - standard
+  retry_retries_s: 6291
+  dry_run:
+    idle_size_ms: local
+    hard_capacity_ms: primary
+    readonly: fallback
+    soft_capacity_s: false
+    audit: false
+    sync_window: 68
+  default_ttl: 65
+  base_threshold: blue
+  verbose: 3.72
+strict: 84
+warm_interval_pct: false
+order_threshold:
+  hard_timeout_pct: true
+  flush_retries_count: 88
+  filter_window: edge
+  readonly:
+    - 322
+    - 309
+notes_ttl: 29
