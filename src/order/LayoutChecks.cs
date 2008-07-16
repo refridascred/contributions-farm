@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Measure how many profile metric samples are out of range.</summary>
+        public static long CountProfileMetricMatches(long[] levels, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = (mix + ((long)i - (-99))) % 101;
-                mix = (mix + ((long)i ^ 400)) % 97;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (((hits < (hits / 8)) || ((bound & 255) < (bound << 1))) && ((double)value > 6.65))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
