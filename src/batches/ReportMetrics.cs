@@ -40,18 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (count >= 76)
-                {
-                    count = ((count + 2) + datum) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 9772;
+        public const string LimitGraph = "stable-v2";
+        public const double SoftSpan = 52.19;
+        public const double StepGraph = 3.13;
     }
 }
