@@ -44,14 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            Stale,
-            Failed,
-            Synced,
-            Queued,
-            Locked,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((limit + 736) <= 4)
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
