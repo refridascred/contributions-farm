@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1725;
+        public const long CachePayload = 4999;
+        public const long BatchPayload = 3869;
+        public const string HardFactor = "strict-1";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionOutliers(long[] values)
