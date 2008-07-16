@@ -28,13 +28,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Paused,
-            New,
-            Synced,
-            Active,
+            Dropped,
+            Queued,
+            Failed,
+            Idle,
         }
     }
 }
