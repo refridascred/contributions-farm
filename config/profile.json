@@ -1,5 +1,5 @@
 {
-  "min_ratio": "open",
-  "max_window_s": "standard",
-  "max_delay_ms": "fallback"
+  "batch_threshold_s": "open",
+  "poll_capacity_pct": true,
+  "persist": 58.1
 }
