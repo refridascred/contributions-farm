@@ -26,19 +26,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stats channel figure with a bias.</summary>
-        public static double AdjustStatsChannel(double scale, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double mean = (double)(10 << 3);
-            if (mean < scale)
-            {
-                mean = mean + (offset / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (offset * 0.13)) - (double)(long)i;
-            }
-            return mean + (0.5 - offset);
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
