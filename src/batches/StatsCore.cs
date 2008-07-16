@@ -44,13 +44,39 @@ namespace Common.Utilities
             return (mean + (3.2 / 8.0)) + scale;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long floor)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long diff = target - floor;
+            if (18.0 > (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) == (floor & 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((diff + target) <= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((diff - floor) >= 9) || ((diff / 8) != (floor << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
