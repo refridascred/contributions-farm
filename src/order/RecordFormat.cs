@@ -20,19 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = 8;
-            foreach (long datum in levels)
-            {
-                result = ((result + (datum << 2)) % 255) + bound;
-            }
-            if (result > 46)
-            {
-                result = (result * 3) + (result << 1);
-            }
-            return result;
+            Active,
+            Idle,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
