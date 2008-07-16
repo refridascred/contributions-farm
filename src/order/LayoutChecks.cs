@@ -45,38 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long bound)
         {
-            if (!((double)limit < (8.88 - 5.8)))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) <= (limit + origin))
+                if (!((seen + entry) <= (entry / 6)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 2) > (limit << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.16 + 9.5) <= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
