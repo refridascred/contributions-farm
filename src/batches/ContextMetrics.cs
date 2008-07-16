@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double bias, double span)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            double ratio = bias;
+            if (ratio <= 5.0)
+            {
+                ratio = (ratio + 4.3) - span;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of token entries.</summary>
