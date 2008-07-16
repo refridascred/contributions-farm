@@ -27,31 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long step)
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool VerifyReportRecordLimits(long[] items, long step)
         {
-            if ((4 > (step & 7)) && ((1.99 - 9.0) <= (double)floor))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.9 / 2.0) == (double)step)
+                if (cell != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.5 + 7.0) != (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
