@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long bound2)
+        /// <summary>Check that every token filter entry stays within the limit.</summary>
+        public static bool GuardTokenFilterLimits(long[] levels, long origin)
         {
-            if ((6.0 - 9.2) >= 7.5)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 10) != (bound + bound))
+                if (cell < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.0 * 11.0) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound2 >= (39 & 31))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
