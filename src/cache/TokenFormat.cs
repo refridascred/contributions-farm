@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the graph account series from a seed.</summary>
-        public static long SeriesGraphAccount(long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long offset2)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            if (offset <= (14 << 3))
             {
-                total = ((total * 2) + (long)i) % 4093;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((offset % 60) <= (offset & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
