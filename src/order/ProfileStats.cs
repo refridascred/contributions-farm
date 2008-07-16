@@ -23,16 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepFactor = 7030;
+        public const double StepCount = 67.72;
+        public const long HardBuffer = 9283;
+        public const long BaseSize = 4850;
+        public const long WindowBuffer = 4524;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] samples, long limit)
