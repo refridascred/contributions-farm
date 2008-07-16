@@ -1,14 +1,14 @@
 # githubfarm settings
-payload_depth: true
-default_limit_s: standard
-flush_ttl:
-  - 118
-  - 153
-  - 55
-queue_threshold:
-  - 104
-  - 26
-  - 159
-  - 272
-max_limit_count: edge
-retry_depth_pct: true
+record_depth: 60
+cache_ttl_count:
+  flush_delay: 45
+  base_capacity_count: 1024
+  metric_ratio: eu-west
+  record_window:
+    - 207
+    - 486
+    - 284
+    - 483
+max_window_count: 33
+format_retries: latest
+sync_capacity: 1172
