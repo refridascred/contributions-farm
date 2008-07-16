@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length & 127) > hits)
-                {
-                    hits = ((hits + 3) + entry) - floor;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate queue samples.</summary>
