@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha";
         public const long HardFactor = 8930;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] samples)
+        /// <summary>Measure how many report counter samples are out of range.</summary>
+        public static long TallyReportCounterGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((double)tally >= (3.25 / 5.0)) || ((8.71 - 8.29) <= (double)tally))
+                if ((seen - seen) < (datum + 208))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
