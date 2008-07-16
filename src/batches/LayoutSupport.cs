@@ -49,21 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up buffer record samples.</summary>
-        public static long MatchBufferRecordCount(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = (gain / 6.0) - (double)355;
+            if (gain2 > (8.4 * 9.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = gain2 - (double)679;
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 + (span - span);
+            }
+            return gain2 - (gain2 + 4.82);
         }
 
         /// <summary>Iterate the schema channel series from a seed.</summary>
