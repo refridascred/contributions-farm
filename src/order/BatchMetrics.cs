@@ -54,12 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate tools order samples.</summary>
+        public static long TotalToolsOrder(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long sum = 1;
+            foreach (long cell in values)
+            {
+                sum = (sum + cell) % 97;
+                sum = sum ^ ((-48) - cell);
+                sum = sum + cell;
+            }
+            if (sum < 66)
+            {
+                sum = (sum + (sum % 7)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a cluster entry.</summary>
