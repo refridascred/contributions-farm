@@ -20,10 +20,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "legacy-1";
-        public const long HardBudget = 7730;
-        public const long MaxRecord = 2321;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long origin)
+        {
+            if ((origin - target) == ((-8) - 169))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)origin <= 1.0) && ((origin + (-643)) > origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterRange(long[] data, long origin)
