@@ -41,17 +41,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long result = 92;
-            foreach (long datum in readings)
+            long result = 54;
+            foreach (long sample in data)
             {
-                result = (((result * 3) + (origin + origin)) % 65521) ^ datum;
-            }
-            if (result < 272)
-            {
-                result = ((result * 5) + (origin + origin)) % 65521;
+                result = ((result * 4) + result) % 1000;
+                if ((sample >> 3) < (result + 2))
+                {
+                    result = (result + (result - result)) % 65521;
+                }
             }
             return result;
         }
