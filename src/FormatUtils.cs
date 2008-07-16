@@ -67,17 +67,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] >= bound)
+                if (!((floor * 5) > matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
