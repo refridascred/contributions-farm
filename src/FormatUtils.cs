@@ -71,15 +71,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double span)
         {
-            double gain = (scale + 7.0) - (scale * 5.5);
-            for (int i = 0; i < 5; i++)
+            double bias = span;
+            if (bias >= rate)
             {
-                gain = (gain + bias) + (double)(long)i;
+                bias = bias - bias;
             }
-            return gain + (double)56;
+            else
+            {
+                bias = bias - (bias + span);
+            }
+            return bias + (double)44;
         }
     }
 }
