@@ -1,12 +1,13 @@
 {
-  "readonly": {
-    "base_interval_ms": false,
-    "readonly": "open",
-    "metric_capacity": [372, 415, 200],
-    "sync_capacity": [403, 118, 65, 357]
+  "command_interval": ["green", "cached", "fallback"],
+  "sync_threshold_s": 42.46,
+  "retry_interval_pct": {
+    "audit": "cached",
+    "retry_ratio_s": ["staging", "local", "fallback", "latest"],
+    "burst_threshold_pct": 9951,
+    "already_ttl": 804,
+    "strict": true
   },
-  "hard_interval_pct": "legacy",
-  "cache_capacity": 500,
-  "burst_interval_ms": ["eu-west", "blue", "cached", "strict"],
-  "default_ttl_ms": false
+  "persist": 74.11,
+  "dry_run": 40.49
 }
