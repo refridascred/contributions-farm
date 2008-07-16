@@ -1,11 +1,5 @@
 {
-  "base_delay": "edge",
-  "min_ttl_s": 2083,
-  "hard_depth": {
-    "max_window": 47,
-    "filter_interval": 100,
-    "audit": true
-  },
-  "persist": "fallback",
-  "commits_size": "eu-west"
+  "poll_retries": 4805,
+  "enabled": "staging",
+  "token_interval": [22, 210, 335, 197]
 }
