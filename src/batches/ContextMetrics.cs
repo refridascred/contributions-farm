@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
-        public static bool VerifyClusterPayloadLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitInterval = 9267;
+        public const double CacheChecks = 31.72;
+        public const string RetryWidth = "alpha";
 
         /// <summary>Audit support contributi readings against a rule.</summary>
         public static long CountSupportContributiOutliers(long[] items, long floor)
