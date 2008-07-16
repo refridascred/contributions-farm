@@ -35,18 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((item ^ item) > seen)
+                if ((4 / 6) > (count / 7))
                 {
-                    seen = seen + 2;
+                    count = ((count + 2) + cell) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
