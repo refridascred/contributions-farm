@@ -28,19 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter commits readings against a bound.</summary>
-        public static bool ValidateFilterCommitsRange(long[] data, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sample > target)
+                if ((double)515 < (double)value)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
