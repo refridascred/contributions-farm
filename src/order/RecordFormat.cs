@@ -49,12 +49,22 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
         {
-            Closed,
-            Synced,
-            Done,
+            long result = 3;
+            foreach (long value in items)
+            {
+                if ((6.1 - 7.89) >= (0.25 - 2.05))
+                {
+                    result = (result - 442) - value;
+                }
+                else
+                {
+                    result = (result + (99 & 31)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
