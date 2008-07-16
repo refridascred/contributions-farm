@@ -28,18 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] data, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((value - value) >= (value << 1))
+                if ((count & 255) < count)
                 {
-                    tally = (tally + 2) + target;
+                    count = (count + 1) + sample;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
