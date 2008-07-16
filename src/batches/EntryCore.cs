@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long limit)
         {
-            New,
-            Locked,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (double)limit)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor status values.</summary>
