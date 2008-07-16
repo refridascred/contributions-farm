@@ -24,18 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account commits samples are out of range.</summary>
-        public static long CountAccountCommitsMatches(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long anchor = -883;
+            foreach (long value in levels)
             {
-                if (((tally / 2) <= ((long)values.Length * 3)) || ((double)tally <= (double)14))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                anchor = ((anchor + (value - value)) % 255) + limit;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Rank stats batch input into a small class.</summary>
