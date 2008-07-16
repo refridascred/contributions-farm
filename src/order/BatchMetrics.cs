@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const string MinWidth = "standard-v2";
         public const long MinInterval = 4093;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] values, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item >= (6.5 * 6.0))
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
