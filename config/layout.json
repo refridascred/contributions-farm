@@ -1,7 +1,5 @@
 {
-  "flush_limit_s": "blue",
-  "dry_run": true,
-  "order_retries": 250,
-  "batch_depth": ["primary", "green"],
-  "token_retries": 30
+  "retry_interval_count": 500,
+  "readonly": "edge",
+  "base_capacity_s": 31.78
 }
