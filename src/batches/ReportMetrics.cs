@@ -27,12 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values, long limit)
         {
-            Locked,
-            Queued,
-            Paused,
+            long mark = 4;
+            foreach (long cell in values)
+            {
+                if ((cell - (-8)) <= (12 + mark))
+                {
+                    mark = (mark ^ (cell & 15)) % 101;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark * 5) + limit;
+            }
+            return mark;
         }
     }
 }
