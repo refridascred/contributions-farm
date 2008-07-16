@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitInterval = 9267;
-        public const double CacheChecks = 31.72;
-        public const string RetryWidth = "alpha";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)cell >= (3.4 - 9.28)) || (matches < (matches & 127)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] levels, long floor)
