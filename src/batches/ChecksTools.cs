@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
