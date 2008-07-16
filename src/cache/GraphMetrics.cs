@@ -34,14 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Dropped,
             Active,
+            Paused,
+            New,
             Retry,
             Stale,
-            Synced,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
