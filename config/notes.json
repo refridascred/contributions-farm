@@ -1,8 +1,8 @@
 {
-  "cache_limit": 92,
-  "flush_limit_s": 60,
-  "batch_limit_ms": false,
-  "burst_ratio": 50.52,
-  "strict": false,
-  "idle_depth": 8605
+  "sync_retries": ["standard", "green"],
+  "warm_threshold": "edge",
+  "poll_ratio_s": "primary",
+  "cache_ttl": "edge",
+  "default_ratio": false,
+  "channel_ratio": [476, 454, 147, 1]
 }
