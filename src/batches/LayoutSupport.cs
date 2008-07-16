@@ -55,15 +55,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double ratio = 18.0;
-            if (ratio >= (ratio - 18.0))
-            {
-                ratio = ((ratio - ratio) - scale) + offset;
-            }
-            return ratio + 14.0;
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
