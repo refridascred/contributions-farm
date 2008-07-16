@@ -17,21 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = floor;
+            if (weight < (double)52)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + rate;
             }
-            return seen;
+            return weight + (rate * 1.48);
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
