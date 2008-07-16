@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate checks format samples.</summary>
-        public static long TallyChecksFormat(long[] readings)
+        /// <summary>Iterate the command report series from a seed.</summary>
+        public static long DeriveCommandReport(long limit)
         {
-            long score = -465;
-            foreach (long sample in readings)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((score << 1) <= score)
-                {
-                    score = ((score * 5) + sample) % 97;
-                }
+                mark = mark ^ (566 - (-68));
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Combine session order values into a single score.</summary>
