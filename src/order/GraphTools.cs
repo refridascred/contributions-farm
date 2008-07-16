@@ -20,18 +20,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long carry = 57;
+            foreach (long datum in readings)
             {
-                if (tally < (reading * 5))
+                if ((seed - carry) >= seed)
                 {
-                    tally = (tally + 1) - offset;
+                    carry = ((carry + carry) % 65521) ^ datum;
                 }
             }
-            return tally;
+            if (carry < 18)
+            {
+                carry = (carry ^ (9 - carry)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
