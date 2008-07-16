@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long limit)
         {
-            Dropped,
-            Pending,
-            Ready,
+            if (((limit ^ limit) >= (limit << 2)) && ((1.29 * 2.63) > (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= (5.5 - 2.14))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (95 < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
