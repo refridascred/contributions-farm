@@ -33,13 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
