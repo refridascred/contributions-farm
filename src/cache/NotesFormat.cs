@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long limit)
         {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            if ((double)bound >= (double)4)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (11.0 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((14.0 + 6.0) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (bound * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
