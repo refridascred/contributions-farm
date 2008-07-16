@@ -30,18 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long AuditQueueTokenMatches(long[] readings)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits % 3) > (hits % 10))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
