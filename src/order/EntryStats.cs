@@ -35,21 +35,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the profile report series from a seed.</summary>
-        public static long StepProfileReport(long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long lane = ((long)i & 7) * 2;
-                carry = (carry - (lane - floor)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    lane = (((lane << 3) ^ lane) % 65521) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Stale,
+            Active,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the route level values.</summary>
