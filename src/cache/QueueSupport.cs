@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = -328;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (7.0 + 0.6))
-                {
-                    anchor = anchor ^ (entry / 4);
-                }
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count notes order pairs that satisfy a relation.</summary>
