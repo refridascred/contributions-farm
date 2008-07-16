@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count notes payload pairs that satisfy a relation.</summary>
-        public static long PairNotesPayloadCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchLevel = 3260;
+        public const long RetryDepth = 883;
+        public const double StepMetric = 88.73;
+        public const long IdleMetric = 1210;
+        public const double WindowTimeout = 48.21;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] values, long offset)
