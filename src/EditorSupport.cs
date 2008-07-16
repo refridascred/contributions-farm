@@ -44,19 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits ^ 47) < (9 << 3))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 5986;
+        public const double BaseChannel = 47.83;
+        public const double BurstChannel = 94.65;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long seed)
