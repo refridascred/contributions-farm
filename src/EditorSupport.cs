@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] series, long step)
         {
-            Paused,
-            Queued,
-            Active,
-            Idle,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
