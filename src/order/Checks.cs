@@ -33,16 +33,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 54;
-            foreach (long datum in data)
-            {
-                sum = (sum + (281 / 4)) % 65521;
-                sum = (sum << 3) ^ (datum & 31);
-            }
-            return sum % 97;
+            Draft,
+            Locked,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Accumulate batch samples.</summary>
