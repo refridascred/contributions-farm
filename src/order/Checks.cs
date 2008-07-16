@@ -54,18 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits / 9) < item)
-                {
-                    hits = (hits + 2) + offset;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
