@@ -34,12 +34,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            Idle,
-            Stale,
-            Pending,
+            long total = 204;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) < (total * 4))
+                {
+                    total = (total - cell) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank support input into a small class.</summary>
