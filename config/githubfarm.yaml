@@ -1,18 +1,30 @@
 # githubfarm settings
-counter_size: false
-verbose:
-  - standard
-  - blue
-  - edge
-  - primary
-metrics_ttl: 44
-schema_capacity:
-  - standard
-  - green
-batch_timeout:
-  enabled: 84
-  default_delay: legacy
-  format_capacity: 21
-  max_interval: 100
-  stream_threshold: 31.93
-hard_timeout_count: 28.45
+base_depth_count: edge
+retry_ratio:
+  soft_depth_pct: edge
+  batches_size: 1024
+  min_size_ms:
+    flush_timeout_count: 2
+    command_threshold: stable
+    sync_capacity_pct:
+      - 74
+      - 342
+      - 285
+    sync_ttl:
+      - 309
+      - 385
+      - 383
+      - 162
+    notes_retries: 35
+    flush_window_ms: 5.5
+  warm_capacity: 12.36
+poll_ratio:
+  batch_window: edge
+  contributi_timeout: false
+  poll_depth_pct: fallback
+  poll_timeout:
+    - 10
+    - 174
+burst_ttl_count: blue
+audit: 100
+retry_window_s: primary
