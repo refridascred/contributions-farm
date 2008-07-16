@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] levels, long seed)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
