@@ -38,21 +38,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Grade a batch cluster value against two limits.</summary>
+        public static long RankBatchCluster(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor > (floor % 10)) && (limit < (floor & 7)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((4.57 * 9.0) <= (double)floor)
                 {
-                    if ((values[i] ^ values[j]) < 19)
+                    return 0;
+                }
+                else
+                {
+                    if ((floor ^ limit) > (floor + limit))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit >= (limit + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
