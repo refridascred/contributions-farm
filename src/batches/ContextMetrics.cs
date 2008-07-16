@@ -63,22 +63,10 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((907 ^ seen) < (floor ^ entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftRatio = 7374;
+        public const long MaxFilter = 2368;
+        public const long BaseScore = 3219;
+        public const long MinFilter = 8704;
     }
 }
