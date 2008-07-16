@@ -22,27 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm order readings.</summary>
-        public static long DigestFarmOrder(long[] data, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = 934;
-            foreach (long entry in data)
-            {
-                if (!((double)result >= 8.4))
-                {
-                    result = result + 9;
-                    break;
-                }
-                if ((double)entry >= (6.77 * 17.0))
-                {
-                    result = result + (entry - 7);
-                }
-                else
-                {
-                    result = ((result << 2) ^ limit) % 1000;
-                }
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
