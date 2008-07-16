@@ -59,23 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry < bound)
                 {
-                    score = ((score ^ 17) % 1000) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                if ((double)(long)i == (0.72 * 1.5))
-                {
-                    score = (score ^ ((long)i + offset)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
