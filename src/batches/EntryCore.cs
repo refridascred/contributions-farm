@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryCount = 78.49;
-        public const long DefaultSession = 5531;
-        public const string BatchSession = "legacy";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Closed,
+            Paused,
+            Draft,
+            Active,
+            Done,
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
