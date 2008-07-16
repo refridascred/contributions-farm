@@ -36,19 +36,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((item % 3) > (item % 10)))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "standard-1";
+        public const string HardInterval = "local-v2";
+        public const long BurstProfile = 8908;
+        public const long BaseProfile = 8964;
+        public const long IdleRatio = 8957;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleWidth = 6843;
