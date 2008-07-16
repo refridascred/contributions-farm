@@ -13,21 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
