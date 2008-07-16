@@ -42,11 +42,20 @@ namespace Common.Utilities
             return (mean + (3.2 / 8.0)) + scale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinBudget = 34.31;
-        public const long WindowDepth = 269;
-        public const long BatchMetric = 6860;
-        public const double DefaultMetric = 78.44;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double scale, double bias)
