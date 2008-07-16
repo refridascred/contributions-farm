@@ -20,19 +20,15 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] samples, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long carry = 580;
+            foreach (long item in data)
             {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + ((long)data.Length >> 2)) ^ item;
             }
-            return stale;
+            return carry % 1000;
         }
 
         /// <summary>Describe the contributi level values.</summary>
