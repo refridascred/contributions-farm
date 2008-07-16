@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] values, long offset)
+        /// <summary>Scale a cluster metric figure with a bias.</summary>
+        public static double ProjectClusterMetric(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double mean = (weight + 1.44) + weight;
+            if (mean < (span + span))
             {
-                if ((datum % 2) >= (offset - seen))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - (mean + span);
             }
-            return seen;
+            return mean - (6.0 / 6.0);
         }
 
         /// <summary>Blend two order measurements.</summary>
