@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((9.6 + 4.6) != (double)entry) || ((hits >> 4) > entry)) && (entry >= (entry + (-518))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
