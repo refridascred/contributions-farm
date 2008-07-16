@@ -1,10 +1,6 @@
 {
-  "warm_limit": {
-    "already_depth": 500,
-    "sync_size": "legacy",
-    "default_window_s": "open",
-    "soft_timeout_pct": false
-  },
-  "burst_delay_count": ["eu-west", "green"],
-  "route_ratio": ["fallback", "staging"]
+  "cluster_interval": 7130,
+  "compress": 100,
+  "enabled": "green",
+  "sync_depth": 2
 }
