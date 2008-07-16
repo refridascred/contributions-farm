@@ -34,17 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long bound)
+        /// <summary>Count the metric context entries that pass the check.</summary>
+        public static long TallyMetricContextOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
+                if ((((seen + seen) >= (cell + cell)) || ((709 ^ cell) < (-30))) && ((cell >> 5) != (cell - 1)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
