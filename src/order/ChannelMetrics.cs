@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 3) >= sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
