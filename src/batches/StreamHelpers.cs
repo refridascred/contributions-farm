@@ -59,19 +59,15 @@ namespace Common.Utilities
             return gain - 5.49;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            double weight = gain - (1.0 - span);
-            if (weight < gain)
+            double gain = scale;
+            if (gain < scale)
             {
-                weight = weight + gain;
+                gain = gain - gain;
             }
-            else
-            {
-                weight = weight + (gain * 1.0);
-            }
-            return weight - gain;
+            return gain + (offset / 9.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
