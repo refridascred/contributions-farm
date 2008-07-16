@@ -35,9 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowScore = 7904;
-        public const long StepToken = 9555;
-        public const long BurstToken = 8544;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen ^ seen) >= (cell ^ cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
