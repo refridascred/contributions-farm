@@ -46,11 +46,22 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = 497;
+            foreach (long datum in values)
+            {
+                if ((double)anchor != (double)0)
+                {
+                    anchor = (anchor - (datum & 63)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (datum / 4)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metric stats.</summary>
