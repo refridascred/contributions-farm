@@ -47,17 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metric entry entry that matches the target.</summary>
-        public static long LookupMetricEntryIndex(long[] readings, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
