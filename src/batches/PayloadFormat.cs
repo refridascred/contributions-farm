@@ -40,18 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Count the stream batches entries that pass the check.</summary>
+        public static long CountStreamBatchesOutliers(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((((long)levels.Length + hits) < (datum - 3)) || (datum >= (datum + datum)))
+                if ((16.0 - 4.0) <= (double)datum)
                 {
-                    hits = hits + 3;
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
