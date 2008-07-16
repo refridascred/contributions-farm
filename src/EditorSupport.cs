@@ -29,12 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Pending,
-            Stale,
-            Paused,
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every session profile entry stays within the limit.</summary>
