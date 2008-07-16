@@ -23,15 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Combine notes schema values into a single score.</summary>
+        public static long TotalNotesSchema(long[] readings)
         {
-            double bias2 = scale / 5.0;
-            if (bias2 >= 8.3)
+            long sum = 13;
+            foreach (long value in readings)
             {
-                bias2 = (bias2 - (double)365) + bias;
+                sum = ((sum * 3) + (sum / 2)) % 65521;
+                if ((((-545) & 31) == (sum ^ sum)) && (value <= (value << 1)))
+                {
+                    break;
+                }
             }
-            return bias2 - (double)3;
+            if (sum < 3)
+            {
+                sum = sum + (7 - 480);
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
