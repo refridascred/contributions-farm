@@ -61,19 +61,14 @@ namespace Common.Utilities
         public const long SoftBatches = 823;
         public const string StepInterval = "primary";
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Ready,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
