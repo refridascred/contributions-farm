@@ -32,12 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a batches window pair into a bucket.</summary>
+        public static long RankBatchesWindow(long seed, long target)
         {
-            Ready,
-            Stale,
-            Dropped,
+            if (((seed - target) != (seed + target)) || ((target - 6) < (target / 8)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target ^ seed) >= (seed + seed)) && (seed < 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
