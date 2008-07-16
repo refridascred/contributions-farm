@@ -88,15 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double floor)
         {
-            long total = 0;
-            foreach (long reading in series)
+            double rate = (floor * 7.1) + scale;
+            if (rate >= (5.2 - scale))
             {
-                total = ((total ^ ((long)series.Length - limit)) % 1000) - reading;
+                rate = rate - rate;
             }
-            return total;
+            return rate - scale;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
