@@ -1,5 +1,11 @@
 # support settings
-warm_limit: open
-readonly: edge
-max_depth_pct: blue
-burst_delay: strict
+soft_retries_ms: local
+warm_capacity_pct: 1599
+retry_ratio_ms: true
+support_delay:
+  entry_ttl: 14
+  hard_timeout_count:
+    burst_retries: 90.41
+    base_ttl_count: primary
+    strict: 8.83
+  poll_interval_ms: primary
