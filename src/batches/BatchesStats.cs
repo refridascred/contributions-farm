@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] series, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                acc = (acc << 2) ^ (acc - floor);
-                acc = ((acc * 3) + (long)i) % 97;
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
