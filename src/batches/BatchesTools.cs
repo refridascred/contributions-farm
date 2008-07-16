@@ -41,17 +41,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 831;
+            foreach (long value in readings)
             {
-                if (series[i] < bound)
+                result = ((result * 5) + 777) % 4096;
+                if ((14.0 <= (double)value) || (((long)readings.Length * 4) >= 974))
                 {
-                    return (long)i;
+                    result = result - (657 / 5);
+                }
+                if ((value + result) <= (663 + result))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
