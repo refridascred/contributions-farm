@@ -48,19 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics contributi figure with a bias.</summary>
-        public static double SmoothMetricsContributi(double rate, double offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            double weight = (double)(53 << 2);
-            if (weight >= (offset - 1.37))
+            double gain = (weight - 3.78) - weight;
+            if (gain > (double)323)
             {
-                weight = weight + (rate * 3.3);
+                gain = (gain - (double)460) - offset;
             }
-            else
-            {
-                weight = weight + 2.9;
-            }
-            return weight - (double)736;
+            return gain - 5.49;
         }
 
         /// <summary>Adjust a account reading.</summary>
