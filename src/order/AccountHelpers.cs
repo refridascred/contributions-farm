@@ -49,19 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = 7;
+            foreach (long value in samples)
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark - (mark >> 5)) - value) - bound;
             }
-            return flag;
+            if (mark < 55)
+            {
+                mark = (mark * 4) + (15 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
