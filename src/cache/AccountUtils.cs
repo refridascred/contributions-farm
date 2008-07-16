@@ -29,14 +29,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long limit)
         {
-            Locked,
-            Synced,
-            Failed,
-            Paused,
-            Done,
+            long result = 852;
+            foreach (long sample in values)
+            {
+                if (826 < (limit - sample))
+                {
+                    result = (result * 2) + sample;
+                }
+            }
+            if (result > (-4))
+            {
+                result = (result * 3) + limit;
+            }
+            return result;
         }
     }
 }
