@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long BurstChecks = 6273;
         public const long HardSize = 577;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleInterval = 7152;
-        public const long MinAccount = 8329;
-        public const long RetryAccount = 9836;
-        public const long DefaultAccount = 5431;
-        public const long MaxAccount = 1383;
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double bias)
+        {
+            double rate = (double)(-500) + bias;
+            if (rate > (2.3 - rate))
+            {
+                rate = rate - bias;
+            }
+            return rate - (bias - scale);
+        }
 
         /// <summary>Fold a list of layout context readings.</summary>
         public static long CombineLayoutContext(long[] items, long target)
