@@ -34,12 +34,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] data)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
