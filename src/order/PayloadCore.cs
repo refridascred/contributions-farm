@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitInterval = "open";
-        public const long BaseBudget = 8373;
-        public const double MinCount = 36.8;
-        public const double RetryProfile = 27.29;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardLevel = 7451;
