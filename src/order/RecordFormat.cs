@@ -35,18 +35,15 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long AuditChecksSupportOutliers(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double drift = (double)(6 >> 2);
+            if (drift >= floor)
             {
-                if ((9 ^ tally) > tally)
-                {
-                    tally = (tally + 3) - value;
-                }
+                drift = (drift + (drift * 5.39)) + rate;
             }
-            return tally;
+            return drift + floor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
