@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7891;
-        public const long IdleSize = 5482;
-        public const double DefaultRatio = 28.56;
-        public const double HardToken = 95.03;
-        public const long CacheSpan = 8502;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate buffer editor samples.</summary>
         public static long ScoreBufferEditor(long[] samples, long limit)
