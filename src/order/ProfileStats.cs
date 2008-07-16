@@ -14,14 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            Idle,
-            Stale,
-            Closed,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value % 3) != (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
