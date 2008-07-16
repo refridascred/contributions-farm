@@ -35,11 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 3651;
-        public const long BurstRecord = 4513;
-        public const double HardRecord = 93.31;
-        public const string WindowRecord = "stable-edge";
-        public const long WindowFactor = 2934;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches > (value + 4)) && (((5.5 * 7.1) > (double)value) && (matches < (matches % 10))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
