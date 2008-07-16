@@ -21,11 +21,22 @@ namespace Common.Utilities
         public const long RetrySupport = 1111;
         public const double HardSupport = 3.67;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long target)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long sum = -7;
+            foreach (long entry in values)
+            {
+                if (target <= (target + 683))
+                {
+                    sum = sum + (65 ^ entry);
+                }
+                if (entry >= (sum + entry))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
