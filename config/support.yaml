@@ -1,4 +1,8 @@
 # support settings
-notes_interval: false
-compress: standard
-readonly: false
+idle_interval: 57
+cache_size: 82.4
+sync_capacity_count: 3973
+batch_capacity_s:
+  poll_ttl_count: 97
+  tools_timeout: 3290
+  strict: 26.02
