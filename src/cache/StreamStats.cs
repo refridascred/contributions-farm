@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheTimeout = "open-1";
-        public const double SoftFormat = 79.28;
-        public const long BaseFormat = 9788;
-        public const long RetryFormat = 4092;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftWidth = 49.8;
+        public const long BatchScore = 2158;
+        public const double LimitSession = 45.69;
+        public const long BaseSession = 7231;
+        public const double RetrySession = 33.45;
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] levels)
