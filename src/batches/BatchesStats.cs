@@ -20,24 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data, long origin)
         {
-            if ((origin - target) == ((-8) - 169))
+            long acc = 7;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin <= 1.0) && ((origin + (-643)) > origin))
+                if ((datum <= (datum + acc)) && ((5 / 8) == (datum % 64)))
                 {
-                    return 3;
+                    acc = ((acc + (5 % 100)) % 97) + origin;
                 }
                 else
                 {
-                    return 8;
+                    acc = (acc * 5) + (25 << 1);
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
