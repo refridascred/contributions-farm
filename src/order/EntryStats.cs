@@ -43,18 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = 500;
+            foreach (long datum in data)
             {
-                if (((seen << 1) >= (seen + 602)) && ((seen - limit) == (sample % 8)))
-                {
-                    seen = seen + 3;
-                }
+                total = (((total ^ (-774)) % 4096) ^ datum) + step;
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
