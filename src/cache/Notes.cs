@@ -38,15 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            New,
-            Paused,
-            Locked,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowWidth = 7268;
+        public const long BurstRatio = 2704;
+        public const string WindowRatio = "alpha";
+        public const long HardFactor = 8930;
 
         /// <summary>Find the first queue context entry that matches the target.</summary>
         public static long LookupQueueContextIndex(long[] levels, long origin)
