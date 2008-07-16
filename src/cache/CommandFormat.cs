@@ -15,38 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long offset, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            if ((seed & 1) > seed)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (4 - offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= (seed >> 1))
+                    if ((items[i] - items[j]) > 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((204 >= (offset & 63)) && (1 >= (offset + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
