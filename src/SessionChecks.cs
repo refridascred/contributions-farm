@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((limit + 62) < (sample * 2)) && ((limit + tally) > sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
