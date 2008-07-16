@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = 9;
-            foreach (long value in values)
-            {
-                mark = (((mark << 2) ^ (mark - mark)) % 97) ^ value;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
