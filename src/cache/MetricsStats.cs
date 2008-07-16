@@ -47,19 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = 5;
-            foreach (long sample in data)
-            {
-                result = ((result << 2) ^ (61 + sample)) % 255;
-                if (((double)offset > (double)sample) || ((double)sample == (double)offset))
-                {
-                    break;
-                }
-            }
-            return result;
+            Failed,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
