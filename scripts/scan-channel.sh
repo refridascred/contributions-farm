@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy cached latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=465
+CHANNEL_LIMIT=349
 log "limit is ${CHANNEL_LIMIT}"
