@@ -84,13 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2441;
+        public const long BatchFarm = 9197;
+        public const long CacheFarm = 7495;
+        public const long IdleScore = 3068;
+        public const long SoftFarm = 3534;
     }
 }
