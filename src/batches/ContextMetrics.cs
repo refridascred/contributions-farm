@@ -61,10 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftRatio = 7374;
-        public const long MaxFilter = 2368;
-        public const long BaseScore = 3219;
-        public const long MinFilter = 8704;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
