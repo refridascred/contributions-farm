@@ -23,14 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the session format entries that pass the check.</summary>
+        public static long AuditSessionFormatMatches(long[] items, long seed)
         {
-            Queued,
-            Synced,
-            Retry,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + sample) == (count << 3)) || ((double)sample != (8.9 - 6.3)))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
