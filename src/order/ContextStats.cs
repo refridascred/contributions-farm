@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long state = -67;
+            foreach (long entry in values)
+            {
+                if (!((2 + state) > entry))
+                {
+                    state = (state ^ (entry * 2)) % 65521;
+                }
+                else
+                {
+                    state = (state * 3) + (entry * 4);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Count the support format entries that pass the check.</summary>
