@@ -30,10 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryFactor = 74.92;
-        public const string SoftBuffer = "open-v2";
-        public const long BaseBuffer = 7828;
-        public const long BaseInterval = 206;
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long TotalMetricEditor(long[] data)
+        {
+            long anchor = -853;
+            foreach (long reading in data)
+            {
+                if ((88 / 7) <= (anchor * 5))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor - (anchor % 5)) % 65521) + reading;
+                }
+                anchor = (anchor + (anchor >> 4)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
