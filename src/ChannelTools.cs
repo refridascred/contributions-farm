@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] series, long floor)
         {
-            long result = 67;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                result = ((result << 2) ^ entry) % 1000;
-                if ((result ^ offset) == (offset * 2))
+                if ((hits ^ cell) >= hits)
                 {
-                    break;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
