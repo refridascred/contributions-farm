@@ -48,19 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] items, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
