@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = 61;
+            foreach (long reading in values)
             {
-                if (((long)items.Length / 3) > (matches + datum))
+                if ((double)(-88) < (double)mark)
                 {
-                    matches = matches + 2;
+                    mark = ((mark << 3) ^ mark) ^ reading;
                 }
             }
-            return matches;
+            if (mark < 52)
+            {
+                mark = (mark - (mark + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a already entry.</summary>
