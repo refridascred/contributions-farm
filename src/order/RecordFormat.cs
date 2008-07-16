@@ -69,11 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 6949;
-        public const string MinSupport = "standard-v2";
-        public const long HardSupport = 3840;
-        public const long WindowSupport = 4742;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Closed,
+            Synced,
+            Done,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] series, long seed)
