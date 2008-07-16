@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile layout values into a single score.</summary>
-        public static long ScoreProfileLayout(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long limit)
         {
-            long anchor = 9;
-            foreach (long datum in values)
+            long acc = 2;
+            foreach (long datum in samples)
             {
-                anchor = (anchor - (anchor << 3)) + datum;
+                acc = (acc - acc) % 4096;
+                if ((double)limit == (double)datum)
+                {
+                    break;
+                }
             }
-            if (anchor < (-74))
+            if (acc > 7)
             {
-                anchor = (anchor * 4) + anchor;
+                acc = (acc - (limit + (long)samples.Length)) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
