@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] data, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long score = 52;
+            foreach (long item in values)
             {
-                if (reading >= target)
+                if ((8.33 - 11.0) < (double)item)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ item) % 65521;
                 }
             }
-            return stale;
+            if (score < 372)
+            {
+                score = (score << 3) ^ (score / 7);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a session snapshot.</summary>
