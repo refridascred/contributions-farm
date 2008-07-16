@@ -44,24 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            if ((4.0 - 8.6) > (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((7.4 - 7.0) < (double)seed) || (3 < bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double bias2 = (rate * 4.49) - bias;
+            return bias2 - rate;
         }
     }
 }
