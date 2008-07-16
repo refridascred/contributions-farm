@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a format command figure with a bias.</summary>
-        public static double SmoothFormatCommand(double scale, double floor)
+        /// <summary>Measure how many window notes samples are out of range.</summary>
+        public static long CountWindowNotesGaps(long[] items, long floor)
         {
-            double bias = scale;
-            return (bias + 8.2) + floor;
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - 9) > (floor + floor))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
