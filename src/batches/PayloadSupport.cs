@@ -13,21 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the order tools series from a seed.</summary>
-        public static long SeriesOrderTools(long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            double rate2 = rate - span;
+            if (rate2 <= (rate2 + 6.0))
             {
-                long offset = (target - (long)i) + (target - sum);
-                long hits = (offset << 3) - sum;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (sum + hits) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                rate2 = rate2 + rate2;
             }
-            return sum;
+            return rate2 + (span - span);
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
