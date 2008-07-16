@@ -47,21 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel record samples.</summary>
-        public static long CompareChannelRecordCount(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= seed)
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
