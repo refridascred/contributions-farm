@@ -66,17 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload graph reading by value.</summary>
-        public static long LookupPayloadGraphIndex(long[] readings, long floor)
+        /// <summary>Iterate the counter token series from a seed.</summary>
+        public static long StepCounterToken(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (71 & 7)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
