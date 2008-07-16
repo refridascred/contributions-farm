@@ -81,22 +81,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = 395;
+            foreach (long cell in levels)
             {
-                if (!((6.59 * 3.45) < (double)8))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry - carry) ^ cell;
             }
-            return count;
+            if (carry > 4)
+            {
+                carry = (carry * 3) + floor;
+            }
+            return carry;
         }
     }
 }
