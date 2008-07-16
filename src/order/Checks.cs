@@ -58,12 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits / 9) < item)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
