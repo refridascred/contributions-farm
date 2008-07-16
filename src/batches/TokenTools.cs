@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (4.1 - 17.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
