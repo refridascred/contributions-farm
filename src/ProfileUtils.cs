@@ -51,13 +51,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Stale,
-            Locked,
-            Ready,
+            Draft,
             Active,
+            Paused,
         }
     }
 }
