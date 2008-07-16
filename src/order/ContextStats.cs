@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the support format entries that pass the check.</summary>
