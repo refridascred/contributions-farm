@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const long SoftRatio = 8069;
         public const long RetryContext = 8262;
 
-        /// <summary>Locate a graph metric reading by value.</summary>
-        public static long LocateGraphMetricIndex(long[] data, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
