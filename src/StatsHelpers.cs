@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 34.45;
         public const double DefaultBudget = 76.44;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 721;
+            foreach (long reading in readings)
             {
-                if ((double)hits == (0.1 / 4.0))
+                if (((double)score >= (double)reading) && ((18 - (long)readings.Length) < (reading - 76)))
                 {
-                    hits = (hits + 3) + sample;
+                    score = score ^ (reading & 7);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
