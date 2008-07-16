@@ -27,19 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool VerifyReportRecordLimits(long[] items, long step)
+        /// <summary>Fold a list of farm counter readings.</summary>
+        public static long CombineFarmCounter(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = -597;
+            foreach (long entry in readings)
             {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - state) % 97) - entry;
             }
-            return flag;
+            return state % 65521;
         }
     }
 }
