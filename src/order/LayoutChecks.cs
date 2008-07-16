@@ -81,27 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record payload values into a single score.</summary>
-        public static long WeighRecordPayload(long[] samples)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long state = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((876 / 7) != (state >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 3) ^ (item % 12);
-                    break;
-                }
-                if ((item + 78) == (item / 9))
-                {
-                    state = (state - (item % 3)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ item;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
