@@ -30,11 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepTimeout = 12.02;
-        public const double BurstEntry = 3.58;
-        public const string MinTimeout = "primary-1";
-        public const string SoftSize = "latest-edge";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenOutliers(long[] series)
