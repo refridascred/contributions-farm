@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window notes samples are out of range.</summary>
-        public static long CountWindowNotesGaps(long[] items, long floor)
+        /// <summary>Grade a metric support value against two limits.</summary>
+        public static long BucketMetricSupport(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((limit + 253) > (offset + limit))
             {
-                if ((entry - 9) > (floor + floor))
+                return 4;
+            }
+            else
+            {
+                if (offset >= (limit + offset))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit + limit) >= (offset + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
