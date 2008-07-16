@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long MinContext = 4628;
         public const string WindowContext = "open";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long step)
         {
-            long anchor = 778;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)anchor <= 5.74)
+                if (items[i] >= step)
                 {
-                    anchor = (anchor - (bound & 3)) + sample;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
