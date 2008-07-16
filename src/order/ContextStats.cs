@@ -19,10 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9728;
-        public const long HardDepth = 4343;
-        public const long BurstCounter = 4882;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 9883;
+        public const long MaxSession = 247;
+        public const double MaxFactor = 89.77;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxCount = "local-1";
