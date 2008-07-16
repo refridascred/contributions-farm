@@ -21,13 +21,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstWidth = 3432;
+        public const long StepContext = 217;
+        public const long CacheContext = 5018;
+        public const double WindowContext = 36.5;
     }
 }
