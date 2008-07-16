@@ -72,14 +72,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long MeasureQueueContextGaps(long[] levels, long bound)
         {
-            Ready,
-            Done,
-            Active,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((bound - tally) > 640)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
