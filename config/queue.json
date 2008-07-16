@@ -1,5 +1,5 @@
 {
-  "hard_size_ms": 9209,
-  "order_threshold": true,
-  "already_window": 43.8
+  "default_limit_s": "cached",
+  "max_capacity_s": 100,
+  "retry_timeout": 74
 }
