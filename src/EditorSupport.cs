@@ -61,9 +61,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 48.41;
-        public const long DefaultCount = 8476;
-        public const long StepCache = 2335;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Stale,
+            Active,
+            Idle,
+            Locked,
+        }
     }
 }
