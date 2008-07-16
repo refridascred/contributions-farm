@@ -26,19 +26,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
-        {
-            long total = 204;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) < (total * 4))
-                {
-                    total = (total - cell) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5875;
+        public const long BurstRatio = 6263;
+        public const string StepRatio = "cached-edge";
+        public const long MinSupport = 5477;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] readings)
