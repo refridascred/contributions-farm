@@ -1,6 +1,4 @@
 # entry settings
-soft_ttl_count: 250
-queue_ttl:
-  - 404
-  - 140
-verbose: local
+already_limit: 87
+hard_threshold_s: 37.52
+warm_depth_ms: 500
