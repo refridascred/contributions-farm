@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double drift = (double)(360 * 3);
-            if (drift <= (double)78)
-            {
-                drift = ((drift + (double)(-9)) - ratio) + floor;
-            }
-            return drift + (double)152;
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
