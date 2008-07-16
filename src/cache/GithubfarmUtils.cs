@@ -48,16 +48,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric metrics entries.</summary>
-        public static long CombineMetricMetrics(long[] data, long target)
-        {
-            long total = 9;
-            foreach (long item in data)
-            {
-                total = ((total * 2) + target) + item;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1162;
+        public const long MinTools = 9122;
+        public const string LimitTools = "legacy-edge";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long limit)
