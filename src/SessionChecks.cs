@@ -45,17 +45,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step - seed;
+            if (seed < step)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((lane * 3) != (lane >> 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ lane) != (829 ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
