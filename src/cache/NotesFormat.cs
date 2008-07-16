@@ -23,16 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long mix = 29;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix + mix) % 1000) ^ item;
-                mix = (mix + (mix / 2)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
