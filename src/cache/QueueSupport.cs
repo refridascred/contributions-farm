@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((1.81 / 9.0) == (double)item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
