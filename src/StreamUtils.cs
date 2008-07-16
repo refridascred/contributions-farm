@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepLevel = "latest-1";
+        public const long StepAccount = 1762;
+        public const string SoftSize = "cached";
+        public const long IdleTimeout = 7167;
+        public const long MaxScore = 83;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
