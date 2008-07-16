@@ -58,18 +58,10 @@ namespace Common.Utilities
         public const long WindowCommits = 3309;
         public const double LimitSize = 2.68;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) != (16 + matches))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowLevel = 1290;
+        public const long BaseSpan = 8125;
+        public const double HardSession = 2.72;
+        public const string RetrySession = "cached-1";
     }
 }
