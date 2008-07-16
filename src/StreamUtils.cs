@@ -51,19 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm checks readings against a bound.</summary>
-        public static bool VerifyFarmChecksRange(long[] samples, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
