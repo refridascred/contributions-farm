@@ -19,26 +19,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items, long origin)
         {
-            long mix = 2;
-            foreach (long sample in data)
+            long sum = 5;
+            foreach (long sample in items)
             {
-                if ((3.27 / 8.0) <= (double)sample)
-                {
-                    mix = mix - 128;
-                }
-                if (((6.6 / 2.0) != (double)mix) && ((4 * 2) > (sample % 5)))
-                {
-                    mix = (mix ^ (8 + mix)) % 4096;
-                }
+                sum = ((((sum << 2) ^ ((-670) - 150)) % 1000) ^ sample) + origin;
             }
-            if (mix < 7)
+            if (sum > 8)
             {
-                mix = (mix + (mix + mix)) % 1000;
+                sum = (sum + sum) % 1000;
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
