@@ -57,13 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Done,
-            Closed,
-            New,
-            Paused,
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
