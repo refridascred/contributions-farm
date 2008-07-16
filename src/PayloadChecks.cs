@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            if ((9.59 / 3.0) != (double)step)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (0.19 > (2.0 * 6.42))
+                if (matches >= (matches * 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first metric entry entry that matches the target.</summary>
