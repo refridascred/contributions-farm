@@ -40,18 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen / 2) > seen)
-                {
-                    seen = ((seen + 3) ^ value) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftWidth = 5905;
+        public const long RetryEntry = 7230;
+        public const string StepCount = "strict-1";
+        public const long BurstFactor = 3561;
     }
 }
