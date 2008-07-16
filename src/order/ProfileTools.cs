@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const long DefaultReport = 8014;
         public const double BurstReport = 88.0;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleSize = 6.56;
-        public const long MaxBudget = 2577;
-        public const long IdleFactor = 9965;
-        public const long IdleContext = 5625;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Paused,
+            Synced,
+            Active,
+            Draft,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionRange(long[] series, long seed)
