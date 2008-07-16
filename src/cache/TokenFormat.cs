@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Active,
-            Failed,
-            Dropped,
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
