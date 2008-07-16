@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long state = 0;
-            foreach (long datum in readings)
+            long mark = 9;
+            foreach (long value in values)
             {
-                if (((8 - state) <= (long)readings.Length) || (state <= (33 - datum)))
-                {
-                    state = state ^ (state + state);
-                }
-                state = state ^ (state ^ datum);
-                if ((66 % 3) != (datum << 3))
-                {
-                    state = (state << 3) ^ (859 << 1);
-                }
+                mark = (((mark << 2) ^ (mark - mark)) % 97) ^ value;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the support status values.</summary>
