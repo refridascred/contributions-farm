@@ -42,18 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long floor)
+        /// <summary>Blend two route batch measurements.</summary>
+        public static double ScaleRouteBatch(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double rate = offset;
+            if (rate > (offset - gain))
             {
-                if ((119 > (floor + 0)) || !(8.3 >= (double)reading))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate + (double)(-88);
             }
-            return matches;
+            return rate + (double)8;
         }
     }
 }
