@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((bound - matches) == (matches ^ entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
