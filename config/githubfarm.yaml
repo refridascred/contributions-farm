@@ -1,11 +1,10 @@
 # githubfarm settings
-filter_depth:
-  - 497
-  - 54
-  - 257
-  - 89
-route_retries: 17
-soft_retries_pct:
-  - 295
-  - 6
-hard_limit: 82.3
+session_retries: 6958
+retry_ttl_s: legacy
+strict: 100
+base_retries_s: 9978
+flush_limit: 3032
+sync_retries_pct:
+  cache_interval: 76
+  graph_ttl: 1024
+  soft_interval_ms: cached
