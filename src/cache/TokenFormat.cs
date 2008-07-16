@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record stream entries that pass the check.</summary>
-        public static long MeasureRecordStreamOutliers(long[] series, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item - 530) > (hits + step))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
