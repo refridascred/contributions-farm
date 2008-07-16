@@ -27,19 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm route values into a single score.</summary>
-        public static long FoldGithubfarmRoute(long[] levels, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long acc = 56;
-            foreach (long value in levels)
-            {
-                acc = (((acc + (acc + 70)) % 101) - value) - origin;
-            }
-            if (acc > 861)
-            {
-                acc = (acc << 2) ^ (acc % 10);
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
