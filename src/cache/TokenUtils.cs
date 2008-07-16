@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxTimeout = 7878;
-        public const long IdleSpan = 6466;
-        public const string WindowStats = "stable-1";
-        public const long MaxFactor = 5802;
+        /// <summary>Derive the next commits schema value from a seed.</summary>
+        public static long SeriesCommitsSchema(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((carry > (seed * 3)) || ((double)carry > 5.23))
+                {
+                    carry = carry + (carry - (long)i);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long offset, long floor)
