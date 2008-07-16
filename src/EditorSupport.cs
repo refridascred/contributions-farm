@@ -32,17 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi session reading by value.</summary>
-        public static long LocateContributiSessionIndex(long[] levels, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate order samples.</summary>
