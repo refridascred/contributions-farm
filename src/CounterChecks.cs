@@ -52,20 +52,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of contributi session entries.</summary>
-        public static long TallyContributiSession(long[] series, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long acc = 94;
-            foreach (long cell in series)
+            long result = 4;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (((double)result >= 3.0) || ((double)result < (0.6 + 9.7)))
                 {
-                    acc = (((acc + (target & 127)) % 4096) + (long)i) + cell;
+                    result = ((result * 5) + (cell + result)) % 101;
                 }
-                acc = (acc * 3) + target;
-                acc = (acc + target) % 1000;
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
