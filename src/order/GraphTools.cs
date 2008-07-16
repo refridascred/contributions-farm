@@ -46,12 +46,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            New,
+            Pending,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
