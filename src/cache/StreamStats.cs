@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long ScoreGraphBuffer(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            long total = 35;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = (total * 2) + item;
+                if ((261 + sample) < (sample - 876))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
