@@ -60,10 +60,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 3361;
-        public const long LimitFactor = 9706;
-        public const long WindowRatio = 1784;
-        public const long RetryTimeout = 3779;
+        /// <summary>Compare every pair of window support readings.</summary>
+        public static long CompareWindowSupportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
