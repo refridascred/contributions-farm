@@ -50,18 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] items, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches ^ (-6)) == (floor ^ 2))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
