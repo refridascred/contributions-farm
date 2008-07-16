@@ -1,5 +1,11 @@
 # support settings
-retry_size: true
-max_limit: local
-flush_ratio: 18.24
-readonly: 51.56
+base_capacity: 250
+persist:
+  - 320
+  - 130
+  - 273
+stats_interval: legacy
+poll_retries:
+  flush_retries_s: 35.28
+  persist: 100
+  hard_size_s: false
