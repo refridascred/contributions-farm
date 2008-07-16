@@ -41,18 +41,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long SeriesBufferToken(long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 2) + ((long)i - 20)) % 97;
-                acc = ((acc << 2) ^ acc) % 255;
-                acc = acc ^ (acc - floor);
-                acc = ((acc * 4) + (long)i) % 4093;
+                mark = (mark ^ (origin & 63)) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
     }
 }
