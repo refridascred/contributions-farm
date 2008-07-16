@@ -70,11 +70,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 496;
-        public const string StepAccount = "open";
-        public const long BurstAccount = 3555;
-        public const long DefaultScore = 7678;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (floor & 127))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] samples, long origin)
