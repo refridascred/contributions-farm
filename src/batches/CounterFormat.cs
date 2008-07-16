@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            long gap = limit + offset;
-            if ((gap - gap) > gap)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap / 8) != ((-39) + offset))
+                if ((5.2 / 4.0) <= (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
