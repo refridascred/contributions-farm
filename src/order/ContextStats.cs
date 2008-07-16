@@ -31,18 +31,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the support format entries that pass the check.</summary>
-        public static long TallySupportFormatOutliers(long[] series)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((4 % 10) >= (hits + hits))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
