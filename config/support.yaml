@@ -1,16 +1,19 @@
 # support settings
-idle_window_ms:
-  - cached
-  - local
-compress:
-  - strict
-  - staging
-  - local
-  - edge
-counter_ttl:
-  batch_retries_s: 20
-  farm_depth: blue
-  batch_delay_s: cached
-  soft_delay_count: standard
-  burst_depth: 51.94
-  route_depth: true
+verbose: 0.26
+audit:
+  warm_limit: 36.91
+  cache_depth_s: true
+  cache_delay: 4438
+dry_run: local
+max_retries_pct:
+  batch_capacity_ms:
+    - 55
+    - 44
+    - 399
+  warm_ratio: 6377
+  batch_limit_ms:
+    - fallback
+    - blue
+  soft_interval: 66.19
+  soft_depth: open
+  enabled: 30
