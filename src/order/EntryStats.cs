@@ -43,12 +43,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Pending,
-            Queued,
+            Done,
             Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
