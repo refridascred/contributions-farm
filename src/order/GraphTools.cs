@@ -14,15 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = 218;
-            foreach (long sample in values)
-            {
-                sum = ((((sum * 3) + (sum >> 3)) % 101) ^ sample) - offset;
-            }
-            return sum % 97;
+            Idle,
+            Pending,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate metric buffer readings against a bound.</summary>
