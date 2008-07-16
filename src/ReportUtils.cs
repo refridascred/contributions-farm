@@ -41,11 +41,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            Paused,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the githubfarm format series from a seed.</summary>
