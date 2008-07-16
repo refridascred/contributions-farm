@@ -1,11 +1,26 @@
 # support settings
-base_capacity: 250
-persist:
-  - 320
-  - 130
-  - 273
-stats_interval: legacy
-poll_retries:
-  flush_retries_s: 35.28
-  persist: 100
-  hard_size_s: false
+default_retries:
+  retry_interval:
+    - 289
+    - 209
+    - 44
+    - 129
+  base_depth: false
+  layout_ttl:
+    sync_capacity: 250
+    idle_size_ms: legacy
+    sync_threshold_ms: 46
+    verbose: standard
+  default_delay_pct: 6
+  base_capacity: 37.48
+dry_run:
+  queue_timeout: standard
+  burst_threshold_s: false
+  burst_ttl_pct: 500
+  record_delay: false
+  default_capacity: 57.34
+  poll_ttl: true
+audit: false
+filter_interval: 84.3
+graph_size: 1634
+persist: primary
