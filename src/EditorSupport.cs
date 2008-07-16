@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((double)cell <= 0.38)
+                if (reading <= floor)
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
