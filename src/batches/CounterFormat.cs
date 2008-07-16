@@ -24,12 +24,26 @@ namespace Common.Utilities
             return weight2 + (double)390;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxLevel = 4132;
-        public const long BatchProfile = 4793;
-        public const long MaxProfile = 8030;
-        public const double DefaultSpan = 89.71;
-        public const long StepProfile = 2895;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long seed)
+        {
+            long next = offset ^ seed;
+            if ((next + next) == (offset * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)next <= (double)offset) && ((double)next > (8.4 - 8.4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
