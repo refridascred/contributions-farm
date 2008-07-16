@@ -1,6 +1,12 @@
 {
-  "sync_capacity_pct": true,
-  "batches_depth": 4378,
-  "channel_interval": 5646,
-  "default_depth": "eu-west"
+  "warm_size_s": false,
+  "batch_window_s": "standard",
+  "cache_threshold": "primary",
+  "sync_depth_ms": {
+    "cache_retries": 6724,
+    "default_ttl_pct": false,
+    "max_window": "eu-west"
+  },
+  "base_ratio": 42.3,
+  "batch_delay": "fallback"
 }
