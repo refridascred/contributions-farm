@@ -33,17 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] levels, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
+                if (((double)step != (14.0 + 3.32)) || (carry < (carry + step)))
                 {
-                    return (long)i;
+                    carry = (carry ^ (step - carry)) % 4096;
                 }
+                carry = carry + carry;
+                carry = (carry * 3) + (step / 2);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
