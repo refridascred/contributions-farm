@@ -56,19 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
-        {
-            long mark = 98;
-            foreach (long entry in data)
-            {
-                if ((3.7 - 6.0) >= (1.0 / 9.0))
-                {
-                    mark = ((mark << 2) ^ (mark & 31)) + entry;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1307;
+        public const long HardCache = 2324;
+        public const long LimitTimeout = 8700;
+        public const long WindowCache = 9672;
+        public const string StepWidth = "staging-1";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
