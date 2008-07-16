@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinSpan = 94.43;
-        public const string MaxDepth = "latest-edge";
-        public const double HardWidth = 46.74;
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long FoldEntryBatch(long[] readings)
+        {
+            long carry = -26;
+            foreach (long entry in readings)
+            {
+                carry = ((carry ^ carry) % 97) ^ entry;
+            }
+            if (carry > 7)
+            {
+                carry = carry + (4 / 2);
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] data, long bound)
