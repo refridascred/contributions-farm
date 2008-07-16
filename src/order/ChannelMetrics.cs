@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Closed,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
