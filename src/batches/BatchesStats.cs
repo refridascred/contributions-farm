@@ -53,38 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long seed)
         {
-            if ((double)seed > (9.96 - 7.9))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed < (614 + step))
+                if (entry >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step & 15) >= (789 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.6 + 5.8) <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
