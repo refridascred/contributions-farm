@@ -38,17 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (items[i] < floor)
+                if ((matches ^ (-6)) == (floor ^ 2))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
