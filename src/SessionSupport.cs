@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank route queue input into a small class.</summary>
-        public static long BucketRouteQueue(long target, long limit)
-        {
-            long bound = target ^ limit;
-            if ((target * 5) == (bound + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + limit) > (limit & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (5.0 + 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 1277;
+        public const double CacheReport = 7.73;
+        public const long WindowReport = 6582;
+        public const long DefaultReport = 3442;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double scale, double floor)
