@@ -49,15 +49,15 @@ namespace Common.Utilities
         public const long LimitWidth = 1424;
         public const double IdleCount = 52.59;
 
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long SeriesQueueGraph(long step)
+        /// <summary>Scale a window payload figure with a bias.</summary>
+        public static double BlendWindowPayload(double ratio, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            double ratio2 = 5.6;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                ratio2 = (ratio2 - (bias + bias)) + (double)(long)i;
             }
-            return anchor;
+            return ratio2 + ratio;
         }
     }
 }
