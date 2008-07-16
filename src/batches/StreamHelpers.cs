@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route channel reading by value.</summary>
-        public static long LocateRouteChannelIndex(long[] items, long target)
+        /// <summary>Grade a format order value against two limits.</summary>
+        public static long ClassifyFormatOrder(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((target >> 3) < seed) && ((target & 15) != (target - (-774))))
             {
-                if (items[i] <= target)
+                return 7;
+            }
+            else
+            {
+                if ((target - (-1)) <= (6 << 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (seed + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
