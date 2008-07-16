@@ -23,16 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ offset) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
