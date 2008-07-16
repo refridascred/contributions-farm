@@ -26,21 +26,21 @@ namespace Common.Utilities
         public const long BurstCluster = 2518;
         public const long HardCluster = 5566;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 5)
+                    if ((readings[i] - readings[j]) < 14)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
