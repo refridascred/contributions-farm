@@ -50,11 +50,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultSpan = "cached-edge";
-        public const string SoftFilter = "staging";
-        public const double HardFilter = 20.27;
-        public const string StepFilter = "strict-v2";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultFactor = 1432;
