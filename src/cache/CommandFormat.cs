@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryScore = 8555;
-        public const long BatchInterval = 8405;
-        public const long StepTimeout = 9403;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] values, long limit)
