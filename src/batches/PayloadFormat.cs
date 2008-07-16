@@ -63,10 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxCount = 86.74;
-        public const string IdleFactor = "strict-1";
-        public const long DefaultCount = 1313;
-        public const double LimitDepth = 66.12;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long target)
+        {
+            long sum = 115;
+            foreach (long sample in values)
+            {
+                if (!(sum <= (target >> 2)))
+                {
+                    sum = ((sum << 2) ^ (sample - target)) % 97;
+                }
+            }
+            return sum % 97;
+        }
     }
 }
