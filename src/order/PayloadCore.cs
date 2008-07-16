@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples, long limit)
         {
-            Dropped,
-            Done,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((3.0 * 4.5) < (double)item)
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
