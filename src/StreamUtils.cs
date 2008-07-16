@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
