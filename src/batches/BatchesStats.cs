@@ -54,19 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
