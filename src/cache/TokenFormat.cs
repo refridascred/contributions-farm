@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double weight, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long bound)
         {
-            double mean = (weight * 1.9) / 6.0;
-            if (mean <= (double)601)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean + (mean / 9.0)) - offset;
+                if ((bound % 7) == (entry << 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (double)7;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
