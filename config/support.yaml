@@ -1,7 +1,9 @@
 # support settings
-default_interval: false
-sync_threshold_count: edge
-command_threshold: 1024
-max_threshold_s: 7773
-hard_threshold_ms: green
-cache_ttl: 95
+sync_timeout_s:
+  - edge
+  - standard
+  - staging
+  - strict
+batch_window: 1248
+stats_capacity: latest
+context_ttl: 1.77
