@@ -65,22 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Locate a cluster queue reading by value.</summary>
+        public static long LookupClusterQueueIndex(long[] readings, long bound)
         {
-            long mix = 582;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample ^ sample) >= (mix - 1))
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
                 {
-                    mix = ((mix * 2) + (sample + sample)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 48)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Measure how many schema queue samples are out of range.</summary>
