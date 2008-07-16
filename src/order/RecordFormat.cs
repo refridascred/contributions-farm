@@ -66,17 +66,15 @@ namespace Common.Utilities
         public const long HardSupport = 3840;
         public const long WindowSupport = 4742;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long sample in series)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (sample + result)) - seed;
             }
-            return -1;
+            return result;
         }
     }
 }
