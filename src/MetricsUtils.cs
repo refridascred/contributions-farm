@@ -47,16 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix + (bound + 35)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((0.7 * 8.0) == (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Grade a contributi layout value against two limits.</summary>
