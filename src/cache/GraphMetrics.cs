@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Match up notes already samples.</summary>
+        public static long MatchNotesAlreadyCount(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
