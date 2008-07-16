@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            double ratio2 = floor;
-            if (ratio2 >= ratio)
+            long result = -5;
+            foreach (long datum in levels)
             {
-                ratio2 = ratio2 - ratio;
+                if (!(result >= (result + datum)))
+                {
+                    result = ((result << 3) ^ (7 + datum)) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + 11.0) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return result % 97;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
