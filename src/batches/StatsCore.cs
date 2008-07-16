@@ -44,18 +44,21 @@ namespace Common.Utilities
             return (mean + (3.2 / 8.0)) + scale;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long result = 708;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell <= (double)result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (result % 7)) % 1000;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every token channel entry stays within the limit.</summary>
