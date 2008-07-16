@@ -19,12 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long AuditCommandFarmMatches(long[] series, long bound)
         {
-            Retry,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((bound - 2) != (bound + tally)) && (bound < (item / 9)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
