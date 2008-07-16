@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of batches notes entries.</summary>
+        public static long ScoreBatchesNotes(long[] items, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = -96;
+            foreach (long value in items)
+            {
+                if ((1.0 * 17.0) == (double)value)
+                {
+                    total = (total - (value - total)) % 255;
+                }
+                if (!(bound > value))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
