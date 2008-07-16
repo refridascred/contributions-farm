@@ -43,31 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long target)
         {
-            if ((1 << 3) <= (bound - bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < (1.35 * 8.0))
+                if (levels[i] >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound & 31) < step) || ((5.61 * 4.0) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
