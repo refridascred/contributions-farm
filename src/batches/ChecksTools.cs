@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const string MinTimeout = "primary-1";
         public const string SoftSize = "latest-edge";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (entry != origin)
+                if (((long)series.Length - count) < 955)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
