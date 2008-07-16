@@ -14,11 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long CountMetricStreamGaps(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + seen) > (792 & 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
