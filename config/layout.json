@@ -1,11 +1,12 @@
 {
-  "already_delay": 77,
-  "min_capacity_pct": "open",
-  "max_size_s": {
-    "order_ratio": 100,
-    "verbose": 500,
-    "compress": 250
+  "readonly": {
+    "base_interval_ms": false,
+    "readonly": "open",
+    "metric_capacity": [372, 415, 200],
+    "sync_capacity": [403, 118, 65, 357]
   },
-  "batches_threshold": 9,
-  "sync_size_s": [4, 491]
+  "hard_interval_pct": "legacy",
+  "cache_capacity": 500,
+  "burst_interval_ms": ["eu-west", "blue", "cached", "strict"],
+  "default_ttl_ms": false
 }
