@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Compare every pair of notes format readings.</summary>
+        public static long MatchNotesFormatCount(long[] readings)
         {
-            double rate2 = rate - span;
-            if (rate2 <= (rate2 + 6.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 + rate2;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 + (span - span);
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
