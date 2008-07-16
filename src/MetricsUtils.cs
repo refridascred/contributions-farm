@@ -51,19 +51,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] samples, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
