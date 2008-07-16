@@ -27,11 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            if (((double)limit == (5.03 * 4.2)) && ((step >> 4) >= (limit % 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step < (step * 3)) || ((limit * 5) < (953 + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (2.61 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
