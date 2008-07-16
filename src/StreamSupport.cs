@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Retry,
-            Active,
-            Done,
-            Closed,
+            Locked,
             Synced,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
