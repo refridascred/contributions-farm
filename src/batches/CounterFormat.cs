@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of farm account readings.</summary>
+        public static long DigestFarmAccount(long[] items)
         {
-            Locked,
-            Synced,
-            Queued,
-            Active,
+            long result = 9;
+            foreach (long cell in items)
+            {
+                result = result - cell;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
