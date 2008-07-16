@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long HardScore = 3545;
         public const long WindowGraph = 9658;
 
-        /// <summary>Find the first batches metrics entry that matches the target.</summary>
-        public static long LocateBatchesMetricsIndex(long[] series, long origin)
+        /// <summary>Compare every pair of stats schema readings.</summary>
+        public static long PairStatsSchemaCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
