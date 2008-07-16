@@ -22,18 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (matches >= (matches * 2))
+                if (!(3.85 < (double)origin))
                 {
-                    matches = (matches + 1) + sample;
+                    mix = (mix + ((-703) ^ origin)) % 4096;
                 }
+                mix = (mix ^ (mix >> 5)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first metric entry entry that matches the target.</summary>
