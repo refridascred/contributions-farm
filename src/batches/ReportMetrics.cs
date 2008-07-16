@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(((origin - 0) > (reading >> 2)) && ((seen - origin) < reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
