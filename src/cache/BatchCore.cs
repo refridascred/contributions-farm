@@ -36,12 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Failed,
-            Closed,
-            Synced,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
