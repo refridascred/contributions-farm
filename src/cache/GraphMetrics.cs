@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
