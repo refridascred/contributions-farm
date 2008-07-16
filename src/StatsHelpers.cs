@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5551;
-        public const double BurstRatio = 52.19;
-        public const long SoftSize = 9690;
-        public const string BaseNotes = "local-v2";
-        public const string IdleSpan = "cached";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double ratio, double floor)
