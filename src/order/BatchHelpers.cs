@@ -26,25 +26,21 @@ namespace Common.Utilities
         public const double WindowCluster = 87.05;
         public const long LimitTimeout = 5676;
 
-        /// <summary>Rank profile buffer input into a small class.</summary>
-        public static long RankProfileBuffer(long floor, long origin)
+        /// <summary>Match up contributi stream samples.</summary>
+        public static long PairContributiStreamCount(long[] samples)
         {
-            long cur = floor ^ origin;
-            if (cur >= origin)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + 795) <= (cur / 7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
