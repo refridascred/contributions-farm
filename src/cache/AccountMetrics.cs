@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Combine githubfarm filter values into a single score.</summary>
+        public static long ScoreGithubfarmFilter(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = 560;
+            foreach (long cell in levels)
             {
-                if (((tally >> 2) > (2 + value)) || ((value + tally) >= (value >> 1)))
+                if ((result / 4) > (5 + cell))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result ^ (result << 2)) % 97;
                 }
             }
-            return tally;
+            if (result < 3)
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
