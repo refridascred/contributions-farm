@@ -13,17 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a entry report reading by value.</summary>
-        public static long FindEntryReportIndex(long[] readings, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
