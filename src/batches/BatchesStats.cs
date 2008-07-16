@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long HardBudget = 7730;
         public const long MaxRecord = 2321;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] items, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
