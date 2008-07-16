@@ -40,18 +40,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long result = -5;
-            foreach (long datum in levels)
-            {
-                if (!(result >= (result + datum)))
-                {
-                    result = ((result << 3) ^ (7 + datum)) % 65521;
-                }
-            }
-            return result % 97;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a metric counter forward.</summary>
