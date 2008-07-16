@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell * 4) >= (229 >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a already farm reading.</summary>
