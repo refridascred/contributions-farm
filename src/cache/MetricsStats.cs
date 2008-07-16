@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long floor)
+        /// <summary>Rank already batch input into a small class.</summary>
+        public static long ClassifyAlreadyBatch(long target, long origin)
         {
-            if (((double)floor >= (3.0 * 7.9)) || ((7 << 2) > (step << 1)))
+            long gap = target + origin;
+            if (700 <= (target - target))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((step << 1) > step)
+                if (((double)gap == (double)9) && ((gap + gap) <= (target & 63)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)gap > (13.0 - 9.86))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((gap >> 2) > (gap + origin)) && ((double)origin > 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
