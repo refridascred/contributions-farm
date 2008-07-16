@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long AuditCommandFarmMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((bound - 2) != (bound + tally)) && (bound < (item / 9)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "stable-1";
+        public const string CacheSession = "alpha-edge";
+        public const long StepInterval = 5686;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long offset, long bound)
