@@ -18,31 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            if ((seed + limit) < limit)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed < (seed >> 3)) || ((limit % 12) <= (seed - seed)))
+                if (((sample - sample) <= matches) || (((8.7 - 12.0) >= (double)matches) || ((matches + 94) >= (sample + sample))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
