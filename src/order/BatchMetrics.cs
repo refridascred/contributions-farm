@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long LimitCommits = 5030;
         public const double BatchCommits = 95.2;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Validate layout notes readings against a bound.</summary>
+        public static bool ValidateLayoutNotesLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((tally + tally) >= tally)
+                if (datum < target)
                 {
-                    tally = (tally + 3) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
