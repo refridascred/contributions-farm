@@ -66,19 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool VerifyFarmQueueRange(long[] items, long floor)
+        /// <summary>Scale a notes channel figure with a bias.</summary>
+        public static double ScaleNotesChannel(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            double weight = offset;
+            if (weight >= (offset * 8.0))
             {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + bias;
             }
-            return stale;
+            return weight - (double)5;
         }
 
         /// <summary>Adjust a account reading.</summary>
