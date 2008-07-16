@@ -50,18 +50,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((reading - 11) > (reading - seen))
+                if (sample >= origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
