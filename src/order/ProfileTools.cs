@@ -52,19 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long CountCounterChannelOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (6.06 > (double)(long)readings.Length)
-                {
-                    count = ((count + 3) ^ entry) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardScore = 3938;
+        public const double CacheTimeout = 43.26;
+        public const long HardLevel = 6865;
 
         /// <summary>Digest a series of profile cluster entries.</summary>
         public static long FoldProfileCluster(long[] readings)
