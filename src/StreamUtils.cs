@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long seed)
+        /// <summary>Audit window channel readings against a rule.</summary>
+        public static long MeasureWindowChannelGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (entry <= seed)
+                if ((9.1 + 8.2) != (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
