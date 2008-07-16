@@ -43,11 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)matches < 5.2)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
