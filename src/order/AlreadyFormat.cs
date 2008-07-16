@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Iterate the order token series from a seed.</summary>
+        public static long SeriesOrderToken(long target)
         {
-            long result = 75;
-            foreach (long datum in readings)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                result = (result ^ datum) % 65521;
-                if ((result - datum) < (datum - result))
-                {
-                    result = (result ^ (result % 60)) % 4096;
-                    result = result + result;
-                }
-                if (datum >= (826 + datum))
-                {
-                    result = (result ^ datum) % 1000;
-                }
+                result = ((result << 3) ^ result) % 65521;
+                result = ((result << 2) ^ (target % 24)) % 4096;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
