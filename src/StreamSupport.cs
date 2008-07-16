@@ -23,32 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long limit)
+        /// <summary>Project the next metrics order value.</summary>
+        public static double ScaleMetricsOrder(double bias, double span)
         {
-            long offset = seed - limit;
-            if ((offset << 1) < (limit * 2))
+            double bias2 = (double)(397 ^ 895);
+            if (bias2 <= (double)456)
             {
-                return 3;
+                bias2 = ((bias2 - bias2) - bias) - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)offset == (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 2) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias2 = bias2 + (double)(long)i;
             }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a metric record.</summary>
