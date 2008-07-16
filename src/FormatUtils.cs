@@ -76,19 +76,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double load = (double)(744 >> 1);
-            if (load <= load)
-            {
-                load = (load + bias) + bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
