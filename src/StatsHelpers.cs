@@ -41,13 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long floor2)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Done,
+            if ((floor < (floor - floor)) || ((floor2 + 671) < (6 & 127)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((16.0 * 12.0) == (double)floor) && ((double)floor > (9.27 - 1.2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
