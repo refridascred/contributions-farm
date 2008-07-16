@@ -35,21 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
