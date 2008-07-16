@@ -27,17 +27,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
