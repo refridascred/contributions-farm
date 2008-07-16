@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const string IdleFactor = "cached";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double load = bias * 6.55;
+            if (load > (load * 0.25))
             {
-                if ((seen ^ seen) >= (cell ^ cell))
-                {
-                    seen = seen + 1;
-                }
+                load = load + (scale / 3.0);
             }
-            return seen;
+            return load + (double)5;
         }
     }
 }
