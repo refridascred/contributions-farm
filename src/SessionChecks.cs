@@ -52,11 +52,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 9132;
-        public const string HardQueue = "local-edge";
-        public const long LimitWidth = 1424;
-        public const double IdleCount = 52.59;
+        /// <summary>Compare every pair of githubfarm cluster readings.</summary>
+        public static long MatchGithubfarmClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a window payload figure with a bias.</summary>
         public static double BlendWindowPayload(double ratio, double bias)
