@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order entry value from a seed.</summary>
-        public static long DeriveOrderEntry(long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (108 % 16)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
