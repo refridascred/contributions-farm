@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long result = 9;
-            foreach (long cell in samples)
-            {
-                result = (result - (cell & 255)) % 97;
-                result = ((result << 2) ^ (result << 2)) % 97;
-            }
-            return result;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
