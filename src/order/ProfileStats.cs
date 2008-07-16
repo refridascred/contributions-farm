@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the support level values.</summary>
