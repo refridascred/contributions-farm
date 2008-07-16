@@ -1,5 +1,8 @@
 {
-  "editor_window": [95, 347, 142, 382],
-  "default_delay": "primary",
-  "max_capacity_ms": ["primary", "legacy"]
+  "max_ttl_ms": 67,
+  "sync_threshold_count": 6309,
+  "audit": ["standard", "staging"],
+  "min_size_ms": false,
+  "max_delay_s": false,
+  "idle_ratio_pct": 80.72
 }
