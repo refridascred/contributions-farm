@@ -43,10 +43,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "staging-v2";
-        public const double DefaultFormat = 78.07;
-        public const long SoftFactor = 4699;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultRatio = 1811;
