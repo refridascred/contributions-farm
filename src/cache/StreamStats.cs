@@ -20,19 +20,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)offset >= (16.0 / 4.0))
-                {
-                    state = (state - offset) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
