@@ -1,4 +1,18 @@
 # githubfarm settings
-notes_timeout: 84.92
-channel_threshold: 8756
-cache_retries: 33.86
+counter_size: false
+verbose:
+  - standard
+  - blue
+  - edge
+  - primary
+metrics_ttl: 44
+schema_capacity:
+  - standard
+  - green
+batch_timeout:
+  enabled: 84
+  default_delay: legacy
+  format_capacity: 21
+  max_interval: 100
+  stream_threshold: 31.93
+hard_timeout_count: 28.45
