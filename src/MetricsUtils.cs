@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a cluster metric figure with a bias.</summary>
-        public static double ProjectClusterMetric(double weight, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            double mean = (weight + 1.44) + weight;
-            if (mean < (span + span))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (mean + span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (6.0 / 6.0);
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
