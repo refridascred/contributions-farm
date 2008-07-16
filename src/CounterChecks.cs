@@ -67,13 +67,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series)
         {
-            Locked,
-            Pending,
-            Ready,
-            Closed,
+            long result = 306;
+            foreach (long item in series)
+            {
+                result = (result - (item ^ result)) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
