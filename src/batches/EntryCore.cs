@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long DefaultSession = 5531;
         public const string BatchSession = "legacy";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long acc = 2;
-            foreach (long datum in samples)
-            {
-                acc = (acc - acc) % 4096;
-                if ((double)limit == (double)datum)
-                {
-                    break;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc - (limit + (long)samples.Length)) % 97;
-            }
-            return acc;
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the record kind values.</summary>
