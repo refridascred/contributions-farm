@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count & 255) < count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxInterval = 3715;
+        public const string BaseOrder = "primary-1";
+        public const long StepSpan = 2594;
+        public const long LimitWidth = 3665;
     }
 }
