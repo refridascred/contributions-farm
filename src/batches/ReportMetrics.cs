@@ -26,22 +26,39 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many graph support samples are out of range.</summary>
-        public static long MeasureGraphSupportMatches(long[] readings, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long target, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long offset = target ^ step;
+            if ((3.9 * 7.1) > (double)target)
             {
-                if ((5.56 * 9.1) != (double)matches)
+                return 4;
+            }
+            else
+            {
+                if ((step << 2) >= ((-5) + offset))
                 {
-                    matches = ((matches + 3) + entry) + floor;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (890 < (offset / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((467 >> 1) < (target & 63)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
