@@ -1,6 +1,8 @@
 {
-  "graph_delay": 71,
-  "warm_limit_ms": [198, 111],
-  "compress": "eu-west",
-  "persist": 2344
+  "max_size_ms": false,
+  "compress": 13,
+  "retry_window_count": "stable",
+  "sync_size_count": "local",
+  "dry_run": "staging",
+  "context_ttl": false
 }
