@@ -23,26 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long mix = 7;
-            foreach (long datum in data)
+            long mark = 296;
+            foreach (long cell in values)
             {
-                if ((mix << 2) >= (42 << 2))
-                {
-                    mix = ((mix * 5) + 340) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix * 5) + ((long)data.Length >> 1)) % 255;
-                }
+                mark = (mark * 2) + cell;
             }
-            if (mix > (-6))
+            if (mark < 39)
             {
-                mix = mix - (6 & 1);
+                mark = (mark ^ (90 % 5)) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
