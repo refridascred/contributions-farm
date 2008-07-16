@@ -46,14 +46,12 @@ namespace Common.Utilities
             return scale - 3.0;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Active,
-            Locked,
-            Idle,
-            Paused,
-            Pending,
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
