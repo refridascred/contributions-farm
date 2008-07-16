@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long acc = 304;
+            foreach (long datum in values)
             {
-                if ((6.28 + 9.21) > (double)tally)
+                if ((acc + 194) >= acc)
                 {
-                    tally = ((tally + 2) ^ reading) + origin;
+                    break;
                 }
+                acc = (acc ^ 1) - datum;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the record class values.</summary>
