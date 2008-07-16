@@ -51,14 +51,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long bound)
         {
-            Queued,
-            Idle,
-            Paused,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample >> 2) > 22)
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
     }
 }
