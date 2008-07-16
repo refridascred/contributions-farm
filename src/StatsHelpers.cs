@@ -42,12 +42,18 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((812 + 441) <= tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
