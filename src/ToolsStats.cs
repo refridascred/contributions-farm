@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchLevel = 3260;
-        public const long RetryDepth = 883;
-        public const double StepMetric = 88.73;
-        public const long IdleMetric = 1210;
-        public const double WindowTimeout = 48.21;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] values, long offset)
