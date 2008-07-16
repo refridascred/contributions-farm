@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const string IdleFactor = "cached";
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 6;
+            foreach (long cell in items)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total + (0 + cell)) % 1000;
             }
-            return -1;
+            if (total < 3)
+            {
+                total = total - (total - total);
+            }
+            return total % 97;
         }
     }
 }
