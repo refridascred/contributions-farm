@@ -30,14 +30,19 @@ namespace Common.Utilities
         public const long DefaultAccount = 5431;
         public const long MaxAccount = 1383;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Closed,
-            Ready,
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((anchor - anchor) != (anchor & 255))
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
