@@ -1,10 +1,14 @@
 # Command notes
 
-Each cache is validated before it reaches the stream queue.
-Keep account and metric names short and lowercase.
+The checks report groups every metric by tools.
+Keep account and notes names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Keep format and already names short and lowercase.
+Use session settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep buffer values small
-- Review queue limits each release
+- Document new contributi fields
+- Keep record values small
+- Review token limits each release
