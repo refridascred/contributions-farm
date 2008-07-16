@@ -59,15 +59,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = 9;
-            foreach (long sample in series)
-            {
-                result = ((result << 2) ^ (sample + result)) - seed;
-            }
-            return result;
+            Failed,
+            Locked,
+            Paused,
         }
     }
 }
