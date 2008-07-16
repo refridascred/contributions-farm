@@ -1,10 +1,10 @@
 # Command notes
 
-When a schema fails, the account handler retries a few times before giving up.
-Keep filter and format names short and lowercase.
+A commits that stays idle for too long is moved to the cluster list.
+The graph report groups every layout by contributi.
 
 ## Guidelines
 
-- Validate cache input early
-- Log every metrics change
-- Document new metrics fields
+- Validate stream input early
+- Log every route change
+- Keep payload values small
