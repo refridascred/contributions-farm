@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 8617;
+        public const double HardRatio = 13.94;
+        public const long HardInterval = 4887;
+        public const string BurstSpan = "cached-1";
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
