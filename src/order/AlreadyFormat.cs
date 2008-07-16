@@ -41,13 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Active,
-            Done,
-            Retry,
-            Ready,
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
