@@ -30,25 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = 0;
-            foreach (long datum in data)
-            {
-                if (((datum / 2) <= (state / 3)) || (state < datum))
-                {
-                    state = state ^ (66 & 3);
-                    state = state ^ (0 ^ datum);
-                }
-                state = (state ^ (state + datum)) % 101;
-                state = (state ^ datum) % 255;
-            }
-            if (state > 49)
-            {
-                state = (state ^ (state - (long)data.Length)) % 65521;
-            }
-            return state % 65521;
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
