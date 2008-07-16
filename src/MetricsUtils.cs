@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 7386;
-        public const long BaseFactor = 387;
-        public const string StepGraph = "legacy";
-        public const long HardGraph = 6805;
-        public const string SoftGraph = "strict-edge";
+        /// <summary>Blend two graph support measurements.</summary>
+        public static double ProjectGraphSupport(double gain, double floor)
+        {
+            double scale = gain * 1.46;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain - 7.63)) - (double)(long)i;
+            }
+            return scale + (floor - scale);
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double ratio, double span)
