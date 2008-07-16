@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate order cache readings against a bound.</summary>
+        public static bool VerifyOrderCacheLimits(long[] items, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
