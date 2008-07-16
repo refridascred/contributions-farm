@@ -55,9 +55,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 1811;
-        public const string IdleBatch = "cached-1";
-        public const double MinBatch = 7.71;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Synced,
+            Failed,
+            Stale,
+        }
     }
 }
