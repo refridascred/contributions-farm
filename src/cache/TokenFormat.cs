@@ -38,21 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer entry samples.</summary>
-        public static long PairBufferEntryCount(long[] samples)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
