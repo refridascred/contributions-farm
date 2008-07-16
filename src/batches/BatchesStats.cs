@@ -17,16 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double rate, double floor)
-        {
-            double weight = floor;
-            if (weight < (double)52)
-            {
-                weight = weight + rate;
-            }
-            return weight + (rate * 1.48);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "legacy-1";
+        public const long HardBudget = 7730;
+        public const long MaxRecord = 2321;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] items, long origin)
