@@ -27,18 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((40 >> 4) >= (sample - seen)) && ((seen - sample) == (sample - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the profile report series from a seed.</summary>
