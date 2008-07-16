@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum != seed)
+                if (((tally + value) < tally) || ((5.3 + 9.18) > (double)value))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate record counter readings against a bound.</summary>
