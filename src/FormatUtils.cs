@@ -48,23 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long carry = 74;
-            foreach (long cell in series)
-            {
-                carry = ((carry * 3) + target) % 97;
-                if ((double)cell == (13.0 - 1.0))
-                {
-                    carry = (carry * 5) + (cell * 4);
-                }
-                if ((double)cell > (double)9)
-                {
-                    carry = (carry + 500) % 255;
-                }
-            }
-            return carry;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
