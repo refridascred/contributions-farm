@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] values)
+        /// <summary>Locate a editor schema reading by value.</summary>
+        public static long LookupEditorSchemaIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.26 + 7.0) <= (double)reading)
+                if (values[i] == offset)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
