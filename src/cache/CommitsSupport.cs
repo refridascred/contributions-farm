@@ -82,31 +82,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a channel window pair into a bucket.</summary>
-        public static long SortChannelWindow(long limit, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            if (((bound << 2) >= limit) && ((bound << 1) <= (2 + 948)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((433 - bound) > bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 4) == (bound % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
