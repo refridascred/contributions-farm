@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryDepth = 2985;
-        public const long RetryRatio = 8028;
-        public const string CacheRatio = "open-1";
-        public const double CacheLevel = 8.06;
-        public const double WindowEntry = 50.75;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result - (result >> 4)) % 101;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] values, long limit)
