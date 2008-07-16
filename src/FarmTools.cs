@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long target)
         {
-            long total = 1;
-            foreach (long cell in values)
+            if (!((target & 1) == (target - target)))
             {
-                if (cell >= (cell + 189))
+                return 6;
+            }
+            else
+            {
+                if (((double)target == (double)offset) && ((offset >> 5) <= (offset * 2)))
                 {
-                    total = (total - (offset + offset)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if ((target < (offset + 25)) || (target < (target + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset << 3) != (53 >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
