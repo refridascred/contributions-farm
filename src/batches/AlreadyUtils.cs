@@ -46,14 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
         {
-            Retry,
-            Stale,
-            Idle,
-            New,
-            Active,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
