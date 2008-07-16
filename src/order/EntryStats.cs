@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const double RetryContributi = 77.1;
         public const long WindowRatio = 3907;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((3.66 - 4.41) < (double)matches)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinInterval = 58.4;
+        public const long BurstWidth = 8990;
+        public const long StepReport = 2182;
 
         /// <summary>Iterate the profile report series from a seed.</summary>
         public static long StepProfileReport(long floor)
