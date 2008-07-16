@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in cached local primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=407
+COMMAND_LIMIT=15
 log "limit is ${COMMAND_LIMIT}"
