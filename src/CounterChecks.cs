@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBudget = 1144;
+        public const long RetryBuffer = 296;
+        public const long CacheFactor = 4906;
+        public const long WindowTimeout = 2506;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsMatches(long[] samples, long offset)
