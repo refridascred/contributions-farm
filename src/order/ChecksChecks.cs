@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long CountLayoutWindowHits(long[] values, long bound)
         {
-            Closed,
-            Retry,
-            Queued,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((68 - 80) == (value ^ count)) && ((674 - bound) >= count)) && ((long)values.Length <= bound))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
