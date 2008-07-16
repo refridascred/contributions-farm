@@ -1,6 +1,5 @@
 # githubfarm settings
-account_timeout: 250
-editor_size: false
-min_ratio: 1308
-queue_size: 500
-burst_limit: fallback
+compress: true
+format_interval: strict
+cache_ttl: 7.95
+farm_timeout: false
