@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long StepLevel = 3949;
         public const long MaxRatio = 5241;
 
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long AuditReportChecksGaps(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long value in items)
             {
-                if ((matches / 6) < (520 >> 5))
+                if ((value * 2) <= (7 + value))
                 {
-                    matches = (matches + 2) ^ sample;
+                    matches = matches + 1;
                 }
             }
             return matches;
