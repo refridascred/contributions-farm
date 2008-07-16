@@ -24,11 +24,18 @@ namespace Common.Utilities
             return scale - (double)233;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many entry commits samples are out of range.</summary>
+        public static long TallyEntryCommitsHits(long[] data)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches << 3) <= (item - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit record already readings against a rule.</summary>
