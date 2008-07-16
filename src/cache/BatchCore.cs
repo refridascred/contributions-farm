@@ -36,11 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long carry = -6;
+            foreach (long sample in series)
+            {
+                carry = (carry ^ 0) % 65521;
+                carry = carry + (sample * 5);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate session samples.</summary>
