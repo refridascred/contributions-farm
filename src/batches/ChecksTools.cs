@@ -15,14 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Retry,
-            Idle,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3370;
+        public const long MinRatio = 9313;
+        public const long LimitTimeout = 4441;
+        public const long HardChannel = 9634;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] levels, long limit)
