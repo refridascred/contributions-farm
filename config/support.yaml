@@ -1,10 +1,21 @@
 # support settings
-batch_depth_ms: stable
-poll_size: 36
-max_capacity_count: true
-notes_size:
-  strict: 8007
-  payload_window: 71.85
-  soft_threshold_count: legacy
-  retry_window_ms: 5657
-  sync_window: staging
+base_timeout_pct: open
+base_timeout:
+  githubfarm_capacity: 18
+  max_capacity_count:
+    retry_size_count: true
+    route_window:
+      - 163
+      - 127
+    max_size_s: 100
+    hard_interval_ms: local
+  warm_ttl_count: eu-west
+  readonly: false
+verbose: 55
+warm_capacity_s: primary
+editor_capacity: 1024
+cache_threshold:
+  channel_window: false
+  record_threshold: strict
+  audit: false
+  base_window_s: cached
