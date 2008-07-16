@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 85.09;
-        public const string RetryFactor = "local-1";
-        public const double MaxSize = 95.46;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((long)data.Length + count) <= (count % 100))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryCount = 6328;
