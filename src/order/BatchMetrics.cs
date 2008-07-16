@@ -56,10 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultFactor = 1432;
-        public const double StepBudget = 93.24;
-        public const long CacheCommand = 2402;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
