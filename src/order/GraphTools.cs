@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long limit)
+        /// <summary>Check that every schema stream entry stays within the limit.</summary>
+        public static bool ValidateSchemaStreamLimits(long[] levels, long floor)
         {
-            if (((limit ^ limit) >= (limit << 2)) && ((1.29 * 2.63) > (double)limit))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= (5.5 - 2.14))
+                if (item < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (95 < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the queue phase values.</summary>
