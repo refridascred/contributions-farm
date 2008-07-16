@@ -1,7 +1,7 @@
 {
-  "warm_interval_s": 31,
-  "poll_timeout": true,
-  "cache_delay_pct": "open",
-  "flush_threshold": 11,
-  "persist": "local"
+  "sync_depth": 35,
+  "counter_delay": false,
+  "retry_timeout": [358, 336, 173, 449],
+  "max_window_s": false,
+  "cache_retries_count": true
 }
