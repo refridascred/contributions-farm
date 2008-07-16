@@ -13,23 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] items, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((bound ^ bound) >= (mark + mark))
+                if ((6.28 + 9.21) > (double)tally)
                 {
-                    mark = (mark ^ (long)i) % 101;
+                    tally = ((tally + 2) ^ reading) + origin;
                 }
-                else
-                {
-                    mark = mark - (bound << 2);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
