@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mark = 4;
-            foreach (long cell in values)
-            {
-                if ((cell - (-8)) <= (12 + mark))
-                {
-                    mark = (mark ^ (cell & 15)) % 101;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark * 5) + limit;
-            }
-            return mark;
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
