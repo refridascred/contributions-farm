@@ -24,11 +24,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc ^ ((long)i >> 4)) % 4096;
+                if ((seed / 8) >= (seed << 2))
+                {
+                    acc = (acc ^ acc) % 65521;
+                    acc = ((acc << 2) ^ (acc / 4)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
