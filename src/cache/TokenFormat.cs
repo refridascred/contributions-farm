@@ -40,13 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data, long limit)
         {
-            Draft,
-            Active,
-            Done,
-            New,
+            long mark = 70;
+            foreach (long item in data)
+            {
+                if ((221 / 5) > (171 - mark))
+                {
+                    mark = (mark - (mark - limit)) ^ item;
+                }
+            }
+            return mark;
         }
     }
 }
