@@ -19,15 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double ratio = 4.7;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (((ratio - ratio) - (double)(long)i) - rate) + offset;
-            }
-            return ratio - (double)3;
+            New,
+            Pending,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
