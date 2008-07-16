@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = 218;
+            foreach (long sample in values)
+            {
+                sum = ((((sum * 3) + (sum >> 3)) % 101) ^ sample) - offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Validate account batch readings against a bound.</summary>
