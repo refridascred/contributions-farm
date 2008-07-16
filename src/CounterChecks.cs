@@ -79,19 +79,18 @@ namespace Common.Utilities
         public const long DefaultSpan = 1605;
         public const long BurstProfile = 1280;
 
-        /// <summary>Project the next editor metrics value.</summary>
-        public static double ScaleEditorMetrics(double scale, double floor)
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long AuditCounterOrderHits(long[] data, long target)
         {
-            double ratio = 5.6;
-            if (ratio < scale)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio - floor;
+                if (((entry + entry) >= target) || (10.0 <= (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - ratio);
-            }
-            return ratio + (floor + ratio);
+            return hits;
         }
     }
 }
