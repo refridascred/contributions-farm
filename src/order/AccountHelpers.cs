@@ -31,18 +31,10 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchBudget = 92.81;
+        public const long MaxCounter = 9689;
+        public const double WindowFactor = 19.7;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
