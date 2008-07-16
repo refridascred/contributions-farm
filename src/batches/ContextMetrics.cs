@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (value <= seed)
+                if ((double)value >= (8.9 * 7.18))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
