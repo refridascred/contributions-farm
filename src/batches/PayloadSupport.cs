@@ -29,18 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >> 4) >= (hits & 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Queued,
         }
     }
 }
