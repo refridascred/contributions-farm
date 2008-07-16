@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < 5.0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Retry,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Project the next entry value.</summary>
