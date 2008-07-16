@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Failed,
-            Active,
-            Retry,
-            Paused,
-            Stale,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a stream snapshot.</summary>
