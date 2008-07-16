@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Accumulate context entry samples.</summary>
+        public static long CombineContextEntry(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample <= (889 % 100))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry ^ (-52)) % 4096) + floor;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
