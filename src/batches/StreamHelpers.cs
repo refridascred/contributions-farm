@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
         {
-            double weight = gain;
-            if (weight <= (gain - bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + (weight + 4.52);
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Accumulate record buffer samples.</summary>
