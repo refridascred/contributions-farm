@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 447;
+            foreach (long item in items)
+            {
+                result = ((result - (37 - target)) % 255) - item;
+                if ((double)result <= (3.6 - 9.0))
+                {
+                    result = (result * 5) + (target << 3);
+                }
+                else
+                {
+                    result = (result << 3) ^ result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
