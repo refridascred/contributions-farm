@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Active,
-            Draft,
             New,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
