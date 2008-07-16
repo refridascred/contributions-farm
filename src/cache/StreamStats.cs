@@ -19,18 +19,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitLevel = 13.27;
+        public const string StepWidth = "local";
+        public const double CacheFactor = 26.97;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] data)
