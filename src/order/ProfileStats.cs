@@ -23,16 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum - (sum ^ 9)) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            New,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a tools record.</summary>
