@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long MaxSpan = 9604;
         public const double MinSize = 83.2;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleLevel = 6902;
-        public const string BatchFormat = "standard";
-        public const long DefaultFormat = 8194;
-        public const long DefaultWidth = 5942;
-        public const double LimitFormat = 18.67;
+        /// <summary>Iterate the metrics buffer series from a seed.</summary>
+        public static long DeriveMetricsBuffer(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)score == (8.08 - 6.0))
+                {
+                    score = (score - (score - score)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next batches format value from a seed.</summary>
         public static long StepBatchesFormat(long seed)
