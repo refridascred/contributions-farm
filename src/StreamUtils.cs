@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Match up token report samples.</summary>
-        public static long CompareTokenReportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "open-1";
+        public const long LimitFilter = 177;
+        public const long BurstSpan = 9280;
+        public const long HardFactor = 1218;
+        public const string BurstFilter = "standard-v2";
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
