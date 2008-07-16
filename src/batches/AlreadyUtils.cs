@@ -29,11 +29,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchFactor = 9057;
-        public const string BurstReport = "staging-v2";
-        public const long MinSpan = 9484;
-        public const long WindowReport = 1746;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((hits + hits) >= hits) && ((value - value) >= value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] items, long step)
