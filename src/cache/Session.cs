@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double rate = offset;
-            if (rate > (offset - offset))
-            {
-                rate = (rate + (rate / 2.0)) - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (offset * 4.8);
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
