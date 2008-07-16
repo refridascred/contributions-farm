@@ -59,18 +59,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((count / 3) >= (datum - count)))
-                {
-                    count = count + 3;
-                }
+                total = (total * 3) + (long)i;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
