@@ -47,23 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            long mix = 847;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((cell + 409) <= (mix / 9))
+                if ((entry << 3) >= entry)
                 {
-                    break;
-                }
-                mix = (mix - cell) % 97;
-                if (84 < (mix % 60))
-                {
-                    mix = mix - (cell - cell);
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
