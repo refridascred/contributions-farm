@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
