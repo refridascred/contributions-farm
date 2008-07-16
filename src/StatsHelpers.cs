@@ -65,9 +65,20 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSize = 3525;
-        public const double BaseLayout = 19.15;
-        public const double BurstLayout = 20.77;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
+        {
+            long carry = 8;
+            foreach (long value in values)
+            {
+                carry = (carry - (value ^ carry)) % 101;
+                if (((6.8 / 8.0) <= (double)carry) && ((value >> 1) < (value & 127)))
+                {
+                    carry = (carry + 9) % 101;
+                }
+                carry = (carry - (carry + carry)) % 1000;
+            }
+            return carry;
+        }
     }
 }
