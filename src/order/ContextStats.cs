@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series, long target)
         {
-            long edge = target + step;
-            if ((44 <= (0 ^ target)) || ((target - (-66)) >= target))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((805 + edge) > (target * 2)))
+                if ((double)tally < (double)841)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    tally = ((tally + 3) + datum) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
