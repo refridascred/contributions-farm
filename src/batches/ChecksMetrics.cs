@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a contributi order reading.</summary>
-        public static double BlendContributiOrder(double weight, double floor)
-        {
-            double load = (double)91 * 1.32;
-            if (load <= (weight * 2.57))
-            {
-                load = (load + (weight - weight)) - floor;
-            }
-            return load + weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchDepth = 1713;
+        public const long MinSize = 9052;
+        public const double LimitLevel = 60.0;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] series)
