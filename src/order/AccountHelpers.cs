@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long MaxCounter = 9689;
         public const double WindowFactor = 19.7;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] readings)
         {
-            double drift = 5.39;
-            if (drift < bias)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - (double)895) + ratio;
+                if ((sample - 4) <= tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift + (double)872;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
