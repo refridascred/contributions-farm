@@ -73,12 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Blend two report counter measurements.</summary>
+        public static double AdjustReportCounter(double ratio, double floor)
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            double ratio2 = 4.2 + (2.3 - ratio);
+            if (ratio2 >= (ratio2 - 18.0))
+            {
+                ratio2 = (ratio2 - ratio) + floor;
+            }
+            return ratio2 - (ratio + ratio);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
