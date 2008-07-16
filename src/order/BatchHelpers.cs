@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long anchor = -997;
+            foreach (long datum in samples)
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor + (anchor - datum)) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a counter info.</summary>
