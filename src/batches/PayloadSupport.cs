@@ -29,12 +29,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Retry,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 9426;
+        public const double SoftOrder = 22.06;
+        public const double BatchFactor = 25.17;
     }
 }
