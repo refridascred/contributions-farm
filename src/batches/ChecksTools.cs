@@ -33,15 +33,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Project the next contributi metric value.</summary>
+        public static double AdjustContributiMetric(double weight, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            double drift = (weight / 7.0) - 0.5;
+            for (int i = 0; i < 2; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                drift = (drift + drift) - (double)(long)i;
             }
-            return acc;
+            return drift + (floor / 3.0);
         }
     }
 }
