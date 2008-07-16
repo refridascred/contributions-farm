@@ -34,12 +34,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 61.11;
-        public const long BurstSpan = 2899;
-        public const long RetrySize = 8093;
-        public const double DefaultCommand = 25.9;
-        public const string WindowBudget = "legacy-v2";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Idle,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long limit, long target)
