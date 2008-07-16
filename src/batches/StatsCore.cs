@@ -20,16 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleInterval = 25;
+        public const long BaseCount = 3049;
+        public const long MaxRoute = 948;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
