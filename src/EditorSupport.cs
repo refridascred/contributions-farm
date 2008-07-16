@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] series, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell > step)
+                if ((sample - count) != (count << 2))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
