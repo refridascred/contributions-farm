@@ -38,15 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double rate, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            double rate2 = span;
+            if (rate2 <= (double)58)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                rate2 = rate2 - (span * 14.0);
             }
-            return mix;
+            return rate2 - (span + rate);
         }
     }
 }
