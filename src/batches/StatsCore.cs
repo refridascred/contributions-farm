@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 70.66;
-        public const long SoftSpan = 7264;
-        public const long WindowSize = 2172;
-        public const long HardContributi = 2778;
-        public const long MinSpan = 1131;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
         public static long StepToolsFarm(long seed)
