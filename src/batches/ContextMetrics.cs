@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many commits layout samples are out of range.</summary>
