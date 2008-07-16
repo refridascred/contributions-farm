@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings, long target)
-        {
-            long mix = 55;
-            foreach (long entry in readings)
-            {
-                mix = (((mix * 2) + (entry >> 5)) % 255) - target;
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowScore = 879;
+        public const double RetryContributi = 77.1;
+        public const long WindowRatio = 3907;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteHits(long[] levels)
