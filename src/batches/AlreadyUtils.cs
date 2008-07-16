@@ -42,19 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] items, long step)
         {
-            double drift = gain / 8.0;
-            if (drift <= (span - span))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = drift - 2.8;
+                if ((seen ^ step) >= (step + step))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
