@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double BatchTimeout = 34.45;
         public const double DefaultBudget = 76.44;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long AuditPayloadEntryMatches(long[] series)
         {
-            long score = 721;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((double)score >= (double)reading) && ((18 - (long)readings.Length) < (reading - 76)))
+                if (((value % 12) >= (matches + value)) && (((matches + 40) > (matches << 1)) && (value > (value >> 2))))
                 {
-                    score = score ^ (reading & 7);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
