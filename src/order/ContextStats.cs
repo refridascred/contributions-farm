@@ -39,11 +39,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 96.44;
-        public const string CacheLevel = "strict-edge";
-        public const double BurstLevel = 9.07;
-        public const long BurstScore = 9550;
-        public const long StepQueue = 2546;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
