@@ -28,12 +28,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Classify a stats commits pair into a bucket.</summary>
+        public static long RankStatsCommits(long floor, long bound)
         {
-            Retry,
-            Locked,
-            Draft,
+            long edge = floor - bound;
+            if (floor <= (bound % 16))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor * 2) < edge) && ((double)floor < (5.7 * 14.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((edge + bound) > (floor + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count notes order pairs that satisfy a relation.</summary>
