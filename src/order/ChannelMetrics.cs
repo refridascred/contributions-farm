@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            long score = 346;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                score = (score << 2) ^ (reading % 10);
-                score = ((score * 5) + (offset + reading)) % 101;
+                if ((sample / 3) >= sample)
+                {
+                    seen = seen + 2;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
