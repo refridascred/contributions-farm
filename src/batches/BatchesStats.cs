@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Look up the position of a batch already sample.</summary>
+        public static long LocateBatchAlreadyIndex(long[] values, long seed)
         {
-            double weight = (double)((-5) - 631);
-            if (weight >= (bias - 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight + (weight - 1.3)) - bias2;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (weight - weight)) + (double)(long)i;
-            }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Combine support filter values into a single score.</summary>
