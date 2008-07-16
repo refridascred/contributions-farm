@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool GuardMetricsMetricLimits(long[] series, long offset)
+        /// <summary>Validate farm checks readings against a bound.</summary>
+        public static bool VerifyFarmChecksRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (reading > offset)
+                if (sample < target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
