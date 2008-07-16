@@ -47,24 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi layout value against two limits.</summary>
-        public static long GradeContributiLayout(long step, long step2)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if (781 < (step2 + step2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= (6.5 - 17.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
