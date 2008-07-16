@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long limit, long limit2)
         {
-            long total = 8;
-            foreach (long entry in levels)
+            if (((limit / 6) < (limit2 << 1)) || ((double)limit == (double)92))
             {
-                total = (total - (entry / 7)) + step;
+                return 2;
             }
-            if (total > 6)
+            else
             {
-                total = total ^ 91;
+                if (!((limit - limit) < (limit2 + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit2 + limit) <= (limit >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
