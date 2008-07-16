@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Failed,
-            Paused,
-            Dropped,
-            Synced,
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the schema class values.</summary>
