@@ -1,6 +1,7 @@
 # support settings
-audit: true
-strict: 3044
-batch_depth_pct: 50.83
-retry_limit_pct: 29
-sync_ratio_pct: 52.18
+default_interval: false
+sync_threshold_count: edge
+command_threshold: 1024
+max_threshold_s: 7773
+hard_threshold_ms: green
+cache_ttl: 95
