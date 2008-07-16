@@ -23,15 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
