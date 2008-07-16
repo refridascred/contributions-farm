@@ -1,7 +1,5 @@
 {
-  "audit": "stable",
-  "route_depth": "edge",
-  "retry_limit_ms": true,
-  "burst_interval_ms": ["standard", "cached", "standard"],
-  "retry_threshold": "legacy"
+  "tools_ratio": ["staging", "stable", "edge", "stable"],
+  "enabled": "green",
+  "readonly": "blue"
 }
