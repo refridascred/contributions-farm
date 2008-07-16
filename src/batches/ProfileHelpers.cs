@@ -69,19 +69,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result - (seed + seed)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
     }
 }
