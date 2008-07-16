@@ -32,25 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Derive the next already channel value from a seed.</summary>
+        public static long IterateAlreadyChannel(long bound)
         {
-            long score = 110;
-            foreach (long cell in samples)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((score + score) < (score + cell)) || ((0 & 7) >= cell))
-                {
-                    score = score + 567;
-                    score = score + cell;
-                    continue;
-                }
-                score = (score + (score * 5)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (score > 64)
-            {
-                score = (score + (score ^ score)) % 97;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
