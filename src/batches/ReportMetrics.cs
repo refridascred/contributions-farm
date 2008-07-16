@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long TallyProfileFormatGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((limit - tally) <= (73 - 9)) || ((12.0 / 6.0) <= (double)tally))
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseCount = 11.84;
+        public const long LimitToken = 9344;
+        public const long LimitDepth = 6098;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterMatches(long[] items, long origin)
