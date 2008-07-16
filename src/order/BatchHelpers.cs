@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (item >= seed)
+                if ((matches < (9 * 4)) || ((8.02 / 7.0) > (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 3) - cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
