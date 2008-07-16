@@ -1,16 +1,14 @@
 # entry settings
-warm_size_count: primary
-metric_timeout:
-  - latest
-  - blue
-  - open
-  - green
-audit: 2
-farm_ratio: 1024
-batch_threshold_ms: 25
-max_retries_count:
-  flush_ratio: 250
-  commits_window: 86
-  warm_depth_pct:
-    - 112
-    - 342
+verbose: 29.7
+compress: true
+default_interval_pct: 7
+hard_timeout:
+  batches_size: true
+  flush_ttl_pct: primary
+  burst_size:
+    - primary
+    - local
+    - eu-west
+  editor_limit: 5222
+  min_retries_ms: 5960
+  strict: 500
