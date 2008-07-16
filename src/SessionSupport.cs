@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Rank route queue input into a small class.</summary>
+        public static long BucketRouteQueue(long target, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long bound = target ^ limit;
+            if ((target * 5) == (bound + limit))
             {
-                if ((item + 299) >= (item ^ 698))
+                return 2;
+            }
+            else
+            {
+                if ((target + limit) > (limit & 3))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (5.0 + 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
