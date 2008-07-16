@@ -70,18 +70,9 @@ namespace Common.Utilities
         public const double DefaultFormat = 78.07;
         public const long SoftFactor = 4699;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] data)
-        {
-            long state = -164;
-            foreach (long cell in data)
-            {
-                if ((cell >> 5) < (6 * 2))
-                {
-                    state = (state + cell) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 1811;
+        public const string IdleBatch = "cached-1";
+        public const double MinBatch = 7.71;
     }
 }
