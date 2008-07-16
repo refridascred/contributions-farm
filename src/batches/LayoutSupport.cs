@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long target, long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
         {
-            if ((double)target != (13.0 * 19.0))
+            double ratio = bias;
+            if (ratio <= bias)
             {
-                return 8;
+                ratio = ratio + bias;
             }
             else
             {
-                if (step > 0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step <= (target / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (9.7 <= (4.75 / 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = ratio + scale;
             }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the entry phase values.</summary>
