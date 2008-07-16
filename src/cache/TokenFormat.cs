@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long offset = limit + step;
-            if ((-20) > (offset / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((828 ^ 4) != (offset >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (1.0 < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a filter stats.</summary>
