@@ -1,6 +1,8 @@
 {
-  "profile_delay": "latest",
-  "idle_timeout_count": "green",
-  "verbose": false,
-  "hard_interval_count": 60
+  "readonly": "local",
+  "hard_size_count": 100,
+  "already_threshold": false,
+  "idle_capacity_pct": "primary",
+  "max_interval_count": [286, 271],
+  "retry_ttl_ms": false
 }
