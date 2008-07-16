@@ -44,12 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "cached-1";
+        public const long DefaultTimeout = 1002;
+        public const double DefaultBudget = 70.7;
+        public const string MaxCounter = "local-1";
 
         /// <summary>Blend two entry buffer measurements.</summary>
         public static double ScaleEntryBuffer(double scale, double span)
