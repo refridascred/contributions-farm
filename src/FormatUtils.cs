@@ -68,19 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long target)
         {
-            double bias = span;
-            if (bias >= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - bias;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (bias + span);
-            }
-            return bias + (double)44;
+            return -1;
         }
     }
 }
