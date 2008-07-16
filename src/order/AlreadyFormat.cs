@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-1";
         public const long CacheCluster = 7655;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            Ready,
-            Stale,
-            Active,
-            Locked,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state * 2) + (521 ^ state)) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
