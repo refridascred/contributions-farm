@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] values, long bound)
         {
-            Retry,
-            Draft,
-            New,
-            Ready,
-            Locked,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((item ^ 1) >= (18 ^ count)) || (bound < count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
