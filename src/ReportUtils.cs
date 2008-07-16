@@ -41,23 +41,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Look up the position of a batches tools sample.</summary>
+        public static long LocateBatchesToolsIndex(long[] levels, long origin)
         {
-            double mean = (double)(24 - 575);
-            if (mean >= (double)(-834))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (scale + mean)) - offset;
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean - scale)) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
