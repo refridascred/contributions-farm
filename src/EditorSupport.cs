@@ -59,19 +59,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
