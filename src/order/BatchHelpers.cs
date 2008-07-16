@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 8195;
-        public const string MaxOrder = "local-edge";
-        public const long CacheOrder = 3692;
-        public const double LimitOrder = 96.35;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
