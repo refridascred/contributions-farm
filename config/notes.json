@@ -1,20 +1,16 @@
 {
-  "batch_timeout": {
-    "cache_capacity_pct": 30,
-    "batches_ratio": [460, 427, 262, 320],
-    "counter_depth": "standard",
-    "hard_timeout_ms": true,
-    "farm_size": {
-      "buffer_size": "fallback",
-      "flush_capacity": 22.66,
-      "stats_interval": 250,
-      "verbose": 47.47,
-      "default_window": "latest"
+  "base_timeout": 4476,
+  "readonly": 77,
+  "poll_size": {
+    "verbose": 46,
+    "tools_ratio": "fallback",
+    "flush_ratio_count": "green",
+    "enabled": {
+      "retry_timeout": 4440,
+      "verbose": "stable",
+      "route_delay": 60
     },
-    "verbose": 100
-  },
-  "cache_timeout": ["cached", "local", "primary", "open"],
-  "audit": 500,
-  "cache_retries": 2.47,
-  "verbose": "edge"
+    "sync_limit_s": 9114,
+    "batch_timeout": 13
+  }
 }
