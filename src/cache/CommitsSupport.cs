@@ -46,18 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = 37;
+            foreach (long sample in samples)
             {
-                if (reading <= 45)
+                mix = (mix ^ (124 ^ mix)) + floor;
+                if (1 <= (sample ^ mix))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (mix < 0)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
