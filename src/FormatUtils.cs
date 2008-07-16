@@ -76,12 +76,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
