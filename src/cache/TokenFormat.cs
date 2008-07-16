@@ -35,24 +35,13 @@ namespace Common.Utilities
             return bias2 + gain;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((limit << 2) == (limit & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if (6.8 >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Active,
+            Done,
+            New,
         }
     }
 }
