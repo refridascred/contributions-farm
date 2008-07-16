@@ -24,13 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many account commits samples are out of range.</summary>
+        public static long CountAccountCommitsMatches(long[] values)
         {
-            New,
-            Ready,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((tally / 2) <= ((long)values.Length * 3)) || ((double)tally <= (double)14))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next contributi metric value.</summary>
