@@ -44,30 +44,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cache batch counter forward.</summary>
-        public static long IterateCacheBatch(long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long total = 43;
+            foreach (long cell in samples)
             {
-                if ((9.13 - 3.3) >= (double)bound)
-                {
-                    state = state ^ (long)i;
-                    state = (state * 4) + (state / 8);
-                }
-                if ((bound + state) <= (state ^ state))
-                {
-                    state = ((state * 3) + state) % 97;
-                    break;
-                }
-                else
-                {
-                    state = (state << 2) ^ ((long)i / 4);
-                    state = (state - (state >> 4)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                total = ((total ^ (4 + 5)) % 101) ^ cell;
+                total = (total ^ (total * 2)) % 65521;
             }
-            return state;
+            if (total > (-151))
+            {
+                total = ((total << 3) ^ (total >> 1)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
