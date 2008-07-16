@@ -1,8 +1,8 @@
-id,count,rank,active
-1,local,438,649
-2,50.65,cached,42.8
-3,open,4.87,cached
-4,eu-west,staging,25.27
-5,58,757,latest
-6,42.28,cached,75.9
-7,29.31,46.98,7.38
+id,token,region
+1,latest,84
+2,eu-west,staging
+3,18.45,43.96
+4,standard,67.51
+5,375,51.18
+6,latest,168
+7,206,latest
