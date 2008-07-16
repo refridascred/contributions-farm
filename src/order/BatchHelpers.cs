@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Draft,
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
