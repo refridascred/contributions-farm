@@ -1,9 +1,5 @@
 {
-  "sync_timeout_s": true,
-  "idle_interval_s": 6811,
-  "cache_ttl": {
-    "buffer_threshold": "open",
-    "hard_size_pct": 31,
-    "readonly": false
-  }
+  "order_timeout": true,
+  "profile_ratio": 17.27,
+  "readonly": false
 }
