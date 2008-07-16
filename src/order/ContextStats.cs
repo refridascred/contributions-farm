@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] levels, long target)
         {
-            long total = 9;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((total ^ offset) <= (total + total))
+                if (tally < (cell - (long)levels.Length))
                 {
-                    total = ((total << 3) ^ (345 / 7)) + datum;
+                    tally = (tally + 1) + target;
                 }
             }
-            if (total > (-95))
-            {
-                total = (total * 5) + (total + offset);
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
