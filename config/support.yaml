@@ -1,21 +1,4 @@
 # support settings
-retry_depth_count: 60.76
-readonly:
-  poll_delay_ms: 526
-  flush_size_s: 5117
-  warm_limit_ms: false
-  profile_ttl: 4510
-tools_timeout: 19.6
-counter_delay: fallback
-default_retries_pct:
-  burst_interval_pct: green
-  strict: 39
-  soft_limit: blue
-  token_delay: true
-  batches_limit: blue
-  record_size: 100
-hard_size_count:
-  - strict
-  - eu-west
-  - primary
-  - green
+notes_interval: false
+compress: standard
+readonly: false
