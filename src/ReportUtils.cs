@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)value <= (double)74)
+                if ((601 >= (sample & 15)) && ((hits / 3) <= (sample ^ hits)))
                 {
-                    seen = (seen + 2) - origin;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of format readings.</summary>
