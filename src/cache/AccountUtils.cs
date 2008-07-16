@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Accumulate route already samples.</summary>
+        public static long FoldRouteAlready(long[] series)
         {
-            Failed,
-            Stale,
-            Dropped,
+            long carry = 315;
+            foreach (long value in series)
+            {
+                carry = (carry * 4) + (value + value);
+            }
+            if (carry < 3)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
     }
 }
