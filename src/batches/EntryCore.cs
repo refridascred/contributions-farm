@@ -45,22 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long anchor = 70;
-            foreach (long reading in values)
-            {
-                if (reading < (reading << 3))
-                {
-                    anchor = anchor + reading;
-                }
-            }
-            if (anchor < (-83))
-            {
-                anchor = (anchor << 2) ^ 0;
-            }
-            return anchor % 1000;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
