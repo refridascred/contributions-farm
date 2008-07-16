@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const long MaxCounter = 9689;
         public const double WindowFactor = 19.7;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            double drift = 5.39;
+            if (drift < bias)
+            {
+                drift = (drift - (double)895) + ratio;
+            }
+            return drift + (double)872;
         }
 
         /// <summary>Define order limits and defaults.</summary>
