@@ -13,26 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels, long floor)
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long DeriveCacheReport(long offset)
         {
-            long mark = -21;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < floor)
-                {
-                    mark = (mark << 2) ^ floor;
-                }
-                else
-                {
-                    mark = mark - item;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (mark > 604)
-            {
-                mark = ((mark << 3) ^ (mark + 2)) % 65521;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
