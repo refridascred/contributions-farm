@@ -20,20 +20,12 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Iterate the stats queue series from a seed.</summary>
-        public static long IterateStatsQueue(long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((sum - sum) < (sum + 19))
-                {
-                    sum = ((sum << 2) ^ ((long)i * 2)) % 65521;
-                    sum = sum + (origin / 9);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
