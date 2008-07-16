@@ -50,38 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long seed, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            if (seed >= bound)
+            double mean = weight;
+            if (mean >= (double)439)
             {
-                return 0;
+                mean = (mean - (weight * 9.5)) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound < (11.0 * 4.44))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >> 4) >= 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((90 ^ 8) > seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mean = (mean + weight) + (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
