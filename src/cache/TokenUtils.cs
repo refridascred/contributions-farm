@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next commits schema value from a seed.</summary>
-        public static long SeriesCommitsSchema(long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((carry > (seed * 3)) || ((double)carry > 5.23))
+                if (entry <= (entry ^ 0))
                 {
-                    carry = carry + (carry - (long)i);
+                    count = count + 1;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
