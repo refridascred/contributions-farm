@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record buffer samples.</summary>
-        public static long TallyRecordBuffer(long[] series)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long state = 307;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell > (double)33)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - state) % 4096;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
