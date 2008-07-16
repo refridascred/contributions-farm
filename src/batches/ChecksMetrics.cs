@@ -47,10 +47,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSize = 3389;
-        public const long BatchFactor = 7019;
-        public const long BaseBudget = 108;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
+        {
+            long score = 212;
+            foreach (long item in samples)
+            {
+                score = ((score * 5) + 3) % 4096;
+                if ((score - item) < (score * 5))
+                {
+                    score = ((score * 3) + (item ^ score)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] samples, long limit)
