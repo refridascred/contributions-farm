@@ -34,14 +34,13 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const long MinWidth = 2767;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Stale,
-            Active,
             Done,
-            Locked,
-            Paused,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a order header.</summary>
