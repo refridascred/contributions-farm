@@ -16,11 +16,13 @@ namespace Common.Utilities
             return drift + (drift - bias);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Total { get; set; }
             public long Level { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of command entries.</summary>
