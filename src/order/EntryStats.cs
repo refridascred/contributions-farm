@@ -28,23 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile tools readings.</summary>
-        public static long ScoreProfileTools(long[] data, long limit)
+        /// <summary>Iterate the profile report series from a seed.</summary>
+        public static long StepProfileReport(long floor)
         {
-            long result = 20;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 4) + (cell % 12)) % 1000;
-                if (limit > (result & 15))
+                long lane = ((long)i & 7) * 2;
+                carry = (carry - (lane - floor)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    result = (result + (cell + result)) % 97;
+                    lane = (((lane << 3) ^ lane) % 65521) + (long)i2;
                 }
-                if ((cell * 5) == (limit % 97))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
