@@ -41,24 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long floor2)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long target)
         {
-            if ((floor < (floor - floor)) || ((floor2 + 671) < (6 & 127)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((16.0 * 12.0) == (double)floor) && ((double)floor > (9.27 - 1.2)))
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
