@@ -65,9 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 7084;
-        public const string StepCounter = "primary-edge";
-        public const long RetryDepth = 6773;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples, long limit)
+        {
+            long mark = 576;
+            foreach (long entry in samples)
+            {
+                mark = (((mark << 3) ^ (76 - mark)) + entry) - limit;
+            }
+            if (mark < 3)
+            {
+                mark = (mark + (3 + 21)) % 101;
+            }
+            return mark % 65521;
+        }
     }
 }
