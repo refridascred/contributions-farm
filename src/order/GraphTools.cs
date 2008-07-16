@@ -39,14 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long floor)
         {
-            New,
-            Pending,
-            Failed,
-            Retry,
-            Synced,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
