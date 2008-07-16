@@ -13,16 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Iterate the order tools series from a seed.</summary>
+        public static long SeriesOrderTools(long target)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score * 5) + ((long)i % 8)) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                long offset = (target - (long)i) + (target - sum);
+                long hits = (offset << 3) - sum;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (sum + hits) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
