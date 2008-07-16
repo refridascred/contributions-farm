@@ -15,20 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double span)
-        {
-            double rate2 = span;
-            if (rate2 > 4.3)
-            {
-                rate2 = rate2 + (rate - span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - span) + (double)(long)i;
-            }
-            return rate2 + (span + rate2);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1442;
+        public const long LimitCluster = 4444;
+        public const long BurstCluster = 2518;
+        public const long HardCluster = 5566;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double bias, double floor)
