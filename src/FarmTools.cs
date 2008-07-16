@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            if (!((7.54 / 7.0) < (double)seed))
+            double scale = 11.0;
+            if (scale >= (double)13)
             {
-                return 5;
+                scale = scale - (weight - weight);
             }
             else
             {
-                if (!((seed - seed) == (seed << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = scale + 8.78;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (span / 6.0)) + (double)(long)i;
+            }
+            return scale - (double)461;
         }
 
         /// <summary>Hold a profile info.</summary>
