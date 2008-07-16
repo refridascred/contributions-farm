@@ -25,32 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank githubfarm commits input into a small class.</summary>
-        public static long SortGithubfarmCommits(long origin, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long offset)
         {
-            long cur = origin - floor;
-            if (origin <= 388)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= (cur << 3))
+                if (sample != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor >> 3) > floor) || ((origin >> 1) == (85 << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
