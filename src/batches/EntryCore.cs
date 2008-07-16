@@ -15,12 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] items)
         {
-            Stale,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!(item < count) && (5 >= (count + count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
