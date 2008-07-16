@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Closed,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate buffer editor samples.</summary>
