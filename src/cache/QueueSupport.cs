@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] samples, long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
