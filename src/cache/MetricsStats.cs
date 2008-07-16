@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Queued,
-            Locked,
+            Active,
             New,
-            Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
