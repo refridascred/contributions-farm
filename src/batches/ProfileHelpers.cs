@@ -50,23 +50,21 @@ namespace Common.Utilities
         public const double DefaultBudget = 70.7;
         public const string MaxCounter = "local-1";
 
-        /// <summary>Blend two entry buffer measurements.</summary>
-        public static double ScaleEntryBuffer(double scale, double span)
+        /// <summary>Count record filter pairs that satisfy a relation.</summary>
+        public static long CompareRecordFilterCount(long[] values)
         {
-            double rate = scale;
-            if (rate >= (double)(-4))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + 9.7;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + 9.81;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + span;
+            return hits;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
