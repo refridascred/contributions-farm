@@ -60,12 +60,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long target)
         {
-            Draft,
-            Locked,
-            Ready,
+            long next = bound - target;
+            if ((9.9 - 15.0) >= (double)next)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (4.52 + 6.4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
