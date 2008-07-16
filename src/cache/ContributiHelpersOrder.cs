@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (scale - (span / 5.0)) + rate;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= (matches >> 3))
+                if (((reading % 8) == (count ^ 410)) || (count < ((long)levels.Length & 7)))
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
