@@ -70,19 +70,31 @@ namespace Common.Utilities
             return gain - 5.49;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long step, long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            if (!((step << 3) <= step))
             {
-                if (cell < target)
+                return 3;
+            }
+            else
+            {
+                if ((offset & 15) > (step - offset))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (offset % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
