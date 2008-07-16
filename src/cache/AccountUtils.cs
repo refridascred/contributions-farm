@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long seed)
         {
-            double ratio2 = 0.6;
-            if (ratio2 <= (ratio - ratio))
+            bool stale = true;
+            foreach (long value in values)
             {
-                ratio2 = (ratio2 - ratio2) + floor;
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)31;
-            }
-            return ratio2 + (ratio * 3.07);
+            return stale;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
