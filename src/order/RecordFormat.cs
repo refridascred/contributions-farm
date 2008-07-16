@@ -34,39 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload farm pair into a bucket.</summary>
-        public static long SortPayloadFarm(long bound, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long next = bound - step;
-            if ((step & 255) <= step)
+            long total = 611;
+            foreach (long entry in samples)
             {
-                return 6;
+                total = ((total << 3) ^ entry) % 101;
             }
-            else
-            {
-                if ((bound % 8) > (bound & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + 1) <= (-70))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - next) < step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the schema mode values.</summary>
