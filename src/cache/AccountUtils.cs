@@ -29,19 +29,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool ValidateMetricBatchesRange(long[] levels, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (item <= seed)
+                if (sample < bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
