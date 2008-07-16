@@ -1,8 +1,16 @@
 # support settings
-idle_interval: 57
-cache_size: 82.4
-sync_capacity_count: 3973
-batch_capacity_s:
-  poll_ttl_count: 97
-  tools_timeout: 3290
-  strict: 26.02
+idle_window_ms:
+  - cached
+  - local
+compress:
+  - strict
+  - staging
+  - local
+  - edge
+counter_ttl:
+  batch_retries_s: 20
+  farm_depth: blue
+  batch_delay_s: cached
+  soft_delay_count: standard
+  burst_depth: 51.94
+  route_depth: true
