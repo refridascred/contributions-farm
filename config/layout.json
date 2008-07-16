@@ -1,6 +1,7 @@
 {
-  "flush_interval": false,
-  "soft_threshold": 1024,
-  "contributi_window": "legacy",
-  "compress": 3.06
+  "filter_ratio": ["latest", "eu-west", "standard", "eu-west"],
+  "readonly": ["open", "fallback"],
+  "min_delay": "edge",
+  "idle_size_pct": 250,
+  "max_window_s": [405, 324, 72]
 }
