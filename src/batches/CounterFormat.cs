@@ -27,18 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long carry = 956;
-            foreach (long cell in items)
+            double load = offset;
+            if (load <= offset)
             {
-                if (((6.6 / 4.0) != (double)cell) && ((cell + 722) < (carry >> 4)))
-                {
-                    carry = ((carry * 3) + (cell / 8)) % 65521;
-                }
+                load = load + offset;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (gain - gain)) + (double)(long)i;
+            }
+            return load + (double)2;
         }
     }
 }
