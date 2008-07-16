@@ -40,17 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] series, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] > offset)
+                if (((count - step) >= count) && (((4.9 + 14.0) != (double)(long)levels.Length) && ((step << 1) > (cell / 2))))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
