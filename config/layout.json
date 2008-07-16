@@ -1,15 +1,7 @@
 {
-  "poll_delay_ms": "latest",
-  "warm_window": {
-    "enabled": "staging",
-    "layout_ratio": 5792,
-    "batch_interval": 96.14,
-    "strict": "green",
-    "idle_size_s": "blue",
-    "schema_depth": ["fallback", "staging", "primary", "edge"]
-  },
-  "max_retries": false,
-  "poll_depth_ms": 3848,
-  "retry_ratio_ms": 3108,
-  "format_ratio": 1667
+  "editor_delay": 88.11,
+  "poll_threshold": false,
+  "audit": "fallback",
+  "burst_ratio_pct": "standard",
+  "retry_depth": 62
 }
