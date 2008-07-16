@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] levels, long offset)
         {
-            if (69 > (seed + origin))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 16) < (origin - seed))
+                if (value >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((11.0 - 18.0) != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
