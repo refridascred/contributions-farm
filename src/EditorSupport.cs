@@ -45,10 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitWidth = 5986;
-        public const double BaseChannel = 47.83;
-        public const double BurstChannel = 94.65;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            if (ratio2 >= ratio)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + 11.0) + (double)(long)i;
+            }
+            return ratio2 + ratio;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long seed)
