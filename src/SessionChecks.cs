@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long step)
         {
-            long score = 55;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((score + cell) > 0) || ((10.0 + 3.0) <= (double)cell))
+                if (values[i] <= step)
                 {
-                    score = (score << 2) ^ (cell & 3);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a stream context value against two limits.</summary>
