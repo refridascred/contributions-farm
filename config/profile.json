@@ -1,12 +1,17 @@
 {
-  "entry_interval": "local",
-  "entry_size": ["cached", "cached"],
-  "min_interval": true,
-  "payload_timeout": {
-    "checks_ttl": "local",
-    "strict": [420, 378],
-    "idle_retries_pct": "stable"
+  "retry_capacity_pct": 9734,
+  "default_limit": 9460,
+  "strict": {
+    "report_threshold": "eu-west",
+    "batches_threshold": 93,
+    "token_capacity": {
+      "compress": 250,
+      "default_window_pct": "fallback",
+      "burst_capacity": 1024,
+      "base_interval_s": true
+    }
   },
-  "hard_ttl_count": ["eu-west", "open", "stable"],
-  "batch_ttl_count": false
+  "schema_limit": "latest",
+  "base_limit": 1494,
+  "retry_ttl": 59.53
 }
