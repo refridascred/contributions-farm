@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const double SoftLevel = 98.24;
         public const long MinSize = 623;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long step)
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long MeasureMetricsEditorHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (data[i] >= step)
+                if ((tally % 2) > reading)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
