@@ -1,5 +1,25 @@
 # entry settings
-readonly: true
-base_window_pct: open
-audit: 250
-compress: latest
+default_depth_pct:
+  poll_size_s: blue
+  token_delay: primary
+  soft_interval:
+    - staging
+    - stable
+  poll_threshold: cached
+  soft_timeout: strict
+  account_window: 15.4
+already_threshold:
+  - 14
+  - 45
+order_limit: false
+retry_depth: open
+default_capacity: false
+audit:
+  batch_interval_count: edge
+  readonly:
+    - open
+    - edge
+    - stable
+  max_timeout_pct: cached
+  already_ttl: false
+  counter_depth: 7035
