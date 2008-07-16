@@ -27,20 +27,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            double mean = floor * 7.03;
+            if (mean > mean)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry - (carry + carry)) % 101) - (long)i2;
-                }
-                carry = (carry + (carry & 1)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                mean = mean + (double)0;
             }
-            return carry;
+            else
+            {
+                mean = mean + 19.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (ratio - 13.0);
         }
     }
 }
