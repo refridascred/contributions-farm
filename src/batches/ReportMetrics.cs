@@ -33,15 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double ratio, double bias)
-        {
-            double load = (double)(932 + 46);
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)(long)i) - ratio;
-            }
-            return load + (bias / 5.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCount = 6857;
+        public const long LimitCommits = 940;
+        public const string BatchTimeout = "staging-v2";
+        public const string BaseCommits = "fallback-edge";
+        public const double MaxCommits = 21.9;
     }
 }
