@@ -41,18 +41,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = 648;
+            foreach (long item in values)
             {
-                if ((261 + sample) < (sample - 876))
+                if (!((origin ^ state) >= (state - origin)))
                 {
-                    seen = seen + 2;
+                    state = ((state * 4) + (origin + state)) ^ item;
                 }
             }
-            return seen;
+            return state % 97;
         }
     }
 }
