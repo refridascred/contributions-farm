@@ -17,19 +17,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a stats queue figure with a bias.</summary>
-        public static double SmoothStatsQueue(double bias, double offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long origin)
         {
-            double mean = (double)(9 + 18);
-            if (mean >= (offset + mean))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - bias;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (2.3 - mean);
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
