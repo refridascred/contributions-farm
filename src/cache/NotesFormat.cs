@@ -49,15 +49,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 6;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((19.0 * 4.0) < (double)sample)
+                {
+                    score = score + (5 + score);
+                }
+                else
+                {
+                    score = (score - (sample * 5)) % 255;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score - sample) % 1000) + (long)i;
+                }
+                if (score >= (sample >> 5))
+                {
+                    score = (score ^ ((-8) / 4)) % 97;
+                }
             }
-            return mark;
+            return score % 65521;
         }
     }
 }
