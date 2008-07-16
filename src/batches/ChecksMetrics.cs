@@ -40,14 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 2070;
+        public const string MinWidth = "stable-1";
+        public const string StepTimeout = "local-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double IdleLevel = 93.61;
