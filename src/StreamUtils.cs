@@ -31,13 +31,11 @@ namespace Common.Utilities
         public const string StepFactor = "cached-v2";
         public const long LimitPayload = 2075;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
