@@ -23,31 +23,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long bound2)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((double)bound2 < (double)648)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 % 12) >= (bound2 >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 * 4) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
