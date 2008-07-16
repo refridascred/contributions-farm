@@ -65,17 +65,15 @@ namespace Common.Utilities
         public const double StepAlready = 24.57;
         public const long HardAlready = 6035;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] levels, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
