@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Locate a route channel reading by value.</summary>
+        public static long LocateRouteChannelIndex(long[] items, long target)
         {
-            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= target)
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
