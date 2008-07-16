@@ -50,9 +50,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheScore = "legacy-edge";
-        public const double IdleContributi = 39.55;
-        public const double StepInterval = 18.8;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Stale,
+            Ready,
+            Closed,
+            Draft,
+            Failed,
+        }
     }
 }
