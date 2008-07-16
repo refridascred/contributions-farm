@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a channel profile figure with a bias.</summary>
-        public static double ProjectChannelProfile(double gain, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings)
         {
-            double scale = gain;
-            if (scale > 5.2)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                scale = scale + scale;
+                if ((0.9 / 6.0) < (double)matches)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (offset * 6.0)) - (double)(long)i;
-            }
-            return scale - (double)233;
+            return matches;
         }
 
         /// <summary>Measure how many entry commits samples are out of range.</summary>
