@@ -1,15 +1,13 @@
 # Command notes
 
-The cluster report groups every token by githubfarm.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Run the metrics check before changing any metrics limits.
+Use graph settings to tune how often cluster data is refreshed.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the support handler retries a few times before giving up.
-Use batch settings to tune how often graph data is refreshed.
+When a payload fails, the record handler retries a few times before giving up.
+When a queue fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every layout change
-- Validate layout input early
-- Document new tools fields
-- Prefer channel defaults
+- Document new contributi fields
+- Keep route values small
+- Log every schema change
