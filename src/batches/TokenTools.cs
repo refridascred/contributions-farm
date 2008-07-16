@@ -25,19 +25,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] levels, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long gap = floor - seed;
+            if ((double)gap <= (double)6)
             {
-                if (item >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((7.7 * 6.0) != (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 3) != (gap % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
