@@ -33,13 +33,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the schema route series from a seed.</summary>
+        public static long DeriveSchemaRoute(long offset)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((7.12 - 19.0) != (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ (offset + offset)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a notes reading.</summary>
