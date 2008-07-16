@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Paused,
-            Closed,
-            New,
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
