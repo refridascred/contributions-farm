@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next stream editor value from a seed.</summary>
-        public static long DeriveStreamEditor(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin * 2) <= (state - origin))
-                {
-                    state = state - (3 - origin);
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheInterval = 18.1;
+        public const long WindowWidth = 193;
+        public const long HardReport = 4453;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long target, long floor)
