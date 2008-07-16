@@ -33,15 +33,9 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const string IdleFactor = "cached";
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double bias)
-        {
-            double load = bias * 6.55;
-            if (load > (load * 0.25))
-            {
-                load = load + (scale / 3.0);
-            }
-            return load + (double)5;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseDepth = 4964;
+        public const long CacheSchema = 6081;
+        public const long StepSchema = 3274;
     }
 }
