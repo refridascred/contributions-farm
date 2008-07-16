@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches notes entries.</summary>
-        public static long ScoreBatchesNotes(long[] items, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series, long seed)
         {
-            long total = -96;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((1.0 * 17.0) == (double)value)
+                if ((((seed - 606) != (item * 2)) && ((double)seed > (4.4 * 9.19))) && ((matches % 8) == (matches - seed)))
                 {
-                    total = (total - (value - total)) % 255;
-                }
-                if (!(bound > value))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
