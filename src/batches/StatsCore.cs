@@ -37,15 +37,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Adjust a report graph reading.</summary>
+        public static double ScaleReportGraph(double scale, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            double mean = (double)542 - span;
+            return (mean + (3.2 / 8.0)) + scale;
         }
 
         /// <summary>Hold a buffer record.</summary>
