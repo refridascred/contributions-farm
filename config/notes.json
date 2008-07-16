@@ -1,17 +1,5 @@
 {
-  "readonly": [171, 46, 334, 251],
-  "compress": {
-    "verbose": "primary",
-    "soft_limit_ms": "local",
-    "batch_window": {
-      "idle_window_s": 500,
-      "soft_ratio_s": ["green", "strict", "cached"],
-      "base_window": "staging",
-      "audit": 48,
-      "sync_capacity": 30
-    }
-  },
-  "burst_limit_count": [216, 286, 469],
-  "idle_retries_s": 250,
-  "warm_ttl_pct": 9261
+  "sync_capacity": "eu-west",
+  "command_ratio": true,
+  "metrics_window": 4325
 }
