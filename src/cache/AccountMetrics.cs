@@ -51,15 +51,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a graph commits figure with a bias.</summary>
-        public static double SmoothGraphCommits(double ratio, double bias)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (ratio / 2.0)) - (double)(long)i;
-            }
-            return drift - (bias - drift);
+            Active,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
