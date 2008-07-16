@@ -41,19 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long value in values)
             {
-                if ((double)datum == (17.0 - 4.2))
+                if ((seen / 2) > seen)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 3) ^ value) + bound;
                 }
             }
             return seen;
