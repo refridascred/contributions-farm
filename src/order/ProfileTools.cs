@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long step)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (12.0 / 5.0) * 3.0;
+            if (bias2 <= bias)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (rate + bias2);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Describe the queue kind values.</summary>
