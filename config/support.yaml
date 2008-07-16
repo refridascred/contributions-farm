@@ -1,5 +1,5 @@
 # support settings
-payload_ratio: cached
-stream_interval: 49
-account_size: 500
-checks_threshold: fallback
+graph_window: eu-west
+verbose: 250
+readonly: 337
+retry_window_pct: 19.39
