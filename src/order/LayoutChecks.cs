@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((entry * 5) < (long)data.Length))
-                {
-                    count = count + 2;
-                }
+                mix = (mix + ((long)i - (-99))) % 101;
+                mix = (mix + ((long)i ^ 400)) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine command values into a single score.</summary>
