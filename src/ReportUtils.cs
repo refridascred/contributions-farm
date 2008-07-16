@@ -65,22 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = -691;
-            foreach (long sample in levels)
-            {
-                if ((sample / 2) < carry)
-                {
-                    carry = (carry + (sample - target)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (target << 2)) % 255;
-                }
-            }
-            return carry % 97;
+            Done,
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
