@@ -69,11 +69,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
