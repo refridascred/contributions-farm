@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 58;
+            foreach (long cell in samples)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                mix = ((((mix * 2) + mix) % 255) + cell) + offset;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the channel level values.</summary>
