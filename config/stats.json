@@ -1,20 +1,6 @@
 {
-  "max_limit_ms": 52,
-  "filter_ttl": ["fallback", "stable", "primary", "green"],
-  "warm_size_pct": {
-    "enabled": "blue",
-    "warm_delay_count": 1024,
-    "counter_timeout": {
-      "metrics_capacity": "edge",
-      "sync_retries": 81.8,
-      "max_timeout": 100,
-      "idle_capacity_pct": 30,
-      "session_limit": "primary"
-    },
-    "warm_window_s": ["green", "standard", "staging", "edge"],
-    "min_capacity": "edge",
-    "hard_ratio": "latest"
-  },
-  "audit": 30,
-  "verbose": "open"
+  "graph_delay": 71,
+  "warm_limit_ms": [198, 111],
+  "compress": "eu-west",
+  "persist": 2344
 }
