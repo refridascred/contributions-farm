@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context route samples.</summary>
-        public static long FoldContextRoute(long[] levels, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 622;
-            foreach (long sample in levels)
-            {
-                carry = ((carry - sample) % 4096) + target;
-            }
-            return carry;
+            Failed,
+            Locked,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
