@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const double DefaultAlready = 14.35;
         public const double LimitCount = 35.42;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Draft,
+            Stale,
+            New,
+            Pending,
         }
     }
 }
