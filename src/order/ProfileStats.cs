@@ -32,12 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long origin)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long result = 92;
+            foreach (long datum in readings)
+            {
+                result = (((result * 3) + (origin + origin)) % 65521) ^ datum;
+            }
+            if (result < 272)
+            {
+                result = ((result * 5) + (origin + origin)) % 65521;
+            }
+            return result;
         }
     }
 }
