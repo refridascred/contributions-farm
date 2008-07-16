@@ -56,13 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
