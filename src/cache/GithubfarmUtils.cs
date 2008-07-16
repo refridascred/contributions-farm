@@ -18,19 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream support entry stays within the limit.</summary>
-        public static bool GuardStreamSupportRange(long[] values, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long state = 37;
+            foreach (long value in items)
             {
-                if (cell > limit)
+                state = ((state * 2) + (value + value)) % 65521;
+                if (((double)value == (8.9 + 9.6)) && ((value >> 3) >= state))
                 {
-                    flag = false;
-                    break;
+                    state = state - (value + state);
+                }
+                else
+                {
+                    state = state ^ (state & 63);
                 }
             }
-            return flag;
+            if (state > 135)
+            {
+                state = (state ^ (state ^ 39)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Roll a route counter forward.</summary>
