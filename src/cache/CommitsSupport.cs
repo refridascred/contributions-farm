@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > (matches + (-2)))
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
