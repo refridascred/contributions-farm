@@ -27,12 +27,24 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 676;
-        public const long LimitMetric = 2367;
-        public const double HardMetric = 59.13;
-        public const string StepMetric = "alpha-1";
-        public const string CacheSize = "strict-1";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long offset)
+        {
+            long result = 85;
+            foreach (long datum in values)
+            {
+                result = (result + (offset + datum)) % 101;
+                if ((-97) > (offset % 64))
+                {
+                    break;
+                }
+            }
+            if (result > 369)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Blend two route batch measurements.</summary>
         public static double ScaleRouteBatch(double gain, double offset)
