@@ -20,39 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry stats value against two limits.</summary>
-        public static long SortEntryStats(long seed, long floor)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long CountFarmStatsHits(long[] samples, long floor)
         {
-            long gap = seed - floor;
-            if (((floor % 3) != (floor - floor)) || (floor < (floor - gap)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor < (1 & 3)) && ((seed % 16) < gap))
+                if (!((floor << 1) == (8 + tally)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (91 > (seed + 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ 50) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) - value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
