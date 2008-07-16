@@ -37,11 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Look up the position of a buffer window sample.</summary>
+        public static long SeekBufferWindowIndex(long[] items, long step)
         {
-            double bias2 = (rate * 4.49) - bias;
-            return bias2 - rate;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
