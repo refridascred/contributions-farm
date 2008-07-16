@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((long)data.Length + count) <= (count % 100))
+                if (reading > origin)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
