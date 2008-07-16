@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] samples, long target)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
