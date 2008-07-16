@@ -1,4 +1,4 @@
 # entry settings
-default_window: false
-format_window: 5
-verbose: fallback
+default_interval_ms: 60
+token_interval: 69
+base_ttl_count: staging
