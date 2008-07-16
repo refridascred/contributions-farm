@@ -91,10 +91,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepBudget = "primary-1";
-        public const string RetryChannel = "strict";
-        public const double SoftChannel = 50.83;
-        public const string HardChannel = "staging-1";
+        /// <summary>Classify a stats context pair into a bucket.</summary>
+        public static long BucketStatsContext(long step, long floor)
+        {
+            long slot = step - floor;
+            if (slot > (floor % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 97) == (floor << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - step) >= (floor + 17))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
