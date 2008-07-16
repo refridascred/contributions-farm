@@ -45,18 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] data, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((4 % 16) > (sample * 3)) && ((1.4 + 9.1) >= (double)origin))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a editor record.</summary>
