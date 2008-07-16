@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long limit)
         {
-            double mean = (4.76 + rate) - span;
-            if (mean > rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (7.8 + span);
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - span;
+            return -1;
         }
 
         /// <summary>Count the cache profile entries that pass the check.</summary>
