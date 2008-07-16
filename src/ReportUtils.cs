@@ -41,10 +41,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSize = 7517;
-        public const string DefaultTools = "stable-1";
-        public const long IdleBudget = 414;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double offset)
+        {
+            double mean = (double)(24 - 575);
+            if (mean >= (double)(-834))
+            {
+                mean = (mean - (scale + mean)) - offset;
+            }
+            else
+            {
+                mean = mean - (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean - scale)) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
         public static long RollCounterStream(long offset)
