@@ -40,18 +40,12 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] samples, long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) > seen)
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up window editor samples.</summary>
