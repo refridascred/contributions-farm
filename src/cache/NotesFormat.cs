@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const long BurstChecks = 6273;
         public const long HardSize = 577;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels, long offset)
-        {
-            long sum = 90;
-            foreach (long cell in levels)
-            {
-                sum = (sum - (40 + sum)) % 1000;
-                sum = (sum ^ (743 + cell)) % 255;
-                if ((double)offset < (double)942)
-                {
-                    sum = sum ^ (offset * 4);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 2396;
+        public const double BatchTools = 79.9;
+        public const long BaseLevel = 6715;
 
         /// <summary>Fold a list of layout context readings.</summary>
         public static long CombineLayoutContext(long[] items, long target)
