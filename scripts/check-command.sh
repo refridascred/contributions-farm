@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=13
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest eu-west cached; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=218
-log "limit is ${COMMAND_LIMIT}"
