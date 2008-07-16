@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftTimeout = 9991;
-        public const long BatchInterval = 8945;
-        public const double StepLevel = 6.75;
-        public const long SoftGithubfarm = 7932;
+        /// <summary>Compare every pair of context session readings.</summary>
+        public static long OverlapContextSessionCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
