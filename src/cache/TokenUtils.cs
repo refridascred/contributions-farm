@@ -13,32 +13,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            long delta = offset + floor;
-            if (!(offset >= (1 & 15)))
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                sum = ((sum * 2) + (sum * 2)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((4.3 * 3.0) == (double)delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((810 % 7) <= (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
