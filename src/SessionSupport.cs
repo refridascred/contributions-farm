@@ -21,10 +21,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowSize = "alpha-edge";
-        public const long HardFarm = 4736;
-        public const double MaxScore = 64.5;
-        public const long BaseInterval = 2700;
+        /// <summary>Derive the next support cluster value from a seed.</summary>
+        public static long IterateSupportCluster(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
