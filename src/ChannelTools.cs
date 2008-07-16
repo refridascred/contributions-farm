@@ -24,11 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Compare every pair of window farm readings.</summary>
+        public static long CompareWindowFarmCount(long[] items)
         {
-            double bias2 = bias / 9.0;
-            return bias2 + scale;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
