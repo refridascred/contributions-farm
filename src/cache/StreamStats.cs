@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheTimeout = "open-1";
+        public const double SoftFormat = 79.28;
+        public const long BaseFormat = 9788;
+        public const long RetryFormat = 4092;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
