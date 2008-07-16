@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] items, long seed)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
