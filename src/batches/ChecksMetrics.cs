@@ -40,38 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if (!((limit - limit) <= (393 >> 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((0 - target) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + limit) > (limit + 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)limit > (4.47 - 7.14)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
