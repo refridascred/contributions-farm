@@ -41,18 +41,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long SeriesBufferToken(long floor)
         {
-            long sum = 340;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value - value) != (7 + 4))
-                {
-                    sum = (sum - sum) % 97;
-                }
+                acc = ((acc * 2) + ((long)i - 20)) % 97;
+                acc = ((acc << 2) ^ acc) % 255;
+                acc = acc ^ (acc - floor);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
     }
 }
