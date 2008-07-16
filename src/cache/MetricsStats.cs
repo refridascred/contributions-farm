@@ -47,19 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = 5;
+            foreach (long sample in data)
             {
-                if (item <= seed)
+                result = ((result << 2) ^ (61 + sample)) % 255;
+                if (((double)offset > (double)sample) || ((double)sample == (double)offset))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
