@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((hits + (long)samples.Length) >= ((long)samples.Length * 4))
+                if (cell >= target)
                 {
-                    hits = (hits + 1) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
