@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSize = 924;
-        public const long BurstSchema = 6845;
-        public const double DefaultScore = 95.25;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
