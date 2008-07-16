@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const string StepRatio = "cached-edge";
         public const long MinSupport = 5477;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] samples, long target)
+        /// <summary>Derive the next format already value from a seed.</summary>
+        public static long RollFormatAlready(long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample <= target)
+                if (!((sum / 9) <= sum))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (sum - step)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
