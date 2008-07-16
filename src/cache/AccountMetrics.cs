@@ -61,21 +61,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi batches readings.</summary>
-        public static long OverlapContributiBatchesCount(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor ^ datum) > (anchor >> 3)) || ((datum >> 1) <= (anchor * 4)))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (0 << 1)) % 4096;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
     }
 }
