@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Audit layout entry readings against a rule.</summary>
+        public static long MeasureLayoutEntryMatches(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = (score + score) % 101;
-                score = ((score * 2) + (long)i) % 4093;
+                if (!((hits - sample) != (678 ^ hits)) || ((double)hits <= 9.6))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
