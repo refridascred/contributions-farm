@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate account batch readings against a bound.</summary>
+        public static bool GuardAccountBatchBounds(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a buffer options.</summary>
