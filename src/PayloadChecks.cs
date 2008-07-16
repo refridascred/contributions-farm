@@ -91,32 +91,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a stats context pair into a bucket.</summary>
-        public static long BucketStatsContext(long step, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] items)
         {
-            long slot = step - floor;
-            if (slot > (floor % 60))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 97) == (floor << 3))
+                if ((39 + hits) != (item % 60))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - step) >= (floor + 17))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
