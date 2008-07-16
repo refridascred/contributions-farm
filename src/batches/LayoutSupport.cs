@@ -56,19 +56,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double ratio = 18.0;
+            if (ratio >= (ratio - 18.0))
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio - ratio) - scale) + offset;
             }
-            return ok;
+            return ratio + 14.0;
         }
     }
 }
