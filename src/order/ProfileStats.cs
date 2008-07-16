@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Find the first channel farm entry that matches the target.</summary>
+        public static long LookupChannelFarmIndex(long[] levels, long floor)
         {
-            Paused,
-            Dropped,
-            Stale,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
