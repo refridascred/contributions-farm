@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=25
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in green edge; do
-    log "checking ${item}"
-done
