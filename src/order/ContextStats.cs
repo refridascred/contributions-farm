@@ -31,13 +31,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Done,
-            Stale,
-            Ready,
-            Locked,
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
