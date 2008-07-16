@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((2.21 + 11.0) >= (double)(long)i)
-                {
-                    carry = carry - offset;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of token contributi readings.</summary>
