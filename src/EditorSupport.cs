@@ -66,13 +66,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Stale,
+            Retry,
+            Closed,
             Active,
-            Idle,
-            Locked,
+            Done,
+            Pending,
         }
     }
 }
