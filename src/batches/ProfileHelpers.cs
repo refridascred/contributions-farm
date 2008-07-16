@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading < (3.02 / 2.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
