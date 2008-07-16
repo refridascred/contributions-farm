@@ -23,14 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long AuditQueueTokenMatches(long[] readings)
         {
-            Paused,
-            Closed,
-            Dropped,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits % 3) > (hits % 10))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the report editor entries that pass the check.</summary>
