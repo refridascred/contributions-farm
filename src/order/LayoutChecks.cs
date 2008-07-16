@@ -72,21 +72,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Roll a command checks counter forward.</summary>
+        public static long IterateCommandChecks(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = ((anchor * 2) + floor) % 4096;
+                if (!((anchor - anchor) >= (anchor % 12)))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - anchor) % 97;
+                    anchor = ((anchor << 3) ^ (long)i) % 97;
                 }
+                anchor = (anchor * 4) + (floor - floor);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
