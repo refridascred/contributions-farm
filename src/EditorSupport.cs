@@ -42,13 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit buffer tools readings against a rule.</summary>
+        public static long AuditBufferToolsHits(long[] levels)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits + hits) <= (9 + 293))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
