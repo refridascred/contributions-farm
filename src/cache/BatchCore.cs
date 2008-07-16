@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values, long seed)
         {
-            if (((-3) + seed) == ((-402) >> 1))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (9.52 * 9.6))
+                if (hits < 2)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = ((hits + 2) + item) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two batch layout measurements.</summary>
