@@ -30,17 +30,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                if (((9.94 * 9.0) > (double)tally) && (origin < (cell >> 5)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
