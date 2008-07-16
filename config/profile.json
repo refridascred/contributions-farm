@@ -1,5 +1,6 @@
 {
-  "batch_threshold_s": "open",
-  "poll_capacity_pct": true,
-  "persist": 58.1
+  "batch_ratio_count": "strict",
+  "sync_ratio_ms": "legacy",
+  "stats_retries": ["stable", "standard", "fallback"],
+  "already_depth": false
 }
