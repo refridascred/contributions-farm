@@ -30,10 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinTimeout = "strict-edge";
-        public const long BatchChannel = 3516;
-        public const long StepFactor = 9059;
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long AuditChecksSupportOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((9 ^ tally) > tally)
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] data)
