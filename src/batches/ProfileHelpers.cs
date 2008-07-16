@@ -29,19 +29,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long state = -16;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (state < (state + state))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - (value - state)) % 65521;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + 61) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
