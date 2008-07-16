@@ -37,19 +37,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] values, long offset)
         {
-            long score = 991;
-            foreach (long entry in items)
+            long state = 1;
+            foreach (long item in values)
             {
-                score = ((score ^ 9) % 97) - target;
-                if ((double)entry > (double)score)
+                if ((984 + state) <= (offset << 3))
                 {
-                    score = score ^ 0;
+                    state = (state - (state + 34)) % 255;
                 }
+                state = (state << 2) ^ (state - offset);
+                state = state ^ (81 + item);
             }
-            return score % 4096;
+            return state % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
