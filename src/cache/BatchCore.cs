@@ -30,17 +30,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - (sum >> 5)) % 97;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 676;
+        public const long LimitMetric = 2367;
+        public const double HardMetric = 59.13;
+        public const string StepMetric = "alpha-1";
+        public const string CacheSize = "strict-1";
 
         /// <summary>Blend two route batch measurements.</summary>
         public static double ScaleRouteBatch(double gain, double offset)
