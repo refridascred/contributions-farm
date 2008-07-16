@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] items)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length / 3) > (matches + datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
