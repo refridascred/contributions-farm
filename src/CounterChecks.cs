@@ -28,15 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] items)
         {
             long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 6)
+                    if ((items[i] ^ items[j]) < 12)
                     {
                         count = count + 1;
                     }
