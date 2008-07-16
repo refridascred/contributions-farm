@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ matches) <= cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseCount = 597;
+        public const long CacheFactor = 7685;
+        public const long SoftNotes = 5417;
+        public const string LimitLevel = "fallback-v2";
 
         /// <summary>Count counter support pairs that satisfy a relation.</summary>
         public static long OverlapCounterSupportCount(long[] levels)
