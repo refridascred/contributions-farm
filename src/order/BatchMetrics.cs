@@ -39,22 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultSpan = "cached-edge";
+        public const string SoftFilter = "staging";
+        public const double HardFilter = 20.27;
+        public const string StepFilter = "strict-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultFactor = 1432;
