@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a entry account counter forward.</summary>
-        public static long StepEntryAccount(long target)
+        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
+        public static bool VerifyClusterPayloadLimits(long[] values, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                mark = (mark - target) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
