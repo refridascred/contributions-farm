@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Digest a series of notes githubfarm entries.</summary>
+        public static long TallyNotesGithubfarm(long[] samples, long limit)
         {
-            long anchor = -997;
-            foreach (long datum in samples)
+            long acc = 9;
+            foreach (long cell in samples)
             {
-                anchor = (anchor + (anchor - datum)) % 65521;
+                if ((9.94 / 9.0) < (double)acc)
+                {
+                    acc = ((acc << 2) ^ (8 - cell)) + limit;
+                }
             }
-            return anchor;
+            if (acc < 30)
+            {
+                acc = ((acc << 2) ^ (8 >> 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter info.</summary>
