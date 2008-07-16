@@ -57,18 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer graph samples are out of range.</summary>
-        public static long TallyBufferGraphGaps(long[] data)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((((reading - reading) == (reading >> 1)) || ((reading * 3) != ((long)data.Length / 7))) && ((seen ^ reading) > (seen * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
