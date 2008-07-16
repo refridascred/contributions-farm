@@ -40,17 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache commits reading by value.</summary>
-        public static long LookupCacheCommitsIndex(long[] values, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > step)
+                if ((anchor % 10) <= (bound % 100))
                 {
-                    return (long)i;
+                    anchor = anchor - ((long)i ^ 622);
+                    anchor = (anchor << 3) ^ (73 - bound);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
