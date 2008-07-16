@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the farm cluster entries that pass the check.</summary>
-        public static long MeasureFarmClusterHits(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = 47;
+            foreach (long cell in values)
             {
-                if (3.9 > (double)hits)
+                carry = carry + (long)values.Length;
+                if ((long)values.Length != (cell ^ origin))
                 {
-                    hits = (hits + 1) - item;
+                    break;
                 }
             }
-            return hits;
+            if (carry > 83)
+            {
+                carry = (carry + (origin + (long)values.Length)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
