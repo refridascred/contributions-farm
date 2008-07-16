@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell < (cell - 42))
+                if (((double)target != (4.0 + 7.5)) && (2 > (target / 3)))
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                else
+                {
+                    state = (state ^ (state - state)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
