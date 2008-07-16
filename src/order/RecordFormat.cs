@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftSpan = 5677;
+        public const double HardBudget = 93.66;
+        public const double MaxRoute = 51.54;
+        public const long IdleTimeout = 8710;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftTimeout = 7746;
