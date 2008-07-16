@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a contributi entry.</summary>
