@@ -13,15 +13,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            double drift = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift - (floor + rate)) + (double)(long)i;
+                mark = (mark - (13 << 2)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return drift - (double)841;
+            return mark;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
