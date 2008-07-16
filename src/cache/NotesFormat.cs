@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((item + seen) >= (606 - item))
+                if ((hits - value) <= (value + hits))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
