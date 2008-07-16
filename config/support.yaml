@@ -1,19 +1,25 @@
 # support settings
-verbose: 0.26
-audit:
-  warm_limit: 36.91
-  cache_depth_s: true
-  cache_delay: 4438
-dry_run: local
-max_retries_pct:
-  batch_capacity_ms:
-    - 55
-    - 44
-    - 399
-  warm_ratio: 6377
-  batch_limit_ms:
-    - fallback
-    - blue
-  soft_interval: 66.19
-  soft_depth: open
-  enabled: 30
+buffer_capacity: staging
+layout_capacity:
+  dry_run:
+    format_capacity:
+      - standard
+      - eu-west
+      - strict
+    batch_delay_ms: 1962
+    burst_ratio: 250
+    metrics_ttl:
+      - primary
+      - strict
+      - standard
+  sync_timeout: 100
+  burst_size_s:
+    - 261
+    - 62
+    - 216
+audit: 500
+retry_ttl_count:
+  verbose: 46.14
+  strict: cached
+  batch_retries_s: 500
+payload_ratio: strict
