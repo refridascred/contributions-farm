@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long CountLayoutWindowHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((((68 - 80) == (value ^ count)) && ((674 - bound) >= count)) && ((long)values.Length <= bound))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 1385;
+        public const long DefaultDepth = 7222;
+        public const long HardFactor = 9230;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long seed, long seed2)
