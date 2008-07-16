@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank already batch input into a small class.</summary>
-        public static long ClassifyAlreadyBatch(long target, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long gap = target + origin;
-            if (700 <= (target - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)gap == (double)9) && ((gap + gap) <= (target & 63)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)gap > (13.0 - 9.86))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((gap >> 2) > (gap + origin)) && ((double)origin > 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
