@@ -1,6 +1,32 @@
 # githubfarm settings
-base_retries_pct: open
-max_depth: 76
-token_limit: staging
-burst_threshold: true
-soft_delay_s: 9445
+default_capacity_s:
+  sync_capacity_s: 3.88
+  cache_limit:
+    burst_depth_pct: 8515
+    schema_ratio: 250
+    already_window: green
+    dry_run: 6650
+    entry_retries: 250
+  batch_delay_pct: false
+  strict:
+    - 23
+    - 402
+    - 185
+    - 457
+  layout_interval:
+    - fallback
+    - edge
+already_interval: green
+strict:
+  tools_timeout: 36.56
+  layout_depth:
+    - stable
+    - green
+    - local
+    - cached
+  poll_window:
+    - 266
+    - 119
+  max_size: blue
+dry_run: 16
+soft_size: 82.05
