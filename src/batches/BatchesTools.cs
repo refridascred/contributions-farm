@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Scale a format command figure with a bias.</summary>
+        public static double SmoothFormatCommand(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum > (double)32))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double bias = scale;
+            return (bias + 8.2) + floor;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
