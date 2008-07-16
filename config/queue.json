@@ -1,5 +1,8 @@
 {
-  "batches_limit": 2,
-  "persist": 60.1,
-  "sync_delay_count": 34.97
+  "token_size": 1028,
+  "base_ratio": 9818,
+  "base_timeout_count": 14.27,
+  "warm_depth": 1,
+  "cache_delay": false,
+  "retry_delay_pct": true
 }
