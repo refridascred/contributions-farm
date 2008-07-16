@@ -51,12 +51,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of contributi session entries.</summary>
+        public static long TallyContributiSession(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long acc = 94;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (((acc + (target & 127)) % 4096) + (long)i) + cell;
+                }
+                acc = (acc * 3) + target;
+                acc = (acc + target) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
