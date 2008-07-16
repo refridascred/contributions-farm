@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the record stream entries that pass the check.</summary>
-        public static long CountRecordStreamHits(long[] data)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((9.61 * 9.9) == (double)tally) && ((9.5 * 3.5) < (double)entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the queue phase values.</summary>
