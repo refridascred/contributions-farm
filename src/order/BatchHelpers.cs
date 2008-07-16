@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long CacheOrder = 3692;
         public const double LimitOrder = 96.35;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Queued,
-            Synced,
-            New,
-            Failed,
-            Closed,
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up contributi stream samples.</summary>
