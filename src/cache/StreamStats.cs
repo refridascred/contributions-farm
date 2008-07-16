@@ -19,10 +19,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitLevel = 13.27;
-        public const string StepWidth = "local";
-        public const double CacheFactor = 26.97;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)offset >= (16.0 / 4.0))
+                {
+                    state = (state - offset) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] data)
