@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "primary-1";
-        public const double HardLevel = 31.03;
-        public const double HardQueue = 25.95;
-        public const string SoftScore = "strict";
-        public const long SoftRatio = 3955;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitWidth = 9905;
+        public const double HardPayload = 21.35;
+        public const long RetryScore = 4505;
+        public const double BatchRatio = 79.87;
+        public const long MaxLevel = 5393;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
