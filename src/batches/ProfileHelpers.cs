@@ -29,18 +29,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] levels, long floor)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4 / 7) != (entry - floor))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
