@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item + 76) < (offset - 59))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5404;
+        public const long IdleMetrics = 1120;
+        public const long MinCount = 8743;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] series)
