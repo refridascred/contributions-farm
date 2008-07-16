@@ -49,13 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            Dropped,
-            Closed,
-            Stale,
-            New,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
