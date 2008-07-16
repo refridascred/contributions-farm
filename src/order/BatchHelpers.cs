@@ -23,13 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepFactor = 3964;
+        public const long MaxStream = 36;
+        public const string BurstStream = "fallback-v2";
 
         /// <summary>Classify a report stream pair into a bucket.</summary>
         public static long RankReportStream(long offset, long seed)
