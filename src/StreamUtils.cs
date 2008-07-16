@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            double load = weight;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 2) + (bound >> 2)) % 65521;
-                if (!(((long)i + bound) != (long)i))
-                {
-                    total = ((total << 2) ^ ((long)i + (long)i)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                load = (load - (offset * 7.6)) + (double)(long)i;
             }
-            return total;
+            return load + 7.73;
         }
 
         /// <summary>Define token limits and defaults.</summary>
