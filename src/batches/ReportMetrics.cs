@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
