@@ -40,17 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools checks entry that matches the target.</summary>
-        public static long FindToolsChecksIndex(long[] samples, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -87;
+            foreach (long value in readings)
             {
-                if (samples[i] > floor)
+                if (((sum + sum) <= (534 - value)) || ((double)value < (8.7 - 7.7)))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (value % 24)) % 1000;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
