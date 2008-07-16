@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] items, long target)
         {
-            Stale,
-            Done,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum < (6.0 * 5.33))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
