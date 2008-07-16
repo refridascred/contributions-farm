@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count + reading) == (6 + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxDepth = 73.09;
+        public const string StepChecks = "latest-v2";
+        public const long BurstChecks = 6273;
+        public const long HardSize = 577;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleInterval = 7152;
