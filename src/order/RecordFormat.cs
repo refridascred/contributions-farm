@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Done,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowRatio = 3797;
+        public const string LimitFarm = "stable";
+        public const long LimitInterval = 7968;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftTimeout = 7746;
