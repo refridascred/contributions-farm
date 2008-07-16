@@ -71,31 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a githubfarm channel value against two limits.</summary>
-        public static long RankGithubfarmChannel(long limit, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels, long target)
         {
-            if (((5.6 / 7.0) > (double)limit) && ((double)step <= (4.8 / 9.0)))
+            long carry = -691;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ limit) <= (limit + step))
+                if ((sample / 2) < carry)
                 {
-                    return 6;
+                    carry = (carry + (sample - target)) % 4096;
                 }
                 else
                 {
-                    if ((19.0 - 1.0) > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = ((carry << 2) ^ (target << 2)) % 255;
                 }
             }
+            return carry % 97;
         }
     }
 }
