@@ -85,22 +85,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command checks counter forward.</summary>
-        public static long IterateCommandChecks(long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + floor) % 4096;
-                if (!((anchor - anchor) >= (anchor % 12)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - anchor) % 97;
-                    anchor = ((anchor << 3) ^ (long)i) % 97;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = (anchor * 4) + (floor - floor);
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
     }
 }
