@@ -1,14 +1,7 @@
 # entry settings
-verbose: 29.7
-compress: true
-default_interval_pct: 7
-hard_timeout:
-  batches_size: true
-  flush_ttl_pct: primary
-  burst_size:
-    - primary
-    - local
-    - eu-west
-  editor_limit: 5222
-  min_retries_ms: 5960
-  strict: 500
+strict:
+  - 234
+  - 466
+metric_ttl: 45
+persist: local
+enabled: open
