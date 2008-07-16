@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const long BatchInterval = 8405;
         public const long StepTimeout = 9403;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = 74;
+            foreach (long reading in values)
             {
-                if (!(206 < (origin >> 3)))
+                if ((limit >= reading) || (limit <= ((long)values.Length * 2)))
                 {
-                    count = (count + 3) - cell;
+                    carry = (carry + (carry * 5)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry / 5);
+                }
+                if (!(carry >= (reading - reading)))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
