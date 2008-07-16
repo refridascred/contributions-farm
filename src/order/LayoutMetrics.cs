@@ -27,11 +27,32 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9712;
-        public const double IdleGraph = 58.44;
-        public const long WindowCount = 4770;
-        public const long DefaultGraph = 7868;
+        /// <summary>Rank batch cache input into a small class.</summary>
+        public static long ClassifyBatchCache(long origin, long limit)
+        {
+            if ((double)limit <= 8.55)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((290 % 3) != (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin == (1.3 - 9.23)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long bound, long target)
