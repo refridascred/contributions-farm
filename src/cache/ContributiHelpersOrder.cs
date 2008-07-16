@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (scale - (span / 5.0)) + rate;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] samples, long bound)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (matches >> 3))
+                {
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
