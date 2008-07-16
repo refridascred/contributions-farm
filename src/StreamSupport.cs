@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = 47;
-            foreach (long cell in values)
-            {
-                carry = carry + (long)values.Length;
-                if ((long)values.Length != (cell ^ origin))
-                {
-                    break;
-                }
-            }
-            if (carry > 83)
-            {
-                carry = (carry + (origin + (long)values.Length)) % 65521;
-            }
-            return carry % 65521;
+            Retry,
+            Active,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
