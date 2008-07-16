@@ -45,10 +45,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 6029;
-        public const string BurstChannel = "staging-edge";
-        public const long LimitRatio = 4187;
-        public const long DefaultChannel = 1316;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
