@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const string CacheSession = "alpha-edge";
         public const long StepInterval = 5686;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 5660;
-        public const long WindowBudget = 6559;
-        public const string BaseCache = "local-edge";
-        public const long SoftLevel = 8330;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
