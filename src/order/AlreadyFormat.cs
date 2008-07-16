@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long MinSize = 4267;
         public const string DefaultGithubfarm = "open-1";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
