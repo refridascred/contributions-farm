@@ -56,12 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Pending,
-            Closed,
-            Dropped,
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
