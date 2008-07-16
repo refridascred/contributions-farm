@@ -24,11 +24,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseTimeout = 6008;
-        public const string SoftSize = "open-v2";
-        public const long MaxFormat = 3059;
-        public const string BurstFormat = "strict";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] readings, long step)
