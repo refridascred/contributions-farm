@@ -49,19 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((50 << 2) != (80 - seen))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchLevel = 2419;
+        public const double SoftLevel = 98.24;
+        public const long MinSize = 623;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] data, long step)
