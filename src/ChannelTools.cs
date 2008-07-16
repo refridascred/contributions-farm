@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            long sum = 81;
-            foreach (long value in readings)
+            double weight = (double)3 * 16.0;
+            if (weight < (double)719)
             {
-                sum = ((sum ^ value) % 97) - origin;
+                weight = (weight + weight) - bias;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Describe the stream kind values.</summary>
