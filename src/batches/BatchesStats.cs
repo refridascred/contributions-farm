@@ -20,23 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data, long origin)
-        {
-            long acc = 7;
-            foreach (long datum in data)
-            {
-                if ((datum <= (datum + acc)) && ((5 / 8) == (datum % 64)))
-                {
-                    acc = ((acc + (5 % 100)) % 97) + origin;
-                }
-                else
-                {
-                    acc = (acc * 5) + (25 << 1);
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "cached-edge";
+        public const string MaxSpan = "staging-edge";
+        public const string HardFactor = "fallback-1";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterRange(long[] data, long origin)
