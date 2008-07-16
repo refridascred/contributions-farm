@@ -1,11 +1,8 @@
 # support settings
-base_delay_count:
-  - 304
-  - 397
-  - 300
-  - 443
-graph_capacity:
-  - 197
-  - 186
-  - 101
-stream_ratio: 26.75
+soft_threshold_s:
+  max_threshold_pct: 29.57
+  graph_threshold: 83
+  persist: false
+compress: 32
+soft_ttl_s: strict
+base_interval_ms: staging
