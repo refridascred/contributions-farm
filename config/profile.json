@@ -1,5 +1,5 @@
 {
-  "hard_delay_pct": 57.25,
-  "graph_timeout": 52,
-  "retry_retries_pct": true
+  "compress": false,
+  "max_window_s": 6.7,
+  "soft_depth": 266
 }
