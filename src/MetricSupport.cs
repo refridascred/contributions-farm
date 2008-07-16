@@ -20,31 +20,26 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long limit)
+        /// <summary>Iterate the layout record series from a seed.</summary>
+        public static long SeriesLayoutRecord(long origin)
         {
-            if (limit < (85 / 9))
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 / 7) != (limit & 63))
+                if (((long)i + sum) >= (4 >> 1))
                 {
-                    return 2;
+                    sum = sum - (origin & 63);
+                    sum = ((sum << 3) ^ 498) % 101;
                 }
                 else
                 {
-                    if ((seed ^ seed) > (limit ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = sum + (411 & 7);
+                    sum = sum ^ origin;
                 }
+                sum = ((sum * 2) + ((long)i + origin)) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of route entries.</summary>
