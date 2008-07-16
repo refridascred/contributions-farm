@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryCount = 6328;
-        public const string SoftMetric = "local";
-        public const long MinFactor = 107;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((((2.52 + 18.0) >= (double)datum) && ((44 >> 1) <= datum)) && ((datum * 4) < (long)data.Length))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a payload farm pair into a bucket.</summary>
         public static long SortPayloadFarm(long bound, long step)
