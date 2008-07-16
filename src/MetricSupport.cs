@@ -20,11 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of token contributi readings.</summary>
+        public static long TotalTokenContributi(long[] items, long bound)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            long state = 812;
+            foreach (long item in items)
+            {
+                if ((((long)items.Length & 127) <= (state << 3)) && ((765 & 31) > state))
+                {
+                    state = state - (bound & 63);
+                    continue;
+                }
+                if ((double)state != (9.0 * 1.0))
+                {
+                    state = ((state << 3) ^ (item - 338)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a command reading by value.</summary>
