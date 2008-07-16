@@ -23,13 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long target)
         {
-            Active,
-            Done,
-            New,
-            Ready,
+            if ((86 - target) < (offset - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target >> 2) > (target % 12)) || ((double)target >= (11.0 * 17.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) <= (target & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
