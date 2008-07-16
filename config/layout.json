@@ -1,5 +1,7 @@
 {
-  "poll_retries": 4805,
-  "enabled": "staging",
-  "token_interval": [22, 210, 335, 197]
+  "flush_limit_s": "blue",
+  "dry_run": true,
+  "order_retries": 250,
+  "batch_depth": ["primary", "green"],
+  "token_retries": 30
 }
