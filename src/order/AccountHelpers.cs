@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long limit, long limit2)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            if (((limit / 6) < (limit2 << 1)) || ((double)limit == (double)92))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - limit) < (limit2 + limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit2 + limit) <= (limit >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double load = (span - span) - (double)10;
+            return (load + load) + ratio;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
