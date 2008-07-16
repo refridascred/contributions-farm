@@ -1,6 +1,5 @@
 {
-  "persist": ["local", "standard", "latest"],
-  "checks_size": "blue",
-  "metrics_ttl": "stable",
-  "window_delay": 23.11
+  "poll_ratio_pct": 8504,
+  "dry_run": 61.56,
+  "hard_size": "standard"
 }
