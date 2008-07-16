@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 94.87;
+        public const string MinSpan = "fallback-1";
+        public const long HardSpan = 9809;
+        public const long IdleQueue = 8775;
+        public const long SoftQueue = 7371;
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
         public static long DeriveLayoutChannel(long bound)
