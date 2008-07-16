@@ -64,11 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count - count) <= (count & 127))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
