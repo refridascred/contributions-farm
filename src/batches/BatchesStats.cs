@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Look up the position of a farm cache sample.</summary>
+        public static long LookupFarmCacheIndex(long[] items, long step)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
