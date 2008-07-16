@@ -1,16 +1,9 @@
 # entry settings
-strict: false
-verbose:
-  - 394
-  - 302
-  - 305
-sync_delay_ms:
-  - green
-  - green
-  - stable
+soft_timeout: 1640
+cache_timeout_pct:
+  - latest
+  - blue
   - staging
-cache_ratio_s: eu-west
-base_threshold_count:
-  - 20
-  - 355
-  - 44
+hard_delay_pct: 15.11
+soft_ratio_s: 91.79
+retry_delay: 40
