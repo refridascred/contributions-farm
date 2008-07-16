@@ -26,15 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command stream figure with a bias.</summary>
-        public static double ProjectCommandStream(double bias, double bias2)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            double bias3 = bias2;
-            if (bias3 > bias)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                bias3 = bias3 + bias;
+                total = (total * 4) + floor;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = ((total << 3) ^ (long)i2) % 255;
+                }
+                total = (total << 2) ^ 6;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return bias3 + (bias2 * 0.18);
+            return total;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
