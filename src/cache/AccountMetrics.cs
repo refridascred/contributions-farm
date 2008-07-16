@@ -60,21 +60,19 @@ namespace Common.Utilities
         public const long BurstSpan = 2565;
         public const long LimitStream = 2305;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((851 >> 5) <= (anchor + step))
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
