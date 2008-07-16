@@ -64,17 +64,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] values, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long entry in samples)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (limit / 2)) % 1000) ^ entry;
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
