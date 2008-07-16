@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long seed)
         {
-            long acc = 59;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - item;
-                if ((9.2 - 16.0) == (double)item)
+                if (levels[i] > seed)
                 {
-                    acc = (acc + item) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
