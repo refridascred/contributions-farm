@@ -63,19 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (reading >= floor)
+                if (!(value < (offset - value)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
