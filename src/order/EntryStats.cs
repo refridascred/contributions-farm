@@ -43,13 +43,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((seen << 1) >= (seen + 602)) && ((seen - limit) == (sample % 8)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
