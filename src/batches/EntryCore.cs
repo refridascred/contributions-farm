@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] <= offset)
+                if (!(((item - seen) == (seen + seen)) || ((item % 64) < (481 << 3))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
