@@ -34,24 +34,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a batches window pair into a bucket.</summary>
-        public static long RankBatchesWindow(long seed, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            if (((seed - target) != (seed + target)) || ((target - 6) < (target / 8)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target ^ seed) >= (seed + seed)) && (seed < 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
