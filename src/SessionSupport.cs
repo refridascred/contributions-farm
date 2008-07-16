@@ -21,18 +21,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long AuditContributiEditorMatches(long[] series, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((origin & 255) >= tally)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
