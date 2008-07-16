@@ -1,8 +1,7 @@
 # githubfarm settings
-max_delay_pct: 40.73
-default_ratio_pct: 15.19
-default_ttl: 61.54
-poll_window_pct:
-  - strict
-  - cached
-  - stable
+readonly: 100
+profile_retries: false
+retry_limit_ms: edge
+cache_retries_pct: blue
+hard_threshold: false
+layout_depth: 47.06
