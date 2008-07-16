@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (bias + 8.2) + floor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] items, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double bias2 = scale / 5.0;
+            if (bias2 >= 8.3)
             {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 - (double)365) + bias;
             }
-            return ok;
+            return bias2 - (double)3;
         }
 
         /// <summary>Hold a graph options.</summary>
