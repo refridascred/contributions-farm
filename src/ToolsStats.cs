@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] series, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long anchor = 264;
+            foreach (long datum in items)
             {
-                if (cell >= offset)
+                if (!(anchor >= (29 + datum)))
                 {
-                    flag = false;
-                    break;
+                    continue;
+                }
+                if (datum >= (datum / 4))
+                {
+                    anchor = ((anchor << 2) ^ 78) % 97;
                 }
             }
-            return flag;
+            if (anchor < 93)
+            {
+                anchor = ((anchor << 3) ^ (anchor - (-186))) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batch entry.</summary>
