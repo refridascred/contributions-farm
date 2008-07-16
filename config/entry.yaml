@@ -1,25 +1,19 @@
 # entry settings
-default_depth_pct:
-  poll_size_s: blue
-  token_delay: primary
-  soft_interval:
-    - staging
-    - stable
-  poll_threshold: cached
-  soft_timeout: strict
-  account_window: 15.4
-already_threshold:
-  - 14
-  - 45
-order_limit: false
-retry_depth: open
-default_capacity: false
-audit:
-  batch_interval_count: edge
-  readonly:
-    - open
-    - edge
-    - stable
-  max_timeout_pct: cached
-  already_ttl: false
-  counter_depth: 7035
+enabled: green
+compress: edge
+hard_delay_ms:
+  - 109
+  - 132
+  - 478
+  - 309
+record_interval:
+  idle_threshold_ms:
+    - 123
+    - 55
+  min_size_pct: legacy
+  cache_delay: true
+  soft_limit_pct:
+    hard_delay_ms: 5.06
+    poll_retries: 16
+    soft_interval_pct: 76.82
+    burst_delay_s: false
