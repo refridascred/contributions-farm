@@ -63,13 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] values, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
