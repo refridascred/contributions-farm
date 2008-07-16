@@ -1,4 +1,16 @@
 # entry settings
-retry_depth: 40
-default_threshold: 60
-flush_delay_s: true
+warm_size_count: primary
+metric_timeout:
+  - latest
+  - blue
+  - open
+  - green
+audit: 2
+farm_ratio: 1024
+batch_threshold_ms: 25
+max_retries_count:
+  flush_ratio: 250
+  commits_window: 86
+  warm_depth_pct:
+    - 112
+    - 342
