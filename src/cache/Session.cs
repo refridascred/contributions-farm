@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a filter counter reading by value.</summary>
-        public static long LocateFilterCounterIndex(long[] items, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                if (items[i] < bound)
                 {
                     return (long)i;
                 }
