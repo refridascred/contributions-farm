@@ -27,11 +27,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 3653;
-        public const long CacheSize = 2980;
-        public const double BatchInterval = 92.65;
-        public const long LimitInterval = 2536;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 9712;
+        public const double IdleGraph = 58.44;
+        public const long WindowCount = 4770;
+        public const long DefaultGraph = 7868;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long bound, long target)
