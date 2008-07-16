@@ -20,10 +20,40 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "stable-1";
-        public const string CacheSession = "alpha-edge";
-        public const long StepInterval = 5686;
+        /// <summary>Grade a entry stats value against two limits.</summary>
+        public static long SortEntryStats(long seed, long floor)
+        {
+            long gap = seed - floor;
+            if (((floor % 3) != (floor - floor)) || (floor < (floor - gap)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor < (1 & 3)) && ((seed % 16) < gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (91 > (seed + 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ 50) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] levels, long bound)
