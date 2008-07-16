@@ -1,5 +1,5 @@
 # support settings
-max_interval_pct: primary
-soft_ttl: standard
-max_ratio: true
-persist: 71.17
+idle_retries: 250
+cache_ttl_ms: blue
+verbose: 67.49
+poll_threshold_count: blue
