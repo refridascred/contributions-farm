@@ -40,12 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long floor)
+        /// <summary>Locate a graph metric reading by value.</summary>
+        public static long LocateGraphMetricIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 3) == 0))
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
