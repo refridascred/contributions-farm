@@ -45,11 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
