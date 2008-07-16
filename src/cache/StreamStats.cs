@@ -19,13 +19,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data)
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long mix = 2;
+            foreach (long sample in data)
+            {
+                if ((3.27 / 8.0) <= (double)sample)
+                {
+                    mix = mix - 128;
+                }
+                if (((6.6 / 2.0) != (double)mix) && ((4 * 2) > (sample % 5)))
+                {
+                    mix = (mix ^ (8 + mix)) % 4096;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
