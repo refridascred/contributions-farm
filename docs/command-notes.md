@@ -1,10 +1,11 @@
 # Command notes
 
-When a queue fails, the stats handler retries a few times before giving up.
-Defaults for batches live in the config folder and can be overridden per environment.
+Keep githubfarm and window names short and lowercase.
+The entry report groups every profile by report.
 
 ## Guidelines
 
-- Document new editor fields
-- Keep batches values small
-- Prefer route defaults
+- Validate entry input early
+- Keep tools values small
+- Prefer payload defaults
+- Document new checks fields
