@@ -20,39 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long origin2)
-        {
-            if (origin > (origin2 % 64))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + origin) == (origin2 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (52 > (origin + origin2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (771 > (origin2 + 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9370;
+        public const double RetrySize = 15.81;
+        public const long LimitWidth = 3388;
+        public const long CacheWidth = 7277;
 
         /// <summary>Iterate the counter token series from a seed.</summary>
         public static long StepCounterToken(long floor)
