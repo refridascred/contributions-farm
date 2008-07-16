@@ -1,9 +1,16 @@
 # entry settings
-strict:
-  - 326
-  - 292
-  - 226
-  - 452
-poll_delay_count: 33.68
-cache_threshold_count: green
-base_delay: 100
+strict: false
+verbose:
+  - 394
+  - 302
+  - 305
+sync_delay_ms:
+  - green
+  - green
+  - stable
+  - staging
+cache_ratio_s: eu-west
+base_threshold_count:
+  - 20
+  - 355
+  - 44
