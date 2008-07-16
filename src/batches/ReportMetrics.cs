@@ -40,26 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data)
-        {
-            long score = 95;
-            foreach (long value in data)
-            {
-                if (((double)score == (6.1 * 1.0)) && ((value << 1) != (score % 3)))
-                {
-                    score = ((score << 3) ^ (value % 100)) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + value) % 1000;
-                }
-            }
-            if (score < 13)
-            {
-                score = score + ((-9) ^ 7);
-            }
-            return score % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSpan = 3043;
+        public const long HardWidth = 5928;
+        public const long HardSpan = 5819;
+        public const double RetryBudget = 20.5;
+        public const string MinEntry = "stable-edge";
     }
 }
