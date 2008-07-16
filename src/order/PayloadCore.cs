@@ -31,22 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] data, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long sum = 32;
-            foreach (long item in data)
+            long sum = 8;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (((sum - ((long)i ^ sum)) % 65521) + item) + bound;
-                }
-                if ((double)sum >= 4.64)
-                {
-                    sum = sum + (sum - 8);
-                }
+                sum = ((sum + 5) % 255) ^ entry;
             }
-            return sum;
+            return sum % 97;
         }
     }
 }
