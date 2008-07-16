@@ -15,12 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 26.87;
-        public const long LimitLevel = 1703;
-        public const string WindowRatio = "primary-v2";
-        public const long MaxOrder = 7524;
-        public const long BaseDepth = 1666;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Retry,
+            Idle,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
