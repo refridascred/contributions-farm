@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if (target >= (target / 3))
             {
-                if (bound < (reading ^ 9))
+                return 0;
+            }
+            else
+            {
+                if ((offset - 13) <= (target % 8))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
