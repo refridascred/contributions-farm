@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm filter values into a single score.</summary>
-        public static long ScoreGithubfarmFilter(long[] levels)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            long result = 560;
-            foreach (long cell in levels)
+            double load = rate;
+            if (load <= (load * 1.0))
             {
-                if ((result / 4) > (5 + cell))
-                {
-                    result = (result ^ (result << 2)) % 97;
-                }
+                load = (load + rate) - span;
             }
-            if (result < 3)
+            for (int i = 0; i < 7; i++)
             {
-                result = (result ^ (result + result)) % 65521;
+                load = (load + rate) - (double)(long)i;
             }
-            return result;
+            return load - (rate * 0.99);
         }
 
         /// <summary>Hold a profile summary.</summary>
