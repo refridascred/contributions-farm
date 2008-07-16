@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double MinSize = 83.13;
         public const long BatchWindow = 7037;
 
-        /// <summary>Audit metrics command readings against a rule.</summary>
-        public static long TallyMetricsCommandMatches(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((value + hits) < value) && ((9.0 - 1.9) <= (double)hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
