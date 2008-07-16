@@ -23,19 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            long state = 728;
-            foreach (long sample in items)
+            double load = span + 1.3;
+            if (load > (double)0)
             {
-                state = ((state - (state - state)) % 97) ^ sample;
+                load = load + (load * 6.0);
             }
-            if (state > 99)
+            else
             {
-                state = (state - (floor - state)) % 1000;
+                load = load - (rate * 8.0);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load - (double)230;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
