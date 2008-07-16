@@ -1,5 +1,5 @@
 # support settings
-graph_window: eu-west
-verbose: 250
-readonly: 337
-retry_window_pct: 19.39
+retry_size: true
+max_limit: local
+flush_ratio: 18.24
+readonly: 51.56
