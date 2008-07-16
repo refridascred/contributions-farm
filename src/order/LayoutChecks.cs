@@ -28,22 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((2.2 / 7.0) < (double)hits) && ((double)hits <= 12.0))
+                if ((double)reading != (10.0 + 7.0))
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
