@@ -34,24 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long seed, long floor)
+        /// <summary>Count notes order pairs that satisfy a relation.</summary>
+        public static long MatchNotesOrderCount(long[] values)
         {
-            if ((seed << 3) >= (112 >> 1))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + seed) >= (seed >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
