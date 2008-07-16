@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((seed + entry) >= (hits << 1))
+                if (item != step)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
