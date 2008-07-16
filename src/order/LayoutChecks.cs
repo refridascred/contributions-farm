@@ -46,19 +46,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long target2)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long gap = target + target2;
+            if (((8.6 * 1.89) <= (double)gap) || ((38 + gap) >= (target2 + target2)))
             {
-                if (sample > floor)
+                return 0;
+            }
+            else
+            {
+                if (target2 > (gap / 2))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
