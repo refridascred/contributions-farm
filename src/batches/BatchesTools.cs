@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series, long floor)
         {
-            long score = 47;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = ((score - (score - 535)) % 101) - cell;
+                if (((long)series.Length & 127) > hits)
+                {
+                    hits = ((hits + 3) + entry) - floor;
+                }
             }
-            if (score > 40)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
