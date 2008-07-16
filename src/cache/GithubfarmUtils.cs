@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Check that every stream support entry stays within the limit.</summary>
+        public static bool GuardStreamSupportRange(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a route counter forward.</summary>
