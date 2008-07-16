@@ -61,10 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5811;
-        public const string MinFactor = "fallback-1";
-        public const long SoftEntry = 6445;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "staging-v2";
+        public const double DefaultFormat = 78.07;
+        public const long SoftFactor = 4699;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
