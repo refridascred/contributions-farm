@@ -1,6 +1,10 @@
 {
-  "flush_window_ms": [20, 29, 448],
-  "poll_ttl_s": 6741,
-  "min_interval_count": 10,
-  "report_limit": [498, 411, 158, 42]
+  "warm_limit": {
+    "already_depth": 500,
+    "sync_size": "legacy",
+    "default_window_s": "open",
+    "soft_timeout_pct": false
+  },
+  "burst_delay_count": ["eu-west", "green"],
+  "route_ratio": ["fallback", "staging"]
 }
