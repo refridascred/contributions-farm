@@ -13,22 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long AuditMetricsGithubfarmMatches(long[] values)
+        /// <summary>Roll a schema stats counter forward.</summary>
+        public static long DeriveSchemaStats(long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading >= (count * 3))
+                if (((899 % 64) == (mix - (long)i)) && ((origin % 8) != (mix + origin)))
                 {
-                    count = count + 2;
+                    mix = (mix ^ 89) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a filter header.</summary>
