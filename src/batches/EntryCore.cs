@@ -52,21 +52,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = bias;
+            if (rate2 > (3.31 / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 + rate;
             }
-            return hits;
+            return rate2 + (double)389;
         }
 
         /// <summary>Hold a context options.</summary>
