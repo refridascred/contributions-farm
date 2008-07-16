@@ -34,23 +34,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm schema readings against a rule.</summary>
-        public static long CountGithubfarmSchemaHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ value) > (688 & 63))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3585;
+        public const long LimitLevel = 3170;
+        public const long HardInterval = 1890;
+        public const long SoftBatches = 823;
+        public const string StepInterval = "primary";
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmLimits(long[] series, long limit)
