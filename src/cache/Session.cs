@@ -30,17 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first token order entry that matches the target.</summary>
-        public static long LocateTokenOrderIndex(long[] samples, long seed)
+        /// <summary>Count the buffer support entries that pass the check.</summary>
+        public static long CountBufferSupportOutliers(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if (((double)step == (2.9 - 7.41)) && !(matches < (cell - 17)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
