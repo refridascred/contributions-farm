@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long StepTools = 5082;
         public const string CacheScore = "strict";
 
-        /// <summary>Blend two batch layout measurements.</summary>
-        public static double ScaleBatchLayout(double rate, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long offset)
         {
-            double scale = (double)(31 << 1);
-            if (scale <= scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + floor) + rate;
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (floor / 6.0)) + (double)(long)i;
-            }
-            return scale + (double)77;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
