@@ -43,18 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] items, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen ^ step) >= (step + step))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
