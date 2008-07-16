@@ -27,18 +27,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading != (10.0 + 7.0))
+                if (values[i] <= seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
