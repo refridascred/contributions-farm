@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((floor2 - floor) > 723) && (9.14 >= (double)floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor2 * 3) > floor)
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
