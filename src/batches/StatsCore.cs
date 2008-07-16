@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] readings, long floor)
         {
-            if ((675 ^ step) > ((-4) + seed))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + seed) > (73 - 6))
+                if (item > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= (4.1 - 6.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
