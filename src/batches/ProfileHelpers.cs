@@ -62,21 +62,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i >= (step + (long)i))
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (step & 1)) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
