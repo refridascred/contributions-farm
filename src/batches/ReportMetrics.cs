@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowTimeout = 2699;
-        public const long DefaultCommits = 8971;
-        public const long IdleCommits = 6944;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Paused,
+            Ready,
+            Pending,
+            Locked,
+            Active,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 7446;
