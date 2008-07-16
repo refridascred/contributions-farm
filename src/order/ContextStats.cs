@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((limit - anchor) < (8 - (long)i))
+                {
+                    anchor = (anchor - (anchor / 3)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
