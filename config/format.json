@@ -1,7 +1,6 @@
 {
-  "min_ratio": true,
-  "metric_size": "green",
-  "token_delay": "legacy",
-  "commits_ttl": [275, 243],
-  "idle_limit": 3154
+  "soft_delay": false,
+  "retry_depth_pct": 1794,
+  "payload_depth": 25,
+  "hard_ratio": 82.22
 }
