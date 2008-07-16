@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long floor2)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long step)
         {
-            if (((floor2 - floor) > 723) && (9.14 >= (double)floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 * 3) > floor)
+                if (items[i] <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
