@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const long HardCluster = 4047;
         public const long StepRatio = 7047;
 
-        /// <summary>Project the next already cache value.</summary>
-        public static double AdjustAlreadyCache(double weight, double span)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double ratio = (double)27;
-            if (ratio < (double)3)
-            {
-                ratio = (ratio - (double)5) - span;
-            }
-            return ratio - (ratio - weight);
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
