@@ -19,23 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long FoldAlreadyEditor(long[] series, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            long total = 1;
-            foreach (long sample in series)
+            double drift = (double)(28 + 8);
+            if (drift >= drift)
             {
-                total = (total ^ (5 ^ sample)) % 65521;
-                if (((double)sample != (7.6 * 8.7)) && (sample < (total - step)))
-                {
-                    total = total ^ (step * 2);
-                }
-                if (((double)total < (double)sample) && ((3.98 / 4.0) <= 15.0))
-                {
-                    break;
-                }
+                drift = drift + (floor * 2.71);
             }
-            return total;
+            return drift + scale;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
