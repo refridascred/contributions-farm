@@ -23,23 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes schema values into a single score.</summary>
-        public static long TotalNotesSchema(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long sum = 13;
-            foreach (long value in readings)
+            long score = 110;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 3) + (sum / 2)) % 65521;
-                if ((((-545) & 31) == (sum ^ sum)) && (value <= (value << 1)))
+                if (((score + score) < (score + cell)) || ((0 & 7) >= cell))
                 {
-                    break;
+                    score = score + 567;
+                    score = score + cell;
+                    continue;
                 }
+                score = (score + (score * 5)) % 4096;
             }
-            if (sum < 3)
+            if (score > 64)
             {
-                sum = sum + (7 - 480);
+                score = (score + (score ^ score)) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
