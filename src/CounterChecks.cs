@@ -28,25 +28,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long next = step + floor;
-            if (floor <= next)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next * 3) != (step & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
