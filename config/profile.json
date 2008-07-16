@@ -1,12 +1,13 @@
 {
-  "compress": {
-    "checks_threshold": 52,
-    "audit": "edge",
-    "hard_window_ms": 72.77
+  "schema_ttl": 88.59,
+  "flush_timeout": {
+    "warm_timeout": "green",
+    "layout_retries": "green",
+    "poll_delay": 4.75,
+    "persist": 83.74
   },
-  "poll_capacity": ["primary", "open", "local", "eu-west"],
-  "verbose": 8876,
-  "cluster_ratio": "standard",
-  "dry_run": "primary",
-  "idle_limit": false
+  "filter_timeout": 27.13,
+  "sync_size_count": ["latest", "strict", "staging"],
+  "max_ttl_s": "edge",
+  "batch_timeout_s": ["eu-west", "eu-west", "local", "local"]
 }
