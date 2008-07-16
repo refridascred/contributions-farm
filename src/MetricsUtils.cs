@@ -34,22 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric context entries that pass the check.</summary>
-        public static long TallyMetricContextOutliers(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((((seen + seen) >= (cell + cell)) || ((709 ^ cell) < (-30))) && ((cell >> 5) != (cell - 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
