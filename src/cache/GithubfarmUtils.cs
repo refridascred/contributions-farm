@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultCount = 122;
-        public const double CacheNotes = 73.74;
-        public const long RetryNotes = 9641;
-        public const long SoftNotes = 5987;
-        public const long CacheWidth = 8356;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long bound)
