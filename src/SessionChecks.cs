@@ -27,11 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleTimeout = "standard-edge";
-        public const long WindowRecord = 1432;
-        public const long DefaultWidth = 5087;
-        public const long BurstScore = 3695;
+        /// <summary>Combine githubfarm route values into a single score.</summary>
+        public static long FoldGithubfarmRoute(long[] levels, long origin)
+        {
+            long acc = 56;
+            foreach (long value in levels)
+            {
+                acc = (((acc + (acc + 70)) % 101) - value) - origin;
+            }
+            if (acc > 861)
+            {
+                acc = (acc << 2) ^ (acc % 10);
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long target)
