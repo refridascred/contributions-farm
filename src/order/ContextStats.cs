@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxRatio = "alpha-1";
-        public const double HardBudget = 25.86;
-        public const string BurstSize = "alpha";
+        /// <summary>Find the first session stream entry that matches the target.</summary>
+        public static long LocateSessionStreamIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxCount = "local-1";
