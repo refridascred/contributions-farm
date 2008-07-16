@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum - 4) >= (datum / 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
