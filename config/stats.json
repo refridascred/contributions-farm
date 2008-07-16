@@ -1,19 +1,13 @@
 {
-  "commits_depth": 100,
-  "soft_interval": 8600,
-  "min_size_ms": [142, 309, 124, 368],
-  "record_ratio": 34.97,
-  "persist": "eu-west",
-  "profile_size": {
-    "idle_ratio": 88.95,
-    "batch_ratio_ms": [233, 322, 187],
-    "retry_threshold_pct": true,
-    "readonly": 2595,
-    "hard_capacity_ms": {
-      "compress": 7,
-      "batch_interval_ms": 52,
-      "cache_depth_count": 42.0,
-      "hard_size": true
-    }
-  }
+  "batch_window": "strict",
+  "sync_depth": {
+    "tools_size": 1024,
+    "dry_run": "stable",
+    "audit": 19.21,
+    "warm_retries": [123, 439]
+  },
+  "filter_interval": 92.89,
+  "soft_delay_pct": "local",
+  "dry_run": ["local", "local", "blue", "fallback"],
+  "token_interval": [294, 362]
 }
