@@ -33,26 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = -5;
-            foreach (long cell in values)
-            {
-                if ((cell - (-5)) < (-7))
-                {
-                    mix = (((mix << 3) ^ 5) % 97) - step;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - cell)) % 101;
-                }
-            }
-            if (mix < 591)
-            {
-                mix = (mix + (mix - mix)) % 255;
-            }
-            return mix;
+            Ready,
+            Queued,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
