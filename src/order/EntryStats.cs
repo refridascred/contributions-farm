@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowScore = 879;
-        public const double RetryContributi = 77.1;
-        public const long WindowRatio = 3907;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values)
+        {
+            long carry = 62;
+            foreach (long sample in values)
+            {
+                if (!(sample <= (sample - 17)))
+                {
+                    carry = carry - (carry / 9);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinInterval = 58.4;
