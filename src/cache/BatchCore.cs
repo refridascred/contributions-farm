@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (hits < 2)
+                if ((7.0 <= (double)matches) || (((double)reading > 4.0) || (reading > matches)))
                 {
-                    hits = ((hits + 2) + item) + seed;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two batch layout measurements.</summary>
