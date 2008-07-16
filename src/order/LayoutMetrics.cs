@@ -27,25 +27,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long limit)
-        {
-            if ((double)limit != (9.2 - 5.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.0 * 7.67) == (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 3653;
+        public const long CacheSize = 2980;
+        public const double BatchInterval = 92.65;
+        public const long LimitInterval = 2536;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
