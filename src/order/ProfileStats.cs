@@ -33,12 +33,15 @@ namespace Common.Utilities
             return drift - (double)841;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            Queued,
-            Stale,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
