@@ -33,11 +33,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
