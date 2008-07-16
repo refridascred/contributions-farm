@@ -49,17 +49,12 @@ namespace Common.Utilities
             return gain2 - (gain2 + 4.82);
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next contributi schema value from a seed.</summary>
