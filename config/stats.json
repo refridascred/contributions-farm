@@ -1,8 +1,6 @@
 {
-  "max_size_ms": false,
-  "compress": 13,
-  "retry_window_count": "stable",
-  "sync_size_count": "local",
-  "dry_run": "staging",
-  "context_ttl": false
+  "report_depth": true,
+  "compress": 30,
+  "hard_threshold": "strict",
+  "already_size": 80
 }
