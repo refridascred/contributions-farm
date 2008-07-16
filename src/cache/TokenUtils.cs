@@ -47,10 +47,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryLevel = 53.44;
-        public const long HardBatch = 7674;
-        public const double HardSpan = 80.36;
-        public const double BurstBudget = 44.76;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix >> 3)) + (long)i2;
+                }
+                mix = ((mix << 2) ^ (9 + (long)i)) % 1000;
+                if (22 < bound)
+                {
+                    mix = (mix ^ (18 + mix)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
