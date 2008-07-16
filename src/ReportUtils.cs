@@ -31,15 +31,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next counter stream value from a seed.</summary>
-        public static long RollCounterStream(long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mark = (mark - (mark ^ 7)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
