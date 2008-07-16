@@ -26,13 +26,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Dropped,
-            Queued,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 8239;
+        public const long HardRoute = 7019;
+        public const string MinRoute = "alpha";
+        public const long MaxRoute = 9028;
     }
 }
