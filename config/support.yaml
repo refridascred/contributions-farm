@@ -1,23 +1,11 @@
 # support settings
-min_threshold_count:
-  sync_capacity_s: 1977
-  metrics_window:
-    - 183
-    - 52
-    - 161
-  enabled:
-    farm_delay: fallback
-    cache_delay_pct: eu-west
-    batches_interval: false
-  flush_timeout_ms: open
-  token_threshold:
-    - local
-    - legacy
-  idle_capacity_count: 12
-idle_timeout: false
-retry_capacity_s: 83.27
-enabled:
-  - 292
+poll_threshold_s:
+  - 467
+  - 464
+session_threshold: 54
+idle_timeout_ms: 10
+report_delay:
+  - 174
+  - 110
   - 138
-  - 32
-min_depth_ms: 5309
+  - 95
