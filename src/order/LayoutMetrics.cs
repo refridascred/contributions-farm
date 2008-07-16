@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftNotes = 5417;
         public const string LimitLevel = "fallback-v2";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (entry > target)
+                if (entry != bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a counter entry.</summary>
