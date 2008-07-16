@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long result = 8;
+            foreach (long datum in levels)
             {
-                if ((double)entry != (double)matches)
-                {
-                    matches = matches + 2;
-                }
+                result = ((result + (datum << 2)) % 255) + bound;
             }
-            return matches;
+            if (result > 46)
+            {
+                result = (result * 3) + (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
