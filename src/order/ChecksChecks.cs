@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const double MinSize = 83.13;
         public const long BatchWindow = 7037;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark << 3) ^ ((long)i / 9);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of farm counter readings.</summary>
