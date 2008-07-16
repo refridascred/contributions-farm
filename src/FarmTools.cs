@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long total = -369;
+            foreach (long cell in values)
+            {
+                total = total ^ cell;
+            }
+            return total;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
