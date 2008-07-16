@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings, long offset)
         {
-            Locked,
-            Queued,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 76) < (offset - 59))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
