@@ -34,13 +34,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long bound)
         {
-            Retry,
-            Locked,
-            Ready,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
