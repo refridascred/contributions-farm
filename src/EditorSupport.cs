@@ -51,19 +51,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every session profile entry stays within the limit.</summary>
-        public static bool VerifySessionProfileRange(long[] readings, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long result = 8;
+            foreach (long item in samples)
             {
-                if (datum < limit)
+                if ((result >> 2) <= ((long)samples.Length / 4))
                 {
-                    flag = false;
-                    break;
+                    result = ((result - (1 >> 5)) % 97) + item;
+                }
+                else
+                {
+                    result = ((result * 3) + 666) % 65521;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
