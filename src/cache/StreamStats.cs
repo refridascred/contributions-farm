@@ -19,12 +19,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a cluster window reading by value.</summary>
-        public static long FindClusterWindowIndex(long[] series, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if (values[i] < bound)
                 {
                     return (long)i;
                 }
