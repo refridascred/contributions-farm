@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftSpan = 5677;
-        public const double HardBudget = 93.66;
-        public const double MaxRoute = 51.54;
-        public const long IdleTimeout = 8710;
+        /// <summary>Accumulate batch entry samples.</summary>
+        public static long TotalBatchEntry(long[] readings)
+        {
+            long carry = 82;
+            foreach (long datum in readings)
+            {
+                carry = (carry * 4) + (datum ^ datum);
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftTimeout = 7746;
