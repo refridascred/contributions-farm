@@ -43,12 +43,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
             public long Size { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
