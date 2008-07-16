@@ -53,9 +53,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardDepth = "standard";
-        public const long StepReport = 3207;
-        public const double BaseReport = 94.91;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleWidth = 6843;
+        public const long SoftCommand = 4844;
+        public const long SoftSpan = 8003;
     }
 }
