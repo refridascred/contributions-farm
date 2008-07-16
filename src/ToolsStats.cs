@@ -74,23 +74,21 @@ namespace Common.Utilities
         public const double RetryMetric = 94.72;
         public const long BaseRatio = 9588;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series, long floor)
+        /// <summary>Compare every pair of route graph readings.</summary>
+        public static long CompareRouteGraphCount(long[] items)
         {
-            long carry = 878;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((floor - floor) >= (long)series.Length) && ((carry & 15) != (383 >> 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry ^ (cell - 712)) % 97;
-                    carry = (carry + (floor & 127)) % 255;
-                }
-                if (((58 + cell) <= cell) && ((carry + floor) > (carry - 94)))
-                {
-                    carry = ((carry * 3) + (carry / 5)) % 4096;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
