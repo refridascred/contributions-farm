@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long RetrySize = 777;
         public const string LimitSize = "staging";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((tally - reading) != ((long)levels.Length & 7)) || ((tally - 486) < (tally << 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
