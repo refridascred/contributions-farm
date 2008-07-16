@@ -1,6 +1,19 @@
 {
-  "poll_delay_ms": "staging",
-  "stats_retries": "open",
-  "base_window_s": "latest",
-  "verbose": "staging"
+  "warm_retries_s": {
+    "schema_ttl": 100,
+    "retry_window_count": "legacy",
+    "warm_ratio_count": 1440,
+    "readonly": "eu-west"
+  },
+  "persist": 9431,
+  "cache_delay_ms": {
+    "compress": ["primary", "blue"],
+    "already_retries": 93,
+    "poll_ttl_ms": 534,
+    "stream_size": "green",
+    "sync_ratio": 35,
+    "default_timeout_ms": false
+  },
+  "tools_size": [41, 201, 10, 465],
+  "default_timeout_pct": true
 }
