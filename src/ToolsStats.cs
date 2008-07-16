@@ -37,12 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            Pending,
-            Synced,
-            New,
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
