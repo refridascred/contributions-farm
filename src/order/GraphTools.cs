@@ -24,17 +24,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (72 & 1)) % 1000;
-                carry = (carry + (long)i) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
