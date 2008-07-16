@@ -53,13 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double floor)
         {
-            Stale,
-            Ready,
-            Queued,
-            Retry,
+            double drift = (0.6 * 18.0) * 0.52;
+            return (drift + (drift - weight)) + floor;
         }
     }
 }
