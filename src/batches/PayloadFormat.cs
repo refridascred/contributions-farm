@@ -40,22 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream batches entries that pass the check.</summary>
-        public static long CountStreamBatchesOutliers(long[] data, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = 9;
+            foreach (long value in items)
             {
-                if ((16.0 - 4.0) <= (double)datum)
-                {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark - (mark / 9)) % 255) ^ value;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
