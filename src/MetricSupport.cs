@@ -35,19 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long seed)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
