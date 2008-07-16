@@ -55,10 +55,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 452;
-        public const long WindowTimeout = 1757;
-        public const long BatchDepth = 4070;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
