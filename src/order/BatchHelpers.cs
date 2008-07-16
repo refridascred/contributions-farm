@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const double WindowCluster = 87.05;
         public const long LimitTimeout = 5676;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
-        {
-            long mix = 99;
-            foreach (long item in data)
-            {
-                if ((8.54 * 0.9) == (double)mix)
-                {
-                    mix = (mix ^ mix) - item;
-                }
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6820;
+        public const string LimitRoute = "open";
+        public const double WindowRoute = 10.79;
+        public const long SoftRatio = 3995;
+        public const long LimitScore = 941;
     }
 }
