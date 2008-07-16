@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitInterval = "open";
+        public const long BaseBudget = 8373;
+        public const double MinCount = 36.8;
+        public const double RetryProfile = 27.29;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardLevel = 7451;
