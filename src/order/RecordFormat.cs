@@ -34,20 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits queue figure with a bias.</summary>
-        public static double SmoothCommitsQueue(double scale, double offset)
-        {
-            double rate = (scale * 0.6) - (offset * 7.1);
-            if (rate > offset)
-            {
-                rate = rate + (scale - scale);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 430;
+        public const long IdleCluster = 834;
+        public const string BaseCluster = "local";
+        public const double BurstSize = 80.32;
+        public const long BatchInterval = 3692;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] items)
