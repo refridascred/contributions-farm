@@ -1,11 +1,17 @@
 # support settings
-poll_threshold_s:
-  - 467
-  - 464
-session_threshold: 54
-idle_timeout_ms: 10
-report_delay:
-  - 174
-  - 110
-  - 138
-  - 95
+filter_threshold: staging
+soft_interval:
+  - strict
+  - green
+cache_window:
+  enabled: staging
+  batch_timeout_s: green
+  format_threshold:
+    - 281
+    - 267
+    - 264
+    - 408
+base_capacity_pct:
+  - 404
+  - 321
+min_window: primary
