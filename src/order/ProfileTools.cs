@@ -58,18 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (((offset - 626) <= ((-23) * 3)) && (((double)item >= (double)seen) || ((double)item > (3.14 * 5.08))))
+                if (!(((long)values.Length + cell) > (count ^ (-152))) || (offset >= (count << 2)))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
