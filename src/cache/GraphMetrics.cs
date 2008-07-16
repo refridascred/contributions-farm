@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a command entry.</summary>
