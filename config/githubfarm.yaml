@@ -1,26 +1,4 @@
 # githubfarm settings
-base_retries_pct: 22.61
-hard_ratio:
-  flush_delay_ms: 5616
-  batch_ttl_s: 100
-  batches_interval: true
-batch_limit:
-  min_timeout_ms: fallback
-  soft_ratio: 2433
-  retry_threshold:
-    warm_delay_count: true
-    cache_depth_count: primary
-    persist:
-      - strict
-      - standard
-    githubfarm_timeout: staging
-    soft_limit:
-      - legacy
-      - cached
-      - latest
-  already_threshold: 7764
-  warm_window_s:
-    - 248
-    - 162
-    - 337
-farm_retries: 7
+profile_timeout: false
+compress: 30
+warm_interval_s: true
