@@ -19,21 +19,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Combine session order values into a single score.</summary>
+        public static long FoldSessionOrder(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 929;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result ^ (result & 1)) ^ entry;
             }
-            return tally;
+            if (result > 5)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
