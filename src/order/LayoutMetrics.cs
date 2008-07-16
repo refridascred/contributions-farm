@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseCount = 597;
-        public const long CacheFactor = 7685;
-        public const long SoftNotes = 5417;
-        public const string LimitLevel = "fallback-v2";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry * 4) + 42;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] readings, long bound)
