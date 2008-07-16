@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowDepth = 6020;
-        public const long RetryBatches = 9413;
-        public const long SoftBatches = 4082;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
