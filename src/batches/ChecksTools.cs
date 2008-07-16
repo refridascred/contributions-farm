@@ -15,20 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 26.87;
+        public const long LimitLevel = 1703;
+        public const string WindowRatio = "primary-v2";
+        public const long MaxOrder = 7524;
+        public const long BaseDepth = 1666;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] samples, long origin)
