@@ -46,15 +46,13 @@ namespace Common.Utilities
             return scale2 - (double)(-624);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            New,
+            Locked,
+            Done,
         }
     }
 }
