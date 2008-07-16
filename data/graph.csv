@@ -1,8 +1,8 @@
-id,score,active,rank
-1,443,56.38,964
-2,strict,cached,55.68
-3,63.78,274,35.21
-4,31.68,eu-west,edge
-5,blue,389,68.02
-6,331,76.51,653
-7,local,cached,402
+id,active,level,region
+1,281,66.61,233
+2,822,edge,754
+3,248,402,56.5
+4,559,edge,16.17
+5,27.05,cached,687
+6,staging,50.78,67.71
+7,fallback,64.49,852
