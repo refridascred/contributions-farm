@@ -16,15 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of farm account readings.</summary>
-        public static long DigestFarmAccount(long[] items)
+        /// <summary>Look up the position of a account batch sample.</summary>
+        public static long FindAccountBatchIndex(long[] readings, long origin)
         {
-            long result = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result - cell;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
