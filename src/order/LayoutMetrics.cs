@@ -33,17 +33,31 @@ namespace Common.Utilities
         public const double BatchInterval = 92.65;
         public const long LimitInterval = 2536;
 
-        /// <summary>Look up the position of a batches stream sample.</summary>
-        public static long FindBatchesStreamIndex(long[] values, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)target <= (16.0 * 7.5))
             {
-                if (values[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((9.49 - 8.02) > (double)target)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(target >= (bound / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
