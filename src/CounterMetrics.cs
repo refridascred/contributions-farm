@@ -16,19 +16,14 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Idle,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
