@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Retry,
-            New,
-            Ready,
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the order tools series from a seed.</summary>
