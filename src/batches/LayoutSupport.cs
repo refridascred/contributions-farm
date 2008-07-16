@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] items, long seed)
+        /// <summary>Find the first order contributi entry that matches the target.</summary>
+        public static long FindOrderContributiIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - seed) > seed)
+                if ((values[i] < floor) && ((values[i] % 2) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
