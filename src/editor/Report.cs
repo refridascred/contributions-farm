@@ -15,11 +15,33 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultScore = 31.34;
-        public const long RetryTimeout = 1789;
-        public const string IdleReport = "strict-1";
-        public const long LimitSpan = 9175;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long origin, long limit)
+        {
+            long prev = origin + limit;
+            if ((prev & 31) > (limit >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((920 & 7) < (prev + limit)) && ((origin - origin) <= (origin + 62)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit > (limit << 1)) || (origin <= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] readings, long origin)
