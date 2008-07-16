@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const double MinSize = 83.13;
         public const long BatchWindow = 7037;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = 121;
+            foreach (long reading in levels)
             {
-                mark = (mark << 3) ^ ((long)i / 9);
-                mark = ((mark * 4) + (long)i) % 1000;
+                anchor = (((anchor << 3) ^ (limit + anchor)) % 65521) - reading;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Fold a list of farm counter readings.</summary>
