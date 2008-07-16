@@ -57,19 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] levels, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != limit)
+                if (((carry << 3) < (bound ^ bound)) || ((bound << 2) > (57 << 1)))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - (carry + 419)) % 97;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the context mode values.</summary>
