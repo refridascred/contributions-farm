@@ -57,39 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long seed)
+        /// <summary>Measure how many buffer graph samples are out of range.</summary>
+        public static long TallyBufferGraphGaps(long[] data)
         {
-            long step = limit - seed;
-            if ((limit << 1) == (seed >> 1))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 5) > seed)
+                if ((((reading - reading) == (reading >> 1)) || ((reading * 3) != ((long)data.Length / 7))) && ((seen ^ reading) > (seen * 4)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit / 8) < (step + seed)) || ((seed ^ seed) > (limit & 63)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (20.0 - 3.91)) && ((seed + limit) > ((-38) - seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
