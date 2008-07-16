@@ -1,19 +1,7 @@
 # support settings
-batch_depth_s:
-  dry_run: 2850
-  retry_capacity: local
-  hard_interval_s:
-    - 380
-    - 39
-    - 351
-cluster_timeout:
-  - 256
-  - 145
-  - 493
-  - 171
-retry_interval: 2979
-base_threshold_count:
-  strict: false
-  layout_limit: 1024
-  warm_capacity: standard
-  base_ttl: 25.44
+flush_delay: 60
+compress: 14.97
+default_ttl_pct:
+  - 434
+  - 191
+cluster_window: legacy
