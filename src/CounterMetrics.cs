@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = span * 7.88;
+            if (drift < weight)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + 1.0;
             }
-            return -1;
+            return drift + span;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
