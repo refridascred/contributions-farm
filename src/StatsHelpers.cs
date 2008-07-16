@@ -45,17 +45,13 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Paused,
+            Active,
         }
     }
 }
