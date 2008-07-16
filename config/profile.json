@@ -1,5 +1,19 @@
 {
-  "warm_threshold": 2823,
-  "hard_interval_s": false,
-  "burst_threshold": 100
+  "retry_ttl_ms": 357,
+  "cluster_threshold": "cached",
+  "max_ttl_pct": {
+    "stats_depth": {
+      "persist": "staging",
+      "readonly": 1204,
+      "strict": "cached",
+      "command_capacity": 6.04,
+      "already_interval": 47.43,
+      "base_threshold_ms": 11.72
+    },
+    "sync_threshold_ms": true,
+    "batch_interval_ms": 8940,
+    "poll_window": 100,
+    "batch_size": "staging",
+    "cache_threshold_pct": "primary"
+  }
 }
