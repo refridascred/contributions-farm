@@ -36,10 +36,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "stable-v2";
-        public const long BatchSpan = 7046;
-        public const string CacheCount = "stable";
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] samples)
