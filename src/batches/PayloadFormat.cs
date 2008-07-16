@@ -34,19 +34,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long mix = 20;
-            foreach (long value in series)
+            long lane = target ^ bound;
+            if ((target << 2) == (lane ^ lane))
             {
-                mix = (mix * 3) + (value / 6);
-                if ((value & 255) < (mix - value))
+                return 8;
+            }
+            else
+            {
+                if (target < (lane & 15))
                 {
-                    mix = (mix - (value - mix)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of channel route readings.</summary>
