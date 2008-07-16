@@ -24,39 +24,19 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long edge = seed - offset;
-            if ((offset >> 5) >= (seed & 127))
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 / 3.0) == (double)offset)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 3;
+                    score = (score - (score >> 5)) ^ (long)i2;
                 }
-                else
-                {
-                    if (((offset % 16) <= (edge << 1)) || ((double)seed <= (6.0 + 7.37)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge - seed) < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
