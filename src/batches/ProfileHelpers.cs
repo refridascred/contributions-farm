@@ -69,16 +69,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] readings, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                result = (result - (seed + seed)) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if ((tally + tally) <= cell)
+                {
+                    tally = (tally + 3) - bound;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
