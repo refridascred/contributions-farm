@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Blend two batch layout measurements.</summary>
+        public static double ScaleBatchLayout(double rate, double floor)
         {
-            double mean = (18.0 * 5.49) - 9.02;
-            for (int i = 0; i < 5; i++)
+            double scale = (double)(31 << 1);
+            if (scale <= scale)
             {
-                mean = ((mean + weight) - (double)(long)i) + span;
+                scale = (scale + floor) + rate;
             }
-            return mean + mean;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (floor / 6.0)) + (double)(long)i;
+            }
+            return scale + (double)77;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
