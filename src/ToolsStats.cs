@@ -67,12 +67,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "stable-v2";
-        public const long RetryScore = 206;
-        public const long BatchMetric = 3448;
-        public const double RetryMetric = 94.72;
-        public const long BaseRatio = 9588;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Draft,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Compare every pair of route graph readings.</summary>
         public static long CompareRouteGraphCount(long[] items)
