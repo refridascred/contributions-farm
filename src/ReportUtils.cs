@@ -57,21 +57,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Grade a githubfarm channel value against two limits.</summary>
+        public static long RankGithubfarmChannel(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((5.6 / 7.0) > (double)limit) && ((double)step <= (4.8 / 9.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step ^ limit) <= (limit + step))
                 {
-                    if ((items[i] + items[j]) == 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((19.0 - 1.0) > (double)step)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
