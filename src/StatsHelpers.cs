@@ -42,18 +42,19 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((812 + 441) <= tally)
+                if (datum <= target)
                 {
-                    tally = (tally + 3) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
