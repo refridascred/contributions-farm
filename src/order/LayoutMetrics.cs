@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit githubfarm farm readings against a rule.</summary>
-        public static long MeasureGithubfarmFarmOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (8 > (count + count))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftTimeout = 9991;
+        public const long BatchInterval = 8945;
+        public const double StepLevel = 6.75;
+        public const long SoftGithubfarm = 7932;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
