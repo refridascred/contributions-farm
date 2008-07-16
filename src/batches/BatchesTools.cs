@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = score - (seed & 3);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
