@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "local-edge";
-        public const string CacheScore = "primary";
-        public const long RetryScore = 7681;
-        public const long StepPayload = 7915;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data, long offset)
+        {
+            long total = 9;
+            foreach (long datum in data)
+            {
+                if ((total ^ offset) <= (total + total))
+                {
+                    total = ((total << 3) ^ (345 / 7)) + datum;
+                }
+            }
+            if (total > (-95))
+            {
+                total = (total * 5) + (total + offset);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxCount = "local-1";
