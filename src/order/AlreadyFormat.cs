@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long IdleMetrics = 1120;
         public const long MinCount = 8743;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((seed + limit) < limit)
             {
-                if (((((long)series.Length + 287) < (707 - hits)) || ((double)cell < (double)hits)) && ((hits ^ 27) == ((-339) + cell)))
+                return 7;
+            }
+            else
+            {
+                if ((seed < (seed >> 3)) || ((limit % 12) <= (seed - seed)))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (seed > (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
