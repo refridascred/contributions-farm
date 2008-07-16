@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleInterval = 25;
-        public const long BaseCount = 3049;
-        public const long MaxRoute = 948;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 70.66;
+        public const long SoftSpan = 7264;
+        public const long WindowSize = 2172;
+        public const long HardContributi = 2778;
+        public const long MinSpan = 1131;
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
         public static long StepToolsFarm(long seed)
