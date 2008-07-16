@@ -28,24 +28,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a entry cluster value against two limits.</summary>
-        public static long GradeEntryCluster(long floor, long step)
+        /// <summary>Find the first queue context entry that matches the target.</summary>
+        public static long LookupQueueContextIndex(long[] levels, long origin)
         {
-            if ((floor / 7) < step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) > (floor - floor)) || ((step << 2) > floor))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
