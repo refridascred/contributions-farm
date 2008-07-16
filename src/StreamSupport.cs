@@ -42,12 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
