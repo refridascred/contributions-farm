@@ -1,6 +1,5 @@
 {
-  "hard_timeout_pct": false,
-  "soft_delay": "staging",
-  "batch_interval": [290, 388],
-  "audit": true
+  "warm_threshold": 2823,
+  "hard_interval_s": false,
+  "burst_threshold": 100
 }
