@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally > datum) && (tally <= (647 << 2)))
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
