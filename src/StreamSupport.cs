@@ -38,19 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] items, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Stale,
+            Locked,
         }
     }
 }
