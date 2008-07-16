@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit layout entry readings against a rule.</summary>
-        public static long MeasureLayoutEntryMatches(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mark = 80;
+            foreach (long datum in data)
             {
-                if (!((hits - sample) != (678 ^ hits)) || ((double)hits <= 9.6))
+                if (((double)datum == (double)84) || ((datum >> 3) > (datum * 5)))
                 {
-                    hits = hits + 1;
+                    mark = mark - mark;
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ (datum - datum);
+                }
+                if (!((14.0 - 7.9) != (double)mark))
+                {
+                    mark = mark - datum;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the cluster state values.</summary>
