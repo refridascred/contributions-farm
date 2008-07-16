@@ -49,24 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin - origin) >= (origin % 5))
+                if (levels[i] > bound)
                 {
-                    sum = (sum ^ origin) % 255;
+                    return (long)i;
                 }
-                sum = (sum << 2) ^ (sum % 5);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (((sum * 3) + (sum + origin)) % 97) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
     }
 }
