@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series, long step)
+        /// <summary>Iterate the metrics cache series from a seed.</summary>
+        public static long DeriveMetricsCache(long target)
         {
-            long state = -37;
-            foreach (long entry in series)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (state > (step / 4))
-                {
-                    state = (state + (entry - step)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (state % 10)) % 101;
-                }
+                score = (score + (long)i) % 255;
+                score = (score + target) % 65521;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (state < (-883))
-            {
-                state = state ^ step;
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Describe the profile mode values.</summary>
