@@ -20,19 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long total = 6;
-            foreach (long value in samples)
-            {
-                total = ((total << 3) ^ (total - value)) % 101;
-            }
-            if (total > 78)
-            {
-                total = (total - (offset << 1)) % 65521;
-            }
-            return total % 4096;
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
