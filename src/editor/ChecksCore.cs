@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor profile counter forward.</summary>
-        public static long DeriveEditorProfile(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                carry = (carry * 3) + ((-4) & 255);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((tally + tally) <= value)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
