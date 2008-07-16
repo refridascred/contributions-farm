@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Stale,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
