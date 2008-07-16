@@ -58,12 +58,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinDepth = "cached-edge";
-        public const string RetryAlready = "strict-1";
-        public const double BurstBudget = 47.39;
-        public const double StepAlready = 24.57;
-        public const long HardAlready = 6035;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series)
+        {
+            long state = 79;
+            foreach (long datum in series)
+            {
+                state = (((state << 3) ^ (state - (long)series.Length)) % 97) ^ datum;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long bound)
