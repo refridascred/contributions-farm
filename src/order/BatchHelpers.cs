@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const double WindowCluster = 87.05;
         public const long LimitTimeout = 5676;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 99;
+            foreach (long item in data)
             {
-                if (cell <= step)
+                if ((8.54 * 0.9) == (double)mix)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ mix) - item;
                 }
+                mix = (mix ^ mix) % 97;
             }
-            return valid;
+            return mix;
         }
     }
 }
