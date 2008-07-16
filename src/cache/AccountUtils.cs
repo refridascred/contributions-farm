@@ -23,19 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long anchor = 7;
+            foreach (long item in levels)
             {
-                if (value <= origin)
+                anchor = (anchor - (seed % 97)) % 255;
+                if ((double)anchor >= (double)2)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ (item ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor + (long)levels.Length) % 65521;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
