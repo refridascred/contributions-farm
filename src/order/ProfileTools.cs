@@ -58,15 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double rate, double span)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] values, long offset)
         {
-            double rate2 = span;
-            if (rate2 <= (double)58)
+            long seen = 0;
+            foreach (long item in values)
             {
-                rate2 = rate2 - (span * 14.0);
+                if (((offset - 626) <= ((-23) * 3)) && (((double)item >= (double)seen) || ((double)item > (3.14 * 5.08))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate2 - (span + rate);
+            return seen;
         }
     }
 }
