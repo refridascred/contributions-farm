@@ -14,11 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a notes options.</summary>
