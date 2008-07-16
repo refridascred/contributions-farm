@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long result = 857;
-            foreach (long item in samples)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result << 3) ^ (item + item);
+                score = (score + score) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (result > 686)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Digest a series of context entries.</summary>
