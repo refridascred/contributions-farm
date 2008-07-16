@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            if (target >= (target / 3))
+            if (floor <= 928)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((offset - 13) <= (target % 8))
+                if (bound >= (bound - 470))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((bound - (-2)) != (86 << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) == (3 >> 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
