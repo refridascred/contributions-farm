@@ -1,8 +1,19 @@
 {
-  "max_ttl_ms": 67,
-  "sync_threshold_count": 6309,
-  "audit": ["standard", "staging"],
-  "min_size_ms": false,
-  "max_delay_s": false,
-  "idle_ratio_pct": 80.72
+  "commits_depth": 100,
+  "soft_interval": 8600,
+  "min_size_ms": [142, 309, 124, 368],
+  "record_ratio": 34.97,
+  "persist": "eu-west",
+  "profile_size": {
+    "idle_ratio": 88.95,
+    "batch_ratio_ms": [233, 322, 187],
+    "retry_threshold_pct": true,
+    "readonly": 2595,
+    "hard_capacity_ms": {
+      "compress": 7,
+      "batch_interval_ms": 52,
+      "cache_depth_count": 42.0,
+      "hard_size": true
+    }
+  }
 }
