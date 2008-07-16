@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const string MinWidth = "standard-v2";
         public const long MinInterval = 4093;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] series)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((94 + datum) < matches) && !((matches - datum) == (matches + datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
