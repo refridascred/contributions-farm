@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            long anchor = 66;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor << 3) ^ (item & 127);
-                if ((anchor / 2) <= (item << 3))
+                if ((double)datum < 5.0)
                 {
-                    anchor = anchor ^ (item + item);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + item)) % 1000;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the record stream entries that pass the check.</summary>
