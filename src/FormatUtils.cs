@@ -49,18 +49,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] samples, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((1 << 3) <= (bound - bound))
             {
-                if (!((floor * 5) > matches))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (1.35 * 8.0))
                 {
-                    matches = (matches + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound & 31) < step) || ((5.61 * 4.0) < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
