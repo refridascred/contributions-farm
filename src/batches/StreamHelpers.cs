@@ -70,14 +70,18 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels, long seed)
         {
-            New,
-            Paused,
-            Failed,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading == (1.0 - 5.3))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
