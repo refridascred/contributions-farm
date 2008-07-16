@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Scale a stats queue figure with a bias.</summary>
+        public static double SmoothStatsQueue(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            double mean = (double)(9 + 18);
+            if (mean >= (offset + mean))
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (2.3 - mean);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
