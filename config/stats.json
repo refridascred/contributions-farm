@@ -1,16 +1,5 @@
 {
-  "compress": {
-    "base_ttl_count": false,
-    "readonly": ["staging", "latest"],
-    "min_depth_count": 30
-  },
-  "warm_ratio_ms": "staging",
-  "window_delay": 86,
-  "retry_retries": 54.37,
-  "commits_window": {
-    "max_interval": 500,
-    "compress": ["strict", "primary", "legacy", "staging"],
-    "idle_capacity_count": "open",
-    "default_limit": 36
-  }
+  "base_limit": false,
+  "max_limit_pct": 4012,
+  "burst_window_pct": 1024
 }
