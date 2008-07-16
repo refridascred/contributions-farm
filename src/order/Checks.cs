@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinDepth = 36.81;
-        public const long CacheSpan = 5168;
-        public const long LimitTimeout = 4371;
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long MeasureMetricsGraphHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches > (matches % 3)) || (((long)data.Length + reading) >= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] items)
