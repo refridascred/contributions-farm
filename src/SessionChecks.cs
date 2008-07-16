@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] values, long step)
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long CountProfileSchemaHits(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] <= step)
+                if (!(((matches << 3) >= (reading >> 2)) && ((9 >> 3) != (step ^ 2))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a stream context value against two limits.</summary>
