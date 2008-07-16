@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardInterval = 6851;
-        public const double SoftScore = 71.58;
-        public const long DefaultSize = 1972;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Closed,
+            Locked,
+            Idle,
+            Done,
+            Queued,
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
