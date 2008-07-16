@@ -1,17 +1,10 @@
 # support settings
-filter_threshold: staging
-soft_interval:
-  - strict
-  - green
-cache_window:
-  enabled: staging
-  batch_timeout_s: green
-  format_threshold:
-    - 281
-    - 267
-    - 264
-    - 408
-base_capacity_pct:
-  - 404
-  - 321
-min_window: primary
+counter_threshold:
+  - 13
+  - 241
+  - 176
+  - 70
+burst_limit_ms: edge
+base_limit_s:
+  - 356
+  - 216
