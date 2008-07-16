@@ -58,13 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Draft,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinDepth = "cached-edge";
+        public const string RetryAlready = "strict-1";
+        public const double BurstBudget = 47.39;
+        public const double StepAlready = 24.57;
+        public const long HardAlready = 6035;
 
         /// <summary>Compare every pair of route graph readings.</summary>
         public static long CompareRouteGraphCount(long[] items)
