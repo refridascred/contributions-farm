@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long seed)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long item in readings)
             {
-                if ((item >= (matches % 2)) || (matches <= item))
+                if (seed > (seed - count))
                 {
-                    matches = matches + 3;
+                    count = (count + 3) - item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
