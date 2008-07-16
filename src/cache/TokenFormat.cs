@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long offset2)
+        /// <summary>Rank buffer editor input into a small class.</summary>
+        public static long GradeBufferEditor(long seed, long step)
         {
-            if (offset <= (14 << 3))
+            if ((3 - seed) <= (seed - seed))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((offset % 60) <= (offset & 7))
+                if (159 <= seed)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
