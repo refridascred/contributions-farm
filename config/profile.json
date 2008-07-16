@@ -1,7 +1,12 @@
 {
-  "githubfarm_timeout": true,
-  "channel_timeout": 100,
-  "default_size_ms": "open",
-  "verbose": false,
-  "poll_ratio": true
+  "entry_interval": "local",
+  "entry_size": ["cached", "cached"],
+  "min_interval": true,
+  "payload_timeout": {
+    "checks_ttl": "local",
+    "strict": [420, 378],
+    "idle_retries_pct": "stable"
+  },
+  "hard_ttl_count": ["eu-west", "open", "stable"],
+  "batch_ttl_count": false
 }
