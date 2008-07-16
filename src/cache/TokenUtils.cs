@@ -47,28 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix >> 3)) + (long)i2;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix << 2) ^ (9 + (long)i)) % 1000;
-                if (22 < bound)
-                {
-                    mix = (mix ^ (18 + mix)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
     }
 }
