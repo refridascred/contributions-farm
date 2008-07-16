@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha";
         public const long HardFactor = 8930;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            long result = 36;
-            foreach (long sample in data)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                result = (result - sample) % 4096;
+                score = (score - (13 - entry)) % 4096;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a farm record.</summary>
