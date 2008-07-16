@@ -1,13 +1,6 @@
 {
-  "batch_timeout": 64.24,
-  "idle_depth_count": 100,
-  "editor_ttl": 8089,
-  "window_timeout": {
-    "base_threshold": true,
-    "soft_delay_s": ["fallback", "blue", "edge", "stable"],
-    "batch_capacity_pct": "cached",
-    "flush_ratio_ms": [353, 178],
-    "retry_capacity_s": 9648,
-    "idle_threshold_count": [475, 401]
-  }
+  "poll_delay_ms": "staging",
+  "stats_retries": "open",
+  "base_window_s": "latest",
+  "verbose": "staging"
 }
