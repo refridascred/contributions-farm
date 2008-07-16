@@ -1,8 +1,20 @@
 {
-  "sync_delay": 91.79,
-  "readonly": "fallback",
-  "poll_size_ms": "fallback",
-  "burst_capacity": 250,
-  "flush_window_count": "local",
-  "notes_depth": 2462
+  "default_window": 26,
+  "strict": {
+    "readonly": "edge",
+    "default_window_s": "cached",
+    "min_threshold_s": [149, 413, 67, 327],
+    "min_window": "standard",
+    "poll_threshold": 45,
+    "batch_capacity": {
+      "burst_ttl_s": 7.42,
+      "base_interval_pct": 4614,
+      "account_retries": "stable",
+      "audit": 7346
+    }
+  },
+  "default_delay_pct": 46,
+  "persist": 40.26,
+  "buffer_capacity": "strict",
+  "default_limit": 85
 }
