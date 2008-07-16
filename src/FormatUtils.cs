@@ -71,19 +71,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] data, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double gain = (scale + 7.0) - (scale * 5.5);
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + bias) + (double)(long)i;
             }
-            return valid;
+            return gain + (double)56;
         }
     }
 }
