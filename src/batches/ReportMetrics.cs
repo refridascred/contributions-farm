@@ -22,39 +22,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long target, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings, long floor)
         {
-            long offset = target ^ step;
-            if ((3.9 * 7.1) > (double)target)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) >= ((-5) + offset))
+                if ((floor * 5) == (280 + floor))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (890 < (offset / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((467 >> 1) < (target & 63)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
     }
 }
