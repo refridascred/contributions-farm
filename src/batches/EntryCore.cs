@@ -52,15 +52,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double bias)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double rate2 = bias;
-            if (rate2 > (3.31 / 4.0))
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 + (double)389;
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a context options.</summary>
