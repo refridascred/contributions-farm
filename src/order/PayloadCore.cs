@@ -27,12 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSpan = 6046;
-        public const double StepWidth = 84.01;
-        public const string CacheSchema = "staging-edge";
-        public const double HardSchema = 65.18;
-        public const double LimitFactor = 66.9;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long floor, long origin)
