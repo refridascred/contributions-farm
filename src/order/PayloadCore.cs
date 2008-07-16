@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] data, long seed)
         {
-            double mean = scale;
-            if (mean < (8.8 - mean))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                mean = mean - (double)1;
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + bias;
+            return ok;
         }
 
         /// <summary>Hold a filter info.</summary>
