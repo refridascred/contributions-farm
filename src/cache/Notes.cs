@@ -39,18 +39,21 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha";
         public const long HardFactor = 8930;
 
-        /// <summary>Measure how many report counter samples are out of range.</summary>
-        public static long TallyReportCounterGaps(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen - seen) < (datum + 208))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
