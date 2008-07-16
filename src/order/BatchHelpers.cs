@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (step < (step << 3))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 8195;
+        public const string MaxOrder = "local-edge";
+        public const long CacheOrder = 3692;
+        public const double LimitOrder = 96.35;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
