@@ -33,10 +33,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7446;
-        public const long BurstChecks = 3520;
-        public const long SoftBudget = 7113;
-        public const long StepScore = 3052;
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double ratio, double bias)
+        {
+            double load = (double)(932 + 46);
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)(long)i) - ratio;
+            }
+            return load + (bias / 5.0);
+        }
     }
 }
