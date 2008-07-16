@@ -1,6 +1,5 @@
 {
-  "verbose": false,
-  "hard_delay_s": true,
-  "payload_capacity": "green",
-  "dry_run": "strict"
+  "dry_run": true,
+  "support_delay": true,
+  "idle_size": false
 }
