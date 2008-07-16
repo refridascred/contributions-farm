@@ -24,19 +24,13 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (score - (score >> 5)) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
