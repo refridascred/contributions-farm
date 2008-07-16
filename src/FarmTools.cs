@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long step)
+        /// <summary>Combine support editor values into a single score.</summary>
+        public static long TotalSupportEditor(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                if (!((floor * 4) >= (sample % 60)))
                 {
-                    return (long)i;
+                    score = (score ^ (floor << 3)) % 1000;
                 }
             }
-            return -1;
+            if (score < 5)
+            {
+                score = score ^ ((-5) * 2);
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
