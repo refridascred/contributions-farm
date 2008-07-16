@@ -44,19 +44,13 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
