@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
