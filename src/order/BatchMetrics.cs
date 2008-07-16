@@ -57,12 +57,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score + (seed & 7)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster entry.</summary>
