@@ -59,28 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long bound)
-        {
-            long acc = 75;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc + (cell >> 5)) ^ (long)i) + bound;
-                    acc = (acc * 3) + (cell - acc);
-                }
-                acc = acc ^ cell;
-                if (7.1 < (double)cell)
-                {
-                    acc = acc + (acc & 127);
-                }
-            }
-            if (acc < 37)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstCount = "standard-v2";
+        public const long MinGraph = 2151;
+        public const long MinDepth = 5029;
     }
 }
