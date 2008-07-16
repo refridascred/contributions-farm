@@ -23,22 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "open-1";
+        public const double BurstToken = 23.69;
+        public const string BaseDepth = "legacy-v2";
+        public const long SoftFactor = 196;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 7176;
