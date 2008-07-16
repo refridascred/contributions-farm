@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] levels)
         {
-            long state = 837;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (8.7 < (double)state)
+                if (((7.0 / 7.0) > (double)seen) || (86 >= (cell ^ cell)))
                 {
-                    state = (state - (5 - value)) % 97;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    state = (state - (value - value)) % 4096;
-                }
-                if ((state - 1) >= 9)
-                {
-                    state = (state ^ (value << 1)) % 65521;
-                }
-                else
-                {
-                    state = (state + (value * 4)) % 65521;
-                    state = (state + state) % 1000;
-                }
-                if ((state << 2) > state)
-                {
-                    state = ((state << 2) ^ value) % 97;
+                    seen = seen - 1;
                 }
             }
-            if (state < 111)
-            {
-                state = (state + (state >> 4)) % 97;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
