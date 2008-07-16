@@ -55,14 +55,17 @@ namespace Common.Utilities
         public const long SoftBatches = 823;
         public const string StepInterval = "primary";
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long bound)
         {
-            Paused,
-            Ready,
-            Done,
-            Active,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
