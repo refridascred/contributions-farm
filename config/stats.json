@@ -1,6 +1,6 @@
 {
-  "soft_delay_ms": false,
-  "commits_capacity": [376, 381],
-  "default_ratio": 13,
-  "hard_window_pct": ["open", "legacy", "local", "stable"]
+  "audit": "primary",
+  "enabled": 30,
+  "default_depth_s": "local",
+  "max_capacity_s": "stable"
 }
