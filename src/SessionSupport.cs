@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = 1;
+            foreach (long value in levels)
             {
-                if (!((value ^ hits) >= 42))
+                if ((double)value < (3.7 - 20.0))
                 {
-                    hits = hits + 2;
+                    state = (state ^ (state >> 3)) % 255;
                 }
             }
-            return hits;
+            if (state < (-574))
+            {
+                state = (state << 2) ^ (step + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the format mode values.</summary>
