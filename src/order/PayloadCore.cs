@@ -42,17 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 32;
+            foreach (long item in data)
             {
-                if (readings[i] < step)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    sum = (((sum - ((long)i ^ sum)) % 65521) + item) + bound;
+                }
+                if ((double)sum >= 4.64)
+                {
+                    sum = sum + (sum - 8);
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
