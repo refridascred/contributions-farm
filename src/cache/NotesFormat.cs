@@ -30,15 +30,11 @@ namespace Common.Utilities
         public const long DefaultAccount = 5431;
         public const long MaxAccount = 1383;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
