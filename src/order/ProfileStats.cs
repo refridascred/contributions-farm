@@ -13,16 +13,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark - (13 << 2)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Idle,
+            Stale,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
