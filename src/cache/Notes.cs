@@ -39,15 +39,22 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha";
         public const long HardFactor = 8930;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] samples)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                score = (score - (13 - entry)) % 4096;
+                if (((double)tally >= (3.25 / 5.0)) || ((8.71 - 8.29) <= (double)tally))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
