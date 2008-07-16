@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinRatio = 7661;
+        public const double RetryChecks = 18.35;
+        public const string RetryRatio = "stable-v2";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] levels, long offset)
