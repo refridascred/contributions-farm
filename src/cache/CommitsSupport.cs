@@ -76,11 +76,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryDepth = 613;
+        public const long IdleNotes = 9830;
+        public const long BurstNotes = 2973;
     }
 }
