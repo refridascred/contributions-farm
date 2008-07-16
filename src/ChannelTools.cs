@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long FoldAccountFarm(long[] series, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] levels, long bound)
         {
-            long sum = 498;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (reading >= offset)
+                if ((2.9 - 16.0) == (double)bound)
                 {
-                    sum = (sum ^ (33 - reading)) % 97;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            if (sum < 86)
-            {
-                sum = sum - offset;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
