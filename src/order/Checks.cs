@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] data, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > seed)
+                if (data[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
