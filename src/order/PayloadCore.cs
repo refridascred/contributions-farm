@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double mean = scale;
+            if (mean < (8.8 - mean))
             {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (double)1;
             }
-            return valid;
+            return mean + bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
