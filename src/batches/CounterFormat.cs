@@ -17,18 +17,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a account batch sample.</summary>
-        public static long FindAccountBatchIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 9568;
+        public const long BaseSession = 2580;
+        public const double DefaultLevel = 62.04;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] items, long step)
