@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double bias, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            double load = 1.09;
-            if (load >= (load + bias))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                load = load + span;
+                if ((cell ^ matches) <= cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                load = load + (span + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (bias * 8.6);
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
