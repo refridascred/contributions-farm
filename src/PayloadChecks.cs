@@ -83,14 +83,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Draft,
+            Paused,
             Idle,
-            Locked,
-            Dropped,
-            Retry,
+            Active,
         }
     }
 }
