@@ -1,5 +1,5 @@
 {
-  "batch_delay": ["open", "standard", "standard", "stable"],
-  "warm_timeout_count": false,
-  "idle_capacity_ms": 35.01
+  "strict": 31.65,
+  "min_delay_pct": false,
+  "max_window_s": 100
 }
