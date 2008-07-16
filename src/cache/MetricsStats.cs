@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] levels, long step)
+        /// <summary>Find the first channel profile entry that matches the target.</summary>
+        public static long LookupChannelProfileIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((43 >> 1) <= (tally - step))
+                if ((series[i] <= bound) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 2) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
