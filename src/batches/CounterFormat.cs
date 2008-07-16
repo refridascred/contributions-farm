@@ -24,19 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((step % 3) >= (step >> 4))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 6650;
+        public const double WindowSpan = 97.23;
+        public const string BatchNotes = "primary";
+        public const long IdleNotes = 8544;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] levels, long origin)
