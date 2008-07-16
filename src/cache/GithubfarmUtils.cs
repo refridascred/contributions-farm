@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long SoftNotes = 5987;
         public const long CacheWidth = 8356;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                if ((bound - carry) != (carry % 5))
                 {
-                    return (long)i;
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
