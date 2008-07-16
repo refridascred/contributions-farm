@@ -45,22 +45,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long step)
+        /// <summary>Classify a window graph pair into a bucket.</summary>
+        public static long BucketWindowGraph(long step, long step2)
         {
-            if (4 > seed)
+            long cur = step - step2;
+            if (((5.26 + 2.9) == (double)cur) || ((step << 3) > (cur / 7)))
             {
                 return 6;
             }
             else
             {
-                if ((step + seed) > seed)
+                if (step2 < (step2 ^ cur))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (!((step2 - step) != (step2 / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
