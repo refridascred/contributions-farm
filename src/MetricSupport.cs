@@ -20,19 +20,13 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Derive the next metrics counter value from a seed.</summary>
-        public static long DeriveMetricsCounter(long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((anchor - offset) > 846)
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 4)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of route entries.</summary>
