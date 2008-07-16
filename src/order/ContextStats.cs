@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session stream entry that matches the target.</summary>
-        public static long LocateSessionStreamIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9728;
+        public const long HardDepth = 4343;
+        public const long BurstCounter = 4882;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxCount = "local-1";
