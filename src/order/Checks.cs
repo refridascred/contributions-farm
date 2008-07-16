@@ -41,22 +41,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] samples, long floor)
+        /// <summary>Validate batches order readings against a bound.</summary>
+        public static bool ValidateBatchesOrderRange(long[] levels, long target)
         {
-            long anchor = 803;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((7.0 * 9.0) <= (double)item) && ((floor + item) <= (item ^ floor)))
+                if (cell > target)
                 {
-                    anchor = anchor + (anchor + 36);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 2) ^ (long)samples.Length) % 255;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Blend two stats measurements.</summary>
