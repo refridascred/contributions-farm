@@ -47,13 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix + (bound + 35)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a contributi layout value against two limits.</summary>
