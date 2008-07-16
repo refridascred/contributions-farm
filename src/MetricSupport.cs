@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long step)
         {
-            Closed,
-            New,
-            Synced,
-            Draft,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
