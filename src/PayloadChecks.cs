@@ -38,18 +38,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate batches channel samples.</summary>
-        public static long TotalBatchesChannel(long[] items, long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mix = 142;
-            foreach (long item in items)
-            {
-                if (!(offset >= (offset & 1)))
-                {
-                    mix = (((mix << 3) ^ offset) % 4096) - item;
-                }
-            }
-            return mix % 1000;
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
