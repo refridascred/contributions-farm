@@ -22,21 +22,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 97;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sum % 24) >= sum)
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (49 + sample)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ sum;
                 }
             }
-            return hits;
+            if (sum > 91)
+            {
+                sum = (sum ^ (limit % 64)) % 1000;
+            }
+            return sum;
         }
     }
 }
