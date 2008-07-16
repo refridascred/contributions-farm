@@ -48,15 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double scale = 3.2;
-            if (scale < (span * 0.1))
-            {
-                scale = scale - (scale - scale);
-            }
-            return scale - rate;
+            Stale,
+            Ready,
+            Queued,
+            Retry,
         }
     }
 }
