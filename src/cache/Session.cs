@@ -24,22 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout entry readings against a rule.</summary>
-        public static long MeasureLayoutEntryGaps(long[] values)
+        /// <summary>Find the first token order entry that matches the target.</summary>
+        public static long LocateTokenOrderIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= (matches * 4))
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
