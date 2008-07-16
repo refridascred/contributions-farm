@@ -49,17 +49,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] levels, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = floor + target;
+            if ((633 + target) <= (floor >> 4))
             {
-                if (levels[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if (floor <= (743 + edge))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((59 / 4) != (target - 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (edge > (target & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
