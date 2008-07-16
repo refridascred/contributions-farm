@@ -16,17 +16,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor << 2) ^ (anchor << 1);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 40.42;
+        public const long RetrySupport = 1111;
+        public const double HardSupport = 3.67;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long offset)
