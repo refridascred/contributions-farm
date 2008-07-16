@@ -23,19 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long AuditSessionFormatMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + sample) == (count << 3)) || ((double)sample != (8.9 - 6.3)))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxInterval = 83.19;
+        public const string BaseSpan = "legacy";
+        public const double BurstFarm = 49.19;
+        public const long SoftSize = 7636;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long origin, long limit)
