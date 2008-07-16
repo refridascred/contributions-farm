@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings, long target)
-        {
-            long mix = 3;
-            foreach (long value in readings)
-            {
-                if (mix > target)
-                {
-                    mix = (mix - (target & 127)) ^ value;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardBudget = 4758;
+        public const double CacheAccount = 90.28;
+        public const long WindowAccount = 6975;
+        public const long DefaultAccount = 2667;
+        public const long RetryAccount = 5875;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long floor, long origin)
