@@ -15,10 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinInterval = 58.4;
-        public const long BurstWidth = 8990;
-        public const long StepReport = 2182;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 2) == (seed + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the profile report series from a seed.</summary>
         public static long StepProfileReport(long floor)
