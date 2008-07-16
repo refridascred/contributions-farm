@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long mix = 58;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mix = ((((mix * 2) + mix) % 255) + cell) + offset;
+                if ((7.49 * 2.0) <= (double)item)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
