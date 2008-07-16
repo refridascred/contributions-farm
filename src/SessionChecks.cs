@@ -69,15 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window payload figure with a bias.</summary>
-        public static double BlendWindowPayload(double ratio, double bias)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            double ratio2 = 5.6;
-            for (int i = 0; i < 6; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                ratio2 = (ratio2 - (bias + bias)) + (double)(long)i;
+                if ((7 >= (target + target)) && ((target - (long)i) != ((long)i + acc)))
+                {
+                    acc = (acc + 61) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ratio2 + ratio;
+            return acc;
         }
     }
 }
