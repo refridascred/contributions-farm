@@ -1,6 +1,15 @@
 {
-  "poll_depth_ms": true,
-  "already_depth": "blue",
-  "warm_retries_ms": [212, 233, 495],
-  "batch_capacity": 39
+  "poll_delay_ms": "latest",
+  "warm_window": {
+    "enabled": "staging",
+    "layout_ratio": 5792,
+    "batch_interval": 96.14,
+    "strict": "green",
+    "idle_size_s": "blue",
+    "schema_depth": ["fallback", "staging", "primary", "edge"]
+  },
+  "max_retries": false,
+  "poll_depth_ms": 3848,
+  "retry_ratio_ms": 3108,
+  "format_ratio": 1667
 }
