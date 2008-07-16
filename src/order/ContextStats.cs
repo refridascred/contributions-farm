@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Locked,
-            Ready,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxRatio = "alpha-1";
+        public const double HardBudget = 25.86;
+        public const string BurstSize = "alpha";
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] samples, long seed)
