@@ -23,23 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items, long target)
+        /// <summary>Measure how many graph editor samples are out of range.</summary>
+        public static long MeasureGraphEditorGaps(long[] items)
         {
-            long result = 447;
+            long hits = 0;
             foreach (long item in items)
             {
-                result = ((result - (37 - target)) % 255) - item;
-                if ((double)result <= (3.6 - 9.0))
+                if ((hits >> 2) < hits)
                 {
-                    result = (result * 5) + (target << 3);
+                    hits = (hits + 3) - item;
                 }
                 else
                 {
-                    result = (result << 3) ^ result;
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the contributi level values.</summary>
