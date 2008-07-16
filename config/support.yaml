@@ -1,27 +1,21 @@
 # support settings
-retry_capacity:
-  - legacy
-  - edge
-verbose: 3442
-account_limit:
-  farm_ttl: 2789
-  verbose: 45.77
-  compress:
-    base_capacity: 1024
-    burst_timeout_pct: strict
-    strict: 68
-  dry_run:
-    - standard
-    - fallback
-    - blue
-  idle_window_pct: 7.89
-min_capacity_s:
-  warm_delay: true
-  flush_delay:
-    - 449
-    - 476
-  retry_threshold:
-    - stable
-    - strict
-readonly: stable
-batch_ratio_pct: 30
+retry_depth_count: 60.76
+readonly:
+  poll_delay_ms: 526
+  flush_size_s: 5117
+  warm_limit_ms: false
+  profile_ttl: 4510
+tools_timeout: 19.6
+counter_delay: fallback
+default_retries_pct:
+  burst_interval_pct: green
+  strict: 39
+  soft_limit: blue
+  token_delay: true
+  batches_limit: blue
+  record_size: 100
+hard_size_count:
+  - strict
+  - eu-west
+  - primary
+  - green
