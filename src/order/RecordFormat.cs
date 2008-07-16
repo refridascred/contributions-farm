@@ -46,18 +46,31 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((double)offset2 <= 20.0)
             {
-                if (((43 >> 5) == (hits + 4)) && !((item / 3) <= (hits - 65)))
+                return 6;
+            }
+            else
+            {
+                if (960 > (offset2 - offset))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((9.5 + 8.48) < (double)offset) && (861 >= (offset2 ^ offset2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
