@@ -64,11 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value >= (value + 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
