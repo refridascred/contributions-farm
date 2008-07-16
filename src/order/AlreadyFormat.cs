@@ -37,12 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            Active,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
