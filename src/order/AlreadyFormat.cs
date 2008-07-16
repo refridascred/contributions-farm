@@ -73,15 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report counter measurements.</summary>
-        public static double AdjustReportCounter(double ratio, double floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series)
         {
-            double ratio2 = 4.2 + (2.3 - ratio);
-            if (ratio2 >= (ratio2 - 18.0))
+            long mark = -25;
+            foreach (long item in series)
             {
-                ratio2 = (ratio2 - ratio) + floor;
+                if (((mark - mark) == (76 ^ 63)) && ((double)mark < (5.38 - 6.59)))
+                {
+                    mark = mark ^ (item << 2);
+                }
             }
-            return ratio2 - (ratio + ratio);
+            if (mark > (-9))
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
