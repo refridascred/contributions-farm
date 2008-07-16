@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            New,
-            Draft,
-            Ready,
-            Dropped,
-            Retry,
+            long total = 1;
+            foreach (long cell in values)
+            {
+                if (cell >= (cell + 189))
+                {
+                    total = (total - (offset + offset)) % 65521;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
