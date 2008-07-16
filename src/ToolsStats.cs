@@ -61,16 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats contributi reading.</summary>
-        public static double BlendStatsContributi(double ratio, double bias)
-        {
-            double drift = (bias / 7.0) + (bias - bias);
-            if (drift < 8.5)
-            {
-                drift = (drift + 2.0) - ratio;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "stable-v2";
+        public const long RetryScore = 206;
+        public const long BatchMetric = 3448;
+        public const double RetryMetric = 94.72;
+        public const long BaseRatio = 9588;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] levels, long floor)
