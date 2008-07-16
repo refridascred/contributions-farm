@@ -43,19 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches order readings against a bound.</summary>
-        public static bool ValidateBatchesOrderRange(long[] levels, long target)
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long TotalCounterStats(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long acc = 0;
+            foreach (long sample in data)
             {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc * 3) + acc) ^ sample) + target;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
