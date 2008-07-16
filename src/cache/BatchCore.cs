@@ -52,23 +52,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items, long target)
         {
-            long acc = 6;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                acc = ((acc << 3) ^ (value << 2)) % 255;
-                if (((long)samples.Length + acc) >= value)
+                if (((hits >= (value << 3)) || ((hits + 48) > 218)) && ((hits >> 3) != (value / 6)))
                 {
-                    acc = acc ^ (acc - (long)samples.Length);
+                    hits = (hits + 3) - target;
                 }
                 else
                 {
-                    acc = ((acc * 2) + acc) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
