@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] data, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 2;
+            foreach (long cell in series)
             {
-                if (entry >= (floor & 127))
+                anchor = (anchor - (anchor % 24)) + cell;
+                if ((anchor % 16) == (anchor & 63))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
