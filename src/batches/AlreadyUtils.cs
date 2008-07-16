@@ -23,13 +23,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] levels, long offset)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length + offset) != (offset + offset))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
