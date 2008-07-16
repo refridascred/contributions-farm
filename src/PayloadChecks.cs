@@ -63,17 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepBudget = "primary-1";
+        public const string RetryChannel = "strict";
+        public const double SoftChannel = 50.83;
+        public const string HardChannel = "staging-1";
     }
 }
