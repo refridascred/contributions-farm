@@ -46,12 +46,12 @@ namespace Common.Utilities
             return scale - 3.0;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
             public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
