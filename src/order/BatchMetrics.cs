@@ -63,13 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultFactor = 1432;
+        public const double StepBudget = 93.24;
+        public const long CacheCommand = 2402;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] levels)
