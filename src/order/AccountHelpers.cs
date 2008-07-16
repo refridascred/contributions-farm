@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const long RetryCount = 3437;
         public const double CacheScore = 31.53;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen <= 5)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6808;
+        public const long BaseCommits = 9102;
+        public const long IdleCount = 4480;
+        public const long HardLevel = 4979;
+        public const double CacheCommits = 48.29;
     }
 }
