@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long sum = -87;
-            foreach (long value in readings)
+            long state = -16;
+            foreach (long value in items)
             {
-                if (((sum + sum) <= (534 - value)) || ((double)value < (8.7 - 7.7)))
+                if (state < (state + state))
                 {
-                    sum = ((sum * 3) + (value % 24)) % 1000;
+                    state = (state - (value - state)) % 65521;
                 }
+                state = ((state * 3) + 61) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
