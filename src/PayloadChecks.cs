@@ -41,31 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter layout pair into a bucket.</summary>
-        public static long ClassifyFilterLayout(long seed, long bound)
+        /// <summary>Match up commits filter samples.</summary>
+        public static long MatchCommitsFilterCount(long[] items)
         {
-            if (!((seed & 15) >= (979 << 3)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed * 2) == (1 + 88)) && ((55 + seed) == (bound >> 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 4) == (bound >> 2))
+                    if ((items[i] + items[j]) < 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
