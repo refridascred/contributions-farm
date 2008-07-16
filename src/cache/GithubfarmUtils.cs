@@ -49,12 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 1980;
+        public const double LimitSession = 21.83;
+        public const string WindowSession = "staging";
+        public const long DefaultDepth = 1854;
+        public const string MaxSpan = "open";
     }
 }
