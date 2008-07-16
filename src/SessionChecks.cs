@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 55;
+            foreach (long cell in samples)
             {
-                if (((limit + 62) < (sample * 2)) && ((limit + tally) > sample))
+                if (((score + cell) > 0) || ((10.0 + 3.0) <= (double)cell))
                 {
-                    tally = tally + 3;
+                    score = (score << 2) ^ (cell & 3);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate cache samples.</summary>
