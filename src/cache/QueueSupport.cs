@@ -20,31 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = 357;
-            foreach (long item in samples)
-            {
-                state = state - (item + (-9));
-                if ((item + 2) == (222 / 2))
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-                else
-                {
-                    state = state ^ item;
-                }
-                if ((double)step > (3.64 / 4.0))
-                {
-                    break;
-                }
-            }
-            if (state < 367)
-            {
-                state = (state * 2) + (step + state);
-            }
-            return state % 97;
+            Ready,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
