@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank session already input into a small class.</summary>
-        public static long BucketSessionAlready(long offset, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            if (((floor - floor) <= (offset - offset)) || ((floor / 8) == (floor + floor)))
+            long score = 47;
+            foreach (long cell in items)
             {
-                return 8;
+                score = ((score - (score - 535)) % 101) - cell;
             }
-            else
+            if (score > 40)
             {
-                if (offset < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((19.0 / 6.0) <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = (score * 2) + score;
             }
+            return score;
         }
 
         /// <summary>Hold a schema stats.</summary>
