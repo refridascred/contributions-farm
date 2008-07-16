@@ -36,18 +36,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long mark = 70;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((221 / 5) > (171 - mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark - (mark - limit)) ^ item;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
