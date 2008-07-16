@@ -42,10 +42,14 @@ namespace Common.Utilities
             return scale - 3.0;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "alpha-1";
-        public const long RetrySpan = 6532;
-        public const long BurstProfile = 5825;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Closed,
+            Dropped,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 3940;
