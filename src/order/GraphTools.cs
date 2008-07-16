@@ -23,14 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            Idle,
-            Pending,
-            Queued,
-            Closed,
-            Stale,
+            double gain2 = gain;
+            if (gain2 > 18.0)
+            {
+                gain2 = (gain2 + (double)945) + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - (gain * 6.0)) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Define record limits and defaults.</summary>
