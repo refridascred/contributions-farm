@@ -49,18 +49,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] readings, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (seen > (entry - seen))
+                if ((origin - origin) >= (origin % 5))
                 {
-                    seen = (seen + 2) - step;
+                    sum = (sum ^ origin) % 255;
                 }
+                sum = (sum << 2) ^ (sum % 5);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (((sum * 3) + (sum + origin)) % 97) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
