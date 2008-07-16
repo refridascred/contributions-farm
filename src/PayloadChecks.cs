@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
-        public static long TallyFarmGithubfarmOutliers(long[] items, long bound)
+        /// <summary>Digest a series of checks counter entries.</summary>
+        public static long DigestChecksCounter(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = 159;
+            foreach (long cell in series)
             {
-                if ((3.74 * 0.87) > (double)bound)
+                result = (result + (cell + 89)) % 97;
+                if (result > (cell ^ 410))
                 {
-                    count = (count + 3) + reading;
+                    break;
                 }
             }
-            return count;
+            if (result > 6)
+            {
+                result = (result << 3) ^ (result & 1);
+            }
+            return result;
         }
 
         /// <summary>Describe the filter status values.</summary>
