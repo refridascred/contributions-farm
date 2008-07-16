@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 885;
-        public const double BatchRatio = 42.84;
-        public const long BurstCluster = 9128;
-        public const long BurstRatio = 3851;
-        public const long StepCluster = 1383;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)9 != (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BatchBudget = 92.81;
