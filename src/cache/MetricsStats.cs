@@ -14,22 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + tally) == (entry + 65))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
