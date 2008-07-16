@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in eu-west edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=492
+log "limit is ${CHANNEL_LIMIT}"
