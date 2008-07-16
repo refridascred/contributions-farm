@@ -1,7 +1,38 @@
 # githubfarm settings
-readonly: 100
-profile_retries: false
-retry_limit_ms: edge
-cache_retries_pct: blue
-hard_threshold: false
-layout_depth: 47.06
+soft_interval_pct: false
+hard_timeout_pct:
+  base_ttl: 24.98
+  persist:
+    idle_limit_s: 30
+    hard_depth_count: 17
+    retry_depth_ms: green
+    editor_window: local
+    hard_retries_pct: 36.49
+    route_retries: 100
+  layout_limit: open
+  batch_timeout_ms: cached
+  min_delay: 91
+  burst_ttl:
+    token_interval: 74
+    warm_interval_count: fallback
+    batch_limit_count: true
+    commits_size: 250
+flush_interval:
+  - 291
+  - 147
+  - 33
+  - 273
+cache_interval:
+  idle_delay: 250
+  compress: true
+  stats_retries: 1024
+  metric_interval: true
+  sync_size:
+    command_timeout: 77.65
+    retry_ratio: false
+    retry_ttl_pct: 48.23
+    filter_retries:
+      - standard
+      - staging
+      - latest
+      - fallback
