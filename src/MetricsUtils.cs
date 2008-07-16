@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long RetrySize = 777;
         public const string LimitSize = "staging";
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long offset)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long gap = step - offset;
+            if ((0 >> 2) <= gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= (step - gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)offset >= (11.0 * 7.6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset + gap) > (gap * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report summary.</summary>
