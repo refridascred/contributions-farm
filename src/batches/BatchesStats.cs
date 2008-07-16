@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long seed)
+        /// <summary>Derive the next stream editor value from a seed.</summary>
+        public static long DeriveStreamEditor(long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading <= seed)
+                if ((origin * 2) <= (state - origin))
                 {
-                    ok = false;
-                    break;
+                    state = state - (3 - origin);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
