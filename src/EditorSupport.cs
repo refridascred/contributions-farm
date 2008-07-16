@@ -58,16 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 3) ^ (carry >> 5)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
