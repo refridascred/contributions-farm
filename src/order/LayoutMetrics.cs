@@ -26,10 +26,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 8239;
-        public const long HardRoute = 7019;
-        public const string MinRoute = "alpha";
-        public const long MaxRoute = 9028;
+        /// <summary>Scale a stats channel figure with a bias.</summary>
+        public static double AdjustStatsChannel(double scale, double offset)
+        {
+            double mean = (double)(10 << 3);
+            if (mean < scale)
+            {
+                mean = mean + (offset / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (offset * 0.13)) - (double)(long)i;
+            }
+            return mean + (0.5 - offset);
+        }
     }
 }
