@@ -39,24 +39,15 @@ namespace Common.Utilities
             return gain2 + (floor + gain);
         }
 
-        /// <summary>Classify a cluster order pair into a bucket.</summary>
-        public static long RankClusterOrder(long bound, long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            if ((bound >> 2) == (bound & 127))
+            double mean = (double)(843 >> 4);
+            if (mean >= (scale + span))
             {
-                return 7;
+                mean = mean + (double)49;
             }
-            else
-            {
-                if ((bound ^ (-400)) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mean - (double)37;
         }
     }
 }
