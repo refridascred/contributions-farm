@@ -30,35 +30,29 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long origin)
+        /// <summary>Grade a session format value against two limits.</summary>
+        public static long GradeSessionFormat(long origin, long limit)
         {
-            if ((origin + limit) == (935 << 2))
+            long prev = origin - limit;
+            if ((9.21 + 9.0) == (double)limit)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((origin >> 3) > limit)
+                if (prev >= (prev << 3))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin / 2) != (origin << 2))
+                    if ((double)prev <= (5.0 - 3.0))
                     {
                         return 8;
                     }
                     else
                     {
-                        if (!((origin + limit) != (origin - origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 7;
                     }
                 }
             }
