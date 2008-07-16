@@ -44,13 +44,9 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFactor = 2461;
+        public const long StepRatio = 8008;
+        public const long DefaultFormat = 3846;
     }
 }
