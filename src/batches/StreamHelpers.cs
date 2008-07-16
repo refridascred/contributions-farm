@@ -96,12 +96,21 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
