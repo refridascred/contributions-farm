@@ -1,5 +1,21 @@
 # githubfarm settings
-compress: true
-format_interval: strict
-cache_ttl: 7.95
-farm_timeout: false
+enabled:
+  poll_capacity: false
+  burst_ratio: 30.34
+  soft_limit_s:
+    checks_capacity: 50.13
+    min_ttl_ms: 31
+    sync_retries: true
+  compress: 60
+  retry_timeout_pct:
+    compress: 6206
+    base_retries_count: 9620
+    session_timeout: 37.14
+    entry_size: 100
+    order_window: 100
+  burst_delay: 250
+counter_threshold:
+  - 278
+  - 361
+hard_interval_count: 85
+batch_delay_s: legacy
