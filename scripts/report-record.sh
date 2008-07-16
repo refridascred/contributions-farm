@@ -7,17 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy edge primary; do
-    log "checking ${item}"
-done
