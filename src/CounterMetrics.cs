@@ -32,21 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long TallyBatchGithubfarmHits(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches >= sample)
                 {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
