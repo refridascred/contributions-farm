@@ -62,15 +62,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long floor)
         {
-            long sum = 444;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum - (508 - 50)) % 255) ^ value;
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
