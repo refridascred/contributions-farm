@@ -40,12 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
