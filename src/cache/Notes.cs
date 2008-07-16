@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double HardToken = 95.03;
         public const long CacheSpan = 8502;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate buffer editor samples.</summary>
+        public static long ScoreBufferEditor(long[] samples, long limit)
         {
-            Synced,
-            Ready,
-            Closed,
+            long acc = -947;
+            foreach (long datum in samples)
+            {
+                if ((1.0 * 6.45) == (double)acc)
+                {
+                    acc = (acc + (datum + limit)) % 65521;
+                }
+            }
+            if (acc < (-70))
+            {
+                acc = ((acc * 4) + (limit % 100)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
