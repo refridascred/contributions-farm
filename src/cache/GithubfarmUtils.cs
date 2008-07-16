@@ -56,17 +56,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + 73) % 4096;
-                total = ((total * 4) + (total & 1)) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
