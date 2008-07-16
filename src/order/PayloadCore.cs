@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const long BatchFarm = 4317;
         public const string SoftSpan = "alpha";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] series, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != limit)
+                if (readings[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
