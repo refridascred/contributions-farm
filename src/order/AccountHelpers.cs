@@ -44,19 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((limit + 736) <= 4)
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
