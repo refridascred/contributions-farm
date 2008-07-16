@@ -19,13 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum ^ 319) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools info.</summary>
