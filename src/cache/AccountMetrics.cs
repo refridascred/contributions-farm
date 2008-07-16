@@ -70,9 +70,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4559;
-        public const double DefaultCount = 69.07;
-        public const double BaseCount = 76.25;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
