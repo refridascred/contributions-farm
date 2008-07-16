@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Find the first payload metric entry that matches the target.</summary>
+        public static long LookupPayloadMetricIndex(long[] readings, long floor)
         {
-            Idle,
-            Synced,
-            Closed,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
