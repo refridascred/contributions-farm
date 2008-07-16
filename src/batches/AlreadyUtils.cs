@@ -57,16 +57,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                score = (score + score) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
