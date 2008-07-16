@@ -37,13 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long bound)
         {
-            Dropped,
-            New,
-            Locked,
-            Done,
+            long diff = seed - bound;
+            if (seed <= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 - seed) >= (bound >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (diff <= ((-3) % 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
