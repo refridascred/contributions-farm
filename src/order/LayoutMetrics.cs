@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of context session readings.</summary>
-        public static long OverlapContextSessionCount(long[] series)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = 1.09;
+            if (load >= (load + bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + span;
             }
-            return matches;
+            else
+            {
+                load = load + (span + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (bias * 8.6);
         }
 
         /// <summary>Hold a support summary.</summary>
