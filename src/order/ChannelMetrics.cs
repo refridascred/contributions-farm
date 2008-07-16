@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] samples, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long step)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            if ((double)target < (8.12 + 0.75))
             {
-                if (entry >= seed)
+                return 7;
+            }
+            else
+            {
+                if (target > (2 ^ step))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
