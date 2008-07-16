@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Queued,
-            Paused,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstTimeout = 47.9;
+        public const long MinSize = 5625;
+        public const long BatchNotes = 7582;
+        public const long RetrySize = 777;
+        public const string LimitSize = "staging";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] levels)
