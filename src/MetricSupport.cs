@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long HardBudget = 8286;
         public const double StepOrder = 10.71;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples, long offset)
         {
-            Draft,
-            Locked,
-            Dropped,
+            long total = 6;
+            foreach (long value in samples)
+            {
+                total = ((total << 3) ^ (total - value)) % 101;
+            }
+            if (total > 78)
+            {
+                total = (total - (offset << 1)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a buffer record.</summary>
