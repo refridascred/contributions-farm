@@ -1,8 +1,6 @@
 # entry settings
-enabled: legacy
-min_ttl: 30
-warm_ttl:
-  - 474
-  - 203
-  - 165
-  - 466
+soft_ttl_count: 250
+queue_ttl:
+  - 404
+  - 140
+verbose: local
