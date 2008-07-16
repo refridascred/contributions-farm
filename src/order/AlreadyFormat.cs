@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5404;
-        public const long IdleMetrics = 1120;
-        public const long MinCount = 8743;
+        /// <summary>Classify a entry format pair into a bucket.</summary>
+        public static long SortEntryFormat(long offset, long seed)
+        {
+            if (offset < (112 - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.08 >= (double)seed) && ((double)seed == (6.0 / 4.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (seed + 300))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long seed, long limit)
