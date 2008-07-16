@@ -23,17 +23,15 @@ namespace Common.Utilities
             return drift + (double)152;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)1 - (double)5;
+            if (scale > (double)11)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - floor;
             }
-            return -1;
+            return scale + (scale + gain);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
