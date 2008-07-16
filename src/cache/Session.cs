@@ -24,32 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank filter editor input into a small class.</summary>
-        public static long SortFilterEditor(long step, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long origin)
         {
-            long next = step - limit;
-            if ((next + step) <= limit)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((46 / 6) != (limit + next))
+                if (entry > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.4 + 1.0) <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
