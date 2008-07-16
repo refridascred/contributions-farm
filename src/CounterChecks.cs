@@ -71,26 +71,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long state = 46;
-            foreach (long cell in values)
-            {
-                if ((double)state < (2.4 - 0.33))
-                {
-                    state = state + (seed & 15);
-                }
-                if ((seed ^ seed) > (state << 3))
-                {
-                    state = (state - (cell + (long)values.Length)) % 4096;
-                }
-            }
-            if (state < (-68))
-            {
-                state = (state * 4) + (seed * 2);
-            }
-            return state;
+            Locked,
+            Pending,
+            Ready,
+            Closed,
         }
     }
 }
