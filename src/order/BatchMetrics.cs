@@ -23,11 +23,23 @@ namespace Common.Utilities
         public const long MaxTimeout = 8655;
         public const double HardSession = 50.29;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine account counter values into a single score.</summary>
+        public static long FoldAccountCounter(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long total = 879;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((total + ((long)i + total)) ^ value) - limit;
+                }
+                total = (total ^ (total + 468)) % 65521;
+                if (!((total / 3) == (total & 15)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
