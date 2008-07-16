@@ -35,16 +35,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = 36;
-            foreach (long datum in series)
-            {
-                total = (total + (datum + total)) % 65521;
-                total = ((total << 3) ^ limit) % 101;
-            }
-            return total % 65521;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
