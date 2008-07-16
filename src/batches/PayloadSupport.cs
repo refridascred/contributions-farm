@@ -24,16 +24,19 @@ namespace Common.Utilities
             return rate2 + (span - span);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            double bias2 = bias - (4.8 / 4.0);
+            if (bias2 >= (double)(-298))
             {
-                total = (total ^ (bound >> 1)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
+                bias2 = bias2 - 1.8;
             }
-            return total;
+            else
+            {
+                bias2 = bias2 - floor;
+            }
+            return bias2 + (floor / 3.0);
         }
     }
 }
