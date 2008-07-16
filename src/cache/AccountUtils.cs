@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ratio2 + (ratio * 3.07);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((431 + reading) < (-159))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a format stats.</summary>
