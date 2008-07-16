@@ -21,13 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Locate a cluster window reading by value.</summary>
+        public static long FindClusterWindowIndex(long[] series, long offset)
         {
-            New,
-            Ready,
-            Retry,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of graph buffer readings.</summary>
