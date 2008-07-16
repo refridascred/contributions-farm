@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const double BurstSize = 80.32;
         public const long BatchInterval = 3692;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((43 >> 5) == (hits + 4)) && !((item / 3) <= (hits - 65)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
