@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count contributi schema pairs that satisfy a relation.</summary>
-        public static long CompareContributiSchemaCount(long[] samples)
+        /// <summary>Iterate the window report series from a seed.</summary>
+        public static long StepWindowReport(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
