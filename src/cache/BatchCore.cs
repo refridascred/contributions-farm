@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 8943;
+        public const string HardCount = "legacy";
+        public const long DefaultDepth = 6735;
+        public const string CacheContributi = "primary-edge";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] series)
