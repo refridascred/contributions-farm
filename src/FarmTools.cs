@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
