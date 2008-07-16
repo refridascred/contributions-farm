@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double HardBudget = 25.86;
         public const string BurstSize = "alpha";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxCount = "local-1";
+        public const string HardContext = "primary-edge";
+        public const string MinFactor = "open-1";
+        public const string IdleFactor = "cached";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsOutliers(long[] series)
