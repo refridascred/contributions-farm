@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long score = 346;
+            foreach (long reading in data)
+            {
+                score = (score << 2) ^ (reading % 10);
+                score = ((score * 5) + (offset + reading)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the tools state values.</summary>
