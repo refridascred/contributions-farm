@@ -31,19 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a queue token reading.</summary>
-        public static double BlendQueueToken(double scale, double bias)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            double scale2 = bias + (scale / 4.0);
-            if (scale2 > (scale + bias))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 + (bias * 6.83);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + 1.9) + (double)(long)i;
-            }
-            return scale2 - (double)(-624);
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
