@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the support format entries that pass the check.</summary>
