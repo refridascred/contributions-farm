@@ -55,39 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long bound2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long prev = bound ^ bound2;
-            if ((double)bound != (6.5 + 3.96))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ prev) >= prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound - (-2)) != (prev - 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound2 - bound2) < (bound2 + prev)) || ((bound2 << 1) != (bound / 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two entry buffer measurements.</summary>
