@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Iterate the graph account series from a seed.</summary>
+        public static long SeriesGraphAccount(long limit)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Adjust a support reading.</summary>
