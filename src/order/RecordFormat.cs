@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate batch entry samples.</summary>
-        public static long TotalBatchEntry(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long carry = 82;
-            foreach (long datum in readings)
-            {
-                carry = (carry * 4) + (datum ^ datum);
-            }
-            return carry;
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
