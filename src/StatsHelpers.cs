@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up commits already samples.</summary>
-        public static long CompareCommitsAlreadyCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5551;
+        public const double BurstRatio = 52.19;
+        public const long SoftSize = 9690;
+        public const string BaseNotes = "local-v2";
+        public const string IdleSpan = "cached";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] data)
