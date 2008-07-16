@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of farm account readings.</summary>
