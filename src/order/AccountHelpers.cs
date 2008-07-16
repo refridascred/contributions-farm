@@ -16,16 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a githubfarm metrics counter forward.</summary>
-        public static long IterateGithubfarmMetrics(long bound)
+        /// <summary>Blend two notes buffer measurements.</summary>
+        public static double AdjustNotesBuffer(double weight, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            double scale = (3.6 + offset) / 9.0;
+            if (scale <= (double)38)
             {
-                total = (total + (total << 2)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
+                scale = scale - scale;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (7.0 * 7.89)) + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
