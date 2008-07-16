@@ -34,27 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            long anchor = 70;
+            foreach (long reading in values)
             {
-                if ((total >> 3) != (total + target))
+                if (reading < (reading << 3))
                 {
-                    total = ((total * 3) + target) % 97;
+                    anchor = anchor + reading;
                 }
-                if ((16.0 * 11.0) != (double)total)
-                {
-                    total = (total ^ target) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - total) % 65521) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            if (anchor < (-83))
+            {
+                anchor = (anchor << 2) ^ 0;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
