@@ -16,23 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double bias)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long step)
         {
-            double bias2 = (double)86;
-            if (bias2 >= bias2)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + (double)2) - bias;
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 + gain;
+            return stale;
         }
 
         /// <summary>Describe the command class values.</summary>
