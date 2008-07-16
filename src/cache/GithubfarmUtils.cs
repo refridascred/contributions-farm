@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long floor)
+        /// <summary>Classify a context entry pair into a bucket.</summary>
+        public static long RankContextEntry(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (offset < (59 ^ origin))
             {
-                if (readings[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((5.0 - 3.2) >= (double)offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
