@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Retry,
-            Done,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSpan = "legacy-edge";
+        public const long RetryContext = 755;
+        public const long MinContext = 4628;
+        public const string WindowContext = "open";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] items)
