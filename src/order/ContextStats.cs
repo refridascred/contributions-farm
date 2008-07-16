@@ -33,9 +33,27 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const string IdleFactor = "cached";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseDepth = 4964;
-        public const long CacheSchema = 6081;
-        public const long StepSchema = 3274;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values, long origin)
+        {
+            long anchor = 1;
+            foreach (long cell in values)
+            {
+                if (!!((origin + cell) >= (anchor + anchor)))
+                {
+                    anchor = ((anchor * 5) + (anchor - anchor)) % 101;
+                    anchor = (anchor << 3) ^ cell;
+                }
+                if ((cell + cell) != (cell - origin))
+                {
+                    anchor = (anchor << 3) ^ (cell + origin);
+                }
+                if ((cell - anchor) <= (cell ^ anchor))
+                {
+                    anchor = ((anchor << 3) ^ (cell - origin)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
