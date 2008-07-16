@@ -69,18 +69,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long MeasureMetricsEditorHits(long[] values)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((limit > target) && ((limit << 3) <= 80))
             {
-                if ((tally % 2) > reading)
+                return 7;
+            }
+            else
+            {
+                if (!((double)0 < (double)limit))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit & 127) <= (target * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 2) != (target - 362))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
