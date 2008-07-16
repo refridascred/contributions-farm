@@ -30,19 +30,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total ^ (bound >> 1)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
