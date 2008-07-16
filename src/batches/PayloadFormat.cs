@@ -40,17 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long offset)
+        /// <summary>Validate batch stream readings against a bound.</summary>
+        public static bool CheckBatchStreamBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (levels[i] < offset)
+                if (item > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
