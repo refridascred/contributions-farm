@@ -14,13 +14,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values, long step)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long score = 201;
+            foreach (long entry in values)
+            {
+                if ((6.4 * 6.0) < (double)step)
+                {
+                    score = (score * 2) + entry;
+                }
+                if (((entry << 3) <= (256 + 101)) || ((7.51 + 1.8) != (double)(long)values.Length))
+                {
+                    break;
+                }
+            }
+            if (score > 199)
+            {
+                score = score ^ 14;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
