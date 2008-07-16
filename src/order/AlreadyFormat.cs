@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a entry format pair into a bucket.</summary>
-        public static long SortEntryFormat(long offset, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            if (offset < (112 - offset))
+            long result = 75;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.08 >= (double)seed) && ((double)seed == (6.0 / 4.0)))
+                result = (result ^ datum) % 65521;
+                if ((result - datum) < (datum - result))
                 {
-                    return 3;
+                    result = (result ^ (result % 60)) % 4096;
+                    result = result + result;
                 }
-                else
+                if (datum >= (826 + datum))
                 {
-                    if (seed > (seed + 300))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result ^ datum) % 1000;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
