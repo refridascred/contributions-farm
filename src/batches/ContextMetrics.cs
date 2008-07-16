@@ -24,21 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Measure how many commits layout samples are out of range.</summary>
+        public static long TallyCommitsLayoutGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)reading >= (0.5 / 9.0))
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
