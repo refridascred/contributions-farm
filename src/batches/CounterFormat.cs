@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next stats entry value from a seed.</summary>
-        public static long RollStatsEntry(long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long gap = limit + offset;
+            if ((gap - gap) > gap)
             {
-                carry = (carry ^ offset) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((gap / 8) != ((-39) + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a command reading by value.</summary>
