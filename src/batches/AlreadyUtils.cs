@@ -29,17 +29,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long sum = -51;
+            foreach (long cell in readings)
             {
-                result = (result ^ (bound << 1)) % 1000;
-                result = ((result << 2) ^ result) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((cell + cell) < (sum / 3))
+                {
+                    sum = (sum ^ ((long)readings.Length << 3)) % 1000;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
