@@ -16,12 +16,16 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchRatio = 9251;
-        public const string WindowBudget = "strict-v2";
-        public const long RetryPayload = 2508;
-        public const double BatchPayload = 81.93;
-        public const long WindowLevel = 7182;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values, long target)
+        {
+            long mix = 6;
+            foreach (long datum in values)
+            {
+                mix = (((mix * 2) + (8 / 3)) ^ datum) + target;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
