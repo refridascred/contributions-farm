@@ -31,19 +31,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
-        {
-            long sum = -51;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) < (sum / 3))
-                {
-                    sum = (sum ^ ((long)readings.Length << 3)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchFactor = 9057;
+        public const string BurstReport = "staging-v2";
+        public const long MinSpan = 9484;
+        public const long WindowReport = 1746;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] items, long step)
