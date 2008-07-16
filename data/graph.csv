@@ -1,10 +1,7 @@
-id,owner,weight,level
-1,stable,70.35,open
-2,54.11,901,legacy
-3,blue,182,43.84
-4,strict,97.14,staging
-5,500,102,474
-6,72.01,edge,28.96
-7,0,13.22,legacy
-8,green,113,33.44
-9,75.73,571,858
+id,state,label
+1,strict,30.14
+2,primary,452
+3,286,63.38
+4,73.89,legacy
+5,strict,382
+6,115,72.05
