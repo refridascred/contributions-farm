@@ -1,12 +1,7 @@
 {
-  "cache_limit_s": "stable",
-  "compress": 89,
-  "batch_capacity": 76.56,
-  "counter_ratio": "primary",
-  "audit": {
-    "batch_window": ["strict", "primary", "blue", "primary"],
-    "burst_limit_count": [297, 311],
-    "default_limit_s": 89.18
-  },
-  "poll_retries": "stable"
+  "base_delay": "latest",
+  "sync_limit": 37,
+  "persist": "standard",
+  "support_ttl": 500,
+  "burst_size_pct": 63
 }
