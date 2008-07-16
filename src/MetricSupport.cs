@@ -21,23 +21,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of token contributi readings.</summary>
-        public static long TotalTokenContributi(long[] items, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long floor)
         {
-            long state = 812;
-            foreach (long item in items)
+            if ((step << 2) <= (step % 24))
             {
-                if ((((long)items.Length & 127) <= (state << 3)) && ((765 & 31) > state))
+                return 3;
+            }
+            else
+            {
+                if (((floor ^ floor) < floor) && ((floor + floor) == (873 << 3)))
                 {
-                    state = state - (bound & 63);
-                    continue;
+                    return 2;
                 }
-                if ((double)state != (9.0 * 1.0))
+                else
                 {
-                    state = ((state << 3) ^ (item - 338)) % 65521;
+                    return 8;
                 }
             }
-            return state;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
