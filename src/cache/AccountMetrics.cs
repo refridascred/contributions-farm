@@ -60,32 +60,21 @@ namespace Common.Utilities
         public const long BurstSpan = 2565;
         public const long LimitStream = 2305;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long step, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long bound = step - seed;
-            if (!(9 < step))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - 63) <= (seed - 607))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (547 >= (bound ^ 7))
+                    if ((values[i] - values[j]) != 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
