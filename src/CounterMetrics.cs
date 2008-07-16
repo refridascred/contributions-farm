@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double span)
-        {
-            double drift = span * 7.88;
-            if (drift < weight)
-            {
-                drift = drift + 1.0;
-            }
-            return drift + span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardInterval = 6851;
+        public const double SoftScore = 71.58;
+        public const long DefaultSize = 1972;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
