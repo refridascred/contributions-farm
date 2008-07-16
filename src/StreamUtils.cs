@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading / 2) >= (tally << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "cached-v2";
+        public const string WindowPayload = "standard-1";
+        public const long RetryPayload = 7426;
+        public const long BurstPayload = 826;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
