@@ -25,32 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            long gap = floor - seed;
-            if ((double)gap <= (double)6)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.7 * 6.0) != (double)floor)
+                if (items[i] < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 3) != (gap % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
