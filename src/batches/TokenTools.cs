@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 94.87;
-        public const string MinSpan = "fallback-1";
-        public const long HardSpan = 9809;
-        public const long IdleQueue = 8775;
-        public const long SoftQueue = 7371;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double span)
+        {
+            double bias = ratio;
+            if (bias < bias)
+            {
+                bias = bias - (ratio / 8.0);
+            }
+            else
+            {
+                bias = bias - (ratio * 9.88);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (span + span)) + (double)(long)i;
+            }
+            return bias + (double)867;
+        }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
         public static long DeriveLayoutChannel(long bound)
