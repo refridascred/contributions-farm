@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 1277;
-        public const double CacheReport = 7.73;
-        public const long WindowReport = 6582;
-        public const long DefaultReport = 3442;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Failed,
+            Active,
+            Retry,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double scale, double floor)
