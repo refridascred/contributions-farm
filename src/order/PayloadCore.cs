@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 61;
-            foreach (long reading in values)
-            {
-                if ((double)(-88) < (double)mark)
-                {
-                    mark = ((mark << 3) ^ mark) ^ reading;
-                }
-            }
-            if (mark < 52)
-            {
-                mark = (mark - (mark + mark)) % 65521;
-            }
-            return mark;
+            Done,
+            Stale,
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a already entry.</summary>
