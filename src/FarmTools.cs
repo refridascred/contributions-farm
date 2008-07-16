@@ -25,38 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if (!((target & 1) == (target - target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)target == (double)offset) && ((offset >> 5) <= (offset * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target < (offset + 25)) || (target < (target + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset << 3) != (53 >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
