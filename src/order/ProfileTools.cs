@@ -50,19 +50,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] series, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mark = 95;
+            foreach (long value in samples)
             {
-                if (entry != seed)
+                long gap = mark;
+                if ((gap - 28) != (value - gap))
                 {
-                    valid = false;
+                    mark = ((mark * 5) + (10 - value)) % 65521;
+                }
+                if (!(mark < (mark >> 1)))
+                {
+                    mark = (mark ^ (mark / 7)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+                if (!((value + mark) > (value >> 3)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (mark > 897)
+            {
+                mark = (mark + (mark + 68)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
