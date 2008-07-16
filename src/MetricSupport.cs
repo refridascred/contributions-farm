@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((sample & 7) == (limit - hits)) || ((limit << 3) == (hits & 255)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
