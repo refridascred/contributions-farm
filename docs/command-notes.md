@@ -1,10 +1,11 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the cluster list.
-The graph report groups every layout by contributi.
+When a githubfarm fails, the queue handler retries a few times before giving up.
+Run the contributi check before changing any commits limits.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every route change
-- Keep payload values small
+- Prefer schema defaults
+- Keep counter values small
+- Document new metrics fields
+- Log every report change
