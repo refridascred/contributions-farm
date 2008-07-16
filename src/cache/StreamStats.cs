@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long limit)
+        /// <summary>Adjust a payload profile reading.</summary>
+        public static double SmoothPayloadProfile(double ratio, double offset)
         {
-            long cur = step + limit;
-            if ((4.18 - 1.7) <= (double)step)
+            double scale = (double)(-67) - (ratio * 10.0);
+            if (scale < scale)
             {
-                return 2;
+                scale = scale + scale;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((155 % 24) != (cur - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = (scale - (ratio + offset)) - (double)(long)i;
             }
+            return scale - (6.0 * 1.23);
         }
 
         /// <summary>Describe the channel status values.</summary>
