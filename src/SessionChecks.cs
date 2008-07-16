@@ -49,11 +49,15 @@ namespace Common.Utilities
         public const long LimitWidth = 1424;
         public const double IdleCount = 52.59;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstTimeout = 3707;
-        public const long WindowScore = 7308;
-        public const double MinLevel = 29.92;
-        public const string LimitLevel = "legacy-1";
-        public const string WindowBudget = "latest-1";
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long SeriesQueueGraph(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
