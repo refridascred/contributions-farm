@@ -1,5 +1,7 @@
 # githubfarm settings
-sync_retries: false
-soft_timeout_ms: cached
-stream_interval: false
-burst_capacity_count: true
+min_retries_count: 3348
+poll_threshold:
+  - strict
+  - cached
+metric_capacity: strict
+default_interval: 28
