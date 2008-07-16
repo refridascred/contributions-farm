@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a report commits reading by value.</summary>
-        public static long LookupReportCommitsIndex(long[] levels, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
