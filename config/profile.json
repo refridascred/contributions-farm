@@ -1,5 +1,7 @@
 {
-  "order_timeout": true,
-  "profile_ratio": 17.27,
-  "readonly": false
+  "readonly": 76.0,
+  "context_depth": ["stable", "legacy", "latest", "edge"],
+  "strict": "standard",
+  "batch_capacity_pct": 1013,
+  "idle_interval": 32.17
 }
