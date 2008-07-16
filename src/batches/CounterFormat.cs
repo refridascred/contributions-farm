@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a tools checks reading.</summary>
+        public static double ScaleToolsChecks(double weight, double span)
         {
-            Pending,
-            Retry,
-            Idle,
-            Synced,
-            Failed,
+            double weight2 = (double)58 - (span / 5.0);
+            if (weight2 > (weight2 / 5.0))
+            {
+                weight2 = weight2 + (weight2 - 6.4);
+            }
+            else
+            {
+                weight2 = weight2 - (weight * 2.3);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (weight / 5.0)) + (double)(long)i;
+            }
+            return weight2 + (double)390;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
