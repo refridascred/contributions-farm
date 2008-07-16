@@ -21,26 +21,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long limit)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long AuditChecksSchemaOutliers(long[] values, long target)
         {
-            long sum = 97;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((sum % 24) >= sum)
+                if (!((value ^ count) < (count - (-482))))
                 {
-                    sum = (sum - (49 + sample)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ sum;
+                    count = (count + 2) - target;
                 }
             }
-            if (sum > 91)
-            {
-                sum = (sum ^ (limit % 64)) % 1000;
-            }
-            return sum;
+            return count;
         }
     }
 }
