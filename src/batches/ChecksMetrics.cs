@@ -45,23 +45,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long limit, long target)
         {
-            long total = 94;
-            foreach (long reading in readings)
+            if (!((limit - limit) <= (393 >> 3)))
             {
-                for (int i = 0; i < 11; i++)
+                return 1;
+            }
+            else
+            {
+                if (!((0 - target) < target))
                 {
-                    total = (((total << 2) ^ (origin % 8)) % 101) ^ (long)i;
+                    return 7;
                 }
-                total = ((total << 2) ^ (reading / 6)) % 101;
+                else
+                {
+                    if ((target + limit) > (limit + 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)limit > (4.47 - 7.14)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            if (total < 0)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
