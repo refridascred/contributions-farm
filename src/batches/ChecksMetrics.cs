@@ -17,19 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session order values into a single score.</summary>
-        public static long FoldSessionOrder(long[] series)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long result = 929;
-            foreach (long entry in series)
-            {
-                result = (result ^ (result & 1)) ^ entry;
-            }
-            if (result > 5)
-            {
-                result = (result - result) % 1000;
-            }
-            return result % 4096;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
