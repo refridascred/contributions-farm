@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "strict-edge";
-        public const long MaxTimeout = 891;
-        public const long IdleSize = 2928;
-        public const long StepTimeout = 1677;
-        public const long IdleTools = 6654;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
