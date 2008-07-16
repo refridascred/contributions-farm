@@ -23,13 +23,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            New,
-            Done,
-            Failed,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine session values into a single score.</summary>
