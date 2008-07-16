@@ -28,32 +28,11 @@ namespace Common.Utilities
         public const long MaxStream = 36;
         public const string BurstStream = "fallback-v2";
 
-        /// <summary>Classify a report stream pair into a bucket.</summary>
-        public static long RankReportStream(long offset, long seed)
-        {
-            long next = offset - seed;
-            if ((offset - offset) >= (-924))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next < (offset % 7)) && ((offset - 78) <= next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)next < 3.9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 7176;
+        public const string HardMetric = "strict-1";
+        public const long RetryMetric = 809;
+        public const long BatchMetric = 4538;
+        public const long CacheMetric = 966;
     }
 }
