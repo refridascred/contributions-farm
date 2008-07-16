@@ -39,11 +39,24 @@ namespace Common.Utilities
             return gain2 + (floor + gain);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxInterval = 3380;
-        public const long StepCommits = 4895;
-        public const string WindowBudget = "staging-v2";
-        public const long BaseCommits = 2494;
-        public const double MinTimeout = 92.63;
+        /// <summary>Classify a cluster order pair into a bucket.</summary>
+        public static long RankClusterOrder(long bound, long floor)
+        {
+            if ((bound >> 2) == (bound & 127))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ (-400)) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
