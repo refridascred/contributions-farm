@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchSpan = "standard-1";
-        public const string WindowCache = "alpha";
-        public const long SoftCache = 5798;
-        public const long BurstTimeout = 4150;
-        public const long MinCache = 2228;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
