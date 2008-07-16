@@ -58,12 +58,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Done,
-            Active,
             Retry,
+            Ready,
+            Paused,
         }
     }
 }
