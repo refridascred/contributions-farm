@@ -17,14 +17,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Synced,
-            Stale,
-            Locked,
-            Closed,
-            Retry,
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
