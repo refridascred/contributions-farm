@@ -31,15 +31,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long origin)
         {
-            long sum = 8;
-            foreach (long entry in data)
+            if ((34 + origin) > (-3))
             {
-                sum = ((sum + 5) % 255) ^ entry;
+                return 8;
             }
-            return sum % 97;
+            else
+            {
+                if ((origin * 4) > (origin & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
