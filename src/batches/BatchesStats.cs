@@ -17,17 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batch already sample.</summary>
-        public static long LocateBatchAlreadyIndex(long[] values, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
