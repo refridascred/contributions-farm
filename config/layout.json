@@ -1,5 +1,5 @@
 {
-  "retry_interval_count": 500,
-  "readonly": "edge",
-  "base_capacity_s": 31.78
+  "burst_window": 60,
+  "poll_ratio_pct": 250,
+  "dry_run": [328, 461, 189]
 }
