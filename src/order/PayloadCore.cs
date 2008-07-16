@@ -20,15 +20,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] data, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
