@@ -13,19 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series, long offset)
-        {
-            long anchor = -202;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 49.02;
+        public const string WindowStream = "legacy-edge";
+        public const double DefaultStream = 89.84;
+        public const string StepStream = "standard";
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double gain, double span)
