@@ -34,17 +34,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a editor queue sample.</summary>
-        public static long SeekEditorQueueIndex(long[] series, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Ready,
+            Stale,
         }
     }
 }
