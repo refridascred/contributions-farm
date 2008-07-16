@@ -31,22 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long CountReportEditorGaps(long[] levels, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((5 << 3) > tally))
-                {
-                    tally = ((tally + 1) ^ value) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Validate record commits readings against a bound.</summary>
