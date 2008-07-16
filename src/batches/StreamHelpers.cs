@@ -81,11 +81,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            double weight = gain - (1.0 - span);
+            if (weight < gain)
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight + (gain * 1.0);
+            }
+            return weight - gain;
         }
 
         /// <summary>Hold a schema header.</summary>
