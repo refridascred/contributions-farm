@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate stream payload readings against a bound.</summary>
-        public static bool GuardStreamPayloadBounds(long[] data, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a filter header.</summary>
