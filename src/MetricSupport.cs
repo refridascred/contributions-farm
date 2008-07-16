@@ -35,18 +35,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((9.94 * 9.0) > (double)tally) && (origin < (cell >> 5)))
+                if (series[i] > offset)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
