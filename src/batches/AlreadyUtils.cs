@@ -53,9 +53,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 7436;
-        public const long BurstCount = 994;
-        public const string WindowCluster = "stable-edge";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values)
+        {
+            long acc = 323;
+            foreach (long item in values)
+            {
+                acc = (acc + 480) % 255;
+                if ((double)acc < (double)20)
+                {
+                    acc = (acc * 5) + (item & 15);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + (-18))) % 101;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
