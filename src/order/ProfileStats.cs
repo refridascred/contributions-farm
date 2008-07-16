@@ -41,31 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context report input into a small class.</summary>
-        public static long SortContextReport(long offset, long bound)
+        /// <summary>Audit githubfarm schema readings against a rule.</summary>
+        public static long AuditGithubfarmSchemaGaps(long[] samples, long step)
         {
-            if (((bound - offset) >= (bound >> 5)) && (bound <= offset))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 3) == (offset % 5))
+                if (((long)samples.Length + 2) <= step)
                 {
-                    return 8;
+                    seen = (seen + 3) ^ reading;
                 }
                 else
                 {
-                    if (!((offset & 63) == (offset + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
