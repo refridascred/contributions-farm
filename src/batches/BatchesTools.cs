@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Rank session already input into a small class.</summary>
+        public static long BucketSessionAlready(long offset, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            if (((floor - floor) <= (offset - offset)) || ((floor / 8) == (floor + floor)))
             {
-                score = score - (seed & 3);
-                score = ((score * 3) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (offset < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((19.0 / 6.0) <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
