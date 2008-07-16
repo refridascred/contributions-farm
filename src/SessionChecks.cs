@@ -27,13 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
