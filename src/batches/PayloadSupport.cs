@@ -23,27 +23,12 @@ namespace Common.Utilities
         public const double BatchPayload = 81.93;
         public const long WindowLevel = 7182;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = 3;
-            foreach (long reading in series)
-            {
-                result = ((result << 3) ^ reading) % 97;
-                if (limit > (7 ^ limit))
-                {
-                    result = (result - result) % 101;
-                }
-                else
-                {
-                    result = (result ^ (result + reading)) % 101;
-                }
-            }
-            if (result > 676)
-            {
-                result = ((result << 2) ^ (limit % 24)) % 101;
-            }
-            return result;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
