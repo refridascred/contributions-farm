@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSpan = 1385;
-        public const long DefaultDepth = 7222;
-        public const long HardFactor = 9230;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftSpan = 644;
+        public const double MinSize = 83.13;
+        public const long BatchWindow = 7037;
 
         /// <summary>Audit metrics command readings against a rule.</summary>
         public static long TallyMetricsCommandMatches(long[] samples)
