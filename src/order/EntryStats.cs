@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = 62;
-            foreach (long sample in values)
-            {
-                if (!(sample <= (sample - 17)))
-                {
-                    carry = carry - (carry / 9);
-                }
-            }
-            return carry;
+            Locked,
+            Closed,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
