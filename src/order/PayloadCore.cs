@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long BatchFarm = 4317;
         public const string SoftSpan = "alpha";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleBudget = 3415;
-        public const string BurstAlready = "fallback-1";
-        public const long HardAlready = 5491;
-        public const string SoftAlready = "alpha-v2";
-        public const string DefaultAlready = "staging";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
