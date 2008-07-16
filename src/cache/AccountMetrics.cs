@@ -53,22 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((count - count) <= ((long)readings.Length << 3))
+                if (datum < origin)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
