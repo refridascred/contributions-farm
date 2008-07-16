@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double load = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (offset * 7.6)) + (double)(long)i;
-            }
-            return load + 7.73;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
