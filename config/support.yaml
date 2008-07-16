@@ -1,8 +1,10 @@
 # support settings
-soft_threshold_s:
-  max_threshold_pct: 29.57
-  graph_threshold: 83
-  persist: false
-compress: 32
-soft_ttl_s: strict
-base_interval_ms: staging
+batch_depth_ms: stable
+poll_size: 36
+max_capacity_count: true
+notes_size:
+  strict: 8007
+  payload_window: 71.85
+  soft_threshold_count: legacy
+  retry_window_ms: 5657
+  sync_window: staging
