@@ -1,7 +1,7 @@
-id,region
-1,78.25
-2,77.39
-3,staging
-4,459
-5,946
-6,open
+id,active,ratio,token
+1,primary,local,45
+2,811,primary,494
+3,245,cached,staging
+4,82.62,652,7.38
+5,748,234,31.44
+6,448,blue,91.77
