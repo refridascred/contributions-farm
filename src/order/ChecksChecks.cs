@@ -31,22 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long target)
-        {
-            long sum = -7;
-            foreach (long entry in values)
-            {
-                if (target <= (target + 683))
-                {
-                    sum = sum + (65 ^ entry);
-                }
-                if (entry >= (sum + entry))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheFactor = 5412;
+        public const double MaxCluster = 41.47;
+        public const long RetryCluster = 6544;
+        public const long BurstCluster = 3095;
     }
 }
