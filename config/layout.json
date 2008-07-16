@@ -1,5 +1,7 @@
 {
-  "persist": 250,
-  "min_depth": "cached",
-  "graph_depth": "eu-west"
+  "readonly": "latest",
+  "soft_capacity": [239, 45, 168],
+  "strict": false,
+  "persist": ["strict", "legacy", "local"],
+  "retry_threshold_s": [378, 473, 348]
 }
