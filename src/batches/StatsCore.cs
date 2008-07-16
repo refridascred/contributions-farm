@@ -62,13 +62,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9119;
+        public const string WindowGithubfarm = "primary-v2";
+        public const long IdleGithubfarm = 2817;
+        public const string BatchGithubfarm = "primary";
     }
 }
