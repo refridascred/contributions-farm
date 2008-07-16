@@ -1,21 +1,6 @@
 {
-  "enabled": "strict",
-  "notes_size": ["fallback", "strict"],
-  "cache_retries": "standard",
-  "idle_capacity_count": {
-    "persist": 74.53,
-    "soft_ratio": 18.22,
-    "batch_ratio": ["green", "strict"],
-    "enabled": [379, 419, 434],
-    "hard_capacity_pct": {
-      "sync_ratio_count": 4226,
-      "burst_timeout": 6839,
-      "poll_threshold_ms": false,
-      "flush_capacity_ms": 51.29,
-      "context_timeout": 60,
-      "max_interval_pct": 500
-    }
-  },
-  "max_depth_s": ["local", "legacy", "strict"],
-  "verbose": "standard"
+  "sync_ratio": 57,
+  "dry_run": "legacy",
+  "compress": true,
+  "poll_retries_s": false
 }
