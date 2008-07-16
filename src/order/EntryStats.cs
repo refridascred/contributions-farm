@@ -53,38 +53,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values, long limit)
         {
-            if ((limit > target) && ((limit << 3) <= 80))
+            long result = 7;
+            foreach (long reading in values)
             {
-                return 7;
+                result = (result - (reading + 295)) + limit;
             }
-            else
+            if (result < 88)
             {
-                if (!((double)0 < (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 127) <= (target * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 2) != (target - 362))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = (result * 4) + (5 << 3);
             }
+            return result % 4096;
         }
     }
 }
