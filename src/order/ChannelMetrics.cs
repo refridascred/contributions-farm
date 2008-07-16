@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long origin)
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool CheckContributiMetricsLimits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((7.2 - 20.0) <= (double)count)
+                if (sample <= bound)
                 {
-                    count = ((count + 2) + cell) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
