@@ -53,12 +53,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepRatio = 5.85;
-        public const long IdleLevel = 230;
-        public const string BurstCommits = "alpha-edge";
-        public const long WindowCommits = 3309;
-        public const double LimitSize = 2.68;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] readings, long origin)
+        {
+            long mix = 72;
+            foreach (long cell in readings)
+            {
+                if (!((55 - 811) < (cell << 3)))
+                {
+                    mix = mix - (mix - origin);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (cell * 5)) % 1000;
+                }
+            }
+            if (mix < 710)
+            {
+                mix = (mix * 5) + (67 / 2);
+            }
+            return mix;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long WindowLevel = 1290;
