@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every editor filter entry stays within the limit.</summary>
+        public static bool ValidateEditorFilterBounds(long[] data, long target)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema phase values.</summary>
