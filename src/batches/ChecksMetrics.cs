@@ -106,9 +106,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 2685;
-        public const long MaxLevel = 4714;
-        public const double RetryAccount = 37.72;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry % 16) > entry)
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
