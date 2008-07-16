@@ -38,19 +38,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate route already samples.</summary>
-        public static long FoldRouteAlready(long[] series)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long floor)
         {
-            long carry = 315;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry * 4) + (value + value);
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 3)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            return -1;
         }
     }
 }
