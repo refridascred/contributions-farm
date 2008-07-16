@@ -27,12 +27,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many graph support samples are out of range.</summary>
+        public static long MeasureGraphSupportMatches(long[] readings, long floor)
         {
-            Dropped,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((5.56 * 9.1) != (double)matches)
+                {
+                    matches = ((matches + 3) + entry) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
