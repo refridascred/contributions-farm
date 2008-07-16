@@ -65,18 +65,9 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((floor ^ tally) >= floor) && ((tally + 246) < value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSize = 3525;
+        public const double BaseLayout = 19.15;
+        public const double BurstLayout = 20.77;
     }
 }
