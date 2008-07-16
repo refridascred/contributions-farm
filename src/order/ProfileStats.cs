@@ -41,13 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank context report input into a small class.</summary>
+        public static long SortContextReport(long offset, long bound)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            if (((bound - offset) >= (bound >> 5)) && (bound <= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 3) == (offset % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset & 63) == (offset + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
