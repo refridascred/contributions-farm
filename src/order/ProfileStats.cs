@@ -14,22 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Compare every pair of token session readings.</summary>
+        public static long MatchTokenSessionCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value % 3) != (matches + matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a window record.</summary>
