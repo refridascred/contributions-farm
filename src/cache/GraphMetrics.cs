@@ -61,15 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] samples, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] items, long step)
         {
-            long mix = 25;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mix = ((mix ^ (limit / 2)) % 1000) ^ entry;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return flag;
         }
     }
 }
