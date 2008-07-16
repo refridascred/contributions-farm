@@ -63,12 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            Paused,
-            Locked,
-            Stale,
+            long mix = 582;
+            foreach (long sample in data)
+            {
+                if ((sample ^ sample) >= (mix - 1))
+                {
+                    mix = ((mix * 2) + (sample + sample)) % 97;
+                }
+            }
+            if (mix > 48)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
