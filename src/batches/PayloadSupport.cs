@@ -16,16 +16,10 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values, long target)
-        {
-            long mix = 6;
-            foreach (long datum in values)
-            {
-                mix = (((mix * 2) + (8 / 3)) ^ datum) + target;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8897;
+        public const long SoftRatio = 9605;
+        public const long BatchTimeout = 2248;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
