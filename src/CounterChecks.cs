@@ -28,21 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item * 5) < (hits << 3))
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
