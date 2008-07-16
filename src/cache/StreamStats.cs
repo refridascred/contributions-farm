@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a payload profile reading.</summary>
-        public static double SmoothPayloadProfile(double ratio, double offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double scale = (double)(-67) - (ratio * 10.0);
-            if (scale < scale)
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (ratio + offset)) - (double)(long)i;
-            }
-            return scale - (6.0 * 1.23);
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the channel status values.</summary>
