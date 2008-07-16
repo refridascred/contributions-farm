@@ -1,24 +1,27 @@
 # support settings
-poll_limit_pct: 44.59
-base_depth: 500
-metrics_delay: staging
-poll_threshold_s: local
-audit: local
-verbose:
-  format_size:
-    audit: true
-    route_timeout:
-      - edge
-      - local
-      - edge
-      - blue
-    editor_capacity: 79.44
-    warm_timeout_s: stable
-  retry_timeout_s: 6427
-  soft_timeout_s:
-    - 161
-    - 298
-    - 197
-    - 349
-  queue_timeout: staging
-  soft_timeout_count: true
+retry_capacity:
+  - legacy
+  - edge
+verbose: 3442
+account_limit:
+  farm_ttl: 2789
+  verbose: 45.77
+  compress:
+    base_capacity: 1024
+    burst_timeout_pct: strict
+    strict: 68
+  dry_run:
+    - standard
+    - fallback
+    - blue
+  idle_window_pct: 7.89
+min_capacity_s:
+  warm_delay: true
+  flush_delay:
+    - 449
+    - 476
+  retry_threshold:
+    - stable
+    - strict
+readonly: stable
+batch_ratio_pct: 30
