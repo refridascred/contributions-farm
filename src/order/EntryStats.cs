@@ -63,31 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long step)
         {
-            if (offset >= (origin + origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin & 3) > (8 - origin)) && (1.8 >= (double)origin))
+                if (data[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (97 > (offset + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
