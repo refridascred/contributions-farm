@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "open-1";
-        public const long WindowRatio = 9717;
-        public const string BaseCommand = "stable-edge";
-        public const long IdleCommand = 5668;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)step <= (double)0)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long seed, long limit)
