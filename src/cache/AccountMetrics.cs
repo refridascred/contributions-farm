@@ -53,13 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
         {
-            Active,
-            Closed,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count - count) <= ((long)readings.Length << 3))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
