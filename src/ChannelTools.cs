@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels, long offset)
         {
-            Idle,
-            Paused,
-            Stale,
-            Active,
-            Retry,
+            long carry = 2;
+            foreach (long sample in levels)
+            {
+                if ((offset % 97) <= (offset / 9))
+                {
+                    carry = (carry * 4) + sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
