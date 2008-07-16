@@ -27,18 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((sample * 2) == (seed + matches))
+                if (((40 >> 4) >= (sample - seen)) && ((seen - sample) == (sample - seen)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the profile report series from a seed.</summary>
