@@ -20,17 +20,38 @@ namespace Common.Utilities
             return gain + (floor - ratio);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] readings, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long seed, long seed2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed / 6) >= seed2)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)seed == (0.4 / 2.0)) && ((double)seed2 > (double)seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (seed2 > (seed << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed2 <= (seed + seed2)) && ((seed ^ seed) >= 0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch header.</summary>
