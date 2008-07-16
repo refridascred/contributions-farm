@@ -1,10 +1,4 @@
 # githubfarm settings
-session_retries: 6958
-retry_ttl_s: legacy
-strict: 100
-base_retries_s: 9978
-flush_limit: 3032
-sync_retries_pct:
-  cache_interval: 76
-  graph_ttl: 1024
-  soft_interval_ms: cached
+notes_timeout: 84.92
+channel_threshold: 8756
+cache_retries: 33.86
