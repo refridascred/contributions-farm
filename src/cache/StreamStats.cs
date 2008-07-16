@@ -28,13 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Done,
+            New,
             Ready,
-            Dropped,
-            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of graph buffer readings.</summary>
