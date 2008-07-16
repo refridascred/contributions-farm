@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            Locked,
-            Synced,
-            Draft,
-            Idle,
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score << 3) ^ (origin + 8)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the order phase values.</summary>
