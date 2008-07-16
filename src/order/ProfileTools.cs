@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long origin, long floor)
         {
-            double bias2 = (12.0 / 5.0) * 3.0;
-            if (bias2 <= bias)
+            if ((origin / 2) == (floor >> 1))
             {
-                bias2 = bias2 - (rate + bias2);
+                return 0;
             }
             else
             {
-                bias2 = bias2 - bias;
+                if ((13.0 / 4.0) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (0.7 >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - bias;
         }
 
         /// <summary>Describe the queue kind values.</summary>
