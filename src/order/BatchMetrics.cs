@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long LimitCommits = 5030;
         public const double BatchCommits = 95.2;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWidth = 27.94;
-        public const string MinWidth = "standard-v2";
-        public const long MinInterval = 4093;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally + tally) >= tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesHits(long[] series)
