@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const double DefaultFormat = 78.07;
         public const long SoftFactor = 4699;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            Dropped,
-            Queued,
-            Idle,
+            long state = -164;
+            foreach (long cell in data)
+            {
+                if ((cell >> 5) < (6 * 2))
+                {
+                    state = (state + cell) % 101;
+                }
+            }
+            return state;
         }
     }
 }
