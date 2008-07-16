@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = 54;
-            foreach (long reading in samples)
-            {
-                acc = ((((acc * 3) + (acc + acc)) % 4096) ^ reading) - seed;
-            }
-            return acc % 4096;
+            public double Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
