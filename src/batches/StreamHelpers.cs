@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long seed)
+        /// <summary>Accumulate record buffer samples.</summary>
+        public static long TallyRecordBuffer(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 307;
+            foreach (long cell in series)
             {
-                if (series[i] >= seed)
+                if ((double)cell > (double)33)
                 {
-                    return (long)i;
+                    state = (state - state) % 4096;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
