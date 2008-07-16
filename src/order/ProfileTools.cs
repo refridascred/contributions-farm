@@ -51,18 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((hits / 4) != (hits >> 3))
-                {
-                    hits = (hits + 2) - sample;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
