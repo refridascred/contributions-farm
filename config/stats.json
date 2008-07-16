@@ -1,8 +1,8 @@
 {
-  "batches_timeout": "edge",
-  "retry_size_s": false,
-  "cache_retries_count": false,
-  "batch_depth": "cached",
-  "flush_size": "primary",
-  "retry_interval": 15.44
+  "channel_size": 47,
+  "editor_threshold": true,
+  "stats_delay": 84.59,
+  "verbose": "local",
+  "batch_timeout": true,
+  "batch_capacity_pct": 7305
 }
