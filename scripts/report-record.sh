@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=64
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
