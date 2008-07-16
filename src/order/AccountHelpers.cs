@@ -44,13 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Active,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardDepth = 7738;
+        public const long DefaultRatio = 9335;
+        public const double WindowSession = 87.32;
+        public const long BaseSession = 902;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] samples, long bound)
