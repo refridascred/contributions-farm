@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheInterval = 18.1;
-        public const long WindowWidth = 193;
-        public const long HardReport = 4453;
+        /// <summary>Derive the next report metric value from a seed.</summary>
+        public static long SeriesReportMetric(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + ((long)i ^ (long)i)) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long target, long floor)
