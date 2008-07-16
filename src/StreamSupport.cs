@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long origin)
         {
-            long state = 307;
-            foreach (long item in series)
+            if (69 > (seed + origin))
             {
-                if ((double)item > (5.51 + 2.8))
+                return 7;
+            }
+            else
+            {
+                if ((origin % 16) < (origin - seed))
                 {
-                    state = (state + (item << 3)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    state = state - (item + state);
+                    if ((11.0 - 18.0) != (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
