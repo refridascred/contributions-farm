@@ -66,20 +66,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings, long seed)
+        /// <summary>Iterate the schema channel series from a seed.</summary>
+        public static long SeriesSchemaChannel(long origin)
         {
-            long total = 4;
-            foreach (long datum in readings)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                total = total ^ datum;
-                total = (total + (total - seed)) % 97;
-                if ((13.0 - 3.0) == (double)datum)
-                {
-                    total = total + (total / 3);
-                }
+                state = (state + origin) % 97;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a queue record.</summary>
