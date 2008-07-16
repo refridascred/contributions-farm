@@ -51,18 +51,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Compare every pair of profile queue readings.</summary>
+        public static long PairProfileQueueCount(long[] readings)
         {
-            long result = 4;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)result >= 3.0) || ((double)result < (0.6 + 9.7)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 5) + (cell + result)) % 101;
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
