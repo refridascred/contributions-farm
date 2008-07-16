@@ -70,17 +70,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster queue reading by value.</summary>
-        public static long LookupClusterQueueIndex(long[] readings, long bound)
+        /// <summary>Iterate the route window series from a seed.</summary>
+        public static long SeriesRouteWindow(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 3) ^ (451 + (long)i);
+                total = ((total * 2) + total) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many schema queue samples are out of range.</summary>
