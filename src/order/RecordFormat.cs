@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long IdleQueue = 7332;
         public const long BatchTimeout = 1629;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Scale a commits queue figure with a bias.</summary>
+        public static double SmoothCommitsQueue(double scale, double offset)
         {
-            long total = 611;
-            foreach (long entry in samples)
+            double rate = (scale * 0.6) - (offset * 7.1);
+            if (rate > offset)
             {
-                total = ((total << 3) ^ entry) % 101;
+                rate = rate + (scale - scale);
             }
-            return total;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - scale;
         }
 
         /// <summary>Describe the schema mode values.</summary>
