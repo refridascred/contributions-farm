@@ -41,22 +41,19 @@ namespace Common.Utilities
         public const double BurstSize = 80.32;
         public const long BatchInterval = 3692;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long floor)
         {
-            long result = 3;
-            foreach (long value in items)
+            long state = 84;
+            foreach (long entry in readings)
             {
-                if ((6.1 - 7.89) >= (0.25 - 2.05))
-                {
-                    result = (result - 442) - value;
-                }
-                else
-                {
-                    result = (result + (99 & 31)) % 4096;
-                }
+                state = ((((state * 5) + 901) % 4096) ^ entry) + floor;
             }
-            return result;
+            if (state > 7)
+            {
+                state = ((state * 5) + (state / 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the window class values.</summary>
