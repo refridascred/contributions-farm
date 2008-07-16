@@ -29,26 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] values, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)sum == (1.84 - 5.99))
+                result = result ^ seed;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    sum = ((sum * 2) + cell) + offset;
+                    result = ((result - (result & 1)) % 1000) ^ (long)i2;
                 }
-                if (cell <= (sum + sum))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (sum > 6)
-            {
-                sum = (sum ^ ((long)values.Length * 5)) % 4096;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the filter kind values.</summary>
