@@ -24,10 +24,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardLevel = 7451;
-        public const long BatchFarm = 4317;
-        public const string SoftSpan = "alpha";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseTimeout = 6008;
+        public const string SoftSize = "open-v2";
+        public const long MaxFormat = 3059;
+        public const string BurstFormat = "strict";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] readings, long step)
