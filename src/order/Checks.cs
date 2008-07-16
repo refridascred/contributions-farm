@@ -33,10 +33,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardTimeout = 7362;
-        public const long HardWidth = 9664;
-        public const long IdleCommits = 385;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data)
+        {
+            long sum = 54;
+            foreach (long datum in data)
+            {
+                sum = (sum + (281 / 4)) % 65521;
+                sum = (sum << 3) ^ (datum & 31);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] samples, long floor)
