@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
