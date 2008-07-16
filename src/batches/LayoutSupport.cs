@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] items, long seed)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - seed) > seed)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next counter value.</summary>
