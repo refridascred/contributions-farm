@@ -54,31 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            if ((double)target <= (16.0 * 7.5))
+            long total = 153;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.49 - 8.02) > (double)target)
+                if ((item - total) == (total * 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target >= (bound / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total + item) % 4096;
                 }
             }
+            if (total < 6)
+            {
+                total = (total + (total + total)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
