@@ -15,19 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool CheckContributiMetricsLimits(long[] readings, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Stale,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the githubfarm queue entries that pass the check.</summary>
