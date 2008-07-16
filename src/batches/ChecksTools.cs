@@ -36,12 +36,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
