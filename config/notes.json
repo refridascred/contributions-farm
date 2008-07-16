@@ -1,6 +1,7 @@
 {
-  "warm_delay_pct": "fallback",
-  "batch_delay_s": false,
-  "batch_ratio": [138, 273, 79],
-  "cache_threshold_ms": "local"
+  "batch_ratio": 38.49,
+  "persist": 5355,
+  "cluster_retries": "open",
+  "enabled": [386, 407, 227],
+  "tools_limit": 60.73
 }
