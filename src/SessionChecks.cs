@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            New,
-            Closed,
-            Pending,
-            Failed,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((9.53 * 18.0) < (double)cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
