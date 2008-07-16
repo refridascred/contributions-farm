@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long TallyCounterBuffer(long[] series, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            long anchor = 7;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((bound - bound) == (bound >> 4))
+                if ((hits ^ item) > hits)
                 {
-                    anchor = anchor - value;
-                }
-                if (anchor > (65 + 92))
-                {
-                    anchor = (anchor + (bound * 3)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (bound << 3);
-                }
-                if ((bound ^ anchor) <= (anchor + bound))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor - (bound ^ anchor);
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
