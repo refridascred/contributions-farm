@@ -15,22 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token metrics readings.</summary>
-        public static long FoldTokenMetrics(long[] items, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long bound)
         {
-            long state = 8;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)offset > (18.0 + 7.2))
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    state = ((state * 3) + state) + reading;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (offset - 91)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Iterate the schema route series from a seed.</summary>
