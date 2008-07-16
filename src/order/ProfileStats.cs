@@ -41,22 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm schema readings against a rule.</summary>
-        public static long AuditGithubfarmSchemaGaps(long[] samples, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length + 2) <= step)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
