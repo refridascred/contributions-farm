@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double span)
-        {
-            double bias = weight;
-            return (bias + weight) + span;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinScore = 5903;
+        public const long LimitTimeout = 6422;
+        public const long RetrySession = 6886;
+        public const double LimitCount = 11.24;
+        public const long RetryInterval = 8795;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandMatches(long[] data, long offset)
