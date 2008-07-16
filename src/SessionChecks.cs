@@ -19,19 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long acc = 304;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc + 194) >= acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = (acc ^ 1) - datum;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
