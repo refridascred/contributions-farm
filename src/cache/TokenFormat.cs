@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long BurstCluster = 2518;
         public const long HardCluster = 5566;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            double ratio = 8.6;
-            if (ratio > (ratio + floor))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (double)163;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (bias - bias);
+            return hits;
         }
     }
 }
