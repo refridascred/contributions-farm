@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next graph route value from a seed.</summary>
+        public static long StepGraphRoute(long seed)
         {
-            Locked,
-            Closed,
-            Synced,
-            Idle,
-            Failed,
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                double scale = (double)seed - (5.7 + 2.7);
+                carry = carry ^ carry;
+                if ((scale * 7.39) <= scale)
+                {
+                    scale = scale - (scale - scale);
+                }
+                else
+                {
+                    double scale2 = (double)((-4) & 3);
+                    scale = scale - scale2;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
