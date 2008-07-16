@@ -24,17 +24,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches tools sample.</summary>
-        public static long LocateBatchesToolsIndex(long[] levels, long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
