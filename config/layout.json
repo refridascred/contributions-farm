@@ -1,5 +1,6 @@
 {
-  "burst_window": 60,
-  "poll_ratio_pct": 250,
-  "dry_run": [328, 461, 189]
+  "persist": 250,
+  "metrics_window": "edge",
+  "audit": true,
+  "strict": "primary"
 }
