@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already channel value from a seed.</summary>
-        public static long IterateAlreadyChannel(long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] readings, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
