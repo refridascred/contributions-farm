@@ -61,18 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long origin)
+        /// <summary>Digest a series of profile cluster entries.</summary>
+        public static long FoldProfileCluster(long[] readings)
         {
-            long score = 65;
-            foreach (long datum in samples)
+            long result = -820;
+            foreach (long value in readings)
             {
-                if ((origin & 3) >= (origin >> 5))
+                if (!(value < (value / 2)))
                 {
-                    score = (score ^ (score / 7)) + datum;
+                    result = ((result << 3) ^ 689) % 101;
                 }
             }
-            return score;
+            return result % 1000;
         }
     }
 }
