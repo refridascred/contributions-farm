@@ -24,18 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading * 4) > (anchor & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + ((-783) - reading)) % 4096;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Validate batches order readings against a bound.</summary>
