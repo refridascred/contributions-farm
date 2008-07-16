@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-The command module keeps support values in sync with the queue cache.
+The farm module keeps session values in sync with the checks cache.
+Keep metric and route names short and lowercase.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every schema change
-- Validate layout input early
+- Review cluster limits each release
+- Document new queue fields
+- Log every batch change
+- Keep order values small
