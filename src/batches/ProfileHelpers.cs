@@ -89,15 +89,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Blend two entry buffer measurements.</summary>
+        public static double ScaleEntryBuffer(double scale, double span)
         {
-            double rate = (floor * 7.1) + scale;
-            if (rate >= (5.2 - scale))
+            double rate = scale;
+            if (rate >= (double)(-4))
             {
-                rate = rate - rate;
+                rate = rate + 9.7;
             }
-            return rate - scale;
+            else
+            {
+                rate = rate + 9.81;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
