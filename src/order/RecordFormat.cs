@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate layout order readings against a bound.</summary>
-        public static bool GuardLayoutOrderBounds(long[] data, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum < floor)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 2) ^ ((long)i2 >> 4)) % 101;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
