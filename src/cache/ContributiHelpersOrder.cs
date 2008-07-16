@@ -35,19 +35,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long total = 36;
+            foreach (long datum in series)
             {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (datum + total)) % 65521;
+                total = ((total << 3) ^ limit) % 101;
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
