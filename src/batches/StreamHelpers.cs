@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format order value against two limits.</summary>
-        public static long ClassifyFormatOrder(long seed, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            if (((target >> 3) < seed) && ((target & 15) != (target - (-774))))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - (-1)) <= (6 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (seed + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
