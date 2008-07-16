@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowCount = 5142;
-        public const string MinLevel = "strict-1";
-        public const long StepLevel = 3949;
-        public const long MaxRatio = 5241;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels, long offset)
+        {
+            long result = 67;
+            foreach (long entry in levels)
+            {
+                result = ((result << 2) ^ entry) % 1000;
+                if ((result ^ offset) == (offset * 2))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] values, long origin)
