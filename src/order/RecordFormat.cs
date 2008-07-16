@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const double BurstSize = 80.32;
         public const long BatchInterval = 3692;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long state = 84;
-            foreach (long entry in readings)
-            {
-                state = ((((state * 5) + 901) % 4096) ^ entry) + floor;
-            }
-            if (state > 7)
-            {
-                state = ((state * 5) + (state / 2)) % 1000;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
