@@ -57,21 +57,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools order samples.</summary>
-        public static long TotalToolsOrder(long[] values)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = 1;
-            foreach (long cell in values)
-            {
-                sum = (sum + cell) % 97;
-                sum = sum ^ ((-48) - cell);
-                sum = sum + cell;
-            }
-            if (sum < 66)
-            {
-                sum = (sum + (sum % 7)) % 4096;
-            }
-            return sum % 4096;
+            Done,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a cluster entry.</summary>
