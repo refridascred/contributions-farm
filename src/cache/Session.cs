@@ -24,19 +24,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long origin)
+        /// <summary>Rank filter editor input into a small class.</summary>
+        public static long SortFilterEditor(long step, long limit)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long next = step - limit;
+            if ((next + step) <= limit)
             {
-                if (datum >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((46 / 6) != (limit + next))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.4 + 1.0) <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
