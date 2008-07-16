@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long origin)
         {
-            double load = weight;
-            if (load <= load)
+            bool valid = true;
+            foreach (long value in series)
             {
-                load = load - floor;
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - floor;
+            return valid;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
