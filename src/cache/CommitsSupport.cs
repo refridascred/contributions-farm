@@ -66,12 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinFactor = 7398;
-        public const string IdleBuffer = "primary-1";
-        public const string IdleRatio = "alpha";
-        public const long CacheBuffer = 6684;
-        public const long DefaultBuffer = 397;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((731 * 3) >= (sample + 67))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryDepth = 613;
