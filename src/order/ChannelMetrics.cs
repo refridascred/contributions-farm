@@ -30,15 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long MeasureGithubfarmQueueMatches(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((double)count <= (15.0 / 9.0))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
