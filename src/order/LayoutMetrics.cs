@@ -19,38 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long floor, long offset)
+        /// <summary>Count counter support pairs that satisfy a relation.</summary>
+        public static long OverlapCounterSupportCount(long[] levels)
         {
-            if (((offset + 390) <= offset) && ((double)floor == (5.0 / 5.0)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 9) >= (floor + offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= (floor & 63))
+                    if ((levels[i] - levels[j]) < 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor / 3) > 812)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the graph class values.</summary>
