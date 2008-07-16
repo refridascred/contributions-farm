@@ -32,18 +32,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long TallyBatchGithubfarmHits(long[] items, long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches >= sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - limit;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
