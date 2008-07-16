@@ -24,10 +24,12 @@ namespace Common.Utilities
             return weight2 + (double)390;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 2784;
-        public const double DefaultAlready = 14.35;
-        public const double LimitCount = 35.42;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 4132;
+        public const long BatchProfile = 4793;
+        public const long MaxProfile = 8030;
+        public const double DefaultSpan = 89.71;
+        public const long StepProfile = 2895;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
