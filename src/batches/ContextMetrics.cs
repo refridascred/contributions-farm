@@ -48,15 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            double gain = (double)(99 - 287);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain - (span - span)) - (double)(long)i) + ratio;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain + span;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
