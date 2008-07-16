@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy";
         public const long MaxInterval = 8945;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading % 8) == (count ^ 410)) || (count < ((long)levels.Length & 7)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
