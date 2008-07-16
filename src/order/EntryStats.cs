@@ -53,19 +53,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 7;
-            foreach (long reading in values)
-            {
-                result = (result - (reading + 295)) + limit;
-            }
-            if (result < 88)
-            {
-                result = (result * 4) + (5 << 3);
-            }
-            return result % 4096;
+            Queued,
+            Idle,
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
