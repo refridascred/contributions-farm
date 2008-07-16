@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings, long floor)
         {
-            Idle,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 15) >= (floor & 255))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
