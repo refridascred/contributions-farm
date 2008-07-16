@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long anchor = 14;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound - bound) != (sample >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 4) + (sample / 2)) % 1000;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
