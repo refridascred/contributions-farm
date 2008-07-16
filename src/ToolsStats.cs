@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first editor schema entry that matches the target.</summary>
-        public static long FindEditorSchemaIndex(long[] levels, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a batch entry.</summary>
