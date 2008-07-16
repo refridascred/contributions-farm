@@ -1,10 +1,5 @@
 # support settings
-strict:
-  - green
-  - blue
-  - eu-west
-  - standard
-session_ttl: 1646
-profile_ttl: cached
-batches_capacity: blue
-batch_threshold_s: blue
+max_interval_pct: primary
+soft_ttl: standard
+max_ratio: true
+persist: 71.17
