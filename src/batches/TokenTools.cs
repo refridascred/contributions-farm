@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Validate command graph readings against a bound.</summary>
+        public static bool ValidateCommandGraphBounds(long[] samples, long target)
         {
-            long carry = 664;
+            bool ok = true;
             foreach (long value in samples)
             {
-                if (!((carry + carry) < (carry >> 5)))
+                if (value != target)
                 {
-                    carry = ((carry << 3) ^ (value - value)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return ok;
         }
 
         /// <summary>Count the command farm entries that pass the check.</summary>
