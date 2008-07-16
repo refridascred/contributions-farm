@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the route editor entries that pass the check.</summary>
+        public static long MeasureRouteEditorMatches(long[] data)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry < 569)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
