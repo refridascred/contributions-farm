@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowLevel = 64.32;
-        public const long DefaultReport = 8014;
-        public const double BurstReport = 88.0;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Retry,
+            Done,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
