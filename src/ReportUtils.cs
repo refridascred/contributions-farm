@@ -32,12 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitWidth = 9905;
-        public const double HardPayload = 21.35;
-        public const long RetryScore = 4505;
-        public const double BatchRatio = 79.87;
-        public const long MaxLevel = 5393;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
+        {
+            long mix = 7;
+            foreach (long datum in data)
+            {
+                if ((mix << 2) >= (42 << 2))
+                {
+                    mix = ((mix * 5) + 340) ^ datum;
+                }
+                else
+                {
+                    mix = ((mix * 5) + ((long)data.Length >> 1)) % 255;
+                }
+            }
+            if (mix > (-6))
+            {
+                mix = mix - (6 & 1);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
