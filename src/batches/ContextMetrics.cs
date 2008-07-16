@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell >= (3.4 - 9.28)) || (matches < (matches & 127)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
