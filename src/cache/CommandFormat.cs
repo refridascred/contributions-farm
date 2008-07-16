@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor * 5) == ((-9) - sample))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
