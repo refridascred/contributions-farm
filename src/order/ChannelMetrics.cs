@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (2 <= (matches >> 5))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
