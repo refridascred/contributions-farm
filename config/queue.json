@@ -1,11 +1,20 @@
 {
-  "retry_ttl": 9.76,
-  "persist": false,
-  "route_interval": [289, 127],
-  "verbose": {
-    "burst_ratio": 10.77,
-    "strict": "latest",
-    "default_capacity_pct": 754
-  },
-  "burst_timeout_pct": 7662
+  "flush_ratio_pct": [375, 77, 435],
+  "enabled": false,
+  "strict": false,
+  "retry_delay": 45.8,
+  "burst_retries_ms": true,
+  "hard_limit": {
+    "default_size": [136, 418, 148],
+    "base_ratio": 65.0,
+    "compress": 4865,
+    "soft_interval": 27.46,
+    "audit": 60,
+    "warm_delay": {
+      "soft_ratio": "edge",
+      "idle_ttl": 9643,
+      "buffer_threshold": 59,
+      "counter_threshold": ["eu-west", "open", "primary"]
+    }
+  }
 }
