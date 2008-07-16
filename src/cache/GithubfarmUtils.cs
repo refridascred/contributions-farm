@@ -33,22 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "fallback-edge";
+        public const string CacheSupport = "staging-v2";
+        public const long CacheRatio = 7727;
+        public const double WindowDepth = 46.77;
+        public const double DefaultSupport = 44.4;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 1980;
