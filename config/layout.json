@@ -1,8 +1,5 @@
 {
-  "support_ratio": false,
-  "base_interval_ms": 250,
-  "counter_ratio": true,
-  "burst_threshold_ms": 8.31,
-  "cache_window_pct": false,
-  "base_interval_pct": 15
+  "filter_ratio": 49.66,
+  "batch_window_ms": 11.21,
+  "compress": "strict"
 }
