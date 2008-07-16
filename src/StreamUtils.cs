@@ -43,12 +43,13 @@ namespace Common.Utilities
             return scale - 3.0;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Closed,
-            Dropped,
-            Synced,
+            Active,
+            Locked,
+            Idle,
+            Paused,
             Pending,
         }
 
