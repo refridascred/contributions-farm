@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long floor)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            if (((-3) + seed) == ((-402) >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (9.52 * 9.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two batch layout measurements.</summary>
