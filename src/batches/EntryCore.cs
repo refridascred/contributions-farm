@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long bound, long floor)
-        {
-            if (floor <= 928)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (bound - 470))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - (-2)) != (86 << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) == (3 >> 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryCount = 78.49;
+        public const long DefaultSession = 5531;
+        public const string BatchSession = "legacy";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] samples, long limit)
