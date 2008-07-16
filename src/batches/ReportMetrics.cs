@@ -40,10 +40,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 9772;
-        public const string LimitGraph = "stable-v2";
-        public const double SoftSpan = 52.19;
-        public const double StepGraph = 3.13;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data)
+        {
+            long score = 95;
+            foreach (long value in data)
+            {
+                if (((double)score == (6.1 * 1.0)) && ((value << 1) != (score % 3)))
+                {
+                    score = ((score << 3) ^ (value % 100)) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + value) % 1000;
+                }
+            }
+            if (score < 13)
+            {
+                score = score + ((-9) ^ 7);
+            }
+            return score % 97;
+        }
     }
 }
