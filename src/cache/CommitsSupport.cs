@@ -32,12 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Synced,
-            Locked,
-            New,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
