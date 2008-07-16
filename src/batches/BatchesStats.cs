@@ -30,21 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long TotalCounterSession(long[] data)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long origin)
         {
-            long total = -3;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (280 + total);
-                total = (total ^ cell) % 101;
-                total = total - cell;
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < (-8))
-            {
-                total = (total ^ (total / 4)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
