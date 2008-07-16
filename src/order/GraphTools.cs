@@ -37,11 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultFactor = 4775;
-        public const long RetrySession = 7801;
-        public const double CacheWidth = 80.21;
-        public const long IdleTimeout = 2389;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits / 6) <= (item / 2))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderLimits(long[] values, long origin)
