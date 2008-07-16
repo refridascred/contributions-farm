@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long BaseSession = 7231;
         public const double RetrySession = 33.45;
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total + (sample - sample);
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Hold a command info.</summary>
