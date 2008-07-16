@@ -44,18 +44,20 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = 993;
+            foreach (long value in items)
             {
-                if (value >= (value + 4))
+                state = ((state - (7 % 97)) % 101) ^ value;
+                state = state + (8 << 1);
+                if ((state - state) > (state % 16))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return state % 97;
         }
     }
 }
