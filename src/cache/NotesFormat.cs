@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] items)
         {
-            if ((double)bound >= (double)4)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (11.0 / 5.0))
+                if (cell < (cell - 42))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((14.0 + 6.0) != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (bound * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
