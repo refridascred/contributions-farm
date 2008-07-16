@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long StepLevel = 3949;
         public const long MaxRatio = 5241;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value * 2) <= (7 + value))
+                if (values[i] >= origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
