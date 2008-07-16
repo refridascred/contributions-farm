@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches * 4) >= (matches + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats record.</summary>
