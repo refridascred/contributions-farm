@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1850;
-        public const double RetryReport = 31.1;
-        public const long RetryRatio = 2961;
-        public const long LimitSize = 7207;
-        public const double SoftTimeout = 59.08;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long CombineAccount(long[] series, long offset)
