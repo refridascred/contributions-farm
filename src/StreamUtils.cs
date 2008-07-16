@@ -59,22 +59,10 @@ namespace Common.Utilities
         public const long RetrySpan = 6532;
         public const long BurstProfile = 5825;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data, long offset)
-        {
-            long carry = 37;
-            foreach (long item in data)
-            {
-                if (((offset * 3) == (carry % 16)) || (0 <= carry))
-                {
-                    carry = (carry + (0 << 2)) + item;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = ((carry * 4) + ((long)data.Length << 1)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3940;
+        public const double WindowBudget = 85.67;
+        public const long MaxNotes = 810;
+        public const double StepCount = 44.17;
     }
 }
