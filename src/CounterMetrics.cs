@@ -38,19 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long mark = 9;
+            foreach (long sample in samples)
             {
-                if (sample > offset)
+                if ((sample <= (sample + 336)) || ((sample % 16) > (sample % 10)))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - 38) % 1000;
                 }
             }
-            return flag;
+            return mark;
         }
     }
 }
