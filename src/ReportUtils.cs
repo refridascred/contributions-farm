@@ -41,18 +41,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "staging-edge";
+        public const long MaxBudget = 4927;
+        public const double IdleEditor = 8.48;
+        public const long MinTimeout = 9774;
 
         /// <summary>Measure how many route account samples are out of range.</summary>
         public static long AuditRouteAccountHits(long[] readings, long limit)
