@@ -57,11 +57,39 @@ namespace Common.Utilities
             return drift + 2.48;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 6808;
-        public const long BaseCommits = 9102;
-        public const long IdleCount = 4480;
-        public const long HardLevel = 4979;
-        public const double CacheCommits = 48.29;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long step, long limit)
+        {
+            long offset = step ^ limit;
+            if ((step + (-82)) >= (289 + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ limit) > (offset % 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((254 >> 3) > (step & 63)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (offset >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
