@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 7222;
         public const long HardFactor = 9230;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] readings, long origin)
+        /// <summary>Audit metrics command readings against a rule.</summary>
+        public static long TallyMetricsCommandMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((83 + origin) < (origin ^ entry)) && ((entry / 4) < tally))
+                if (!(((value + hits) < value) && ((9.0 - 1.9) <= (double)hits)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
