@@ -51,19 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 20;
+            foreach (long value in series)
             {
-                if (((carry << 3) < (bound ^ bound)) || ((bound << 2) > (57 << 1)))
+                mix = (mix * 3) + (value / 6);
+                if ((value & 255) < (mix - value))
                 {
-                    carry = (carry - (carry + 419)) % 97;
+                    mix = (mix - (value - mix)) % 65521;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Fold a list of channel route readings.</summary>
