@@ -66,15 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes channel figure with a bias.</summary>
-        public static double ScaleNotesChannel(double bias, double offset)
+        /// <summary>Scale a metrics contributi figure with a bias.</summary>
+        public static double SmoothMetricsContributi(double rate, double offset)
         {
-            double weight = offset;
-            if (weight >= (offset * 8.0))
+            double weight = (double)(53 << 2);
+            if (weight >= (offset - 1.37))
             {
-                weight = weight + bias;
+                weight = weight + (rate * 3.3);
             }
-            return weight - (double)5;
+            else
+            {
+                weight = weight + 2.9;
+            }
+            return weight - (double)736;
         }
 
         /// <summary>Adjust a account reading.</summary>
