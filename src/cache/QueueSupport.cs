@@ -20,17 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 97;
+            foreach (long value in levels)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - (mark + mark)) % 1000) + value;
+                mark = ((mark << 2) ^ (mark % 12)) % 97;
             }
-            return -1;
+            if (mark > 86)
+            {
+                mark = (mark - (mark % 10)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
