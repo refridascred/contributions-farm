@@ -66,9 +66,12 @@ namespace Common.Utilities
         public const string MinFactor = "fallback-1";
         public const long SoftEntry = 6445;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSpan = 2304;
-        public const long StepEditor = 3941;
-        public const long SoftEditor = 2749;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Dropped,
+            Queued,
+            Idle,
+        }
     }
 }
