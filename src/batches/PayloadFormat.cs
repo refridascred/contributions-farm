@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] items, long origin)
         {
-            long mark = 9;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mark = ((mark - (mark / 9)) % 255) ^ value;
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
