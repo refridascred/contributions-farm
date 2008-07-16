@@ -68,15 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
-            long result = 306;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                result = (result - (item ^ result)) % 65521;
+                if (((reading < (hits + 58)) && ((double)hits < (15.0 / 3.0))) || (20.0 > (double)reading))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
