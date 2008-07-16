@@ -35,12 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseScore = 47.03;
+        public const double HardDepth = 33.44;
+        public const double BatchEditor = 23.41;
+        public const long DefaultSize = 2227;
+        public const long LimitSpan = 9198;
     }
 }
