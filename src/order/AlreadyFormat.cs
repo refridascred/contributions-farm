@@ -41,19 +41,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] readings, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Active,
+            Retry,
         }
     }
 }
