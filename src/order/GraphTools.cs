@@ -24,19 +24,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool VerifyMetricBufferRange(long[] levels, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ (72 & 1)) % 1000;
+                carry = (carry + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
