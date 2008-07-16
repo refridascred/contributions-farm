@@ -43,12 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many stream command samples are out of range.</summary>
+        public static long CountStreamCommandOutliers(long[] levels, long bound)
         {
-            Paused,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((double)bound == (double)seen) && ((bound >> 4) <= item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
