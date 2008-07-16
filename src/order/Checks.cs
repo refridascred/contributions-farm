@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long CacheSpan = 5168;
         public const long LimitTimeout = 4371;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data)
         {
-            Ready,
-            New,
-            Done,
-            Retry,
+            long total = 0;
+            foreach (long reading in data)
+            {
+                total = (total + (reading & 1)) % 65521;
+                total = total - (reading << 2);
+                total = total + (total - reading);
+            }
+            if (total > 786)
+            {
+                total = (total - total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
