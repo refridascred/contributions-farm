@@ -45,11 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
