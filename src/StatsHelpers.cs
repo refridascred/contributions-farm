@@ -20,13 +20,12 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Done,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 8918;
+        public const double LimitFactor = 46.02;
+        public const long BurstCounter = 934;
+        public const long StepCounter = 7857;
+        public const long LimitCounter = 2681;
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
         public static bool GuardCommitsWindowRange(long[] data, long step)
