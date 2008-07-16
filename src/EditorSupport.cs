@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long carry = 2;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry <= (0.44 - 4.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 5) + (sample >> 4)) % 1000;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of farm order readings.</summary>
