@@ -1,12 +1,13 @@
 {
-  "cache_limit": "cached",
-  "max_threshold_count": false,
-  "min_threshold": {
-    "min_limit_pct": 4685,
-    "filter_ratio": [320, 442, 308, 413],
-    "cache_window_s": [225, 1, 456],
-    "layout_delay": [332, 392, 197]
+  "counter_threshold": "edge",
+  "base_capacity_ms": false,
+  "default_size": [223, 391],
+  "metrics_threshold": {
+    "idle_window_pct": 4.42,
+    "idle_ratio_count": false,
+    "max_ratio": 44,
+    "warm_ratio_pct": 100,
+    "flush_ratio_pct": [414, 408, 8]
   },
-  "burst_size_count": ["open", "fallback"],
-  "sync_delay_ms": "staging"
+  "enabled": 1182
 }
