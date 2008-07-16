@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a context window counter forward.</summary>
-        public static long SeriesContextWindow(long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] samples, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i != ((long)i << 1)) && (offset <= result))
+                if ((samples[i] > step) && ((samples[i] % 5) == 0))
                 {
-                    result = ((result * 3) + (result % 97)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result * 2) + (46 + result);
-                }
-                result = (result + (result ^ (long)i)) % 97;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
