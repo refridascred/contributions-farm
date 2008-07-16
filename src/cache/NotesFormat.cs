@@ -49,9 +49,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheRatio = 7199;
-        public const long HardWidth = 6855;
-        public const string StepCache = "stable-v2";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally / 8) != (tally >> 2))
+                {
+                    tally = ((tally + 2) + reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
