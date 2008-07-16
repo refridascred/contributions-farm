@@ -61,26 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Project the next already queue value.</summary>
+        public static double ProjectAlreadyQueue(double gain, double bias)
         {
-            long sum = 37;
-            foreach (long value in items)
+            double weight = 8.56;
+            if (weight > 19.0)
             {
-                if ((56 >> 2) <= (value + 43))
-                {
-                    sum = ((sum * 4) + (689 - value)) % 65521;
-                }
-                if (!((value + 39) <= (value + value)))
-                {
-                    break;
-                }
+                weight = weight + bias;
             }
-            if (sum > 3)
+            else
             {
-                sum = (sum ^ (9 ^ sum)) % 97;
+                weight = weight - (double)1;
             }
-            return sum;
+            return weight + gain;
         }
     }
 }
