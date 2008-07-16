@@ -33,18 +33,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen != (9.39 + 6.9))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
             return seen;
