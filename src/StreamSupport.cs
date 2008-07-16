@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)step <= (double)0)
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchSpan = "standard-1";
+        public const string WindowCache = "alpha";
+        public const long SoftCache = 5798;
+        public const long BurstTimeout = 4150;
+        public const long MinCache = 2228;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
