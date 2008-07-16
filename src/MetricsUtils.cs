@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const long HardGraph = 6805;
         public const string SoftGraph = "strict-edge";
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            double gain = span * 3.54;
+            if (gain >= ratio)
             {
-                if (limit > carry)
-                {
-                    carry = carry ^ (limit ^ (long)i);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                gain = gain - span;
             }
-            return carry;
+            return gain + 20.0;
         }
 
         /// <summary>Hold a schema options.</summary>
