@@ -42,22 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample * 5) < (tally / 8)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Dropped,
         }
     }
 }
