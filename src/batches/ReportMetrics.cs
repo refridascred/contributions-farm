@@ -33,11 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCount = 6857;
-        public const long LimitCommits = 940;
-        public const string BatchTimeout = "staging-v2";
-        public const string BaseCommits = "fallback-edge";
-        public const double MaxCommits = 21.9;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
