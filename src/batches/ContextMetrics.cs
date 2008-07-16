@@ -22,22 +22,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits layout samples are out of range.</summary>
-        public static long TallyCommitsLayoutGaps(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = 938;
+            foreach (long entry in levels)
             {
-                if ((double)reading >= (0.5 / 9.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total << 3) ^ (entry - (long)levels.Length);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a tools record.</summary>
