@@ -23,18 +23,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] series, long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((seed % 60) != (seed * 4))
             {
-                if ((double)value <= (3.03 + 3.43))
+                return 8;
+            }
+            else
+            {
+                if ((step ^ step) > (step - seed))
                 {
-                    hits = (hits + 3) - floor;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
