@@ -65,12 +65,22 @@ namespace Common.Utilities
         public const long RetrySpan = 6532;
         public const long BurstProfile = 5825;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long carry = 37;
+            foreach (long item in data)
+            {
+                if (((offset * 3) == (carry % 16)) || (0 <= carry))
+                {
+                    carry = (carry + (0 << 2)) + item;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = ((carry * 4) + ((long)data.Length << 1)) % 4096;
+            }
+            return carry;
         }
     }
 }
