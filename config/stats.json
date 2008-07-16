@@ -1,8 +1,7 @@
 {
-  "channel_size": 47,
-  "editor_threshold": true,
-  "stats_delay": 84.59,
-  "verbose": "local",
-  "batch_timeout": true,
-  "batch_capacity_pct": 7305
+  "compress": 60,
+  "dry_run": [54, 30],
+  "format_window": "local",
+  "retry_interval": 28.16,
+  "max_retries_count": "open"
 }
