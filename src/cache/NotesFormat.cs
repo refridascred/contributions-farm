@@ -49,30 +49,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings)
-        {
-            long score = 6;
-            foreach (long sample in readings)
-            {
-                if ((19.0 * 4.0) < (double)sample)
-                {
-                    score = score + (5 + score);
-                }
-                else
-                {
-                    score = (score - (sample * 5)) % 255;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score - sample) % 1000) + (long)i;
-                }
-                if (score >= (sample >> 5))
-                {
-                    score = (score ^ ((-8) / 4)) % 97;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 7199;
+        public const long HardWidth = 6855;
+        public const string StepCache = "stable-v2";
     }
 }
