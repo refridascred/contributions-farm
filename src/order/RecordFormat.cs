@@ -69,22 +69,17 @@ namespace Common.Utilities
         public const long HardSupport = 3840;
         public const long WindowSupport = 4742;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen & 1) >= ((long)levels.Length + sample))
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
