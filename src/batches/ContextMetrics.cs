@@ -13,14 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            New,
-            Pending,
-            Locked,
-            Closed,
-            Idle,
+            double bias = (double)((-83) ^ 890);
+            if (bias >= 9.4)
+            {
+                bias = (bias + (double)29) - offset;
+            }
+            else
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 20.0) - (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
