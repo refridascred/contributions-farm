@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout notes readings against a bound.</summary>
-        public static bool ValidateLayoutNotesLimits(long[] data, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
