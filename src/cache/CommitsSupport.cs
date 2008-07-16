@@ -19,15 +19,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            double ratio = 10.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - 4.0) - (double)(long)i) - bias;
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (ratio + rate);
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
