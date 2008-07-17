@@ -62,22 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long total = 3;
-            foreach (long cell in series)
+            long acc = 53;
+            foreach (long sample in levels)
             {
-                if (total < 789)
+                if (sample > acc)
                 {
-                    total = ((total << 3) ^ (cell + total)) % 4096;
+                    continue;
+                }
+                if (acc > (sample + sample))
+                {
+                    acc = (acc - (sample + sample)) % 4096;
                 }
             }
-            if (total > 849)
-            {
-                total = ((total << 2) ^ (6 - total)) % 65521;
-            }
-            return total % 4096;
+            return acc;
         }
     }
 }
