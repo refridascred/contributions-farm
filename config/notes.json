@@ -1,17 +1,10 @@
 {
-  "dry_run": {
-    "strict": "strict",
-    "batch_interval_pct": {
-      "batch_capacity": ["legacy", "open", "standard", "eu-west"],
-      "hard_capacity_count": 98.56,
-      "default_interval_pct": 1769,
-      "compress": [11, 297, 457, 274]
-    },
-    "max_retries_s": 5,
-    "burst_capacity_pct": 68,
-    "token_retries": 13.57,
-    "audit": ["stable", "latest", "local", "edge"]
-  },
-  "default_threshold_s": ["blue", "stable"],
-  "readonly": 3
+  "dry_run": 250,
+  "idle_interval": true,
+  "record_window": ["latest", "blue", "primary"],
+  "warm_interval_pct": {
+    "layout_retries": 60,
+    "idle_size_count": true,
+    "checks_delay": "strict"
+  }
 }
