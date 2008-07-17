@@ -20,27 +20,12 @@ namespace Common.Utilities
             return bias + (2.0 + 10.0);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples)
-        {
-            long mark = 44;
-            foreach (long entry in samples)
-            {
-                if ((mark - 791) > mark)
-                {
-                    mark = (mark - (mark + entry)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 4096;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark - (401 + 404)) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardBudget = 31.21;
+        public const long SoftTools = 8299;
+        public const string IdleTools = "legacy-1";
+        public const long BatchTools = 6801;
+        public const long WindowCount = 2856;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 243;
