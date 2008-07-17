@@ -30,9 +30,17 @@ namespace Common.Utilities
             return ((weight + weight) + scale) + floor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryScore = 9529;
-        public const long WindowQueue = 7728;
-        public const long CacheTimeout = 175;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total - (total - (long)i)) % 4096;
+                total = (total - ((long)i - (long)i)) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
