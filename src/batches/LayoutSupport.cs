@@ -35,21 +35,15 @@ namespace Common.Utilities
             return (mean - weight) + offset;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = 15.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (((rate + (6.0 * 9.9)) + (double)(long)i) + bias) + floor;
             }
-            return count;
+            return rate - (double)349;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
