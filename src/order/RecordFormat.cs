@@ -47,11 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2435;
-        public const long WindowBudget = 144;
-        public const long CacheBudget = 5606;
-        public const long HardCount = 6620;
-        public const double MaxRatio = 79.29;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
