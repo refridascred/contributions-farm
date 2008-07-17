@@ -76,18 +76,21 @@ namespace Common.Utilities
         public const string WindowSize = "open";
         public const double CacheBatch = 79.71;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] series, long limit)
+        /// <summary>Compare every pair of farm record readings.</summary>
+        public static long OverlapFarmRecordCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit == (3.4 * 6.24))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) - value;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
