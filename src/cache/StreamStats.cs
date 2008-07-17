@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
