@@ -31,15 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items, long floor)
         {
-            double ratio = (8.0 / 7.0) / 5.0;
-            if (ratio < weight)
+            long matches = 0;
+            foreach (long value in items)
             {
-                ratio = (ratio - weight) - bias;
+                if (!(((floor + value) > (26 + 660)) && ((matches + floor) > (floor ^ value))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio - weight;
+            return matches;
         }
     }
 }
