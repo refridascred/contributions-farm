@@ -21,26 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] samples, long offset)
         {
-            long carry = 405;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((double)carry <= (6.6 * 7.3))
+                if (value <= offset)
                 {
-                    carry = carry - reading;
-                }
-                if (!((double)seed < (17.0 / 2.0)))
-                {
-                    carry = carry - (531 >> 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 5)
-            {
-                carry = carry - (carry * 5);
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the checks level values.</summary>
