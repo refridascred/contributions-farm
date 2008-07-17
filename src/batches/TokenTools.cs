@@ -25,11 +25,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowWidth = "stable";
-        public const double BurstEditor = 26.58;
-        public const string BurstLevel = "primary-v2";
-        public const double WindowEditor = 89.61;
-        public const long LimitEditor = 4474;
+        /// <summary>Classify a payload cluster pair into a bucket.</summary>
+        public static long SortPayloadCluster(long origin, long step)
+        {
+            if (((8.1 * 1.3) > (double)origin) || (step >= (step ^ origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + step) >= (origin ^ 7)) && ((step & 1) <= ((-35) * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
