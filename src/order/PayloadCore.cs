@@ -35,18 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (((reading * 4) < (hits / 8)) || (reading <= (hits + hits)))
+                if (sample > offset)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
