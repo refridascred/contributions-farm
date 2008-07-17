@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long AuditFormatAccountOutliers(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)step <= (16.0 * 1.0))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metric already samples.</summary>
