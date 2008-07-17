@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long total = 123;
-            foreach (long cell in data)
-            {
-                total = total ^ (total & 31);
-                if (!((cell << 3) < cell))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
