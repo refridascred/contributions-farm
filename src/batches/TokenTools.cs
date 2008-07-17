@@ -14,16 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double rate, double bias)
-        {
-            double rate2 = (double)700 / 5.0;
-            if (rate2 >= (13.0 - 5.83))
-            {
-                rate2 = (rate2 + (bias + bias)) - rate;
-            }
-            return rate2 + 5.99;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 90.45;
+        public const long DefaultFormat = 6305;
+        public const long IdleCount = 5974;
+        public const long IdleFormat = 8498;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
