@@ -18,24 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            if (origin < (6 + origin))
+            double weight = (rate - 1.46) / 7.0;
+            if (weight < (double)6)
             {
-                return 3;
+                weight = weight - (span * 13.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((origin << 3) < ((-113) + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = (weight + span) + (double)(long)i;
             }
+            return weight + (weight * 4.0);
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
