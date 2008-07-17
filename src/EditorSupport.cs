@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const double IdleFactor = 2.56;
         public const double BaseCount = 76.1;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] series, long target)
         {
-            Active,
-            Queued,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((target - 449) > (target % 5)))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batches header.</summary>
