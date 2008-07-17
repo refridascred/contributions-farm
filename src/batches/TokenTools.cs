@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate report window samples.</summary>
+        public static long CombineReportWindow(long[] readings)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Pending,
+            long state = -259;
+            foreach (long value in readings)
+            {
+                if (state >= (value + state))
+                {
+                    state = (state + state) % 1000;
+                }
+            }
+            if (state > 33)
+            {
+                state = (state - (state & 7)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
