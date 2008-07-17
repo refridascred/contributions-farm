@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate report window samples.</summary>
-        public static long CombineReportWindow(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long state = -259;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (state >= (value + state))
+                if ((2.1 * 5.6) >= (2.9 + 9.5))
                 {
-                    state = (state + state) % 1000;
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state > 33)
-            {
-                state = (state - (state & 7)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
