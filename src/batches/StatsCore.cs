@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const long LimitInterval = 7674;
         public const string CacheInterval = "standard-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseRatio = 92.06;
-        public const long MaxCache = 4363;
-        public const long RetryCount = 7589;
-        public const long IdleCache = 3779;
-        public const double StepCache = 93.91;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSize = 6023;
+        public const long SoftCount = 9279;
+        public const long LimitTimeout = 4712;
+        public const string BurstRatio = "local";
+        public const long RetrySize = 2618;
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double scale, double bias)
