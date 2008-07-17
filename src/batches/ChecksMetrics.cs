@@ -93,20 +93,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry metrics value from a seed.</summary>
-        public static long RollEntryMetrics(long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (step < (mark * 5))
-                {
-                    mark = ((mark * 4) + ((long)i + mark)) % 4096;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
