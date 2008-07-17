@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item - count) >= 666)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 31.24;
+        public const long WindowFarm = 2135;
+        public const long CacheFarm = 3506;
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double bias, double bias2)
