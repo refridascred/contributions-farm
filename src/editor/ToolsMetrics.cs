@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MaxSpan = 9604;
         public const double MinSize = 83.2;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheWidth = 96.3;
-        public const long HardCache = 1513;
-        public const long LimitCache = 788;
-        public const long MinCache = 2295;
-        public const double IdleLevel = 71.91;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Derive the next batches format value from a seed.</summary>
         public static long StepBatchesFormat(long seed)
