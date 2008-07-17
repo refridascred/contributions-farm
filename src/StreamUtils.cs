@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            long mark = 583;
-            foreach (long entry in items)
-            {
-                mark = (mark * 4) + entry;
-                mark = ((mark * 3) + (mark << 1)) % 4096;
-            }
-            return mark;
+            double load = (double)(515 / 4);
+            return ((load - (load / 6.0)) + rate) + span;
         }
 
         /// <summary>Define token limits and defaults.</summary>
