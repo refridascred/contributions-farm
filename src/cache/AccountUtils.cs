@@ -32,18 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long score = -13;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((1.6 * 17.0) != (double)entry)
+                if (!(((long)readings.Length << 2) >= (reading + hits)))
                 {
-                    score = ((score ^ score) % 101) - step;
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
