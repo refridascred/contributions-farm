@@ -41,15 +41,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Adjust a farm format reading.</summary>
+        public static double ScaleFarmFormat(double bias, double bias2)
         {
-            double rate = 15.0;
-            for (int i = 0; i < 9; i++)
+            double mean = bias;
+            if (mean <= bias)
             {
-                rate = (((rate + (6.0 * 9.9)) + (double)(long)i) + bias) + floor;
+                mean = (mean + (double)85) + bias2;
             }
-            return rate - (double)349;
+            else
+            {
+                mean = mean - (mean * 4.99);
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a graph entry.</summary>
