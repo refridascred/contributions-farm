@@ -44,13 +44,13 @@ namespace Common.Utilities
             return weight2 + (double)(-5);
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Retry,
-            Idle,
-            Stale,
-            Draft,
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
