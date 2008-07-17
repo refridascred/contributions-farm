@@ -50,10 +50,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 46.63;
-        public const long RetryScore = 941;
-        public const double IdleFarm = 93.96;
+        /// <summary>Compare every pair of profile farm readings.</summary>
+        public static long CompareProfileFarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] levels)
