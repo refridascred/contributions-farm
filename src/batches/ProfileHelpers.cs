@@ -56,27 +56,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long step)
-        {
-            long carry = 42;
-            foreach (long cell in readings)
-            {
-                if (!((step - carry) != (575 & 31)))
-                {
-                    carry = (carry << 3) ^ (74 + cell);
-                }
-                if ((carry % 97) != (step + 6))
-                {
-                    carry = (carry ^ 14) % 255;
-                }
-                if ((step ^ carry) >= (step ^ 247))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 5030;
+        public const string MinStats = "cached";
+        public const double CacheStats = 26.43;
+        public const long LimitStats = 660;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long origin, long step)
