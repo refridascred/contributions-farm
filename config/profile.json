@@ -1,6 +1,10 @@
 {
-  "readonly": 72,
-  "soft_threshold_pct": 100,
-  "sync_ttl_s": "blue",
-  "warm_threshold_pct": true
+  "retry_limit": "blue",
+  "audit": {
+    "cache_ratio_pct": 9854,
+    "enabled": 28,
+    "idle_depth_count": [132, 462, 260, 320]
+  },
+  "hard_retries_ms": 68,
+  "strict": [221, 253, 441]
 }
