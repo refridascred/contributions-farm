@@ -1,16 +1,6 @@
 {
-  "retry_timeout": "edge",
-  "base_ratio": 82.29,
-  "soft_timeout_count": {
-    "persist": {
-      "base_capacity": "standard",
-      "strict": ["eu-west", "stable", "staging", "strict"],
-      "batch_window_ms": true,
-      "layout_interval": 77,
-      "record_threshold": false
-    },
-    "flush_retries_ms": 49.71,
-    "sync_timeout_ms": 53.63
-  },
-  "tools_capacity": "local"
+  "layout_interval": 60,
+  "min_delay": 74,
+  "audit": "standard",
+  "compress": ["blue", "standard", "open", "fallback"]
 }
