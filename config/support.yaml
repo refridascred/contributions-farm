@@ -1,11 +1,16 @@
 # support settings
-burst_limit_ms: strict
-verbose:
-  retry_retries: primary
-  dry_run: latest
-  batches_ratio: false
-idle_retries_s: primary
-retry_depth_count:
-  - 162
-  - 311
-  - 138
+counter_interval: blue
+batch_interval_pct:
+  base_ttl_count: local
+  format_interval: 100
+  dry_run: 2166
+poll_retries_s:
+  - open
+  - green
+  - green
+  - strict
+dry_run:
+  - staging
+  - eu-west
+  - fallback
+  - strict
