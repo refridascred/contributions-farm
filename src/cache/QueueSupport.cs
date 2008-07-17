@@ -21,24 +21,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a schema payload pair into a bucket.</summary>
-        public static long BucketSchemaPayload(long floor, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            if (((double)step == (8.8 / 2.0)) || ((3.5 * 20.0) >= (double)step))
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                anchor = anchor - bound;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)step == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
     }
 }
