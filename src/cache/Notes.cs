@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = 51;
-            foreach (long cell in items)
-            {
-                if ((3.0 / 7.0) > (double)cell)
-                {
-                    result = (((result * 3) + (cell * 3)) % 101) - origin;
-                }
-            }
-            return result;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a support metric reading by value.</summary>
