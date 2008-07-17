@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            if ((target + 37) > (6 / 5))
             {
-                anchor = (anchor + (origin ^ (-4))) % 255;
-                anchor = (anchor ^ (origin << 3)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((double)bound == (0.96 / 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target + 0) < (target - target)) && ((target ^ bound) >= (bound * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
