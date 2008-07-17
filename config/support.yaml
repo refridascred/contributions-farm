@@ -1,12 +1,4 @@
 # support settings
-audit:
-  - 404
-  - 186
-  - 74
-sync_depth_pct: edge
-sync_size:
-  poll_capacity_pct: 21
-  account_depth: 100
-  base_retries: blue
-hard_retries_s: 9730
-cache_ratio: 2330
+retry_size_ms: false
+window_retries: stable
+hard_interval: 8
