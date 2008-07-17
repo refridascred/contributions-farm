@@ -33,13 +33,30 @@ namespace Common.Utilities
         public const long CacheRoute = 8203;
         public const long MaxRoute = 7898;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            New,
-            Done,
-            Idle,
-            Paused,
+            long total = 8;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (((total * 3) + (total << 2)) % 1000) - (long)i;
+                }
+                if (!((8 + total) == (total % 3)))
+                {
+                    total = total - (total + reading);
+                }
+                if ((175 % 16) != (reading + reading))
+                {
+                    break;
+                }
+            }
+            if (total > 87)
+            {
+                total = total - (total << 2);
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
