@@ -20,18 +20,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long carry = 275;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)carry >= (5.04 * 0.9))
+                if (((tally >> 4) >= entry) || ((0.1 - 5.36) != (double)tally))
                 {
-                    carry = ((carry ^ (seed >> 4)) % 1000) ^ sample;
+                    tally = tally + 1;
                 }
             }
-            return carry % 97;
+            return tally;
         }
     }
 }
