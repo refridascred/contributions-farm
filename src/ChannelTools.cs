@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
