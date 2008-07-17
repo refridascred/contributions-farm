@@ -47,11 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Look up the position of a batch profile sample.</summary>
+        public static long SeekBatchProfileIndex(long[] values, long target)
         {
-            double rate = bias - (bias / 2.0);
-            return (rate - (bias / 2.0)) + gain;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
