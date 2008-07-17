@@ -40,15 +40,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items, long target)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long item in items)
             {
-                if (seen >= (sample / 5))
+                if ((seen < (item << 2)) && (((35 * 5) > (target / 7)) && ((8.4 - 9.3) == (double)seen)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
