@@ -19,16 +19,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double floor)
-        {
-            double scale = (double)1 - (double)5;
-            if (scale > (double)11)
-            {
-                scale = scale - floor;
-            }
-            return scale + (scale + gain);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 5459;
+        public const long RetrySize = 4889;
+        public const long CacheRatio = 3842;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
