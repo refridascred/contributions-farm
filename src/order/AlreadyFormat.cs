@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next channel schema value from a seed.</summary>
-        public static long RollChannelSchema(long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                sum = sum ^ target;
-                sum = sum ^ (target + 12);
-                if (sum >= target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    sum = ((sum * 5) + (sum & 1)) % 65521;
+                    total = ((total * 4) + (total << 2)) ^ (long)i2;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
