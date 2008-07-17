@@ -16,21 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Classify a profile record pair into a bucket.</summary>
+        public static long RankProfileRecord(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)origin >= (double)81) || (629 < origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((20.0 - 6.6) > (double)origin)
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
