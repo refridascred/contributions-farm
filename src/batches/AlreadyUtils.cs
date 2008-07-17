@@ -65,18 +65,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long score = 4;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score + sample) < (8 % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 3) ^ ((long)items.Length - sample);
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
