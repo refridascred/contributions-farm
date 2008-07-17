@@ -1,15 +1,11 @@
 # Command notes
 
-Keep record and counter names short and lowercase.
-Keep buffer and record names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-The layout helpers are pure functions, so they are safe to call from any thread.
-The filter report groups every stream by graph.
+Use support settings to tune how often buffer data is refreshed.
+Each farm is validated before it reaches the filter queue.
+Keep payload and metric names short and lowercase.
 
 ## Guidelines
 
-- Log every already change
-- Validate filter input early
-- Review batch limits each release
-- Keep tools values small
+- Log every profile change
+- Keep queue values small
+- Validate stream input early
