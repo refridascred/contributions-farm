@@ -14,15 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples, long step)
+        /// <summary>Match up graph checks samples.</summary>
+        public static long CompareGraphChecksCount(long[] levels)
         {
-            long state = 69;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + reading) + step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
