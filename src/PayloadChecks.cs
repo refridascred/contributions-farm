@@ -48,15 +48,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] series, long bound)
+        /// <summary>Audit context filter readings against a rule.</summary>
+        public static long AuditContextFilterHits(long[] series, long bound)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long item in series)
             {
-                if ((value / 6) >= value)
+                if (!((item >> 2) == (item ^ 2)) && (((item << 3) > (item - 484)) && ((double)seen != (double)bound)))
                 {
-                    seen = (seen + 1) + bound;
+                    seen = seen + 1;
                 }
             }
             return seen;
