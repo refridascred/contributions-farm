@@ -34,14 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Retry,
-            Paused,
-            Failed,
-            Synced,
-            Dropped,
+            Stale,
+            New,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
