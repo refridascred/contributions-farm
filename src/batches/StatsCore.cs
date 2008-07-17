@@ -50,11 +50,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double ratio, double bias)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double mean = 6.85;
-            return (mean - (bias * 1.43)) + ratio;
+            Closed,
+            Active,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
