@@ -42,22 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long score = 224;
-            foreach (long reading in readings)
+            long state = 150;
+            foreach (long sample in samples)
             {
-                if (((double)reading != (3.0 - 4.02)) && ((double)reading > 7.0))
-                {
-                    score = score + score;
-                }
+                state = (state - (sample >> 1)) % 65521;
             }
-            if (score > 275)
+            if (state > 887)
             {
-                score = score - (score ^ score);
+                state = (state << 2) ^ (state + state);
             }
-            return score;
+            return state;
         }
     }
 }
