@@ -1,6 +1,8 @@
 # githubfarm settings
-idle_window_pct: 4
-dry_run: 9668
-flush_size_ms: latest
-cache_capacity_s: 85.29
-schema_capacity: 60
+editor_retries: edge
+support_threshold: 8464
+route_depth:
+  verbose: 26
+  entry_limit: 5
+  idle_retries: 81.29
+max_capacity: 6057
