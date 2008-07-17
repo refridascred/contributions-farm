@@ -14,21 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Scale a contributi stats figure with a bias.</summary>
+        public static double SmoothContributiStats(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)655 - (scale / 9.0);
+            if (weight < (4.5 + 11.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - floor;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - (double)2;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
