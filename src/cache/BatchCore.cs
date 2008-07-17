@@ -28,9 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowRatio = 1917;
-        public const long MaxDepth = 6724;
-        public const long StepBudget = 6455;
+        /// <summary>Audit batches entry readings against a rule.</summary>
+        public static long MeasureBatchesEntryOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (origin < value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
