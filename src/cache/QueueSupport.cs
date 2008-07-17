@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool GuardAccountEditorRange(long[] readings, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
