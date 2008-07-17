@@ -40,12 +40,15 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long limit)
         {
-            Done,
-            Paused,
-            Dropped,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the window class values.</summary>
