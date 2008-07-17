@@ -48,21 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes order pairs that satisfy a relation.</summary>
-        public static long MatchNotesOrderCount(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(-9) * 3.63;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = ((scale + ratio) + (double)(long)i) - floor;
             }
-            return matches;
+            return scale - (4.3 * 8.0);
         }
     }
 }
