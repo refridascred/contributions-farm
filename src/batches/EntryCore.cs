@@ -81,13 +81,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            Idle,
+            Pending,
+            Closed,
         }
     }
 }
