@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] samples)
         {
-            double bias = floor - (3.6 + gain);
-            if (bias < floor)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                bias = bias - (double)774;
+                if ((reading ^ reading) < reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + (gain / 8.0);
-            }
-            return bias + 4.0;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
