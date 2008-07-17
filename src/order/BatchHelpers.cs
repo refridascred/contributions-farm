@@ -13,11 +13,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinCount = "cached-1";
-        public const string WindowReport = "latest-v2";
-        public const double MaxLevel = 2.05;
-        public const long LimitLevel = 6312;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings)
+        {
+            long mix = 86;
+            foreach (long value in readings)
+            {
+                if (mix < (value & 127))
+                {
+                    mix = mix ^ (value * 2);
+                }
+                else
+                {
+                    mix = (mix + (858 & 31)) % 4096;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long seed, long floor)
