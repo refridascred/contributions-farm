@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
