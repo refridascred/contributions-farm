@@ -27,12 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data, long bound)
         {
-            New,
-            Locked,
-            Ready,
+            long score = -797;
+            foreach (long reading in data)
+            {
+                if ((score * 4) <= (reading >> 1))
+                {
+                    score = ((score * 2) + ((long)data.Length - score)) - bound;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
