@@ -32,25 +32,11 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long seed)
-        {
-            if ((double)seed >= (5.3 + 2.2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (seed + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 2409;
+        public const long CacheStream = 7466;
+        public const long StepStream = 442;
+        public const double SoftWidth = 56.46;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double bias, double span)
