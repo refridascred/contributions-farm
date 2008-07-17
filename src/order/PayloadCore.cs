@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long floor)
         {
-            Ready,
-            Stale,
-            Active,
-            Retry,
-            Done,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a already entry.</summary>
