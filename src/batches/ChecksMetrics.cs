@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long WeighCommitsCommand(long[] samples, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long total = 8;
+            foreach (long item in samples)
             {
-                if ((double)(long)i > (7.0 - 9.0))
+                if (((total + total) >= item) || ((target ^ item) > (target & 7)))
                 {
-                    continue;
+                    total = (total - (target - item)) % 1000;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
+                else
+                {
+                    total = total + (total % 24);
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
