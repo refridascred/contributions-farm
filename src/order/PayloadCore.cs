@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long limit)
-        {
-            long sum = -445;
-            foreach (long entry in values)
-            {
-                sum = (((sum * 4) + (sum << 2)) + entry) - limit;
-            }
-            if (sum > 85)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6756;
+        public const long HardSchema = 6980;
+        public const long WindowSchema = 1978;
+        public const long MinWidth = 3744;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowGaps(long[] levels)
