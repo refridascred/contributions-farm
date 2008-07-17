@@ -1,17 +1,6 @@
 # githubfarm settings
-enabled: open
-compress:
-  enabled: 9172
-  payload_size: 500
-  hard_size_s: local
-  poll_window_count:
-    base_window_ms: open
-    farm_delay: true
-    burst_ratio_s: 1547
-    record_window: false
-cache_timeout: open
-record_threshold:
-  - edge
-  - edge
-  - strict
-  - local
+idle_window_pct: 4
+dry_run: 9668
+flush_size_ms: latest
+cache_capacity_s: 85.29
+schema_capacity: 60
