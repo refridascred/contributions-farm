@@ -37,19 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((origin + origin) >= (tally - 41))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 6665;
+        public const long MaxSpan = 9254;
+        public const string StepBatches = "staging-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double RetryCommits = 53.23;
