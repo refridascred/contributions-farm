@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long CacheFarm = 720;
         public const double BatchLevel = 84.24;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
