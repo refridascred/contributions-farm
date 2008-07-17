@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long acc = -3;
-            foreach (long sample in samples)
-            {
-                if ((10.0 - 4.2) == (double)limit)
-                {
-                    acc = (((acc << 2) ^ limit) % 97) + sample;
-                }
-            }
-            return acc;
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
