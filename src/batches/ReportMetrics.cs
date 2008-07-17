@@ -18,22 +18,31 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long origin)
+        /// <summary>Classify a counter context pair into a bucket.</summary>
+        public static long ClassifyCounterContext(long offset, long floor)
         {
-            long total = 4;
-            foreach (long cell in values)
+            if (offset > (floor * 2))
             {
-                if ((cell / 4) < total)
+                return 4;
+            }
+            else
+            {
+                if ((floor * 4) <= (offset - floor))
                 {
-                    total = ((total << 2) ^ cell) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - offset) == (floor >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total < 6)
-            {
-                total = total ^ origin;
-            }
-            return total;
         }
     }
 }
