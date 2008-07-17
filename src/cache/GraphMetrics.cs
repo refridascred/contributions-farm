@@ -39,39 +39,17 @@ namespace Common.Utilities
         public const long IdleRatio = 108;
         public const long LimitRecord = 5592;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long floor2)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long target)
         {
-            long bound = floor - floor2;
-            if (((14.0 * 15.0) <= (double)floor2) || (bound < (floor * 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor2 >= (bound - bound))
+                if (values[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor % 64) >= floor2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((5 * 4) > (floor >> 1)) && ((floor2 - 853) > (bound >> 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
