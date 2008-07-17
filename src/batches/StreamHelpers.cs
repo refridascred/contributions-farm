@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Pending,
-            Paused,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 7564;
+        public const long HardInterval = 7464;
+        public const long DefaultToken = 9523;
+        public const string RetryToken = "staging-edge";
+        public const long MinToken = 4427;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 5423;
