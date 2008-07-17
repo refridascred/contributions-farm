@@ -23,18 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many checks cache samples are out of range.</summary>
-        public static long AuditChecksCacheGaps(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((hits >> 4) >= hits)
+                if (entry != step)
                 {
-                    hits = (hits + 3) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
