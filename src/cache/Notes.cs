@@ -56,14 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long floor)
         {
-            Queued,
-            Pending,
-            Done,
-            Failed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
