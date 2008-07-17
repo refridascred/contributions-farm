@@ -65,19 +65,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (reading < target)
+                if ((((double)limit >= (4.73 * 2.0)) || (881 <= (limit & 255))) && !((16.0 + 16.0) > (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - value;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a counter summary.</summary>
