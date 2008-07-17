@@ -54,19 +54,18 @@ namespace Common.Utilities
             return drift - 3.39;
         }
 
-        /// <summary>Validate token layout readings against a bound.</summary>
-        public static bool CheckTokenLayoutRange(long[] items, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items)
         {
-            bool valid = true;
+            long hits = 0;
             foreach (long entry in items)
             {
-                if (entry >= origin)
+                if (!((entry >> 3) > entry))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
