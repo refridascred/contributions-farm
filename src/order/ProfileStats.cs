@@ -40,12 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Match up account queue samples.</summary>
+        public static long OverlapAccountQueueCount(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
