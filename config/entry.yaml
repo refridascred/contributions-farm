@@ -1,5 +1,9 @@
 # entry settings
-max_ttl_s: 69
-sync_timeout_count: false
-base_retries_count: latest
-already_threshold: stable
+verbose:
+  - strict
+  - open
+base_timeout: 44
+warm_ttl_s:
+  - strict
+  - green
+  - standard
