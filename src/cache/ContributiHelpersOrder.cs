@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long limit, long origin)
         {
-            Ready,
-            Synced,
-            New,
-            Locked,
+            long cur = limit + origin;
+            if ((origin - origin) > (cur + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin & 3) > (cur + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((cur + limit) == (origin % 97)) || ((limit - origin) > (limit % 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + 651) < (limit << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a contributi stats figure with a bias.</summary>
