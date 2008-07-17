@@ -24,19 +24,38 @@ namespace Common.Utilities
             return bias3 + (5.13 / 6.0);
         }
 
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool VerifyLayoutStreamBounds(long[] levels, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((20.0 / 2.0) < (double)target)
             {
-                if (entry < bound)
+                return 1;
+            }
+            else
+            {
+                if (!((double)origin <= 1.8))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + target) == (target << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target & 1) > (origin - (-596))) && ((target & 63) >= (origin >> 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor info.</summary>
