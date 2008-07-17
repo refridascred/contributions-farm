@@ -1,10 +1,10 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the tools list.
-A payload that stays idle for too long is moved to the account list.
+The tools module keeps order values in sync with the layout cache.
+When a already fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every order change
-- Document new notes fields
+- Log every profile change
+- Prefer graph defaults
+- Review profile limits each release
