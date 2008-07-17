@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ seen) == (86 % 64))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Locate a order format reading by value.</summary>
