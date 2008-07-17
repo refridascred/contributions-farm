@@ -32,11 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 243;
-        public const long CacheWidth = 2614;
-        public const double CacheCount = 31.22;
-        public const long DefaultFilter = 3197;
-        public const long BurstFilter = 5983;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
+        {
+            double rate = span;
+            if (rate <= ratio)
+            {
+                rate = rate - ratio;
+            }
+            else
+            {
+                rate = rate + (span + span);
+            }
+            return rate - 5.0;
+        }
     }
 }
