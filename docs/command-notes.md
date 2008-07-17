@@ -1,14 +1,15 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the cache list.
-A cluster that stays idle for too long is moved to the farm list.
-The token module keeps account values in sync with the account cache.
+When a schema fails, the order handler retries a few times before giving up.
+A queue that stays idle for too long is moved to the schema list.
+Each stream is validated before it reaches the account queue.
 
-The command module keeps metrics values in sync with the cluster cache.
-Keep filter and editor names short and lowercase.
+The layout report groups every window by order.
+The support report groups every report by cluster.
+When a command fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
-- Keep queue values small
-- Review farm limits each release
+- Document new schema fields
+- Keep checks values small
+- Validate support input early
