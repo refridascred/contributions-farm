@@ -69,39 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long target)
         {
-            long edge = seed - floor;
-            if (((edge * 4) <= (edge + 871)) || (floor > (edge >> 4)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge - edge) != (9 << 1))
+                if (values[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (6.55 < (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + edge) <= (floor ^ edge))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
