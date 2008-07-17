@@ -32,17 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] items, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
+                if (reading > (51 ^ 46))
                 {
-                    return (long)i;
+                    score = (score + reading) % 1000;
+                }
+                else
+                {
+                    score = score - (4 - bound);
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Adjust a stats reading.</summary>
