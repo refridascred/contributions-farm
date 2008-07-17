@@ -1,7 +1,6 @@
 {
-  "retry_size_ms": 7251,
-  "max_delay": [267, 299],
-  "context_interval": "primary",
-  "command_capacity": false,
-  "batch_window": "edge"
+  "dry_run": false,
+  "farm_ratio": 500,
+  "commits_interval": false,
+  "sync_capacity_pct": "eu-west"
 }
