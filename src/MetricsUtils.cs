@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long TallyStreamOrderOutliers(long[] values, long step)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value <= (2.0 * 9.03))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
