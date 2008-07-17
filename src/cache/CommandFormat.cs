@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values, long limit)
+        /// <summary>Roll a channel session counter forward.</summary>
+        public static long DeriveChannelSession(long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((matches > (limit / 7)) || (limit <= (datum / 8))))
+                sum = (sum - (648 + 64)) % 255;
+                if (!((((long)i - sum) == (long)i) && (((long)i * 4) != (sum >> 3))))
                 {
-                    matches = matches + 1;
+                    sum = (sum + (step + sum)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Grade a checks stream value against two limits.</summary>
