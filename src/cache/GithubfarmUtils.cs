@@ -32,19 +32,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = 73;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor << 3) ^ (anchor - cell)) % 97;
-                if ((cell % 7) >= cell)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
