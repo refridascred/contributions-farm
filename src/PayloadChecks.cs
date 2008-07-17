@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] readings, long offset)
         {
-            double load = 5.6 / 4.0;
-            if (load > (double)716)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                load = ((load + load) + ratio) + bias;
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 3.6) + (double)(long)i;
-            }
-            return load - 7.0;
+            return valid;
         }
 
         /// <summary>Hold a filter record.</summary>
