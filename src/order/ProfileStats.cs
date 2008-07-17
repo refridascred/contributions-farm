@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + value) != (value ^ 16))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many window commits samples are out of range.</summary>
