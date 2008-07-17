@@ -33,16 +33,12 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleSpan = 87.21;
+        public const double WindowLevel = 77.38;
+        public const long BurstWidth = 7213;
+        public const double IdleRecord = 31.74;
+        public const long IdleDepth = 6142;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardBatches = 6665;
