@@ -1,5 +1,5 @@
 {
-  "base_capacity": [209, 99, 391, 415],
-  "strict": 29.03,
-  "cache_ttl": true
+  "poll_window": "legacy",
+  "account_capacity": 98.95,
+  "queue_retries": "staging"
 }
