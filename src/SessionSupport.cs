@@ -21,19 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] levels, long floor)
+        /// <summary>Count format graph pairs that satisfy a relation.</summary>
+        public static long OverlapFormatGraphCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
