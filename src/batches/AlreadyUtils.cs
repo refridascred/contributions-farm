@@ -14,13 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long acc = 846;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc << 2) ^ datum) % 65521) - (long)i;
+                }
+                if ((step ^ step) > (step - datum))
+                {
+                    acc = ((acc * 3) + acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
