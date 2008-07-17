@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((cell + seen) >= (cell + 1)) || ((seen << 2) == ((long)data.Length + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate buffer editor readings against a bound.</summary>
