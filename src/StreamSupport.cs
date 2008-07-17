@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data, long floor)
-        {
-            long anchor = 22;
-            foreach (long value in data)
-            {
-                if (floor > (anchor << 1))
-                {
-                    anchor = ((anchor * 2) + anchor) - value;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (floor % 97)) % 101;
-                }
-            }
-            if (anchor < (-769))
-            {
-                anchor = anchor ^ (floor & 255);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 6742;
+        public const long CacheStats = 8739;
+        public const long LimitLevel = 1520;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 5861;
