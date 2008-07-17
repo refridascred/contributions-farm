@@ -13,18 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the checks cluster entries that pass the check.</summary>
-        public static long MeasureChecksClusterHits(long[] series)
+        /// <summary>Count the command githubfarm entries that pass the check.</summary>
+        public static long MeasureCommandGithubfarmHits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((-969) > (count & 127))
+                if (((item & 63) >= hits) || ((target << 1) >= hits))
                 {
-                    count = (count + 2) - value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
