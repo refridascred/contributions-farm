@@ -23,11 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 15.48;
-        public const long SoftCluster = 7778;
-        public const long MaxLevel = 9119;
-        public const long RetryCluster = 9166;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double gain, double offset)
