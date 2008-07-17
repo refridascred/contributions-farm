@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] values, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = 594;
+            foreach (long datum in series)
             {
-                if ((325 + bound) >= (value + tally))
+                if (((datum - sum) == (sum & 7)) || ((double)5 > (2.5 / 8.0)))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 3) + (sum + 8)) % 4096;
                 }
             }
-            return tally;
+            if (sum < 9)
+            {
+                sum = ((sum << 2) ^ (sum % 24)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
