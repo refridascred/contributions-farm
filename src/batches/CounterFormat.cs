@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] data)
         {
-            double gain = (double)(612 / 2);
-            if (gain < (double)3)
+            long count = 0;
+            foreach (long entry in data)
             {
-                gain = (gain - ratio) - span;
+                if ((entry & 31) < (long)data.Length)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (6.55 * 7.0)) + (double)(long)i;
-            }
-            return gain + (1.8 * 9.0);
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
