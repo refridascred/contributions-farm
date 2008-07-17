@@ -34,11 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next order report value.</summary>
-        public static double AdjustOrderReport(double weight, double offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double mean = (double)822 - 6.26;
-            return (mean - weight) + offset;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
