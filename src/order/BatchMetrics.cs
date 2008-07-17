@@ -36,33 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long target)
-        {
-            long edge = step - target;
-            if ((547 <= (edge * 3)) && ((double)step <= 1.59))
-            {
-                return 1;
-            }
-            else
-            {
-                if (edge >= (edge ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (edge < (427 % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 5262;
+        public const long WindowCounter = 6016;
+        public const double LimitDepth = 12.14;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long SortNotes(long origin, long offset)
