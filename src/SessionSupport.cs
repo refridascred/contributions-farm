@@ -28,13 +28,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long TotalSupportToken(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            long acc = 7;
+            foreach (long cell in levels)
+            {
+                acc = ((acc + acc) + cell) - floor;
+            }
+            return acc;
         }
     }
 }
