@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long offset, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            long lane = offset - step;
-            if ((double)step < (double)lane)
+            double weight = offset + (offset + ratio);
+            if (weight <= 3.5)
             {
-                return 0;
+                weight = weight - (ratio + ratio);
             }
-            else
-            {
-                if ((double)offset <= 1.7)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 64) == (offset >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - offset) < (9 + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
