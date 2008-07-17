@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const string StepFactor = "strict-edge";
         public const long BatchCluster = 2087;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7679;
+        public const long HardRatio = 4543;
+        public const long BaseRoute = 5955;
+        public const long BatchDepth = 4792;
+        public const long RetryTimeout = 2888;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] levels)
