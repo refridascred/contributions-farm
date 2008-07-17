@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] items, long seed)
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long CountGraphAccountMatches(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((tally - sample) <= 844))
+                if (((long)values.Length + 1) > (step << 1))
                 {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
