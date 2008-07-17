@@ -49,12 +49,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Synced,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 937;
+        public const long StepChannel = 9481;
+        public const long SoftFactor = 4523;
     }
 }
