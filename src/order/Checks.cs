@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record session readings against a rule.</summary>
-        public static long TallyRecordSessionOutliers(long[] items, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (85 < (953 - matches))
-                {
-                    matches = ((matches + 1) - datum) - limit;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
