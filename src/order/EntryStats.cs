@@ -34,13 +34,23 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const long MinWidth = 2767;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data)
         {
-            Done,
-            Idle,
-            Failed,
-            Pending,
+            long carry = -150;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 4096;
+                if ((carry ^ datum) < (carry - carry))
+                {
+                    carry = ((carry << 3) ^ 8) % 1000;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = carry - (carry & 3);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
