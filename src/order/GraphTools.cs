@@ -61,25 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long offset)
+        /// <summary>Project the next queue format value.</summary>
+        public static double ProjectQueueFormat(double weight, double offset)
         {
-            long bound = target ^ offset;
-            if ((offset + target) < (bound << 2))
+            double drift = weight;
+            if (drift > (drift - 2.32))
             {
-                return 3;
+                drift = (drift - (3.4 - weight)) + offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset << 1) == (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = (drift + (double)(-791)) + (double)(long)i;
             }
+            return drift + (double)2;
         }
     }
 }
