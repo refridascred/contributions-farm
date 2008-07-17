@@ -14,14 +14,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Retry,
+            Stale,
+            Dropped,
+            Done,
             Paused,
-            Pending,
-            Queued,
-            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
