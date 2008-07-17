@@ -57,12 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 3546;
-        public const double CacheBatches = 76.0;
-        public const double SoftBatches = 18.41;
-        public const double IdleCount = 82.67;
-        public const double DefaultSize = 39.03;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((long)i != (seed / 3))
+                {
+                    score = ((score << 2) ^ (score * 2)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
