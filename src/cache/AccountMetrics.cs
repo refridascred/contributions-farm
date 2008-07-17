@@ -44,17 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long SeekBatchProfileIndex(long[] values, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 2;
+            foreach (long cell in samples)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (floor + sum)) % 101) ^ cell;
+                sum = sum + (99 - sum);
+                sum = ((sum * 4) + ((long)samples.Length % 24)) % 255;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Hold a graph header.</summary>
