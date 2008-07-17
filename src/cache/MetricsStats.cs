@@ -39,15 +39,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long bound)
         {
-            double drift = span;
-            if (drift <= (span + weight))
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (drift + drift);
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
