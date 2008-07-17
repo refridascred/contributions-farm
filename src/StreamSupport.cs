@@ -32,11 +32,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Ready,
+            Retry,
+            Idle,
         }
     }
 }
