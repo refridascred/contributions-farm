@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of window graph readings.</summary>
-        public static long ScoreWindowGraph(long[] readings, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            long mark = 35;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mark = mark - (datum - datum);
+                mark = (mark ^ (2 % 3)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mark > 42)
-            {
-                mark = mark + bound;
-            }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
