@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
