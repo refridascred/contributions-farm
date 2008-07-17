@@ -40,18 +40,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the schema report entries that pass the check.</summary>
-        public static long MeasureSchemaReportHits(long[] values, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((((double)sample == (3.44 - 3.0)) || (sample >= (origin - origin))) && ((origin ^ origin) < sample))
+                if (seen >= (sample / 5))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a session entry.</summary>
