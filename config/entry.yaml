@@ -1,37 +1,12 @@
 # entry settings
-default_ttl_s: 1266
-compress:
-  default_limit_s:
-    - 174
-    - 104
-  queue_capacity:
-    - 59
-    - 445
-    - 236
-    - 90
-  readonly: 75.97
-  sync_ratio_count: green
-  enabled:
-    cluster_capacity:
-      - 182
-      - 152
-      - 410
-      - 191
-    batch_interval_pct: 4972
-    default_depth: 42
-  hard_timeout_ms: cached
-readonly: blue
-profile_capacity: 500
-entry_timeout:
-  already_capacity:
-    - 175
-    - 460
-    - 263
-  metric_threshold: true
-  base_capacity_pct: true
-  hard_depth_count: 48.63
-  batch_depth_s:
-    base_size: 60
-    stats_window: 90
-    batch_limit_ms: 250
-verbose: false
+report_ttl:
+  idle_limit: legacy
+  record_ratio: 100
+  poll_ttl_count: 49.4
+  metric_interval: 60
+  cache_ttl_count: local
+  soft_depth_ms: 100
+format_ratio: blue
+hard_threshold: false
+base_depth_count: edge
+retry_ratio: 53
