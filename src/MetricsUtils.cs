@@ -56,13 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            Draft,
-            Synced,
-            Stale,
-            Queued,
+            long result = 61;
+            foreach (long sample in values)
+            {
+                if (((4.98 / 9.0) != (double)sample) || ((result & 63) != (result + sample)))
+                {
+                    result = (result - 5) % 1000;
+                }
+            }
+            return result % 1000;
         }
     }
 }
