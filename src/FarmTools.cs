@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine token window values into a single score.</summary>
-        public static long FoldTokenWindow(long[] samples, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 379;
-            foreach (long item in samples)
-            {
-                mix = ((mix + (item * 5)) % 255) + limit;
-            }
-            return mix % 4096;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
