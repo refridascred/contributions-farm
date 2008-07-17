@@ -48,13 +48,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a channel batches counter forward.</summary>
+        public static long DeriveChannelBatches(long target)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score << 3) ^ (12 - target)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
