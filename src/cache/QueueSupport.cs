@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long mark = 80;
-            foreach (long datum in data)
+            double scale = weight;
+            if (scale > (double)90)
             {
-                if (((double)datum == (double)84) || ((datum >> 3) > (datum * 5)))
-                {
-                    mark = mark - mark;
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ (datum - datum);
-                }
-                if (!((14.0 - 7.9) != (double)mark))
-                {
-                    mark = mark - datum;
-                }
+                scale = scale - offset;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)5;
         }
 
         /// <summary>Classify a stats commits pair into a bucket.</summary>
