@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((entry + mark) != (origin >> 2))
+                if ((((long)i + 1) == ((-540) / 4)) && ((score - seed) > (seed << 3)))
                 {
-                    mark = (mark + (mark >> 3)) % 4096;
+                    score = (score + (seed + (long)i)) % 4096;
                 }
-                else
-                {
-                    mark = ((mark * 5) + (entry * 2)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
