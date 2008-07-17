@@ -43,38 +43,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long limit)
+        /// <summary>Look up the position of a schema cluster sample.</summary>
+        public static long FindSchemaClusterIndex(long[] series, long origin)
         {
-            if ((79 <= (52 ^ limit)) && (limit <= (bound & 1)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-56) - limit) > 342)
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound < (566 - limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit << 2) >= (39 * 4)) && ((double)bound < (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the layout mode values.</summary>
