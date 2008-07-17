@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Check that every metric stats entry stays within the limit.</summary>
+        public static bool CheckMetricStatsBounds(long[] series, long seed)
         {
-            long mix = 338;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                mix = (mix ^ (cell & 63)) % 101;
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
