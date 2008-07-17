@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel graph series from a seed.</summary>
-        public static long DeriveChannelGraph(long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
+                mix = mix + (25 + mix);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
