@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green; do
+RECORD_LIMIT=313
+log "limit is ${RECORD_LIMIT}"
+
+for item in green staging strict fallback; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
