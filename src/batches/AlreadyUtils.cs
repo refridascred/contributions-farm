@@ -23,39 +23,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long offset = origin + target;
-            if (origin > (offset / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (1 - 497))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - (-92)) == (origin >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin % 7) <= (target >> 1)) || ((target & 255) > 550))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
