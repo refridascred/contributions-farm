@@ -41,17 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 334;
+            foreach (long datum in data)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                if ((result + datum) < (datum - bound))
                 {
-                    return (long)i;
+                    result = result ^ (result - datum);
+                }
+                else
+                {
+                    result = (result + ((long)data.Length ^ (long)data.Length)) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
