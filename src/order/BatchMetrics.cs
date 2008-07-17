@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (!((total >> 1) < (total + 81)))
+                if (reading <= bound)
                 {
-                    total = ((total * 3) + (step * 4)) % 4096;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    total = (total - step) % 255;
-                }
-                total = ((total * 5) + total) % 101;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
