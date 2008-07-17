@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm tools entry stays within the limit.</summary>
-        public static bool GuardFarmToolsRange(long[] items, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Idle,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank route input into a small class.</summary>
