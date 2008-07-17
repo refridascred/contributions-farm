@@ -1,10 +1,10 @@
 # Command notes
 
-The commits module keeps farm values in sync with the support cache.
-Each filter is validated before it reaches the stats queue.
+Run the metric check before changing any layout limits.
+The checks report groups every session by already.
 
 ## Guidelines
 
-- Validate schema input early
-- Prefer entry defaults
-- Log every stats change
+- Prefer editor defaults
+- Log every channel change
+- Validate route input early
