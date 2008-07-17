@@ -34,17 +34,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] levels, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
