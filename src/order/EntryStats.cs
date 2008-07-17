@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-4) ^ origin) > origin)
+                if (levels[i] <= bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum ^ (sum % 5);
-                    sum = sum ^ origin;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
