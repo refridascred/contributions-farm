@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const double MaxLevel = 2.05;
         public const long LimitLevel = 6312;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                if (data[i] <= target)
+                if (value >= (carry - value))
                 {
-                    return (long)i;
+                    carry = (carry ^ value) % 101;
                 }
             }
-            return -1;
+            if (carry > 73)
+            {
+                carry = (carry ^ (carry >> 3)) % 97;
+            }
+            return carry;
         }
     }
 }
