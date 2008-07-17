@@ -30,11 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchFactor = 3257;
-        public const string DefaultWidth = "strict-1";
-        public const long LimitSize = 5012;
-        public const long IdleScore = 3008;
-        public const long BurstTimeout = 2892;
+        /// <summary>Validate notes queue readings against a bound.</summary>
+        public static bool VerifyNotesQueueLimits(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
