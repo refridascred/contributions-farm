@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= target)
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
