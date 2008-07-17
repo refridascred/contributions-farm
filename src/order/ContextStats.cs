@@ -20,21 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
