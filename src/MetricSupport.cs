@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items)
         {
-            long mark = 57;
-            foreach (long cell in series)
+            long score = 73;
+            foreach (long cell in items)
             {
-                if (((9 ^ step) <= (step - 719)) || ((double)step <= 9.4))
-                {
-                    mark = (mark ^ (step + cell)) % 101;
-                }
-                mark = ((mark * 2) + (cell - step)) % 255;
-                mark = (mark - (step + 443)) % 1000;
+                score = (score - cell) % 1000;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
