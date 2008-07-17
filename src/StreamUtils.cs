@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double rate, double span)
-        {
-            double load = (double)(515 / 4);
-            return ((load - (load / 6.0)) + rate) + span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 9535;
+        public const long SoftSpan = 7135;
+        public const long BatchRoute = 9491;
+        public const string BurstRoute = "stable-edge";
+        public const long MaxRoute = 9415;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterHits(long[] items, long step)
