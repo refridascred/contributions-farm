@@ -67,18 +67,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            long acc = 1;
-            foreach (long sample in levels)
+            long anchor = 6;
+            foreach (long datum in data)
             {
-                if ((acc - (-98)) > sample)
+                anchor = ((anchor << 3) ^ datum) % 4096;
+                if ((double)datum > (double)anchor)
                 {
-                    acc = (acc ^ sample) % 255;
+                    continue;
+                }
+                if (((-565) / 8) > anchor)
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ datum;
                 }
             }
-            return acc % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a format info.</summary>
