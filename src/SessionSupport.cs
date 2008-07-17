@@ -26,29 +26,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long seed)
-        {
-            long total = 27;
-            foreach (long sample in series)
-            {
-                total = (total << 2) ^ (total - sample);
-                if (((total * 5) >= (seed / 5)) || ((total - seed) <= (seed << 1)))
-                {
-                    total = (total - sample) % 101;
-                    total = ((total * 5) + (sample % 8)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total - seed)) % 255;
-                    total = total + (sample ^ total);
-                }
-                if (((sample - seed) > (seed - seed)) || ((seed + seed) < (sample & 31)))
-                {
-                    total = (total + (6 ^ total)) % 97;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 9482;
+        public const long RetryRatio = 3311;
+        public const long MaxRoute = 7365;
+        public const long HardRoute = 5196;
     }
 }
