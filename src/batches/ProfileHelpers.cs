@@ -48,22 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryFactor = 10.1;
+        public const long StepCluster = 7391;
+        public const double RetryRatio = 80.57;
+        public const double IdleLevel = 63.84;
+        public const long BatchCluster = 2636;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
