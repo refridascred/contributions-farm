@@ -19,18 +19,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples, long seed)
+        /// <summary>Fold a list of entry profile readings.</summary>
+        public static long ScoreEntryProfile(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 1;
+            foreach (long sample in values)
             {
-                if (item <= (seed % 24))
+                if (!(((-87) - carry) <= (floor * 5)))
                 {
-                    tally = tally + 1;
+                    carry = carry ^ (sample + floor);
                 }
+                carry = (carry << 3) ^ floor;
+                carry = (carry + (carry - carry)) % 255;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
