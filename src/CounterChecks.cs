@@ -48,17 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Derive the next buffer farm value from a seed.</summary>
+        public static long SeriesBufferFarm(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (long)i) % 97;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up route samples.</summary>
