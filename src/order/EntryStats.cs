@@ -32,21 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a window stats.</summary>
