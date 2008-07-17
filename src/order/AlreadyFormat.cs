@@ -62,17 +62,19 @@ namespace Common.Utilities
         public const long RetryToken = 3754;
         public const double StepTimeout = 3.35;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean >= (9.0 * 6.0))
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean / 6.0)) + weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (1.4 + bias);
         }
     }
 }
