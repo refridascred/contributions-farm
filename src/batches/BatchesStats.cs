@@ -32,13 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long target)
+        /// <summary>Count the stream commits entries that pass the check.</summary>
+        public static long TallyStreamCommitsMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long reading in levels)
             {
-                if (((entry ^ entry) <= (target % 60)) && ((hits << 3) < (hits + hits)))
+                if (((double)hits != (6.0 - 14.0)) || ((reading & 3) < (reading + 328)))
                 {
                     hits = hits + 2;
                 }
