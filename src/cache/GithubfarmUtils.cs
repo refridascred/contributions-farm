@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long StepSchema = 1903;
         public const double WindowSchema = 96.33;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] values, long offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
