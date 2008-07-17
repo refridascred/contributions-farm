@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long span = bound - target;
-            if (((span ^ span) < 378) || ((2.62 + 3.1) > (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span / 5) < 8)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > 7.49)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.06 + 20.0) == (double)span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
