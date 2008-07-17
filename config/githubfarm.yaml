@@ -1,4 +1,10 @@
 # githubfarm settings
-persist: stable
-notes_size: 4775
-soft_limit_ms: stable
+min_window: 88.18
+cache_limit: 73.66
+format_depth: latest
+compress: 30
+max_threshold: false
+editor_timeout:
+  - 359
+  - 200
+  - 157
