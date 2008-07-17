@@ -26,17 +26,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Roll a contributi session counter forward.</summary>
+        public static long IterateContributiSession(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] == seed)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + ((long)i2 ^ carry)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Match up editor metric samples.</summary>
