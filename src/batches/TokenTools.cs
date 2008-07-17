@@ -14,18 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long CountFarmStatsHits(long[] samples, long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double rate2 = (double)700 / 5.0;
+            if (rate2 >= (13.0 - 5.83))
             {
-                if (!((floor << 1) == (8 + tally)))
-                {
-                    tally = (tally + 1) - value;
-                }
+                rate2 = (rate2 + (bias + bias)) - rate;
             }
-            return tally;
+            return rate2 + 5.99;
         }
 
         /// <summary>Hold a layout entry.</summary>
