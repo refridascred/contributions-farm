@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long carry = 1;
-            foreach (long reading in series)
-            {
-                carry = (carry - (origin / 6)) + reading;
-            }
-            if (carry < 9)
-            {
-                carry = (carry * 4) + (origin - origin);
-            }
-            return carry % 1000;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
