@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 1351;
-        public const long CacheGraph = 5811;
-        public const double BaseDepth = 18.77;
-        public const long CacheInterval = 1598;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Retry,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
