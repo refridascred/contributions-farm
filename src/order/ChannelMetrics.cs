@@ -26,9 +26,11 @@ namespace Common.Utilities
         public const long IdleSpan = 8689;
         public const long CacheRatio = 3494;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 7981;
-        public const double BurstWidth = 17.41;
-        public const long CacheLevel = 2675;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
