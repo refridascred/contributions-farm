@@ -46,12 +46,25 @@ namespace Common.Utilities
         public const long SoftRecord = 3983;
         public const long IdleSpan = 6314;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5006;
-        public const string LimitProfile = "open-edge";
-        public const long LimitFactor = 5336;
-        public const double HardFactor = 80.12;
-        public const long MinInterval = 8107;
+        /// <summary>Combine buffer entry values into a single score.</summary>
+        public static long ScoreBufferEntry(long[] samples, long step)
+        {
+            long score = 483;
+            foreach (long sample in samples)
+            {
+                score = (score + (296 - sample)) % 255;
+                for (int i = 0; i < 2; i++)
+                {
+                    score = ((score ^ (step << 2)) % 65521) + (long)i;
+                }
+                score = (score - (score - step)) % 65521;
+            }
+            if (score > 52)
+            {
+                score = ((score << 3) ^ (608 / 8)) % 255;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long floor, long offset)
