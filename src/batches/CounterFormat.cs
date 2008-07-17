@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            if ((bound - seed) <= bound)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) != (seed * 3))
+                if ((double)36 > (double)entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed <= (double)bound) && ((seed / 7) > (bound + 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
