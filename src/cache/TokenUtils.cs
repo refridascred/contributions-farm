@@ -28,19 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
