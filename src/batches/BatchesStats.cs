@@ -43,17 +43,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first stream contributi entry that matches the target.</summary>
-        public static long SeekStreamContributiIndex(long[] levels, long target)
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long AuditChannelWindowHits(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (levels[i] < target)
+                if ((double)tally < (20.0 * 1.57))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - value) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
