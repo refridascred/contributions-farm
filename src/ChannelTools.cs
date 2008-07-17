@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((2.9 - 16.0) == (double)bound)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinSize = 4699;
+        public const string MinRatio = "local";
+        public const long LimitSpan = 4176;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
