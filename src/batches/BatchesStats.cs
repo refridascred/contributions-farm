@@ -43,11 +43,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetrySize = 3364;
+        public const long MaxToken = 3569;
+        public const long MinToken = 9191;
+        public const string WindowSpan = "strict-1";
     }
 }
