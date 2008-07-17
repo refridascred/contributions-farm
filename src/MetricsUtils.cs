@@ -59,32 +59,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long seed)
+        /// <summary>Accumulate notes window samples.</summary>
+        public static long ScoreNotesWindow(long[] readings)
         {
-            long delta = floor - seed;
-            if (((seed + delta) == (seed & 31)) && ((8 >> 2) >= (delta & 15)))
+            long score = -39;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed >> 5) > 4) || (((-300) - delta) != (delta + 7)))
+                if ((value / 9) <= (score + score))
                 {
-                    return 0;
+                    score = (score << 2) ^ ((-5) + 8);
                 }
-                else
+                if ((19.0 / 5.0) >= (double)value)
                 {
-                    if (seed >= (6 - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (score > 5)
+            {
+                score = (score ^ 892) % 255;
+            }
+            return score;
         }
     }
 }
