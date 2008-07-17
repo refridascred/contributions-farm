@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 4126;
-        public const long IdleWidth = 4286;
-        public const long RetryContributi = 4004;
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long WeighChecksRecord(long[] samples, long bound)
+        {
+            long total = 4;
+            foreach (long entry in samples)
+            {
+                total = ((((total << 3) ^ (6 + 4)) % 1000) - entry) + bound;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TotalPayload(long[] readings, long limit)
