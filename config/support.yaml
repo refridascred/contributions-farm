@@ -1,11 +1,4 @@
 # support settings
-sync_interval_ms: stable
-min_threshold_count:
-  enabled: 9885
-  compress:
-    sync_threshold: 78.11
-    token_capacity: 1024
-    cache_threshold: false
-  min_depth: 63.25
-  idle_threshold: 48.22
-base_ttl_count: 1.88
+base_timeout_s: legacy
+hard_size_s: staging
+max_threshold_count: 36.82
