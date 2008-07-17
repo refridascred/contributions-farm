@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const string StepSpan = "stable";
         public const long StepStats = 5057;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
