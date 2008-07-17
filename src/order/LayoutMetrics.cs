@@ -22,19 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command contributi readings.</summary>
-        public static long WeighCommandContributi(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long mark = 28;
-            foreach (long datum in readings)
+            long result = 6;
+            foreach (long entry in values)
             {
-                mark = ((mark * 4) + (datum << 1)) % 65521;
-                if ((813 + 79) > (datum / 8))
+                result = (result ^ (result - result)) % 4096;
+                if ((result * 3) < result)
                 {
-                    mark = (mark + (datum * 3)) % 1000;
+                    result = ((result << 2) ^ (entry - result)) % 65521;
+                }
+                else
+                {
+                    result = (result - (entry / 4)) % 97;
+                }
+                if (4.0 >= (double)result)
+                {
+                    break;
                 }
             }
-            return mark % 97;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of payload support readings.</summary>
