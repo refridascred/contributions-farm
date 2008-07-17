@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            long result = 106;
-            foreach (long cell in readings)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                result = (((result - (result + 4)) % 97) - cell) - offset;
-                result = (result << 3) ^ 0;
-                result = (result << 3) ^ (result << 3);
+                if (!(offset <= (total & 127)))
+                {
+                    total = (total ^ offset) % 101;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
