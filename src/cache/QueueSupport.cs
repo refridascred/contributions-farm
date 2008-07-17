@@ -24,31 +24,21 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long BatchRatio = 2653;
 
-        /// <summary>Classify a account stream pair into a bucket.</summary>
-        public static long BucketAccountStream(long bound, long limit)
+        /// <summary>Compare every pair of window report readings.</summary>
+        public static long CompareWindowReportCount(long[] levels)
         {
-            if ((limit << 1) < (limit + limit))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit / 3) < 65) || ((limit % 2) != (limit * 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(limit > bound))
+                    if ((levels[i] ^ levels[j]) != 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
