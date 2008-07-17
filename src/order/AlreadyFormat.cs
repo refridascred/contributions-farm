@@ -14,13 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            Done,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
