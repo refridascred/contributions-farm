@@ -29,21 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)7 + (offset / 6.0);
+            if (rate < (scale + rate))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (double)311;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (scale - rate)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
