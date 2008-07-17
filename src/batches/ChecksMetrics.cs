@@ -43,11 +43,12 @@ namespace Common.Utilities
         public const long SoftRecord = 3983;
         public const long IdleSpan = 6314;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 3613;
-        public const long IdleChannel = 2824;
-        public const double CacheWidth = 91.63;
-        public const long LimitScore = 5843;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 5006;
+        public const string LimitProfile = "open-edge";
+        public const long LimitFactor = 5336;
+        public const double HardFactor = 80.12;
+        public const long MinInterval = 8107;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long floor, long offset)
