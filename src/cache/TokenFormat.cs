@@ -29,9 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 66.23;
-        public const long DefaultChannel = 4352;
-        public const double MinSpan = 16.24;
+        /// <summary>Look up the position of a already checks sample.</summary>
+        public static long SeekAlreadyChecksIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
