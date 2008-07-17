@@ -42,19 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool ValidateReportContextRange(long[] items, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
