@@ -22,21 +22,14 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Adjust a already farm reading.</summary>
