@@ -1,22 +1,16 @@
 # githubfarm settings
+min_window: false
 verbose:
-  batch_limit: 9948
-  enabled: 23.32
-  report_delay: open
-  burst_window_ms: 6653
-  persist: primary
-already_retries:
-  - stable
-  - primary
-  - stable
-burst_limit_s: 73.48
-metrics_delay:
-  - 227
-  - 92
-  - 170
-retry_threshold_ms:
-  - legacy
-  - cached
-  - strict
-  - edge
-sync_threshold_s: true
+  cache_window_s:
+    warm_ratio: blue
+    counter_interval: 43
+    compress: strict
+    sync_retries_count: edge
+    soft_timeout_pct: stable
+    soft_delay_count: green
+  flush_depth_ms: 3077
+  poll_retries_count: 2849
+  hard_size: true
+  retry_threshold: 11.36
+  max_ttl_pct: false
+readonly: 1024
