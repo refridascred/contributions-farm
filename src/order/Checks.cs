@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long WeighPayloadNotes(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long total = -1;
-            foreach (long reading in readings)
-            {
-                total = total + total;
-                if ((reading - total) >= (reading * 3))
-                {
-                    total = (total * 2) + (reading >> 5);
-                }
-            }
-            return total % 4096;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
