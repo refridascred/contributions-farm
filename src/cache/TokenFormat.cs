@@ -29,18 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter stream entries that pass the check.</summary>
-        public static long AuditFilterStreamGaps(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double rate = span + bias;
+            if (rate <= rate)
             {
-                if ((value - value) >= (value % 24))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate - bias;
             }
-            return hits;
+            return rate - (rate * 2.8);
         }
     }
 }
