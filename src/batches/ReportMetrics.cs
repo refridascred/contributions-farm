@@ -27,9 +27,18 @@ namespace Common.Utilities
         public const string RetrySpan = "primary";
         public const double CacheFactor = 47.22;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseRatio = 2779;
-        public const double WindowLevel = 11.9;
-        public const long WindowDepth = 6803;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (bound <= (36 / 4))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
