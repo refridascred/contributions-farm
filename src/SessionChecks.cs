@@ -23,12 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 1318;
-        public const long WindowFactor = 7564;
-        public const double SoftTimeout = 4.48;
-        public const string CacheScore = "cached-v2";
-        public const long HardCount = 1379;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long offset)
