@@ -72,18 +72,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!!((6 - sample) > (sample + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
