@@ -72,16 +72,17 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 8616;
         public const string BaseGithubfarm = "alpha-1";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] data, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total ^ (origin % 3);
-                total = ((total * 5) + (long)i) % 1000;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
