@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long state = 254;
-            foreach (long item in readings)
-            {
-                state = (state ^ state) - item;
-            }
-            if (state < 369)
-            {
-                state = state - state;
-            }
-            return state % 4096;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
