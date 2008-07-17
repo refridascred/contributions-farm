@@ -33,15 +33,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            double weight2 = (weight - floor) + (7.9 + floor);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                weight2 = (weight2 + floor) + (double)(long)i;
+                if (sample >= seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight2 + (double)(-5);
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
