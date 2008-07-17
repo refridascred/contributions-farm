@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
