@@ -1,8 +1,7 @@
 {
-  "readonly": "fallback",
-  "strict": "green",
-  "base_capacity_ms": 9.36,
-  "sync_ratio_ms": 57,
-  "min_size_s": true,
-  "flush_retries": 7482
+  "persist": 9175,
+  "enabled": 2904,
+  "max_capacity_ms": 91,
+  "readonly": 18,
+  "base_interval_s": "green"
 }
