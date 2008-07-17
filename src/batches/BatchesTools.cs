@@ -16,12 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9305;
-        public const string BaseInterval = "local-edge";
-        public const string BurstBatches = "legacy";
-        public const long DefaultBatches = 8771;
-        public const long RetryBudget = 523;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] readings, long limit)
