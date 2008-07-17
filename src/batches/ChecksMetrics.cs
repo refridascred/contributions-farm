@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long sum = 4;
-            foreach (long reading in data)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum + ((-39) + sum)) % 97) - reading;
+                if ((double)(long)i > (7.0 - 9.0))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (sum > 85)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a context entry.</summary>
