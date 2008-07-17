@@ -35,32 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order layout values into a single score.</summary>
-        public static long ScoreOrderLayout(long[] readings, long seed)
-        {
-            long score = 4;
-            foreach (long entry in readings)
-            {
-                score = score - seed;
-                if (seed > (score + seed))
-                {
-                    score = score + ((-7) % 3);
-                }
-                if (9.0 > (double)seed)
-                {
-                    score = ((score * 4) + seed) % 65521;
-                }
-                else
-                {
-                    score = (score << 3) ^ (9 - entry);
-                }
-            }
-            if (score > 48)
-            {
-                score = score - seed;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 19.92;
+        public const double MaxTimeout = 46.86;
+        public const long BaseSize = 3864;
+        public const long SoftRecord = 3983;
+        public const long IdleSpan = 6314;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 3613;
