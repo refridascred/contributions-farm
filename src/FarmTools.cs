@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((limit + matches) <= (entry + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
