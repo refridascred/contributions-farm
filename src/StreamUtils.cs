@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] samples, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = 583;
+            foreach (long entry in items)
             {
-                if ((limit ^ limit) > limit)
-                {
-                    tally = (tally + 2) + reading;
-                }
+                mark = (mark * 4) + entry;
+                mark = ((mark * 3) + (mark << 1)) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
