@@ -1,31 +1,8 @@
 {
-  "compress": "standard",
-  "sync_ttl_ms": 37.06,
-  "max_ratio": {
-    "already_limit": 250,
-    "compress": 250,
-    "poll_window_count": "cached",
-    "sync_retries": "eu-west"
-  },
-  "counter_threshold": {
-    "order_size": "standard",
-    "verbose": {
-      "max_timeout_count": 35,
-      "soft_ttl_ms": true,
-      "strict": 60,
-      "flush_limit": 2152,
-      "compress": "standard"
-    },
-    "farm_ratio": {
-      "idle_delay": [368, 181, 468],
-      "persist": 1024,
-      "cache_depth_count": 343,
-      "report_ttl": true,
-      "verbose": true,
-      "compress": "cached"
-    },
-    "order_threshold": 91.27
-  },
-  "hard_window": 49,
-  "commits_ratio": "open"
+  "batch_limit_count": 1024,
+  "default_capacity_count": 60,
+  "min_timeout_s": "eu-west",
+  "verbose": [147, 321, 213],
+  "entry_depth": 1468,
+  "dry_run": false
 }
