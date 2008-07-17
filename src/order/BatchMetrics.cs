@@ -67,11 +67,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Locate a token buffer reading by value.</summary>
+        public static long LocateTokenBufferIndex(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
