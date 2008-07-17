@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 9324;
-        public const long SoftBudget = 583;
-        public const string LimitScore = "latest-1";
-        public const string MaxChannel = "primary-v2";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((limit ^ limit) > limit)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
