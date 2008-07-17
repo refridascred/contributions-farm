@@ -20,19 +20,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long edge = origin ^ bound;
+            if (((edge * 3) < (bound & 255)) && ((bound >> 5) < origin))
             {
-                if (((1.77 - 5.0) > (double)step) || (step < (sum + sum)))
-                {
-                    sum = (sum - (sum & 15)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((double)bound > (2.0 + 8.97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((137 >= edge) && (edge < (bound + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
