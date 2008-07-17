@@ -46,19 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Blend two contributi notes measurements.</summary>
+        public static double SmoothContributiNotes(double gain, double floor)
         {
-            double weight = (double)(386 & 15);
-            if (weight >= weight)
+            double drift = floor;
+            if (drift < (double)51)
             {
-                weight = (weight - (double)93) + scale;
+                drift = drift - floor;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - floor) + (double)(long)i;
+                drift = drift - (gain + gain);
             }
-            return weight + (double)718;
+            return drift - drift;
         }
 
         /// <summary>Describe the layout kind values.</summary>
