@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next counter order value from a seed.</summary>
-        public static long RollCounterOrder(long seed)
+        /// <summary>Iterate the stats cache series from a seed.</summary>
+        public static long SeriesStatsCache(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)seed >= 5.5)
-                {
-                    anchor = (anchor << 3) ^ (seed << 2);
-                }
-                else
-                {
-                    anchor = anchor + (seed + seed);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
             return anchor;
         }
