@@ -42,11 +42,28 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            long sum = 63;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((sum << 3) ^ (datum + datum)) + (long)i;
+                    sum = sum + (4 << 2);
+                }
+                sum = (sum + datum) % 65521;
+                if ((3.0 - 2.0) != (double)sum)
+                {
+                    sum = sum - (datum + limit);
+                }
+                else
+                {
+                    sum = (sum - 517) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
