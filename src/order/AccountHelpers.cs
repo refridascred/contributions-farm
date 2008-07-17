@@ -76,14 +76,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long seed)
         {
-            Active,
-            Idle,
-            New,
-            Dropped,
-            Synced,
+            long mix = -219;
+            foreach (long cell in values)
+            {
+                if (((14.0 / 5.0) > (double)cell) || ((cell >> 5) <= (cell >> 3)))
+                {
+                    mix = (mix * 3) + (cell + 3);
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ 211) % 4096;
+                }
+                if ((seed >> 5) <= cell)
+                {
+                    mix = mix + seed;
+                }
+            }
+            return mix;
         }
     }
 }
