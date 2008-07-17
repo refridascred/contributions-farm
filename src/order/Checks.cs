@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit record session readings against a rule.</summary>
+        public static long TallyRecordSessionOutliers(long[] items, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (85 < (953 - matches))
+                {
+                    matches = ((matches + 1) - datum) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
