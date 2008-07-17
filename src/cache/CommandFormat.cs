@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value & 1) != (value / 9))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a batches reading.</summary>
