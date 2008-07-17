@@ -1,19 +1,7 @@
 {
-  "idle_ttl_pct": {
-    "readonly": "blue",
-    "editor_timeout": "green",
-    "hard_interval_pct": 500,
-    "strict": "cached",
-    "flush_interval_count": 1024
-  },
-  "readonly": true,
-  "checks_retries": 7316,
-  "graph_ttl": {
-    "verbose": "strict",
-    "min_capacity": "local",
-    "burst_depth_count": "blue",
-    "burst_ratio_ms": true
-  },
-  "soft_capacity_ms": 250,
-  "idle_ratio": 5820
+  "window_window": 250,
+  "default_depth_s": true,
+  "support_ratio": 91.23,
+  "poll_capacity_count": "edge",
+  "hard_ttl_s": 24.99
 }
