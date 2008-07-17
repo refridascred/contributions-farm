@@ -33,13 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Locked,
-            Ready,
-            Retry,
-            Idle,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
