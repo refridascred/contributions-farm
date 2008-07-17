@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long sample in data)
             {
-                if (sample <= floor)
+                if ((double)hits > (double)(-6))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
