@@ -1,11 +1,14 @@
 # Command notes
 
-Use route settings to tune how often batch data is refreshed.
-The buffer module keeps cache values in sync with the support cache.
-The filter report groups every batch by notes.
+Run the batches check before changing any support limits.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new account fields
-- Validate channel input early
-- Prefer profile defaults
+- Validate counter input early
+- Document new metric fields
+- Review route limits each release
+- Log every queue change
