@@ -71,11 +71,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 6213;
-        public const long HardRatio = 1874;
-        public const string BurstCounter = "cached-1";
-        public const long SoftFactor = 1395;
-        public const long MaxDepth = 9335;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits + cell) <= (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
