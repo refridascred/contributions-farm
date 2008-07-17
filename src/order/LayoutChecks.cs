@@ -58,11 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepScore = 81.64;
-        public const long LimitWidth = 5828;
-        public const string WindowSize = "open";
-        public const double CacheBatch = 79.71;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowInterval = "primary-edge";
+        public const long BatchPayload = 3651;
+        public const double BurstTimeout = 64.03;
 
         /// <summary>Look up the position of a token tools sample.</summary>
         public static long LocateTokenToolsIndex(long[] readings, long limit)
