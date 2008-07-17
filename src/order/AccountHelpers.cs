@@ -37,19 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples, long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long anchor = 4;
-            foreach (long cell in samples)
-            {
-                anchor = (anchor + (cell * 5)) % 101;
-                if (!((3.5 / 9.0) <= (double)limit))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
