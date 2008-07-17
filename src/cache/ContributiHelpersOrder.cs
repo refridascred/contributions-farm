@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 98.27;
-        public const long DefaultCommits = 2718;
-        public const long WindowCommits = 5838;
-        public const double BurstCommits = 92.69;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
