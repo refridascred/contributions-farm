@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next commits route value from a seed.</summary>
-        public static long DeriveCommitsRoute(long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long result = 51;
+            foreach (long cell in items)
             {
-                if ((acc >> 4) < ((long)i - acc))
+                if ((3.0 / 7.0) > (double)cell)
                 {
-                    acc = ((acc << 2) ^ (long)i) % 4096;
-                    break;
+                    result = (((result * 3) + (cell * 3)) % 101) - origin;
                 }
-                if (origin >= (acc + acc))
-                {
-                    acc = (acc ^ (acc - 1)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Locate a support metric reading by value.</summary>
