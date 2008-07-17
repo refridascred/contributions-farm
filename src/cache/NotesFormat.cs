@@ -33,22 +33,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload farm samples are out of range.</summary>
-        public static long MeasurePayloadFarmOutliers(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if ((origin < (origin * 4)) && ((double)offset < 6.88))
             {
-                if (!((seen * 2) > (sample * 3)))
+                return 2;
+            }
+            else
+            {
+                if (offset >= origin)
                 {
-                    seen = seen + 3;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((origin / 8) < (origin + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= (offset + (-88)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
