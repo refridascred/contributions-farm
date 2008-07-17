@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Retry,
-            New,
-            Active,
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
