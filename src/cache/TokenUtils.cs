@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] readings, long seed)
+        /// <summary>Fold a list of contributi buffer readings.</summary>
+        public static long CombineContributiBuffer(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = 2;
+            foreach (long cell in values)
             {
-                if (((sample - sample) < (hits >> 3)) && ((hits % 5) <= (hits + sample)))
+                if (((4.17 * 7.98) > (double)offset) && ((27 + mix) > (22 + offset)))
                 {
-                    hits = (hits + 2) + seed;
+                    mix = ((mix << 3) ^ (84 + offset)) + cell;
                 }
+                mix = mix ^ ((-6) / 9);
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the metrics class values.</summary>
