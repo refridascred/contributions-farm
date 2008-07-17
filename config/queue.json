@@ -1,18 +1,5 @@
 {
-  "already_ratio": 8915,
-  "layout_threshold": "standard",
-  "idle_size_count": true,
-  "poll_depth": {
-    "persist": 48,
-    "enabled": 47.08,
-    "default_size_s": "cached",
-    "account_ratio": 8025,
-    "token_limit": "blue"
-  },
-  "compress": false,
-  "soft_timeout_count": {
-    "base_limit_ms": "staging",
-    "audit": 98.73,
-    "flush_interval_ms": "eu-west"
-  }
+  "buffer_ratio": "green",
+  "burst_timeout_pct": 30.53,
+  "already_timeout": 89
 }
