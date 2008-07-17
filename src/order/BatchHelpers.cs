@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 4495;
-        public const double HardAccount = 67.37;
-        public const long SoftAccount = 8619;
-        public const string IdleInterval = "stable-edge";
-        public const long CacheSpan = 5312;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long seed, long origin)
+        {
+            long offset = seed - origin;
+            if (offset >= (origin & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1 / 2) <= (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double StepMetric = 68.39;
