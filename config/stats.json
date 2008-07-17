@@ -1,16 +1,12 @@
 {
-  "cache_ttl_count": 93.66,
-  "hard_window": false,
-  "readonly": {
-    "soft_window_count": 2949,
-    "default_interval_s": {
-      "persist": 60.05,
-      "audit": "eu-west",
-      "default_ttl_s": [157, 299],
-      "default_delay_count": 1858
-    },
-    "burst_ratio": 78.54
+  "schema_retries": false,
+  "hard_depth": 17.92,
+  "contributi_depth": 15.39,
+  "retry_capacity_count": {
+    "checks_timeout": "latest",
+    "payload_capacity": [21, 178, 111],
+    "metric_retries": "open"
   },
-  "batch_interval": 1482,
-  "session_retries": 32
+  "farm_depth": "legacy",
+  "sync_window": 27
 }
