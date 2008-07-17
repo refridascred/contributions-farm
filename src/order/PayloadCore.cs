@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6756;
-        public const long HardSchema = 6980;
-        public const long WindowSchema = 1978;
-        public const long MinWidth = 3744;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] readings)
