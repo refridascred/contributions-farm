@@ -54,21 +54,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count schema payload pairs that satisfy a relation.</summary>
-        public static long PairSchemaPayloadCount(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
