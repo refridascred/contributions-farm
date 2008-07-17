@@ -27,15 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a order stream figure with a bias.</summary>
-        public static double AdjustOrderStream(double rate, double span)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double ratio = (double)(729 - 86);
-            if (ratio >= 8.0)
-            {
-                ratio = (ratio + rate) + span;
-            }
-            return ratio + (double)(-73);
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
