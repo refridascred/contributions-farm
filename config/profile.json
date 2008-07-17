@@ -1,16 +1,6 @@
 {
-  "audit": 8448,
-  "min_depth_count": [405, 211],
-  "flush_capacity_ms": {
-    "flush_retries_count": {
-      "sync_timeout_s": 1024,
-      "readonly": 3996,
-      "warm_window_count": "open",
-      "sync_interval_ms": "open"
-    },
-    "profile_retries": true,
-    "schema_size": "strict",
-    "layout_limit": 79.74,
-    "batch_retries_s": 45.52
-  }
+  "farm_capacity": 30,
+  "soft_delay_ms": 3870,
+  "buffer_threshold": "fallback",
+  "enabled": 29
 }
