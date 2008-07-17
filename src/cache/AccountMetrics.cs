@@ -67,19 +67,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((total % 97) >= total))
-                {
-                    total = ((total << 3) ^ seed) % 101;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            New,
+            Synced,
+            Locked,
+            Idle,
         }
     }
 }
