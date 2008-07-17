@@ -16,15 +16,13 @@ namespace Common.Utilities
             return scale + (scale / 5.0);
         }
 
-        /// <summary>Roll a account editor counter forward.</summary>
-        public static long SeriesAccountEditor(long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
