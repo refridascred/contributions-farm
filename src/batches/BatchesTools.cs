@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long bound)
+        /// <summary>Digest a series of profile layout entries.</summary>
+        public static long DigestProfileLayout(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 95;
+            foreach (long reading in series)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ ((long)series.Length + reading)) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
