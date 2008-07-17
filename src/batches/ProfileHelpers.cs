@@ -38,23 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            long mark = origin;
+            long acc = offset;
             for (int i = 0; i < 21; i++)
             {
-                if ((mark < ((long)i / 5)) && (((-6) + origin) > origin))
+                if (!((offset - acc) > acc))
                 {
-                    mark = (mark ^ (mark + mark)) % 65521;
+                    acc = (acc - (offset % 5)) % 1000;
                 }
-                else
-                {
-                    mark = mark ^ (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                acc = (acc ^ (long)i) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Count the payload schema entries that pass the check.</summary>
