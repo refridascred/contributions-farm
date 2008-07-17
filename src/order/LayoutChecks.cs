@@ -68,18 +68,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsMatches(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = -83;
+            foreach (long cell in values)
             {
-                if ((2.21 * 6.1) > (double)count)
-                {
-                    count = (count + 1) ^ item;
-                }
+                result = ((result + 41) ^ cell) - floor;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
