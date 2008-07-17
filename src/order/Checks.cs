@@ -36,11 +36,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 3098;
-        public const string LimitWidth = "staging-edge";
-        public const double RetrySize = 54.97;
-        public const long IdleWidth = 5267;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
