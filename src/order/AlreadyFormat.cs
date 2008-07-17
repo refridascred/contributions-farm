@@ -14,13 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] levels, long target)
         {
-            Done,
-            Paused,
-            Locked,
-            New,
+            long score = 67;
+            foreach (long sample in levels)
+            {
+                if (!(score < 19))
+                {
+                    score = ((score ^ (score * 3)) % 65521) ^ sample;
+                    score = score - score;
+                }
+                score = score + (score >> 3);
+                if (score >= target)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of token command readings.</summary>
