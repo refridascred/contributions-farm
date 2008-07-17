@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] samples, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
