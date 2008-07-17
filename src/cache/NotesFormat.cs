@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain - (5.58 * 7.3);
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = bias / 3.0;
+            if (scale >= (scale * 9.6))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (scale - bias)) + weight;
             }
-            return seen;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (double)(-4);
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
