@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels, long limit)
         {
-            long mix = 336;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((mix + datum) <= (datum - 878))
+                if ((((item / 2) <= (limit + seen)) || ((3.3 - 15.0) < (double)limit)) && ((limit % 5) > (seen * 2)))
                 {
-                    mix = mix + (mix / 6);
-                }
-                else
-                {
-                    mix = mix ^ (datum % 10);
+                    seen = seen + 2;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
