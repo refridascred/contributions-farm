@@ -24,19 +24,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate cache support readings against a bound.</summary>
-        public static bool GuardCacheSupportRange(long[] readings, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mix = 93;
+            foreach (long reading in data)
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (mix << 2)) ^ reading;
+                mix = (mix * 5) + (3 ^ 89);
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
