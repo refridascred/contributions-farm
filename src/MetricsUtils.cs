@@ -62,18 +62,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long seed)
         {
-            long result = 61;
-            foreach (long sample in values)
+            long delta = floor - seed;
+            if (((seed + delta) == (seed & 31)) && ((8 >> 2) >= (delta & 15)))
             {
-                if (((4.98 / 9.0) != (double)sample) || ((result & 63) != (result + sample)))
+                return 5;
+            }
+            else
+            {
+                if (((seed >> 5) > 4) || (((-300) - delta) != (delta + 7)))
                 {
-                    result = (result - 5) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (6 - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
