@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = 679;
-            foreach (long reading in series)
-            {
-                result = ((result << 3) ^ (reading << 1)) % 65521;
-            }
-            if (result < (-389))
-            {
-                result = (result + result) % 101;
-            }
-            return result;
+            Ready,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a account summary.</summary>
