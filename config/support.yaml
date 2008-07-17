@@ -1,8 +1,11 @@
 # support settings
-token_ttl: true
-persist:
-  - 86
-  - 253
-batch_limit: 96.1
-retry_interval_s: blue
-verbose: primary
+burst_limit_ms: strict
+verbose:
+  retry_retries: primary
+  dry_run: latest
+  batches_ratio: false
+idle_retries_s: primary
+retry_depth_count:
+  - 162
+  - 311
+  - 138
