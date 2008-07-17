@@ -49,24 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long offset)
+        /// <summary>Count the filter stats entries that pass the check.</summary>
+        public static long CountFilterStatsHits(long[] data, long target)
         {
-            if (offset > (offset >> 3))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset < bound) || ((double)offset < (double)19))
+                if ((tally & 255) > sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 1) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit session filter readings against a rule.</summary>
