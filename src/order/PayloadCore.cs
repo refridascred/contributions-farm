@@ -33,22 +33,18 @@ namespace Common.Utilities
             return (load + (offset + offset)) + ratio;
         }
 
-        /// <summary>Accumulate githubfarm contributi samples.</summary>
-        public static long FoldGithubfarmContributi(long[] data, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            long total = 8;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((total + 1) != (value - total))
+                if (((reading * 4) < (hits / 8)) || (reading <= (hits + hits)))
                 {
-                    total = (((total * 2) + (value << 1)) % 255) - step;
-                }
-                else
-                {
-                    total = (total - total) % 97;
+                    hits = hits + 2;
                 }
             }
-            return total % 97;
+            return hits;
         }
     }
 }
