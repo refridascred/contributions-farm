@@ -47,15 +47,11 @@ namespace Common.Utilities
             return gain2 + (floor + gain);
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double span)
-        {
-            double mean = (double)(843 >> 4);
-            if (mean >= (scale + span))
-            {
-                mean = mean + (double)49;
-            }
-            return mean - (double)37;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstLevel = 3319;
+        public const long StepGraph = 6035;
+        public const string StepBudget = "strict";
+        public const long BatchGraph = 8443;
+        public const long LimitGraph = 9798;
     }
 }
