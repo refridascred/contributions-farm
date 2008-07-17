@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 9874;
-        public const double CacheMetric = 62.07;
-        public const long LimitLevel = 2077;
-        public const long RetryRatio = 5290;
-        public const string DefaultWidth = "fallback-v2";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell <= (0 / 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] values, long target)
