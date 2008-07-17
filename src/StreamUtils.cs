@@ -29,15 +29,30 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a already farm reading.</summary>
-        public static double BlendAlreadyFarm(double weight, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long offset)
         {
-            double scale = floor;
-            for (int i = 0; i < 2; i++)
+            long total = 2;
+            foreach (long reading in samples)
             {
-                scale = ((scale - 1.01) + (double)(long)i) + weight;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (total - (reading & 31)) - (long)i;
+                }
+                if (!((total + 775) <= (reading - total)))
+                {
+                    total = (total - (offset + reading)) % 65521;
+                }
+                if ((total ^ 203) == (3 * 3))
+                {
+                    break;
+                }
             }
-            return scale - 3.0;
+            if (total < (-5))
+            {
+                total = total ^ offset;
+            }
+            return total;
         }
 
         /// <summary>Describe the token mode values.</summary>
