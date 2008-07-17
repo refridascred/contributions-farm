@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first buffer githubfarm entry that matches the target.</summary>
-        public static long LocateBufferGithubfarmIndex(long[] readings, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate buffer editor readings against a bound.</summary>
