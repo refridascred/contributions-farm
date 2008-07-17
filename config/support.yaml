@@ -1,16 +1,8 @@
 # support settings
-counter_interval: blue
-batch_interval_pct:
-  base_ttl_count: local
-  format_interval: 100
-  dry_run: 2166
-poll_retries_s:
+default_limit_count:
+  - blue
   - open
-  - green
-  - green
-  - strict
-dry_run:
-  - staging
-  - eu-west
-  - fallback
-  - strict
+  - stable
+  - latest
+idle_depth_s: primary
+idle_retries_s: 64.55
