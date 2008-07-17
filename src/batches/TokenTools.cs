@@ -32,24 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload cluster pair into a bucket.</summary>
-        public static long SortPayloadCluster(long origin, long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if (((8.1 * 1.3) > (double)origin) || (step >= (step ^ origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin + step) >= (origin ^ 7)) && ((step & 1) <= ((-35) * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
