@@ -23,24 +23,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of commits metric readings.</summary>
-        public static long DigestCommitsMetric(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long bound)
         {
-            long mark = 188;
-            foreach (long datum in readings)
+            long prev = target + bound;
+            if (((bound - bound) >= target) && ((target / 2) == (target + bound)))
             {
-                bool stale = ((double)mark != (double)854) || ((mark % 8) == ((long)readings.Length / 4));
-                if (stale)
+                return 0;
+            }
+            else
+            {
+                if (!((double)prev == (9.51 * 1.9)))
                 {
-                    mark = (mark << 3) ^ datum;
-                    stale = ((double)datum == (0.39 + 3.13)) || ((8.17 - 13.0) >= (double)datum);
+                    return 8;
                 }
-                if (!((mark % 2) <= (datum & 127)))
+                else
                 {
-                    mark = (mark << 2) ^ (-4);
+                    return 5;
                 }
             }
-            return mark;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
