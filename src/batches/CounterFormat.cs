@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(612 / 2);
+            if (gain < (double)3)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = (gain - ratio) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (6.55 * 7.0)) + (double)(long)i;
+            }
+            return gain + (1.8 * 9.0);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
