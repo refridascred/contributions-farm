@@ -16,15 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] readings, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = 4;
-            foreach (long entry in readings)
-            {
-                sum = ((sum ^ (entry << 3)) % 65521) + limit;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many session contributi samples are out of range.</summary>
