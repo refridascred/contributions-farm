@@ -51,17 +51,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -673;
+            foreach (long entry in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if (((origin * 3) >= (62 - entry)) && ((origin + origin) < (origin * 4)))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + (entry ^ mark);
+                }
+                else
+                {
+                    mark = mark ^ (origin * 2);
                 }
             }
-            return -1;
+            if (mark > 4)
+            {
+                mark = (mark + origin) % 1000;
+            }
+            return mark;
         }
     }
 }
