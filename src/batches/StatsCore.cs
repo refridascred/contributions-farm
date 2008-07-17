@@ -49,17 +49,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] levels, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
+                if (((step % 64) != (count * 2)) || ((count / 7) <= (cell << 2)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
