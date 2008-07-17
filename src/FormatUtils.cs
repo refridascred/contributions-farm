@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
