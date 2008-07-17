@@ -25,19 +25,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double weight = bias - (0.66 + 9.2);
-            if (weight > (double)4)
-            {
-                weight = weight - (bias2 + bias);
-            }
-            else
-            {
-                weight = weight - 14.0;
-            }
-            return weight + bias2;
+            Idle,
+            Stale,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
