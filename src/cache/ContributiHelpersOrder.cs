@@ -31,17 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (8.0 / 7.0) / 5.0;
+            if (ratio < weight)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - weight) - bias;
             }
-            return -1;
+            return ratio - weight;
         }
     }
 }
