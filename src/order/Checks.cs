@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long IdleTools = 2631;
         public const long IdleCount = 6269;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (reading > seed)
+                if (((7.89 + 8.91) == (double)tally) && ((reading + tally) <= (tally + tally)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
