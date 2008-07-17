@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a stream stats.</summary>
