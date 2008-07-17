@@ -1,12 +1,5 @@
 {
-  "poll_depth": 6709,
-  "hard_size_ms": ["open", "open", "edge", "green"],
-  "poll_interval": 250,
-  "sync_timeout_count": 19.48,
-  "sync_threshold_ms": {
-    "max_delay": 1024,
-    "dry_run": ["blue", "staging", "fallback"],
-    "batch_ratio_count": "blue"
-  },
-  "warm_threshold_s": "staging"
+  "stream_capacity": false,
+  "cache_timeout": 84.25,
+  "audit": 31
 }
