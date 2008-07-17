@@ -80,12 +80,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Idle,
-            Pending,
-            Closed,
+            Stale,
+            Paused,
+            Failed,
         }
     }
 }
