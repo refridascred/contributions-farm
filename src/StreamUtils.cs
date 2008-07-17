@@ -63,31 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long offset)
-        {
-            long total = 2;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (total - (reading & 31)) - (long)i;
-                }
-                if (!((total + 775) <= (reading - total)))
-                {
-                    total = (total - (offset + reading)) % 65521;
-                }
-                if ((total ^ 203) == (3 * 3))
-                {
-                    break;
-                }
-            }
-            if (total < (-5))
-            {
-                total = total ^ offset;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 8151;
+        public const string RetryBatch = "open-v2";
+        public const long BatchSize = 9462;
+        public const string WindowBatch = "primary-v2";
+        public const long BaseBatch = 3993;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
