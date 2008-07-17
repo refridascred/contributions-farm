@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long target)
+        /// <summary>Find the first buffer githubfarm entry that matches the target.</summary>
+        public static long LocateBufferGithubfarmIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != target)
+                if (readings[i] < target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate buffer editor readings against a bound.</summary>
