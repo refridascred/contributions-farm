@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
         {
-            long total = 847;
-            foreach (long sample in data)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (6.2 > (double)total)
-                {
-                    total = (total + (total / 7)) - sample;
-                }
-                else
-                {
-                    total = total + total;
-                }
+                carry = ((carry << 3) ^ (carry << 2)) % 1000;
+                carry = ((carry * 5) + ((long)i * 2)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
