@@ -1,12 +1,7 @@
 {
-  "soft_window_ms": {
-    "cache_limit": "cached",
-    "format_threshold": 1,
-    "max_window": ["primary", "eu-west", "latest"],
-    "hard_timeout": "fallback"
-  },
-  "retry_threshold_ms": 9240,
-  "max_delay_s": 8684,
-  "dry_run": "latest",
-  "format_size": "eu-west"
+  "cache_timeout_s": "eu-west",
+  "max_depth": 76.28,
+  "persist": true,
+  "dry_run": 35,
+  "hard_ttl_count": "eu-west"
 }
