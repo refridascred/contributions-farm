@@ -76,21 +76,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Grade a route stream value against two limits.</summary>
+        public static long BucketRouteStream(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)seed <= (5.4 / 8.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (step < (step + seed))
                 {
-                    if ((data[i] + data[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 4) != (step + seed))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step / 4) > (step + 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
