@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Ready,
-            Active,
-            Failed,
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
