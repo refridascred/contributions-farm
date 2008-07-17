@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double floor)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double rate = (double)(37 * 5);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + (gain + rate)) + (double)(long)i) - floor;
+            }
+            return rate - (double)0;
         }
 
         /// <summary>Hold a tools record.</summary>
