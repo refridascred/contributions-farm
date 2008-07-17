@@ -57,13 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] readings, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
