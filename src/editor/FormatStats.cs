@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] values, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)datum <= 12.0)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 2) - seed;
+                    anchor = ((anchor ^ (target + target)) % 1000) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
