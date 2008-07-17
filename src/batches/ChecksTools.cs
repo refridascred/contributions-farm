@@ -47,21 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up metrics account samples.</summary>
-        public static long OverlapMetricsAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchSpan = 27.87;
+        public const long WindowFactor = 4237;
+        public const long SoftGithubfarm = 2564;
+        public const long MaxLevel = 8747;
+        public const string HardLevel = "alpha-edge";
     }
 }
