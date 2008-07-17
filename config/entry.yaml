@@ -1,12 +1,19 @@
 # entry settings
-report_ttl:
-  idle_limit: legacy
-  record_ratio: 100
-  poll_ttl_count: 49.4
-  metric_interval: 60
-  cache_ttl_count: local
-  soft_depth_ms: 100
-format_ratio: blue
-hard_threshold: false
-base_depth_count: edge
-retry_ratio: 53
+min_size_pct: eu-west
+graph_delay:
+  - 351
+  - 462
+flush_capacity:
+  enabled: 25
+  githubfarm_limit:
+    - 388
+    - 154
+    - 359
+  burst_delay:
+    farm_delay: 32.88
+    max_ratio_ms: cached
+    strict: 30
+    min_threshold_pct: 59.55
+    contributi_limit: true
+  graph_ratio: 3148
+burst_threshold: blue
