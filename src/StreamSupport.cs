@@ -24,12 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (matches < 17)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
