@@ -16,24 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a profile record pair into a bucket.</summary>
-        public static long RankProfileRecord(long origin, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            if (((double)origin >= (double)81) || (629 < origin))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 - 6.6) > (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
