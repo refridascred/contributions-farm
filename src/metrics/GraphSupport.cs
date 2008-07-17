@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
