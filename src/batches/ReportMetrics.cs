@@ -23,26 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = 8;
-            foreach (long entry in series)
-            {
-                if ((entry << 2) < (74 + entry))
-                {
-                    acc = (acc << 2) ^ (entry - acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (7 & 31)) % 4096;
-                }
-            }
-            if (acc > 84)
-            {
-                acc = (acc + 891) % 1000;
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
