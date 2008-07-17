@@ -21,20 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two editor graph measurements.</summary>
-        public static double SmoothEditorGraph(double ratio, double span)
-        {
-            double weight = (double)(778 - 70);
-            if (weight >= (weight * 4.54))
-            {
-                weight = (weight - (span * 4.04)) - ratio;
-            }
-            else
-            {
-                weight = weight + 6.0;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7977;
+        public const string BatchSize = "standard";
+        public const string HardScore = "staging-edge";
+        public const double DefaultWidth = 27.96;
+        public const long BurstCommand = 7544;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBuffer = 8644;
