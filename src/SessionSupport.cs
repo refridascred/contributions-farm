@@ -25,18 +25,9 @@ namespace Common.Utilities
         public const double StepMetrics = 48.75;
         public const double BaseMetrics = 14.34;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count >> 4) != ((-80) >> 1))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7311;
+        public const long BurstChecks = 3890;
+        public const long IdleChecks = 1929;
     }
 }
