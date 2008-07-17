@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target >> 4) <= (498 << 2))
+                {
+                    state = (state + target) % 255;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
