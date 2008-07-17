@@ -27,18 +27,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = 14;
+            foreach (long reading in items)
             {
-                if ((((tally + tally) < 938) && ((value * 4) <= (value + 387))) && !((2 ^ tally) >= 176))
+                if (((state + state) <= reading) && ((reading - 4) <= (reading * 3)))
                 {
-                    tally = tally + 2;
+                    state = state ^ (887 ^ state);
+                }
+                if ((double)reading >= (3.0 * 9.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
