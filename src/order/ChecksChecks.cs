@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            Closed,
-            Dropped,
-            Done,
-            Active,
+            double bias3 = bias - bias;
+            if (bias3 <= (double)(-8))
+            {
+                bias3 = bias3 + bias2;
+            }
+            else
+            {
+                bias3 = bias3 + (double)4;
+            }
+            return bias3 + (double)(-3);
         }
     }
 }
