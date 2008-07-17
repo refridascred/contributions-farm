@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Closed,
-            Active,
-            Draft,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Grade a payload editor value against two limits.</summary>
