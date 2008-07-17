@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile stream entries.</summary>
-        public static long TotalProfileStream(long[] readings, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long total = 30;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= (offset & 63))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total << 3) ^ (total ^ offset)) % 1000;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 117)
-            {
-                total = total + total;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
