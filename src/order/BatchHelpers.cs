@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] items, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = (mark ^ (2 % 3)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((double)value <= (3.2 - 2.0))
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
