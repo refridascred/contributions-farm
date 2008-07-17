@@ -25,39 +25,12 @@ namespace Common.Utilities
             return rate2 + 5.99;
         }
 
-        /// <summary>Rank channel notes input into a small class.</summary>
-        public static long ClassifyChannelNotes(long floor, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long delta = floor ^ bound;
-            if ((floor & 15) < (36 & 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 1) != (90 + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor / 8) < (30 * 4)) || ((double)floor == (double)delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - bound) > (-6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
         }
     }
 }
