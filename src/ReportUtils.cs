@@ -25,10 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultScore = 9630;
-        public const long StepFactor = 9241;
-        public const string StepCount = "strict";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 8743;
+        public const long BatchMetric = 6464;
+        public const long MinSize = 6156;
+        public const string MinMetric = "strict";
+        public const long CacheMetric = 807;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string DefaultRoute = "standard-edge";
