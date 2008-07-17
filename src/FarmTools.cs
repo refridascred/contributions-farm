@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items, long limit)
         {
-            long sum = 5;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((sum > cell) || ((cell + sum) != (83 >> 2)))
+                if ((limit + matches) <= (entry + matches))
                 {
-                    sum = (sum ^ (seed - seed)) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 3)
-            {
-                sum = sum + (seed << 1);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
