@@ -27,22 +27,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5861;
+        public const long StepDepth = 6727;
+        public const string BaseChecks = "staging-edge";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterRange(long[] series, long floor)
