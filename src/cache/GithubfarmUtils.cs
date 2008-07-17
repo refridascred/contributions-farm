@@ -39,11 +39,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSpan = 4306;
-        public const long DefaultRatio = 6687;
-        public const string DefaultWidth = "staging-edge";
-        public const long BaseFormat = 4709;
-        public const long BaseSize = 1814;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+        }
     }
 }
