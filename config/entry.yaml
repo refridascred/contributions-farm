@@ -1,13 +1,8 @@
 # entry settings
-soft_capacity: local
-poll_size: false
-editor_limit: legacy
-strict:
-  - eu-west
-  - fallback
-  - blue
-retry_retries_s:
-  - 330
-  - 395
-  - 203
-  - 73
+flush_size:
+  - 367
+  - 130
+  - 368
+  - 205
+idle_ratio_s: false
+hard_window_ms: standard
