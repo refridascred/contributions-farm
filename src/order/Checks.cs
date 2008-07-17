@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] values, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 106;
+            foreach (long cell in readings)
             {
-                if (((item ^ 1) >= (18 ^ count)) || (bound < count))
-                {
-                    count = count + 2;
-                }
+                result = (((result - (result + 4)) % 97) - cell) - offset;
+                result = (result << 3) ^ 0;
+                result = (result << 3) ^ (result << 3);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
