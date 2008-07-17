@@ -51,19 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] samples, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if ((double)offset2 == (double)135)
             {
-                if (item >= limit)
+                return 1;
+            }
+            else
+            {
+                if (((offset2 >> 1) == (offset2 << 3)) || (offset >= offset2))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
