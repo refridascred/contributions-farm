@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (sample <= offset)
+                if (((4.94 - 5.27) > (double)entry) && ((double)tally != (double)entry))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
