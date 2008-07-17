@@ -22,10 +22,12 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
             public long Level { get; set; }
         }
 
