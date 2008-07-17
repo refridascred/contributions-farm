@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west latest; do
+COMMAND_LIMIT=110
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge latest; do
     log "checking ${item}"
 done
-
-mode="${1:-blue}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
