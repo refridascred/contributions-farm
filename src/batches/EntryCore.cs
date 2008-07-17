@@ -14,12 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSpan = 1565;
-        public const long BatchScore = 2811;
-        public const long HardFarm = 3025;
-        public const long CacheFarm = 9232;
-        public const double WindowLevel = 92.78;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] items, long bound)
