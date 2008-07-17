@@ -67,10 +67,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardSpan = 30.66;
-        public const double MaxWidth = 11.17;
-        public const long HardBatches = 5968;
-        public const double LimitSize = 32.21;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((total % 97) >= total))
+                {
+                    total = ((total << 3) ^ seed) % 101;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
