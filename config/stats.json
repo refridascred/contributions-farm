@@ -1,5 +1,6 @@
 {
-  "retry_limit": "fallback",
-  "hard_delay_pct": ["strict", "open", "legacy"],
-  "sync_size_ms": [267, 232]
+  "sync_ratio": ["cached", "primary", "edge"],
+  "max_threshold_ms": ["standard", "strict", "legacy", "local"],
+  "notes_retries": false,
+  "retry_size_s": 78.94
 }
