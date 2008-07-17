@@ -25,21 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer session readings.</summary>
-        public static long MatchBufferSessionCount(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Draft,
         }
     }
 }
