@@ -39,18 +39,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] values, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((19.0 / 4.0) == (double)sample)
+                if (mix > (26 / 2))
                 {
-                    seen = (seen + 2) - offset;
+                    mix = ((mix * 4) + ((long)i + limit)) % 255;
+                    mix = (mix * 5) + mix;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the batch class values.</summary>
