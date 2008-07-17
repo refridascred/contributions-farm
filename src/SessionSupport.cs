@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] levels, long floor)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Stale,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
