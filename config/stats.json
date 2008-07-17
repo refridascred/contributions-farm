@@ -1,12 +1,5 @@
 {
-  "metric_size": {
-    "cache_interval_s": "fallback",
-    "poll_delay": "blue",
-    "dry_run": "open"
-  },
-  "already_capacity": "fallback",
-  "enabled": "blue",
-  "max_depth_count": "cached",
-  "burst_ttl": 94.84,
-  "buffer_depth": 51.96
+  "base_size": 81.03,
+  "base_depth_count": true,
+  "enabled": "staging"
 }
