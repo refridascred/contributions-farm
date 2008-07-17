@@ -57,19 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] series, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long seed)
         {
-            bool ready = true;
+            long carry = 885;
             foreach (long datum in series)
             {
-                if (datum != seed)
+                if ((double)carry >= (5.82 / 2.0))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry ^ (datum << 3)) % 255) - seed;
                 }
             }
-            return ready;
+            if (carry > 1)
+            {
+                carry = (carry + (253 << 2)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
