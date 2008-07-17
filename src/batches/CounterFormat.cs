@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry & 31) < (long)data.Length)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
