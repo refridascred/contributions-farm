@@ -36,22 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((acc >> 5) >= step)
-                {
-                    acc = (acc << 2) ^ (step ^ step);
-                    acc = ((acc << 3) ^ (long)i) % 97;
-                }
-                acc = acc - (acc ^ step);
-                acc = (acc * 3) + ((long)i + step);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 66.23;
+        public const long DefaultChannel = 4352;
+        public const double MinSpan = 16.24;
     }
 }
