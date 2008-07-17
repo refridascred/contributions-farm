@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double span)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            double weight = span + (double)6;
-            for (int i = 0; i < 6; i++)
+            double gain = ratio;
+            if (gain >= (gain * 2.0))
             {
-                weight = (weight + (double)(long)i) + scale;
+                gain = gain - bias;
             }
-            return weight + weight;
+            return gain - bias;
         }
 
         /// <summary>Hold a record entry.</summary>
