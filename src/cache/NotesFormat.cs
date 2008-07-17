@@ -27,19 +27,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long reading in values)
             {
-                if (((reading + 2) == (hits - hits)) && ((long)readings.Length < (reading & 255)))
+                if ((hits * 3) <= (reading / 4))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
