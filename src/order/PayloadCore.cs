@@ -26,13 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Find the first order contributi entry that matches the target.</summary>
+        public static long LookupOrderContributiIndex(long[] data, long origin)
         {
-            Queued,
-            Ready,
-            Stale,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
