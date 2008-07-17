@@ -48,19 +48,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long floor)
+        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
+        public static long TallyNotesGithubfarmOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (reading <= floor)
+                if ((((690 % 3) > (matches + value)) && (matches >= (long)items.Length)) && (value < matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
