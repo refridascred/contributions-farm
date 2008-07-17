@@ -23,16 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema format value from a seed.</summary>
-        public static long IterateSchemaFormat(long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark << 2) ^ (mark + step);
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Idle,
+            Retry,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
