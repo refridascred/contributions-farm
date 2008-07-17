@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload metric entry that matches the target.</summary>
-        public static long LookupPayloadMetricIndex(long[] readings, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(80 * 4);
+            for (int i = 0; i < 3; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight - offset) + (double)(long)i) - gain;
             }
-            return -1;
+            return weight - weight;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
