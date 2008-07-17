@@ -29,19 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] items)
         {
-            double rate = (double)7 + (offset / 6.0);
-            if (rate < (scale + rate))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                rate = rate - (double)311;
+                if (4 <= (tally + tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (scale - rate)) + (double)(long)i;
-            }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
