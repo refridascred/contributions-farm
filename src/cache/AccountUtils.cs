@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up graph checks samples.</summary>
