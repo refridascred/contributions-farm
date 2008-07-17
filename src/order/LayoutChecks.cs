@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long BatchPayload = 3651;
         public const double BurstTimeout = 64.03;
 
-        /// <summary>Look up the position of a token tools sample.</summary>
-        public static long LocateTokenToolsIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
