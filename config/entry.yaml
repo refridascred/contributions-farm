@@ -1,27 +1,15 @@
 # entry settings
-audit:
-  burst_limit:
-    - fallback
-    - green
-    - standard
-  retry_retries_s: 6291
-  dry_run:
-    idle_size_ms: local
-    hard_capacity_ms: primary
-    readonly: fallback
-    soft_capacity_s: false
-    audit: false
-    sync_window: 68
-  default_ttl: 65
-  base_threshold: blue
-  verbose: 3.72
-strict: 84
-warm_interval_pct: false
-order_threshold:
-  hard_timeout_pct: true
-  flush_retries_count: 88
-  filter_window: edge
-  readonly:
-    - 322
-    - 309
-notes_ttl: 29
+burst_size: 5696
+commits_capacity: 7243
+enabled:
+  idle_retries_ms: 7786
+  max_interval_count: eu-west
+  graph_timeout: staging
+  strict: false
+  warm_limit_count: 69.36
+compress:
+  idle_threshold_s: true
+  profile_depth: 20
+  strict: 100
+  verbose: false
+  buffer_retries: 38
