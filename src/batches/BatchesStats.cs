@@ -36,12 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2788;
-        public const double WindowLevel = 61.24;
-        public const double BurstGithubfarm = 26.6;
-        public const long RetryGithubfarm = 7310;
-        public const string HardBudget = "staging";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series)
+        {
+            long state = 149;
+            foreach (long item in series)
+            {
+                state = ((state ^ (state << 1)) % 101) + item;
+            }
+            return state % 97;
+        }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
         public static long SeekStreamContributiIndex(long[] levels, long target)
