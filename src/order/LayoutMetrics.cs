@@ -22,27 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Count the cache record entries that pass the check.</summary>
+        public static long AuditCacheRecordHits(long[] data)
         {
-            long result = 6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                result = (result ^ (result - result)) % 4096;
-                if ((result * 3) < result)
+                if ((2.3 - 8.86) < (double)seen)
                 {
-                    result = ((result << 2) ^ (entry - result)) % 65521;
+                    seen = (seen + 3) - sample;
                 }
                 else
                 {
-                    result = (result - (entry / 4)) % 97;
-                }
-                if (4.0 >= (double)result)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Compare every pair of payload support readings.</summary>
