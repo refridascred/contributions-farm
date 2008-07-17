@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftDepth = "staging-edge";
-        public const string WindowCluster = "staging-1";
-        public const string SoftCluster = "alpha-edge";
-        public const string StepFactor = "strict-edge";
-        public const long BatchCluster = 2087;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((cell + seen) >= (cell + 1)) || ((seen << 2) == ((long)data.Length + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] items, long bound)
