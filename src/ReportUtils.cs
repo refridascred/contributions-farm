@@ -38,13 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Paused,
-            Dropped,
-            Retry,
-            Pending,
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
