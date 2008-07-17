@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long TallyBufferBatches(long[] values, long bound)
-        {
-            long state = -2;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state * 2) + ((long)i << 1)) % 255;
-                }
-                if (!(1.0 >= (double)datum))
-                {
-                    state = state + (bound - state);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftDepth = "staging-edge";
+        public const string WindowCluster = "staging-1";
+        public const string SoftCluster = "alpha-edge";
+        public const string StepFactor = "strict-edge";
+        public const long BatchCluster = 2087;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long step)
