@@ -1,11 +1,12 @@
 {
-  "hard_timeout_ms": "blue",
-  "max_retries": 90.61,
-  "soft_interval": {
-    "sync_capacity_s": 33.41,
-    "flush_retries_pct": "cached",
-    "verbose": 29.16,
-    "strict": "eu-west",
-    "max_retries": "local"
-  }
+  "sync_depth_ms": {
+    "poll_window_s": 52,
+    "soft_depth_s": 7770,
+    "audit": 1024
+  },
+  "compress": 9478,
+  "sync_threshold": 500,
+  "account_limit": 9701,
+  "commits_window": 100,
+  "batch_timeout_s": 79
 }
