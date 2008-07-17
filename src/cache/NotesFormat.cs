@@ -40,13 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long seed, long floor)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            if ((3.4 - 0.9) > (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor & 15) > (14 >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
