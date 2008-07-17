@@ -33,24 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long bound)
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long OverlapBatchSupportCount(long[] readings)
         {
-            if (((-72) >= (offset - bound)) && ((bound + 73) < bound))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((405 << 2) < (offset * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
