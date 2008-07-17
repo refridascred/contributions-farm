@@ -40,30 +40,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long origin)
         {
-            long mark = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18.0 + 15.0) != (double)reading)
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    mark = (mark * 3) + (mark + reading);
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 97;
-                }
-                if (((-515) >> 1) == (48 + mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 430)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
