@@ -1,10 +1,11 @@
 # githubfarm settings
-poll_retries_pct: blue
-base_size_s: 65
-retry_limit: 4169
-max_size:
-  - 165
-  - 428
-  - 28
-compress: 72
-audit: 94
+min_interval_s:
+  - stable
+  - legacy
+  - staging
+poll_timeout_s: staging
+cache_window_pct: true
+cache_window:
+  - 392
+  - 126
+  - 164
