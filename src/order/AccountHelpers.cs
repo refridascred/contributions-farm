@@ -76,18 +76,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((17.0 / 9.0) < (double)sample)
+                if (reading < target)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a counter summary.</summary>
