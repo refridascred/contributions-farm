@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values, long limit)
         {
-            if ((target * 5) <= 36)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 5) <= (0 / 2))
+                if (!((matches > (limit / 7)) || (limit <= (datum / 8))))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster contributi sample.</summary>
