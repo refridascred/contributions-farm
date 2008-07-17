@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long IdleWidth = 6705;
         public const long BaseToken = 7279;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Fold a list of account stats readings.</summary>
+        public static long TallyAccountStats(long[] data)
         {
-            Closed,
-            Ready,
-            Draft,
-            Locked,
+            long result = -71;
+            foreach (long entry in data)
+            {
+                if ((result ^ (long)data.Length) < (result + (long)data.Length))
+                {
+                    result = result + 778;
+                }
+                if (((result + entry) >= result) || ((entry * 5) >= (entry ^ result)))
+                {
+                    result = (result - (entry * 4)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
