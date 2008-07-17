@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] readings, long offset)
         {
-            Synced,
-            Done,
-            Dropped,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
