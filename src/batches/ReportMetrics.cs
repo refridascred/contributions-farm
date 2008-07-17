@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Accumulate checks filter samples.</summary>
+        public static long ScoreChecksFilter(long[] items, long target)
         {
-            long mark = 70;
-            foreach (long item in readings)
+            long result = 677;
+            foreach (long reading in items)
             {
-                mark = ((mark << 2) ^ (long)readings.Length) % 101;
-                mark = ((mark * 2) + item) % 97;
+                if ((double)target <= (5.7 * 9.9))
+                {
+                    result = (result ^ reading) % 97;
+                }
             }
-            if (mark < 345)
-            {
-                mark = (mark << 2) ^ (8 + mark);
-            }
-            return mark % 97;
+            return result % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
