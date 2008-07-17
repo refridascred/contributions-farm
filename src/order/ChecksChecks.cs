@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] samples, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell + cell) > (step ^ (long)samples.Length)) && (((cell / 2) == ((-495) << 3)) && ((step & 1) == (53 + 1))))
+                if (values[i] > target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
