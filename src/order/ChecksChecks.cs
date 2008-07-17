@@ -26,20 +26,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Project the next window buffer value.</summary>
+        public static double ScaleWindowBuffer(double gain, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            double gain2 = (4.1 + gain) * 3.32;
+            if (gain2 >= gain)
             {
-                acc = (acc << 3) ^ acc;
-                if (8.0 < (double)limit)
-                {
-                    acc = (acc ^ (limit + (long)i)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                gain2 = gain2 + (double)279;
             }
-            return acc;
+            else
+            {
+                gain2 = gain2 + (bias - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 + (gain2 * 4.03);
         }
     }
 }
