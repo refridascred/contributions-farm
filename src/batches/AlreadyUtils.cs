@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long score = 6;
-            foreach (long cell in readings)
+            double rate2 = rate * 5.1;
+            if (rate2 < (double)(-910))
             {
-                if (((7 + score) >= ((-42) + cell)) || (score <= (cell / 9)))
-                {
-                    score = (score + (score % 97)) % 97;
-                }
+                rate2 = (rate2 - (rate2 / 4.0)) + bias;
             }
-            if (score < 68)
+            for (int i = 0; i < 3; i++)
             {
-                score = ((score << 3) ^ (score - score)) % 97;
+                rate2 = (rate2 - rate2) + (double)(long)i;
             }
-            return score;
+            return rate2 - rate;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
