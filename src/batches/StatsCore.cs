@@ -52,27 +52,12 @@ namespace Common.Utilities
         public const long LimitInterval = 7674;
         public const string CacheInterval = "standard-v2";
 
-        /// <summary>Combine buffer context values into a single score.</summary>
-        public static long TallyBufferContext(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long result = 70;
-            foreach (long value in readings)
-            {
-                if ((8 % 64) == (result + 469))
-                {
-                    result = ((result << 3) ^ (413 - result)) % 4096;
-                }
-                if ((result - value) < (result & 31))
-                {
-                    result = (result << 2) ^ (value - 134);
-                }
-                else
-                {
-                    result = result - (80 % 60);
-                }
-                result = result + result;
-            }
-            return result;
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a metric record.</summary>
