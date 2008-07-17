@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string WindowBatches = "staging-v2";
         public const double MinRatio = 48.26;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            long result = 735;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (442 > (long)values.Length)
+                if ((matches - matches) < (matches - 959))
                 {
-                    result = ((result * 4) + (9 - sample)) % 4096;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
