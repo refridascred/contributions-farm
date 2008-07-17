@@ -24,38 +24,18 @@ namespace Common.Utilities
             return bias3 + (5.13 / 6.0);
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
-            if ((20.0 / 2.0) < (double)target)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin <= 1.8))
+                if ((sample ^ seen) == (86 % 64))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + target) == (target << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target & 1) > (origin - (-596))) && ((target & 63) >= (origin >> 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
