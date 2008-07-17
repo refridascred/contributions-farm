@@ -20,11 +20,38 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long offset, long step)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            if ((offset <= step) || (offset <= (step - 90)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (9.7 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset - offset) <= step) && ((double)5 <= (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (step & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
