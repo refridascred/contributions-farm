@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools account readings against a rule.</summary>
-        public static long MeasureToolsAccountMatches(long[] values)
+        /// <summary>Validate batch filter readings against a bound.</summary>
+        public static bool ValidateBatchFilterLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((count + reading) >= (count + 8))
+                if (sample > step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
