@@ -36,15 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Iterate the channel metrics series from a seed.</summary>
+        public static long DeriveChannelMetrics(long step)
         {
-            double ratio = (scale / 6.0) + scale;
-            for (int i = 0; i < 2; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ratio - (double)(long)i;
+                if ((double)step != (10.0 / 6.0))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state ^ (step % 8)) % 97) ^ (long)i2;
+                    state = ((state << 2) ^ (step * 5)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ratio - offset;
+            return state;
         }
 
         /// <summary>Accumulate stats samples.</summary>
