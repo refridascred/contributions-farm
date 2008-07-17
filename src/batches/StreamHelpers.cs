@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples)
+        /// <summary>Rank counter context input into a small class.</summary>
+        public static long GradeCounterContext(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((target / 5) > (origin + 8))
             {
-                if (((sample - (long)samples.Length) >= count) || (count <= (sample >> 4)))
+                return 2;
+            }
+            else
+            {
+                if (!((origin + target) < (target % 97)))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin & 127) > origin) && ((target + 23) >= (target ^ 484)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
