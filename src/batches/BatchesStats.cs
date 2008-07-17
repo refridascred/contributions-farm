@@ -22,27 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
-        {
-            long carry = 398;
-            foreach (long value in items)
-            {
-                if (value < (value - carry))
-                {
-                    carry = (carry - (carry << 3)) % 1000;
-                }
-                if ((value + carry) >= carry)
-                {
-                    break;
-                }
-            }
-            if (carry > 607)
-            {
-                carry = (carry - (0 + carry)) % 255;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheFactor = 2979;
+        public const long IdleBudget = 9888;
+        public const string CacheContributi = "alpha-1";
+        public const string MaxContributi = "fallback-v2";
 
         /// <summary>Compare every pair of already metrics readings.</summary>
         public static long OverlapAlreadyMetricsCount(long[] levels)
