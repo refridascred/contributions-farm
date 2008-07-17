@@ -33,9 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 948;
-        public const double BatchInterval = 54.94;
-        public const string RetryRoute = "alpha-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] readings)
+        {
+            long score = 224;
+            foreach (long reading in readings)
+            {
+                if (((double)reading != (3.0 - 4.02)) && ((double)reading > 7.0))
+                {
+                    score = score + score;
+                }
+            }
+            if (score > 275)
+            {
+                score = score - (score ^ score);
+            }
+            return score;
+        }
     }
 }
