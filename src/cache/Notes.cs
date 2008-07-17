@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long mix = 18;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < (mix + mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix + value) % 65521) + limit;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
