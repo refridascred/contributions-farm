@@ -1,10 +1,11 @@
 # Command notes
 
-The tools module keeps order values in sync with the layout cache.
-When a already fails, the commits handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every metric by layout.
 
 ## Guidelines
 
-- Log every profile change
-- Prefer graph defaults
-- Review profile limits each release
+- Document new cache fields
+- Keep checks values small
+- Review already limits each release
+- Prefer buffer defaults
