@@ -32,22 +32,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account filter entries that pass the check.</summary>
-        public static long CountAccountFilterOutliers(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (!(limit < (760 ^ target)))
             {
-                if (!((hits + hits) > (708 + hits)))
+                return 3;
+            }
+            else
+            {
+                if ((748 + limit) == (limit ^ limit))
                 {
-                    hits = (hits + 3) - value;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((47 + limit) <= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit >= (limit - target)) || ((limit - 27) <= (target * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
