@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Locate a graph queue reading by value.</summary>
+        public static long LookupGraphQueueIndex(long[] items, long origin)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two window measurements.</summary>
