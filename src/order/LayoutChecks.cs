@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Count batches format pairs that satisfy a relation.</summary>
+        public static long CompareBatchesFormatCount(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + total;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a filter options.</summary>
