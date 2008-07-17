@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] samples, long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Pending,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
