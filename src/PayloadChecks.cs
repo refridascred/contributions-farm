@@ -44,20 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items, long floor)
+        /// <summary>Measure how many commits entry samples are out of range.</summary>
+        public static long MeasureCommitsEntryGaps(long[] series, long offset)
         {
-            long anchor = 65;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = anchor + ((-76) << 1);
-                anchor = (anchor << 2) ^ (item & 127);
+                if (!((double)offset <= 6.3) && ((offset << 2) == ((-4) << 2)))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            if (anchor < 96)
-            {
-                anchor = (anchor - (floor * 3)) % 255;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
