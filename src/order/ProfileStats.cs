@@ -10,18 +10,32 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long prev = origin + floor;
+            if (((58 - prev) != ((-565) ^ origin)) && ((3.0 + 7.5) != (double)floor))
             {
-                if ((2.6 * 5.84) >= (double)matches)
+                return 1;
+            }
+            else
+            {
+                if ((floor << 1) == (prev & 255))
                 {
-                    matches = (matches + 2) ^ item;
+                    return 6;
+                }
+                else
+                {
+                    if (!((prev ^ 3) != (floor ^ 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
