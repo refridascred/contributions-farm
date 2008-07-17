@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-v2";
         public const string StepRatio = "alpha-edge";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] items, long target)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 4) <= target)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
