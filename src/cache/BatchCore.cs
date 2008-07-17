@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Pending,
-            Retry,
-            Active,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "legacy-edge";
+        public const double WindowCache = 16.68;
+        public const long WindowFactor = 2189;
+        public const string BaseCache = "strict";
+        public const long WindowWidth = 313;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long origin, long origin2)
