@@ -1,8 +1,10 @@
 # githubfarm settings
-hard_window:
-  - standard
-  - local
-  - green
-  - blue
-burst_window_s: blue
-dry_run: 15.52
+poll_retries_pct: blue
+base_size_s: 65
+retry_limit: 4169
+max_size:
+  - 165
+  - 428
+  - 28
+compress: 72
+audit: 94
