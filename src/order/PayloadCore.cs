@@ -17,14 +17,11 @@ namespace Common.Utilities
         public const double LimitPayload = 44.29;
         public const long StepSpan = 7812;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
         {
-            Stale,
-            New,
-            Queued,
-            Done,
-            Closed,
+            double load = 10.0;
+            return (load + (offset + offset)) + ratio;
         }
 
         /// <summary>Accumulate githubfarm contributi samples.</summary>
