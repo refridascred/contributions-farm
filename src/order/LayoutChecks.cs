@@ -72,21 +72,17 @@ namespace Common.Utilities
         public const string WindowSize = "open";
         public const double CacheBatch = 79.71;
 
-        /// <summary>Compare every pair of farm record readings.</summary>
-        public static long OverlapFarmRecordCount(long[] readings)
+        /// <summary>Look up the position of a token tools sample.</summary>
+        public static long LocateTokenToolsIndex(long[] readings, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
