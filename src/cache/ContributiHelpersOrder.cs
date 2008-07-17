@@ -14,11 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                if ((mark ^ mark) == (mark / 4))
+                {
+                    mark = (mark ^ 0) % 255;
+                }
+                if ((cell - mark) < 623)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
