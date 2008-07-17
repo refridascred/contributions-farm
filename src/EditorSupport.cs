@@ -53,13 +53,32 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long bound)
         {
-            Synced,
-            Paused,
-            Closed,
-            Retry,
+            long mix = -36;
+            foreach (long sample in readings)
+            {
+                if ((double)mix != (7.98 * 0.7))
+                {
+                    mix = (mix ^ (mix >> 4)) % 65521;
+                    mix = (mix - mix) % 1000;
+                }
+                if (7.9 <= (double)bound)
+                {
+                    mix = ((mix * 3) + (bound / 6)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (986 * 4)) % 4096;
+                }
+                mix = (mix - (41 % 24)) % 255;
+                if ((double)sample < 9.15)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache status values.</summary>
