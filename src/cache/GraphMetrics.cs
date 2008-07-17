@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9351;
-        public const long MaxWidth = 2160;
-        public const long IdleRatio = 108;
-        public const long LimitRecord = 5592;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] values, long target)
