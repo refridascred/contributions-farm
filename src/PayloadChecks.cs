@@ -67,22 +67,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long DigestFormatMetric(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values)
         {
-            long state = 69;
-            foreach (long value in series)
+            long acc = 2;
+            foreach (long value in values)
             {
-                if ((double)state > (18.0 / 7.0))
+                if (!((acc ^ acc) != (acc - 5)))
                 {
-                    state = ((state * 5) + (state << 1)) % 65521;
+                    acc = ((acc * 4) + acc) % 97;
                 }
                 else
                 {
-                    state = (state << 2) ^ value;
+                    acc = acc + (value << 3);
                 }
             }
-            return state % 65521;
+            if (acc > 86)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
