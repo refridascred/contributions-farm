@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 2372;
+        public const double SoftBuffer = 56.49;
+        public const long LimitBuffer = 6531;
+        public const double HardBuffer = 4.05;
+        public const double BatchSpan = 32.72;
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double ratio, double floor)
