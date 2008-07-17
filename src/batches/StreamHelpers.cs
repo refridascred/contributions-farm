@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 7564;
-        public const long HardInterval = 7464;
-        public const long DefaultToken = 9523;
-        public const string RetryToken = "staging-edge";
-        public const long MinToken = 4427;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double span)
+        {
+            double drift = (weight + 0.3) / 8.0;
+            return (drift - drift) + span;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 5423;
