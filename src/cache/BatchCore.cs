@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "legacy-edge";
-        public const double WindowCache = 16.68;
-        public const long WindowFactor = 2189;
-        public const string BaseCache = "strict";
-        public const long WindowWidth = 313;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long origin, long origin2)
