@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)9 != (double)reading)
+                if ((sample + tally) > (sample >> 1))
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
