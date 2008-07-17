@@ -53,19 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support layout readings against a bound.</summary>
-        public static bool VerifySupportLayoutRange(long[] series, long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Paused,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
