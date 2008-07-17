@@ -52,10 +52,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultSpan = 17.84;
-        public const string RetryWindow = "staging-edge";
-        public const double LimitRatio = 8.28;
-        public const long HardWindow = 7694;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long limit)
+        {
+            long lane = target - limit;
+            if ((((-653) << 2) == (lane & 1)) || (lane > (limit + lane)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target < (3.72 * 1.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit <= (limit - lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.9 * 0.3) > (double)lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
