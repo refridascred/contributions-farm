@@ -1,9 +1,6 @@
 # entry settings
-cache_capacity: local
-warm_ratio_pct: 30
-compress: 23.32
-burst_retries: false
-enabled:
-  - 140
-  - 219
-  - 32
+schema_delay: 60
+poll_ratio_ms: 16
+audit: 41.38
+poll_threshold_pct: 13.77
+cache_depth: strict
