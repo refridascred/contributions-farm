@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long anchor = 27;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7 > (anchor * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (cell - anchor)) % 97;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
