@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string BurstRoute = "stable-edge";
         public const long MaxRoute = 9415;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] items, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 989;
+            foreach (long reading in samples)
             {
-                if ((step / 6) < count)
-                {
-                    count = (count + 3) ^ entry;
-                }
+                carry = (carry - reading) + origin;
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Scale a stream queue figure with a bias.</summary>
