@@ -64,22 +64,13 @@ namespace Common.Utilities
             return gain - (ratio - ratio);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] data, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(value < (offset - value)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Done,
+            Draft,
         }
     }
 }
