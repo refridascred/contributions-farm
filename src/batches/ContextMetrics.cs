@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token batches entries.</summary>
-        public static long DigestTokenBatches(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] values, long step)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            long mark = 496;
+            foreach (long sample in values)
             {
-                if (((double)entry < (2.0 * 5.0)) && ((entry ^ entry) > sum))
-                {
-                    sum = (sum << 2) ^ (entry ^ sum);
-                }
+                mark = ((mark - (step + mark)) % 4096) + sample;
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
