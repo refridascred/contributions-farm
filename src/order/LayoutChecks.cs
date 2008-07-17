@@ -17,12 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
