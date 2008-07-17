@@ -32,11 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 1067;
-        public const long LimitContributi = 2632;
-        public const long HardInterval = 8991;
-        public const double RetryContributi = 69.25;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5490;
+        public const long WindowGraph = 2460;
+        public const long SoftGraph = 8933;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
