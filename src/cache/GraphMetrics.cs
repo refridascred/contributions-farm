@@ -25,18 +25,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long AuditSessionContributiHits(long[] items, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((9.7 * 9.93) > (double)seen)
-                {
-                    seen = ((seen + 3) ^ reading) - limit;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
