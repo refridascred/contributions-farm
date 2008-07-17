@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=303
+BUFFER_LIMIT=417
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for item in fallback cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
