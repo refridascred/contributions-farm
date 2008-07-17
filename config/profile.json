@@ -1,13 +1,10 @@
 {
-  "max_depth": 60,
-  "graph_window": ["fallback", "eu-west", "edge"],
-  "already_delay": {
-    "stream_delay": true,
-    "window_timeout": [185, 314, 400],
-    "idle_ttl_count": 22.85,
-    "burst_interval_count": [307, 425],
-    "enabled": 4
+  "record_threshold": 500,
+  "soft_threshold_s": 60,
+  "max_ratio_s": {
+    "persist": 53,
+    "poll_timeout_ms": "latest",
+    "stream_ttl": true
   },
-  "max_ttl_pct": true,
-  "flush_window_pct": 59.99
+  "batch_capacity_s": "green"
 }
