@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long BatchRatio = 2653;
 
-        /// <summary>Compare every pair of window report readings.</summary>
-        public static long CompareWindowReportCount(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
