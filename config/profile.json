@@ -1,5 +1,8 @@
 {
-  "notes_depth": 88.78,
-  "base_interval_s": "eu-west",
-  "entry_retries": "fallback"
+  "idle_threshold": ["cached", "primary"],
+  "max_timeout_s": "legacy",
+  "persist": "edge",
+  "min_window_s": "staging",
+  "idle_depth_count": 250,
+  "retry_delay": [424, 432]
 }
