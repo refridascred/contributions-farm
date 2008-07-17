@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=370
+log "limit is ${BUFFER_LIMIT}"
+
+for item in strict latest; do
+    log "checking ${item}"
+done
