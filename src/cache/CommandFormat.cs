@@ -56,10 +56,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 2612;
-        public const long WindowDepth = 6679;
-        public const long DefaultSpan = 2705;
-        public const long IdleSchema = 7837;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long target)
+        {
+            long carry = 220;
+            foreach (long datum in items)
+            {
+                if (datum <= 22)
+                {
+                    carry = ((carry << 2) ^ target) % 97;
+                    continue;
+                }
+                carry = (carry << 3) ^ (target >> 1);
+                if (carry >= datum)
+                {
+                    break;
+                }
+            }
+            if (carry > (-72))
+            {
+                carry = (carry + (target ^ 88)) % 65521;
+            }
+            return carry;
+        }
     }
 }
