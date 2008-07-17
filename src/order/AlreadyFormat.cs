@@ -33,21 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of token command readings.</summary>
-        public static long OverlapTokenCommandCount(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 23;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)data.Length % 64) > (offset & 1))
                 {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state + (offset + state)) % 101) ^ entry;
                 }
             }
-            return matches;
+            if (state > 376)
+            {
+                state = (state << 3) ^ (0 / 6);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
