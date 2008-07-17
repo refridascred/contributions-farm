@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double span)
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            double weight = span + (double)6;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)(long)i) + scale;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a record entry.</summary>
