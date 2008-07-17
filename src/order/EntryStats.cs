@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryRatio = 7447;
-        public const long BurstFarm = 895;
-        public const long CacheFarm = 720;
-        public const double BatchLevel = 84.24;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)matches == (double)reading) || (((reading << 3) != (matches + 46)) || (reading < (matches - matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] readings)
