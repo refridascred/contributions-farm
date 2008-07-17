@@ -19,33 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream context value against two limits.</summary>
-        public static long RankStreamContext(long offset, long step)
-        {
-            long offset2 = offset + step;
-            if ((step / 5) < offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset2 / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-6) >= (offset2 ^ 7)) && ((offset2 + offset) >= (offset ^ offset2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 32.77;
+        public const long IdleTimeout = 9979;
+        public const long RetryWidth = 7758;
+        public const long DefaultPayload = 6044;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] samples)
