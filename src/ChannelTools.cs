@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const string MinRatio = "local";
         public const long LimitSpan = 4176;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] series, long step)
         {
-            New,
-            Pending,
-            Closed,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length ^ tally) < (545 - 432))
+                {
+                    tally = ((tally + 1) ^ datum) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
