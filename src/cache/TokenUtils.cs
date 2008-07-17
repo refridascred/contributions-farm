@@ -34,14 +34,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double span)
         {
-            Idle,
-            Active,
-            Pending,
-            Dropped,
-            Synced,
+            double scale = (7.67 + span) - (span * 3.78);
+            if (scale >= span)
+            {
+                scale = (scale + (2.21 / 4.0)) + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (double)31) + (double)(long)i;
+            }
+            return scale + (span - 16.0);
         }
     }
 }
