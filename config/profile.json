@@ -1,20 +1,6 @@
 {
-  "metrics_interval": "stable",
-  "dry_run": "blue",
-  "warm_ratio": {
-    "cache_interval": false,
-    "poll_depth": {
-      "tools_limit": ["standard", "latest", "staging"],
-      "batches_size": 30,
-      "warm_limit_ms": 29.55,
-      "hard_delay_ms": true,
-      "channel_size": false
-    },
-    "enabled": "legacy",
-    "flush_delay_s": "latest",
-    "audit": 1517
-  },
-  "default_retries_pct": 250,
-  "flush_ttl_s": false,
-  "min_window": true
+  "profile_limit": true,
+  "soft_timeout": "fallback",
+  "counter_timeout": false,
+  "max_ratio": true
 }
