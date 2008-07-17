@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit batches metrics readings against a rule.</summary>
-        public static long AuditBatchesMetricsOutliers(long[] values, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (37 > (datum + (long)values.Length))
+                if (((seed - value) == (value & 1)) && ((double)value >= (9.2 - 8.0)))
                 {
-                    hits = (hits + 2) - target;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a report entry.</summary>
