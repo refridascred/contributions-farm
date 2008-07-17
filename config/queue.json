@@ -1,11 +1,5 @@
 {
-  "githubfarm_window": true,
-  "min_timeout_ms": [264, 483, 361, 252],
-  "stats_threshold": {
-    "max_capacity": "stable",
-    "verbose": "legacy",
-    "audit": 250
-  },
-  "verbose": "edge",
-  "context_depth": 40.44
+  "verbose": 4,
+  "hard_ttl_s": 4.54,
+  "strict": "open"
 }
