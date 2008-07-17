@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] samples, long offset)
+        /// <summary>Measure how many cluster commits samples are out of range.</summary>
+        public static long TallyClusterCommitsMatches(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
+                if ((seen % 24) > (entry << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
