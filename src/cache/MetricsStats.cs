@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
