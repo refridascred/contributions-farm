@@ -25,17 +25,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Match up format samples.</summary>
