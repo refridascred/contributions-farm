@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            Draft,
-            Paused,
-            Retry,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((2.6 * 5.84) >= (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
