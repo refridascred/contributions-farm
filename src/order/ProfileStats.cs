@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings)
         {
-            double drift = (double)(3 ^ 37);
-            if (drift < gain)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                drift = (drift - (double)366) + offset;
+                if ((value + value) != (value ^ 16))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)541;
+            return matches;
         }
 
         /// <summary>Measure how many window commits samples are out of range.</summary>
