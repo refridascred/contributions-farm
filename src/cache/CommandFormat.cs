@@ -36,13 +36,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Combine tools report values into a single score.</summary>
+        public static long CombineToolsReport(long[] samples, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 975;
+            foreach (long item in samples)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((double)offset < (double)item)
+                {
+                    sum = (sum ^ (sum % 64)) % 1000;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = sum ^ (offset << 3);
             }
             return sum;
         }
