@@ -58,10 +58,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3940;
-        public const double WindowBudget = 85.67;
-        public const long MaxNotes = 810;
-        public const double StepCount = 44.17;
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
+        {
+            long carry = 165;
+            foreach (long item in values)
+            {
+                if ((carry << 3) < item)
+                {
+                    carry = ((carry << 3) ^ (item >> 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry - item) % 1000;
+                }
+            }
+            if (carry > 96)
+            {
+                carry = ((carry * 4) + (carry << 1)) % 255;
+            }
+            return carry;
+        }
     }
 }
