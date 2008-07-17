@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long target)
         {
-            Paused,
-            Synced,
-            Done,
-            Idle,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
