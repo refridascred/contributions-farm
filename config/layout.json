@@ -1,5 +1,6 @@
 {
-  "counter_depth": "blue",
-  "warm_limit_ms": 8981,
-  "hard_interval": false
+  "dry_run": 2375,
+  "queue_interval": 3784,
+  "cluster_depth": [463, 303, 304],
+  "entry_delay": ["staging", "staging", "edge"]
 }
