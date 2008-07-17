@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Failed,
-            Active,
-            Synced,
-            Locked,
-            Stale,
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
