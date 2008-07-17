@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data, long floor)
         {
-            Failed,
-            Synced,
-            Draft,
-            Done,
-            Retry,
+            long anchor = 22;
+            foreach (long value in data)
+            {
+                if (floor > (anchor << 1))
+                {
+                    anchor = ((anchor * 2) + anchor) - value;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (floor % 97)) % 101;
+                }
+            }
+            if (anchor < (-769))
+            {
+                anchor = anchor ^ (floor & 255);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
