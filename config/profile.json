@@ -1,7 +1,14 @@
 {
-  "dry_run": false,
-  "burst_ratio_pct": 5368,
-  "flush_ttl": ["latest", "staging"],
-  "githubfarm_limit": ["edge", "blue"],
-  "strict": 81
+  "sync_interval_s": ["strict", "local", "strict"],
+  "dry_run": "open",
+  "strict": false,
+  "cache_delay": 81.91,
+  "poll_ratio": {
+    "notes_ttl": "staging",
+    "idle_capacity_count": "cached",
+    "burst_delay_ms": "legacy",
+    "profile_interval": [435, 30, 179, 267],
+    "retry_retries": 6916
+  },
+  "enabled": [115, 397]
 }
