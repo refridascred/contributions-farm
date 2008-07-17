@@ -47,12 +47,13 @@ namespace Common.Utilities
             return scale - 3.0;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a route stats.</summary>
