@@ -46,19 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
+        /// <summary>Digest a series of checks editor entries.</summary>
+        public static long DigestChecksEditor(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long state = 25;
+            foreach (long sample in samples)
             {
-                if (item != target)
+                if (!(state < (state + state)))
                 {
-                    found = false;
+                    state = ((state * 2) + sample) % 101;
+                }
+                if ((2 ^ state) >= (sample + state))
+                {
                     break;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Project the next already queue value.</summary>
