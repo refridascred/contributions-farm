@@ -32,38 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long limit, long target)
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long CountToolsCacheMatches(long[] data)
         {
-            if (!(limit < (760 ^ target)))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((748 + limit) == (limit ^ limit))
+                if ((hits & 7) < (item << 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((47 + limit) <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit >= (limit - target)) || ((limit - 27) <= (target * 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
