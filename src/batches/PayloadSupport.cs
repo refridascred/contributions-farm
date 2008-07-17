@@ -41,19 +41,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] items, long offset)
         {
-            double load = (double)(71 & 7);
-            if (load >= rate)
+            long count = 0;
+            foreach (long item in items)
             {
-                load = load + (bias - load);
+                if ((offset & 7) >= offset)
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load + (double)279;
+            return count;
         }
     }
 }
