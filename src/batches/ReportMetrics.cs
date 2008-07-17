@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double gain, double span)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            double weight = span + gain;
-            return weight + (weight * 11.0);
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
