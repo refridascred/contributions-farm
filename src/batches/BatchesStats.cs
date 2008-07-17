@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
+            Synced,
             Queued,
-            Ready,
+            Pending,
+            New,
             Done,
-            Draft,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
