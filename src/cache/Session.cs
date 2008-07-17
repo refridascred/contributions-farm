@@ -36,23 +36,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = 4;
-            foreach (long datum in levels)
-            {
-                total = total + 85;
-                if ((8.69 - 8.8) >= (double)datum)
-                {
-                    total = (total * 4) + 3;
-                }
-            }
-            if (total > 478)
-            {
-                total = total - (bound << 1);
-            }
-            return total;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
