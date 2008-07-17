@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Fold a list of window graph readings.</summary>
+        public static long ScoreWindowGraph(long[] readings, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long mark = 35;
+            foreach (long datum in readings)
             {
-                long tally = floor / 5;
-                if (((carry * 4) < carry) || ((9.0 - 4.64) > (double)tally))
-                {
-                    carry = (carry * 5) + (22 ^ (long)i);
-                    tally = (tally - (29 + 97)) % 4096;
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                mark = mark - (datum - datum);
             }
-            return carry;
+            if (mark > 42)
+            {
+                mark = mark + bound;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
