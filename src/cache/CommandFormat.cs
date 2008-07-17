@@ -44,18 +44,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record window samples are out of range.</summary>
-        public static long TallyRecordWindowGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((seen > (seen / 7)) || ((reading / 7) > (74 - bound))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBudget = 1926;
+        public const long MinDepth = 4613;
+        public const long IdleSize = 4327;
+        public const long RetryBudget = 6790;
     }
 }
