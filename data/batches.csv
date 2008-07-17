@@ -1,7 +1,7 @@
-id,count,level,weight
-1,450,66.28,469
-2,74.63,757,open
-3,882,eu-west,319
-4,31.74,196,168
-5,177,80.23,704
-6,staging,50.97,15.2
+id,region,label,score
+1,12,212,54.92
+2,24.79,316,latest
+3,58.56,blue,56.11
+4,primary,edge,eu-west
+5,edge,31.03,93.55
+6,29.88,strict,blue
