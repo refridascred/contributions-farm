@@ -1,6 +1,8 @@
 # support settings
-max_interval: primary
-dry_run: 500
-warm_limit:
-  - latest
-  - latest
+token_ttl: true
+persist:
+  - 86
+  - 253
+batch_limit: 96.1
+retry_interval_s: blue
+verbose: primary
