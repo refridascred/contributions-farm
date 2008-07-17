@@ -1,8 +1,8 @@
 {
-  "max_window": 3231,
-  "report_delay": ["stable", "blue", "stable"],
-  "compress": 18.52,
-  "session_ttl": 17,
-  "sync_limit_count": "latest",
-  "already_limit": true
+  "base_delay_count": 100,
+  "enabled": 60,
+  "burst_limit_pct": 6583,
+  "soft_interval": "fallback",
+  "hard_ratio_count": ["staging", "latest", "local", "green"],
+  "cache_size": "edge"
 }
