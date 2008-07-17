@@ -27,18 +27,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit already cluster readings against a rule.</summary>
-        public static long CountAlreadyClusterGaps(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long anchor = 73;
+            foreach (long cell in samples)
             {
-                if (!(((long)samples.Length + count) < (reading & 255)))
+                anchor = ((anchor << 3) ^ (anchor - cell)) % 97;
+                if ((cell % 7) >= cell)
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
