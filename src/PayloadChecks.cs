@@ -31,12 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            Queued,
-            Pending,
-            Stale,
+            double load = 5.6 / 4.0;
+            if (load > (double)716)
+            {
+                load = ((load + load) + ratio) + bias;
+            }
+            else
+            {
+                load = load - (load / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 3.6) + (double)(long)i;
+            }
+            return load - 7.0;
         }
 
         /// <summary>Hold a filter record.</summary>
