@@ -41,21 +41,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin <= (origin ^ sample))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 3) ^ 82) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (origin % 16)) % 255;
+                }
+                if ((score % 2) <= (sample - score))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Adjust a command reading.</summary>
