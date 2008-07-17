@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length > (19.0 * 6.25))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 4399;
+        public const long IdleBatches = 6334;
+        public const long MaxSize = 9370;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long floor)
