@@ -20,24 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double scale, double offset)
-        {
-            double drift = scale - (offset + scale);
-            if (drift < offset)
-            {
-                drift = drift + (drift - scale);
-            }
-            else
-            {
-                drift = drift + 10.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (offset + drift)) + (double)(long)i;
-            }
-            return drift + scale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryRatio = 7447;
+        public const long BurstFarm = 895;
+        public const long CacheFarm = 720;
+        public const double BatchLevel = 84.24;
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
         public static long SeekNotesBufferIndex(long[] readings, long step)
