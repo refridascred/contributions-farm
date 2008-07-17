@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 90.45;
-        public const long DefaultFormat = 6305;
-        public const long IdleCount = 5974;
-        public const long IdleFormat = 8498;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally << 1) >= (reading + 3)) && ((double)reading == (4.56 - 7.11)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long seed)
