@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a batches format figure with a bias.</summary>
-        public static double ScaleBatchesFormat(double gain, double span)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(-46) - (bias - bias);
+            if (mean <= mean)
             {
-                drift = ((drift + (2.0 * 7.7)) + (double)(long)i) + gain;
+                mean = mean - offset;
             }
-            return drift - drift;
+            return mean - (offset / 8.0);
         }
 
         /// <summary>Combine order values into a single score.</summary>
