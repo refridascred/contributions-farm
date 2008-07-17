@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 75.51;
-        public const string WindowScore = "fallback-v2";
-        public const string RetryInterval = "staging-edge";
-        public const double DefaultTimeout = 15.68;
-        public const string CacheChecks = "cached";
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
