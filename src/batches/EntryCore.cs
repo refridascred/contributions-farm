@@ -21,20 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long offset)
-        {
-            long mix = 0;
-            foreach (long cell in samples)
-            {
-                mix = ((mix * 4) + (216 + offset)) + cell;
-            }
-            if (mix < 3)
-            {
-                mix = mix + offset;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSpan = 1565;
+        public const long BatchScore = 2811;
+        public const long HardFarm = 3025;
+        public const long CacheFarm = 9232;
+        public const double WindowLevel = 92.78;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels, long limit)
