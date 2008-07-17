@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            if ((limit & 3) != (limit & 255))
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + limit) < limit)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 3;
+                    total = ((total * 2) + ((-8) + total)) - (long)i2;
                 }
-                else
-                {
-                    if ((floor / 8) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit % 100) <= (85 >> 3)) && ((limit % 2) != (floor >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                total = (total + ((long)i << 2)) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Hold a tools record.</summary>
