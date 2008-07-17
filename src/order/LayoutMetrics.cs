@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 86;
+            foreach (long value in levels)
             {
-                if (seen <= (datum + datum))
+                if (((double)sum <= (5.97 + 9.42)) && ((7 + (-83)) >= value))
                 {
-                    seen = seen + 3;
+                    sum = (sum + (value ^ 650)) % 4096;
                 }
             }
-            return seen;
+            if (sum < 205)
+            {
+                sum = (sum - (sum + 99)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Blend two entry measurements.</summary>
