@@ -1,6 +1,7 @@
 {
-  "warm_threshold": [384, 348],
-  "batch_ttl": 73,
-  "warm_capacity_pct": 60,
-  "min_limit_pct": 74.23
+  "retry_threshold": "eu-west",
+  "warm_threshold_s": [333, 492, 392],
+  "strict": 100,
+  "burst_window_count": 3510,
+  "flush_timeout": "open"
 }
