@@ -16,19 +16,17 @@ namespace Common.Utilities
             return gain - (5.58 * 7.3);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double bias)
+        /// <summary>Find the first notes batch entry that matches the target.</summary>
+        public static long LookupNotesBatchIndex(long[] samples, long offset)
         {
-            double scale = bias / 3.0;
-            if (scale >= (scale * 9.6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (scale - bias)) + weight;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (double)(-4);
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
