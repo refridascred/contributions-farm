@@ -24,14 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Find the first channel context entry that matches the target.</summary>
+        public static long SeekChannelContextIndex(long[] data, long target)
         {
-            Done,
-            Retry,
-            Idle,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
