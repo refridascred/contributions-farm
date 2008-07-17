@@ -59,26 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes window samples.</summary>
-        public static long ScoreNotesWindow(long[] readings)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long score = -39;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value / 9) <= (score + score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score << 2) ^ ((-5) + 8);
-                }
-                if ((19.0 / 5.0) >= (double)value)
-                {
-                    break;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 5)
-            {
-                score = (score ^ 892) % 255;
-            }
-            return score;
+            return tally;
         }
     }
 }
