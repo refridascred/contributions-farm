@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Match up contributi samples.</summary>
