@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long mix = 170;
+            foreach (long value in series)
             {
-                if ((59 >= acc) || ((acc % 10) <= (acc * 2)))
-                {
-                    acc = ((acc ^ (acc ^ 1)) % 101) ^ sample;
-                }
+                mix = (mix ^ value) % 255;
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
