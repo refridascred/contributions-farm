@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitBudget = 3763;
-        public const double IdleSchema = 24.63;
-        public const long LimitDepth = 6214;
-        public const string StepSchema = "strict-1";
-        public const string DefaultRatio = "alpha-edge";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((0 / 7) >= (seed & 31))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
