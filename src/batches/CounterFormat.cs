@@ -26,13 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
