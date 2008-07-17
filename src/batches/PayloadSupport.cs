@@ -32,15 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long seed)
         {
-            double weight = (double)(80 * 4);
-            for (int i = 0; i < 3; i++)
+            if ((373 - seed) >= offset)
             {
-                weight = ((weight - offset) + (double)(long)i) - gain;
+                return 4;
             }
-            return weight - weight;
+            else
+            {
+                if (seed >= (offset & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.4 / 5.0) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
