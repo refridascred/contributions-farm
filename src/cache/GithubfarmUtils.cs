@@ -40,15 +40,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double bias)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long bound2)
         {
-            double scale = (double)8 / 6.0;
-            for (int i = 0; i < 4; i++)
+            long lane = bound + bound2;
+            if ((bound2 - bound2) >= (793 - lane))
             {
-                scale = ((scale - rate) + (double)(long)i) + bias;
+                return 6;
             }
-            return scale - 7.08;
+            else
+            {
+                if ((lane + 92) >= (bound2 + bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((lane < bound) || ((5 - 63) > (bound2 - lane)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
