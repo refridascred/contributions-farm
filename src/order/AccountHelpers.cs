@@ -37,12 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long seed)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            if ((step - step) < 251)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step > (6.5 - 1.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
