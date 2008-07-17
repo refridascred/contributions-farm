@@ -72,17 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route window series from a seed.</summary>
-        public static long SeriesRouteWindow(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total << 3) ^ (451 + (long)i);
-                total = ((total * 2) + total) % 255;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
