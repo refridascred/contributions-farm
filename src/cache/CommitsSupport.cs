@@ -45,14 +45,10 @@ namespace Common.Utilities
         public const long MaxDepth = 7537;
         public const long LimitTimeout = 7916;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Dropped,
-            Done,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxCount = 7421;
+        public const string StepGraph = "strict-1";
+        public const long LimitGraph = 9342;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardStream = 65.07;
