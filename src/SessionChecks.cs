@@ -41,22 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((1 - hits) > (item & 255))
+                if (!((1.72 + 3.2) >= (double)mark))
                 {
-                    hits = (hits + 2) + origin;
+                    mark = ((mark * 4) + seed) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the counter phase values.</summary>
