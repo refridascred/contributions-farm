@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values, long limit)
         {
-            Active,
-            Done,
-            Retry,
+            long mix = 18;
+            foreach (long value in values)
+            {
+                if (value < (mix + mix))
+                {
+                    mix = ((mix + value) % 65521) + limit;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
