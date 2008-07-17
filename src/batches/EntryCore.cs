@@ -39,23 +39,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long offset)
         {
-            long score = 9;
-            foreach (long reading in items)
+            long lane = limit ^ offset;
+            if ((double)lane != (double)offset)
             {
-                score = (score * 5) + (reading + 885);
-                if ((score + score) != (bound ^ bound))
+                return 7;
+            }
+            else
+            {
+                if (((lane + 93) < 87) || ((lane - 6) > limit))
                 {
-                    score = score ^ (score >> 1);
+                    return 8;
                 }
                 else
                 {
-                    score = (score ^ (bound << 1)) % 101;
+                    if (((limit ^ 833) < (lane ^ lane)) || ((double)limit >= (2.0 + 2.3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
