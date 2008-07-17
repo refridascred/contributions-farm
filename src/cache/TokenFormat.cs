@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry << 3) ^ (carry << 2)) % 1000;
-                carry = ((carry * 5) + ((long)i * 2)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                mix = (mix * 5) + (step & 31);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
