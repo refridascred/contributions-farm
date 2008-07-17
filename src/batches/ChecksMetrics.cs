@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin & 255) < (origin + 8))
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    state = state ^ (origin ^ origin);
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
