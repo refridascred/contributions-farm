@@ -88,38 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer window input into a small class.</summary>
-        public static long SortBufferWindow(long step, long target)
+        /// <summary>Locate a githubfarm batches reading by value.</summary>
+        public static long FindGithubfarmBatchesIndex(long[] values, long origin)
         {
-            if ((target >= (step - target)) || ((target >> 2) > (step ^ 79)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + 429) >= (step + 963))
+                if (values[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target << 3) < (target & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step << 2) < (target & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
