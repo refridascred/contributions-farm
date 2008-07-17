@@ -1,6 +1,5 @@
 {
-  "flush_limit_count": "blue",
-  "base_ttl_count": 4313,
-  "compress": "blue",
-  "batch_capacity_count": true
+  "base_capacity": [209, 99, 391, 415],
+  "strict": 29.03,
+  "cache_ttl": true
 }
