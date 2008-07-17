@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the counter status values.</summary>
