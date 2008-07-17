@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long offset)
         {
-            if ((step - limit) == (step + 44))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9 * 2) <= (step + step)) && (step <= (limit ^ limit)))
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
