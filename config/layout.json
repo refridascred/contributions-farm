@@ -1,6 +1,7 @@
 {
-  "cache_retries": true,
-  "context_ttl": "staging",
-  "burst_ratio": 11.72,
-  "retry_retries_s": "cached"
+  "payload_timeout": [486, 498, 107, 173],
+  "burst_capacity_count": 100,
+  "max_size_s": 84.72,
+  "audit": "standard",
+  "sync_depth_ms": "staging"
 }
