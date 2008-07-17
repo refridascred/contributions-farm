@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long origin)
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long AuditChannelSchemaHits(long[] levels, long bound)
         {
-            long sum = 86;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)sum >= (5.16 * 9.0))
+                if ((bound ^ count) >= (count & 127))
                 {
-                    sum = (sum + origin) ^ cell;
+                    count = (count + 1) - item;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
