@@ -1,11 +1,11 @@
 {
-  "persist": ["primary", "primary"],
-  "support_limit": "staging",
-  "strict": {
-    "burst_depth_count": 64.67,
-    "min_capacity_pct": 250,
-    "audit": "stable"
+  "max_depth_pct": {
+    "batch_size": "blue",
+    "base_window_ms": "latest",
+    "queue_window": 100,
+    "poll_delay_pct": 16.61
   },
-  "hard_threshold_pct": 70,
-  "verbose": 30
+  "base_depth": "fallback",
+  "session_limit": true,
+  "sync_ttl": 6886
 }
