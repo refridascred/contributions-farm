@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long floor)
+        /// <summary>Roll a stream command counter forward.</summary>
+        public static long StepStreamCommand(long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= floor)
+                if (!((1 / 6) <= carry))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 2) ^ (394 >> 4);
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
