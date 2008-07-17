@@ -1,12 +1,11 @@
 # Command notes
 
-Use channel settings to tune how often metric data is refreshed.
-The batches report groups every session by batch.
-Use commits settings to tune how often githubfarm data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps cluster values in sync with the checks cache.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Validate already input early
-- Log every command change
-- Keep checks values small
+- Prefer stream defaults
+- Keep notes values small
+- Review editor limits each release
+- Validate entry input early
