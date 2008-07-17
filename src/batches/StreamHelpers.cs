@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7066;
-        public const long StepTimeout = 68;
-        public const long RetryChannel = 4808;
-        public const long LimitChannel = 3738;
-        public const double BatchChannel = 46.6;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxRatio = 15.41;
+        public const double CacheGraph = 51.6;
+        public const long MaxGraph = 2669;
+        public const long IdleGraph = 4147;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] data)
