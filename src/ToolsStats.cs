@@ -36,21 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch buffer counter forward.</summary>
-        public static long IterateBatchBuffer(long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((double)(long)i == (11.0 / 7.0)))
-                {
-                    long tally = anchor;
-                    anchor = anchor ^ tally;
-                }
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
