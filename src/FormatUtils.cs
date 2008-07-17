@@ -23,12 +23,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
