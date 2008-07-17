@@ -57,15 +57,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] readings, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((double)count != (6.7 / 5.0))
+                {
+                    count = ((count + 2) ^ reading) + seed;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
