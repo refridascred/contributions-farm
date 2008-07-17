@@ -45,11 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count order payload pairs that satisfy a relation.</summary>
+        public static long CompareOrderPayloadCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
