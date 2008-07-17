@@ -1,4 +1,11 @@
 # support settings
-retry_size_ms: false
-window_retries: stable
-hard_interval: 8
+persist: local
+tools_threshold:
+  - 450
+  - 269
+  - 400
+  - 241
+batch_limit: staging
+metric_threshold: 36.81
+poll_interval_ms: primary
+retry_timeout_count: 1824
