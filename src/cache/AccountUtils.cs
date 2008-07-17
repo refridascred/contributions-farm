@@ -28,13 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
