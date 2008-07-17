@@ -42,11 +42,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2200;
-        public const long CacheEntry = 322;
-        public const long BaseFactor = 8735;
-        public const long StepEntry = 7289;
-        public const long SoftEntry = 4946;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Paused,
+            Locked,
+            Dropped,
+        }
     }
 }
