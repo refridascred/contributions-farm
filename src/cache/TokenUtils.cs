@@ -28,19 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long step)
         {
-            long sum = 90;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                sum = (sum - ((long)samples.Length << 1)) + datum;
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum > (-4))
-            {
-                sum = (sum << 2) ^ (sum % 12);
-            }
-            return sum;
+            return found;
         }
     }
 }
