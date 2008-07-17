@@ -69,9 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepCount = 59.21;
-        public const double MinSize = 15.86;
-        public const double RetryTimeout = 2.51;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 6213;
+        public const string BaseRatio = "staging-1";
+        public const string RetryInterval = "open-v2";
+        public const long CacheQueue = 2396;
+        public const long StepCount = 5874;
     }
 }
