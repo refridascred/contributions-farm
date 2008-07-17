@@ -93,39 +93,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long seed)
-        {
-            long cur = bound + seed;
-            if ((836 + seed) == (827 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed + 7) < (seed << 1)) && ((double)bound < 9.29))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed << 2) != (cur ^ cur)) && ((bound & 7) < (cur << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (cur >= (seed ^ seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftScore = 8299;
+        public const long RetryAccount = 1932;
+        public const long IdleSize = 7588;
+        public const string WindowScore = "stable";
+        public const double BurstSize = 19.75;
     }
 }
