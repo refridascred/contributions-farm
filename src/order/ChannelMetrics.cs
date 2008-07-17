@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items, long step)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            long sum = 616;
+            foreach (long reading in items)
+            {
+                sum = (sum + sum) % 4096;
+                if (!((double)sum < (double)step))
+                {
+                    sum = (sum ^ (sum ^ reading)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (step >> 2)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
