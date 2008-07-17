@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + span;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8225;
-        public const long SoftRoute = 7271;
-        public const double RetryRoute = 29.9;
-        public const long StepRoute = 3254;
-        public const string BurstRoute = "primary";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long step, long seed)
