@@ -55,23 +55,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long ScoreTokenSession(long[] readings)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long anchor = 34;
-            foreach (long sample in readings)
-            {
-                if ((double)anchor < (4.0 + 7.06))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 97) - sample;
-                }
-                if (!(90 <= (anchor % 10)))
-                {
-                    anchor = (anchor * 4) + 7;
-                }
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
