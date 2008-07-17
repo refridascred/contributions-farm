@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < seen)
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
