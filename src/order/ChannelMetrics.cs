@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            long result = 54;
+            foreach (long value in readings)
+            {
+                result = ((result * 2) + (result - 6)) % 65521;
+                if ((value & 255) != (result - value))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
