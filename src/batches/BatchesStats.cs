@@ -32,19 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long TallyStreamCommitsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)hits != (6.0 - 14.0)) || ((reading & 3) < (reading + 328)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "cached-v2";
+        public const long DefaultCount = 777;
+        public const long DefaultBatch = 6916;
+        public const string BurstBatch = "staging-edge";
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] levels, long offset)
