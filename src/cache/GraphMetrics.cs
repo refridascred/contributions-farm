@@ -25,18 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((sample < (seen & 31)) || ((seen << 3) < 388)) && ((seen > (seen >> 2)) || ((seen % 3) >= (sample + seen))))
+                if ((562 + tally) != (reading / 9))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
