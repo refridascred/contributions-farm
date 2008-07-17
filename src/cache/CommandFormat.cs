@@ -35,28 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long carry = 220;
-            foreach (long datum in items)
-            {
-                if (datum <= 22)
-                {
-                    carry = ((carry << 2) ^ target) % 97;
-                    continue;
-                }
-                carry = (carry << 3) ^ (target >> 1);
-                if (carry >= datum)
-                {
-                    break;
-                }
-            }
-            if (carry > (-72))
-            {
-                carry = (carry + (target ^ 88)) % 65521;
-            }
-            return carry;
+            Failed,
+            Dropped,
+            New,
+            Done,
         }
     }
 }
