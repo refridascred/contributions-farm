@@ -16,14 +16,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftTimeout = 67.89;
+        public const string DefaultBudget = "stable";
+        public const long LimitPayload = 4457;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBuffer = 8644;
