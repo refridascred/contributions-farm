@@ -1,10 +1,6 @@
 # githubfarm settings
-counter_ttl: staging
-verbose: 100
-cache_threshold_count:
-  - eu-west
-  - local
-enabled: 23.26
-metrics_capacity:
-  - 80
-  - 136
+metrics_ttl: standard
+audit: latest
+retry_delay_pct: 250
+burst_ttl_ms: false
+hard_ratio: true
