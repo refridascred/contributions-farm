@@ -29,19 +29,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seen <= (seen * 3))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 2006;
+        public const long BurstChannel = 387;
+        public const string MaxChannel = "open-1";
+        public const string WindowDepth = "latest-1";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] items)
