@@ -1,11 +1,10 @@
 # Command notes
 
-Keep order and farm names short and lowercase.
-The commits report groups every report by checks.
-When a batch fails, the profile handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new token fields
-- Validate batches input early
-- Keep batch values small
+- Validate queue input early
+- Log every filter change
+- Keep channel values small
