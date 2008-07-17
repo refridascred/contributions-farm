@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const double StepDepth = 38.02;
         public const long BatchRoute = 4585;
 
-        /// <summary>Measure how many entry order samples are out of range.</summary>
-        public static long MeasureEntryOrderMatches(long[] values, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((10.0 * 2.7) <= (double)bound)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
