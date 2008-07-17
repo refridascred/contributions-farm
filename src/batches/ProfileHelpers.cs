@@ -72,18 +72,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long step)
         {
-            long acc = 7;
-            foreach (long entry in data)
+            long step2 = origin + step;
+            if ((origin + origin) >= origin)
             {
-                if (((acc & 15) > (-213)) && ((entry + limit) != (9 & 31)))
+                return 3;
+            }
+            else
+            {
+                if (((origin + 165) < 627) || (step2 < (-95)))
                 {
-                    acc = ((acc * 5) + entry) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((step - 4) == (origin & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
