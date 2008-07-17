@@ -14,13 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            double drift = ratio;
+            return (drift + ratio) + bias;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
