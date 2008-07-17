@@ -79,10 +79,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowLevel = 1290;
-        public const long BaseSpan = 8125;
-        public const double HardSession = 2.72;
-        public const string RetrySession = "cached-1";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((6 - sample) > (sample + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
