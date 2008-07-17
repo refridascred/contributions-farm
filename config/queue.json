@@ -1,8 +1,11 @@
 {
-  "counter_capacity": true,
-  "soft_delay": true,
-  "audit": 92.3,
-  "retry_retries_pct": false,
-  "idle_limit": false,
-  "readonly": ["edge", "eu-west", "local"]
+  "retry_size_s": {
+    "notes_ttl": 52,
+    "flush_depth": true,
+    "poll_size_s": 5320,
+    "poll_retries_count": 100,
+    "max_limit": ["legacy", "stable", "blue"]
+  },
+  "base_interval_s": true,
+  "dry_run": "local"
 }
