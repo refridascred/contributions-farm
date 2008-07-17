@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] values, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = 882;
+            foreach (long entry in samples)
             {
-                if (!(reading <= (matches - bound)))
+                if (carry >= (carry * 5))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ entry) % 4096;
+                }
+                if ((double)bound >= 6.82)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
