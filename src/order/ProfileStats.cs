@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long count = (long)i;
-                if ((((long)i >> 1) > (floor ^ floor)) || ((count % 10) == (count + (long)i)))
-                {
-                    count = (count + (5 & 1)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseCount = "primary";
+        public const long DefaultBudget = 2468;
+        public const long IdleSession = 1510;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
