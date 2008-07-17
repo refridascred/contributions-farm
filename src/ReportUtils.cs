@@ -51,13 +51,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Score { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 3546;
+        public const double CacheBatches = 76.0;
+        public const double SoftBatches = 18.41;
+        public const double IdleCount = 82.67;
+        public const double DefaultSize = 39.03;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
