@@ -26,10 +26,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "latest-edge";
-        public const double IdleFactor = 2.56;
-        public const double BaseCount = 76.1;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((origin ^ (-963)) != (origin + 950))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
