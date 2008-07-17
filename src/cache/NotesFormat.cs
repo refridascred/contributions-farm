@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long acc = 3;
+            foreach (long cell in series)
             {
-                if ((hits * 3) <= (reading / 4))
+                if ((1.03 / 8.0) <= (double)cell)
                 {
-                    hits = hits + 2;
+                    acc = (acc - floor) % 65521;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
     }
 }
