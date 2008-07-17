@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 686;
+            foreach (long sample in values)
             {
-                if (!(count >= 786))
+                sum = ((sum << 3) ^ sample) % 65521;
+                if (seed > (sample - 39))
                 {
-                    count = (count + 2) - cell;
+                    sum = (sum + sum) % 65521;
                 }
             }
-            return count;
+            return sum % 97;
         }
     }
 }
