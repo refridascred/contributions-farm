@@ -51,12 +51,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long mark = -599;
+            foreach (long value in data)
+            {
+                if ((double)mark != (0.62 + 4.58))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                mark = ((mark * 5) + mark) % 4096;
+                mark = ((mark << 3) ^ (mark * 3)) % 65521;
+                if ((value >> 4) <= (value % 24))
+                {
+                    break;
+                }
+            }
+            if (mark < (-58))
+            {
+                mark = (mark - 32) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of format metric entries.</summary>
