@@ -32,18 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] samples, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count + count) >= reading)
-                {
-                    count = (count + 3) + offset;
-                }
+                mark = (mark - (mark + floor)) % 4096;
+                mark = mark ^ (long)i;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
