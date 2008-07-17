@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order graph readings.</summary>
-        public static long CombineOrderGraph(long[] data, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            long carry = 1;
-            foreach (long value in data)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                carry = (((carry * 5) + floor) % 1000) ^ value;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (carry < (-69))
-            {
-                carry = (carry * 2) + (floor + carry);
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
