@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
