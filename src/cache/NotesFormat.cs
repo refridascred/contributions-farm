@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long seed)
         {
-            double gain = bias2;
-            for (int i = 0; i < 7; i++)
+            if (!((284 + 15) != (seed & 63)))
             {
-                gain = ((gain + (double)153) + (double)(long)i) - bias;
+                return 2;
             }
-            return gain - (5.58 * 7.3);
+            else
+            {
+                if (seed >= (seed - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed ^ limit) <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >> 1) > (limit << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools record.</summary>
