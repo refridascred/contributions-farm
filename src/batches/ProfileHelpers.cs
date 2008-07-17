@@ -36,12 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowBudget = 3444;
-        public const long BatchBudget = 5669;
-        public const long MaxCache = 5331;
-        public const double BaseInterval = 81.93;
-        public const long WindowRatio = 4751;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] series)
