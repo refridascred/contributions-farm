@@ -18,39 +18,22 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long bound, long bound2)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long origin)
         {
-            long step = bound - bound2;
-            if (((7.36 - 8.14) != (double)bound) && ((step / 2) < step))
+            long total = 4;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= 2.11)
+                if ((cell / 4) < total)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (95 >= bound2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step < bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total << 2) ^ cell) % 255;
                 }
             }
+            if (total < 6)
+            {
+                total = total ^ origin;
+            }
+            return total;
         }
     }
 }
