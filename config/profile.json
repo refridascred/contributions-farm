@@ -1,14 +1,8 @@
 {
-  "warm_ratio_s": {
-    "max_window_ms": "blue",
-    "default_delay_count": {
-      "max_ttl_pct": "cached",
-      "soft_threshold": false,
-      "buffer_window": [209, 215],
-      "tools_depth": 5786
-    },
-    "soft_delay": "open"
-  },
-  "max_timeout": false,
-  "retry_size": true
+  "tools_timeout": "legacy",
+  "compress": true,
+  "idle_ratio_pct": [345, 133, 400, 331],
+  "payload_threshold": ["edge", "primary", "latest"],
+  "contributi_window": 41,
+  "hard_interval": true
 }
