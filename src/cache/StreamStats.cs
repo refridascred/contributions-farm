@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate schema command readings against a bound.</summary>
+        public static bool ValidateSchemaCommandLimits(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
