@@ -21,15 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
