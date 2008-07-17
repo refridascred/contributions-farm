@@ -1,28 +1,5 @@
 # entry settings
-min_delay: false
-retry_limit_s: 91.82
-poll_timeout_pct: false
-idle_ttl_count: 34
-format_interval:
-  - 32
-  - 414
-  - 423
-  - 188
-flush_window_ms:
-  soft_timeout: cached
-  min_limit_pct: 16
-  idle_capacity_pct:
-    payload_depth:
-      - standard
-      - fallback
-    soft_capacity_ms: primary
-    command_interval: 250
-    max_size_ms: latest
-    queue_threshold:
-      - primary
-      - blue
-  idle_ttl_s: 93.01
-  verbose:
-    - staging
-    - local
-    - primary
+route_capacity: 2022
+default_retries_s: 70.34
+payload_capacity: fallback
+burst_limit_s: false
