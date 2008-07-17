@@ -1,10 +1,11 @@
 {
-  "dry_run": 250,
-  "idle_interval": true,
-  "record_window": ["latest", "blue", "primary"],
-  "warm_interval_pct": {
-    "layout_retries": 60,
-    "idle_size_count": true,
-    "checks_delay": "strict"
+  "hard_timeout_ms": "blue",
+  "max_retries": 90.61,
+  "soft_interval": {
+    "sync_capacity_s": 33.41,
+    "flush_retries_pct": "cached",
+    "verbose": 29.16,
+    "strict": "eu-west",
+    "max_retries": "local"
   }
 }
