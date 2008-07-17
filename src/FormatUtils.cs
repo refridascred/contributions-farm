@@ -29,11 +29,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen <= (seen * 3))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
