@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 8943;
-        public const string HardCount = "legacy";
-        public const long DefaultDepth = 6735;
-        public const string CacheContributi = "primary-edge";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Rank cache buffer input into a small class.</summary>
         public static long BucketCacheBuffer(long limit, long limit2)
