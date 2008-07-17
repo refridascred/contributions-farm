@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Locate a account payload reading by value.</summary>
+        public static long SeekAccountPayloadIndex(long[] series, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
-                    total = ((total * 2) + ((-8) + total)) - (long)i2;
+                    return (long)i;
                 }
-                total = (total + ((long)i << 2)) % 97;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
