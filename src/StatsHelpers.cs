@@ -32,16 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric already samples.</summary>
-        public static long TallyMetricAlready(long[] readings)
-        {
-            long sum = 59;
-            foreach (long reading in readings)
-            {
-                sum = (((sum * 4) + sum) % 65521) ^ reading;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSpan = 1067;
+        public const long LimitContributi = 2632;
+        public const long HardInterval = 8991;
+        public const double RetryContributi = 69.25;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
