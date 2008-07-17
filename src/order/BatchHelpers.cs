@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Classify a contributi token pair into a bucket.</summary>
+        public static long ClassifyContributiToken(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long delta = floor ^ bound;
+            if (((floor + delta) < 13) || (4.7 < (double)floor))
             {
-                if (!((double)(long)items.Length > (5.0 + 5.2)))
+                return 7;
+            }
+            else
+            {
+                if (delta >= (delta - bound))
                 {
-                    tally = (tally + 3) ^ datum;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound - bound) <= (floor % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
