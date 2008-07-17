@@ -31,13 +31,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series)
         {
-            Active,
-            Draft,
-            Retry,
-            Done,
+            long mark = 6;
+            foreach (long reading in series)
+            {
+                if (reading > (reading << 2))
+                {
+                    mark = (mark << 2) ^ ((-3) * 5);
+                }
+                if ((reading - mark) >= (mark ^ 979))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
