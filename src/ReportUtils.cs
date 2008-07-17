@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const string MinMetric = "strict";
         public const long CacheMetric = 807;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "standard-edge";
-        public const long HardRoute = 4970;
-        public const long MaxInterval = 2549;
-        public const long BurstRoute = 4074;
+        /// <summary>Find the first notes contributi entry that matches the target.</summary>
+        public static long LocateNotesContributiIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
