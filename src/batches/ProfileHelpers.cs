@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix + 760) % 4096) ^ value;
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
