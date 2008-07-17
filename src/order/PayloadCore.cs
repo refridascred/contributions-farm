@@ -35,22 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 2;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = (((score * 3) + (score - score)) % 255) - (long)i;
-                }
-                if ((floor + value) < (value + floor))
-                {
-                    score = score ^ (value - value);
-                }
-            }
-            return score;
+            Retry,
+            Done,
+            Locked,
         }
     }
 }
