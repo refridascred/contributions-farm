@@ -20,21 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
