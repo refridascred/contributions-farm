@@ -17,12 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long floor)
         {
-            Active,
-            Failed,
-            New,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the account filter entries that pass the check.</summary>
