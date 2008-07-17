@@ -47,21 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)8 / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = ((scale - rate) + (double)(long)i) + bias;
             }
-            return tally;
+            return scale - 7.08;
         }
     }
 }
