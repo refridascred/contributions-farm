@@ -28,18 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin ^ (-963)) != (origin + 950))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) ^ reading;
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the counter class values.</summary>
