@@ -36,18 +36,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cluster format entries that pass the check.</summary>
-        public static long MeasureClusterFormatGaps(long[] samples, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long edge = step - target;
+            if ((547 <= (edge * 3)) && ((double)step <= 1.59))
             {
-                if ((double)seed != (3.57 + 5.0))
+                return 1;
+            }
+            else
+            {
+                if (edge >= (edge ^ target))
                 {
-                    count = (count + 3) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if (edge < (427 % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
