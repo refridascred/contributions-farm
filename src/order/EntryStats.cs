@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseFactor = 8.28;
-        public const long DefaultCount = 6002;
-        public const long RetryBatches = 3311;
-        public const long StepTimeout = 7548;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((-4) ^ origin) > origin)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (sum % 5);
+                    sum = sum ^ origin;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long offset, long floor)
