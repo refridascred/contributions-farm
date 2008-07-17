@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile metric samples are out of range.</summary>
-        public static long CountProfileMetricMatches(long[] levels, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((hits < (hits / 8)) || ((bound & 255) < (bound << 1))) && ((double)value > 6.65))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
