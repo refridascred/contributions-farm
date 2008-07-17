@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((tally - 9) <= (value + tally))
+                if (((matches - 31) >= (74 * 5)) || ((matches * 2) < (origin >> 2)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
