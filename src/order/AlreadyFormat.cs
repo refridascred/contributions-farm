@@ -52,10 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 18.36;
-        public const string MaxTools = "standard-v2";
-        public const long StepTools = 9882;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long step, long offset)
