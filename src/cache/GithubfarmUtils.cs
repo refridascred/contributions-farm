@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSpan = 6174;
+        public const long HardSchema = 3998;
+        public const long MaxSchema = 436;
+        public const long StepSchema = 1903;
+        public const double WindowSchema = 96.33;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorBounds(long[] values, long offset)
