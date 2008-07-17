@@ -31,16 +31,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
-        {
-            long sum = 315;
-            foreach (long reading in items)
-            {
-                sum = (((sum << 3) ^ (6 * 3)) % 97) + reading;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSize = 2446;
+        public const long MinSchema = 5012;
+        public const long StepScore = 5032;
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] series, long seed)
