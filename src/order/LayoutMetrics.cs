@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of format filter readings.</summary>
-        public static long PairFormatFilterCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (49 <= (mark + entry))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (entry + 279)) % 101;
                 }
             }
-            return matches;
+            if (mark < 395)
+            {
+                mark = (mark + (mark ^ mark)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the cache record entries that pass the check.</summary>
