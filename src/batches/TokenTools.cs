@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 27.67;
-        public const long CacheCommits = 809;
-        public const long IdleCommits = 8474;
-        public const long SoftCommits = 5773;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Locked,
+            Idle,
+            Done,
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long seed, long target)
