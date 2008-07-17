@@ -68,12 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
         {
-            Closed,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((33 % 64) <= (6 - tally)) || ((value >> 1) >= 325))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
