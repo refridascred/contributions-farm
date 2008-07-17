@@ -30,24 +30,17 @@ namespace Common.Utilities
         public const long DefaultAccount = 2667;
         public const long RetryAccount = 5875;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long seed)
         {
-            if ((34 + origin) > (-3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 4) > (origin & 7))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
