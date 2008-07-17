@@ -26,31 +26,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = 71;
-            foreach (long sample in samples)
-            {
-                if ((25 / 8) != (sample >> 2))
-                {
-                    mix = mix - (limit - limit);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (111 + limit)) % 255;
-                }
-                if ((double)mix == (double)limit)
-                {
-                    mix = ((mix << 3) ^ (mix + (long)samples.Length)) % 1000;
-                }
-                else
-                {
-                    mix = mix + (limit + sample);
-                }
-            }
-            return mix;
+            Closed,
+            Dropped,
+            Done,
+            Active,
         }
     }
 }
