@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const string HardTools = "local-edge";
         public const string IdleTools = "open-1";
 
-        /// <summary>Validate stats notes readings against a bound.</summary>
-        public static bool CheckStatsNotesLimits(long[] samples, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
