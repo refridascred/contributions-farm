@@ -84,18 +84,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] readings, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long entry in data)
             {
-                if ((tally + tally) <= cell)
+                if (((acc & 15) > (-213)) && ((entry + limit) != (9 & 31)))
                 {
-                    tally = (tally + 3) - bound;
+                    acc = ((acc * 5) + entry) % 255;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
