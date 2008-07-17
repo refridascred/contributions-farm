@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (9.8 + 7.1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
