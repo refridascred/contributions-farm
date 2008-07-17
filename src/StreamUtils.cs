@@ -12,12 +12,18 @@ namespace Common.Utilities
             return ((load - (load / 6.0)) + rate) + span;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items, long step)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((step / 6) < count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a stream queue figure with a bias.</summary>
