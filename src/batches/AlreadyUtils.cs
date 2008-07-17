@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a record checks sample.</summary>
-        public static long SeekRecordChecksIndex(long[] data, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long cell in readings)
             {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                if (((7 + score) >= ((-42) + cell)) || (score <= (cell / 9)))
                 {
-                    return (long)i;
+                    score = (score + (score % 97)) % 97;
                 }
             }
-            return -1;
+            if (score < 68)
+            {
+                score = ((score << 3) ^ (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
