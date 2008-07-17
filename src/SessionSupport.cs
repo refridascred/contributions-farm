@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
