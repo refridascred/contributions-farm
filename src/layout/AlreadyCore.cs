@@ -24,17 +24,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = offset + step;
+            if ((double)offset == (8.4 - 3.5))
             {
-                if (data[i] == origin)
+                return 1;
+            }
+            else
+            {
+                if ((offset & 255) <= (659 % 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (8.1 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((122 + cur) <= (offset & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
