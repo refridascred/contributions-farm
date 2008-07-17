@@ -71,18 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] levels)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (3.0 - 1.99))
+                if (levels[i] < target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
