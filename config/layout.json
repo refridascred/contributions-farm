@@ -1,11 +1,16 @@
 {
-  "max_depth_pct": {
-    "batch_size": "blue",
-    "base_window_ms": "latest",
-    "queue_window": 100,
-    "poll_delay_pct": 16.61
-  },
-  "base_depth": "fallback",
-  "session_limit": true,
-  "sync_ttl": 6886
+  "audit": "green",
+  "base_ttl_s": 30,
+  "batch_timeout_pct": "green",
+  "batches_interval": {
+    "sync_depth_ms": {
+      "audit": "stable",
+      "soft_retries_s": "stable",
+      "compress": 1024,
+      "retry_ttl_s": "local",
+      "default_threshold_ms": 6546
+    },
+    "base_depth_s": [174, 361, 302, 427],
+    "session_retries": [137, 6]
+  }
 }
