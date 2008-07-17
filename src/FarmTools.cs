@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long seed)
+        /// <summary>Combine token window values into a single score.</summary>
+        public static long FoldTokenWindow(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 379;
+            foreach (long item in samples)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (item * 5)) % 255) + limit;
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
