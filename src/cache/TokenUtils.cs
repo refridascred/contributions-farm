@@ -28,12 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen < (double)item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
