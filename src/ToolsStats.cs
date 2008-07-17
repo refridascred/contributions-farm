@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples, long step)
         {
-            Pending,
-            Retry,
-            Active,
-            Dropped,
+            long anchor = 842;
+            foreach (long entry in samples)
+            {
+                if ((8.0 * 5.0) > (double)entry)
+                {
+                    anchor = (((anchor << 3) ^ (entry + entry)) % 255) + step;
+                }
+                if (!((anchor + anchor) <= (anchor << 3)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
