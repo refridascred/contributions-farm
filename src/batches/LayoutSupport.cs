@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a farm format reading.</summary>
-        public static double ScaleFarmFormat(double bias, double bias2)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] samples, long step)
         {
-            double mean = bias;
-            if (mean <= bias)
+            long mix = 57;
+            foreach (long sample in samples)
             {
-                mean = (mean + (double)85) + bias2;
+                mix = (((mix - mix) % 1000) ^ sample) + step;
             }
-            else
+            if (mix > 0)
             {
-                mean = mean - (mean * 4.99);
+                mix = (mix - mix) % 255;
             }
-            return mean - bias;
+            return mix % 97;
         }
 
         /// <summary>Hold a graph entry.</summary>
