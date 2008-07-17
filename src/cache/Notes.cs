@@ -33,14 +33,15 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long bound)
         {
-            Synced,
-            Stale,
-            Queued,
-            Draft,
-            Active,
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
