@@ -1,11 +1,23 @@
 # support settings
-persist: local
-tools_threshold:
-  - 450
-  - 269
-  - 400
-  - 241
-batch_limit: staging
-metric_threshold: 36.81
-poll_interval_ms: primary
-retry_timeout_count: 1824
+enabled:
+  - legacy
+  - latest
+tools_interval:
+  readonly: false
+  min_retries_s:
+    graph_threshold: strict
+    compress: 12
+    enabled:
+      - 37
+      - 280
+      - 119
+    retry_window: 250
+    flush_interval: 97
+  min_interval_ms: primary
+  min_retries_count:
+    burst_limit: primary
+    base_ratio_pct: fallback
+    soft_timeout_s: 1024
+idle_ttl_count:
+  - local
+  - strict
