@@ -1,8 +1,6 @@
 # githubfarm settings
-default_ttl:
-  persist: fallback
-  audit: 72.05
-  min_ratio_ms: 60
-max_window: 30
-stats_window: cached
-batch_timeout: true
+stats_retries: 54
+editor_ratio:
+  - 97
+  - 490
+compress: fallback
