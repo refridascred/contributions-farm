@@ -1,7 +1,7 @@
 {
-  "min_size_ms": 53.03,
-  "batch_size": 9048,
-  "layout_timeout": 8779,
-  "base_ttl_pct": 6678,
-  "poll_timeout": ["staging", "eu-west", "strict", "cached"]
+  "burst_retries": false,
+  "report_capacity": false,
+  "warm_threshold_ms": ["strict", "stable"],
+  "audit": ["local", "green", "local", "standard"],
+  "max_interval_count": 78
 }
