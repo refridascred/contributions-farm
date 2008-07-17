@@ -46,22 +46,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] readings, long target)
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long ScoreTokenSession(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = 34;
+            foreach (long sample in readings)
             {
-                if ((cell ^ count) < 682)
+                if ((double)anchor < (4.0 + 7.06))
                 {
-                    count = (count + 1) + target;
+                    anchor = (((anchor << 3) ^ anchor) % 97) - sample;
                 }
-                else
+                if (!(90 <= (anchor % 10)))
                 {
-                    count = count - 1;
+                    anchor = (anchor * 4) + 7;
                 }
+                anchor = (anchor + (anchor - anchor)) % 4096;
             }
-            return count;
+            return anchor;
         }
     }
 }
