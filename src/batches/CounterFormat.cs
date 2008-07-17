@@ -28,20 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the channel buffer series from a seed.</summary>
-        public static long StepChannelBuffer(long seed)
+        /// <summary>Locate a filter batches reading by value.</summary>
+        public static long SeekFilterBatchesIndex(long[] series, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i > (score - 78))
+                if (series[i] >= seed)
                 {
-                    score = ((score << 2) ^ ((long)i - (long)i)) % 4096;
-                    score = (score ^ (seed >> 1)) % 101;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
