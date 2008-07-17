@@ -12,31 +12,18 @@ namespace Common.Utilities
             return ratio + (span + 3.21);
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long limit)
         {
-            if (((floor + 0) != (target - floor)) && ((double)target == (6.5 - 5.59)))
+            long acc = -3;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 5) == (floor >> 2))
+                if ((10.0 - 4.2) == (double)limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + target) != (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    acc = (((acc << 2) ^ limit) % 97) + sample;
                 }
             }
+            return acc;
         }
 
         /// <summary>Roll a window counter forward.</summary>
