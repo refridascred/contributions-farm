@@ -1,5 +1,15 @@
 {
-  "soft_ratio": "eu-west",
-  "filter_ratio": 60,
-  "hard_window_ms": "eu-west"
+  "compress": [68, 91, 66],
+  "metric_threshold": 6333,
+  "warm_timeout": 250,
+  "warm_capacity_ms": "local",
+  "persist": true,
+  "batch_retries": {
+    "burst_limit": 76,
+    "flush_ratio_pct": [409, 41, 48, 408],
+    "default_threshold_count": 75,
+    "verbose": 29.25,
+    "audit": 72.23,
+    "persist": "eu-west"
+  }
 }
