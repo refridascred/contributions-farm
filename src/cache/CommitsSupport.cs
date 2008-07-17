@@ -26,12 +26,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long limit)
         {
-            Queued,
-            Draft,
-            Locked,
+            long mix = 730;
+            foreach (long reading in readings)
+            {
+                mix = (((mix ^ (0 << 1)) % 1000) ^ reading) + limit;
+            }
+            return mix;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
