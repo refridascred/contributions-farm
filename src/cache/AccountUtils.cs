@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long target, long target2)
         {
-            Pending,
-            Active,
-            Retry,
-            Stale,
+            long span = target - target2;
+            if (((890 - target) > target2) && (9.02 >= (double)target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span + target) <= (target / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target << 2) != (0 - 728))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
