@@ -10,10 +10,26 @@ namespace Common.Utilities
         public const long CacheStats = 8739;
         public const long LimitLevel = 1520;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5861;
-        public const long StepDepth = 6727;
-        public const string BaseChecks = "staging-edge";
+        /// <summary>Grade a payload format value against two limits.</summary>
+        public static long BucketPayloadFormat(long offset, long target)
+        {
+            long delta = offset - target;
+            if ((double)target > (7.0 / 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((target >> 3) < (target - delta)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterRange(long[] series, long floor)
