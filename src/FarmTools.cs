@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long SoftSpan = 2201;
         public const long MaxTimeout = 3459;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Locate a report queue reading by value.</summary>
+        public static long SeekReportQueueIndex(long[] samples, long seed)
         {
-            Idle,
-            Queued,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
