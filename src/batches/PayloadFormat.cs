@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long target)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate buffer editor readings against a bound.</summary>
