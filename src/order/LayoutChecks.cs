@@ -41,21 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long CompareEditorMetricCount(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
