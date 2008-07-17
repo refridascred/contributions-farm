@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] items, long seed)
+        /// <summary>Fold a list of profile already readings.</summary>
+        public static long FoldProfileAlready(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long carry = 992;
+            foreach (long datum in series)
             {
-                if (sample <= seed)
+                if ((double)carry != (4.67 - 3.0))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry ^ seed) % 97) + datum;
                 }
             }
-            return ok;
+            if (carry < (-52))
+            {
+                carry = ((carry << 2) ^ (970 * 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a profile reading.</summary>
