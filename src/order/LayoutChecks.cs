@@ -68,16 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values, long floor)
-        {
-            long result = -83;
-            foreach (long cell in values)
-            {
-                result = ((result + 41) ^ cell) - floor;
-            }
-            return result % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepScore = 81.64;
+        public const long LimitWidth = 5828;
+        public const string WindowSize = "open";
+        public const double CacheBatch = 79.71;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmGaps(long[] series, long limit)
