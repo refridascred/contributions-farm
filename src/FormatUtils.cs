@@ -49,24 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long offset2)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            if ((double)offset2 == (double)135)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                mix = (mix << 3) ^ (mix << 3);
+                mix = ((mix * 2) + origin) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((offset2 >> 1) == (offset2 << 3)) || (offset >= offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Locate a context reading by value.</summary>
