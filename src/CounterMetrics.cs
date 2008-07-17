@@ -38,25 +38,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank context filter input into a small class.</summary>
-        public static long ClassifyContextFilter(long target, long target2)
+        /// <summary>Combine batches command values into a single score.</summary>
+        public static long TallyBatchesCommand(long[] items)
         {
-            long bound = target ^ target2;
-            if (((target + target2) < (bound + (-86))) || (target > (target2 % 3)))
+            long state = 201;
+            foreach (long value in items)
             {
-                return 5;
+                state = (state - (state + value)) % 65521;
             }
-            else
+            if (state < 5)
             {
-                if ((double)bound <= (6.0 + 0.42))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                state = state - state;
             }
+            return state;
         }
     }
 }
