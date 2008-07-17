@@ -71,27 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = -219;
-            foreach (long cell in values)
-            {
-                if (((14.0 / 5.0) > (double)cell) || ((cell >> 5) <= (cell >> 3)))
-                {
-                    mix = (mix * 3) + (cell + 3);
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ 211) % 4096;
-                }
-                if ((seed >> 5) <= cell)
-                {
-                    mix = mix + seed;
-                }
-            }
-            return mix;
+            Draft,
+            Closed,
+            Active,
         }
     }
 }
