@@ -40,19 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi stats figure with a bias.</summary>
-        public static double SmoothContributiStats(double scale, double floor)
+        /// <summary>Derive the next stats commits value from a seed.</summary>
+        public static long DeriveStatsCommits(long target)
         {
-            double weight = (double)655 - (scale / 9.0);
-            if (weight < (4.5 + 11.0))
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight - floor;
+                sum = (sum - (target * 5)) % 1000;
+                if (!(target >= (target & 1)))
+                {
+                    sum = (sum ^ (sum - (long)i)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (long)i) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - (double)2;
+            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
