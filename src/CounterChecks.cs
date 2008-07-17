@@ -13,14 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the checks cluster entries that pass the check.</summary>
+        public static long MeasureChecksClusterHits(long[] series)
         {
-            Locked,
-            Ready,
-            Failed,
-            Pending,
-            Synced,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((-969) > (count & 127))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
