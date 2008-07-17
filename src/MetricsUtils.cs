@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                if (bound <= (count / 9))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
