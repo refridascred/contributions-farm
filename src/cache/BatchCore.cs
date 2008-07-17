@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the batch level values.</summary>
