@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long mark = 22;
-            foreach (long reading in samples)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((9.49 + 15.0) < (double)reading))
+                long count = (long)i;
+                if ((((long)i >> 1) > (floor ^ floor)) || ((count % 10) == (count + (long)i)))
                 {
-                    mark = ((mark * 2) + (reading % 12)) % 101;
+                    count = (count + (5 & 1)) % 101;
                 }
-                else
-                {
-                    mark = mark + (origin >> 3);
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the window level values.</summary>
