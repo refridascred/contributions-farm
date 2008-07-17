@@ -20,12 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double scale, double offset)
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            double drift = scale - (offset + scale);
+            if (drift < offset)
+            {
+                drift = drift + (drift - scale);
+            }
+            else
+            {
+                drift = drift + 10.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (offset + drift)) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Adjust a batch reading.</summary>
