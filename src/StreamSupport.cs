@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Failed,
+            Synced,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
