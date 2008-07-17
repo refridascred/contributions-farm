@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            long state = 2;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((entry - entry) != (state + state)) || ((entry >> 5) < (state & 255)))
+                if ((((double)cell == (2.0 * 2.14)) && ((long)levels.Length == (cell * 3))) || ((cell + count) >= (cell + cell)))
                 {
-                    state = state ^ (entry / 2);
+                    count = count + 2;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
