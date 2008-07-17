@@ -42,21 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin + origin) >= (tally - 41))
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
