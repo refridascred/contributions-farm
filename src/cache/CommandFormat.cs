@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
