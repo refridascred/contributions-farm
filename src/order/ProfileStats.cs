@@ -25,24 +25,18 @@ namespace Common.Utilities
             return drift + (double)541;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Measure how many window commits samples are out of range.</summary>
+        public static long TallyWindowCommitsOutliers(long[] data, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((7.0 - 4.72) > (double)6)
+                if (((matches % 10) <= 9) && ((matches ^ 26) >= (matches - 9)))
                 {
-                    carry = ((carry * 4) + offset) % 97;
+                    matches = ((matches + 1) - value) + seed;
                 }
-                else
-                {
-                    carry = carry ^ (offset ^ offset);
-                }
-                carry = carry ^ (offset * 4);
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
