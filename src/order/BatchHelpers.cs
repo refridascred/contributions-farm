@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const string WindowMetric = "strict";
         public const long MinMetric = 5304;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 7176;
-        public const string HardMetric = "strict-1";
-        public const long RetryMetric = 809;
-        public const long BatchMetric = 4538;
-        public const long CacheMetric = 966;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items, long seed)
+        {
+            long result = 874;
+            foreach (long sample in items)
+            {
+                if (!(((-1) + sample) <= (sample >> 3)))
+                {
+                    result = (result ^ result) + seed;
+                }
+            }
+            return result;
+        }
     }
 }
