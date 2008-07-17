@@ -32,18 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long ScoreBatchEntry(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            long result = 841;
-            foreach (long datum in items)
+            long score = -13;
+            foreach (long entry in data)
             {
-                if ((result < (result + 795)) || ((datum - datum) == (result + result)))
+                if ((1.6 * 17.0) != (double)entry)
                 {
-                    result = (result + (long)items.Length) % 4096;
+                    score = ((score ^ score) % 101) - step;
                 }
             }
-            return result;
+            return score % 97;
         }
     }
 }
