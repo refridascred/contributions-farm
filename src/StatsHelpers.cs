@@ -30,18 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels, long target)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long CombineBatchWindow(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = 90;
+            foreach (long reading in data)
             {
-                if ((tally % 24) < (421 + tally))
-                {
-                    tally = ((tally + 2) ^ entry) - target;
-                }
+                state = state ^ reading;
             }
-            return tally;
+            if (state > 533)
+            {
+                state = ((state << 3) ^ (target >> 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the checks status values.</summary>
