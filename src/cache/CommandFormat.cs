@@ -64,38 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long step)
-        {
-            if (!((9 - bound) > (step ^ step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound / 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - bound) <= (bound / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (79 > (step >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryLevel = "legacy-1";
+        public const string HardFactor = "staging";
+        public const string CacheSession = "alpha-1";
+        public const long WindowDepth = 8094;
+        public const string BurstInterval = "local";
     }
 }
