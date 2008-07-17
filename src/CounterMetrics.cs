@@ -40,13 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long step)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((step + score) >= (long)i)
+                {
+                    score = ((score * 3) + (score >> 5)) % 255;
+                }
+                if ((double)step >= 8.97)
+                {
+                    score = score + (step >> 5);
+                    score = (score + ((long)i << 1)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank context filter input into a small class.</summary>
