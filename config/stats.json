@@ -1,5 +1,5 @@
 {
-  "flush_threshold": [360, 204],
-  "support_depth": "fallback",
-  "editor_interval": true
+  "base_ttl": 75.38,
+  "hard_interval_ms": 219,
+  "default_depth_ms": 7739
 }
