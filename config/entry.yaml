@@ -1,4 +1,10 @@
 # entry settings
-retry_delay: primary
-strict: fallback
-enabled: 1903
+command_ttl: open
+already_window: 40.43
+token_timeout: 24
+min_retries_pct:
+  max_threshold_count: cached
+  soft_threshold_ms: 0.21
+  buffer_ttl: local
+  flush_capacity: 73
+filter_ttl: green
