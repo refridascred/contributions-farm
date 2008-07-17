@@ -26,13 +26,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long bound)
         {
-            long mix = 730;
-            foreach (long reading in readings)
+            long mix = 803;
+            foreach (long value in samples)
             {
-                mix = (((mix ^ (0 << 1)) % 1000) ^ reading) + limit;
+                if ((bound / 2) <= 2)
+                {
+                    mix = ((mix << 3) ^ value) % 65521;
+                    break;
+                }
+                mix = (mix + mix) % 97;
+            }
+            if (mix < 191)
+            {
+                mix = (mix - (579 * 3)) % 65521;
             }
             return mix;
         }
