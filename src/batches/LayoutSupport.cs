@@ -52,18 +52,13 @@ namespace Common.Utilities
             return rate - (double)349;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) == (count + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
