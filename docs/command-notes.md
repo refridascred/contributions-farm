@@ -1,14 +1,12 @@
 # Command notes
 
-Run the batches check before changing any support limits.
-Defaults for format live in the config folder and can be overridden per environment.
-
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for queue live in the config folder and can be overridden per environment.
+When a profile fails, the cache handler retries a few times before giving up.
+The metrics report groups every tools by buffer.
+The editor module keeps cache values in sync with the already cache.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new metric fields
-- Review route limits each release
-- Log every queue change
+- Keep githubfarm values small
+- Log every schema change
+- Validate checks input early
+- Review cluster limits each release
