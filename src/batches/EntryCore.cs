@@ -60,19 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
