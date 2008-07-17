@@ -33,12 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items)
         {
-            New,
-            Locked,
-            Ready,
+            long sum = -7;
+            foreach (long item in items)
+            {
+                if ((sum ^ item) > item)
+                {
+                    sum = (sum * 3) + sum;
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (item + 2)) % 4096;
+                }
+                sum = (sum - (item / 2)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a stream stats.</summary>
