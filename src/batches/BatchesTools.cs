@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long limit)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Retry,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
