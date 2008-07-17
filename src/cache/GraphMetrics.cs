@@ -39,26 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long target)
         {
-            long mix = 682;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.77 - 8.68) == (double)value)
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
                 {
-                    mix = (mix ^ (732 - step)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix - value);
+                    return (long)i;
                 }
             }
-            if (mix > 960)
-            {
-                mix = (mix ^ (mix * 2)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
