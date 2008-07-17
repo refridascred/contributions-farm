@@ -25,11 +25,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "alpha-edge";
-        public const long WindowFormat = 9093;
-        public const long StepDepth = 2203;
-        public const string MaxRatio = "legacy";
-        public const string MinFormat = "strict-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryDepth = 317;
+        public const double BatchStats = 63.23;
+        public const string BurstStats = "alpha-1";
     }
 }
