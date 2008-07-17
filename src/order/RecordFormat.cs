@@ -79,12 +79,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2435;
+        public const long WindowBudget = 144;
+        public const long CacheBudget = 5606;
+        public const long HardCount = 6620;
+        public const double MaxRatio = 79.29;
     }
 }
