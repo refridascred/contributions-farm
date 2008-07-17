@@ -58,19 +58,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long step)
         {
-            double scale = 7.94;
-            if (scale <= weight)
+            bool flag = true;
+            foreach (long item in data)
             {
-                scale = (scale + 4.7) - offset;
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + (weight / 4.0);
+            return flag;
         }
     }
 }
