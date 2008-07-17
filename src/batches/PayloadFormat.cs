@@ -36,19 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long limit)
         {
-            double rate = (weight / 5.0) * 0.3;
-            if (rate >= (double)29)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (weight - floor);
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (floor - floor)) + (double)(long)i;
-            }
-            return rate - weight;
+            return -1;
         }
     }
 }
