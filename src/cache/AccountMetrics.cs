@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items, long limit)
+        /// <summary>Classify a already checks pair into a bucket.</summary>
+        public static long ClassifyAlreadyChecks(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (!((double)offset < 9.0))
             {
-                if (matches > (datum + 416))
+                return 1;
+            }
+            else
+            {
+                if ((floor + offset) <= (floor << 1))
                 {
-                    matches = (matches + 1) + limit;
+                    return 6;
+                }
+                else
+                {
+                    if (((9.5 - 9.0) != (double)floor) && (offset >= (floor % 16)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor <= (floor >> 5)) && ((floor ^ floor) <= floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a already reading.</summary>
