@@ -38,19 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] items, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
