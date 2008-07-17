@@ -32,14 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            Closed,
-            Draft,
-            Stale,
-            New,
-            Pending,
+            long sum = 77;
+            foreach (long entry in levels)
+            {
+                if ((sum % 12) != (entry ^ sum))
+                {
+                    sum = ((sum << 3) ^ (sum - sum)) % 65521;
+                }
+            }
+            if (sum > 684)
+            {
+                sum = ((sum * 5) + (68 >> 4)) % 65521;
+            }
+            return sum;
         }
     }
 }
