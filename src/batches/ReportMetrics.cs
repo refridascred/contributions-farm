@@ -20,16 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples)
-        {
-            long mix = -947;
-            foreach (long entry in samples)
-            {
-                mix = (((mix << 3) ^ (-311)) % 1000) - entry;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheCount = "cached-edge";
+        public const long MinTimeout = 6567;
+        public const long WindowFactor = 9218;
+        public const long StepBuffer = 7784;
+        public const long StepBudget = 6275;
 
         /// <summary>Find the first channel context entry that matches the target.</summary>
         public static long SeekChannelContextIndex(long[] data, long target)
