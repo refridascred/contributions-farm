@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            long mix = 86;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (mix < (value & 127))
+                if ((item << 3) > tally)
                 {
-                    mix = mix ^ (value * 2);
-                }
-                else
-                {
-                    mix = (mix + (858 & 31)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
