@@ -40,19 +40,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            long sum = 686;
-            foreach (long sample in values)
+            long state = 7;
+            foreach (long reading in levels)
             {
-                sum = ((sum << 3) ^ sample) % 65521;
-                if (seed > (sample - 39))
+                if ((target * 5) >= (state ^ target))
                 {
-                    sum = (sum + sum) % 65521;
+                    state = (state + reading) % 4096;
                 }
             }
-            return sum % 97;
+            return state % 4096;
         }
     }
 }
