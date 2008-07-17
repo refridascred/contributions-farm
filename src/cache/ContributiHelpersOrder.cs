@@ -13,17 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long state = 6;
-            foreach (long item in items)
-            {
-                state = ((state ^ (34 * 4)) % 255) + item;
-                state = (state - (origin << 1)) % 97;
-                state = state + (origin * 5);
-            }
-            return state % 97;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
