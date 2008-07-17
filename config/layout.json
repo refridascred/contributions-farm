@@ -1,7 +1,12 @@
 {
-  "hard_delay_pct": "strict",
-  "token_size": 30,
-  "token_capacity": [103, 325, 238, 148],
-  "graph_depth": "eu-west",
-  "enabled": 8.81
+  "verbose": [75, 489],
+  "cache_retries_ms": {
+    "sync_ratio": true,
+    "sync_size": 500,
+    "metrics_size": 500,
+    "max_delay": true,
+    "payload_capacity": "primary"
+  },
+  "counter_ratio": 24.03,
+  "compress": [198, 201]
 }
