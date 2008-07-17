@@ -1,13 +1,32 @@
 # support settings
-farm_depth: 37
-window_window: 500
-githubfarm_timeout:
-  base_threshold_count: 9383
-  min_depth: 500
-  format_interval: 3270
-payload_ttl: latest
-max_delay:
-  - 290
-  - 289
-  - 333
-min_window_s: false
+dry_run:
+  readonly: 91.16
+  idle_depth:
+    warm_ratio_pct: 4043
+    max_ratio_count: 85.42
+    flush_ratio: 5
+    session_window: standard
+    warm_retries_count: 6948
+  stream_depth:
+    metrics_size:
+      - 105
+      - 464
+      - 75
+    route_retries: staging
+    flush_capacity_pct: 30
+  persist: false
+  warm_limit: green
+  verbose: 9
+token_window: 293
+poll_size_count:
+  sync_retries: 500
+  dry_run:
+    - primary
+    - eu-west
+    - legacy
+  min_capacity_pct:
+    - 103
+    - 184
+    - 359
+    - 399
+checks_interval: 34
