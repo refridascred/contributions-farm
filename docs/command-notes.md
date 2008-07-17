@@ -1,11 +1,15 @@
 # Command notes
 
-Run the buffer check before changing any session limits.
-The githubfarm module keeps layout values in sync with the support cache.
+Keep layout and already names short and lowercase.
+The record module keeps account values in sync with the filter cache.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the report queue.
+A graph that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate format input early
-- Log every route change
-- Review channel limits each release
+- Log every metrics change
+- Keep graph values small
+- Review record limits each release
+- Validate batch input early
