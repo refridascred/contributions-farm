@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 4921;
-        public const long SoftTimeout = 707;
-        public const string MaxScore = "strict-v2";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
+        {
+            long acc = 401;
+            foreach (long value in samples)
+            {
+                if ((double)acc <= 3.27)
+                {
+                    acc = (acc + 516) % 101;
+                }
+                if (((value - 433) >= (value + acc)) || ((value + acc) == (value % 16)))
+                {
+                    acc = acc ^ (value - 950);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long offset)
