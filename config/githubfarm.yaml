@@ -1,14 +1,22 @@
 # githubfarm settings
-record_depth: 60
-cache_ttl_count:
-  flush_delay: 45
-  base_capacity_count: 1024
-  metric_ratio: eu-west
-  record_window:
-    - 207
-    - 486
-    - 284
-    - 483
-max_window_count: 33
-format_retries: latest
-sync_capacity: 1172
+verbose:
+  batch_limit: 9948
+  enabled: 23.32
+  report_delay: open
+  burst_window_ms: 6653
+  persist: primary
+already_retries:
+  - stable
+  - primary
+  - stable
+burst_limit_s: 73.48
+metrics_delay:
+  - 227
+  - 92
+  - 170
+retry_threshold_ms:
+  - legacy
+  - cached
+  - strict
+  - edge
+sync_threshold_s: true
