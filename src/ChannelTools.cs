@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 4399;
-        public const long IdleBatches = 6334;
-        public const long MaxSize = 9370;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long floor)
