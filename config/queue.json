@@ -1,5 +1,5 @@
 {
-  "cache_capacity_count": 44,
-  "default_timeout": "edge",
-  "cache_timeout_ms": "standard"
+  "audit": ["fallback", "stable", "stable"],
+  "profile_window": ["open", "eu-west", "primary", "open"],
+  "strict": 50
 }
