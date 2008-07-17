@@ -1,8 +1,8 @@
 {
-  "idle_threshold": ["cached", "primary"],
-  "max_timeout_s": "legacy",
-  "persist": "edge",
-  "min_window_s": "staging",
-  "idle_depth_count": 250,
-  "retry_delay": [424, 432]
+  "cache_limit_s": 19,
+  "batch_timeout": 20.03,
+  "compress": 77.06,
+  "max_interval": 3200,
+  "min_retries": "blue",
+  "soft_interval": [117, 135]
 }
