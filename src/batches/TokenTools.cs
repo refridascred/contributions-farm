@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((2.1 * 5.6) >= (2.9 + 9.5))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 27.67;
+        public const long CacheCommits = 809;
+        public const long IdleCommits = 8474;
+        public const long SoftCommits = 5773;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] samples, long seed)
