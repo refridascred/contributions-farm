@@ -52,13 +52,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long target)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long score = 1;
+            foreach (long entry in samples)
+            {
+                score = (((score << 2) ^ (target & 3)) % 4096) + entry;
+            }
+            return score;
         }
     }
 }
