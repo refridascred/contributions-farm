@@ -35,14 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] levels, long offset)
         {
-            Synced,
-            Done,
-            Closed,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((((offset >> 2) > (matches << 3)) && (offset > (offset + datum))) || (18.0 < (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
