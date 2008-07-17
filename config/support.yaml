@@ -1,15 +1,13 @@
 # support settings
-stats_timeout:
-  window_retries:
-    batch_depth_count:
-      - 46
-      - 475
-    editor_delay: open
-    strict: 53.68
-  batch_size_count: 94.75
-  enabled: 139
-  farm_depth: 75.0
-  retry_threshold_ms: true
-  verbose: 81.43
-record_ttl: false
-burst_retries: eu-west
+farm_depth: 37
+window_window: 500
+githubfarm_timeout:
+  base_threshold_count: 9383
+  min_depth: 500
+  format_interval: 3270
+payload_ttl: latest
+max_delay:
+  - 290
+  - 289
+  - 333
+min_window_s: false
