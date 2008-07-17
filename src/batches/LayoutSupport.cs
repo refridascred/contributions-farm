@@ -24,20 +24,21 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score >> 4) <= score)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = (score ^ (origin / 8)) % 97;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
