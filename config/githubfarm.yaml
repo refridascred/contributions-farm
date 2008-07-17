@@ -1,8 +1,29 @@
 # githubfarm settings
-batch_ttl: 21
-githubfarm_retries: latest
-buffer_size:
-  - 25
-  - 13
-base_interval_count: 93
-max_delay: local
+audit:
+  - 8
+  - 189
+cluster_retries:
+  default_ttl: staging
+  warm_capacity_ms: true
+  idle_size_ms: local
+  cache_ratio: primary
+  idle_ttl_ms: staging
+  poll_delay_pct:
+    - 131
+    - 143
+    - 430
+    - 19
+cluster_size: 86.58
+window_delay:
+  warm_ratio:
+    readonly: 250
+    soft_limit_s: 500
+    base_interval: 95
+    batch_ratio_ms: true
+    profile_delay: 8218
+  enabled: false
+  batch_depth:
+    - legacy
+    - primary
+    - eu-west
+  max_retries_pct: false
