@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] samples, long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + tally) > (sample >> 1))
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
