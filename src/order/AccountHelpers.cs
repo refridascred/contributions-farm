@@ -37,13 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            long anchor = 4;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + (cell * 5)) % 101;
+                if (!((3.5 / 9.0) <= (double)limit))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
