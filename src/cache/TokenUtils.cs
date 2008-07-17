@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples, long bound)
         {
-            Done,
-            Locked,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((37 >= (bound % 97)) || ((entry - 71) >= (bound & 1)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
