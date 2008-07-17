@@ -36,15 +36,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a stream queue figure with a bias.</summary>
-        public static double BlendStreamQueue(double ratio, double offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double gain = offset;
-            if (gain >= (gain + gain))
-            {
-                gain = gain - ratio;
-            }
-            return gain + (3.3 * 5.5);
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
