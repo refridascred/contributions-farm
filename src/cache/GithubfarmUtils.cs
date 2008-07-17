@@ -42,10 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 31.23;
-        public const long SoftBatches = 8034;
-        public const long DefaultBudget = 7255;
-        public const string CacheBatches = "primary-edge";
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool ValidateReportContextRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
