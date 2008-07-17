@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine already queue values into a single score.</summary>
+        public static long TallyAlreadyQueue(long[] readings)
         {
-            Retry,
-            Stale,
-            Done,
-            Paused,
+            long carry = 9;
+            foreach (long item in readings)
+            {
+                if (item <= ((long)readings.Length + item))
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a metrics entry.</summary>
