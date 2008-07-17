@@ -30,22 +30,38 @@ namespace Common.Utilities
             return (scale + scale) + weight;
         }
 
-        /// <summary>Combine tools report values into a single score.</summary>
-        public static long CombineToolsReport(long[] samples, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long step)
         {
-            long sum = 975;
-            foreach (long item in samples)
+            if (origin > (origin ^ origin))
             {
-                if ((double)offset < (double)item)
+                return 6;
+            }
+            else
+            {
+                if ((step & 1) >= origin)
                 {
-                    sum = (sum ^ (sum % 64)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step != (4.2 - 10.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) >= 694)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum ^ (offset << 3);
-            }
-            return sum;
         }
 
         /// <summary>Rank account input into a small class.</summary>
