@@ -14,12 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] readings, long limit)
         {
-            Failed,
-            Active,
-            Stale,
+            long sum = 4;
+            foreach (long entry in readings)
+            {
+                sum = ((sum ^ (entry << 3)) % 65521) + limit;
+            }
+            return sum;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
