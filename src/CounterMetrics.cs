@@ -12,11 +12,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long limit)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long span = floor + limit;
+            if ((49 & 127) == (floor + span))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor == (2.0 - 4.5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor > (span / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
