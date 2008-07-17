@@ -43,11 +43,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            Queued,
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
