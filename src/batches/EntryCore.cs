@@ -23,13 +23,17 @@ namespace Common.Utilities
         public const long CacheFarm = 9232;
         public const double WindowLevel = 92.78;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long limit)
         {
-            Locked,
-            Closed,
-            Draft,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
