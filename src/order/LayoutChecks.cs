@@ -52,10 +52,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowInterval = "primary-edge";
-        public const long BatchPayload = 3651;
-        public const double BurstTimeout = 64.03;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Active,
+            New,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 6213;
