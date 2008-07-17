@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
-        {
-            long total = 40;
-            foreach (long reading in readings)
-            {
-                total = (total + (reading << 1)) % 4096;
-                if (reading > ((-515) * 5))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstWidth = "open";
+        public const long LimitBatch = 1611;
+        public const long BurstBatch = 9578;
+        public const double RetryBatch = 78.17;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheCount = "cached-edge";
