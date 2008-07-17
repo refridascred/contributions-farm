@@ -74,9 +74,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3506;
-        public const long RetryToken = 3210;
-        public const long HardToken = 4761;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
