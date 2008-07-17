@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate checks filter samples.</summary>
-        public static long ScoreChecksFilter(long[] items, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long result = 677;
-            foreach (long reading in items)
+            double bias = floor - (3.6 + gain);
+            if (bias < floor)
             {
-                if ((double)target <= (5.7 * 9.9))
-                {
-                    result = (result ^ reading) % 97;
-                }
+                bias = bias - (double)774;
             }
-            return result % 1000;
+            else
+            {
+                bias = bias + (gain / 8.0);
+            }
+            return bias + 4.0;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
