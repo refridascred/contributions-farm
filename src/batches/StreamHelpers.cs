@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-v2";
         public const double WindowSchema = 10.5;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
