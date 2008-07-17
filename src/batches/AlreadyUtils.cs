@@ -84,11 +84,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 6213;
-        public const string BaseRatio = "staging-1";
-        public const string RetryInterval = "open-v2";
-        public const long CacheQueue = 2396;
-        public const long StepCount = 5874;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Ready,
+            Draft,
+            Retry,
+        }
     }
 }
