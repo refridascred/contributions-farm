@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardBudget = 31.21;
-        public const long SoftTools = 8299;
-        public const string IdleTools = "legacy-1";
-        public const long BatchTools = 6801;
-        public const long WindowCount = 2856;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 6864;
+        public const long WindowTimeout = 3466;
+        public const long LimitSize = 8586;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 243;
