@@ -53,18 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long carry = 21;
-            foreach (long datum in readings)
-            {
-                if (!(((-843) * 5) < (datum >> 2)))
-                {
-                    carry = ((carry * 2) + (carry - datum)) % 65521;
-                }
-            }
-            return carry;
+            Ready,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
