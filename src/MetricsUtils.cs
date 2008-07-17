@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 1351;
+        public const long CacheGraph = 5811;
+        public const double BaseDepth = 18.77;
+        public const long CacheInterval = 1598;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
