@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Locked,
-            Dropped,
-            Failed,
-            Idle,
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
