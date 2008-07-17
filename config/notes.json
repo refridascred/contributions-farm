@@ -1,8 +1,5 @@
 {
-  "base_delay_count": 100,
-  "enabled": 60,
-  "burst_limit_pct": 6583,
-  "soft_interval": "fallback",
-  "hard_ratio_count": ["staging", "latest", "local", "green"],
-  "cache_size": "edge"
+  "max_interval_ms": [352, 116, 217],
+  "flush_delay": "latest",
+  "flush_capacity_count": 33
 }
