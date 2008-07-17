@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long offset)
         {
-            double bias3 = bias2;
-            if (bias3 >= (double)5)
+            bool ok = true;
+            foreach (long value in data)
             {
-                bias3 = bias3 + (double)3;
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias3 = bias3 + (4.7 + bias2);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 + bias) - (double)(long)i;
-            }
-            return bias3 + (5.13 / 6.0);
+            return ok;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
