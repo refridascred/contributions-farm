@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = span;
+            return (scale + (double)16) + weight;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
