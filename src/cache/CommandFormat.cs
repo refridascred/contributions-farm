@@ -23,11 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Look up the position of a cluster contributi sample.</summary>
+        public static long FindClusterContributiIndex(long[] data, long bound)
         {
-            double scale = span;
-            return (scale + scale) + weight;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
