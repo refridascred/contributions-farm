@@ -1,8 +1,12 @@
 {
-  "default_depth_s": ["primary", "primary"],
-  "verbose": 9207,
-  "hard_interval": 69,
-  "schema_interval": 92.46,
-  "min_depth_pct": false,
-  "warm_delay": 56
+  "soft_window_ms": {
+    "cache_limit": "cached",
+    "format_threshold": 1,
+    "max_window": ["primary", "eu-west", "latest"],
+    "hard_timeout": "fallback"
+  },
+  "retry_threshold_ms": 9240,
+  "max_delay_s": 8684,
+  "dry_run": "latest",
+  "format_size": "eu-west"
 }
