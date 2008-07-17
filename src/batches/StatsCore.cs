@@ -56,22 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] samples, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double drift = (bias - bias2) - (bias2 - bias2);
+            if (drift > (bias2 + 17.0))
             {
-                if (((step % 64) != (count * 2)) || ((count / 7) <= (cell << 2)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift - (drift - bias2);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 1.0) + (double)(long)i;
+            }
+            return drift - (bias - 6.44);
         }
 
         /// <summary>Combine support values into a single score.</summary>
