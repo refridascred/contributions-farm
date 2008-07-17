@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] data, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((item + 55) < (long)data.Length)
+                if (entry > floor)
                 {
-                    matches = (matches + 3) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
