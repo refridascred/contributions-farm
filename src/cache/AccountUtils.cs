@@ -16,10 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2593;
-        public const long BaseToken = 1479;
-        public const long IdleCount = 489;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] readings)
