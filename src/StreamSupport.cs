@@ -24,18 +24,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches < 17)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseRatio = 388;
+        public const long CacheFactor = 2941;
+        public const long WindowSize = 7127;
     }
 }
