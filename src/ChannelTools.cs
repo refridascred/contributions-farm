@@ -14,31 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long target, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series)
         {
-            if ((target + 37) > (6 / 5))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (0.96 / 8.0))
+                if ((double)(long)series.Length > (19.0 * 6.25))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target + 0) < (target - target)) && ((target ^ bound) >= (bound * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
