@@ -23,16 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double gain, double floor)
-        {
-            double rate = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)(long)i) - gain;
-            }
-            return rate + 1.54;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowFactor = "cached-v2";
+        public const long MaxCommand = 5948;
+        public const long IdleWidth = 7063;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double weight, double offset)
