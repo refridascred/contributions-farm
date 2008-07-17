@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long LimitChannel = 3738;
         public const double BatchChannel = 46.6;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Dropped,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
