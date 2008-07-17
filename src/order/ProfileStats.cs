@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] readings, long floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((floor / 9) == (96 * 4))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
