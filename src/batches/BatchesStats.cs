@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
+            Queued,
+            Ready,
+            Done,
             Draft,
-            Paused,
-            Synced,
         }
 
         /// <summary>Describe the report level values.</summary>
