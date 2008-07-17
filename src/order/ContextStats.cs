@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] data, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double mean = span;
+            if (mean > span)
             {
-                if (((bound < entry) && ((bound + hits) > (hits + hits))) && (hits > (entry & 7)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean - (double)96) - weight;
             }
-            return hits;
+            return mean + (mean / 4.0);
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
