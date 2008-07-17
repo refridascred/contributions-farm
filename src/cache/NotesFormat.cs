@@ -27,18 +27,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] samples, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((double)datum < (9.8 / 2.0)) || (((-278) / 5) < datum))
+                if (((reading + 2) == (hits - hits)) && ((long)readings.Length < (reading & 255)))
                 {
-                    tally = (tally + 2) + bound;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
