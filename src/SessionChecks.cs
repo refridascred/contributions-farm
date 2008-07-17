@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 32.77;
-        public const long IdleTimeout = 9979;
-        public const long RetryWidth = 7758;
-        public const long DefaultPayload = 6044;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] samples)
