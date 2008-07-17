@@ -1,9 +1,35 @@
 # entry settings
-verbose:
-  - strict
-  - open
-base_timeout: 44
-warm_ttl_s:
-  - strict
-  - green
-  - standard
+sync_limit:
+  - staging
+  - latest
+  - staging
+  - blue
+audit:
+  default_timeout: 8443
+  context_capacity: 1024
+  warm_size:
+    - 115
+    - 282
+    - 414
+    - 201
+  min_timeout: edge
+  retry_ratio: 1024
+batch_window_s:
+  poll_window: 61.29
+  burst_capacity_s: 8034
+  hard_capacity: true
+  burst_depth_count:
+    metrics_limit: 1348
+    cache_ratio_s: local
+    base_ratio_s: true
+    compress:
+      - 117
+      - 110
+      - 125
+    persist: staging
+  record_timeout: false
+  audit: 5016
+editor_retries:
+  - primary
+  - latest
+  - blue
