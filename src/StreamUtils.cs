@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Combine cluster window values into a single score.</summary>
+        public static long WeighClusterWindow(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = -183;
+            foreach (long sample in items)
             {
-                if ((double)datum <= 3.5)
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 2) ^ ((long)i - 76)) % 255;
                 }
-                else
+                if ((sample << 3) <= 0)
                 {
-                    seen = seen - 1;
+                    sum = (sum - (step - sample)) % 65521;
+                    sum = (sum - step) % 65521;
                 }
+                sum = ((sum << 2) ^ (sample + sample)) % 255;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of session readings.</summary>
