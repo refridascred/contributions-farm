@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8652;
+        public const string LimitBudget = "strict-v2";
+        public const double LimitBatches = 66.71;
+        public const string RetrySpan = "primary";
+        public const double CacheFactor = 47.22;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionMatches(long[] readings, long floor)
