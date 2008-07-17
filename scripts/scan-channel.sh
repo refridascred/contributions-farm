@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge local stable fallback; do
+for item in strict cached staging primary; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 4 ]; do
