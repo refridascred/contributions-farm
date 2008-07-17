@@ -25,17 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] > floor)
+                if (((sample < (seen & 31)) || ((seen << 3) < 388)) && ((seen > (seen >> 2)) || ((seen % 3) >= (sample + seen))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
