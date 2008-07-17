@@ -44,22 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long total = 526;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample > (6.0 * 5.33))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total - 104;
-                }
-                if ((3.36 / 8.0) != (double)sample)
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
