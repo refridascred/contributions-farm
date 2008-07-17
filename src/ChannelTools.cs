@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)98 > (double)count) && (((cell ^ 8) == (origin >> 1)) || ((count + (-36)) > cell)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
