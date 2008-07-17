@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] values, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (entry <= floor)
+                if (value <= bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
