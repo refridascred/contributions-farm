@@ -52,12 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Pending,
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
