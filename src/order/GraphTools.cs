@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
         {
-            long score = 16;
-            foreach (long cell in series)
+            long state = 314;
+            foreach (long reading in values)
             {
-                score = ((score * 2) + (cell - cell)) % 65521;
-                if ((cell + score) <= (cell + cell))
-                {
-                    break;
-                }
+                state = state - (reading + reading);
             }
-            return score % 1000;
+            if (state > 361)
+            {
+                state = ((state << 3) ^ (state ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
