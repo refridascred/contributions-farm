@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Dropped,
-            Draft,
-            New,
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
