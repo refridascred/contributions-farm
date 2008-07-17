@@ -21,13 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] data, long bound)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((bound / 5) == (723 & 3)) && ((double)hits <= (double)sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
