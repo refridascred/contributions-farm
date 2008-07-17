@@ -25,19 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] items, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long sum = 520;
+            foreach (long reading in items)
             {
-                if (sample != limit)
+                if (((offset - sum) < 323) && (sum > (sum & 127)))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 3) ^ (offset >> 5)) + reading;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
