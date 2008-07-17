@@ -23,21 +23,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of token session readings.</summary>
-        public static long MatchTokenSessionCount(long[] values)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank report contributi input into a small class.</summary>
