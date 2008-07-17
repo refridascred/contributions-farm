@@ -1,7 +1,6 @@
 {
-  "payload_timeout": [486, 498, 107, 173],
-  "burst_capacity_count": 100,
-  "max_size_s": 84.72,
-  "audit": "standard",
-  "sync_depth_ms": "staging"
+  "poll_threshold_ms": "strict",
+  "retry_retries_pct": true,
+  "persist": [254, 8, 43, 402],
+  "burst_size": 48
 }
