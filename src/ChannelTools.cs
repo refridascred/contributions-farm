@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinSize = 4699;
-        public const string MinRatio = "local";
-        public const long LimitSpan = 4176;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] series, long step)
