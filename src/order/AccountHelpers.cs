@@ -75,13 +75,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Idle,
+            New,
+            Dropped,
+            Synced,
         }
     }
 }
