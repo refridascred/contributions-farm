@@ -29,17 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long bound)
+        /// <summary>Count the checks payload entries that pass the check.</summary>
+        public static long TallyChecksPayloadGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (values[i] > bound)
+                if (((entry >> 1) == (entry / 5)) && (entry > (seen - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
