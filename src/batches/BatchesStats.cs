@@ -45,12 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Locked,
-            Synced,
-            Active,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
