@@ -35,38 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] values, long seed)
         {
-            if ((offset + 8) < limit)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.7 / 6.0) <= (double)offset)
+                if (reading > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset <= (limit - limit)) || ((offset & 63) < (limit >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((38 << 2) >= (limit - offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
