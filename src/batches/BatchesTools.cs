@@ -23,10 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinTimeout = 6663;
-        public const string WindowBudget = "alpha-1";
-        public const long RetryRatio = 9955;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Draft,
+            Stale,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
