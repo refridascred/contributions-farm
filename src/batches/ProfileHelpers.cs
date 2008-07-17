@@ -25,21 +25,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 12)
+                    if ((levels[i] + levels[j]) > 1)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
