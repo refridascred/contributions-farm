@@ -59,17 +59,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a session counter sample.</summary>
-        public static long LocateSessionCounterIndex(long[] levels, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 5;
+            foreach (long item in readings)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + 99) % 101) ^ item;
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a metrics summary.</summary>
