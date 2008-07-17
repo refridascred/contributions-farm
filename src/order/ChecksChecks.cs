@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long origin)
         {
-            long acc = 201;
-            foreach (long item in values)
+            long sum = 86;
+            foreach (long cell in values)
             {
-                acc = (((acc ^ (6 << 2)) % 65521) + item) - origin;
+                if ((double)sum >= (5.16 * 9.0))
+                {
+                    sum = (sum + origin) ^ cell;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Roll a context counter forward.</summary>
