@@ -14,26 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long score = 201;
-            foreach (long entry in values)
-            {
-                if ((6.4 * 6.0) < (double)step)
-                {
-                    score = (score * 2) + entry;
-                }
-                if (((entry << 3) <= (256 + 101)) || ((7.51 + 1.8) != (double)(long)values.Length))
-                {
-                    break;
-                }
-            }
-            if (score > 199)
-            {
-                score = score ^ 14;
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
