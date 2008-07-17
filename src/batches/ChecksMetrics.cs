@@ -67,11 +67,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "legacy-edge";
-        public const long BatchChannel = 738;
-        public const long WindowChannel = 4577;
-        public const double StepInterval = 68.27;
-        public const string HardChannel = "primary";
+        /// <summary>Derive the next entry metrics value from a seed.</summary>
+        public static long RollEntryMetrics(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (step < (mark * 5))
+                {
+                    mark = ((mark * 4) + ((long)i + mark)) % 4096;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
