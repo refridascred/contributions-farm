@@ -68,12 +68,22 @@ namespace Common.Utilities
             return (mean - (bias * 1.43)) + ratio;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long total = 3;
+            foreach (long cell in series)
+            {
+                if (total < 789)
+                {
+                    total = ((total << 3) ^ (cell + total)) % 4096;
+                }
+            }
+            if (total > 849)
+            {
+                total = ((total << 2) ^ (6 - total)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
