@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long acc = 24;
-            foreach (long cell in items)
+            double ratio2 = ratio;
+            if (ratio2 < ratio2)
             {
-                if ((bound <= (bound >> 3)) || ((double)bound > (2.6 + 8.39)))
-                {
-                    acc = (acc + (cell + acc)) % 65521;
-                }
+                ratio2 = (ratio2 + 8.16) - floor;
             }
-            return acc % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + 2.9;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
