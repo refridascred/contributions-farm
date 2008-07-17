@@ -22,24 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a order stats value against two limits.</summary>
-        public static long ClassifyOrderStats(long offset, long offset2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data)
         {
-            if ((offset2 + offset2) != (offset + offset))
+            long total = 69;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset2 < (offset2 + offset2))
+                if ((total / 5) <= (entry >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    total = total ^ (entry + entry);
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the token level values.</summary>
