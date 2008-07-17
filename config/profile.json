@@ -1,8 +1,12 @@
 {
-  "soft_limit": 3826,
-  "batch_limit": 250,
-  "hard_limit": 39.27,
-  "checks_interval": "eu-west",
-  "warm_threshold_s": 18.8,
-  "burst_limit_ms": ["strict", "staging"]
+  "checks_retries": {
+    "flush_depth_ms": 19,
+    "soft_ttl_s": false,
+    "sync_interval_ms": "stable",
+    "burst_timeout": 100
+  },
+  "cache_window_ms": false,
+  "enabled": true,
+  "dry_run": ["green", "edge"],
+  "sync_size_pct": [299, 311, 228]
 }
