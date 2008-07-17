@@ -20,11 +20,27 @@ namespace Common.Utilities
             return bias + (2.0 + 10.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 8134;
-        public const string MaxRatio = "local-1";
-        public const long IdleSpan = 8689;
-        public const long CacheRatio = 3494;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples)
+        {
+            long mark = 44;
+            foreach (long entry in samples)
+            {
+                if ((mark - 791) > mark)
+                {
+                    mark = (mark - (mark + entry)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 4096;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark - (401 + 404)) % 4096;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 243;
