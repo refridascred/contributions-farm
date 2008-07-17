@@ -1,5 +1,5 @@
 {
-  "poll_window": "legacy",
-  "account_capacity": 98.95,
-  "queue_retries": "staging"
+  "batch_ttl_s": ["green", "fallback", "primary", "local"],
+  "soft_interval_ms": "strict",
+  "session_ttl": ["cached", "primary"]
 }
