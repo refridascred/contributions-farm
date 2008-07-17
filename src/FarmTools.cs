@@ -35,18 +35,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] series, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long step2 = step - limit;
+            if ((double)step == (0.23 * 4.5))
             {
-                if ((7.0 - 11.0) == (double)reading)
+                return 7;
+            }
+            else
+            {
+                if (((step - step) <= step2) || ((double)limit != (8.0 + 0.4)))
                 {
-                    hits = (hits + 3) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit & 31) < (step2 >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
