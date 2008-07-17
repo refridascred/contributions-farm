@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of profile already readings.</summary>
-        public static long FoldProfileAlready(long[] series, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            long carry = 992;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((double)carry != (4.67 - 3.0))
+                if (!((double)(long)items.Length > (5.0 + 5.2)))
                 {
-                    carry = ((carry ^ seed) % 97) + datum;
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < (-52))
-            {
-                carry = ((carry << 2) ^ (970 * 3)) % 1000;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
