@@ -14,12 +14,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Rank graph queue input into a small class.</summary>
+        public static long ClassifyGraphQueue(long floor, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)origin > 8.73)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((249 - floor) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.7 - 5.67) != (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up notes samples.</summary>
