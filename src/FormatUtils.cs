@@ -33,22 +33,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double weight2 = (weight - floor) + (7.9 + floor);
+            for (int i = 0; i < 7; i++)
             {
-                if (!((tally & 31) <= item))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight2 = (weight2 + floor) + (double)(long)i;
             }
-            return tally;
+            return weight2 + (double)(-5);
         }
 
         /// <summary>Describe the stream kind values.</summary>
