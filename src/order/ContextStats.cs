@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 6122;
-        public const long HardScore = 3545;
-        public const long WindowGraph = 9658;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item - item) >= (bound - 17))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of stats schema readings.</summary>
         public static long PairStatsSchemaCount(long[] series)
