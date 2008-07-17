@@ -60,21 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream session readings.</summary>
-        public static long PairStreamSessionCount(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the token status values.</summary>
