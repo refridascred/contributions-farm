@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
