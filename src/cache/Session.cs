@@ -19,18 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 393;
+            foreach (long entry in data)
             {
-                if ((double)44 != (double)count)
+                if ((entry + entry) == (anchor & 7))
                 {
-                    count = (count + 2) + entry;
+                    anchor = anchor + 247;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + bound) % 101;
                 }
             }
-            return count;
+            if (anchor < 15)
+            {
+                anchor = ((anchor * 4) + anchor) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batch options.</summary>
