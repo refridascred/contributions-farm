@@ -1,5 +1,24 @@
 {
-  "filter_window": false,
-  "retry_timeout": 250,
-  "audit": ["stable", "local"]
+  "max_delay_ms": {
+    "flush_ttl_count": "blue",
+    "graph_timeout": 72.25,
+    "burst_threshold_count": false
+  },
+  "dry_run": 3018,
+  "cache_depth": [169, 263, 147, 361],
+  "poll_ttl_count": [43, 403, 72, 230],
+  "idle_timeout_s": {
+    "token_size": {
+      "stream_timeout": "cached",
+      "queue_window": 53.16,
+      "max_window_pct": [109, 333, 166],
+      "cache_capacity_pct": false,
+      "retry_size_ms": "standard",
+      "dry_run": 7919
+    },
+    "hard_retries_ms": ["edge", "local", "standard", "eu-west"],
+    "command_size": true,
+    "compress": false,
+    "cache_timeout_s": true
+  }
 }
