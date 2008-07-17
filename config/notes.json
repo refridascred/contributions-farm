@@ -1,11 +1,13 @@
 {
-  "stats_size": {
-    "tools_depth": true,
-    "audit": 72.18,
-    "metrics_ttl": true
+  "flush_ratio": "strict",
+  "verbose": [279, 231, 194],
+  "hard_size_s": {
+    "buffer_ttl": 9,
+    "support_delay": 7189,
+    "format_limit": 45,
+    "route_retries": ["open", "cached", "strict"],
+    "warm_ttl": "legacy",
+    "command_interval": 9762
   },
-  "hard_delay_ms": [2, 13, 246],
-  "already_window": 5571,
-  "burst_threshold_pct": ["latest", "green"],
-  "soft_ratio_pct": 2056
+  "compress": "local"
 }
