@@ -21,18 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] data, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((bound / 5) == (723 & 3)) && ((double)hits <= (double)sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
