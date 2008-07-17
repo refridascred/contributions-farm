@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] items, long seed)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((tally - sample) <= 844))
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
