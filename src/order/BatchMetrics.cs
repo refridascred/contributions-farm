@@ -91,17 +91,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a token buffer reading by value.</summary>
-        public static long LocateTokenBufferIndex(long[] samples, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
