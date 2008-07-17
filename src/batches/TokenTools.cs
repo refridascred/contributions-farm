@@ -32,9 +32,17 @@ namespace Common.Utilities
             return bias2 - (6.85 + bias2);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 66.67;
-        public const long DefaultScore = 6277;
-        public const long BurstEditor = 5078;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
