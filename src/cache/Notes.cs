@@ -13,17 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a support metric reading by value.</summary>
-        public static long LookupSupportMetricIndex(long[] samples, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                if ((hits / 6) == (hits + limit))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
