@@ -56,11 +56,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 5030;
-        public const string MinStats = "cached";
-        public const double CacheStats = 26.43;
-        public const long LimitStats = 660;
+        /// <summary>Match up channel payload samples.</summary>
+        public static long CompareChannelPayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long origin, long step)
