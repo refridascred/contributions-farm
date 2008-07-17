@@ -24,18 +24,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] items)
+        /// <summary>Grade a notes contributi value against two limits.</summary>
+        public static long GradeNotesContributi(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long prev = floor + offset;
+            if ((double)47 < (double)floor)
             {
-                if (((7.89 + 8.91) == (double)tally) && ((reading + tally) <= (tally + tally)))
+                return 1;
+            }
+            else
+            {
+                if ((916 + offset) <= (prev >> 2))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset < (floor + offset)) || ((double)prev != (12.0 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + 3) != (floor + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
