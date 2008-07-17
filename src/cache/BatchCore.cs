@@ -29,27 +29,23 @@ namespace Common.Utilities
         public const long DefaultDepth = 6735;
         public const string CacheContributi = "primary-edge";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long seed)
         {
-            long mix = 546;
-            foreach (long value in values)
+            long score = 42;
+            foreach (long cell in samples)
             {
-                mix = (mix * 5) + (mix - value);
-                if (!((double)mix >= (7.05 + 8.8)))
+                score = score ^ (score / 4);
+                if (((cell ^ seed) >= score) || (5.0 >= (double)score))
                 {
-                    mix = ((mix * 5) + (target << 1)) % 101;
-                }
-                else
-                {
-                    mix = mix + (mix + mix);
+                    score = (score * 3) + (seed / 6);
                 }
             }
-            if (mix < 32)
+            if (score > 2)
             {
-                mix = ((mix << 2) ^ (mix - 32)) % 97;
+                score = (score << 3) ^ (seed % 5);
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
