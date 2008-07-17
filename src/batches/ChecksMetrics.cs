@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((origin & 255) < (origin + 8))
+                {
+                    state = state ^ (origin ^ origin);
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine order layout values into a single score.</summary>
