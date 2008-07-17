@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long mark = 7;
-            foreach (long entry in items)
+            long sum = 8;
+            foreach (long entry in data)
             {
-                if (49 <= (mark + entry))
-                {
-                    mark = (mark + (entry + 279)) % 101;
-                }
+                sum = sum ^ (entry ^ sum);
             }
-            if (mark < 395)
+            if (sum > 88)
             {
-                mark = (mark + (mark ^ mark)) % 4096;
+                sum = sum + sum;
             }
-            return mark % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Count the cache record entries that pass the check.</summary>
