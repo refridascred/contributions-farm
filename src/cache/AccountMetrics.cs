@@ -66,19 +66,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long bound)
         {
-            long anchor = 98;
-            foreach (long reading in series)
+            if ((428 & 127) < bound)
             {
-                anchor = ((anchor * 5) + (2 - reading)) % 1000;
+                return 1;
             }
-            if (anchor > 3)
+            else
             {
-                anchor = anchor - 16;
+                if ((bound + 20) < (seed & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((-25) < (bound - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound > (18 ^ bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
