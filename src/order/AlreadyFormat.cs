@@ -45,28 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long WeighFormatAccount(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            long anchor = 3;
-            foreach (long reading in levels)
+            long score = 52;
+            foreach (long item in series)
             {
-                if (((6.6 - 16.0) <= (double)reading) || (anchor > 43))
-                {
-                    anchor = (anchor * 4) + (reading % 7);
-                    anchor = ((anchor * 2) + 1) % 65521;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (anchor + (anchor - reading)) - (long)i;
-                }
-                anchor = (anchor - (reading >> 3)) % 65521;
+                score = ((score ^ ((long)series.Length * 4)) % 255) - item;
             }
-            if (anchor < 929)
+            if (score < 52)
             {
-                anchor = ((anchor << 2) ^ (8 * 4)) % 97;
+                score = score + (score % 100);
             }
-            return anchor % 4096;
+            return score % 65521;
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
