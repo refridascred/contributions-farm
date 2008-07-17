@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double floor)
         {
-            Stale,
-            Ready,
-            Dropped,
+            double weight = (double)(712 + 9);
+            if (weight < 5.1)
+            {
+                weight = ((weight - weight) - ratio) + floor;
+            }
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
