@@ -68,26 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings, long origin)
-        {
-            long mark = -673;
-            foreach (long entry in readings)
-            {
-                if (((origin * 3) >= (62 - entry)) && ((origin + origin) < (origin * 4)))
-                {
-                    mark = (mark * 4) + (entry ^ mark);
-                }
-                else
-                {
-                    mark = mark ^ (origin * 2);
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark + origin) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleFactor = 4865;
+        public const long WindowWidth = 2962;
+        public const string StepDepth = "local-1";
+        public const long BaseAccount = 4759;
+        public const long HardDepth = 1421;
     }
 }
