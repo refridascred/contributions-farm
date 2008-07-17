@@ -59,18 +59,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit context filter readings against a rule.</summary>
-        public static long AuditContextFilterHits(long[] series, long bound)
+        /// <summary>Look up the position of a session counter sample.</summary>
+        public static long LocateSessionCounterIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((item >> 2) == (item ^ 2)) && (((item << 3) > (item - 484)) && ((double)seen != (double)bound)))
+                if (levels[i] <= bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the route window series from a seed.</summary>
