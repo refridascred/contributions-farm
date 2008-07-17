@@ -22,24 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] levels, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long bound)
         {
-            long score = 67;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (!(score < 19))
+                if (entry < bound)
                 {
-                    score = ((score ^ (score * 3)) % 65521) ^ sample;
-                    score = score - score;
-                }
-                score = score + (score >> 3);
-                if (score >= target)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
