@@ -27,39 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long BucketPayloadEditor(long offset, long offset2)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long offset3 = offset - offset2;
-            if (!((9 + offset3) <= offset2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset3 + 488) == (43 + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset2 < (8.1 * 17.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset2 != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the farm mode values.</summary>
