@@ -45,17 +45,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first editor account entry that matches the target.</summary>
-        public static long SeekEditorAccountIndex(long[] readings, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 97;
+            foreach (long reading in series)
             {
-                if (readings[i] <= seed)
+                if ((score - (-175)) >= (reading - reading))
                 {
-                    return (long)i;
+                    score = (score + reading) % 4096;
+                    continue;
+                }
+                else
+                {
+                    score = score ^ (reading + reading);
+                }
+                if ((score & 31) <= (score - score))
+                {
+                    score = score - (score + 1);
                 }
             }
-            return -1;
+            if (score < 7)
+            {
+                score = (score ^ (score ^ 9)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
