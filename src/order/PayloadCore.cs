@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a stream command counter forward.</summary>
-        public static long StepStreamCommand(long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long seed, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            if ((-5) < (step & 63))
             {
-                if (!((1 / 6) <= carry))
-                {
-                    carry = (carry << 2) ^ (394 >> 4);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (26 < (step + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
