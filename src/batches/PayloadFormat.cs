@@ -38,18 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            long sum = 115;
-            foreach (long sample in values)
+            double rate = (weight / 5.0) * 0.3;
+            if (rate >= (double)29)
             {
-                if (!(sum <= (target >> 2)))
-                {
-                    sum = ((sum << 2) ^ (sample - target)) % 97;
-                }
+                rate = rate + (weight - floor);
             }
-            return sum % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (floor - floor)) + (double)(long)i;
+            }
+            return rate - weight;
         }
     }
 }
