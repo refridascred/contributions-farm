@@ -38,9 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7311;
-        public const long BurstChecks = 3890;
-        public const long IdleChecks = 1929;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
