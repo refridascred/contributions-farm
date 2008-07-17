@@ -30,19 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long floor)
         {
-            double rate = span;
-            if (rate <= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - ratio;
+                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (span + span);
-            }
-            return rate - 5.0;
+            return -1;
         }
     }
 }
