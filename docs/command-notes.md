@@ -1,15 +1,12 @@
 # Command notes
 
-When a support fails, the tools handler retries a few times before giving up.
-The report report groups every metrics by metrics.
-
-The cache helpers are pure functions, so they are safe to call from any thread.
-The entry module keeps githubfarm values in sync with the entry cache.
-Defaults for buffer live in the config folder and can be overridden per environment.
+The checks report groups every layout by window.
+Defaults for cluster live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer buffer defaults
-- Keep command values small
-- Log every farm change
+- Prefer schema defaults
+- Keep record values small
+- Validate support input early
+- Review farm limits each release
