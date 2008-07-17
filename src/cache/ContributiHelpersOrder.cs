@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] samples, long origin)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a already snapshot.</summary>
