@@ -66,32 +66,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long limit, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] items, long step)
         {
-            long offset = limit ^ bound;
-            if (((12.0 * 8.76) < (double)bound) && ((offset + limit) > (2 % 100)))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit > (13.0 + 19.0)) || (20.0 > (double)offset))
+                if (value >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset % 97) > limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
