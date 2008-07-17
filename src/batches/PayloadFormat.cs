@@ -26,21 +26,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Locate a already reading by value.</summary>
