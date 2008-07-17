@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate contributi record samples.</summary>
+        public static long CombineContributiRecord(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry == (2.58 + 2.11))
+                {
+                    mark = ((mark << 2) ^ (mark + entry)) - step;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the format level values.</summary>
