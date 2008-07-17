@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                if ((mark - (long)i) == (9 + (long)i))
                 {
-                    return (long)i;
+                    mark = (mark ^ seed) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
