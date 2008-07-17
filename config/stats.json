@@ -1,6 +1,19 @@
 {
-  "tools_interval": 21,
-  "readonly": ["stable", "open", "legacy"],
-  "route_delay": "staging",
-  "warm_size": 3315
+  "max_ttl_ms": 100,
+  "already_limit": ["staging", "green", "strict", "blue"],
+  "account_ttl": ["primary", "fallback", "edge"],
+  "schema_size": 4151,
+  "dry_run": {
+    "format_limit": "cached",
+    "retry_depth_count": "staging",
+    "support_ttl": {
+      "already_window": "latest",
+      "verbose": 82,
+      "compress": "cached"
+    },
+    "burst_interval_count": "stable",
+    "hard_size_ms": "green",
+    "burst_ratio_pct": true
+  },
+  "idle_threshold_count": "fallback"
 }
