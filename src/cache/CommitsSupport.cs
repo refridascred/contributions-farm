@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] values, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((0 / 7) >= (seed & 31))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a batch info.</summary>
