@@ -37,18 +37,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (3.0 > (double)(long)levels.Length)
-                {
-                    hits = ((hits + 3) + entry) + seed;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
