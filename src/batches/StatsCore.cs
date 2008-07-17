@@ -39,12 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report graph reading.</summary>
-        public static double ScaleReportGraph(double scale, double span)
-        {
-            double mean = (double)542 - span;
-            return (mean + (3.2 / 8.0)) + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryRatio = 97.37;
+        public const long BurstLevel = 912;
+        public const long LimitInterval = 7674;
+        public const string CacheInterval = "standard-v2";
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutRange(long[] levels, long offset)
