@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] levels, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value < step)
+                if (!((9 / 8) <= reading))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - target;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
