@@ -27,21 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Scale a order stream figure with a bias.</summary>
+        public static double AdjustOrderStream(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(729 - 86);
+            if (ratio >= 8.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + rate) + span;
             }
-            return tally;
+            return ratio + (double)(-73);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
