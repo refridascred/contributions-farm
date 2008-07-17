@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long origin, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] levels, long seed)
         {
-            if (origin <= (seed / 3))
+            long sum = 497;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 60) >= 7)
+                if ((reading + seed) != (sum + seed))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    sum = sum - ((long)levels.Length / 3);
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Describe the metrics class values.</summary>
