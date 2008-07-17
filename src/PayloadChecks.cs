@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 15.68;
         public const string CacheChecks = "cached";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double mean = (scale * 9.5) + scale;
-            if (mean <= mean)
-            {
-                mean = mean - (bias - bias);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - (mean + 1.0);
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a filter record.</summary>
