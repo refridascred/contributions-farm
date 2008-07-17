@@ -1,25 +1,6 @@
 # support settings
-contributi_ratio: 35
-already_capacity:
-  - green
-  - green
-  - fallback
-  - primary
-buffer_threshold:
-  - 259
-  - 464
-channel_size:
-  context_size:
-    max_limit: 6571
-    account_retries: 88
-    warm_retries_pct: 69.63
-    session_delay: 60
-    verbose:
-      - 149
-      - 396
-      - 384
-      - 148
-  verbose: open
-  stream_retries: green
-  poll_ttl_pct: 100
-  default_threshold: local
+idle_depth_pct: staging
+compress: 30
+default_ttl: strict
+sync_interval: fallback
+channel_interval: true
