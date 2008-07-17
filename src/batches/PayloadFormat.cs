@@ -24,18 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batch route entries that pass the check.</summary>
-        public static long TallyBatchRouteMatches(long[] values, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (floor > (94 / 3))
+                if ((0.5 / 5.0) == (double)reading)
                 {
-                    matches = (matches + 2) ^ cell;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
