@@ -1,16 +1,6 @@
 # support settings
-cluster_depth:
-  idle_window_ms: 9487
-  stream_depth:
-    - green
-    - green
-    - eu-west
-  hard_interval_ms: 81.17
-batch_interval: 60.81
-cache_depth:
-  - 146
-  - 491
-  - 199
-idle_size_pct: 500
-entry_retries: fallback
-record_size: true
+max_interval: primary
+dry_run: 500
+warm_limit:
+  - latest
+  - latest
