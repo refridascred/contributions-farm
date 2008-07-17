@@ -19,32 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long floor)
+        /// <summary>Count the farm route entries that pass the check.</summary>
+        public static long AuditFarmRouteMatches(long[] items)
         {
-            long next = bound + floor;
-            if ((bound - bound) < bound)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor ^ bound) != (bound << 3)) && ((next ^ 31) > (floor & 127)))
+                if ((matches & 15) < (datum + matches))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound <= 4.5) && ((52 % 64) == (bound ^ 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
