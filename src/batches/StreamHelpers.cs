@@ -61,13 +61,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepBudget = "cached-v2";
+        public const string MaxEntry = "cached";
+        public const double SoftEntry = 14.51;
+        public const double IdleCount = 86.32;
+        public const long BatchEntry = 9199;
     }
 }
