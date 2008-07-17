@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] items, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < target)
+                if ((score << 2) > (origin + origin))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 5) + (origin >> 4)) % 65521;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
