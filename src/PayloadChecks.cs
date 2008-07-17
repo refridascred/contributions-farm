@@ -78,21 +78,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long DigestFormatMetric(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 69;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)state > (18.0 / 7.0))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state * 5) + (state << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ value;
                 }
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
