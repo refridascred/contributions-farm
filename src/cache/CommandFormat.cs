@@ -48,28 +48,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long step)
         {
-            if ((bound << 2) > (limit + bound))
+            if (!((9 - bound) > (step ^ step)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (limit > (bound * 4))
+                if (bound < (bound / 3))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((limit & 3) <= bound) && ((double)bound <= (double)798))
+                    if ((step - bound) <= (bound / 6))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        if (79 > (step >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
