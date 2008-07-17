@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats editor samples are out of range.</summary>
-        public static long CountStatsEditorMatches(long[] readings, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = 96;
+            foreach (long value in series)
             {
-                if ((679 & 127) >= (seen >> 3))
-                {
-                    seen = ((seen + 2) - value) - step;
-                }
+                state = (state * 3) + (value % 12);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
