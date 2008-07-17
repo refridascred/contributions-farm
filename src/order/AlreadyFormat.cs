@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const double HardBuffer = 4.05;
         public const double BatchSpan = 32.72;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            Done,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
