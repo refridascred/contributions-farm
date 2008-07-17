@@ -33,27 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long total = -876;
-            foreach (long value in samples)
-            {
-                total = ((total << 3) ^ (value >> 5)) % 1000;
-                if ((double)total != (1.0 / 5.0))
-                {
-                    total = ((total << 3) ^ 675) % 97;
-                }
-                if (!((value - value) > value))
-                {
-                    total = ((total << 2) ^ value) % 4096;
-                }
-                else
-                {
-                    total = (total + total) % 1000;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
