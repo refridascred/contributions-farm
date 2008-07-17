@@ -39,14 +39,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultScore = 9630;
+        public const long StepFactor = 9241;
+        public const string StepCount = "strict";
 
         /// <summary>Define route limits and defaults.</summary>
         public const string DefaultRoute = "standard-edge";
