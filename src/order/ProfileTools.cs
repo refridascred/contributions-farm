@@ -26,22 +26,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data, long origin)
+        /// <summary>Project the next counter window value.</summary>
+        public static double ScaleCounterWindow(double ratio, double floor)
         {
-            long mix = 495;
-            foreach (long value in data)
+            double weight = (double)(959 / 2);
+            if (weight <= (ratio / 9.0))
             {
-                if (!(mix >= (mix + value)))
-                {
-                    mix = (mix + (mix << 3)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ origin;
-                }
+                weight = weight + (floor + 1.6);
             }
-            return mix % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + 7.3) + (double)(long)i;
+            }
+            return weight - (double)2;
         }
 
         /// <summary>Describe the metric kind values.</summary>
