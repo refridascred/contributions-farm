@@ -38,12 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            long score = 16;
+            foreach (long cell in series)
+            {
+                score = ((score * 2) + (cell - cell)) % 65521;
+                if ((cell + score) <= (cell + cell))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
