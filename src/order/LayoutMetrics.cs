@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 4921;
+        public const long SoftTimeout = 707;
+        public const string MaxScore = "strict-v2";
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long offset)
