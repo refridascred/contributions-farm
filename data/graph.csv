@@ -1,8 +1,6 @@
-id,active,rank,score
-1,strict,802,cached
-2,375,923,cached
-3,staging,local,230
-4,698,edge,800
-5,blue,fallback,114
-6,12.57,open,97.45
-7,385,83.46,74.89
+id,active,weight,level,region
+1,fallback,13.74,green,59.26
+2,48.56,open,723,74.39
+3,stable,22.53,blue,91.51
+4,14.04,stable,920,98.31
+5,299,94.92,standard,472
