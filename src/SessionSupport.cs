@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 79.23;
-        public const long BurstDepth = 5020;
-        public const long BaseWidth = 9457;
-        public const double StepDepth = 38.02;
-        public const long BatchRoute = 4585;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
