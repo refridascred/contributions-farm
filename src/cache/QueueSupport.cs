@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples)
         {
-            double scale = weight;
-            if (scale > (double)90)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                scale = scale - offset;
+                if ((594 >> 2) == (sample * 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)5;
+            return matches;
         }
 
         /// <summary>Classify a stats commits pair into a bucket.</summary>
