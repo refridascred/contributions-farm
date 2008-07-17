@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long offset)
         {
-            Closed,
-            Paused,
-            Retry,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
