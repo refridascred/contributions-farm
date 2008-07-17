@@ -32,20 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long WeighEntryGraph(long[] levels)
-        {
-            long sum = 13;
-            foreach (long datum in levels)
-            {
-                if (datum > ((-332) % 64))
-                {
-                    sum = ((sum * 2) + datum) % 101;
-                }
-                sum = (sum - sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 8.37;
+        public const long StepTimeout = 9805;
+        public const long HardRatio = 7;
+        public const string RetryFactor = "latest-v2";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] levels, long step)
