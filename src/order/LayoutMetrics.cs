@@ -37,24 +37,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Compare every pair of payload support readings.</summary>
+        public static long MatchPayloadSupportCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.01 + 15.0) != (double)target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 3) + acc) % 1000;
-                    continue;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 2) + (33 * 3)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
     }
 }
