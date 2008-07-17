@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultScore = 9947;
-        public const long BatchWidth = 8332;
-        public const long DefaultBuffer = 8115;
-        public const long BurstInterval = 967;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (offset > 62)
+                {
+                    result = (result ^ (result - result)) % 255;
+                    result = ((result << 2) ^ offset) % 255;
+                }
+                result = (result ^ result) % 255;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Count the cluster format entries that pass the check.</summary>
         public static long MeasureClusterFormatGaps(long[] samples, long seed)
