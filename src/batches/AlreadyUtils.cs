@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] values, long bound)
         {
-            double rate2 = rate * 5.1;
-            if (rate2 < (double)(-910))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                rate2 = (rate2 - (rate2 / 4.0)) + bias;
+                if (!(reading <= (matches - bound)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
