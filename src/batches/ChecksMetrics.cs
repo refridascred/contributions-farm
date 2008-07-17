@@ -29,17 +29,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] readings, long bound)
+        /// <summary>Combine order layout values into a single score.</summary>
+        public static long ScoreOrderLayout(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 4;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                score = score - seed;
+                if (seed > (score + seed))
                 {
-                    return (long)i;
+                    score = score + ((-7) % 3);
+                }
+                if (9.0 > (double)seed)
+                {
+                    score = ((score * 4) + seed) % 65521;
+                }
+                else
+                {
+                    score = (score << 3) ^ (9 - entry);
                 }
             }
-            return -1;
+            if (score > 48)
+            {
+                score = score - seed;
+            }
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
