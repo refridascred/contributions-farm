@@ -38,19 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long bound)
         {
-            long state = 314;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (reading + reading);
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 361)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
