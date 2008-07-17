@@ -1,8 +1,6 @@
 {
-  "batch_capacity_count": false,
-  "report_interval": "blue",
-  "flush_size_count": "legacy",
-  "dry_run": 56,
-  "verbose": ["eu-west", "green", "cached"],
-  "idle_capacity_s": 49.13
+  "base_ratio_pct": "staging",
+  "verbose": 7342,
+  "command_ttl": "open",
+  "max_size": true
 }
