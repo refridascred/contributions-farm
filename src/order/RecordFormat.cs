@@ -22,11 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Rank checks already input into a small class.</summary>
+        public static long GradeChecksAlready(long floor, long origin)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long next = floor - origin;
+            if (floor >= (next * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.86 / 2.0) <= (4.5 + 16.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (floor % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor >= 83)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
