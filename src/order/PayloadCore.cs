@@ -47,18 +47,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = 237;
+            foreach (long item in samples)
             {
-                if ((cell + cell) < (offset * 5))
+                if (((item + acc) <= 0) || ((item ^ 4) >= (item ^ 8)))
                 {
-                    tally = tally + 3;
+                    acc = (acc - bound) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the entry session entries that pass the check.</summary>
