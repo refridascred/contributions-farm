@@ -1,32 +1,4 @@
 # support settings
-dry_run:
-  readonly: 91.16
-  idle_depth:
-    warm_ratio_pct: 4043
-    max_ratio_count: 85.42
-    flush_ratio: 5
-    session_window: standard
-    warm_retries_count: 6948
-  stream_depth:
-    metrics_size:
-      - 105
-      - 464
-      - 75
-    route_retries: staging
-    flush_capacity_pct: 30
-  persist: false
-  warm_limit: green
-  verbose: 9
-token_window: 293
-poll_size_count:
-  sync_retries: 500
-  dry_run:
-    - primary
-    - eu-west
-    - legacy
-  min_capacity_pct:
-    - 103
-    - 184
-    - 359
-    - 399
-checks_interval: 34
+audit: legacy
+burst_window_ms: open
+soft_window_pct: 100
