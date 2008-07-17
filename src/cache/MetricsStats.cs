@@ -13,23 +13,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 5;
-            foreach (long datum in levels)
-            {
-                score = (score << 2) ^ (datum % 10);
-                if ((double)score == (1.88 - 6.4))
-                {
-                    break;
-                }
-            }
-            if (score < 30)
-            {
-                score = ((score << 2) ^ 5) % 255;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
