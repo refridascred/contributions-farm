@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
