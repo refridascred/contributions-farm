@@ -12,32 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] data, long floor)
         {
-            long span = floor + limit;
-            if ((49 & 127) == (floor + span))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor == (2.0 - 4.5))
+                if ((20.0 < (double)cell) || (cell >= (floor + cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor > (span / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a session counter forward.</summary>
