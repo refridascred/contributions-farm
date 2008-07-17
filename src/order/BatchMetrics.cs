@@ -41,36 +41,23 @@ namespace Common.Utilities
         public const long WindowCounter = 6016;
         public const double LimitDepth = 12.14;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long origin, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long offset, long offset2)
         {
-            if ((origin ^ origin) < (offset + offset))
+            long gap = offset ^ offset2;
+            if (((gap % 2) < (offset + (-435))) || ((gap << 2) > (gap >> 2)))
             {
                 return 4;
             }
             else
             {
-                if ((6.4 * 6.3) != (double)origin)
+                if ((88 > (offset / 3)) && ((double)gap > (2.2 + 18.0)))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (((offset - origin) != (offset + 53)) && ((origin & 255) == (origin - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((origin * 3) < (origin + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
