@@ -22,18 +22,38 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Combine already queue values into a single score.</summary>
-        public static long TallyAlreadyQueue(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
         {
-            long carry = 9;
-            foreach (long item in readings)
+            if (((origin + (-4)) > (seed - origin)) || ((7 % 64) >= (origin % 100)))
             {
-                if (item <= ((long)readings.Length + item))
+                return 0;
+            }
+            else
+            {
+                if ((origin + seed) >= 54)
                 {
-                    carry = ((carry << 2) ^ carry) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin + seed) < (seed * 5)) && (seed < origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin <= (869 + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
