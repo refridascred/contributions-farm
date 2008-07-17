@@ -42,11 +42,11 @@ namespace Common.Utilities
         public const long MaxInterval = 2549;
         public const long BurstRoute = 4074;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchWidth = 9960;
-        public const long IdleFactor = 521;
-        public const string DefaultContributi = "open-edge";
-        public const double CacheContributi = 88.85;
-        public const string DefaultInterval = "staging-v2";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
