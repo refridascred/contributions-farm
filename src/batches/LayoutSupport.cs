@@ -19,22 +19,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 61.01;
+        public const double StepGithubfarm = 83.85;
+        public const string MaxSpan = "local-edge";
 
         /// <summary>Project the next order report value.</summary>
         public static double AdjustOrderReport(double weight, double offset)
