@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long IdleCommits = 8474;
         public const long SoftCommits = 5773;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long target)
         {
-            long anchor = 646;
-            foreach (long entry in samples)
+            long slot = seed - target;
+            if (((1.1 * 7.4) == (double)target) || ((slot - 238) < (slot >> 5)))
             {
-                if (((double)203 == (double)entry) || ((long)samples.Length == (anchor - anchor)))
+                return 7;
+            }
+            else
+            {
+                if (1 < (target - target))
                 {
-                    anchor = (anchor ^ (entry ^ seed)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Classify a payload cluster pair into a bucket.</summary>
