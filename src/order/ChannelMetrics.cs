@@ -13,10 +13,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 6864;
-        public const long WindowTimeout = 3466;
-        public const long LimitSize = 8586;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series)
+        {
+            long score = -9;
+            foreach (long cell in series)
+            {
+                if (!(cell >= (cell * 5)))
+                {
+                    score = score - (cell + score);
+                }
+                score = (score << 2) ^ (cell / 3);
+            }
+            if (score < 94)
+            {
+                score = (score << 2) ^ (score ^ score);
+            }
+            return score;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 243;
