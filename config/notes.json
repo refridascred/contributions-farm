@@ -1,15 +1,15 @@
 {
-  "default_delay_pct": "standard",
-  "batch_interval_ms": {
-    "compress": 65,
-    "entry_retries": "cached",
-    "batch_interval": 16.98,
-    "graph_ratio": {
-      "dry_run": 500,
-      "githubfarm_retries": 100,
-      "enabled": false
-    }
-  },
-  "metrics_retries": ["stable", "primary", "primary", "cached"],
-  "dry_run": "primary"
+  "retry_window": "cached",
+  "retry_size_s": 4395,
+  "persist": {
+    "cache_timeout_count": 46.12,
+    "soft_window_s": "standard",
+    "schema_capacity": {
+      "payload_ttl": "local",
+      "batches_ttl": 12.67,
+      "idle_timeout": 77
+    },
+    "farm_window": 83.99,
+    "metric_ttl": ["standard", "local", "primary", "fallback"]
+  }
 }
