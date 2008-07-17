@@ -40,32 +40,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long origin, long origin2)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long edge = origin - origin2;
-            if (((-174) >> 5) < (origin * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 * 4) > 91)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 ^ origin) < (93 ^ edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
