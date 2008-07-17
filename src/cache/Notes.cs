@@ -25,11 +25,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowWidth = 7268;
-        public const long BurstRatio = 2704;
-        public const string WindowRatio = "alpha";
-        public const long HardFactor = 8930;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] samples)
