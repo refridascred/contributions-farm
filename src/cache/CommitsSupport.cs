@@ -46,23 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = 37;
-            foreach (long sample in samples)
-            {
-                mix = (mix ^ (124 ^ mix)) + floor;
-                if (1 <= (sample ^ mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            Dropped,
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
