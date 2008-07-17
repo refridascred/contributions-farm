@@ -40,18 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window commits samples are out of range.</summary>
-        public static long TallyWindowCommitsOutliers(long[] data, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((matches % 10) <= 9) && ((matches ^ 26) >= (matches - 9)))
-                {
-                    matches = ((matches + 1) - value) + seed;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
