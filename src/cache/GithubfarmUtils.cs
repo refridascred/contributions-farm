@@ -37,19 +37,15 @@ namespace Common.Utilities
             return load + (load + 2.38);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Audit already cluster readings against a rule.</summary>
+        public static long CountAlreadyClusterGaps(long[] samples)
         {
             long count = 0;
             foreach (long reading in samples)
             {
-                if ((reading << 3) == (count + 32))
+                if (!(((long)samples.Length + count) < (reading & 255)))
                 {
                     count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
