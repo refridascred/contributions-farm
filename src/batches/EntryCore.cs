@@ -40,18 +40,30 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 0;
+            foreach (long reading in levels)
             {
-                if ((seen < (item << 2)) && (((35 * 5) > (target / 7)) && ((8.4 - 9.3) == (double)seen)))
+                if ((18.0 + 15.0) != (double)reading)
                 {
-                    seen = seen + 3;
+                    mark = (mark * 3) + (mark + reading);
+                }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 97;
+                }
+                if (((-515) >> 1) == (48 + mark))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark > 430)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session entry.</summary>
