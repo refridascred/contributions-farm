@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
