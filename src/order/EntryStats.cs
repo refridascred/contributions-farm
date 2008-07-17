@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardBudget = 3826;
-        public const long WindowOrder = 3498;
-        public const string CacheOrder = "standard-edge";
-        public const string RetryFactor = "staging-v2";
-        public const long MinWidth = 2767;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] data)
