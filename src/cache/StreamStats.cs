@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 2) ^ (state / 2);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            double load = (double)(9 - 2);
+            return ((load - 4.3) + scale) + floor;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
