@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Validate buffer editor readings against a bound.</summary>
+        public static bool ValidateBufferEditorBounds(long[] samples, long limit)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio2)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                ratio2 = (ratio2 + 8.16) - floor;
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + 2.9;
+            return ready;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
