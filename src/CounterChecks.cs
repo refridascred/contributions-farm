@@ -32,17 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] levels, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (mark + floor)) % 4096;
-                mark = mark ^ (long)i;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
