@@ -39,19 +39,17 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Find the first notes buffer entry that matches the target.</summary>
+        public static long SeekNotesBufferIndex(long[] readings, long step)
         {
-            double drift = (3.0 * 17.0) - (rate - rate);
-            if (drift < (rate + drift))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - drift) + bias;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift + 19.0)) - (double)(long)i;
-            }
-            return drift - 3.39;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
