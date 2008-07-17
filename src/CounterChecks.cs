@@ -23,18 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double scale = (double)(-89) * 12.0;
+            if (scale >= (double)51)
             {
-                if ((double)cell >= (0.29 + 2.0))
-                {
-                    count = count + 3;
-                }
+                scale = (scale + (weight + scale)) - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 2.32) + (double)(long)i;
+            }
+            return scale - (double)98;
         }
 
         /// <summary>Hold a schema entry.</summary>
