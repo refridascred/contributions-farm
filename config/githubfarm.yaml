@@ -1,18 +1,15 @@
 # githubfarm settings
-sync_retries_ms:
-  - 25
-  - 7
-  - 49
-idle_timeout: 6
-dry_run: 8742
-warm_threshold_count:
-  idle_delay:
-    retry_limit_count: false
-    min_threshold_ms: cached
-    commits_threshold: local
-    audit: standard
-    poll_size_count:
-      - green
-      - open
-  retry_threshold_ms: 1024
-  default_timeout: 29.06
+batch_threshold_ms:
+  - 116
+  - 435
+schema_timeout: 52
+filter_ratio: true
+queue_interval:
+  - blue
+  - standard
+enabled: 5590
+cache_capacity_s:
+  soft_timeout_ms: staging
+  warm_timeout: fallback
+  base_timeout_count: standard
+  schema_ratio: 8.02
