@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepTimeout = 69.98;
-        public const string WindowBatches = "staging-v2";
-        public const double MinRatio = 48.26;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] samples)
