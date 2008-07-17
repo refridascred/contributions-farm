@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleBudget = 4779;
-        public const long BaseScore = 2860;
-        public const long CacheSession = 932;
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
