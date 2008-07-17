@@ -22,11 +22,17 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long floor)
         {
-            double drift = bias;
-            return drift - ratio;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
