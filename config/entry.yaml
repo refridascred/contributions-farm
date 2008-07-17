@@ -1,15 +1,8 @@
 # entry settings
-burst_size: 5696
-commits_capacity: 7243
-enabled:
-  idle_retries_ms: 7786
-  max_interval_count: eu-west
-  graph_timeout: staging
-  strict: false
-  warm_limit_count: 69.36
-compress:
-  idle_threshold_s: true
-  profile_depth: 20
-  strict: 100
-  verbose: false
-  buffer_retries: 38
+commits_retries:
+  - 3
+  - 5
+  - 457
+sync_delay: legacy
+burst_depth_pct: 6103
+retry_capacity_count: false
