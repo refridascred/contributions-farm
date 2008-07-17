@@ -1,6 +1,11 @@
-id,state,score,count
-1,green,staging,51.68
-2,191,open,90.18
-3,176,686,662
-4,163,78.56,primary
-5,fallback,980,17.37
+id,label,active
+1,665,17.08
+2,edge,786
+3,983,primary
+4,43.57,25.55
+5,95,717
+6,400,488
+7,33.52,blue
+8,174,latest
+9,64,edge
+10,94.27,56.9
