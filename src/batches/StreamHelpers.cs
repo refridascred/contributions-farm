@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long LimitChannel = 3738;
         public const double BatchChannel = 46.6;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data)
         {
-            Retry,
-            Dropped,
-            Locked,
-            New,
-            Stale,
+            long sum = 202;
+            foreach (long cell in data)
+            {
+                if (!(3.68 < (double)cell))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                if ((cell * 2) > (sum + cell))
+                {
+                    sum = (sum - (cell - sum)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
