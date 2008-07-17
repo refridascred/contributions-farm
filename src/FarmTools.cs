@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long item in data)
+            long total = 7;
+            foreach (long entry in values)
             {
-                if (item < offset)
+                total = ((total + total) % 1000) + entry;
+                if ((bound - total) > bound)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
