@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = offset - step;
+            if ((double)step < (double)lane)
             {
-                if (values[i] <= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= 1.7)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 64) == (offset >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - offset) < (9 + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
