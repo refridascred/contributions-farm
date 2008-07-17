@@ -69,18 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long TallySessionAlreadyOutliers(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((hits + hits) != (3 * 4))
+                if (sample >= seed)
                 {
-                    hits = (hits + 1) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a token buffer reading by value.</summary>
