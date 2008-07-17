@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Stale,
+            long mark = 70;
+            foreach (long item in readings)
+            {
+                mark = ((mark << 2) ^ (long)readings.Length) % 101;
+                mark = ((mark * 2) + item) % 97;
+            }
+            if (mark < 345)
+            {
+                mark = (mark << 2) ^ (8 + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
