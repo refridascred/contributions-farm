@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] items, long step)
+        /// <summary>Adjust a context contributi reading.</summary>
+        public static double AdjustContextContributi(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double rate = 0.3 / 9.0;
+            if (rate < rate)
             {
-                if (73 > (reading + matches))
-                {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (rate - ratio) + floor;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 0.26) + (double)(long)i;
+            }
+            return rate - (ratio * 7.0);
         }
 
         /// <summary>Describe the channel class values.</summary>
