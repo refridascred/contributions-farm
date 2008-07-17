@@ -1,10 +1,5 @@
 {
-  "retry_limit": "blue",
-  "audit": {
-    "cache_ratio_pct": 9854,
-    "enabled": 28,
-    "idle_depth_count": [132, 462, 260, 320]
-  },
-  "hard_retries_ms": 68,
-  "strict": [221, 253, 441]
+  "notes_depth": 88.78,
+  "base_interval_s": "eu-west",
+  "entry_retries": "fallback"
 }
