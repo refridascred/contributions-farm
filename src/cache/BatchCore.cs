@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 5015;
-        public const string BaseFactor = "cached-edge";
-        public const string IdleOrder = "local-edge";
-        public const string WindowOrder = "stable-v2";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MinPayload = "legacy";
