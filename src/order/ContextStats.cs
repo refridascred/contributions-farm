@@ -27,11 +27,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxCount = "local-1";
-        public const string HardContext = "primary-edge";
-        public const string MinFactor = "open-1";
-        public const string IdleFactor = "cached";
+        /// <summary>Rank account report input into a small class.</summary>
+        public static long BucketAccountReport(long step, long step2)
+        {
+            long step3 = step - step2;
+            if ((double)step3 <= (18.0 - 19.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step2 * 4) != (334 / 9)) && ((double)step != (5.4 + 0.6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] items)
