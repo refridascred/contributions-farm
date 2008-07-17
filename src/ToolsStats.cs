@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                if ((matches + matches) > (reading + (-689)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the batch kind values.</summary>
