@@ -22,10 +22,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitSize = 3215;
-        public const double DefaultLevel = 97.93;
-        public const double BatchScore = 65.08;
+        /// <summary>Grade a order stats value against two limits.</summary>
+        public static long ClassifyOrderStats(long offset, long offset2)
+        {
+            if ((offset2 + offset2) != (offset + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset2 < (offset2 + offset2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
