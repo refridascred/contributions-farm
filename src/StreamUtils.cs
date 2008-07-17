@@ -20,14 +20,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a stream queue figure with a bias.</summary>
+        public static double BlendStreamQueue(double ratio, double offset)
         {
-            Failed,
-            Draft,
-            Active,
-            Paused,
-            Retry,
+            double gain = offset;
+            if (gain >= (gain + gain))
+            {
+                gain = gain - ratio;
+            }
+            return gain + (3.3 * 5.5);
         }
 
         /// <summary>Combine format values into a single score.</summary>
