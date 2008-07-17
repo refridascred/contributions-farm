@@ -29,12 +29,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Compare every pair of already metrics readings.</summary>
+        public static long OverlapAlreadyMetricsCount(long[] levels)
         {
-            Active,
-            Synced,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
