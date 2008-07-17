@@ -34,12 +34,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 19.92;
-        public const double MaxTimeout = 46.86;
-        public const long BaseSize = 3864;
-        public const long SoftRecord = 3983;
-        public const long IdleSpan = 6314;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double gain, double floor)
+        {
+            double rate = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)(long)i) - gain;
+            }
+            return rate + 1.54;
+        }
 
         /// <summary>Combine buffer entry values into a single score.</summary>
         public static long ScoreBufferEntry(long[] samples, long step)
