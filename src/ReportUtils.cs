@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long floor)
         {
-            if ((offset / 7) <= offset)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 4) < (offset + offset))
+                if (reading < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 9) != (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next buffer layout value from a seed.</summary>
