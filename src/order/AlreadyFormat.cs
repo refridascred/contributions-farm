@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next channel schema value from a seed.</summary>
+        public static long RollChannelSchema(long target)
         {
-            New,
-            Synced,
-            Retry,
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = sum ^ target;
+                sum = sum ^ (target + 12);
+                if (sum >= target)
+                {
+                    sum = ((sum * 5) + (sum & 1)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
