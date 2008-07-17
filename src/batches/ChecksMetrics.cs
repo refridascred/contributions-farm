@@ -34,24 +34,23 @@ namespace Common.Utilities
             return rate + 1.54;
         }
 
-        /// <summary>Combine buffer entry values into a single score.</summary>
-        public static long ScoreBufferEntry(long[] samples, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double offset)
         {
-            long score = 483;
-            foreach (long sample in samples)
+            double gain = 8.1;
+            if (gain > (double)92)
             {
-                score = (score + (296 - sample)) % 255;
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score ^ (step << 2)) % 65521) + (long)i;
-                }
-                score = (score - (score - step)) % 65521;
+                gain = gain + offset;
             }
-            if (score > 52)
+            else
             {
-                score = ((score << 3) ^ (608 / 8)) % 255;
+                gain = gain - weight;
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (double)546;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
