@@ -34,14 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] series, long target)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Stale,
-            New,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a command reading by value.</summary>
