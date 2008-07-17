@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 9874;
+        public const double CacheMetric = 62.07;
+        public const long LimitLevel = 2077;
+        public const long RetryRatio = 5290;
+        public const string DefaultWidth = "fallback-v2";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] values, long target)
