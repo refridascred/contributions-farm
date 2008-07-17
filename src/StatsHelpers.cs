@@ -19,20 +19,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long ScoreEntryProfile(long[] values, long floor)
+        /// <summary>Accumulate metric already samples.</summary>
+        public static long TallyMetricAlready(long[] readings)
         {
-            long carry = 1;
-            foreach (long sample in values)
+            long sum = 59;
+            foreach (long reading in readings)
             {
-                if (!(((-87) - carry) <= (floor * 5)))
-                {
-                    carry = carry ^ (sample + floor);
-                }
-                carry = (carry << 3) ^ floor;
-                carry = (carry + (carry - carry)) % 255;
+                sum = (((sum * 4) + sum) % 65521) ^ reading;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
