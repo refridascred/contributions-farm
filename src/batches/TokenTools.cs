@@ -13,25 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings)
         {
-            long slot = seed - target;
-            if (((1.1 * 7.4) == (double)target) || ((slot - 238) < (slot >> 5)))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (1 < (target - target))
+                if ((double)count != (5.0 - 1.2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
