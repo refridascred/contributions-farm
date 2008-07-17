@@ -28,15 +28,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Classify a schema payload pair into a bucket.</summary>
+        public static long BucketSchemaPayload(long floor, long step)
         {
-            double scale = (double)(-9) * 3.63;
-            for (int i = 0; i < 8; i++)
+            if (((double)step == (8.8 / 2.0)) || ((3.5 * 20.0) >= (double)step))
             {
-                scale = ((scale + ratio) + (double)(long)i) - floor;
+                return 0;
             }
-            return scale - (4.3 * 8.0);
+            else
+            {
+                if ((double)step == (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
