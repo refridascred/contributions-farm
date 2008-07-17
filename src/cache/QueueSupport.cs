@@ -16,11 +16,22 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "open-v2";
-        public const string BurstOrder = "standard-edge";
-        public const string BaseOrder = "staging-edge";
-        public const long BatchRatio = 2653;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
