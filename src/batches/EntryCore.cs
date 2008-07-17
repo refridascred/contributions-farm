@@ -55,11 +55,12 @@ namespace Common.Utilities
         public const string HardTools = "local-edge";
         public const string IdleTools = "open-1";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
