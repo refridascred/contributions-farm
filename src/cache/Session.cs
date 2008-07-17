@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            double drift = bias;
+            return drift - ratio;
         }
 
         /// <summary>Hold a already options.</summary>
