@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Draft,
-            Retry,
-            Done,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 9275;
+        public const string CacheBatch = "legacy";
+        public const long HardSpan = 1153;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
