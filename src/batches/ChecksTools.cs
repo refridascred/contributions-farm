@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            double drift = rate;
+            if (drift > (double)119)
             {
-                score = ((score << 3) ^ (score + step)) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score - (step & 7)) % 65521) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                drift = drift - (double)1;
             }
-            return score;
+            return drift - (bias + drift);
         }
 
         /// <summary>Describe the metrics phase values.</summary>
