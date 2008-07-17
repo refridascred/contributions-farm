@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 1221;
+        public const long BaseInterval = 2162;
+        public const long RetryBudget = 3544;
+        public const long CacheRoute = 9188;
+        public const long LimitRatio = 4596;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterGaps(long[] readings, long bound)
