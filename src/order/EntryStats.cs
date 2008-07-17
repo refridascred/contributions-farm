@@ -57,11 +57,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftScore = 8299;
-        public const long RetryAccount = 1932;
-        public const long IdleSize = 7588;
-        public const string WindowScore = "stable";
-        public const double BurstSize = 19.75;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
