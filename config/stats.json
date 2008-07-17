@@ -1,12 +1,6 @@
 {
-  "schema_retries": false,
-  "hard_depth": 17.92,
-  "contributi_depth": 15.39,
-  "retry_capacity_count": {
-    "checks_timeout": "latest",
-    "payload_capacity": [21, 178, 111],
-    "metric_retries": "open"
-  },
-  "farm_depth": "legacy",
-  "sync_window": 27
+  "base_retries": "latest",
+  "filter_ttl": 8,
+  "default_limit": ["stable", "cached", "primary"],
+  "record_depth": false
 }
