@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count checks already pairs that satisfy a relation.</summary>
-        public static long MatchChecksAlreadyCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.16 * 8.76) < (double)seen)
                 {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
