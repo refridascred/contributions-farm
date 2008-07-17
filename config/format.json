@@ -1,6 +1,20 @@
 {
-  "soft_delay": false,
-  "retry_depth_pct": 1794,
-  "payload_depth": 25,
-  "hard_ratio": 82.22
+  "filter_size": 100,
+  "sync_timeout": {
+    "compress": "cached",
+    "persist": false,
+    "hard_capacity": 6414,
+    "dry_run": {
+      "enabled": [133, 419, 209],
+      "verbose": [21, 285, 449],
+      "filter_timeout": true,
+      "persist": 35.3,
+      "min_retries": "blue",
+      "min_interval": true
+    },
+    "flush_retries_count": "stable"
+  },
+  "cache_limit_s": 7302,
+  "order_depth": false,
+  "payload_threshold": [367, 130]
 }
