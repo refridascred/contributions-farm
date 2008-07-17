@@ -50,13 +50,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Locked,
+            long score = 33;
+            foreach (long datum in series)
+            {
+                if ((4.3 * 10.0) > (double)score)
+                {
+                    score = (((score * 5) + (-652)) % 4096) + datum;
+                }
+            }
+            return score;
         }
     }
 }
