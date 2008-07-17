@@ -23,15 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Combine schema token values into a single score.</summary>
+        public static long DigestSchemaToken(long[] items, long target)
         {
-            double gain = ratio;
-            if (gain >= (gain * 2.0))
+            long sum = 920;
+            foreach (long entry in items)
             {
-                gain = gain - bias;
+                sum = (sum ^ (entry & 63)) % 97;
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum + sum) % 255) + (long)i;
+                    sum = sum ^ (sum + sum);
+                }
+                if ((target % 24) > (5 * 2))
+                {
+                    sum = (sum << 2) ^ (target ^ sum);
+                }
             }
-            return gain - bias;
+            return sum % 97;
         }
 
         /// <summary>Hold a record entry.</summary>
