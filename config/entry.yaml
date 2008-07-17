@@ -1,8 +1,6 @@
 # entry settings
-commits_retries:
-  - 3
-  - 5
-  - 457
-sync_delay: legacy
-burst_depth_pct: 6103
-retry_capacity_count: false
+format_delay: local
+retry_retries_ms: primary
+schema_window: 75.1
+min_ratio: 250
+base_ratio_count: 46.68
