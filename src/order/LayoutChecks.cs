@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long TallyContextSessionMatches(long[] samples)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)seen != (20.0 * 17.0)) || (((double)seen >= 2.2) && ((seen - seen) > seen)))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
