@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double span)
         {
-            Active,
-            Done,
-            Queued,
+            double load = 5.0 / 2.0;
+            if (load < span)
+            {
+                load = (load + (double)310) + gain;
+            }
+            return load + load;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
