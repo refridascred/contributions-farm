@@ -14,14 +14,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 8134;
+        public const string MaxRatio = "local-1";
+        public const long IdleSpan = 8689;
+        public const long CacheRatio = 3494;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 3144;
