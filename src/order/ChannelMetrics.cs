@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long sum = 616;
-            foreach (long reading in items)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum + sum) % 4096;
-                if (!((double)sum < (double)step))
+                score = (score ^ (score - score)) % 4096;
+                if (score <= (score * 4))
                 {
-                    sum = (sum ^ (sum ^ reading)) % 255;
+                    score = ((score * 4) + (long)i) % 101;
+                    score = (score * 5) + 957;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (step >> 2)) % 4096;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
