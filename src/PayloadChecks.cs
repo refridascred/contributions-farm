@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 75.51;
+        public const string WindowScore = "fallback-v2";
+        public const string RetryInterval = "staging-edge";
+        public const double DefaultTimeout = 15.68;
+        public const string CacheChecks = "cached";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double scale, double bias)
