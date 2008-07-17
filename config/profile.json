@@ -1,6 +1,14 @@
 {
-  "profile_limit": true,
-  "soft_timeout": "fallback",
-  "counter_timeout": false,
-  "max_ratio": true
+  "warm_ratio_s": {
+    "max_window_ms": "blue",
+    "default_delay_count": {
+      "max_ttl_pct": "cached",
+      "soft_threshold": false,
+      "buffer_window": [209, 215],
+      "tools_depth": 5786
+    },
+    "soft_delay": "open"
+  },
+  "max_timeout": false,
+  "retry_size": true
 }
