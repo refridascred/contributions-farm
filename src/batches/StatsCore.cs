@@ -48,19 +48,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi notes measurements.</summary>
-        public static double SmoothContributiNotes(double gain, double floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double drift = floor;
-            if (drift < (double)51)
-            {
-                drift = drift - floor;
-            }
-            else
-            {
-                drift = drift - (gain + gain);
-            }
-            return drift - drift;
+            Locked,
+            Stale,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Blend two batch measurements.</summary>
