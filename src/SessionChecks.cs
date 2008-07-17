@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a order cluster sample.</summary>
-        public static long LookupOrderClusterIndex(long[] items, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 45;
+            foreach (long sample in data)
             {
-                if (items[i] >= offset)
+                if ((acc + sample) == (sample * 3))
                 {
-                    return (long)i;
+                    acc = (acc * 3) + acc;
                 }
             }
-            return -1;
+            if (acc > 26)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Blend two window measurements.</summary>
