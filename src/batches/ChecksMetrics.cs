@@ -37,19 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next format already value from a seed.</summary>
-        public static long RollFormatAlready(long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] series, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!((sum / 9) <= sum))
+                if ((seed >> 2) < sample)
                 {
-                    sum = (sum - (sum - step)) % 101;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
