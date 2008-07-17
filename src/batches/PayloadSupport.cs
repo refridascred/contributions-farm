@@ -43,19 +43,23 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] series, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long anchor = 990;
+            foreach (long reading in readings)
             {
-                if (item != bound)
+                anchor = ((anchor << 2) ^ (reading ^ 32)) % 4096;
+                if ((double)bound < (6.0 - 2.7))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ (reading - 54)) % 4096;
                 }
             }
-            return ready;
+            if (anchor > 2)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
