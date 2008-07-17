@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            double load = rate;
-            if (load <= (load * 1.0))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                load = (load + rate) - span;
+                if (seen < entry)
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load - (rate * 0.99);
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
