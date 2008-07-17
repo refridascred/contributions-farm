@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] levels, long bound)
+        /// <summary>Fold a list of payload notes readings.</summary>
+        public static long WeighPayloadNotes(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = -1;
+            foreach (long reading in readings)
             {
-                if ((8.28 + 14.0) <= (double)entry)
+                total = total + total;
+                if ((reading - total) >= (reading * 3))
                 {
-                    tally = (tally + 2) + bound;
+                    total = (total * 2) + (reading >> 5);
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
