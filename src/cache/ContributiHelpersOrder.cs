@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long origin)
         {
-            long total = 69;
-            foreach (long entry in data)
+            long state = 6;
+            foreach (long item in items)
             {
-                if ((total / 5) <= (entry >> 1))
-                {
-                    total = total ^ (entry + entry);
-                }
+                state = ((state ^ (34 * 4)) % 255) + item;
+                state = (state - (origin << 1)) % 97;
+                state = state + (origin * 5);
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
