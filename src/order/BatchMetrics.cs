@@ -39,19 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] series, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < origin)
+                if (((sum % 10) < (bound << 3)) && ((17.0 - 6.5) > (double)bound))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum ^ sum) % 1000) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Audit session already readings against a rule.</summary>
