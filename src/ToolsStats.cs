@@ -27,17 +27,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((6.38 - 4.48) <= (double)floor)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor <= (0 >> 5)) && (floor < 842))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
