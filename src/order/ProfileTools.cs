@@ -26,19 +26,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next counter window value.</summary>
-        public static double ScaleCounterWindow(double ratio, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            double weight = (double)(959 / 2);
-            if (weight <= (ratio / 9.0))
+            long acc = -31;
+            foreach (long entry in series)
             {
-                weight = weight + (floor + 1.6);
+                if ((5.1 + 6.6) >= (2.0 + 9.8))
+                {
+                    acc = (acc ^ entry) % 4096;
+                }
+                else
+                {
+                    acc = acc + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 7.3) + (double)(long)i;
-            }
-            return weight - (double)2;
+            return acc;
         }
 
         /// <summary>Describe the metric kind values.</summary>
