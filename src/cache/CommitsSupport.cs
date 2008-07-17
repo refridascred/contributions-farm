@@ -26,24 +26,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples, long bound)
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool CheckSchemaBatchesRange(long[] items, long step)
         {
-            long mix = 803;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((bound / 2) <= 2)
+                if (value != step)
                 {
-                    mix = ((mix << 3) ^ value) % 65521;
+                    found = false;
                     break;
                 }
-                mix = (mix + mix) % 97;
             }
-            if (mix < 191)
-            {
-                mix = (mix - (579 * 3)) % 65521;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
