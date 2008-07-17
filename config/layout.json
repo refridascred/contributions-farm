@@ -1,10 +1,15 @@
 {
-  "soft_size_s": "edge",
-  "token_limit": "strict",
-  "sync_limit_pct": {
-    "base_window_pct": [361, 457],
-    "default_delay": "latest",
-    "sync_depth_pct": 32,
-    "profile_size": [309, 438, 200, 3]
-  }
+  "batch_threshold_s": true,
+  "cache_threshold_s": "open",
+  "idle_ratio_ms": 30,
+  "cache_size_pct": false,
+  "base_depth_s": {
+    "burst_size_count": ["local", "blue"],
+    "compress": "latest",
+    "batch_ratio_ms": 42.16,
+    "idle_timeout_ms": false,
+    "enabled": 977,
+    "hard_ttl_s": false
+  },
+  "soft_capacity_ms": [276, 373]
 }
