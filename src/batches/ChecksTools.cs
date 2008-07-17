@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long step, long target)
         {
-            double drift = rate;
-            if (drift > (double)119)
+            long cur = step ^ target;
+            if (cur <= (target * 5))
             {
-                drift = drift - (double)1;
+                return 5;
             }
-            return drift - (bias + drift);
+            else
+            {
+                if ((2.4 + 0.2) == (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 127) == (589 % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
