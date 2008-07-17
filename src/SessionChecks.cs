@@ -23,26 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long limit, long limit2)
-        {
-            long diff = limit ^ limit2;
-            if ((89 * 2) > (diff - 84))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 31) < (diff + limit2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 1318;
+        public const long WindowFactor = 7564;
+        public const double SoftTimeout = 4.48;
+        public const string CacheScore = "cached-v2";
+        public const long HardCount = 1379;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long seed)
