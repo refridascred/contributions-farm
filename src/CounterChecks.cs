@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - 4) >= (datum / 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 42.3;
+        public const double MaxRatio = 36.01;
+        public const long HardChannel = 2177;
+        public const string StepSpan = "cached-1";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] levels, long bound)
