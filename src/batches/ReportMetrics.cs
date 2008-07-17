@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    score = ((score - (long)i) % 65521) + (long)i3;
-                    score = score - (target + target);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Paused,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
