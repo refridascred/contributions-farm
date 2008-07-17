@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (datum < limit)
+                if ((floor / 9) == (96 * 4))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
