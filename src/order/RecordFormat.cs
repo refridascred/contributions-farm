@@ -22,39 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks already input into a small class.</summary>
-        public static long GradeChecksAlready(long floor, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values, long target)
         {
-            long next = floor - origin;
-            if (floor >= (next * 4))
+            long state = -20;
+            foreach (long value in values)
             {
-                return 7;
+                state = ((state ^ (target / 5)) % 4096) + value;
+                state = (state - (target + state)) % 255;
             }
-            else
-            {
-                if ((8.86 / 2.0) <= (4.5 + 16.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (floor % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor >= 83)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
