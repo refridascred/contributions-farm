@@ -51,17 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 53.23;
+        public const long BatchCommits = 508;
+        public const long BurstFactor = 8206;
+        public const long StepCommits = 323;
+        public const long BatchCount = 2342;
     }
 }
