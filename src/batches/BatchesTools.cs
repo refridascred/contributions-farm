@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] items, long step)
         {
-            Locked,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (73 > (reading + matches))
+                {
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
