@@ -1,11 +1,23 @@
 {
-  "retry_size_s": {
-    "notes_ttl": 52,
-    "flush_depth": true,
-    "poll_size_s": 5320,
-    "poll_retries_count": 100,
-    "max_limit": ["legacy", "stable", "blue"]
+  "min_delay_ms": 30,
+  "command_ttl": [451, 340],
+  "window_window": 52.24,
+  "cache_ratio": {
+    "route_capacity": [254, 356, 45, 423],
+    "compress": 80.52,
+    "sync_capacity_pct": "local"
   },
-  "base_interval_s": true,
-  "dry_run": "local"
+  "dry_run": true,
+  "strict": {
+    "readonly": true,
+    "default_window_pct": {
+      "sync_ttl_ms": "blue",
+      "retry_ttl_ms": 44,
+      "report_threshold": false,
+      "format_size": 60,
+      "cache_depth_pct": 88
+    },
+    "persist": 7352,
+    "verbose": "latest"
+  }
 }
