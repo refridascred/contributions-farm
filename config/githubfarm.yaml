@@ -1,22 +1,4 @@
 # githubfarm settings
-min_retries_count:
-  stream_timeout:
-    idle_capacity_pct: 13.85
-    route_limit: standard
-    strict: primary
-    max_timeout_ms: staging
-    max_delay_count:
-      - fallback
-      - eu-west
-    cache_depth: 29.95
-  idle_ratio_ms:
-    - local
-    - cached
-    - edge
-    - local
-  support_capacity: eu-west
-  token_interval: edge
-  min_capacity_s: edge
-  hard_window: 100
-base_interval_s: eu-west
-sync_ttl_count: primary
+burst_retries_count: latest
+min_timeout: 30
+hard_limit_pct: legacy
