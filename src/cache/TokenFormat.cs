@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = 6.2 / 6.0;
+            if (gain <= (double)8)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (double)396) - offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)628) - (double)(long)i;
+            }
+            return gain + (weight - gain);
         }
     }
 }
