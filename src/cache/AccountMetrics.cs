@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            if (((-1) << 2) < (86 - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((839 / 9) < floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the support class values.</summary>
