@@ -35,24 +35,13 @@ namespace Common.Utilities
             return mean - (0.2 * 3.0);
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((step + score) >= (long)i)
-                {
-                    score = ((score * 3) + (score >> 5)) % 255;
-                }
-                if ((double)step >= 8.97)
-                {
-                    score = score + (step >> 5);
-                    score = (score + ((long)i << 1)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank context filter input into a small class.</summary>
