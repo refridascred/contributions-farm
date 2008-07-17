@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] levels, long step)
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long CombineWindowEditor(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = 529;
+            foreach (long datum in levels)
             {
-                if ((double)step <= 8.9)
+                if ((carry / 2) <= datum)
                 {
-                    hits = (hits + 1) + cell;
+                    carry = carry - (datum / 4);
+                    carry = (carry - (8 + carry)) % 1000;
+                }
+                if (!((492 - 922) != (carry - carry)))
+                {
+                    carry = carry ^ (4 << 2);
+                }
+                else
+                {
+                    carry = (carry ^ (carry % 97)) % 1000;
                 }
             }
-            return hits;
+            if (carry > 300)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
