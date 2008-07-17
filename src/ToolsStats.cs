@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] samples)
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long LocateSessionSupportIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches + matches) > (reading + (-689)))
+                if (levels[i] > step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
