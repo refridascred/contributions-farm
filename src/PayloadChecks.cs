@@ -86,18 +86,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long CountSchemaQueueHits(long[] items, long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample <= 8.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) - seed;
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
