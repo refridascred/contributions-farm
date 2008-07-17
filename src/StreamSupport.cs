@@ -31,19 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] series, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (entry > floor)
+                if ((item + seen) < (884 ^ item))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
