@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-v2";
         public const double WindowSchema = 10.5;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long total = 13;
+            foreach (long item in data)
+            {
+                total = (total ^ ((long)data.Length + item)) + bound;
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
