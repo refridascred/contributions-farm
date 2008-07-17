@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long origin)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell < (2.0 * 3.01))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
