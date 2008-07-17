@@ -29,19 +29,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two route tools measurements.</summary>
-        public static double SmoothRouteTools(double weight, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] readings, long bound)
         {
-            double scale = floor;
-            if (scale < scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + weight;
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (weight / 7.0)) - (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
