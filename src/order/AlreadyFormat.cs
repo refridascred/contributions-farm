@@ -58,38 +58,17 @@ namespace Common.Utilities
         public const long RetryToken = 3754;
         public const double StepTimeout = 3.35;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long step, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long seed)
         {
-            if (412 < (step % 12))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 / 6.0) < (double)step)
+                if (readings[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.58 + 1.6) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 <= (step & 1)) && ((step >> 5) >= 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
