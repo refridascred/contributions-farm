@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long TallyClusterStream(long[] samples, long target)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long acc = 557;
-            foreach (long datum in samples)
-            {
-                acc = ((acc + (acc / 4)) ^ datum) - target;
-            }
-            if (acc < 420)
-            {
-                acc = acc ^ (acc ^ acc);
-            }
-            return acc % 65521;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a schema counter forward.</summary>
