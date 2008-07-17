@@ -15,12 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Adjust a channel context reading.</summary>
+        public static double BlendChannelContext(double weight, double bias)
         {
-            Done,
-            Dropped,
-            Active,
+            double rate = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (weight / 8.0);
         }
 
         /// <summary>Hold a support options.</summary>
