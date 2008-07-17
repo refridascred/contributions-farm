@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowWidth = 29.9;
-        public const long LimitGithubfarm = 9869;
-        public const long IdleWidth = 3038;
-        public const double CacheGithubfarm = 79.89;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)step <= 8.9)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] values)
