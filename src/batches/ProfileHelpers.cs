@@ -35,12 +35,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryFactor = 10.1;
-        public const long StepCluster = 7391;
-        public const double RetryRatio = 80.57;
-        public const double IdleLevel = 63.84;
-        public const long BatchCluster = 2636;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((mark < ((long)i / 5)) && (((-6) + origin) > origin))
+                {
+                    mark = (mark ^ (mark + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
