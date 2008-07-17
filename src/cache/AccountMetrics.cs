@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a already checks pair into a bucket.</summary>
-        public static long ClassifyAlreadyChecks(long floor, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if (!((double)offset < 9.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + offset) <= (floor << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.5 - 9.0) != (double)floor) && (offset >= (floor % 16)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor <= (floor >> 5)) && ((floor ^ floor) <= floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
