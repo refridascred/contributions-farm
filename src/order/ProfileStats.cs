@@ -48,11 +48,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Scale a cache filter figure with a bias.</summary>
+        public static double BlendCacheFilter(double bias, double bias2)
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            double rate = bias2;
+            if (rate <= 2.76)
+            {
+                rate = (rate - (double)343) + bias;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + bias2;
         }
     }
 }
