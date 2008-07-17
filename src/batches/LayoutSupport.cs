@@ -19,20 +19,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] series, long origin)
-        {
-            long mark = 2;
-            foreach (long item in series)
-            {
-                mark = (mark - (item - origin)) % 65521;
-                if (((mark << 2) >= (mark - mark)) && ((mark - mark) > (63 - (-923))))
-                {
-                    mark = (mark - (909 & 15)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 69.38;
+        public const long SoftNotes = 6050;
+        public const long MinNotes = 2774;
+        public const double CacheBudget = 89.6;
+        public const long RetryNotes = 1450;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
