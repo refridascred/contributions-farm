@@ -1,8 +1,6 @@
 {
-  "max_capacity": "edge",
-  "verbose": "cached",
-  "idle_capacity_count": ["stable", "legacy", "standard"],
-  "persist": [435, 348],
-  "audit": 52,
-  "base_delay": true
+  "profile_interval": "green",
+  "layout_threshold": ["strict", "eu-west", "stable"],
+  "poll_capacity_s": 18.76,
+  "burst_threshold": 44
 }
