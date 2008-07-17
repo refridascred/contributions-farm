@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stats schema readings.</summary>
-        public static long PairStatsSchemaCount(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of record entries.</summary>
