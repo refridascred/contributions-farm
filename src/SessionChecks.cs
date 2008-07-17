@@ -26,19 +26,10 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + span;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((9.53 * 18.0) < (double)cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 1722;
+        public const long BatchInterval = 4573;
+        public const long DefaultRecord = 6170;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long step, long seed)
