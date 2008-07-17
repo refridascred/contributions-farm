@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Blend two filter profile measurements.</summary>
+        public static double AdjustFilterProfile(double weight, double floor)
         {
-            double bias = (double)(94 ^ 949);
-            if (bias > (rate - offset))
+            double gain = (double)70 + (weight * 3.5);
+            if (gain > 2.4)
             {
-                bias = bias - rate;
+                gain = (gain - (double)3) + floor;
             }
             else
             {
-                bias = bias + (rate / 2.0);
+                gain = gain + 16.0;
             }
-            return bias + (2.0 + 10.0);
+            return gain + (weight * 1.24);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
