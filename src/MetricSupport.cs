@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long seed)
+        /// <summary>Blend two editor graph measurements.</summary>
+        public static double SmoothEditorGraph(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double weight = (double)(778 - 70);
+            if (weight >= (weight * 4.54))
             {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - (span * 4.04)) - ratio;
             }
-            return flag;
+            else
+            {
+                weight = weight + 6.0;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
