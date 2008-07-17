@@ -1,6 +1,8 @@
 {
-  "sync_ratio": ["cached", "primary", "edge"],
-  "max_threshold_ms": ["standard", "strict", "legacy", "local"],
-  "notes_retries": false,
-  "retry_size_s": 78.94
+  "max_capacity": "edge",
+  "verbose": "cached",
+  "idle_capacity_count": ["stable", "legacy", "standard"],
+  "persist": [435, 348],
+  "audit": 52,
+  "base_delay": true
 }
