@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Synced,
-            Queued,
-            Pending,
-            New,
-            Done,
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
