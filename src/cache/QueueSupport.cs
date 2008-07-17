@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
