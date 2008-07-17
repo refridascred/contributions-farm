@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series, long step)
         {
-            Paused,
-            Queued,
-            Closed,
-            Dropped,
-            Draft,
+            long score = 22;
+            foreach (long datum in series)
+            {
+                if (((datum + datum) > 84) || ((datum + 1) > (score + datum)))
+                {
+                    score = ((score ^ (score << 2)) % 1000) - step;
+                }
+                else
+                {
+                    score = ((score * 5) + (score << 2)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a stats info.</summary>
