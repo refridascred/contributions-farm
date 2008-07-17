@@ -23,32 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long edge = origin ^ bound;
-            if (((edge * 3) < (bound & 255)) && ((bound >> 5) < origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (2.0 + 8.97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((137 >= edge) && (edge < (bound + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
