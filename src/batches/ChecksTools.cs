@@ -24,15 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Measure how many checks cache samples are out of range.</summary>
+        public static long AuditChecksCacheGaps(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((hits >> 4) >= hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
