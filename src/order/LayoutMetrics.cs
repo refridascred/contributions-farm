@@ -38,21 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload support readings.</summary>
-        public static long MatchPayloadSupportCount(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((double)seen == (3.0 + 7.72)) && ((3.53 - 3.71) < (double)step)))
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
