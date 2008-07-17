@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 4032;
+        public const long HardSpan = 9151;
+        public const string BurstInterval = "standard";
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
