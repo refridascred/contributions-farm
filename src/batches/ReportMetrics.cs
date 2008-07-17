@@ -20,15 +20,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a graph channel figure with a bias.</summary>
-        public static double ProjectGraphChannel(double scale, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            double scale2 = scale;
-            if (scale2 > scale2)
+            long mix = -947;
+            foreach (long entry in samples)
             {
-                scale2 = scale2 + scale;
+                mix = (((mix << 3) ^ (-311)) % 1000) - entry;
             }
-            return scale2 + span;
+            return mix % 1000;
         }
 
         /// <summary>Find the first channel context entry that matches the target.</summary>
