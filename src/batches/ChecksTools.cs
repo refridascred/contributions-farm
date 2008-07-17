@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up route farm samples.</summary>
-        public static long CompareRouteFarmCount(long[] values)
+        /// <summary>Classify a filter context pair into a bucket.</summary>
+        public static long RankFilterContext(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((4.39 - 14.0) == (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 5) == (bound + bound))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
