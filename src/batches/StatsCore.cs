@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryRatio = 97.37;
-        public const long BurstLevel = 912;
-        public const long LimitInterval = 7674;
-        public const string CacheInterval = "standard-v2";
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double scale, double floor)
+        {
+            double weight = (double)(386 & 15);
+            if (weight >= weight)
+            {
+                weight = (weight - (double)93) + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (double)718;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
