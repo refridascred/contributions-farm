@@ -52,14 +52,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Stale,
-            New,
-            Failed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryInterval = "local-v2";
+        public const long BatchGraph = 8055;
+        public const long StepLevel = 6669;
+        public const long MaxInterval = 1156;
     }
 }
