@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches - item) == (matches + 793))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
