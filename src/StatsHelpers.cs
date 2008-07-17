@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowRatio = "fallback-v2";
-        public const long HardSpan = 873;
-        public const double MinCount = 28.31;
-        public const double DefaultFilter = 55.05;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((seed + datum) > 9)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
