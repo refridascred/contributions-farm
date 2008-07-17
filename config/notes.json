@@ -1,5 +1,8 @@
 {
-  "batch_ttl_s": ["green", "fallback", "primary", "local"],
-  "soft_interval_ms": "strict",
-  "session_ttl": ["cached", "primary"]
+  "enabled": 30,
+  "cache_retries": 8810,
+  "min_depth_s": 0.75,
+  "command_threshold": 21,
+  "retry_limit_s": 100,
+  "max_window": 2673
 }
