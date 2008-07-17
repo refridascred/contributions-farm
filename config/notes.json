@@ -1,5 +1,17 @@
 {
-  "max_interval_ms": [352, 116, 217],
-  "flush_delay": "latest",
-  "flush_capacity_count": 33
+  "format_limit": 3057,
+  "cluster_interval": 82.17,
+  "hard_limit_count": false,
+  "audit": true,
+  "warm_capacity": {
+    "strict": "latest",
+    "batch_threshold_ms": 831,
+    "flush_depth": {
+      "default_limit": false,
+      "strict": 59.32,
+      "poll_size_ms": ["standard", "staging", "stable", "stable"],
+      "persist": 500
+    },
+    "support_ttl": ["legacy", "strict", "strict", "primary"]
+  }
 }
