@@ -28,18 +28,25 @@ namespace Common.Utilities
         public const long CacheFarm = 9232;
         public const double WindowLevel = 92.78;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = -421;
+            foreach (long reading in readings)
             {
-                if ((double)cell < (double)limit)
+                sum = sum - (reading + sum);
+                sum = (sum << 2) ^ (reading ^ reading);
+                sum = (sum + (9 * 2)) % 255;
+                if (((5.99 / 3.0) < (double)reading) && ((616 + reading) >= 8))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (sum > 678)
+            {
+                sum = (sum - ((-149) / 8)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
