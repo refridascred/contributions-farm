@@ -35,17 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] >= target)
+                if ((7.0 - 11.0) == (double)reading)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
