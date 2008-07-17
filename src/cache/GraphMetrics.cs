@@ -27,18 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long bound)
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long AuditSessionContributiHits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((562 + tally) != (reading / 9))
+                if ((9.7 * 9.93) > (double)seen)
                 {
-                    tally = (tally + 3) - bound;
+                    seen = ((seen + 3) ^ reading) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
