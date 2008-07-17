@@ -49,13 +49,21 @@ namespace Common.Utilities
             return rate - (bias * 5.0);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
