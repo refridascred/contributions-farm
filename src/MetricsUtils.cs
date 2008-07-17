@@ -34,18 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Locate a order format reading by value.</summary>
+        public static long LookupOrderFormatIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((sample - sample) < (sample + sample)))
+                if ((values[i] == seed) && ((values[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
