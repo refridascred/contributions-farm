@@ -54,12 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!(seen > (datum + 570)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
