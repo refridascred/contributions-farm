@@ -70,19 +70,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((long)i >= (step + (long)i))
-                {
-                    anchor = (anchor - (step & 1)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
