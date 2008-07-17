@@ -1,7 +1,15 @@
 {
-  "retry_interval_s": 3830,
-  "metric_depth": 30,
-  "verbose": "blue",
-  "flush_capacity_ms": "blue",
-  "poll_timeout": ["legacy", "primary", "latest"]
+  "default_delay_pct": "standard",
+  "batch_interval_ms": {
+    "compress": 65,
+    "entry_retries": "cached",
+    "batch_interval": 16.98,
+    "graph_ratio": {
+      "dry_run": 500,
+      "githubfarm_retries": 100,
+      "enabled": false
+    }
+  },
+  "metrics_retries": ["stable", "primary", "primary", "cached"],
+  "dry_run": "primary"
 }
