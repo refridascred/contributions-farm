@@ -55,13 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool CheckLayoutSupportLimits(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many stats cache samples are out of range.</summary>
