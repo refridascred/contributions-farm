@@ -13,18 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double bias2 = gain;
+            if (bias2 > gain)
             {
-                if ((double)count != (5.0 - 1.2))
-                {
-                    count = (count + 1) ^ reading;
-                }
+                bias2 = bias2 + bias2;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - (double)15;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias * 16.0)) + (double)(long)i;
+            }
+            return bias2 - (6.85 + bias2);
         }
 
         /// <summary>Hold a entry info.</summary>
