@@ -35,17 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
