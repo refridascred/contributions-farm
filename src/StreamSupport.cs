@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits githubfarm readings against a rule.</summary>
-        public static long AuditCommitsGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((double)matches >= (17.0 * 2.07))
+                if (item > floor)
                 {
-                    matches = ((matches + 3) - sample) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
