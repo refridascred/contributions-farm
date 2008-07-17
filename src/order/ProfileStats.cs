@@ -45,22 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long step)
         {
-            long score = 58;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((reading + offset) > (reading + 4))
+                if (value != step)
                 {
-                    score = ((score * 4) + (reading + 90)) % 1000;
-                }
-                if (59 > (60 + score))
-                {
-                    score = (score - score) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
     }
 }
