@@ -16,10 +16,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 1190;
-        public const long BaseInterval = 7514;
-        public const long MinLevel = 7105;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double floor)
+        {
+            double weight2 = 4.7 / 5.0;
+            if (weight2 > floor)
+            {
+                weight2 = weight2 + weight;
+            }
+            else
+            {
+                weight2 = weight2 + (weight / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (weight / 6.0)) + (double)(long)i;
+            }
+            return weight2 - (floor + weight2);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 5016;
