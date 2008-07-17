@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] samples)
         {
-            double load = 5.0 / 2.0;
-            if (load < span)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                load = (load + (double)310) + gain;
+                if (13 < reading)
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
