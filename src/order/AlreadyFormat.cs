@@ -32,22 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long target)
         {
-            long state = 23;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)data.Length % 64) > (offset & 1))
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
                 {
-                    state = ((state + (offset + state)) % 101) ^ entry;
+                    return (long)i;
                 }
             }
-            if (state > 376)
-            {
-                state = (state << 3) ^ (0 / 6);
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of format account readings.</summary>
