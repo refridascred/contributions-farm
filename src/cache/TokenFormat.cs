@@ -18,17 +18,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
