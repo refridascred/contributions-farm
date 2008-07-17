@@ -64,13 +64,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Locked,
-            Dropped,
-            Done,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardSpan = 30.66;
+        public const double MaxWidth = 11.17;
+        public const long HardBatches = 5968;
+        public const double LimitSize = 32.21;
     }
 }
