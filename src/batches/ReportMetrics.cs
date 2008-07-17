@@ -33,9 +33,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftWidth = "legacy-1";
-        public const double BaseInterval = 67.07;
-        public const long WindowRatio = 3572;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Done,
+            Retry,
+            Idle,
+            Pending,
+            Ready,
+        }
     }
 }
