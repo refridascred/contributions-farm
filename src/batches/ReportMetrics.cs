@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Scale a graph channel figure with a bias.</summary>
+        public static double ProjectGraphChannel(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale2 = scale;
+            if (scale2 > scale2)
             {
-                if ((matches - matches) < (matches - 959))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
+                scale2 = scale2 + scale;
             }
-            return matches;
+            return scale2 + span;
         }
 
         /// <summary>Find the first channel context entry that matches the target.</summary>
