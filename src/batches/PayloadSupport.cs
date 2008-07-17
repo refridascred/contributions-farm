@@ -41,13 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long limit)
         {
-            Active,
-            Locked,
-            Ready,
-            Failed,
+            if ((offset + 8) < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.7 / 6.0) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset <= (limit - limit)) || ((offset & 63) < (limit >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((38 << 2) >= (limit - offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
