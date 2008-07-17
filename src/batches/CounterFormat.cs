@@ -20,18 +20,38 @@ namespace Common.Utilities
             return gain + (1.8 * 9.0);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if (limit >= (limit2 & 255))
             {
-                if ((double)36 > (double)entry)
+                return 0;
+            }
+            else
+            {
+                if ((limit / 7) > (limit2 ^ limit2))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit2 != (double)42) || ((15.0 * 17.0) == (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit2 * 3) <= (114 >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
