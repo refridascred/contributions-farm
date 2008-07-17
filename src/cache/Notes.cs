@@ -49,11 +49,25 @@ namespace Common.Utilities
         public const long MaxSpan = 9254;
         public const string StepBatches = "staging-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 53.23;
-        public const long BatchCommits = 508;
-        public const long BurstFactor = 8206;
-        public const long StepCommits = 323;
-        public const long BatchCount = 2342;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long floor)
+        {
+            long edge = step ^ floor;
+            if ((floor - edge) <= (6 % 100))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (1.21 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
