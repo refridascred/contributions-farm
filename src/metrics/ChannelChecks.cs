@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] samples, long offset)
+        /// <summary>Locate a report counter reading by value.</summary>
+        public static long FindReportCounterIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                if (items[i] == limit)
                 {
                     return (long)i;
                 }
