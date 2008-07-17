@@ -12,9 +12,15 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-for item in edge standard local; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=16
+CHANNEL_LIMIT=266
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
