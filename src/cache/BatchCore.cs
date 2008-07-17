@@ -44,22 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((hits >= (value << 3)) || ((hits + 48) > 218)) && ((hits >> 3) != (value / 6)))
-                {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
