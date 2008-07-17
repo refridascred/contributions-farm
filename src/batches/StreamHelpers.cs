@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank counter context input into a small class.</summary>
-        public static long GradeCounterContext(long target, long origin)
-        {
-            if ((target / 5) > (origin + 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin + target) < (target % 97)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin & 127) > origin) && ((target + 23) >= (target ^ 484)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 7066;
+        public const long StepTimeout = 68;
+        public const long RetryChannel = 4808;
+        public const long LimitChannel = 3738;
+        public const double BatchChannel = 46.6;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
