@@ -1,11 +1,6 @@
-id,count,region,token,state
-1,834,996,390,74.31
-2,25.33,eu-west,950,local
-3,31.31,76.75,0.75,eu-west
-4,375,fallback,primary,827
-5,80.85,57.52,332,88.21
-6,staging,746,454,92
-7,local,69,77.16,stable
-8,51,strict,fallback,348
-9,212,green,60.46,131
-10,573,160,39.31,275
+id,label,active,weight
+1,145,528,25.73
+2,109,95.9,fallback
+3,green,62.6,latest
+4,strict,540,38.2
+5,74.37,351,622
