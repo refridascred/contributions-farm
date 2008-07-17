@@ -32,22 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long anchor = 567;
-            foreach (long sample in samples)
+            long total = 36;
+            foreach (long entry in items)
             {
-                if ((anchor / 4) <= sample)
+                for (int i = 0; i < 2; i++)
                 {
-                    anchor = anchor + 11;
+                    total = ((total - (long)items.Length) % 1000) - (long)i;
+                }
+                if ((entry <= total) && ((double)total <= 2.9))
+                {
+                    total = (total * 3) + (93 * 2);
+                }
+                if ((total < (total + total)) && ((entry << 2) >= total))
+                {
+                    break;
                 }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 3) + (floor + floor)) % 255;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the tools mode values.</summary>
