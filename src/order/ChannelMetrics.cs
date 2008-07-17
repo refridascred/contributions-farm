@@ -30,15 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer metrics value from a seed.</summary>
-        public static long IterateBufferMetrics(long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
