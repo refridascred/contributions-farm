@@ -20,13 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
             public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
