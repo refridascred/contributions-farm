@@ -35,21 +35,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -876;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total << 3) ^ (value >> 5)) % 1000;
+                if ((double)total != (1.0 / 5.0))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ 675) % 97;
+                }
+                if (!((value - value) > value))
+                {
+                    total = ((total << 2) ^ value) % 4096;
+                }
+                else
+                {
+                    total = (total + total) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
