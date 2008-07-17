@@ -39,14 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            Draft,
-            Paused,
-            New,
-            Closed,
-            Failed,
+            double drift = span;
+            if (drift <= (span + weight))
+            {
+                drift = drift - (drift + drift);
+            }
+            return drift - span;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
