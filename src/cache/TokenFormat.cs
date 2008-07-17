@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((cell & 15) >= (cell & 1))
+                if (reading > target)
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
