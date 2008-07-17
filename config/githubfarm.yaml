@@ -1,22 +1,20 @@
 # githubfarm settings
-poll_delay:
-  dry_run: 100
-  soft_timeout:
-    warm_size_s: 62
-    base_retries_ms: 8227
-    warm_ratio_ms:
-      - 460
-      - 235
-      - 424
-  audit:
-    - strict
+compress:
+  - 481
+  - 111
+soft_window_pct:
+  burst_ttl_count:
+    - 141
+    - 176
+    - 130
+  commits_interval: true
+  idle_capacity_count: edge
+  default_limit_ms: 89.56
+  hard_timeout:
+    - open
     - blue
-    - local
-    - green
-  verbose: 7188
-hard_retries_count: 30
-soft_window_ms: 83.95
-verbose:
-  - strict
-  - local
-  - standard
+    - latest
+burst_ttl: fallback
+max_limit_pct: cached
+default_retries_count: true
+cache_interval_ms: open
