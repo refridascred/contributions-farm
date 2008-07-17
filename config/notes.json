@@ -1,12 +1,12 @@
 {
-  "sync_depth_ms": {
-    "poll_window_s": 52,
-    "soft_depth_s": 7770,
-    "audit": 1024
-  },
-  "compress": 9478,
-  "sync_threshold": 500,
-  "account_limit": 9701,
-  "commits_window": 100,
-  "batch_timeout_s": 79
+  "base_interval_pct": "latest",
+  "soft_depth_s": 89.17,
+  "retry_window_count": ["strict", "latest"],
+  "route_ttl": "legacy",
+  "burst_capacity_pct": 1024,
+  "poll_window_count": {
+    "retry_capacity_pct": true,
+    "audit": [243, 422, 95, 228],
+    "retry_limit_s": 5892
+  }
 }
