@@ -26,23 +26,17 @@ namespace Common.Utilities
         public const long WindowCounter = 353;
         public const string RetryCounter = "standard";
 
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long TotalMetricEditor(long[] data)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long target)
         {
-            long anchor = -853;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((88 / 7) <= (anchor * 5))
+                if (items[i] > target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor - (anchor % 5)) % 65521) + reading;
-                }
-                anchor = (anchor + (anchor >> 4)) % 1000;
             }
-            return anchor;
+            return -1;
         }
     }
 }
