@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (score ^ (score - score)) % 4096;
-                if (score <= (score * 4))
+                if (((-1) * 3) < (value % 12))
                 {
-                    score = ((score * 4) + (long)i) % 101;
-                    score = (score * 5) + 957;
+                    seen = seen + 3;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
