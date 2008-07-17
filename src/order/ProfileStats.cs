@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long state = -564;
+            foreach (long datum in series)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if ((datum & 255) >= (datum + state))
+                {
+                    state = (state + (838 & 1)) % 101;
+                }
+                if ((double)datum == (0.18 - 4.0))
+                {
+                    state = (state << 3) ^ state;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many window commits samples are out of range.</summary>
