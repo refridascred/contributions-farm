@@ -50,12 +50,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Dropped,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepLevel = 4312;
+        public const long DefaultGithubfarm = 5232;
+        public const long LimitGithubfarm = 7927;
     }
 }
