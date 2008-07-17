@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values, long bound)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mix = (mix - (offset + mix)) ^ entry;
-                if ((3 + offset) >= (mix >> 3))
+                if ((325 + bound) >= (value + tally))
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (mix > 2)
-            {
-                mix = (mix ^ (long)items.Length) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
