@@ -52,12 +52,28 @@ namespace Common.Utilities
         public const long LimitInterval = 7674;
         public const string CacheInterval = "standard-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSize = 6023;
-        public const long SoftCount = 9279;
-        public const long LimitTimeout = 4712;
-        public const string BurstRatio = "local";
-        public const long RetrySize = 2618;
+        /// <summary>Combine buffer context values into a single score.</summary>
+        public static long TallyBufferContext(long[] readings)
+        {
+            long result = 70;
+            foreach (long value in readings)
+            {
+                if ((8 % 64) == (result + 469))
+                {
+                    result = ((result << 3) ^ (413 - result)) % 4096;
+                }
+                if ((result - value) < (result & 31))
+                {
+                    result = (result << 2) ^ (value - 134);
+                }
+                else
+                {
+                    result = result - (80 % 60);
+                }
+                result = result + result;
+            }
+            return result;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double scale, double bias)
