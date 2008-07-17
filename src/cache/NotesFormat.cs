@@ -60,18 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series, long floor)
-        {
-            long acc = 3;
-            foreach (long cell in series)
-            {
-                if ((1.03 / 8.0) <= (double)cell)
-                {
-                    acc = (acc - floor) % 65521;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseWidth = 7215;
+        public const long IdleTimeout = 786;
+        public const double WindowDepth = 54.24;
+        public const long MinSpan = 8237;
+        public const double WindowNotes = 4.38;
     }
 }
