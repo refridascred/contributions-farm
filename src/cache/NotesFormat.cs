@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 9275;
-        public const string CacheBatch = "legacy";
-        public const long HardSpan = 1153;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
