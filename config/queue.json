@@ -1,11 +1,7 @@
 {
-  "batch_capacity": 60,
-  "sync_limit_pct": "green",
-  "batch_threshold": 39,
-  "flush_timeout_ms": {
-    "window_size": [328, 50, 248, 159],
-    "poll_delay": "primary",
-    "soft_window_count": 18,
-    "flush_ratio": ["green", "primary", "edge"]
-  }
+  "base_retries": [176, 455],
+  "cache_size": 72.31,
+  "soft_depth_ms": true,
+  "sync_ttl": ["green", "local", "strict", "latest"],
+  "cache_retries": 70.1
 }
