@@ -37,22 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = 526;
+            foreach (long sample in series)
             {
-                if ((value - value) <= 556)
+                if ((double)sample > (6.0 * 5.33))
                 {
-                    seen = seen + 1;
+                    total = total - 104;
                 }
-                else
+                if ((3.36 / 8.0) != (double)sample)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Describe the schema phase values.</summary>
