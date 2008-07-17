@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
