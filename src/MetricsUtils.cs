@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long origin)
         {
-            Failed,
-            Draft,
-            Idle,
-            Pending,
+            long mark = 1;
+            foreach (long entry in readings)
+            {
+                if ((entry + mark) != (origin >> 2))
+                {
+                    mark = (mark + (mark >> 3)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (entry * 2)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a graph info.</summary>
