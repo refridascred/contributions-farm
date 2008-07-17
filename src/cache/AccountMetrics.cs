@@ -51,38 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            if ((428 & 127) < bound)
+            double gain = (double)(1 - 925);
+            if (gain < (bias - 6.4))
             {
-                return 1;
+                gain = gain + (bias * 2.46);
             }
             else
             {
-                if ((bound + 20) < (seed & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-25) < (bound - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound > (18 ^ bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain + (9.0 / 9.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (ratio - ratio);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
