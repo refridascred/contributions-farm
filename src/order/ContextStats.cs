@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] series, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long mix = 898;
-            foreach (long reading in series)
+            long carry = 21;
+            foreach (long datum in readings)
             {
-                mix = ((mix + mix) + reading) + seed;
+                if (!(((-843) * 5) < (datum >> 2)))
+                {
+                    carry = ((carry * 2) + (carry - datum)) % 65521;
+                }
             }
-            return mix;
+            return carry;
         }
     }
 }
