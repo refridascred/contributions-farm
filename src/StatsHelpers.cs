@@ -31,15 +31,13 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double gain = 4.0;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + rate) + (double)(long)i) - span;
-            }
-            return gain + 6.0;
+            Idle,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
