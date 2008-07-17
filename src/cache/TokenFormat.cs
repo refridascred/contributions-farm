@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] levels, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (reading > target)
+                if ((((long)readings.Length * 4) >= (seen * 2)) && ((364 % 7) > datum))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
