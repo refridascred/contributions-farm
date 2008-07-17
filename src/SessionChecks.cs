@@ -30,17 +30,22 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + span;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                if ((1 - hits) > (item & 255))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
