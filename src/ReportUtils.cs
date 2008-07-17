@@ -28,19 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long offset)
         {
-            long mark = 296;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mark = (mark * 2) + cell;
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark < 39)
-            {
-                mark = (mark ^ (90 % 5)) % 1000;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the graph class values.</summary>
