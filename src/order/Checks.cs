@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((carry + 14) < (22 - target)) && (1 >= ((long)i + carry)))
-                {
-                    carry = (carry * 2) + (target >> 3);
-                }
-                carry = (carry * 2) + carry;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry - target) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            New,
+            Synced,
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
