@@ -1,6 +1,8 @@
 # githubfarm settings
-metrics_ttl: standard
-audit: latest
-retry_delay_pct: 250
-burst_ttl_ms: false
-hard_ratio: true
+batch_ttl: 21
+githubfarm_retries: latest
+buffer_size:
+  - 25
+  - 13
+base_interval_count: 93
+max_delay: local
