@@ -68,13 +68,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a order layout value against two limits.</summary>
+        public static long SortOrderLayout(long origin, long step)
         {
-            Stale,
-            Pending,
-            Locked,
-            New,
+            if ((double)step < (7.0 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) >= (origin + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin - 361) >= 0) && ((double)step != (3.0 * 1.29)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
