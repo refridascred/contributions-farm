@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue green open stable; do
+CHANNEL_LIMIT=134
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
