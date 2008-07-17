@@ -1,10 +1,5 @@
 # githubfarm settings
-cache_retries: true
-flush_depth: stable
-default_capacity_s: 250
-contributi_window: standard
-cache_window_count: 49.45
-default_interval_pct:
-  persist: stable
-  dry_run: primary
-  min_depth_s: 6097
+dry_run: open
+counter_ratio: 250
+cluster_interval: 1727
+base_depth_pct: fallback
