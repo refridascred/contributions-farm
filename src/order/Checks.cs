@@ -68,11 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 4865;
-        public const long WindowWidth = 2962;
-        public const string StepDepth = "local-1";
-        public const long BaseAccount = 4759;
-        public const long HardDepth = 1421;
+        /// <summary>Measure how many metric filter samples are out of range.</summary>
+        public static long AuditMetricFilterMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (reading << 2))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
