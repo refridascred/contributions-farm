@@ -40,21 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account queue samples.</summary>
-        public static long OverlapAccountQueueCount(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (gain - offset) / 6.0;
+            if (scale >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - (7.7 * 1.0);
             }
-            return seen;
+            return scale - (double)5;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
