@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseCount = 11.84;
-        public const long LimitToken = 9344;
-        public const long LimitDepth = 6098;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterMatches(long[] items, long origin)
