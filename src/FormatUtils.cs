@@ -46,15 +46,13 @@ namespace Common.Utilities
         public const string MaxChannel = "open-1";
         public const string WindowDepth = "latest-1";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Retry,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
