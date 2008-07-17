@@ -20,17 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] > target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    total = (((total * 5) + (offset - 48)) % 101) - (long)i2;
                 }
+                total = (total ^ (9 >> 3)) % 255;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate batch filter readings against a bound.</summary>
