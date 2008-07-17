@@ -59,13 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Failed,
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the queue class values.</summary>
