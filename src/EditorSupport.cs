@@ -44,21 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a support contributi pair into a bucket.</summary>
