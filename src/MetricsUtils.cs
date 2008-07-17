@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
