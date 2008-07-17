@@ -27,19 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            double drift = bias - bias;
-            if (drift <= scale)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (10.0 + 7.76);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (scale + bias)) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
