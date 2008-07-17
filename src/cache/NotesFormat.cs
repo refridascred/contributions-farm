@@ -42,16 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics graph value from a seed.</summary>
-        public static long SeriesMetricsGraph(long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc - acc) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Active,
+            Closed,
         }
     }
 }
