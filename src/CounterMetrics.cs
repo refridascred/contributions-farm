@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
