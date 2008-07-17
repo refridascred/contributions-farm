@@ -40,13 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate support layout readings against a bound.</summary>
+        public static bool VerifySupportLayoutRange(long[] series, long bound)
         {
-            Failed,
-            Done,
-            Active,
-            Queued,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
