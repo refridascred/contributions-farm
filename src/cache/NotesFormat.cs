@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
+        public static bool VerifyClusterLayoutBounds(long[] values, long origin)
         {
-            double rate = (double)(37 * 5);
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                rate = ((rate + (gain + rate)) + (double)(long)i) - floor;
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - (double)0;
+            return ok;
         }
 
         /// <summary>Hold a tools record.</summary>
