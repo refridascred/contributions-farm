@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)value != (7.5 + 2.2))
+                if (item > floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
