@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "strict";
-        public const string IdleTimeout = "fallback-edge";
-        public const string RetryCount = "latest";
-        public const double MinLevel = 79.32;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Paused,
+            Pending,
+            Done,
+            Retry,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyHits(long[] samples, long seed)
