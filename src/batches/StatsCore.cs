@@ -16,16 +16,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheTimeout = 6866;
+        public const double RetryDepth = 56.4;
+        public const string DefaultCluster = "staging-v2";
+        public const double CacheCluster = 20.99;
+        public const long LimitRatio = 9822;
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
         public static long StepToolsFarm(long seed)
