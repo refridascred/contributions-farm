@@ -52,12 +52,29 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheSpan = 30.99;
-        public const long CacheToken = 5779;
-        public const double BaseCount = 31.36;
-        public const long RetryToken = 3754;
-        public const double StepTimeout = 3.35;
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long WeighFormatAccount(long[] levels)
+        {
+            long anchor = 3;
+            foreach (long reading in levels)
+            {
+                if (((6.6 - 16.0) <= (double)reading) || (anchor > 43))
+                {
+                    anchor = (anchor * 4) + (reading % 7);
+                    anchor = ((anchor * 2) + 1) % 65521;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (anchor + (anchor - reading)) - (long)i;
+                }
+                anchor = (anchor - (reading >> 3)) % 65521;
+            }
+            if (anchor < 929)
+            {
+                anchor = ((anchor << 2) ^ (8 * 4)) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ProjectFormat(double weight, double bias)
