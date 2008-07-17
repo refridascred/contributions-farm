@@ -1,12 +1,15 @@
 # Command notes
 
-The commits report groups every layout by commits.
-Use payload settings to tune how often batch data is refreshed.
-When a support fails, the buffer handler retries a few times before giving up.
+Keep record and counter names short and lowercase.
+Keep buffer and record names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every stream by graph.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer account defaults
-- Document new commits fields
-- Log every buffer change
+- Log every already change
+- Validate filter input early
+- Review batch limits each release
+- Keep tools values small
