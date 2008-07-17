@@ -17,19 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate account stats readings against a bound.</summary>
-        public static bool CheckAccountStatsBounds(long[] data, long offset)
+        /// <summary>Roll a account editor counter forward.</summary>
+        public static long SeriesAccountEditor(long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Adjust a window reading.</summary>
