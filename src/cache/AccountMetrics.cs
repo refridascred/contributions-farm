@@ -66,11 +66,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstScore = 3878;
-        public const string DefaultScore = "legacy-1";
-        public const double MinRatio = 24.94;
-        public const long LimitWidth = 206;
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
+        {
+            long anchor = 98;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor * 5) + (2 - reading)) % 1000;
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor - 16;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamHits(long[] data, long offset)
