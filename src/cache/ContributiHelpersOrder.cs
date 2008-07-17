@@ -49,22 +49,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!(((floor + value) > (26 + 660)) && ((matches + floor) > (floor ^ value))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 508;
+        public const string MinSpan = "open-v2";
+        public const string WindowLevel = "latest-v2";
+        public const long IdleFactor = 8399;
     }
 }
