@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long carry = 33;
-            foreach (long cell in items)
-            {
-                if ((cell * 5) > (carry + (long)items.Length))
-                {
-                    carry = (carry * 4) + (cell - 54);
-                }
-            }
-            if (carry > 15)
-            {
-                carry = (carry + (carry + carry)) % 101;
-            }
-            return carry % 4096;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
