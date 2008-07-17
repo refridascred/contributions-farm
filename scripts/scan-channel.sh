@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard strict; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=279
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=297
-log "limit is ${CHANNEL_LIMIT}"
