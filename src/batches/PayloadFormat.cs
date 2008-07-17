@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Dropped,
-            Ready,
-            Locked,
             Retry,
             Draft,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate buffer editor readings against a bound.</summary>
