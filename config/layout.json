@@ -1,16 +1,5 @@
 {
-  "warm_limit_ms": false,
-  "metric_limit": {
-    "poll_window": 7795,
-    "retry_depth": {
-      "flush_threshold_pct": [118, 132],
-      "compress": 5429,
-      "flush_limit_ms": true,
-      "poll_capacity_s": false,
-      "report_capacity": 19
-    },
-    "base_capacity_s": [494, 343]
-  },
-  "farm_retries": false,
-  "sync_threshold_s": [223, 94, 365, 476]
+  "filter_window": false,
+  "retry_timeout": 250,
+  "audit": ["stable", "local"]
 }
