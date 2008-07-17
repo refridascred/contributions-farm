@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const string StepSpan = "stable";
         public const long StepStats = 5057;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            Failed,
-            Stale,
-            Active,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
