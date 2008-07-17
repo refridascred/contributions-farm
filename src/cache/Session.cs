@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const string RetryCount = "latest";
         public const double MinLevel = 79.32;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples, long seed)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen * 5) < (sample * 2))
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
