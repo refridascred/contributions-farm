@@ -23,12 +23,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of commits metric readings.</summary>
+        public static long DigestCommitsMetric(long[] readings)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            long mark = 188;
+            foreach (long datum in readings)
+            {
+                bool stale = ((double)mark != (double)854) || ((mark % 8) == ((long)readings.Length / 4));
+                if (stale)
+                {
+                    mark = (mark << 3) ^ datum;
+                    stale = ((double)datum == (0.39 + 3.13)) || ((8.17 - 13.0) >= (double)datum);
+                }
+                if (!((mark % 2) <= (datum & 127)))
+                {
+                    mark = (mark << 2) ^ (-4);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
