@@ -25,14 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items, long target)
         {
-            Idle,
-            Stale,
-            Closed,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item - 91) < target)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
