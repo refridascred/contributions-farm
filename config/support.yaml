@@ -1,6 +1,4 @@
 # support settings
-sync_depth: true
-idle_timeout: 36.51
-strict: cached
-enabled: 2816
-record_size: staging
+max_delay_pct: true
+retry_ratio: latest
+metric_retries: 10.59
