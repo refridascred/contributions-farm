@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Paused,
-            Queued,
+            long total = 103;
+            foreach (long reading in data)
+            {
+                if ((4.53 + 1.0) == (double)reading)
+                {
+                    total = (total + (total + 899)) % 1000;
+                }
+            }
+            if (total < 41)
+            {
+                total = total - (6 + 341);
+            }
+            return total;
         }
 
         /// <summary>Describe the channel kind values.</summary>
