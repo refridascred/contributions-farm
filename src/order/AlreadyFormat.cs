@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            Closed,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) >= (671 % 16))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
