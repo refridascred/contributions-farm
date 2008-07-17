@@ -30,13 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
+            public long Offset { get; set; }
+            public bool Size { get; set; }
             public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
