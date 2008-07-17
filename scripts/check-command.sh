@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=491
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in green latest; do
+for item in staging open eu-west primary; do
     log "checking ${item}"
 done
