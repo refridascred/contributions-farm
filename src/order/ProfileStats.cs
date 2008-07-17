@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples, long origin)
         {
-            double scale = offset;
-            if (scale > (offset + weight))
+            long mark = 22;
+            foreach (long reading in samples)
             {
-                scale = scale + 18.0;
+                if (!((9.49 + 15.0) < (double)reading))
+                {
+                    mark = ((mark * 2) + (reading % 12)) % 101;
+                }
+                else
+                {
+                    mark = mark + (origin >> 3);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)227) + (double)(long)i;
-            }
-            return scale - offset;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
