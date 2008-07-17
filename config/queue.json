@@ -1,20 +1,7 @@
 {
-  "retry_timeout": 30,
-  "default_capacity": false,
-  "channel_ratio": "fallback",
-  "min_threshold_pct": {
-    "already_depth": 1024,
-    "default_ttl_ms": 1120,
-    "graph_delay": 21.79,
-    "warm_limit_ms": "open",
-    "warm_ttl": ["eu-west", "fallback", "fallback"],
-    "hard_depth_count": false
-  },
-  "max_delay_s": [444, 262, 234],
-  "route_interval": {
-    "max_window_pct": [161, 442],
-    "cache_interval_count": "standard",
-    "batch_delay": false,
-    "persist": "fallback"
-  }
+  "sync_window_ms": [401, 450, 273, 101],
+  "stats_threshold": true,
+  "min_timeout": 500,
+  "batch_depth_count": "latest",
+  "warm_size": 1024
 }
