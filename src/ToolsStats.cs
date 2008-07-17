@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long MeasureSupportNotesHits(long[] readings)
         {
-            Ready,
-            Stale,
-            Paused,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum * 4) > matches) || ((matches / 9) >= 592))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch kind values.</summary>
