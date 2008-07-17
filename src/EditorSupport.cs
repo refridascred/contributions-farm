@@ -59,19 +59,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels, long floor)
+        /// <summary>Measure how many stats cache samples are out of range.</summary>
+        public static long MeasureStatsCacheOutliers(long[] levels)
         {
-            long carry = 395;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry - carry) ^ cell;
+                if ((seen - seen) > (seen / 3))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            if (carry > 4)
-            {
-                carry = (carry * 3) + floor;
-            }
-            return carry;
+            return seen;
         }
     }
 }
