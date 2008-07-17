@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Ready,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSize = 4920;
+        public const long MaxDepth = 7537;
+        public const long LimitTimeout = 7916;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
