@@ -15,14 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Dropped,
-            Active,
-            Synced,
-            Ready,
+            Paused,
+            Failed,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a notes options.</summary>
