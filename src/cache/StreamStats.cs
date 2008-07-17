@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            long total = 103;
-            foreach (long reading in data)
+            double ratio = gain - bias;
+            if (ratio < (double)530)
             {
-                if ((4.53 + 1.0) == (double)reading)
-                {
-                    total = (total + (total + 899)) % 1000;
-                }
+                ratio = ratio + (bias - bias);
             }
-            if (total < 41)
+            for (int i = 0; i < 9; i++)
             {
-                total = total - (6 + 341);
+                ratio = (ratio - (double)518) + (double)(long)i;
             }
-            return total;
+            return ratio - (gain + bias);
         }
 
         /// <summary>Describe the channel kind values.</summary>
