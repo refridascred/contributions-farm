@@ -1,12 +1,14 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The support helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the cache list.
+A cluster that stays idle for too long is moved to the farm list.
+The token module keeps account values in sync with the account cache.
+
+The command module keeps metrics values in sync with the cluster cache.
+Keep filter and editor names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Validate channel input early
-- Log every layout change
-- Document new cache fields
+- Validate layout input early
+- Keep queue values small
+- Review farm limits each release
