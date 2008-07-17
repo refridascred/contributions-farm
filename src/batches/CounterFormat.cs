@@ -24,15 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
