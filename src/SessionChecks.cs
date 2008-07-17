@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long CountProfileSchemaHits(long[] levels, long step)
+        /// <summary>Look up the position of a order cluster sample.</summary>
+        public static long LookupOrderClusterIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((matches << 3) >= (reading >> 2)) && ((9 >> 3) != (step ^ 2))))
+                if (items[i] >= offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two window measurements.</summary>
