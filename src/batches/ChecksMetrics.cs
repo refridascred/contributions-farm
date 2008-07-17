@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long WeighCommitsCommand(long[] samples, long target)
-        {
-            long total = 8;
-            foreach (long item in samples)
-            {
-                if (((total + total) >= item) || ((target ^ item) > (target & 7)))
-                {
-                    total = (total - (target - item)) % 1000;
-                }
-                else
-                {
-                    total = total + (total % 24);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 64.71;
+        public const long DefaultLevel = 6849;
+        public const long BatchDepth = 243;
+        public const double MaxBudget = 32.48;
+        public const string MinCount = "primary-edge";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] readings)
