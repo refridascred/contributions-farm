@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9324;
+        public const long SoftBudget = 583;
+        public const string LimitScore = "latest-1";
+        public const string MaxChannel = "primary-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
