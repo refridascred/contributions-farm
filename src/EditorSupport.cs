@@ -66,11 +66,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "cached-1";
-        public const long DefaultGithubfarm = 4413;
-        public const long CacheGithubfarm = 8616;
-        public const string BaseGithubfarm = "alpha-1";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long seed)
+        {
+            long gap = limit ^ seed;
+            if (((double)limit >= (double)seed) && ((seed * 4) == (limit + gap)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((650 << 3) > (limit * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((4.82 + 6.0) <= (double)limit) || ((gap / 5) >= (limit + gap)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((39 << 1) <= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LookupFilterIndex(long[] data, long limit)
