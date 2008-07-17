@@ -20,12 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 1221;
-        public const long BaseInterval = 2162;
-        public const long RetryBudget = 3544;
-        public const long CacheRoute = 9188;
-        public const long LimitRatio = 4596;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long target, long origin)
+        {
+            if ((double)origin >= (4.2 + 1.48))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((493 + target) >= (origin % 12))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterGaps(long[] readings, long bound)
