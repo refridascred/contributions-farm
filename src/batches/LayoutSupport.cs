@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] readings, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long score = 507;
+            foreach (long reading in data)
             {
-                if (item >= offset)
+                if ((reading > (reading % 5)) && ((reading & 31) == (reading - 25)))
                 {
-                    ready = false;
-                    break;
+                    score = (score * 3) + (reading & 127);
                 }
             }
-            return ready;
+            return score % 97;
         }
 
         /// <summary>Match up batches samples.</summary>
