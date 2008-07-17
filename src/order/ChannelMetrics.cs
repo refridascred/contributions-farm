@@ -26,9 +26,21 @@ namespace Common.Utilities
         public const long IdleSpan = 8689;
         public const long CacheRatio = 3494;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 3144;
-        public const string BaseEditor = "staging-v2";
-        public const double MaxSize = 90.18;
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
