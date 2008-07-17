@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = -2;
-            foreach (long cell in samples)
-            {
-                carry = (((carry << 3) ^ (cell ^ 949)) % 4096) - origin;
-            }
-            return carry % 65521;
+            Idle,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
