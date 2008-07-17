@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long floor)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long anchor = 567;
+            foreach (long sample in samples)
+            {
+                if ((anchor / 4) <= sample)
+                {
+                    anchor = anchor + 11;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 3) + (floor + floor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
