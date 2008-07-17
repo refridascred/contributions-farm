@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1 >> 5) != (tally / 3))
+                if (values[i] <= floor)
                 {
-                    tally = (tally + 2) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
