@@ -1,8 +1,7 @@
 {
-  "tools_timeout": "legacy",
-  "compress": true,
-  "idle_ratio_pct": [345, 133, 400, 331],
-  "payload_threshold": ["edge", "primary", "latest"],
-  "contributi_window": 41,
-  "hard_interval": true
+  "dry_run": false,
+  "burst_ratio_pct": 5368,
+  "flush_ttl": ["latest", "staging"],
+  "githubfarm_limit": ["edge", "blue"],
+  "strict": 81
 }
