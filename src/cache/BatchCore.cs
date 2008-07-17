@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches / 3) <= (reading ^ matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "legacy";
+        public const long LimitPayload = 6996;
+        public const string StepPayload = "staging-1";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long limit, long seed)
