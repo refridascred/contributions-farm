@@ -31,22 +31,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mark = 6;
-            foreach (long reading in series)
-            {
-                if (reading > (reading << 2))
-                {
-                    mark = (mark << 2) ^ ((-3) * 5);
-                }
-                if ((reading - mark) >= (mark ^ 979))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
