@@ -48,32 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long seed)
+        /// <summary>Locate a format commits reading by value.</summary>
+        public static long FindFormatCommitsIndex(long[] values, long target)
         {
-            long lane = step - seed;
-            if (seed < step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((lane * 3) != (lane >> 2))
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ lane) != (829 ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
