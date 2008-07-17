@@ -1,6 +1,12 @@
 {
-  "farm_capacity": 30,
-  "soft_delay_ms": 3870,
-  "buffer_threshold": "fallback",
-  "enabled": 29
+  "min_threshold": {
+    "enabled": [241, 20],
+    "min_ttl": 87.65,
+    "flush_timeout_pct": ["blue", "fallback"]
+  },
+  "account_threshold": true,
+  "soft_size_pct": 0.01,
+  "metrics_timeout": false,
+  "editor_ratio": 80.49,
+  "cluster_window": 93.44
 }
