@@ -33,19 +33,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] series, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Failed,
+            Active,
+            Dropped,
         }
     }
 }
