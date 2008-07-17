@@ -41,22 +41,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] items, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((offset & 7) >= offset)
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
