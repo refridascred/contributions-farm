@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Validate profile queue readings against a bound.</summary>
+        public static bool ValidateProfileQueueLimits(long[] items, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!(89 > (offset % 60)))
+                if (cell >= offset)
                 {
-                    result = (result << 2) ^ (result + result);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    result = (result ^ (result << 2)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
