@@ -44,11 +44,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 1777;
-        public const long BurstTimeout = 1084;
-        public const string HardTools = "local-edge";
-        public const string IdleTools = "open-1";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
