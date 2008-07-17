@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long seed)
+        /// <summary>Look up the position of a record checks sample.</summary>
+        public static long SeekRecordChecksIndex(long[] data, long origin)
         {
-            long edge = floor ^ seed;
-            if ((edge & 127) == (edge + edge))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.96 < (double)seed) && ((double)floor <= (5.5 + 14.0)))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) != (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
