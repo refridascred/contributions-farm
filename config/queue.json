@@ -1,5 +1,7 @@
 {
-  "hard_limit": true,
-  "account_window": ["stable", "standard", "green"],
-  "dry_run": 3929
+  "compress": false,
+  "dry_run": 42.71,
+  "idle_depth": 9,
+  "hard_retries_s": "primary",
+  "persist": ["strict", "green", "open", "primary"]
 }
