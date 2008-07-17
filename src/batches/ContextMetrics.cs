@@ -33,22 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long offset)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > (51 ^ 46))
+                if (samples[i] == offset)
                 {
-                    score = (score + reading) % 1000;
-                }
-                else
-                {
-                    score = score - (4 - bound);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of order graph readings.</summary>
