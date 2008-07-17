@@ -45,13 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] series, long bound)
         {
-            Locked,
-            Queued,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
