@@ -1,12 +1,8 @@
 {
-  "warm_size_s": false,
-  "batch_window_s": "standard",
-  "cache_threshold": "primary",
-  "sync_depth_ms": {
-    "cache_retries": 6724,
-    "default_ttl_pct": false,
-    "max_window": "eu-west"
-  },
-  "base_ratio": 42.3,
-  "batch_delay": "fallback"
+  "soft_limit": 3826,
+  "batch_limit": 250,
+  "hard_limit": 39.27,
+  "checks_interval": "eu-west",
+  "warm_threshold_s": 18.8,
+  "burst_limit_ms": ["strict", "staging"]
 }
