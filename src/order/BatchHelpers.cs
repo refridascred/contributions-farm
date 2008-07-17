@@ -30,19 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double floor)
-        {
-            double gain = floor;
-            if (gain <= gain)
-            {
-                gain = (gain - 7.4) - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)7;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 84.26;
+        public const double MaxContext = 74.43;
+        public const double MinContext = 45.14;
+        public const long MinRatio = 6099;
+        public const long HardDepth = 8932;
     }
 }
