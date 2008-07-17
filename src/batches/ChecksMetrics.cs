@@ -23,20 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long state = 5;
+            foreach (long datum in readings)
             {
-                total = total - offset;
-                if ((13.0 + 0.3) > (double)(long)i)
-                {
-                    total = total + (5 % 12);
-                }
-                total = ((total * 5) + (long)i) % 97;
+                state = (((state << 3) ^ (state % 3)) % 101) - datum;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
