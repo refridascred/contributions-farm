@@ -53,15 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data, long step)
+        /// <summary>Validate token layout readings against a bound.</summary>
+        public static bool CheckTokenLayoutRange(long[] items, long origin)
         {
-            long total = 500;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                total = (((total ^ (-774)) % 4096) ^ datum) + step;
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
