@@ -56,11 +56,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 24.34;
-        public const long BatchContext = 3609;
-        public const long HardRatio = 9683;
-        public const long RetryCount = 2714;
-        public const string HardTimeout = "standard-edge";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Dropped,
+            Retry,
+            Idle,
+            Locked,
+        }
     }
 }
