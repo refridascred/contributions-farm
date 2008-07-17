@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long mix = 170;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ value) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
