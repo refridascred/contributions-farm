@@ -25,39 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] items, long limit)
         {
-            long lane = offset ^ floor;
-            if (!((offset + lane) != (offset % 97)))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-1) > offset)
+                if (sample != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane % 16) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
