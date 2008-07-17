@@ -70,18 +70,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats cache samples are out of range.</summary>
-        public static long MeasureStatsCacheOutliers(long[] levels)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen - seen) > (seen / 3))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Locked,
         }
     }
 }
