@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftRatio = "latest";
-        public const long BaseToken = 6995;
-        public const string BurstFactor = "strict-v2";
-        public const long SoftWidth = 5094;
-        public const long HardToken = 5375;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Active,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MinCommand = 43.4;
