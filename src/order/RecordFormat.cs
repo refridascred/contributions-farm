@@ -65,15 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            Done,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
