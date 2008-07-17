@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            long result = 54;
-            foreach (long value in readings)
+            double bias = (double)(94 ^ 949);
+            if (bias > (rate - offset))
             {
-                result = ((result * 2) + (result - 6)) % 65521;
-                if ((value & 255) != (result - value))
-                {
-                    break;
-                }
+                bias = bias - rate;
             }
-            return result % 4096;
+            else
+            {
+                bias = bias + (rate / 2.0);
+            }
+            return bias + (2.0 + 10.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
