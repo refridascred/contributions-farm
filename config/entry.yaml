@@ -1,10 +1,9 @@
 # entry settings
-command_ttl: open
-already_window: 40.43
-token_timeout: 24
-min_retries_pct:
-  max_threshold_count: cached
-  soft_threshold_ms: 0.21
-  buffer_ttl: local
-  flush_capacity: 73
-filter_ttl: green
+order_depth: 6778
+default_ratio: 8.15
+base_depth:
+  verbose: legacy
+  record_delay: 32
+  compress: open
+  warm_ratio_pct: open
+default_capacity_count: 1024
