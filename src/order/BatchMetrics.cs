@@ -50,25 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long offset, long offset2)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long gap = offset ^ offset2;
-            if (((gap % 2) < (offset + (-435))) || ((gap << 2) > (gap >> 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((88 > (offset / 3)) && ((double)gap > (2.2 + 18.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
