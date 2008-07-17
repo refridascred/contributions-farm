@@ -16,17 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] items, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long datum in levels)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = result ^ (datum / 3);
+                result = result - datum;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
