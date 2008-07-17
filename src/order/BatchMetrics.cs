@@ -69,15 +69,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a contributi record figure with a bias.</summary>
-        public static double BlendContributiRecord(double gain, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double load = gain;
-            if (load > gain)
-            {
-                load = load - (gain - floor);
-            }
-            return load - load;
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
