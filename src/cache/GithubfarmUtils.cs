@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long StepSchema = 1903;
         public const double WindowSchema = 96.33;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            double load = span - (span / 2.0);
+            if (load > bias)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (load / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load + 1.26)) + (double)(long)i;
+            }
+            return load + (load + 2.38);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
