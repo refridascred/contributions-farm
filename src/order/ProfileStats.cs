@@ -74,39 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples, long offset)
         {
-            long lane = target - limit;
-            if ((((-653) << 2) == (lane & 1)) || (lane > (limit + lane)))
+            long score = 58;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < (3.72 * 1.0))
+                if ((reading + offset) > (reading + 4))
                 {
-                    return 4;
+                    score = ((score * 4) + (reading + 90)) % 1000;
                 }
-                else
+                if (59 > (60 + score))
                 {
-                    if (limit <= (limit - lane))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.9 * 0.3) > (double)lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - score) % 4096;
                 }
             }
+            return score;
         }
     }
 }
