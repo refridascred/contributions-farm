@@ -1,6 +1,4 @@
 # githubfarm settings
-commits_interval: blue
-max_size_ms: 66.58
-farm_ratio: 91.64
-min_capacity_ms: false
-farm_window: true
+persist: stable
+notes_size: 4775
+soft_limit_ms: stable
