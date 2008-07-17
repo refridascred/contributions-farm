@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long seed)
         {
-            double mean = (double)(-46) - (bias - bias);
-            if (mean <= mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - offset;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset / 8.0);
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
