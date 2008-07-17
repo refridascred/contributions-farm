@@ -22,18 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((867 & 127) >= (count & 1))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
