@@ -48,15 +48,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double gain2 = 3.67;
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = ((gain2 - (gain2 * 0.51)) + (double)(long)i) + floor;
-            }
-            return gain2 - gain;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
