@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            double load = weight;
-            if (load > load)
+            long result = 679;
+            foreach (long reading in series)
             {
-                load = load - offset;
+                result = ((result << 3) ^ (reading << 1)) % 65521;
             }
-            else
+            if (result < (-389))
             {
-                load = load - load;
+                result = (result + result) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (double)4;
+            return result;
         }
 
         /// <summary>Hold a batches options.</summary>
