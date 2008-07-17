@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] data, long bound)
         {
-            Dropped,
-            Idle,
-            Active,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((bound < entry) && ((bound + hits) > (hits + hits))) && (hits > (entry & 7)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
