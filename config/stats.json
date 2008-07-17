@@ -1,7 +1,22 @@
 {
-  "schema_threshold": 4301,
-  "notes_ratio": [200, 308],
-  "default_threshold": 25.77,
-  "idle_retries_pct": 100,
-  "retry_size_pct": 1878
+  "poll_threshold": false,
+  "compress": {
+    "already_threshold": "strict",
+    "audit": 48.49,
+    "base_capacity_count": {
+      "min_ratio_s": false,
+      "readonly": "stable",
+      "record_ttl": [86, 36, 333],
+      "retry_threshold_ms": 44.96
+    }
+  },
+  "strict": "standard",
+  "hard_delay_s": {
+    "counter_window": true,
+    "flush_window_count": "latest",
+    "idle_limit_pct": "blue",
+    "idle_retries_ms": "local"
+  },
+  "sync_ratio": "strict",
+  "min_limit_s": false
 }
