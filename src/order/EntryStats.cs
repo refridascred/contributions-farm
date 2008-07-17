@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long total = -48;
+            foreach (long reading in series)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (reading << 3)) % 97;
             }
-            return flag;
+            if (total < 140)
+            {
+                total = total - bound;
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
