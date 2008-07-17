@@ -6,14 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard stable green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=107
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-legacy}"
 case "${mode}" in
     local)
         log "fast path"
