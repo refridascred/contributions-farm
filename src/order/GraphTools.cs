@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
+        /// <summary>Iterate the editor order series from a seed.</summary>
+        public static long StepEditorOrder(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] == floor)
+                if (!((result + floor) >= result))
                 {
-                    return (long)i;
+                    result = (result + (floor ^ (long)i)) % 97;
                 }
+                result = ((result * 5) + (floor >> 1)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the command class values.</summary>
