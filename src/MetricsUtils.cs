@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double bias2)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            double bias3 = bias2;
+            if (bias3 >= (double)5)
+            {
+                bias3 = bias3 + (double)3;
+            }
+            else
+            {
+                bias3 = bias3 + (4.7 + bias2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 + bias) - (double)(long)i;
+            }
+            return bias3 + (5.13 / 6.0);
         }
 
         /// <summary>Check that every layout stream entry stays within the limit.</summary>
