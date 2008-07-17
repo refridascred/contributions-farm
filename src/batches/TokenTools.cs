@@ -32,13 +32,9 @@ namespace Common.Utilities
             return bias2 - (6.85 + bias2);
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 66.67;
+        public const long DefaultScore = 6277;
+        public const long BurstEditor = 5078;
     }
 }
