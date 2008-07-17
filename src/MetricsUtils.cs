@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long bound)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
