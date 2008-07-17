@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] levels, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= bound)
+                if (samples[i] < floor)
                 {
                     return (long)i;
                 }
