@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const double SoftDepth = 74.61;
         public const long MaxLevel = 2511;
 
-        /// <summary>Find the first farm route entry that matches the target.</summary>
-        public static long LookupFarmRouteIndex(long[] readings, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > bound)
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
