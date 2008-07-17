@@ -16,16 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long result = 7;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result ^ (datum / 3);
-                result = result - datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
