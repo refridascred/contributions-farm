@@ -62,32 +62,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long limit, long limit2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long prev = limit - limit2;
-            if (((limit % 100) <= (limit - limit2)) && (1 <= (limit2 % 7)))
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 >= (262 + limit2)) || ((prev + limit) < (prev * 5)))
+                if (((double)sample != (2.0 / 8.0)) || ((19.0 + 3.6) < (4.2 + 19.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5 % 8) == (prev ^ 73))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = ((anchor << 2) ^ (950 - 0)) % 65521;
                 }
             }
+            if (anchor < 2)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
     }
 }
