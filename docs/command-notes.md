@@ -1,11 +1,14 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-The metrics report groups every metric by layout.
+A window that stays idle for too long is moved to the layout list.
+A route that stays idle for too long is moved to the stats list.
+
+Run the schema check before changing any entry limits.
+A layout that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep checks values small
-- Review already limits each release
-- Prefer buffer defaults
+- Log every order change
+- Document new format fields
+- Keep contributi values small
+- Review layout limits each release
