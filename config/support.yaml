@@ -1,9 +1,38 @@
 # support settings
-retry_depth_count: blue
-cache_ratio_count: 8247
-verbose: 84.07
-warm_retries_count: 250
-soft_window:
-  idle_timeout_pct: legacy
-  max_window_count: local
-  session_timeout: 9273
+filter_retries: latest
+order_delay: 95.59
+counter_size: false
+flush_timeout_count:
+  dry_run: 11.28
+  flush_ratio:
+    - open
+    - primary
+  buffer_timeout:
+    window_delay: 27.94
+    verbose:
+      - staging
+      - strict
+      - latest
+      - fallback
+    enabled: 500
+    cache_timeout_pct: false
+    sync_interval: local
+    sync_interval_count: 3830
+  hard_window_ms: 92.84
+batch_window_pct:
+  strict: 35.5
+  sync_timeout:
+    batches_delay:
+      - 285
+      - 196
+    idle_depth_pct: fallback
+    persist: eu-west
+    max_limit: 29.85
+    metrics_window: true
+    retry_limit_ms: 30
+  warm_delay_s: strict
+  flush_ratio:
+    - fallback
+    - eu-west
+  notes_delay: false
+  order_timeout: 2256
