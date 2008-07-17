@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] series, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)series.Length ^ tally) < (545 - 432))
-                {
-                    tally = ((tally + 1) ^ datum) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (origin ^ (-4))) % 255;
+                anchor = (anchor ^ (origin << 3)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
