@@ -15,14 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Paused,
-            Failed,
-            New,
-            Done,
-            Pending,
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
