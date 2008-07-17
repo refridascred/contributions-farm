@@ -26,15 +26,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a token record figure with a bias.</summary>
-        public static double SmoothTokenRecord(double bias, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long limit)
         {
-            double bias2 = (double)(260 + 9);
-            for (int i = 0; i < 6; i++)
+            long lane = origin - limit;
+            if (origin < 313)
             {
-                bias2 = (((bias2 + 7.0) + (double)(long)i) + bias) - floor;
+                return 8;
             }
-            return bias2 + 3.0;
+            else
+            {
+                if ((lane / 2) >= (origin ^ lane))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (26 >= (origin / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
