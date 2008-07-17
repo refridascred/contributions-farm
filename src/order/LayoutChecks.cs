@@ -45,18 +45,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long bound)
+        /// <summary>Find the first editor account entry that matches the target.</summary>
+        public static long SeekEditorAccountIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seen + entry) <= (entry / 6)))
+                if (readings[i] <= seed)
                 {
-                    seen = (seen + 1) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
