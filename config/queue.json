@@ -1,5 +1,5 @@
 {
-  "verbose": 4,
-  "hard_ttl_s": 4.54,
-  "strict": "open"
+  "hard_limit": true,
+  "account_window": ["stable", "standard", "green"],
+  "dry_run": 3929
 }
