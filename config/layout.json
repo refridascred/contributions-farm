@@ -1,15 +1,11 @@
 {
-  "batch_threshold_s": true,
-  "cache_threshold_s": "open",
-  "idle_ratio_ms": 30,
-  "cache_size_pct": false,
-  "base_depth_s": {
-    "burst_size_count": ["local", "blue"],
-    "compress": "latest",
-    "batch_ratio_ms": 42.16,
-    "idle_timeout_ms": false,
-    "enabled": 977,
-    "hard_ttl_s": false
+  "persist": ["primary", "primary"],
+  "support_limit": "staging",
+  "strict": {
+    "burst_depth_count": 64.67,
+    "min_capacity_pct": 250,
+    "audit": "stable"
   },
-  "soft_capacity_ms": [276, 373]
+  "hard_threshold_pct": 70,
+  "verbose": 30
 }
