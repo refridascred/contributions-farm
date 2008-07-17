@@ -38,23 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (item > (tally << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseRatio = "fallback-v2";
+        public const double StepMetrics = 10.33;
+        public const string MaxLevel = "open-edge";
+        public const double WindowMetrics = 47.66;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] items, long target)
