@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] data, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = 0;
+            foreach (long datum in data)
             {
-                if (offset > 62)
-                {
-                    result = (result ^ (result - result)) % 255;
-                    result = ((result << 2) ^ offset) % 255;
-                }
-                result = (result ^ result) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                acc = ((acc + (acc + floor)) % 101) ^ datum;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
