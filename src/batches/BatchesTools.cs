@@ -31,23 +31,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long result = 831;
-            foreach (long value in readings)
-            {
-                result = ((result * 5) + 777) % 4096;
-                if ((14.0 <= (double)value) || (((long)readings.Length * 4) >= 974))
-                {
-                    result = result - (657 / 5);
-                }
-                if ((value + result) <= (663 + result))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
