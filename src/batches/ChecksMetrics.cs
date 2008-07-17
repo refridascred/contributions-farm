@@ -23,17 +23,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                total = total - offset;
+                if ((13.0 + 0.3) > (double)(long)i)
                 {
-                    return (long)i;
+                    total = total + (5 % 12);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
