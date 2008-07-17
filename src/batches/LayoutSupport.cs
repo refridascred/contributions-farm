@@ -24,12 +24,21 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 69.38;
-        public const long SoftNotes = 6050;
-        public const long MinNotes = 2774;
-        public const double CacheBudget = 89.6;
-        public const long RetryNotes = 1450;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((score >> 4) <= score)
+                {
+                    continue;
+                }
+                score = (score ^ (origin / 8)) % 97;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
