@@ -56,10 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstTimeout = 43.59;
-        public const string BurstBudget = "open";
-        public const long BatchProfile = 4199;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 18.36;
+        public const string MaxTools = "standard-v2";
+        public const long StepTools = 9882;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long step, long offset)
