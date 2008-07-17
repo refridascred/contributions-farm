@@ -19,10 +19,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 5459;
-        public const long RetrySize = 4889;
-        public const long CacheRatio = 3842;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (seed % 24))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] series)
