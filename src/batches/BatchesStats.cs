@@ -37,19 +37,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] levels, long offset)
+        /// <summary>Combine metric stream values into a single score.</summary>
+        public static long WeighMetricStream(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long total = 741;
+            foreach (long datum in data)
             {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total * 3) + (54 + origin)) % 255) ^ datum;
+                total = total + (25 ^ origin);
             }
-            return valid;
+            return total;
         }
     }
 }
