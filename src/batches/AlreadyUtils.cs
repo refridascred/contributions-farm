@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long floor)
         {
-            long acc = 846;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (sample <= floor)
                 {
-                    acc = (((acc << 2) ^ datum) % 65521) - (long)i;
-                }
-                if ((step ^ step) > (step - datum))
-                {
-                    acc = ((acc * 3) + acc) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
