@@ -34,18 +34,9 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long CountToolsCacheMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits & 7) < (item << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryScore = 9529;
+        public const long WindowQueue = 7728;
+        public const long CacheTimeout = 175;
     }
 }
