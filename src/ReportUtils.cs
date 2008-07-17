@@ -53,16 +53,23 @@ namespace Common.Utilities
         public const long MaxInterval = 2549;
         public const long BurstRoute = 4074;
 
-        /// <summary>Roll a token metrics counter forward.</summary>
-        public static long SeriesTokenMetrics(long floor)
+        /// <summary>Derive the next record report value from a seed.</summary>
+        public static long RollRecordReport(long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                mix = mix - (18 << 2);
-                mix = ((mix * 2) + (long)i) % 97;
+                if (((carry + (long)i) == (carry << 2)) || ((offset & 15) <= (offset << 1)))
+                {
+                    carry = (carry ^ (offset * 2)) % 1000;
+                }
+                if ((4 * 3) > (carry + carry))
+                {
+                    carry = (carry << 2) ^ offset;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
