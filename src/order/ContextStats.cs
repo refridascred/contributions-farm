@@ -20,13 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            Draft,
-            New,
-            Queued,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
