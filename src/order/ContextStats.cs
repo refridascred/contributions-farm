@@ -40,25 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account report input into a small class.</summary>
-        public static long BucketAccountReport(long step, long step2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long step3 = step - step2;
-            if ((double)step3 <= (18.0 - 19.0))
+            long sum = 315;
+            foreach (long reading in items)
             {
-                return 6;
+                sum = (((sum << 3) ^ (6 * 3)) % 97) + reading;
             }
-            else
-            {
-                if (((step2 * 4) != (334 / 9)) && ((double)step != (5.4 + 0.6)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of account readings.</summary>
