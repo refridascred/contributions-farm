@@ -54,23 +54,11 @@ namespace Common.Utilities
             return (rate - (bias / 2.0)) + gain;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double gain = (double)(1 - 925);
-            if (gain < (bias - 6.4))
-            {
-                gain = gain + (bias * 2.46);
-            }
-            else
-            {
-                gain = gain + (9.0 / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (ratio - ratio);
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the metrics kind values.</summary>
