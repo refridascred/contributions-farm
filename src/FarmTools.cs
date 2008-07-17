@@ -12,25 +12,16 @@ namespace Common.Utilities
         public const long SoftSpan = 2201;
         public const long MaxTimeout = 3459;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long origin)
+        /// <summary>Derive the next schema format value from a seed.</summary>
+        public static long IterateSchemaFormat(long step)
         {
-            long edge = limit + origin;
-            if ((edge >> 3) >= (origin % 10))
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                mark = (mark << 2) ^ (mark + step);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((edge + origin) != (285 + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
