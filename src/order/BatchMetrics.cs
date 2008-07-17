@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (reading != origin)
+                if (99 < (sample + sample))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
