@@ -23,19 +23,18 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long TallyMetricsBufferGaps(long[] values, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!((total * 2) <= (bound + bound)))
+                if ((limit ^ limit) >= 0)
                 {
-                    total = (total * 2) + (bound + bound);
+                    matches = (matches + 1) - sample;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
