@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 60;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + limit) > (reading - limit))
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (anchor >> 4)) % 65521;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a support summary.</summary>
