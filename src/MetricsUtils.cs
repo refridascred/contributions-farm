@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long TallyStreamOrderOutliers(long[] values, long step)
+        /// <summary>Blend two already batch measurements.</summary>
+        public static double AdjustAlreadyBatch(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in values)
+            double load = (bias2 + bias2) / 4.0;
+            if (load >= load)
             {
-                if ((double)value <= (2.0 * 9.03))
-                {
-                    count = (count + 2) - step;
-                }
+                load = load - (double)0;
             }
-            return count;
+            else
+            {
+                load = load + (bias / 3.0);
+            }
+            return load + (1.21 * 11.0);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
