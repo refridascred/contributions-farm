@@ -41,17 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long limit)
+        /// <summary>Check that every profile stats entry stays within the limit.</summary>
+        public static bool VerifyProfileStatsLimits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
