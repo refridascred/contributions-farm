@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound - seed) <= bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound - bound) != (seed * 3))
                 {
-                    if ((samples[i] + samples[j]) > 14)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed <= (double)bound) && ((seed / 7) > (bound + 6)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
