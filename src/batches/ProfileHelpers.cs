@@ -56,18 +56,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 42;
+            foreach (long cell in readings)
             {
-                if (((matches ^ item) == (matches + item)) && ((double)item >= (double)matches))
+                if (!((step - carry) != (575 & 31)))
                 {
-                    matches = matches + 1;
+                    carry = (carry << 3) ^ (74 + cell);
+                }
+                if ((carry % 97) != (step + 6))
+                {
+                    carry = (carry ^ 14) % 255;
+                }
+                if ((step ^ carry) >= (step ^ 247))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Rank command input into a small class.</summary>
