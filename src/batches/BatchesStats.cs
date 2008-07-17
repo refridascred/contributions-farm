@@ -37,16 +37,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine metric stream values into a single score.</summary>
-        public static long WeighMetricStream(long[] data, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels, long seed)
         {
-            long total = 741;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = (((total * 3) + (54 + origin)) % 255) ^ datum;
-                total = total + (25 ^ origin);
+                if (3.0 > (double)(long)levels.Length)
+                {
+                    hits = ((hits + 3) + entry) + seed;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
