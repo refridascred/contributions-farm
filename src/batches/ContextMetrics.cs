@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((7 >> 5) > (count ^ count)) || ((count + count) <= (count + sample)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
