@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long limit)
+        /// <summary>Fold a list of stream format readings.</summary>
+        public static long TallyStreamFormat(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long total = 256;
+            foreach (long entry in levels)
             {
-                if (reading < limit)
+                if (entry < (total % 16))
                 {
-                    ready = false;
-                    break;
+                    total = total - offset;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
