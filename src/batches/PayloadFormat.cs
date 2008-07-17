@@ -47,16 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ (19 - target)) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
