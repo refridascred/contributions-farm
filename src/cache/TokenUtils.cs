@@ -25,12 +25,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (0 > (cell + cell))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
