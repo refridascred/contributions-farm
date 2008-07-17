@@ -1,7 +1,10 @@
 {
-  "burst_retries": false,
-  "report_capacity": false,
-  "warm_threshold_ms": ["strict", "stable"],
-  "audit": ["local", "green", "local", "standard"],
-  "max_interval_count": 78
+  "batch_ratio_s": {
+    "record_depth": 20.89,
+    "min_size": 42,
+    "flush_ttl_pct": 76.32
+  },
+  "default_ttl": "eu-west",
+  "default_timeout_count": ["primary", "eu-west"],
+  "retry_capacity_count": "green"
 }
