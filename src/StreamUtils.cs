@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 9535;
-        public const long SoftSpan = 7135;
-        public const long BatchRoute = 9491;
-        public const string BurstRoute = "stable-edge";
-        public const long MaxRoute = 9415;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= 3.5)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples, long origin)
