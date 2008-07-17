@@ -70,20 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Project the next batch checks value.</summary>
+        public static double SmoothBatchChecks(double bias, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            double load = offset;
+            if (load > bias)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix - (floor >> 1)) % 97) + (long)i2;
-                }
-                mix = mix - (floor & 3);
-                mix = ((mix * 3) + (long)i) % 4093;
+                load = load - bias;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)4) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the session status values.</summary>
