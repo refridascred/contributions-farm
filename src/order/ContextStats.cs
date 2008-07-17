@@ -23,25 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long origin)
-        {
-            if ((double)origin >= (4.2 + 1.48))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((493 + target) >= (origin % 12))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftRatio = "latest";
+        public const long BaseToken = 6995;
+        public const string BurstFactor = "strict-v2";
+        public const long SoftWidth = 5094;
+        public const long HardToken = 5375;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MinCommand = 43.4;
