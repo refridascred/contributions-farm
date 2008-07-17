@@ -80,22 +80,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((count >> 3) >= (cell - cell)) || ((0 - 39) <= (floor + cell)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
