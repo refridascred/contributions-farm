@@ -29,21 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = 1.0;
+            if (weight > (weight + weight))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = ((weight - 2.03) - gain) + offset;
             }
-            return matches;
+            return weight + (double)(-856);
         }
     }
 }
