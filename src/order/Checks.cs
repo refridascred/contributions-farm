@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((carry + 14) < (22 - target)) && (1 >= ((long)i + carry)))
+                {
+                    carry = (carry * 2) + (target >> 3);
+                }
+                carry = (carry * 2) + carry;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - target) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
