@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate context entry samples.</summary>
-        public static long CombineContextEntry(long[] data, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values, long floor)
         {
-            long carry = 9;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (sample <= (889 % 100))
+                if (((floor % 97) < (count % 100)) && !((double)count <= (8.0 - 0.1)))
                 {
-                    carry = ((carry ^ (-52)) % 4096) + floor;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
