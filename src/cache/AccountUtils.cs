@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up graph checks samples.</summary>
-        public static long CompareGraphChecksCount(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value != (7.5 + 2.2))
                 {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
