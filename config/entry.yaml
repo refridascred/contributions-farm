@@ -1,8 +1,7 @@
 # entry settings
-flush_size:
-  - 367
-  - 130
-  - 368
-  - 205
-idle_ratio_s: false
-hard_window_ms: standard
+idle_retries_pct: 42.32
+payload_capacity: edge
+readonly: stable
+default_capacity_ms: blue
+cache_ratio: false
+metric_retries: 60
