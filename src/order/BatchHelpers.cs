@@ -24,10 +24,11 @@ namespace Common.Utilities
             return ratio - (3.52 * 2.2);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 68.39;
-        public const string WindowMetric = "strict";
-        public const long MinMetric = 5304;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinCount = "cached-1";
+        public const string WindowReport = "latest-v2";
+        public const double MaxLevel = 2.05;
+        public const long LimitLevel = 6312;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] data, long target)
