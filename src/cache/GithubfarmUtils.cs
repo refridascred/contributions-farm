@@ -51,11 +51,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long step)
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
