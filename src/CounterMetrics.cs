@@ -49,18 +49,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Rank context filter input into a small class.</summary>
+        public static long ClassifyContextFilter(long target, long target2)
         {
-            long mark = 9;
-            foreach (long sample in samples)
+            long bound = target ^ target2;
+            if (((target + target2) < (bound + (-86))) || (target > (target2 % 3)))
             {
-                if ((sample <= (sample + 336)) || ((sample % 16) > (sample % 10)))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (6.0 + 0.42))
                 {
-                    mark = (mark - 38) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mark;
         }
     }
 }
