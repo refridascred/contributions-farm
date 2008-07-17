@@ -35,19 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes queue readings against a bound.</summary>
-        public static bool VerifyNotesQueueLimits(long[] data, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > offset)
+                if (samples[i] >= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
