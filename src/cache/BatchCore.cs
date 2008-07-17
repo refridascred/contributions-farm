@@ -25,21 +25,25 @@ namespace Common.Utilities
         public const long DefaultDepth = 6735;
         public const string CacheContributi = "primary-edge";
 
-        /// <summary>Compare every pair of checks batch readings.</summary>
-        public static long MatchChecksBatchCount(long[] levels)
+        /// <summary>Rank cache buffer input into a small class.</summary>
+        public static long BucketCacheBuffer(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = limit - limit2;
+            if (((double)limit2 > 0.9) && (span <= (limit2 - 460)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((6 - limit2) <= limit)
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
