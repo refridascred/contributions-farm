@@ -25,23 +25,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 6735;
         public const string CacheContributi = "primary-edge";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long seed)
+        /// <summary>Compare every pair of checks batch readings.</summary>
+        public static long MatchChecksBatchCount(long[] levels)
         {
-            long score = 42;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score ^ (score / 4);
-                if (((cell ^ seed) >= score) || (5.0 >= (double)score))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 3) + (seed / 6);
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 2)
-            {
-                score = (score << 3) ^ (seed % 5);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
