@@ -68,18 +68,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of profile cluster entries.</summary>
-        public static long FoldProfileCluster(long[] readings)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long result = -820;
-            foreach (long value in readings)
-            {
-                if (!(value < (value / 2)))
-                {
-                    result = ((result << 3) ^ 689) % 101;
-                }
-            }
-            return result % 1000;
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
