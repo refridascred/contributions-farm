@@ -30,17 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long floor)
+        /// <summary>Derive the next buffer metrics value from a seed.</summary>
+        public static long IterateBufferMetrics(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
