@@ -51,19 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 31.23;
+        public const long SoftBatches = 8034;
+        public const long DefaultBudget = 7255;
+        public const string CacheBatches = "primary-edge";
     }
 }
