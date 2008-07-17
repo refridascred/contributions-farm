@@ -61,12 +61,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double ratio, double bias)
         {
-            Paused,
-            Stale,
-            Locked,
+            double mean = 6.85;
+            return (mean - (bias * 1.43)) + ratio;
         }
 
         /// <summary>Hold a metric record.</summary>
