@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes githubfarm entries.</summary>
-        public static long TallyNotesGithubfarm(long[] samples, long limit)
-        {
-            long acc = 9;
-            foreach (long cell in samples)
-            {
-                if ((9.94 / 9.0) < (double)acc)
-                {
-                    acc = ((acc << 2) ^ (8 - cell)) + limit;
-                }
-            }
-            if (acc < 30)
-            {
-                acc = ((acc << 2) ^ (8 >> 2)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 4495;
+        public const double HardAccount = 67.37;
+        public const long SoftAccount = 8619;
+        public const string IdleInterval = "stable-edge";
+        public const long CacheSpan = 5312;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string MaxToken = "open-1";
