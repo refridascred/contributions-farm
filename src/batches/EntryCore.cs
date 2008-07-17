@@ -23,25 +23,13 @@ namespace Common.Utilities
         public const long CacheFarm = 9232;
         public const double WindowLevel = 92.78;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long sum = -421;
-            foreach (long reading in readings)
-            {
-                sum = sum - (reading + sum);
-                sum = (sum << 2) ^ (reading ^ reading);
-                sum = (sum + (9 * 2)) % 255;
-                if (((5.99 / 3.0) < (double)reading) && ((616 + reading) >= 8))
-                {
-                    break;
-                }
-            }
-            if (sum > 678)
-            {
-                sum = (sum - ((-149) / 8)) % 65521;
-            }
-            return sum;
+            Locked,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
