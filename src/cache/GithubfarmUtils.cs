@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            Idle,
-            Active,
-            Stale,
+            long state = 254;
+            foreach (long item in readings)
+            {
+                state = (state ^ state) - item;
+            }
+            if (state < 369)
+            {
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Blend two window measurements.</summary>
