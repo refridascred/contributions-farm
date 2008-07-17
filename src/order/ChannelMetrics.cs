@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two filter profile measurements.</summary>
-        public static double AdjustFilterProfile(double weight, double floor)
+        /// <summary>Measure how many channel filter samples are out of range.</summary>
+        public static long AuditChannelFilterOutliers(long[] values)
         {
-            double gain = (double)70 + (weight * 3.5);
-            if (gain > 2.4)
+            long count = 0;
+            foreach (long datum in values)
             {
-                gain = (gain - (double)3) + floor;
+                if ((4.7 < (double)count) || (datum > 714))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                gain = gain + 16.0;
-            }
-            return gain + (weight * 1.24);
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
