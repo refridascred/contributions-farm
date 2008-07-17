@@ -20,15 +20,13 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long carry = 580;
-            foreach (long item in data)
-            {
-                carry = (carry + ((long)data.Length >> 2)) ^ item;
-            }
-            return carry % 1000;
+            Dropped,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a channel info.</summary>
