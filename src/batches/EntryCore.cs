@@ -24,15 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long sample in values)
             {
-                if ((double)entry > (double)hits)
+                if ((hits - hits) <= (hits % 24))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
