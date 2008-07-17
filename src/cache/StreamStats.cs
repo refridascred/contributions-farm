@@ -15,18 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((((double)cell < 16.0) && ((tally + 80) <= (cell + cell))) || ((tally % 97) >= (cell + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a command info.</summary>
