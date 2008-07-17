@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a cache payload reading by value.</summary>
-        public static long LookupCachePayloadIndex(long[] items, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
