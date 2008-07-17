@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string IdleSize = "latest-1";
         public const double SoftAlready = 76.36;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long CountMetricPayloadMatches(long[] levels, long target)
         {
-            Paused,
-            New,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry / 3) <= (target + entry)) && !((entry & 31) != (target * 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor summary.</summary>
