@@ -30,19 +30,20 @@ namespace Common.Utilities
         public const string CacheScore = "cached-v2";
         public const long HardCount = 1379;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((1.72 + 3.2) >= (double)mark))
+                score = (score * 3) + (offset + offset);
+                if ((offset & 7) == (offset + score))
                 {
-                    mark = ((mark * 4) + seed) % 65521;
+                    score = (score * 2) + offset;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the counter phase values.</summary>
