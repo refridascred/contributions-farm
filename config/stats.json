@@ -1,13 +1,7 @@
 {
-  "editor_window": 5224,
-  "compress": true,
-  "soft_interval_count": "open",
-  "base_timeout": {
-    "burst_retries_ms": [223, 172],
-    "dry_run": "eu-west",
-    "cache_size_pct": 89.5,
-    "sync_delay": "open",
-    "max_timeout": [216, 75],
-    "idle_capacity": [473, 96, 326]
-  }
+  "schema_threshold": 4301,
+  "notes_ratio": [200, 308],
+  "default_threshold": 25.77,
+  "idle_retries_pct": 100,
+  "retry_size_pct": 1878
 }
