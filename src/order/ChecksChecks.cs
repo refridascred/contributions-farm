@@ -12,18 +12,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long AuditChannelSchemaHits(long[] levels, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long offset, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if (!((32 / 4) >= (686 + offset)))
             {
-                if ((bound ^ count) >= (count & 127))
+                return 4;
+            }
+            else
+            {
+                if (!((limit << 3) >= limit))
                 {
-                    count = (count + 1) - item;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
