@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first channel profile entry that matches the target.</summary>
-        public static long LookupChannelProfileIndex(long[] series, long bound)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
