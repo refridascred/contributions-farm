@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=338
+RECORD_LIMIT=460
 log "limit is ${RECORD_LIMIT}"
+
+for item in stable legacy; do
+    log "checking ${item}"
+done
