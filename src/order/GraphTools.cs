@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks payload entries that pass the check.</summary>
-        public static long TallyChecksPayloadGaps(long[] series)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry >> 1) == (entry / 5)) && (entry > (seen - seen)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a command reading.</summary>
