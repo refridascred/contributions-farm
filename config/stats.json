@@ -1,5 +1,16 @@
 {
-  "readonly": "cached",
-  "warm_size_ms": 3242,
-  "burst_retries_ms": 1369
+  "max_depth_count": "legacy",
+  "support_limit": "stable",
+  "already_timeout": {
+    "profile_retries": {
+      "strict": "strict",
+      "farm_timeout": "open",
+      "min_size_ms": 62.24,
+      "compress": 77.06
+    },
+    "hard_window": 63,
+    "warm_size_ms": 60
+  },
+  "flush_ratio_s": true,
+  "poll_interval_count": true
 }
