@@ -26,23 +26,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next window buffer value.</summary>
-        public static double ScaleWindowBuffer(double gain, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long limit)
         {
-            double gain2 = (4.1 + gain) * 3.32;
-            if (gain2 >= gain)
+            long mix = 71;
+            foreach (long sample in samples)
             {
-                gain2 = gain2 + (double)279;
+                if ((25 / 8) != (sample >> 2))
+                {
+                    mix = mix - (limit - limit);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (111 + limit)) % 255;
+                }
+                if ((double)mix == (double)limit)
+                {
+                    mix = ((mix << 3) ^ (mix + (long)samples.Length)) % 1000;
+                }
+                else
+                {
+                    mix = mix + (limit + sample);
+                }
             }
-            else
-            {
-                gain2 = gain2 + (bias - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain) - (double)(long)i;
-            }
-            return gain2 + (gain2 * 4.03);
+            return mix;
         }
     }
 }
