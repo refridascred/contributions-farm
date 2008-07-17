@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in standard latest legacy; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=311
+COMMAND_LIMIT=27
 log "limit is ${COMMAND_LIMIT}"
