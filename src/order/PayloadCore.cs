@@ -37,12 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Measure how many farm counter samples are out of range.</summary>
+        public static long MeasureFarmCounterHits(long[] levels, long offset)
         {
-            Retry,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (4.45 * 9.16))
+                {
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
