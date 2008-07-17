@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long offset, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] readings)
         {
-            if (!((32 / 4) >= (686 + offset)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit << 3) >= limit))
+                if ((double)count > (2.0 - 4.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
