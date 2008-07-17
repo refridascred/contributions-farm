@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Derive the next counter order value from a seed.</summary>
+        public static long RollCounterOrder(long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((601 >= (sample & 15)) && ((hits / 3) <= (sample ^ hits)))
+                if ((double)seed >= 5.5)
                 {
-                    hits = hits + 3;
+                    anchor = (anchor << 3) ^ (seed << 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor + (seed + seed);
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
