@@ -13,14 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            Paused,
-            Idle,
-            Done,
-            New,
-            Stale,
+            double drift = weight;
+            if (drift > span)
+            {
+                drift = drift + 16.0;
+            }
+            else
+            {
+                drift = drift + (span * 1.45);
+            }
+            return drift - (span + span);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
