@@ -28,32 +28,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long floor2)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            long slot = floor ^ floor2;
-            if ((6 / 8) >= (floor2 / 7))
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (double)slot)
+                if ((double)acc <= 7.0)
                 {
-                    return 2;
+                    acc = (acc << 3) ^ (floor % 97);
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((598 % 2) <= (floor2 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc * 4) + (acc + (long)i2);
                 }
+                acc = (acc + (floor & 15)) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
