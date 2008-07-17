@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Locked,
-            Done,
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a support reading.</summary>
