@@ -66,18 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally / 3) < (tally - datum))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 2;
+                    mix = ((mix - (floor >> 1)) % 97) + (long)i2;
                 }
+                mix = mix - (floor & 3);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the session status values.</summary>
