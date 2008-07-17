@@ -1,8 +1,7 @@
 {
-  "default_limit_pct": 93.39,
-  "batch_ttl_s": false,
-  "idle_size_count": 82.14,
-  "graph_size": false,
-  "entry_window": "standard",
-  "readonly": 34
+  "audit": "open",
+  "min_delay": 3542,
+  "max_delay_ms": 2.3,
+  "farm_timeout": 100,
+  "command_delay": 250
 }
