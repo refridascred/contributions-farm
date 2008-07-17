@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data)
-        {
-            long score = 507;
-            foreach (long reading in data)
-            {
-                if ((reading > (reading % 5)) && ((reading & 31) == (reading - 25)))
-                {
-                    score = (score * 3) + (reading & 127);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 7661;
+        public const long SoftSupport = 178;
+        public const double IdleLevel = 16.84;
+        public const string DefaultTimeout = "cached-v2";
+        public const long LimitSize = 4378;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double WindowNotes = 69.38;
