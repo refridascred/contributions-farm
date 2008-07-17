@@ -51,13 +51,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
