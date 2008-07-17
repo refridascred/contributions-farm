@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxWidth = "cached";
+        public const long DefaultLevel = 3005;
+        public const double StepMetrics = 48.75;
+        public const double BaseMetrics = 14.34;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseRoute = 9482;
