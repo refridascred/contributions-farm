@@ -36,20 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Rank report contributi input into a small class.</summary>
+        public static long GradeReportContributi(long offset, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            if ((seed / 5) >= seed)
             {
-                if (((long)i << 2) == (result & 15))
-                {
-                    result = (result ^ (result - 735)) % 4096;
-                }
-                result = (result + result) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (seed > 909)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2 & 15) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed >= (offset << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
