@@ -1,8 +1,22 @@
 # githubfarm settings
-editor_retries: edge
-support_threshold: 8464
-route_depth:
-  verbose: 26
-  entry_limit: 5
-  idle_retries: 81.29
-max_capacity: 6057
+poll_delay:
+  dry_run: 100
+  soft_timeout:
+    warm_size_s: 62
+    base_retries_ms: 8227
+    warm_ratio_ms:
+      - 460
+      - 235
+      - 424
+  audit:
+    - strict
+    - blue
+    - local
+    - green
+  verbose: 7188
+hard_retries_count: 30
+soft_window_ms: 83.95
+verbose:
+  - strict
+  - local
+  - standard
