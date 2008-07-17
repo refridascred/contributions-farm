@@ -1,24 +1,8 @@
 {
-  "persist": 38.77,
-  "stream_retries": 100,
-  "hard_delay": {
-    "compress": false,
-    "dry_run": {
-      "persist": 709,
-      "session_size": ["blue", "blue", "green", "latest"],
-      "retry_ratio": [283, 454],
-      "sync_interval": "standard",
-      "layout_window": 76.41,
-      "metric_depth": 250
-    },
-    "base_window": 8002,
-    "metrics_capacity": {
-      "base_ttl_ms": 15,
-      "persist": true,
-      "contributi_capacity": false,
-      "dry_run": "open"
-    }
-  },
-  "idle_size": "open",
-  "idle_depth": "staging"
+  "cache_size_ms": true,
+  "flush_size_s": 53.75,
+  "stream_threshold": "stable",
+  "batch_depth_pct": false,
+  "graph_delay": "blue",
+  "format_ratio": "legacy"
 }
