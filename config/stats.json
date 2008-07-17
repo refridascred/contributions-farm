@@ -1,6 +1,12 @@
 {
-  "flush_ratio_count": 500,
-  "retry_timeout_count": ["staging", "staging"],
-  "poll_timeout_pct": "cached",
-  "already_ttl": "primary"
+  "metric_size": {
+    "cache_interval_s": "fallback",
+    "poll_delay": "blue",
+    "dry_run": "open"
+  },
+  "already_capacity": "fallback",
+  "enabled": "blue",
+  "max_depth_count": "cached",
+  "burst_ttl": 94.84,
+  "buffer_depth": 51.96
 }
