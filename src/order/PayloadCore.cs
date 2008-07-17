@@ -22,17 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first order contributi entry that matches the target.</summary>
-        public static long LookupOrderContributiIndex(long[] data, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 815;
+            foreach (long sample in levels)
             {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                result = ((result << 2) ^ (607 + seed)) ^ sample;
+                if ((seed ^ 638) != (result & 7))
                 {
-                    return (long)i;
+                    result = (result - (result << 1)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the metrics level values.</summary>
