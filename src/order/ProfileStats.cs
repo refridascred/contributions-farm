@@ -48,19 +48,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a cache filter figure with a bias.</summary>
-        public static double BlendCacheFilter(double bias, double bias2)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            double rate = bias2;
-            if (rate <= 2.76)
+            double gain2 = 3.67;
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate - (double)343) + bias;
+                gain2 = ((gain2 - (gain2 * 0.51)) + (double)(long)i) + floor;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + bias2;
+            return gain2 - gain;
         }
     }
 }
