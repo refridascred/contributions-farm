@@ -30,18 +30,26 @@ namespace Common.Utilities
         public const long DefaultBudget = 6965;
         public const string LimitTools = "primary-1";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long seed)
         {
-            long state = -38;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long cell in samples)
             {
-                if ((double)seed != (double)669)
+                if (!(seed >= 251))
                 {
-                    state = (state - (cell * 4)) % 4096;
+                    score = ((score + ((-9) % 8)) % 1000) + cell;
+                }
+                else
+                {
+                    score = (score + (score << 1)) % 1000;
                 }
             }
-            return state % 4096;
+            if (score > 601)
+            {
+                score = score - (292 - score);
+            }
+            return score % 1000;
         }
     }
 }
