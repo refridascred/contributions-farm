@@ -1,10 +1,7 @@
-id,rank,token
-1,cached,91.11
-2,65.39,340
-3,994,706
-4,60.25,25.54
-5,905,latest
-6,latest,open
-7,425,open
-8,924,blue
-9,edge,staging
+id,token,region
+1,412,fallback
+2,133,64
+3,128,38
+4,fallback,37.89
+5,staging,523
+6,open,32.18
