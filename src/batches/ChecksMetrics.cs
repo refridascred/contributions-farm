@@ -68,13 +68,32 @@ namespace Common.Utilities
         public const double CacheWidth = 91.63;
         public const long LimitScore = 5843;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long offset)
         {
-            Idle,
-            Pending,
-            Active,
-            Locked,
+            long diff = floor ^ offset;
+            if (!((offset - floor) < diff))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor >= (4.5 - 5.0)) && (638 > (offset << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((19 - offset) < 146) && ((double)diff == (10.0 + 2.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next entry metrics value from a seed.</summary>
