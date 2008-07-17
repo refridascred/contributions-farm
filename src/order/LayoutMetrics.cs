@@ -43,22 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
-        {
-            long total = 153;
-            foreach (long item in data)
-            {
-                if ((item - total) == (total * 2))
-                {
-                    total = (total + item) % 4096;
-                }
-            }
-            if (total < 6)
-            {
-                total = (total + (total + total)) % 97;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 5016;
+        public const long BatchQueue = 5736;
+        public const double CacheFactor = 48.92;
     }
 }
