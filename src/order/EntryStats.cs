@@ -20,13 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long floor)
         {
-            Idle,
-            Done,
-            Paused,
-            Ready,
+            long lane = offset ^ floor;
+            if (!((offset + lane) != (offset % 97)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-1) > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((lane % 16) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
