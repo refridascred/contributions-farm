@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
