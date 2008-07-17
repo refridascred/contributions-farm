@@ -31,10 +31,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSize = 2446;
-        public const long MinSchema = 5012;
-        public const long StepScore = 5032;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (177 > (seen + datum))
+                {
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] series, long seed)
