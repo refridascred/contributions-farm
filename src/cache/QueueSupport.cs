@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels, long floor)
-        {
-            long acc = 966;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc - floor) ^ (long)i) ^ value;
-                }
-                acc = ((acc * 5) + (acc % 64)) % 65521;
-                acc = (acc << 2) ^ floor;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "open-v2";
+        public const string BurstOrder = "standard-edge";
+        public const string BaseOrder = "staging-edge";
+        public const long BatchRatio = 2653;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] readings, long step)
