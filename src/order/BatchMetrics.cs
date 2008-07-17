@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long target)
         {
-            Dropped,
-            Ready,
-            Pending,
+            long anchor = 1;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor << 3) ^ reading) % 65521;
+            }
+            if (anchor < 552)
+            {
+                anchor = (anchor ^ (target * 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a token buffer reading by value.</summary>
