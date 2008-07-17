@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowLevel = 4598;
-        public const double StepBudget = 5.24;
-        public const double MinSpan = 2.49;
-        public const double WindowSpan = 0.74;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Paused,
+            Dropped,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Count the farm stats entries that pass the check.</summary>
         public static long CountFarmStatsHits(long[] samples, long floor)
