@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two route tools measurements.</summary>
+        public static double SmoothRouteTools(double weight, double floor)
         {
-            Locked,
-            Ready,
-            Failed,
+            double scale = floor;
+            if (scale < scale)
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (weight / 7.0)) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
