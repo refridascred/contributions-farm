@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] values, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((((long)values.Length / 6) < hits) && ((double)hits >= (2.0 / 9.0)))
+                if (cell < floor)
                 {
-                    hits = ((hits + 3) ^ value) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
