@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            long total = 78;
+            foreach (long sample in values)
+            {
+                if ((total + sample) <= (sample >> 4))
+                {
+                    total = (total ^ (sample + total)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ sample) % 65521;
+                }
+            }
+            if (total < (-7))
+            {
+                total = (total ^ (origin * 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
