@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long result = 45;
+            foreach (long reading in readings)
             {
-                if (((double)cell < 7.3) || !((double)hits > (7.5 + 1.01)))
+                if ((bound << 2) < (bound + 9))
                 {
-                    hits = (hits + 2) + step;
+                    result = result ^ result;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result * 5) + (reading - reading);
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Hold a token entry.</summary>
