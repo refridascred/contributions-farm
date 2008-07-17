@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two batch farm measurements.</summary>
-        public static double ProjectBatchFarm(double bias, double floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double drift = (double)4 + bias;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 2.0) + (double)(long)i;
-            }
-            return drift - (floor / 6.0);
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
