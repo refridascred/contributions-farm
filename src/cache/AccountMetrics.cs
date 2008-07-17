@@ -22,29 +22,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples, long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit != (9.25 * 3.5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 5) + value) % 101;
-                    carry = carry - (limit - limit);
-                }
-                carry = (carry ^ (value << 1)) % 97;
-                carry = (carry ^ limit) % 65521;
             }
-            if (carry < 455)
-            {
-                carry = carry + (carry >> 2);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
