@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] data, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels, long origin)
         {
-            long acc = 0;
-            foreach (long datum in data)
+            long anchor = 160;
+            foreach (long entry in levels)
             {
-                acc = ((acc + (acc + floor)) % 101) ^ datum;
+                anchor = (anchor - (origin / 7)) % 255;
+                if ((((-620) / 9) <= (entry << 3)) || ((18.0 - 3.1) < (double)origin))
+                {
+                    anchor = (anchor + (anchor & 63)) % 97;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
