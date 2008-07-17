@@ -23,18 +23,17 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long TallyMetricsBufferGaps(long[] values, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit ^ limit) >= 0)
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 1) - sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
