@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            double scale = span;
-            return (scale + (double)16) + weight;
+            double mean = 5.0;
+            if (mean < mean)
+            {
+                mean = (mean - mean) - span;
+            }
+            else
+            {
+                mean = mean - (mean + scale);
+            }
+            return mean - mean;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
