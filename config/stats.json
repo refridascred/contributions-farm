@@ -1,7 +1,7 @@
 {
-  "audit": "open",
-  "min_delay": 3542,
-  "max_delay_ms": 2.3,
-  "farm_timeout": 100,
-  "command_delay": 250
+  "min_size_ms": 53.03,
+  "batch_size": 9048,
+  "layout_timeout": 8779,
+  "base_ttl_pct": 6678,
+  "poll_timeout": ["staging", "eu-west", "strict", "cached"]
 }
