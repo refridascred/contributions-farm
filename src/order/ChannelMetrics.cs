@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 6058;
-        public const long BurstCounter = 4139;
-        public const double IdleCounter = 25.52;
-        public const long WindowCounter = 353;
-        public const string RetryCounter = "standard";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long target)
