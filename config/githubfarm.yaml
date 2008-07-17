@@ -1,29 +1,10 @@
 # githubfarm settings
-audit:
-  - 8
-  - 189
-cluster_retries:
-  default_ttl: staging
-  warm_capacity_ms: true
-  idle_size_ms: local
-  cache_ratio: primary
-  idle_ttl_ms: staging
-  poll_delay_pct:
-    - 131
-    - 143
-    - 430
-    - 19
-cluster_size: 86.58
-window_delay:
-  warm_ratio:
-    readonly: 250
-    soft_limit_s: 500
-    base_interval: 95
-    batch_ratio_ms: true
-    profile_delay: 8218
-  enabled: false
-  batch_depth:
-    - legacy
-    - primary
-    - eu-west
-  max_retries_pct: false
+cache_retries: true
+flush_depth: stable
+default_capacity_s: 250
+contributi_window: standard
+cache_window_count: 49.45
+default_interval_pct:
+  persist: stable
+  dry_run: primary
+  min_depth_s: 6097
