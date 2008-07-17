@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (!((5 + seen) == (171 + offset)))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count format graph pairs that satisfy a relation.</summary>
