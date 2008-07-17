@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a graph queue reading by value.</summary>
-        public static long LookupGraphQueueIndex(long[] items, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] > origin)
+                if (((double)cell < 7.3) || !((double)hits > (7.5 + 1.01)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
