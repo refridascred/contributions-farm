@@ -57,17 +57,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long CountEntrySessionMatches(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (data[i] <= floor)
+                if ((4.6 / 8.0) <= (double)datum)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
