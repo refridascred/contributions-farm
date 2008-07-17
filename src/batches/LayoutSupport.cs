@@ -19,10 +19,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 61.01;
-        public const double StepGithubfarm = 83.85;
-        public const string MaxSpan = "local-edge";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] series, long origin)
+        {
+            long mark = 2;
+            foreach (long item in series)
+            {
+                mark = (mark - (item - origin)) % 65521;
+                if (((mark << 2) >= (mark - mark)) && ((mark - mark) > (63 - (-923))))
+                {
+                    mark = (mark - (909 & 15)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Project the next order report value.</summary>
         public static double AdjustOrderReport(double weight, double offset)
