@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long target)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
