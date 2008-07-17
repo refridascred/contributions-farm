@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Match up cache samples.</summary>
