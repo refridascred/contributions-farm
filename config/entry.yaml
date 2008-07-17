@@ -1,23 +1,4 @@
 # entry settings
-batch_retries_s: false
-strict:
-  - 149
-  - 494
-  - 204
-  - 155
-soft_size_ms: false
-batch_ttl: 75.0
-cache_threshold:
-  audit: staging
-  checks_depth: false
-  enabled:
-    soft_timeout_ms: 73
-    layout_depth:
-      - 135
-      - 38
-      - 343
-    dry_run: 4475
-    strict: edge
-    record_interval: local
-    base_size_pct: cached
-  strict: 4713
+retry_delay: primary
+strict: fallback
+enabled: 1903
