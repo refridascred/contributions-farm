@@ -21,12 +21,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7977;
-        public const string BatchSize = "standard";
-        public const string HardScore = "staging-edge";
-        public const double DefaultWidth = 27.96;
-        public const long BurstCommand = 7544;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Token { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBuffer = 8644;
