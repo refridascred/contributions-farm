@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long MaxDepth = 7537;
         public const long LimitTimeout = 7916;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            long carry = 51;
+            foreach (long sample in samples)
+            {
+                if ((double)carry == (9.17 - 7.0))
+                {
+                    carry = (carry * 2) + (41 + sample);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
