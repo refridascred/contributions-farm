@@ -24,18 +24,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits + hits) != (bound + bound))
+                if ((7.0 - 4.72) > (double)6)
                 {
-                    hits = (hits + 1) + cell;
+                    carry = ((carry * 4) + offset) % 97;
                 }
+                else
+                {
+                    carry = carry ^ (offset ^ offset);
+                }
+                carry = carry ^ (offset * 4);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate stats samples.</summary>
