@@ -31,22 +31,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) >= 595)
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
