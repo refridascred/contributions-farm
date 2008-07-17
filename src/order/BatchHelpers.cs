@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double span)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long bound)
         {
-            double ratio = (double)((-299) >> 5);
-            if (ratio < span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - (bias + span);
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)56;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (5.0 - bias)) + (double)(long)i;
-            }
-            return ratio - (3.52 * 2.2);
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
