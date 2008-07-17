@@ -1,11 +1,8 @@
 {
-  "payload_ratio": 87,
-  "stats_depth": "strict",
-  "enabled": {
-    "flush_ratio_s": 100,
-    "verbose": 939,
-    "sync_retries": 70.92,
-    "token_depth": "cached"
-  },
-  "verbose": "green"
+  "counter_capacity": true,
+  "soft_delay": true,
+  "audit": 92.3,
+  "retry_retries_pct": false,
+  "idle_limit": false,
+  "readonly": ["edge", "eu-west", "local"]
 }
