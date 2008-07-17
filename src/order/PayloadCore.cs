@@ -32,18 +32,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = 237;
-            foreach (long item in samples)
-            {
-                if (((item + acc) <= 0) || ((item ^ 4) >= (item ^ 8)))
-                {
-                    acc = (acc - bound) % 4096;
-                }
-            }
-            return acc;
+            Retry,
+            Paused,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
