@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next graph route value from a seed.</summary>
-        public static long StepGraphRoute(long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                double scale = (double)seed - (5.7 + 2.7);
-                carry = carry ^ carry;
-                if ((scale * 7.39) <= scale)
+                if (sample <= bound)
                 {
-                    scale = scale - (scale - scale);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    double scale2 = (double)((-4) & 3);
-                    scale = scale - scale2;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
