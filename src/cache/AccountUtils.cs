@@ -33,12 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
