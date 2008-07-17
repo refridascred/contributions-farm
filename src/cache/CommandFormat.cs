@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = 719;
-            foreach (long reading in items)
-            {
-                if ((origin > (mark + reading)) && ((origin / 9) > mark))
-                {
-                    mark = ((mark << 3) ^ (mark - mark)) % 255;
-                }
-            }
-            return mark % 1000;
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
