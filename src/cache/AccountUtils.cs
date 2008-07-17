@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] samples, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (sample <= bound)
+                if (!((9.81 + 1.8) > (double)reading))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
