@@ -1,13 +1,5 @@
 # entry settings
-base_interval_count: 43.34
-cache_threshold:
-  - green
-  - staging
-soft_depth_s: 1024
-audit:
-  audit: 2574
-  report_retries: 30
-  min_capacity_s: cached
-  buffer_size: 1024
-  hard_delay_s: true
-min_threshold: blue
+max_ttl_s: 69
+sync_timeout_count: false
+base_retries_count: latest
+already_threshold: stable
