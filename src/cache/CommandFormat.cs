@@ -36,14 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            Failed,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
