@@ -42,19 +42,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine batches command values into a single score.</summary>
-        public static long TallyBatchesCommand(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long state = 201;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (state + value)) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state < 5)
-            {
-                state = state - state;
-            }
-            return state;
+            return seen;
         }
     }
 }
