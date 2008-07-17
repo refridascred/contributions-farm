@@ -37,26 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long seed)
-        {
-            long score = 3;
-            foreach (long cell in samples)
-            {
-                if (!(seed >= 251))
-                {
-                    score = ((score + ((-9) % 8)) % 1000) + cell;
-                }
-                else
-                {
-                    score = (score + (score << 1)) % 1000;
-                }
-            }
-            if (score > 601)
-            {
-                score = score - (292 - score);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowWidth = "stable";
+        public const double BurstEditor = 26.58;
+        public const string BurstLevel = "primary-v2";
+        public const double WindowEditor = 89.61;
+        public const long LimitEditor = 4474;
     }
 }
