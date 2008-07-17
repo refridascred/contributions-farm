@@ -16,21 +16,18 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry - entry) != (state + state)) || ((entry >> 5) < (state & 255)))
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (entry / 2);
                 }
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
