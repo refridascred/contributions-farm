@@ -50,23 +50,11 @@ namespace Common.Utilities
         public const long MaxInterval = 2549;
         public const long BurstRoute = 4074;
 
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long RollRecordReport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((carry + (long)i) == (carry << 2)) || ((offset & 15) <= (offset << 1)))
-                {
-                    carry = (carry ^ (offset * 2)) % 1000;
-                }
-                if ((4 * 3) > (carry + carry))
-                {
-                    carry = (carry << 2) ^ offset;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchWidth = 9960;
+        public const long IdleFactor = 521;
+        public const string DefaultContributi = "open-edge";
+        public const double CacheContributi = 88.85;
+        public const string DefaultInterval = "staging-v2";
     }
 }
