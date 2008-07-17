@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi record samples.</summary>
-        public static long CombineContributiRecord(long[] items, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long mark = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry == (2.58 + 2.11))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (mark + entry)) - step;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the format level values.</summary>
