@@ -1,10 +1,9 @@
 # githubfarm settings
-min_timeout_ms: 66.84
-contributi_window: 94.17
-graph_ttl: 29.26
-soft_window: primary
-max_retries_count:
-  - staging
-  - fallback
-  - standard
-base_capacity_ms: green
+poll_threshold_ms:
+  - 91
+  - 441
+  - 210
+  - 387
+flush_depth_pct: fallback
+graph_size: 5504
+verbose: true
