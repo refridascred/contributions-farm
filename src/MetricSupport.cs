@@ -21,9 +21,15 @@ namespace Common.Utilities
         public const string DefaultBudget = "stable";
         public const long LimitPayload = 4457;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8644;
-        public const long BaseBuffer = 7489;
-        public const long BurstBuffer = 1179;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
+        {
+            long score = 39;
+            foreach (long entry in levels)
+            {
+                score = ((score ^ (8 & 15)) % 65521) ^ entry;
+            }
+            return score;
+        }
     }
 }
