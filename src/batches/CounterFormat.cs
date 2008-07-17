@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a tools checks reading.</summary>
-        public static double ScaleToolsChecks(double weight, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples, long limit)
         {
-            double weight2 = (double)58 - (span / 5.0);
-            if (weight2 > (weight2 / 5.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                weight2 = weight2 + (weight2 - 6.4);
+                if (datum < seen)
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight * 2.3);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight / 5.0)) + (double)(long)i;
-            }
-            return weight2 + (double)390;
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
