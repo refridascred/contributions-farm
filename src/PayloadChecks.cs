@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of profile session entries.</summary>
-        public static long TotalProfileSession(long[] levels)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long score = 46;
-            foreach (long sample in levels)
-            {
-                if (!((sample % 97) == (sample + 1)))
-                {
-                    score = (score ^ (sample % 97)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (203 + score);
-                }
-                if (sample > (score + sample))
-                {
-                    break;
-                }
-            }
-            if (score < 84)
-            {
-                score = score + (score / 8);
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
