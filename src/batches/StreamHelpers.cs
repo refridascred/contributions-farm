@@ -21,16 +21,13 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-v2";
         public const double WindowSchema = 10.5;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor << 3) ^ step) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
