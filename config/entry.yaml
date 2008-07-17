@@ -1,5 +1,7 @@
 # entry settings
-route_capacity: 2022
-default_retries_s: 70.34
-payload_capacity: fallback
-burst_limit_s: false
+report_retries: standard
+max_delay_count: 1024
+flush_size_s: 19.26
+warm_interval: blue
+entry_ttl: green
+batch_ttl: 44.02
