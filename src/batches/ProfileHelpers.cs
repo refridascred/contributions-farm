@@ -57,13 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the payload schema entries that pass the check.</summary>
+        public static long MeasurePayloadSchemaOutliers(long[] values, long limit)
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)(long)values.Length < (double)limit)
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
