@@ -53,17 +53,11 @@ namespace Common.Utilities
         public const long BatchPayload = 3651;
         public const double BurstTimeout = 64.03;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 6213;
+        public const long HardRatio = 1874;
+        public const string BurstCounter = "cached-1";
+        public const long SoftFactor = 1395;
+        public const long MaxDepth = 9335;
     }
 }
