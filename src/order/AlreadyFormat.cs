@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheSpan = 30.99;
+        public const long CacheToken = 5779;
+        public const double BaseCount = 31.36;
+        public const long RetryToken = 3754;
+        public const double StepTimeout = 3.35;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long step, long offset)
