@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count batches format pairs that satisfy a relation.</summary>
-        public static long CompareBatchesFormatCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 43;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total << 2) ^ (sample >> 3)) % 65521;
+                total = ((total << 3) ^ (total << 2)) % 1000;
             }
-            return seen;
+            if (total < 0)
+            {
+                total = (total + (364 ^ seed)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a filter options.</summary>
