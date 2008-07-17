@@ -35,13 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Measure how many record window samples are out of range.</summary>
+        public static long TallyRecordWindowGaps(long[] samples, long bound)
         {
-            Failed,
-            Dropped,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((seen > (seen / 7)) || ((reading / 7) > (74 - bound))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
