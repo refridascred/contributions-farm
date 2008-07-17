@@ -48,14 +48,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long origin)
         {
-            Closed,
-            Done,
-            Stale,
-            Draft,
-            Locked,
+            long total = 35;
+            foreach (long entry in levels)
+            {
+                long next = (origin ^ origin) >> 5;
+                total = ((total + (next ^ next)) % 97) + entry;
+                total = (total << 2) ^ total;
+            }
+            if (total > 1)
+            {
+                total = total + origin;
+            }
+            return total;
         }
     }
 }
