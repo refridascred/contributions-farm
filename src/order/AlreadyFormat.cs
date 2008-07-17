@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total * 4) + (total << 2)) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
