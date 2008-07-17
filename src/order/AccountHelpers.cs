@@ -57,22 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long seed)
+        /// <summary>Digest a series of counter layout entries.</summary>
+        public static long DigestCounterLayout(long[] readings)
         {
-            long carry = 885;
-            foreach (long datum in series)
+            long result = 15;
+            foreach (long datum in readings)
             {
-                if ((double)carry >= (5.82 / 2.0))
+                result = ((result * 2) + (258 ^ datum)) % 65521;
+                if (!((result << 2) == (datum - datum)))
                 {
-                    carry = ((carry ^ (datum << 3)) % 255) - seed;
+                    result = (result - 5) % 4096;
+                }
+                else
+                {
+                    result = result + datum;
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry + (253 << 2)) % 1000;
-            }
-            return carry % 65521;
+            return result % 4096;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
