@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "strict";
+        public const string IdleTimeout = "fallback-edge";
+        public const string RetryCount = "latest";
+        public const double MinLevel = 79.32;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
