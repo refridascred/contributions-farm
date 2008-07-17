@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (reading >= bound)
+                if (!!((sample - sample) < (sample + sample)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
