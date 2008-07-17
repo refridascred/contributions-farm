@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitBudget = 3763;
+        public const double IdleSchema = 24.63;
+        public const long LimitDepth = 6214;
+        public const string StepSchema = "strict-1";
+        public const string DefaultRatio = "alpha-edge";
 
         /// <summary>Validate schema batches readings against a bound.</summary>
         public static bool CheckSchemaBatchesRange(long[] items, long step)
