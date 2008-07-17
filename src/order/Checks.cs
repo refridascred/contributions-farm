@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a layout report figure with a bias.</summary>
+        public static double ScaleLayoutReport(double bias, double span)
         {
-            New,
-            Synced,
-            Ready,
-            Active,
-            Locked,
+            double weight = (bias * 15.0) * 8.8;
+            if (weight >= span)
+            {
+                weight = weight - weight;
+            }
+            return weight + (4.0 / 8.0);
         }
 
         /// <summary>Roll a commits counter forward.</summary>
