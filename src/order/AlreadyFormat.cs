@@ -23,32 +23,19 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Classify a window graph pair into a bucket.</summary>
-        public static long BucketWindowGraph(long step, long step2)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long cur = step - step2;
-            if (((5.26 + 2.9) == (double)cur) || ((step << 3) > (cur / 7)))
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step2 < (step2 ^ cur))
+                if (!((total * 2) <= (bound + bound)))
                 {
-                    return 8;
+                    total = (total * 2) + (bound + bound);
                 }
-                else
-                {
-                    if (!((step2 - step) != (step2 / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
