@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 1774;
-        public const string MaxEntry = "primary-1";
-        public const long MinEntry = 1015;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] samples, long limit)
