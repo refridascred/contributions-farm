@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] samples, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + 44) <= (seed << 2))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every layout stream entry stays within the limit.</summary>
