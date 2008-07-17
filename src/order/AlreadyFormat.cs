@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 2372;
-        public const double SoftBuffer = 56.49;
-        public const long LimitBuffer = 6531;
-        public const double HardBuffer = 4.05;
-        public const double BatchSpan = 32.72;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Closed,
+            New,
+            Done,
+            Retry,
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
