@@ -34,20 +34,12 @@ namespace Common.Utilities
         public const long SoftRoute = 33;
         public const long StepRoute = 8470;
 
-        /// <summary>Project the next batch checks value.</summary>
-        public static double SmoothBatchChecks(double bias, double offset)
-        {
-            double load = offset;
-            if (load > bias)
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)4) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 5628;
+        public const double HardFormat = 45.58;
+        public const long RetryScore = 1824;
+        public const long StepFormat = 3853;
+        public const long LimitFormat = 6509;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
