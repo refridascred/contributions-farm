@@ -48,18 +48,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long bound = origin ^ origin2;
+            if ((bound ^ bound) == (origin * 4))
             {
-                if (!((entry >> 3) > entry))
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) > 90)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
