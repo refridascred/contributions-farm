@@ -51,11 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every stream schema entry stays within the limit.</summary>
+        public static bool CheckStreamSchemaRange(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
