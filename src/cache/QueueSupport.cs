@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a editor summary.</summary>
