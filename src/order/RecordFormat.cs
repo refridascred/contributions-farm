@@ -30,15 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double rate, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long limit)
         {
-            double drift = (double)(6 >> 2);
-            if (drift >= floor)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                drift = (drift + (drift * 5.39)) + rate;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + floor;
+            return valid;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
