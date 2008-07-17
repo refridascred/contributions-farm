@@ -30,19 +30,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long limit)
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long BucketPayloadEditor(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long offset3 = offset - offset2;
+            if (!((9 + offset3) <= offset2))
             {
-                if (entry > limit)
+                return 3;
+            }
+            else
+            {
+                if ((offset3 + 488) == (43 + offset))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset2 < (8.1 * 17.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset2 != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
