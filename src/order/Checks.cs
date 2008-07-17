@@ -16,15 +16,14 @@ namespace Common.Utilities
             return weight + (4.0 / 8.0);
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Retry,
+            Locked,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
