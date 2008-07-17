@@ -64,15 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Synced,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the queue class values.</summary>
