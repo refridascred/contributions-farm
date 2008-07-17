@@ -26,22 +26,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
         {
-            long state = 14;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state + state) <= reading) && ((reading - 4) <= (reading * 3)))
+                if (series[i] == seed)
                 {
-                    state = state ^ (887 ^ state);
-                }
-                if ((double)reading >= (3.0 * 9.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
