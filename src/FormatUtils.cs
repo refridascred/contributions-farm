@@ -33,11 +33,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 2006;
-        public const long BurstChannel = 387;
-        public const string MaxChannel = "open-1";
-        public const string WindowDepth = "latest-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((tally & 31) <= item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
