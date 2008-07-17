@@ -19,17 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support cluster sample.</summary>
-        public static long FindSupportClusterIndex(long[] data, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] > step)
+                if ((anchor + limit) <= (anchor - (long)i))
                 {
-                    return (long)i;
+                    long step = anchor;
+                    anchor = (anchor << 3) ^ (step & 15);
                 }
+                anchor = (anchor << 3) ^ (limit % 5);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
