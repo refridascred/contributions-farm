@@ -1,14 +1,8 @@
 {
-  "cache_window_pct": 60,
-  "burst_retries": 1024,
-  "hard_retries_ms": {
-    "report_window": "latest",
-    "poll_ttl_pct": 33.71,
-    "batch_capacity_s": "local",
-    "flush_retries_count": 77,
-    "max_interval": "local",
-    "counter_limit": "blue"
-  },
-  "route_size": 30,
-  "readonly": 1024
+  "batch_capacity_count": false,
+  "report_interval": "blue",
+  "flush_size_count": "legacy",
+  "dry_run": 56,
+  "verbose": ["eu-west", "green", "cached"],
+  "idle_capacity_s": 49.13
 }
