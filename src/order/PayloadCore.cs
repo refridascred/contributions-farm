@@ -26,12 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Retry,
+            Queued,
+            Ready,
+            Stale,
             Dropped,
-            Pending,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
