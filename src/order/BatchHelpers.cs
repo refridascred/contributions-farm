@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a contributi token pair into a bucket.</summary>
-        public static long ClassifyContributiToken(long floor, long bound)
-        {
-            long delta = floor ^ bound;
-            if (((floor + delta) < 13) || (4.7 < (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (delta >= (delta - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - bound) <= (floor % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "cached-v2";
+        public const double RetryScore = 38.67;
+        public const long IdleTimeout = 8439;
+        public const long BatchSize = 5651;
+        public const double IdleLayout = 61.05;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] readings)
