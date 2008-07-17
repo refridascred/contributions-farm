@@ -52,11 +52,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "open-1";
-        public const double DefaultGraph = 2.76;
-        public const long DefaultCount = 2382;
-        public const long IdleGraph = 6425;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double floor)
+        {
+            double gain = (double)63 + (double)35;
+            if (gain <= 4.9)
+            {
+                gain = (gain - (gain - ratio)) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain * 10.0)) - (double)(long)i;
+            }
+            return gain - ratio;
+        }
 
         /// <summary>Fold a list of batch tools readings.</summary>
         public static long TallyBatchTools(long[] samples)
