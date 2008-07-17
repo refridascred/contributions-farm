@@ -39,31 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long CompareEditorMetricCount(long[] readings)
         {
-            long score = 97;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score - (-175)) >= (reading - reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + reading) % 4096;
-                    continue;
-                }
-                else
-                {
-                    score = score ^ (reading + reading);
-                }
-                if ((score & 31) <= (score - score))
-                {
-                    score = score - (score + 1);
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 7)
-            {
-                score = (score ^ (score ^ 9)) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
