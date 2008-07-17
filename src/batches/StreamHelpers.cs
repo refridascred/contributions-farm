@@ -45,18 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values, long limit)
         {
-            long anchor = 3;
-            foreach (long datum in series)
+            long anchor = 40;
+            foreach (long datum in values)
             {
-                if ((double)origin != (9.7 * 9.2))
+                if ((limit <= datum) || ((5.75 - 2.63) != (double)anchor))
                 {
-                    anchor = ((anchor ^ (anchor - 515)) % 255) ^ datum;
+                    anchor = (anchor - (anchor % 97)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - (134 + datum);
                 }
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
