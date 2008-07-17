@@ -57,13 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Draft,
-            Locked,
-            Active,
-            Retry,
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
