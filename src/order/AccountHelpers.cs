@@ -37,10 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchBudget = 92.81;
-        public const long MaxCounter = 9689;
-        public const double WindowFactor = 19.7;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaRange(long[] series, long seed)
