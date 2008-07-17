@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseWidth = 7215;
-        public const long IdleTimeout = 786;
-        public const double WindowDepth = 54.24;
-        public const long MinSpan = 8237;
-        public const double WindowNotes = 4.38;
+        /// <summary>Derive the next metrics graph value from a seed.</summary>
+        public static long SeriesMetricsGraph(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc - acc) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
