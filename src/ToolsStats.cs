@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] levels, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the batch kind values.</summary>
