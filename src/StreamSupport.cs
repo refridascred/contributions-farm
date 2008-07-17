@@ -23,19 +23,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long item in data)
             {
-                if (datum <= (matches ^ datum))
+                if ((item + 55) < (long)data.Length)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) - offset;
                 }
             }
             return matches;
