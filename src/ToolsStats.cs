@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long limit)
         {
-            long anchor = 842;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.0 * 5.0) > (double)entry)
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
                 {
-                    anchor = (((anchor << 3) ^ (entry + entry)) % 255) + step;
-                }
-                if (!((anchor + anchor) <= (anchor << 3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
