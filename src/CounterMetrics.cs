@@ -14,19 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long offset)
         {
-            double mean = (double)(10 & 7);
-            if (mean > mean)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (5.43 - ratio)) - floor;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (0.2 * 3.0);
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
