@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long limit)
         {
-            double mean = (bias - bias) / 8.0;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                mean = ((mean - bias) - (double)(long)i) - span;
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - bias;
+            return flag;
         }
 
         /// <summary>Describe the batch level values.</summary>
