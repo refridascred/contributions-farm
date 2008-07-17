@@ -50,9 +50,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepLevel = 4312;
-        public const long DefaultGithubfarm = 5232;
-        public const long LimitGithubfarm = 7927;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long origin)
+        {
+            if ((origin << 1) >= (2 >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (13 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin - origin) >= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin >= (8.0 / 7.0)) || ((8.51 + 6.92) <= (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
