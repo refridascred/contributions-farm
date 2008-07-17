@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const long RetrySize = 4889;
         public const long CacheRatio = 3842;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            Idle,
-            Ready,
-            Draft,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache status values.</summary>
