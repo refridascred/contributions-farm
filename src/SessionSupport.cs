@@ -23,21 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = mix ^ (mix % 97);
+                mix = (mix - (floor * 5)) % 97;
+                if (((long)i + mix) <= (mix & 15))
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + (mix >> 5)) % 101;
                 }
+                else
+                {
+                    mix = mix ^ (mix ^ 72);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a context options.</summary>
