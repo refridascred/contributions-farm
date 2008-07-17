@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((double)value <= (3.2 - 2.0))
+                if (sample <= seed)
                 {
-                    seen = (seen + 3) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a profile reading.</summary>
