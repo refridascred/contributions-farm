@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((((item / 2) <= (limit + seen)) || ((3.3 - 15.0) < (double)limit)) && ((limit % 5) > (seen * 2)))
+                if ((reading % 8) >= (floor / 8))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
