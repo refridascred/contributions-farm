@@ -98,20 +98,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 3127;
+        public const long DefaultGithubfarm = 5192;
+        public const long HardFactor = 5640;
+        public const long RetryGithubfarm = 6204;
 
         /// <summary>Locate a token buffer reading by value.</summary>
         public static long LocateTokenBufferIndex(long[] samples, long step)
