@@ -44,24 +44,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long step)
         {
-            long carry = 74;
-            foreach (long cell in series)
+            if (!(step < (step / 9)))
             {
-                for (int i = 0; i < 9; i++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)step <= (double)limit))
                 {
-                    carry = carry + ((long)i % 12);
-                    carry = (carry ^ (carry + cell)) % 65521;
+                    return 6;
                 }
-                carry = carry + carry;
+                else
+                {
+                    if ((double)limit != (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            if (carry < 30)
-            {
-                carry = (carry + 203) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
