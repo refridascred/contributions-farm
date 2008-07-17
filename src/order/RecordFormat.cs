@@ -34,19 +34,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double bias, double bias2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long origin)
         {
-            double rate = bias2 * 4.3;
-            if (rate >= bias2)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                rate = rate + bias;
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - (bias * 5.0);
+            return ready;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
