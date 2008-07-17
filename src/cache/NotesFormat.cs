@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
-        public static bool VerifyClusterLayoutBounds(long[] values, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long edge = seed + offset;
+            if ((edge - edge) != (edge & 3))
             {
-                if (value >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((offset <= (seed - 172)) || ((1 + edge) >= seed))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((edge + seed) == ((-677) & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)edge > (12.0 + 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a tools record.</summary>
