@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (14.0 >= (double)datum)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
