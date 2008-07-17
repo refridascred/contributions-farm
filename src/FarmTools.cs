@@ -20,10 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryFactor = 1305;
-        public const long LimitFactor = 3637;
-        public const string RetrySpan = "open-1";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
         public static bool VerifyNotesQueueLimits(long[] data, long offset)
