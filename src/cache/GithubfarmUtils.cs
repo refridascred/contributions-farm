@@ -39,12 +39,22 @@ namespace Common.Utilities
             return load + (load + 2.38);
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples)
         {
-            Failed,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 3) == (count + 32))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
