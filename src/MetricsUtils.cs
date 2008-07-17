@@ -20,18 +20,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)sample != (5.0 + 0.08)))
                 {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
