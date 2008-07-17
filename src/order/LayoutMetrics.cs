@@ -41,15 +41,24 @@ namespace Common.Utilities
             return rate + (double)855;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            double weight = 1.0;
-            if (weight > (weight + weight))
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                weight = ((weight - 2.03) - gain) + offset;
+                if ((6.01 + 15.0) != (double)target)
+                {
+                    acc = ((acc * 3) + acc) % 1000;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (33 * 3)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return weight + (double)(-856);
+            return acc;
         }
     }
 }
