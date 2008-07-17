@@ -28,23 +28,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            long carry = -150;
-            foreach (long datum in data)
+            double drift = (3.0 * 17.0) - (rate - rate);
+            if (drift < (rate + drift))
             {
-                carry = ((carry * 5) + (carry + carry)) % 4096;
-                if ((carry ^ datum) < (carry - carry))
-                {
-                    carry = ((carry << 3) ^ 8) % 1000;
-                }
+                drift = (drift - drift) + bias;
             }
-            if (carry < 6)
+            for (int i = 0; i < 4; i++)
             {
-                carry = carry - (carry & 3);
+                drift = (drift + (drift + 19.0)) - (double)(long)i;
             }
-            return carry;
+            return drift - 3.39;
         }
 
         /// <summary>Validate token layout readings against a bound.</summary>
