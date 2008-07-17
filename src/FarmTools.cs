@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
