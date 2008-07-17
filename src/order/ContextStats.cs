@@ -31,11 +31,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 43.4;
-        public const long DefaultCommand = 7812;
-        public const double RetryCommand = 33.78;
-        public const long MaxCommand = 846;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Failed,
+            Retry,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
