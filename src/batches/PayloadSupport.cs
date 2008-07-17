@@ -32,31 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long offset, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((373 - seed) >= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (offset & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.4 / 5.0) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
