@@ -22,11 +22,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels, long floor)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long mix = 2;
+            foreach (long sample in levels)
+            {
+                if ((mix ^ sample) > floor)
+                {
+                    mix = (mix * 3) + floor;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
