@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long edge = seed + offset;
-            if ((edge - edge) != (edge & 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset <= (seed - 172)) || ((1 + edge) >= seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge + seed) == ((-677) & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)edge > (12.0 + 3.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
