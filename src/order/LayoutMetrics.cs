@@ -22,22 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            long mark = 3;
-            foreach (long entry in levels)
+            double rate = weight + weight;
+            if (rate <= 6.0)
             {
-                if (offset < (mark ^ entry))
-                {
-                    mark = ((mark * 3) + 94) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (entry << 1);
-                }
+                rate = rate + (rate - weight);
             }
-            return mark % 4096;
+            else
+            {
+                rate = rate - (3.0 / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (weight - span)) + (double)(long)i;
+            }
+            return rate + (double)855;
         }
 
         /// <summary>Blend two entry measurements.</summary>
