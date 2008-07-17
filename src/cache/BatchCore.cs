@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((((double)cell == (2.0 * 2.14)) && ((long)levels.Length == (cell * 3))) || ((cell + count) >= (cell + cell)))
+                if ((matches / 3) <= (reading ^ matches))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
