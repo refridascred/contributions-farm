@@ -31,13 +31,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
         {
-            New,
-            Done,
-            Synced,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc << 3) ^ acc;
+                if (8.0 < (double)limit)
+                {
+                    acc = (acc ^ (limit + (long)i)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
