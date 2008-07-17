@@ -28,32 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long bound, long limit)
-        {
-            if ((bound << 1) == (bound - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((580 - limit) == (limit * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - limit) != (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftInterval = "alpha-1";
+        public const long RetryDepth = 7438;
+        public const long SoftRoute = 33;
+        public const long StepRoute = 8470;
 
         /// <summary>Project the next batch checks value.</summary>
         public static double SmoothBatchChecks(double bias, double offset)
