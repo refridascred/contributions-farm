@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the account notes series from a seed.</summary>
-        public static long RollAccountNotes(long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix * 5) + ((long)i + (long)i);
-                if (!((double)floor < 3.19))
-                {
-                    mix = (mix + (715 / 3)) % 255;
-                    mix = (mix + (floor * 3)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
