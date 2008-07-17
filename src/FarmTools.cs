@@ -24,25 +24,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long step)
-        {
-            long slot = origin + step;
-            if (slot > (step >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (slot > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchFactor = 3257;
+        public const string DefaultWidth = "strict-1";
+        public const long LimitSize = 5012;
+        public const long IdleScore = 3008;
+        public const long BurstTimeout = 2892;
     }
 }
