@@ -13,10 +13,40 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "legacy";
-        public const long LimitPayload = 6996;
-        public const string StepPayload = "staging-1";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long floor)
+        {
+            long bound = target + floor;
+            if ((target - bound) > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (7.0 + 8.58))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ target) <= (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - target) <= (366 / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardEntry = 5920;
