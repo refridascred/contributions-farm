@@ -47,18 +47,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long AuditCacheChannelHits(long[] series, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (entry > count)
+                if ((12.0 + 4.84) <= (double)datum)
                 {
-                    count = (count + 2) + step;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
