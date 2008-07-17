@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitScore = 4428;
-        public const double BatchScore = 93.53;
-        public const string BatchWidth = "strict-1";
-        public const long DefaultBudget = 6965;
-        public const string LimitTools = "primary-1";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long seed)
+        {
+            long anchor = 646;
+            foreach (long entry in samples)
+            {
+                if (((double)203 == (double)entry) || ((long)samples.Length == (anchor - anchor)))
+                {
+                    anchor = (anchor ^ (entry ^ seed)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] samples, long seed)
