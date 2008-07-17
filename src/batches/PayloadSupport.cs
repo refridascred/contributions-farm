@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the command session entries that pass the check.</summary>
-        public static long CountCommandSessionMatches(long[] levels, long seed)
+        /// <summary>Find the first farm tools entry that matches the target.</summary>
+        public static long LocateFarmToolsIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= (seed >> 3))
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
