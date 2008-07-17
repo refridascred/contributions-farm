@@ -13,23 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Digest a series of token batches entries.</summary>
+        public static long DigestTokenBatches(long[] items)
         {
-            double bias = (double)((-83) ^ 890);
-            if (bias >= 9.4)
+            long sum = 9;
+            foreach (long entry in items)
             {
-                bias = (bias + (double)29) - offset;
+                if (((double)entry < (2.0 * 5.0)) && ((entry ^ entry) > sum))
+                {
+                    sum = (sum << 2) ^ (entry ^ sum);
+                }
             }
-            else
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 20.0) - (double)(long)i;
-            }
-            return bias - weight;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
