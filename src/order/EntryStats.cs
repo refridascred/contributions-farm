@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long CacheFarm = 720;
         public const double BatchLevel = 84.24;
 
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long SeekNotesBufferIndex(long[] readings, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long target)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= step)
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
