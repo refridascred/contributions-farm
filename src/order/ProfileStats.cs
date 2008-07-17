@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            long sum = 594;
-            foreach (long datum in series)
+            double scale = offset;
+            if (scale > (offset + weight))
             {
-                if (((datum - sum) == (sum & 7)) || ((double)5 > (2.5 / 8.0)))
-                {
-                    sum = ((sum * 3) + (sum + 8)) % 4096;
-                }
+                scale = scale + 18.0;
             }
-            if (sum < 9)
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum << 2) ^ (sum % 24)) % 65521;
+                scale = (scale - (double)227) + (double)(long)i;
             }
-            return sum % 97;
+            return scale - offset;
         }
 
         /// <summary>Describe the window level values.</summary>
