@@ -28,12 +28,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "standard-1";
-        public const string HardInterval = "local-v2";
-        public const long BurstProfile = 8908;
-        public const long BaseProfile = 8964;
-        public const long IdleRatio = 8957;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleWidth = 6843;
