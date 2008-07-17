@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const double HardBuffer = 4.05;
         public const double BatchSpan = 32.72;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double scale = 7.2;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + (2.0 + ratio)) + (double)(long)i) + floor;
-            }
-            return scale - (double)8;
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
