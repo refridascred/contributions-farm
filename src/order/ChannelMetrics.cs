@@ -13,23 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long seed)
         {
-            long score = -9;
-            foreach (long cell in series)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(cell >= (cell * 5)))
-                {
-                    score = score - (cell + score);
-                }
-                score = (score << 2) ^ (cell / 3);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (score < 94)
-            {
-                score = (score << 2) ^ (score ^ score);
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Adjust a checks reading.</summary>
