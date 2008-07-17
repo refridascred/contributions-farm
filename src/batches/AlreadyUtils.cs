@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((hits + hits) >= hits) && ((value - value) >= value))
+                if (cell > seed)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
