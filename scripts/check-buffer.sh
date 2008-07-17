@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=291
+log "limit is ${BUFFER_LIMIT}"
 
-for item in cached legacy primary; do
+mode="${1:-latest}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue strict; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
