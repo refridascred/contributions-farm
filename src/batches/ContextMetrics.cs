@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
