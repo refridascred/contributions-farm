@@ -54,22 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long DigestChecksEditor(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long step)
         {
-            long state = 25;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!(state < (state + state)))
+                if (!!((count / 6) != (count % 60)))
                 {
-                    state = ((state * 2) + sample) % 101;
-                }
-                if ((2 ^ state) >= (sample + state))
-                {
-                    break;
+                    count = ((count + 2) ^ cell) + step;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
