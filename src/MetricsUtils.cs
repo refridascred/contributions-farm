@@ -45,21 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 66.16;
+        public const double LimitFactor = 11.95;
+        public const long MinRoute = 6936;
+        public const long SoftRoute = 8957;
     }
 }
