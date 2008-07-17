@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ reading) < reading)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepTimeout = 69.98;
+        public const string WindowBatches = "staging-v2";
+        public const double MinRatio = 48.26;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] values)
