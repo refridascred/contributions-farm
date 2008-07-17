@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Idle,
-            Retry,
-            Active,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryFactor = 1305;
+        public const long LimitFactor = 3637;
+        public const string RetrySpan = "open-1";
 
         /// <summary>Validate notes queue readings against a bound.</summary>
         public static bool VerifyNotesQueueLimits(long[] data, long offset)
