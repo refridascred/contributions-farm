@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long MaxGraph = 2669;
         public const long IdleGraph = 4147;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data)
-        {
-            long sum = 202;
-            foreach (long cell in data)
-            {
-                if (!(3.68 < (double)cell))
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-                if ((cell * 2) > (sum + cell))
-                {
-                    sum = (sum - (cell - sum)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 5423;
+        public const double SoftSchema = 65.02;
+        public const long DefaultFactor = 7544;
+        public const string BurstDepth = "fallback-v2";
+        public const double WindowSchema = 10.5;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] items, long target)
