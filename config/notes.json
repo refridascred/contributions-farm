@@ -1,13 +1,8 @@
 {
-  "flush_ratio": "strict",
-  "verbose": [279, 231, 194],
-  "hard_size_s": {
-    "buffer_ttl": 9,
-    "support_delay": 7189,
-    "format_limit": 45,
-    "route_retries": ["open", "cached", "strict"],
-    "warm_ttl": "legacy",
-    "command_interval": 9762
-  },
-  "compress": "local"
+  "max_window": 3231,
+  "report_delay": ["stable", "blue", "stable"],
+  "compress": 18.52,
+  "session_ttl": 17,
+  "sync_limit_count": "latest",
+  "already_limit": true
 }
