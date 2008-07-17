@@ -22,11 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long carry = 398;
+            foreach (long value in items)
+            {
+                if (value < (value - carry))
+                {
+                    carry = (carry - (carry << 3)) % 1000;
+                }
+                if ((value + carry) >= carry)
+                {
+                    break;
+                }
+            }
+            if (carry > 607)
+            {
+                carry = (carry - (0 + carry)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of already metrics readings.</summary>
