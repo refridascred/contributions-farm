@@ -1,7 +1,5 @@
 {
-  "retry_threshold": "eu-west",
-  "warm_threshold_s": [333, 492, 392],
-  "strict": 100,
-  "burst_window_count": 3510,
-  "flush_timeout": "open"
+  "strict": "stable",
+  "commits_depth": 60,
+  "layout_ttl": "standard"
 }
