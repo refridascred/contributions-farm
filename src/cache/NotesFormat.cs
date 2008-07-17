@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryWidth = 9926;
-        public const long WindowSize = 6888;
-        public const long MaxContributi = 242;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Draft,
+            Retry,
+            Done,
+            New,
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
