@@ -34,12 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
