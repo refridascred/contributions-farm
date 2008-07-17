@@ -31,20 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(3.85 < (double)origin))
-                {
-                    mix = (mix + ((-703) ^ origin)) % 4096;
-                }
-                mix = (mix ^ (mix >> 5)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a filter record.</summary>
