@@ -38,29 +38,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long limit)
         {
-            long lane = limit ^ offset;
-            if ((double)lane != (double)offset)
+            if ((bound << 1) == (bound - bound))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((lane + 93) < 87) || ((lane - 6) > limit))
+                if ((580 - limit) == (limit * 5))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (((limit ^ 833) < (lane ^ lane)) || ((double)limit >= (2.0 + 2.3)))
+                    if ((bound - limit) != (limit - limit))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
