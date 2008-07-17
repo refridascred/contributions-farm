@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] values, long offset)
         {
-            double weight = (double)(712 + 9);
-            if (weight < 5.1)
+            bool found = true;
+            foreach (long entry in values)
             {
-                weight = ((weight - weight) - ratio) + floor;
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + weight;
+            return found;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
