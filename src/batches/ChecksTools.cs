@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long step, long target)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long AuditToolsReportGaps(long[] readings)
         {
-            long cur = step ^ target;
-            if (cur <= (target * 5))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.4 + 0.2) == (double)step)
+                if (hits >= (hits + 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target & 127) == (589 % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 2) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
