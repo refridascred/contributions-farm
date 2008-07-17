@@ -91,13 +91,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Scale a contributi record figure with a bias.</summary>
+        public static double BlendContributiRecord(double gain, double floor)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double load = gain;
+            if (load > gain)
+            {
+                load = load - (gain - floor);
+            }
+            return load - load;
         }
     }
 }
