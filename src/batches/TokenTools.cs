@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long IdleCount = 5974;
         public const long IdleFormat = 8498;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series, long seed)
         {
-            Retry,
-            Paused,
-            Synced,
+            long state = -38;
+            foreach (long cell in series)
+            {
+                if ((double)seed != (double)669)
+                {
+                    state = (state - (cell * 4)) % 4096;
+                }
+            }
+            return state % 4096;
         }
     }
 }
