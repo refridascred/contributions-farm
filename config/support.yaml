@@ -1,15 +1,67 @@
 # support settings
-persist: 39.21
-idle_ratio_s:
-  - latest
+max_size_s: 71.06
+poll_limit_count:
+  sync_window: false
+  audit: 9416
+  sync_ratio_s:
+    - 192
+    - 500
+    - 192
+sync_interval:
+  flush_threshold_count: standard
+  checks_capacity: green
+  route_limit:
+    min_timeout_pct: false
+    burst_delay_s:
+      - edge
+      - latest
+      - standard
+      - strict
+    strict:
+      - staging
+      - primary
+      - standard
+    base_size_ms: primary
+    dry_run:
+      - 497
+      - 130
+  cache_threshold: 19
+  context_capacity:
+    base_retries: 500
+    hard_timeout_ms: 21
+    cache_limit_count: false
+    retry_interval_count: 52.33
+    retry_delay:
+      - open
+      - legacy
+      - staging
+    cache_capacity_s: true
+  verbose:
+    record_depth:
+      - local
+      - cached
+      - latest
+      - fallback
+    min_delay_s: 52.02
+    burst_retries_s: strict
+    retry_delay: 30
+soft_retries:
+  - eu-west
   - edge
-base_capacity_pct: 5
-cache_retries_ms: 38
-audit:
-  - green
-  - fallback
-  - latest
-min_interval_pct:
-  poll_interval_ms: true
-  compress: local
-  warm_ttl_pct: true
+  - open
+idle_window_count:
+  burst_limit:
+    max_depth_pct: true
+    idle_depth_s: 4.87
+    record_delay: staging
+    cache_timeout: open
+    cache_limit_s: stable
+  burst_depth: standard
+  base_depth_count: 581
+  burst_size_s: 57.98
+  burst_retries_ms: 36
+  sync_ratio_count: blue
+graph_interval:
+  idle_delay_count: 37
+  checks_timeout: 8.12
+  token_timeout: 22
