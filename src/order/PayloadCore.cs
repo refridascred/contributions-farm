@@ -25,11 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = sum - target;
+                sum = (sum + (sum - target)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the report kind values.</summary>
