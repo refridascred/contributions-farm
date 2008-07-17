@@ -51,19 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Adjust a window tools reading.</summary>
+        public static double ProjectWindowTools(double weight, double span)
         {
-            long score = 212;
-            foreach (long item in samples)
+            double drift = span;
+            if (drift < (double)2)
             {
-                score = ((score * 5) + 3) % 4096;
-                if ((score - item) < (score * 5))
-                {
-                    score = ((score * 3) + (item ^ score)) % 4096;
-                }
+                drift = (drift + drift) - weight;
             }
-            return score;
+            else
+            {
+                drift = drift - (span * 9.36);
+            }
+            return drift + drift;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
