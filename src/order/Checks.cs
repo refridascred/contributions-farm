@@ -19,26 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples, long offset)
+        /// <summary>Look up the position of a support cluster sample.</summary>
+        public static long FindSupportClusterIndex(long[] data, long step)
         {
-            long acc = 34;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (offset <= item)
+                if (data[i] > step)
                 {
-                    acc = ((acc << 2) ^ item) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (item & 3);
-                }
-                if (offset > (item + item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
