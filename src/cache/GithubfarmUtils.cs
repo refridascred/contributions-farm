@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double load = span - (span / 2.0);
-            if (load > bias)
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load + (load / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load + 1.26)) + (double)(long)i;
-            }
-            return load + (load + 2.38);
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit already cluster readings against a rule.</summary>
