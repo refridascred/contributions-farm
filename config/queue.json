@@ -1,7 +1,20 @@
 {
-  "base_retries": [176, 455],
-  "cache_size": 72.31,
-  "soft_depth_ms": true,
-  "sync_ttl": ["green", "local", "strict", "latest"],
-  "cache_retries": 70.1
+  "min_threshold": {
+    "poll_ttl": 7.15,
+    "default_limit": ["primary", "strict", "open"],
+    "max_depth_s": "open",
+    "soft_depth": {
+      "counter_capacity": ["eu-west", "open", "strict", "stable"],
+      "soft_size_count": "legacy",
+      "verbose": true,
+      "burst_capacity_ms": "cached",
+      "burst_limit": "legacy",
+      "soft_interval_ms": 88.13
+    },
+    "soft_size_count": 5486
+  },
+  "route_ratio": [95, 281, 70, 292],
+  "max_limit": "blue",
+  "retry_limit": 44.74,
+  "compress": 500
 }
