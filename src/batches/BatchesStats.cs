@@ -31,12 +31,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long target)
         {
-            Done,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry ^ entry) <= (target % 60)) && ((hits << 3) < (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every farm window entry stays within the limit.</summary>
