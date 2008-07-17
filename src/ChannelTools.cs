@@ -20,39 +20,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            long offset2 = offset ^ bound;
-            if (!((offset & 3) != (offset - offset2)))
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset2 * 5) <= (bound - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset2 > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound * 2) < offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
