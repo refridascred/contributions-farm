@@ -23,9 +23,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseRatio = 388;
-        public const long CacheFactor = 2941;
-        public const long WindowSize = 7127;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (matches ^ datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
