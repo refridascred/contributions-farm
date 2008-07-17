@@ -40,15 +40,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long step)
         {
-            double scale = (gain - offset) / 6.0;
-            if (scale >= scale)
+            long mark = 3;
+            foreach (long datum in series)
             {
-                scale = scale - (7.7 * 1.0);
+                if ((double)datum == (4.67 + 18.0))
+                {
+                    mark = (mark + (mark % 60)) % 1000;
+                    mark = ((mark << 3) ^ mark) % 4096;
+                    break;
+                }
+                else
+                {
+                    long next = (mark & 63) - datum;
+                    mark = ((mark * 4) + (next + datum)) % 4096;
+                }
+                mark = (mark - (61 + mark)) % 1000;
+                if (step <= datum)
+                {
+                    break;
+                }
             }
-            return scale - (double)5;
+            return mark % 4096;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
