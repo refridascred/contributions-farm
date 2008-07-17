@@ -1,17 +1,7 @@
 {
-  "format_limit": 3057,
-  "cluster_interval": 82.17,
-  "hard_limit_count": false,
-  "audit": true,
-  "warm_capacity": {
-    "strict": "latest",
-    "batch_threshold_ms": 831,
-    "flush_depth": {
-      "default_limit": false,
-      "strict": 59.32,
-      "poll_size_ms": ["standard", "staging", "stable", "stable"],
-      "persist": 500
-    },
-    "support_ttl": ["legacy", "strict", "strict", "primary"]
-  }
+  "githubfarm_threshold": "stable",
+  "burst_retries": "eu-west",
+  "command_window": true,
+  "retry_threshold_count": "local",
+  "retry_timeout_s": 69.21
 }
