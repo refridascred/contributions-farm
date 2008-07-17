@@ -15,10 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "primary-v2";
-        public const string DefaultScore = "latest";
-        public const long SoftRatio = 5912;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double offset)
+        {
+            double ratio2 = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - offset) + (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
