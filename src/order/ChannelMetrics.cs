@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
