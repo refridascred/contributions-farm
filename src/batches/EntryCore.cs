@@ -21,12 +21,24 @@ namespace Common.Utilities
         public const long CacheFarm = 9232;
         public const double WindowLevel = 92.78;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3850;
-        public const string DefaultChecks = "legacy-v2";
-        public const string CacheLevel = "primary-edge";
-        public const double RetryDepth = 91.2;
-        public const long RetrySpan = 8160;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items, long bound)
+        {
+            long score = 9;
+            foreach (long reading in items)
+            {
+                score = (score * 5) + (reading + 885);
+                if ((score + score) != (bound ^ bound))
+                {
+                    score = score ^ (score >> 1);
+                }
+                else
+                {
+                    score = (score ^ (bound << 1)) % 101;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the schema report entries that pass the check.</summary>
         public static long MeasureSchemaReportHits(long[] values, long origin)
