@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a filter context pair into a bucket.</summary>
-        public static long RankFilterContext(long bound, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            if ((4.39 - 14.0) == (double)bound)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 5) == (bound + bound))
+                score = ((score << 3) ^ (score + step)) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 2;
+                    score = ((score - (step & 7)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
