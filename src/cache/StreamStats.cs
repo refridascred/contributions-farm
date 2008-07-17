@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ratio - (gain + bias);
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] levels, long origin)
         {
-            Synced,
-            Idle,
-            New,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)cell != (6.0 + 5.2)))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command info.</summary>
