@@ -20,21 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((mark >> 4) >= (mark % 2)))
-                {
-                    mark = (mark ^ 7) % 97;
-                }
-                mark = (mark << 3) ^ (mark + (long)i);
-                mark = (mark + (bound * 5)) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
