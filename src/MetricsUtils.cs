@@ -43,12 +43,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a schema cluster sample.</summary>
-        public static long FindSchemaClusterIndex(long[] series, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
