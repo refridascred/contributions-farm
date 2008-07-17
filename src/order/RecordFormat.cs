@@ -53,21 +53,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = bound ^ limit;
+            if ((limit - 8) < (limit - span))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(bound >= (span ^ bound)))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
