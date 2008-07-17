@@ -28,18 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 90;
+            foreach (long datum in samples)
             {
-                if ((double)seen < (double)item)
-                {
-                    seen = seen + 3;
-                }
+                sum = (sum - ((long)samples.Length << 1)) + datum;
             }
-            return seen;
+            if (sum > (-4))
+            {
+                sum = (sum << 2) ^ (sum % 12);
+            }
+            return sum;
         }
     }
 }
