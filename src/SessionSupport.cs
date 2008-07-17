@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score << 3) ^ (score % 8);
-                if ((2.57 * 2.04) >= (double)score)
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Count format graph pairs that satisfy a relation.</summary>
