@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string IdleInterval = "stable-edge";
         public const long CacheSpan = 5312;
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long TallyFilterCommitsOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + sample) >= (matches * 3))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 68.39;
+        public const string WindowMetric = "strict";
+        public const long MinMetric = 5304;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 7176;
