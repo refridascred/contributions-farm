@@ -14,18 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((seed - 606) != (item * 2)) && ((double)seed > (4.4 * 9.19))) && ((matches % 8) == (matches - seed)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
