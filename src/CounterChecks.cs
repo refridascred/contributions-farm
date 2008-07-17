@@ -58,13 +58,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            Retry,
-            Closed,
-            Draft,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
