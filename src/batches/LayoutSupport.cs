@@ -24,21 +24,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 20;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((bound & 1) < ((long)items.Length * 2)) || ((anchor - bound) > (anchor * 3)))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 5) + (datum & 255);
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a token stats.</summary>
