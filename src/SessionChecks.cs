@@ -23,22 +23,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] items, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long diff = limit ^ limit2;
+            if ((89 * 2) > (diff - 84))
             {
-                if ((double)entry <= (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((limit & 31) < (diff + limit2))
                 {
-                    tally = (tally + 1) + offset;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
