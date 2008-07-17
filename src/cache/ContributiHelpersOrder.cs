@@ -40,24 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats commits value from a seed.</summary>
-        public static long DeriveStatsCommits(long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum - (target * 5)) % 1000;
-                if (!(target >= (target & 1)))
-                {
-                    sum = (sum ^ (sum - (long)i)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (long)i) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
