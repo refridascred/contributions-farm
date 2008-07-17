@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long seed, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double span)
         {
-            long offset = seed - origin;
-            if (offset >= (origin & 31))
+            double ratio = (double)((-299) >> 5);
+            if (ratio < span)
             {
-                return 6;
+                ratio = ratio - (bias + span);
             }
             else
             {
-                if ((1 / 2) <= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = ratio + (double)56;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (5.0 - bias)) + (double)(long)i;
+            }
+            return ratio - (3.52 * 2.2);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
