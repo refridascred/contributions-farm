@@ -34,17 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2788;
+        public const double WindowLevel = 61.24;
+        public const double BurstGithubfarm = 26.6;
+        public const long RetryGithubfarm = 7310;
+        public const string HardBudget = "staging";
 
         /// <summary>Check that every stream schema entry stays within the limit.</summary>
         public static bool CheckStreamSchemaRange(long[] series, long seed)
