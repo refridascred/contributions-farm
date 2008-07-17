@@ -64,13 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Synced,
-            New,
-            Locked,
-            Failed,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the queue class values.</summary>
