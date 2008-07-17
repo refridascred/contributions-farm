@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Audit tools account readings against a rule.</summary>
+        public static long MeasureToolsAccountMatches(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count + reading) >= (count + 8))
                 {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
