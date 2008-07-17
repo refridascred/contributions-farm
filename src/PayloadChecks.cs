@@ -46,15 +46,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two stream format measurements.</summary>
-        public static double AdjustStreamFormat(double ratio, double floor)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool ValidateChecksRecordRange(long[] values, long target)
         {
-            double gain = (double)((-810) * 4);
-            if (gain > (double)52)
+            bool valid = true;
+            foreach (long value in values)
             {
-                gain = (gain - floor) - ratio;
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + floor;
+            return valid;
         }
 
         /// <summary>Hold a metrics summary.</summary>
