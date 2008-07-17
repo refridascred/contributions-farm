@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] samples, long limit)
         {
-            long state = -564;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((datum & 255) >= (datum + state))
+                if (!((limit + 1) < matches))
                 {
-                    state = (state + (838 & 1)) % 101;
+                    matches = (matches + 1) ^ item;
                 }
-                if ((double)datum == (0.18 - 4.0))
+                else
                 {
-                    state = (state << 3) ^ state;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many window commits samples are out of range.</summary>
