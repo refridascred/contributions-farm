@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            double gain = (double)(5 + 44);
+            if (gain <= (span + gain))
+            {
+                gain = gain - (ratio + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain + 6.0;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
