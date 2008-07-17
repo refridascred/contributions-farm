@@ -29,14 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the filter stream entries that pass the check.</summary>
+        public static long AuditFilterStreamGaps(long[] samples)
         {
-            Ready,
-            Closed,
-            Synced,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) >= (value % 24))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
