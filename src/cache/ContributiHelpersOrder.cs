@@ -49,10 +49,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 508;
-        public const string MinSpan = "open-v2";
-        public const string WindowLevel = "latest-v2";
-        public const long IdleFactor = 8399;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
