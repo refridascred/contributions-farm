@@ -38,11 +38,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 1980;
-        public const double LimitSession = 21.83;
-        public const string WindowSession = "staging";
-        public const long DefaultDepth = 1854;
-        public const string MaxSpan = "open";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSpan = 4306;
+        public const long DefaultRatio = 6687;
+        public const string DefaultWidth = "staging-edge";
+        public const long BaseFormat = 4709;
+        public const long BaseSize = 1814;
     }
 }
