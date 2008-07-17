@@ -16,13 +16,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
