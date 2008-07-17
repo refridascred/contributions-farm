@@ -28,31 +28,12 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if ((double)offset2 <= 20.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if (960 > (offset2 - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.5 + 8.48) < (double)offset) && (861 >= (offset2 ^ offset2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the window class values.</summary>
