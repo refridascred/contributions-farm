@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BaseSession = 7231;
         public const double RetrySession = 33.45;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            long total = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                total = total + (sample - sample);
+                if ((((double)cell < 16.0) && ((tally + 80) <= (cell + cell))) || ((tally % 97) >= (cell + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
