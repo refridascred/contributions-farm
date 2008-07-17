@@ -23,20 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double weight, double bias)
-        {
-            double scale = (double)(-89) * 12.0;
-            if (scale >= (double)51)
-            {
-                scale = (scale + (weight + scale)) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 2.32) + (double)(long)i;
-            }
-            return scale - (double)98;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2958;
+        public const long MinSize = 3559;
+        public const long RetryFilter = 8976;
+        public const long MinBudget = 5097;
+        public const long CacheFilter = 2135;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
