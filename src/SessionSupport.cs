@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)seen < (2.8 + 7.1))
+                if ((hits * 4) >= (target - target))
                 {
-                    seen = (seen + 3) + entry;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
