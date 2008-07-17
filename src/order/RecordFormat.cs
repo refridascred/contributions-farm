@@ -48,12 +48,14 @@ namespace Common.Utilities
             return rate - (bias * 5.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepInterval = 60.8;
-        public const double DefaultChannel = 55.08;
-        public const string DefaultDepth = "cached";
-        public const double MaxDepth = 48.19;
-        public const double MaxBudget = 96.54;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
