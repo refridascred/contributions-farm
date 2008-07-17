@@ -56,18 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload schema entries that pass the check.</summary>
-        public static long MeasurePayloadSchemaOutliers(long[] values, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((double)(long)values.Length < (double)limit)
+                if (((matches ^ item) == (matches + item)) && ((double)item >= (double)matches))
                 {
-                    seen = (seen + 1) - entry;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank command input into a small class.</summary>
