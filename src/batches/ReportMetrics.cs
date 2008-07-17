@@ -23,14 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Failed,
-            New,
+            long result = 735;
+            foreach (long sample in values)
+            {
+                if (442 > (long)values.Length)
+                {
+                    result = ((result * 4) + (9 - sample)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the context class values.</summary>
