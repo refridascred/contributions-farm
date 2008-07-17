@@ -22,33 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks stream value against two limits.</summary>
-        public static long GradeChecksStream(long origin, long origin2)
-        {
-            long step = origin ^ origin2;
-            if ((origin2 ^ step) > origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) != (origin & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (5 <= (origin2 / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSize = 7969;
+        public const double MaxTimeout = 86.21;
+        public const long IdleWidth = 6705;
+        public const long BaseToken = 7279;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
