@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + sample) > floor)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowWidth = 29.9;
+        public const long LimitGithubfarm = 9869;
+        public const long IdleWidth = 3038;
+        public const double CacheGithubfarm = 79.89;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] values)
