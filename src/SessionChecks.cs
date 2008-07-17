@@ -51,12 +51,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            long result = 6;
+            foreach (long item in values)
+            {
+                result = ((result - limit) % 1000) ^ item;
+            }
+            return result % 4096;
         }
     }
 }
