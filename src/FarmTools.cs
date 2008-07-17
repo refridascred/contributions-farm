@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 7724;
+        public const long MaxSession = 3308;
+        public const long BaseSpan = 9666;
+        public const long SoftSpan = 2201;
+        public const long MaxTimeout = 3459;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
