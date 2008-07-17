@@ -20,22 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] values)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits - hits) <= (hits % 24))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
