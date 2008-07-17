@@ -26,11 +26,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 7991;
-        public const string WindowLevel = "stable";
-        public const string DefaultCommand = "legacy-edge";
-        public const double WindowCount = 87.03;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Queued,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] items)
