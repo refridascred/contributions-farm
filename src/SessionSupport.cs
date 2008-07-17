@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count tools entry pairs that satisfy a relation.</summary>
-        public static long OverlapToolsEntryCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 79.23;
+        public const long BurstDepth = 5020;
+        public const long BaseWidth = 9457;
+        public const double StepDepth = 38.02;
+        public const long BatchRoute = 4585;
 
         /// <summary>Measure how many entry order samples are out of range.</summary>
         public static long MeasureEntryOrderMatches(long[] values, long bound)
