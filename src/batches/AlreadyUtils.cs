@@ -66,12 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items)
         {
-            Ready,
-            Draft,
-            Retry,
+            long score = 4;
+            foreach (long sample in items)
+            {
+                if ((score + sample) < (8 % 10))
+                {
+                    score = (score << 3) ^ ((long)items.Length - sample);
+                }
+            }
+            return score % 1000;
         }
     }
 }
