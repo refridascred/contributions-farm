@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = 2;
+            foreach (long datum in series)
             {
-                if (((tally >> 4) >= entry) || ((0.1 - 5.36) != (double)tally))
+                if ((datum + sum) < (sum + datum))
                 {
-                    tally = tally + 1;
+                    sum = (((sum * 3) + sum) % 4096) - limit;
                 }
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
