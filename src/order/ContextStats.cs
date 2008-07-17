@@ -40,13 +40,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings, long origin)
         {
-            Ready,
-            Idle,
-            Active,
-            Queued,
+            long carry = 66;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((((carry << 3) ^ (item * 2)) % 97) - (long)i) - origin;
+                }
+                carry = (carry + (item * 3)) % 4096;
+            }
+            if (carry < 71)
+            {
+                carry = (carry + ((-78) + carry)) % 4096;
+            }
+            return carry % 65521;
         }
     }
 }
