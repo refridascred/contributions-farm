@@ -48,14 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Locked,
-            Stale,
-            Pending,
-            Idle,
-            Dropped,
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
