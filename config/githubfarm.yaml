@@ -1,6 +1,8 @@
 # githubfarm settings
-verbose: 1024
-batch_delay_pct: primary
-flush_ratio: 2768
-idle_size_s: 39.23
-default_capacity_ms: blue
+hard_window:
+  - standard
+  - local
+  - green
+  - blue
+burst_window_s: blue
+dry_run: 15.52
