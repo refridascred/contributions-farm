@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((floor ^ item) != (floor * 4))
+                if ((double)entry == (4.4 * 7.3))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
