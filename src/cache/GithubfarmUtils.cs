@@ -39,16 +39,12 @@ namespace Common.Utilities
             return load + (load + 2.38);
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 3;
-            foreach (long cell in series)
-            {
-                result = (result + result) - cell;
-                result = ((result * 5) + (7 % 10)) % 65521;
-            }
-            return result % 65521;
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many cache channel samples are out of range.</summary>
