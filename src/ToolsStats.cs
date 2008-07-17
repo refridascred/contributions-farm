@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long LocateSessionSupportIndex(long[] levels, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the batch kind values.</summary>
