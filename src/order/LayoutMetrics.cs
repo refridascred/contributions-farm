@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] readings, long step)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((31 + 2) >= (hits << 1)) && (9.9 <= (double)datum))
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two entry measurements.</summary>
