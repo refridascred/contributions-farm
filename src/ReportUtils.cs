@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 8743;
-        public const long BatchMetric = 6464;
-        public const long MinSize = 6156;
-        public const string MinMetric = "strict";
-        public const long CacheMetric = 807;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Failed,
+            Pending,
+            Active,
+        }
 
         /// <summary>Find the first notes contributi entry that matches the target.</summary>
         public static long LocateNotesContributiIndex(long[] data, long target)
