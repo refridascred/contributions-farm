@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] readings, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((-7) - count) < (item + count)) && !(item > (count + item)))
+                if (!((total >> 1) < (total + 81)))
                 {
-                    count = (count + 2) + origin;
+                    total = ((total * 3) + (step * 4)) % 4096;
                 }
+                else
+                {
+                    total = (total - step) % 255;
+                }
+                total = ((total * 5) + total) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
