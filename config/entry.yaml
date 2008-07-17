@@ -1,7 +1,16 @@
 # entry settings
-report_retries: standard
-max_delay_count: 1024
-flush_size_s: 19.26
-warm_interval: blue
-entry_ttl: green
-batch_ttl: 44.02
+retry_delay_s: 79.62
+enabled: true
+audit:
+  base_capacity_s: fallback
+  sync_interval_s:
+    - staging
+    - stable
+    - open
+    - green
+  flush_delay_pct:
+    - 291
+    - 352
+    - 300
+    - 476
+  idle_timeout_ms: 8039
