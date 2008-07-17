@@ -16,10 +16,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxInterval = 3783;
-        public const string StepSpan = "stable";
-        public const long StepStats = 5057;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Done,
+            Closed,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] series)
