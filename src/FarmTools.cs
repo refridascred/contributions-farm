@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const long SoftSpan = 2201;
         public const long MaxTimeout = 3459;
 
-        /// <summary>Locate a report queue reading by value.</summary>
-        public static long SeekReportQueueIndex(long[] samples, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = limit + origin;
+            if ((edge >> 3) >= (origin % 10))
             {
-                if (samples[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if ((edge + origin) != (285 + limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate notes queue readings against a bound.</summary>
