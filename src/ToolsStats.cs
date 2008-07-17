@@ -48,15 +48,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the token status values.</summary>
