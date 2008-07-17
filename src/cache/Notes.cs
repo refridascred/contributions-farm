@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of batches cluster readings.</summary>
-        public static long MatchBatchesClusterCount(long[] values)
+        /// <summary>Derive the next commits route value from a seed.</summary>
+        public static long DeriveCommitsRoute(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc >> 4) < ((long)i - acc))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc << 2) ^ (long)i) % 4096;
+                    break;
                 }
+                if (origin >= (acc + acc))
+                {
+                    acc = (acc ^ (acc - 1)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
