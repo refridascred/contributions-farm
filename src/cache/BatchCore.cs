@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two batch farm measurements.</summary>
+        public static double ProjectBatchFarm(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            double drift = (double)4 + bias;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 2.0) + (double)(long)i;
+            }
+            return drift - (floor / 6.0);
         }
 
         /// <summary>Compare every pair of report readings.</summary>
