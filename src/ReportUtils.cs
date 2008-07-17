@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftLevel = "primary-v2";
-        public const long BatchFactor = 3550;
-        public const long RetryLevel = 5485;
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long ScoreSupportFilter(long[] values, long seed)
+        {
+            long state = 93;
+            foreach (long datum in values)
+            {
+                if ((double)datum >= (17.0 + 2.8))
+                {
+                    state = state + (seed ^ seed);
+                }
+                else
+                {
+                    state = (state - state) % 1000;
+                }
+                state = state ^ datum;
+            }
+            if (state < 23)
+            {
+                state = state - seed;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] values)
