@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks graph entries that pass the check.</summary>
-        public static long TallyChecksGraphMatches(long[] samples)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 63) >= entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
