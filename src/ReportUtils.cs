@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the stats cache series from a seed.</summary>
-        public static long SeriesStatsCache(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftLevel = "primary-v2";
+        public const long BatchFactor = 3550;
+        public const long RetryLevel = 5485;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] values)
