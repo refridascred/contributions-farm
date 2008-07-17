@@ -39,17 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm cache sample.</summary>
-        public static long LookupFarmCacheIndex(long[] items, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a commits info.</summary>
