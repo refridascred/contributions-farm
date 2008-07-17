@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long bound)
+        /// <summary>Iterate the channel graph series from a seed.</summary>
+        public static long DeriveChannelGraph(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
