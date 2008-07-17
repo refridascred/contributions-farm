@@ -19,32 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats commits pair into a bucket.</summary>
-        public static long RankStatsCommits(long floor, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long edge = floor - bound;
-            if (floor <= (bound % 16))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor * 2) < edge) && ((double)floor < (5.7 * 14.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge + bound) > (floor + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
