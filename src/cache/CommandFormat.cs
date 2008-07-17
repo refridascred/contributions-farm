@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = -17;
+            foreach (long entry in data)
             {
-                if ((value & 1) != (value / 9))
+                if (!(((-6) << 3) < (entry / 9)))
                 {
-                    seen = (seen + 1) - floor;
+                    sum = sum + entry;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum * 3) + sum;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Adjust a batches reading.</summary>
