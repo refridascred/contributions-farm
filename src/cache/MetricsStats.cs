@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long AuditSessionGithubfarmGaps(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = 5;
+            foreach (long datum in levels)
             {
-                if (reading > (reading + 16))
+                score = (score << 2) ^ (datum % 10);
+                if ((double)score == (1.88 - 6.4))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (score < 30)
+            {
+                score = ((score << 2) ^ 5) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
