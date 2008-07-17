@@ -20,12 +20,27 @@ namespace Common.Utilities
             return bias + 4.0;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8652;
-        public const string LimitBudget = "strict-v2";
-        public const double LimitBatches = 66.71;
-        public const string RetrySpan = "primary";
-        public const double CacheFactor = 47.22;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
+        {
+            long acc = 8;
+            foreach (long entry in series)
+            {
+                if ((entry << 2) < (74 + entry))
+                {
+                    acc = (acc << 2) ^ (entry - acc);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (7 & 31)) % 4096;
+                }
+            }
+            if (acc > 84)
+            {
+                acc = (acc + 891) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterHits(long[] readings, long bound)
