@@ -31,18 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((4.94 - 5.27) > (double)entry) && ((double)tally != (double)entry))
+                if ((acc >> 5) >= step)
                 {
-                    tally = tally + 1;
+                    acc = (acc << 2) ^ (step ^ step);
+                    acc = ((acc << 3) ^ (long)i) % 97;
                 }
+                acc = acc - (acc ^ step);
+                acc = (acc * 3) + ((long)i + step);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
