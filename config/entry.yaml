@@ -1,9 +1,13 @@
 # entry settings
-order_depth: 6778
-default_ratio: 8.15
-base_depth:
-  verbose: legacy
-  record_delay: 32
-  compress: open
-  warm_ratio_pct: open
-default_capacity_count: 1024
+base_interval_count: 43.34
+cache_threshold:
+  - green
+  - staging
+soft_depth_s: 1024
+audit:
+  audit: 2574
+  report_retries: 30
+  min_capacity_s: cached
+  buffer_size: 1024
+  hard_delay_s: true
+min_threshold: blue
