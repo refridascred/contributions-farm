@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Find the first channel context entry that matches the target.</summary>
-        public static long SeekChannelContextIndex(long[] data, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
