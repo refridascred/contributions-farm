@@ -19,27 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long bound)
-        {
-            long anchor = 393;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) == (anchor & 7))
-                {
-                    anchor = anchor + 247;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + bound) % 101;
-                }
-            }
-            if (anchor < 15)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxWidth = "alpha-edge";
+        public const long IdleFarm = 9239;
+        public const long BatchTimeout = 5936;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
