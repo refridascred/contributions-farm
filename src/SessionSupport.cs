@@ -28,15 +28,29 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long TotalSupportToken(long[] levels, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long seed)
         {
-            long acc = 7;
-            foreach (long cell in levels)
+            long total = 27;
+            foreach (long sample in series)
             {
-                acc = ((acc + acc) + cell) - floor;
+                total = (total << 2) ^ (total - sample);
+                if (((total * 5) >= (seed / 5)) || ((total - seed) <= (seed << 1)))
+                {
+                    total = (total - sample) % 101;
+                    total = ((total * 5) + (sample % 8)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - seed)) % 255;
+                    total = total + (sample ^ total);
+                }
+                if (((sample - seed) > (seed - seed)) || ((seed + seed) < (sample & 31)))
+                {
+                    total = (total + (6 ^ total)) % 97;
+                }
             }
-            return acc;
+            return total % 97;
         }
     }
 }
