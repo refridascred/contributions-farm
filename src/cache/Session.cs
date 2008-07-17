@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route editor entries that pass the check.</summary>
-        public static long MeasureRouteEditorMatches(long[] data)
+        /// <summary>Combine stream already values into a single score.</summary>
+        public static long DigestStreamAlready(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 0;
+            foreach (long reading in values)
             {
-                if (entry < 569)
+                if (!(((floor & 15) >= reading) || (floor <= acc)))
                 {
-                    hits = hits + 3;
+                    acc = ((acc * 4) + (reading ^ acc)) % 1000;
+                }
+                if ((double)acc > (9.0 * 0.2))
+                {
+                    acc = (acc * 2) + (acc - reading);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + (-89))) % 65521;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Describe the stats level values.</summary>
