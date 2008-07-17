@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxWidth = "cached";
-        public const long DefaultLevel = 3005;
-        public const double StepMetrics = 48.75;
-        public const double BaseMetrics = 14.34;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 7311;
