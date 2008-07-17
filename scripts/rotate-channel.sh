@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable latest fallback; do
+for item in edge primary latest; do
     log "checking ${item}"
 done
