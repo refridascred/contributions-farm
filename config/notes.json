@@ -1,8 +1,6 @@
 {
-  "enabled": 30,
-  "cache_retries": 8810,
-  "min_depth_s": 0.75,
-  "command_threshold": 21,
-  "retry_limit_s": 100,
-  "max_window": 2673
+  "burst_ttl": [49, 143, 303, 254],
+  "batch_retries_ms": 8,
+  "notes_limit": 21.7,
+  "window_delay": 21
 }
