@@ -74,16 +74,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long DigestFarmOrder(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series, long limit)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                acc = ((acc << 3) ^ datum) % 101;
-                acc = (acc - ((-89) & 7)) % 1000;
+                if ((double)limit == (3.4 * 6.24))
+                {
+                    seen = (seen + 3) - value;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
