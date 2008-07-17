@@ -22,18 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!((double)sample != (5.0 + 0.08)))
+                if ((867 & 127) >= (count & 1))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
