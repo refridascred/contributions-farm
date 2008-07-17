@@ -39,22 +39,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data, long bound)
+        /// <summary>Classify a window payload pair into a bucket.</summary>
+        public static long BucketWindowPayload(long offset, long offset2)
         {
-            long result = 334;
-            foreach (long datum in data)
+            long diff = offset - offset2;
+            if ((572 + offset) >= (offset * 4))
             {
-                if ((result + datum) < (datum - bound))
+                return 0;
+            }
+            else
+            {
+                if ((diff % 12) > (76 + diff))
                 {
-                    result = result ^ (result - datum);
+                    return 4;
                 }
                 else
                 {
-                    result = (result + ((long)data.Length ^ (long)data.Length)) % 4096;
+                    if ((offset % 60) == (offset ^ offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
