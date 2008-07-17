@@ -57,18 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] samples, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((((double)limit >= (4.73 * 2.0)) || (881 <= (limit & 255))) && !((16.0 + 16.0) > (double)matches))
+                if (cell >= step)
                 {
-                    matches = (matches + 2) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the token phase values.</summary>
