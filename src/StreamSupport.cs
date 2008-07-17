@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Audit commits githubfarm readings against a rule.</summary>
+        public static long AuditCommitsGithubfarmGaps(long[] readings, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((target >> 4) <= (498 << 2))
+                if ((double)matches >= (17.0 * 2.07))
                 {
-                    state = (state + target) % 255;
-                    continue;
+                    matches = ((matches + 3) - sample) + floor;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
