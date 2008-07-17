@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string StepSchema = "strict-1";
         public const string DefaultRatio = "alpha-edge";
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool CheckSchemaBatchesRange(long[] items, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
