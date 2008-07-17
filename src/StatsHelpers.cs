@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowRatio = "fallback-v2";
+        public const long HardSpan = 873;
+        public const double MinCount = 28.31;
+        public const double DefaultFilter = 55.05;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
