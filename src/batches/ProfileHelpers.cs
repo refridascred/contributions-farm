@@ -14,24 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double gain, double floor)
-        {
-            double rate = gain - gain;
-            if (rate >= gain)
-            {
-                rate = (rate + (gain * 17.0)) + floor;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + (gain / 5.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxInterval = 3783;
+        public const string StepSpan = "stable";
+        public const long StepStats = 5057;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] readings)
