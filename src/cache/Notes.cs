@@ -25,15 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double offset)
+        /// <summary>Locate a support metric reading by value.</summary>
+        public static long LookupSupportMetricIndex(long[] samples, long origin)
         {
-            double ratio2 = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = (ratio2 - offset) + (double)(long)i;
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - ratio;
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
