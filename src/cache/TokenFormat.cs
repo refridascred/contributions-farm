@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long result = 25;
+            foreach (long item in levels)
+            {
+                result = result + (item / 9);
+            }
+            if (result > 3)
+            {
+                result = ((result << 3) ^ (result << 1)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
