@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-standard}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached green legacy local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=108
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
