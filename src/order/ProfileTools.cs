@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)8 > (double)value) || (((value / 5) == (matches & 127)) || ((matches ^ value) < (matches ^ matches))))
+                if (((1.77 - 5.0) > (double)step) || (step < (sum + sum)))
                 {
-                    matches = matches + 3;
+                    sum = (sum - (sum & 15)) % 4096;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
