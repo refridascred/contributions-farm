@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double drift = weight;
-            if (drift > span)
-            {
-                drift = drift + 16.0;
-            }
-            else
-            {
-                drift = drift + (span * 1.45);
-            }
-            return drift - (span + span);
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
