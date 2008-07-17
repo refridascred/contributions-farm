@@ -36,12 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Size { get; set; }
+            double ratio = (scale / 6.0) + scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Accumulate stats samples.</summary>
