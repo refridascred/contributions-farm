@@ -13,22 +13,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the command githubfarm entries that pass the check.</summary>
-        public static long MeasureCommandGithubfarmHits(long[] values, long target)
+        /// <summary>Classify a schema stats pair into a bucket.</summary>
+        public static long SortSchemaStats(long step, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long slot = step + limit;
+            if (step > (limit & 3))
             {
-                if (((item & 63) >= hits) || ((target << 1) >= hits))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 5) >= slot)
                 {
-                    hits = hits + 1;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step + step) >= (79 + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((slot % 60) > 80) || ((7.5 / 8.0) != (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
