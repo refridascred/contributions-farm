@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank already metric input into a small class.</summary>
-        public static long RankAlreadyMetric(long floor, long offset)
+        /// <summary>Count the command session entries that pass the check.</summary>
+        public static long CountCommandSessionMatches(long[] levels, long seed)
         {
-            if (!(((-8) + offset) != (offset - 5)))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (9.84 + 11.0))
+                if (entry >= (seed >> 3))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((offset % 10) > 38)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate token samples.</summary>
