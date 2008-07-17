@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of commits buffer entries.</summary>
-        public static long TallyCommitsBuffer(long[] items, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            long sum = 74;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum ^ sum) <= (floor % 100)) && (sum < (floor + floor)))
+                if (values[i] == floor)
                 {
-                    sum = ((sum * 5) + (datum << 2)) % 4096;
-                    continue;
-                }
-                sum = (sum + (sum + datum)) % 4096;
-                sum = (sum * 3) + (datum + floor);
-                if ((7.7 - 10.0) >= (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
