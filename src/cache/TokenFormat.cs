@@ -17,13 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Adjust a window reading.</summary>
