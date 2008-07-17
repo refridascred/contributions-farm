@@ -47,11 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchSpan = 27.87;
-        public const long WindowFactor = 4237;
-        public const long SoftGithubfarm = 2564;
-        public const long MaxLevel = 8747;
-        public const string HardLevel = "alpha-edge";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
