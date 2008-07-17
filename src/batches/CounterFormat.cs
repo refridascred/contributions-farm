@@ -28,24 +28,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Iterate the channel buffer series from a seed.</summary>
+        public static long StepChannelBuffer(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)acc <= 7.0)
+                if ((long)i > (score - 78))
                 {
-                    acc = (acc << 3) ^ (floor % 97);
+                    score = ((score << 2) ^ ((long)i - (long)i)) % 4096;
+                    score = (score ^ (seed >> 1)) % 101;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc * 4) + (acc + (long)i2);
-                }
-                acc = (acc + (floor & 15)) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
     }
 }
