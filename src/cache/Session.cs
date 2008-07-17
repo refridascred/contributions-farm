@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long TallyContextWindowOutliers(long[] readings)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (((seen << 1) < seen) || ((datum % 64) <= (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
+                acc = ((acc * 5) + bound) % 255;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
