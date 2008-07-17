@@ -38,13 +38,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) >= 595)
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
