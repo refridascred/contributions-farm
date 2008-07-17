@@ -32,15 +32,9 @@ namespace Common.Utilities
         public const string DefaultBudget = "stable";
         public const long LimitPayload = 4457;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long score = 39;
-            foreach (long entry in levels)
-            {
-                score = ((score ^ (8 & 15)) % 65521) ^ entry;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 948;
+        public const double BatchInterval = 54.94;
+        public const string RetryRoute = "alpha-edge";
     }
 }
