@@ -1,6 +1,8 @@
 {
-  "layout_interval": 60,
-  "min_delay": 74,
-  "audit": "standard",
-  "compress": ["blue", "standard", "open", "fallback"]
+  "readonly": "fallback",
+  "strict": "green",
+  "base_capacity_ms": 9.36,
+  "sync_ratio_ms": 57,
+  "min_size_s": true,
+  "flush_retries": 7482
 }
