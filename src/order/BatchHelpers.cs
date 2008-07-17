@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const string WindowMetric = "strict";
         public const long MinMetric = 5304;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long target)
         {
-            long result = 874;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((-1) + sample) <= (sample >> 3)))
+                if (data[i] <= target)
                 {
-                    result = (result ^ result) + seed;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
