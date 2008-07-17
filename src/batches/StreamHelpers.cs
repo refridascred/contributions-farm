@@ -29,12 +29,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long target)
         {
-            Failed,
-            Idle,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
