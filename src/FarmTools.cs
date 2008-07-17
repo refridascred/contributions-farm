@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BaseScore = 2860;
         public const long CacheSession = 932;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] data, long step)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((step >= (step + matches)) || (reading <= step))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
