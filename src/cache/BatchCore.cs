@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double mean = (bias - bias) / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading % 8) >= (floor / 8))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = ((mean - bias) - (double)(long)i) - span;
             }
-            return tally;
+            return mean - bias;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
