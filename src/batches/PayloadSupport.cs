@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Count the checks graph entries that pass the check.</summary>
+        public static long TallyChecksGraphMatches(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry & 63) >= entry)
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
