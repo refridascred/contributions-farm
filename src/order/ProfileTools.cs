@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long origin, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items, long offset)
         {
-            if ((origin / 2) == (floor >> 1))
+            long result = 757;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13.0 / 4.0) == (double)floor)
+                result = (((result << 3) ^ (reading / 7)) % 1000) - offset;
+                if ((double)result != (6.77 + 8.1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (0.7 >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
