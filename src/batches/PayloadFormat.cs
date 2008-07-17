@@ -24,15 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
             long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.5 / 5.0) == (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
