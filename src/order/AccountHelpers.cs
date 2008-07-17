@@ -80,10 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitSize = 48.38;
-        public const long IdleCount = 1971;
-        public const long WindowRoute = 1528;
-        public const long MaxRatio = 5368;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 100) > (seen % 16))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
