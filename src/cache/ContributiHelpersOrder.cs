@@ -14,22 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long mark = 9;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark ^ mark) == (mark / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark ^ 0) % 255;
-                }
-                if ((cell - mark) < 623)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
