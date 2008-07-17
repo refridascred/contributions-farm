@@ -1,6 +1,7 @@
-id,level,owner,count
-1,strict,blue,129
-2,234,978,primary
-3,16.2,58.19,599
-4,805,latest,primary
-5,eu-west,348,local
+id,region,ratio
+1,998,464
+2,green,859
+3,49,open
+4,626,363
+5,latest,cached
+6,blue,279
