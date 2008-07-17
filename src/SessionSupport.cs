@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items, long floor)
         {
-            long total = 2;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)total == (double)429)
+                if ((floor ^ item) != (floor * 4))
                 {
-                    total = (((total << 3) ^ total) % 255) ^ sample;
+                    tally = tally + 1;
                 }
             }
-            if (total < 65)
-            {
-                total = total + ((long)levels.Length >> 4);
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
