@@ -1,4 +1,14 @@
 # support settings
-base_timeout_s: legacy
-hard_size_s: staging
-max_threshold_count: 36.82
+dry_run: 66.67
+counter_retries: local
+hard_capacity_s: 250
+base_ratio_s:
+  soft_interval_pct: 61
+  idle_window_count:
+    - primary
+    - strict
+    - staging
+    - standard
+  context_depth: 50.06
+  warm_threshold_s: 47.13
+batch_retries_pct: 18.08
