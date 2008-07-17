@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long WindowSchema = 1978;
         public const long MinWidth = 3744;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] levels)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading - 91) <= (tally << 1)) || ((double)reading <= 7.4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
