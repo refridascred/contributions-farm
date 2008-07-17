@@ -64,23 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long origin, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            if ((origin ^ origin) < (offset + offset))
             {
-                if (((sum % 10) < (bound << 3)) && ((17.0 - 6.5) > (double)bound))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum ^ sum) % 1000) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((6.4 * 6.3) != (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - origin) != (offset + 53)) && ((origin & 255) == (origin - offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((origin * 3) < (origin + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
