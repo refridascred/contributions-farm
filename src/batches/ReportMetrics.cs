@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            Draft,
-            Retry,
-            Ready,
+            double weight = span + gain;
+            return weight + (weight * 11.0);
         }
     }
 }
