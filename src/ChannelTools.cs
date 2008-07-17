@@ -41,18 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long sum = 2;
-            foreach (long datum in series)
+            double scale = ratio - (ratio + 4.0);
+            if (scale >= (ratio * 8.0))
             {
-                if ((datum + sum) < (sum + datum))
-                {
-                    sum = (((sum * 3) + sum) % 4096) - limit;
-                }
+                scale = scale - (scale - bias);
             }
-            return sum % 97;
+            return scale - (7.0 * 18.0);
         }
     }
 }
