@@ -15,25 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((sum - sum) > 382))
-                {
-                    sum = ((sum << 2) ^ ((-8) - floor)) % 1000;
-                    sum = ((sum * 4) + floor) % 101;
-                }
-                if ((sum >> 5) == (197 ^ sum))
-                {
-                    sum = (sum + (sum % 97)) % 65521;
-                    sum = sum ^ (444 * 2);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Paused,
+            Queued,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
