@@ -47,22 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long TallyClusterFilterOutliers(long[] readings, long seed)
         {
-            long score = 23;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample <= (sample >> 2))
+                if ((40 + seed) <= (80 + hits))
                 {
-                    score = ((score << 2) ^ (score + sample)) % 97;
-                }
-                if (!((double)sample <= 5.1))
-                {
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
