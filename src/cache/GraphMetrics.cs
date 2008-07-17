@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Draft,
+            Closed,
             New,
-            Pending,
-            Ready,
-            Active,
+            Queued,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
