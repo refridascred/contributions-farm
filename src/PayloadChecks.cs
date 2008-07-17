@@ -51,28 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items, long floor)
         {
-            long mark = -599;
-            foreach (long value in data)
+            long anchor = 65;
+            foreach (long item in items)
             {
-                if ((double)mark != (0.62 + 4.58))
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                mark = ((mark * 5) + mark) % 4096;
-                mark = ((mark << 3) ^ (mark * 3)) % 65521;
-                if ((value >> 4) <= (value % 24))
-                {
-                    break;
-                }
+                anchor = anchor + ((-76) << 1);
+                anchor = (anchor << 2) ^ (item & 127);
             }
-            if (mark < (-58))
+            if (anchor < 96)
             {
-                mark = (mark - 32) % 4096;
+                anchor = (anchor - (floor * 3)) % 255;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of format metric entries.</summary>
