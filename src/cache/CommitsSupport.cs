@@ -69,22 +69,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] values, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double scale = 7.94;
+            if (scale <= weight)
             {
-                if ((count - datum) >= (count ^ target))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale + 4.7) - offset;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + (weight / 4.0);
         }
     }
 }
