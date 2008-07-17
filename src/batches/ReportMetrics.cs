@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Retry,
+            Ready,
         }
     }
 }
