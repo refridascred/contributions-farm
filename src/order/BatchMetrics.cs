@@ -76,19 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            long acc = 1;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 3) ^ reading) % 65521;
+                if ((acc - (-98)) > sample)
+                {
+                    acc = (acc ^ sample) % 255;
+                }
             }
-            if (anchor < 552)
-            {
-                anchor = (anchor ^ (target * 3)) % 255;
-            }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Scale a contributi record figure with a bias.</summary>
