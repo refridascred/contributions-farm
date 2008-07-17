@@ -1,11 +1,8 @@
 # githubfarm settings
-min_interval_s:
-  - stable
-  - legacy
-  - staging
-poll_timeout_s: staging
-cache_window_pct: true
-cache_window:
-  - 392
-  - 126
-  - 164
+hard_size: 59.43
+min_retries_s: true
+sync_threshold_s:
+  - 301
+  - 61
+soft_ratio_pct: blue
+hard_ratio_pct: 23.88
