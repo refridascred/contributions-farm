@@ -42,22 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count order payload pairs that satisfy a relation.</summary>
-        public static long CompareOrderPayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 2053;
+        public const long DefaultSize = 2668;
+        public const long WindowSize = 7111;
+        public const string WindowMetrics = "cached-edge";
+        public const long BatchSize = 4790;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
