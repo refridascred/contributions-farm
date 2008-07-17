@@ -41,18 +41,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long TallyClusterToolsGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ sample) == (hits + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4290;
+        public const long LimitQueue = 44;
+        public const long BatchTimeout = 9826;
+        public const double WindowQueue = 25.99;
+        public const long MinQueue = 9975;
     }
 }
