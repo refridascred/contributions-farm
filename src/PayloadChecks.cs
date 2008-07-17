@@ -30,13 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
