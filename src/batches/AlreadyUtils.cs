@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 41;
+            foreach (long datum in data)
             {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                state = (state - datum) % 1000;
+                if (!(datum < (state ^ datum)))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (datum & 31)) % 1000;
                 }
             }
-            return -1;
+            if (state > 8)
+            {
+                state = (state ^ (bound >> 3)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate command samples.</summary>
