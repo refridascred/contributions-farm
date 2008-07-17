@@ -29,23 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (4 <= (tally + tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowSize = 42.11;
+        public const string CacheRatio = "fallback-v2";
+        public const string StepRatio = "alpha-edge";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
