@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] levels, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!(offset <= (total & 127)))
+                if ((8.28 + 14.0) <= (double)entry)
                 {
-                    total = (total ^ offset) % 101;
+                    tally = (tally + 2) + bound;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
