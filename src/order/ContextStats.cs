@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] samples, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item - item) >= (bound - 17))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of stats schema readings.</summary>
