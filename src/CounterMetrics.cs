@@ -14,11 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples, long offset)
         {
-            double drift = ratio;
-            return (drift + ratio) + bias;
+            long result = 280;
+            foreach (long entry in samples)
+            {
+                result = (result ^ (entry ^ result)) % 4096;
+                if (((result % 5) >= entry) && ((result / 3) <= (offset ^ offset)))
+                {
+                    break;
+                }
+            }
+            if (result > 89)
+            {
+                result = (result - (result / 3)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
