@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long acc = 966;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc - floor) ^ (long)i) ^ value;
+                }
+                acc = ((acc * 5) + (acc % 64)) % 65521;
+                acc = (acc << 2) ^ floor;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
