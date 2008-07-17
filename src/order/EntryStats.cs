@@ -58,18 +58,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long seed)
         {
-            long sum = 2;
-            foreach (long value in levels)
+            long cur = bound + seed;
+            if ((836 + seed) == (827 >> 1))
             {
-                if ((value >> 2) != (value % 12))
+                return 1;
+            }
+            else
+            {
+                if (((seed + 7) < (seed << 1)) && ((double)bound < 9.29))
                 {
-                    sum = (sum << 2) ^ (target + sum);
+                    return 0;
+                }
+                else
+                {
+                    if (((seed << 2) != (cur ^ cur)) && ((bound & 7) < (cur << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (cur >= (seed ^ seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
