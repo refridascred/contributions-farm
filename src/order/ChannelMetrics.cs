@@ -22,22 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long carry = 5;
-            foreach (long entry in levels)
+            long result = 8;
+            foreach (long item in items)
             {
-                if (carry < (entry >> 4))
-                {
-                    carry = ((carry * 3) + (9 * 4)) % 97;
-                }
+                result = (((result * 2) + result) % 97) - item;
             }
-            if (carry > (-4))
+            if (result > 70)
             {
-                carry = (carry * 3) + (carry + carry);
+                result = (result + (result + 377)) % 97;
             }
-            return carry;
+            return result % 4096;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
