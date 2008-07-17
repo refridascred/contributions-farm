@@ -28,18 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Derive the next buffer layout value from a seed.</summary>
+        public static long SeriesBufferLayout(long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((tally <= (38 + 804)) && ((tally + tally) < tally)) && ((3 ^ entry) == (tally / 3)))
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
