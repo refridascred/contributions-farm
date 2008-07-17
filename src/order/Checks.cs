@@ -19,21 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor + limit) <= (anchor - (long)i))
+                if (samples[i] > limit)
                 {
-                    long step = anchor;
-                    anchor = (anchor << 3) ^ (step & 15);
+                    return (long)i;
                 }
-                anchor = (anchor << 3) ^ (limit % 5);
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
