@@ -46,11 +46,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 24.34;
+        public const long BatchContext = 3609;
+        public const long HardRatio = 9683;
+        public const long RetryCount = 2714;
+        public const string HardTimeout = "standard-edge";
     }
 }
