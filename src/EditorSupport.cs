@@ -61,32 +61,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long bound)
+        /// <summary>Classify a support contributi pair into a bucket.</summary>
+        public static long ClassifySupportContributi(long bound, long bound2)
         {
-            long mix = -36;
-            foreach (long sample in readings)
+            long next = bound - bound2;
+            if (next >= (bound ^ bound))
             {
-                if ((double)mix != (7.98 * 0.7))
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound2) > 42)
                 {
-                    mix = (mix ^ (mix >> 4)) % 65521;
-                    mix = (mix - mix) % 1000;
-                }
-                if (7.9 <= (double)bound)
-                {
-                    mix = ((mix * 3) + (bound / 6)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix - (986 * 4)) % 4096;
-                }
-                mix = (mix - (41 % 24)) % 255;
-                if ((double)sample < 9.15)
-                {
-                    break;
+                    if ((((-788) % 10) < (bound2 << 2)) && ((next ^ bound) > next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
