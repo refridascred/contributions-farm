@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate account stats readings against a bound.</summary>
+        public static bool CheckAccountStatsBounds(long[] data, long offset)
         {
-            Done,
-            Idle,
-            Ready,
-            Pending,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a window reading.</summary>
