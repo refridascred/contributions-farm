@@ -50,13 +50,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Queued,
-            Paused,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 46.63;
+        public const long RetryScore = 941;
+        public const double IdleFarm = 93.96;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] levels)
