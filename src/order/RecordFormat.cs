@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 4032;
-        public const long HardSpan = 9151;
-        public const string BurstInterval = "standard";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item - count) >= 666)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
