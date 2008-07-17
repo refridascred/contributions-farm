@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((59 >= acc) || ((acc % 10) <= (acc * 2)))
+                {
+                    acc = ((acc ^ (acc ^ 1)) % 101) ^ sample;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
