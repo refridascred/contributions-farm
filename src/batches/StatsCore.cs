@@ -75,15 +75,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double bias2 = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (scale / 6.0)) + (double)(long)i;
-            }
-            return bias2 + 4.0;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
