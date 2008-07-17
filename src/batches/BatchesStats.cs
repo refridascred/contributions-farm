@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheFactor = 2979;
-        public const long IdleBudget = 9888;
-        public const string CacheContributi = "alpha-1";
-        public const string MaxContributi = "fallback-v2";
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double bias)
+        {
+            double ratio = (double)(994 << 2);
+            if (ratio > (gain + gain))
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (double)361) + (double)(long)i;
+            }
+            return ratio + (bias * 12.0);
+        }
 
         /// <summary>Compare every pair of already metrics readings.</summary>
         public static long OverlapAlreadyMetricsCount(long[] levels)
