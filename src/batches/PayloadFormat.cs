@@ -24,25 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long TallyBatchRouteMatches(long[] values, long floor)
         {
-            long lane = target ^ bound;
-            if ((target << 2) == (lane ^ lane))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (target < (lane & 15))
+                if (floor > (94 / 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 2) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
