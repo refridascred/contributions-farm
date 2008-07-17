@@ -1,10 +1,6 @@
-id,token,level,state,rank
-1,152,edge,10.88,268
-2,376,71.61,880,701
-3,green,fallback,24.45,457
-4,staging,blue,906,eu-west
-5,eu-west,green,0.74,751
-6,staging,green,157,368
-7,17.32,468,68.42,554
-8,82.66,280,green,71.61
-9,eu-west,236,94,legacy
+id,ratio,level
+1,local,88.73
+2,eu-west,902
+3,685,fallback
+4,open,7.22
+5,66.96,774
