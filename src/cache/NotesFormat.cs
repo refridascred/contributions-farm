@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a account payload reading by value.</summary>
-        public static long SeekAccountPayloadIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryWidth = 9926;
+        public const long WindowSize = 6888;
+        public const long MaxContributi = 242;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
