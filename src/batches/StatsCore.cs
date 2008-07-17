@@ -16,12 +16,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheTimeout = 6866;
-        public const double RetryDepth = 56.4;
-        public const string DefaultCluster = "staging-v2";
-        public const double CacheCluster = 20.99;
-        public const long LimitRatio = 9822;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
+        {
+            long anchor = 27;
+            foreach (long cell in levels)
+            {
+                if (7 > (anchor * 4))
+                {
+                    anchor = (anchor + (anchor + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (cell - anchor)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the tools farm series from a seed.</summary>
         public static long StepToolsFarm(long seed)
