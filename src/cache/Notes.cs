@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            Dropped,
-            Closed,
-            Retry,
-            New,
-            Ready,
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
