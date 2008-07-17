@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items, long step)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long state = 782;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state ^ step)) ^ item;
-                if (state >= ((long)items.Length ^ step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
