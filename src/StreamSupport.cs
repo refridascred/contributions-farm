@@ -14,23 +14,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout payload entries.</summary>
-        public static long CombineLayoutPayload(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mark = 275;
-            foreach (long item in readings)
-            {
-                if ((80 - mark) > mark)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark * 5) + item;
-                }
-                mark = (mark ^ item) % 4096;
-            }
-            return mark;
+            Retry,
+            Paused,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a already entry.</summary>
