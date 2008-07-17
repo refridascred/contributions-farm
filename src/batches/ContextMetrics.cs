@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] values, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            long mark = 496;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark - (step + mark)) % 4096) + sample;
+                if (((7 >> 5) > (count ^ count)) || ((count + count) <= (count + sample)))
+                {
+                    count = count + 2;
+                }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
