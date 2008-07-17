@@ -1,24 +1,15 @@
 # support settings
-window_ratio:
-  - 444
-  - 17
-  - 408
-audit:
-  - 366
-  - 195
-  - 47
-batch_ratio:
-  layout_window: strict
-  session_delay: 67.35
-  max_ratio_ms: 5855
-warm_ttl: 50.77
-warm_timeout_s:
-  - eu-west
-  - green
-  - eu-west
-  - stable
-notes_delay:
-  - 61
-  - 13
-  - 161
-  - 494
+stats_timeout:
+  window_retries:
+    batch_depth_count:
+      - 46
+      - 475
+    editor_delay: open
+    strict: 53.68
+  batch_size_count: 94.75
+  enabled: 139
+  farm_depth: 75.0
+  retry_threshold_ms: true
+  verbose: 81.43
+record_ttl: false
+burst_retries: eu-west
