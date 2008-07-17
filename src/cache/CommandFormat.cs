@@ -36,38 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values, long floor)
         {
-            if (origin > (origin ^ origin))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 1) >= origin)
+                if ((sample - (-9)) >= matches)
                 {
-                    return 1;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    if ((double)step != (4.2 - 10.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) >= 694)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
