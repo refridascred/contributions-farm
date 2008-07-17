@@ -36,12 +36,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long origin2)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            if (origin2 >= (origin2 - 0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin2 < (7 + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin2 - origin2) <= (origin2 ^ origin2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
