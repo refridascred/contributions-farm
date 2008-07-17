@@ -25,23 +25,30 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank cache buffer input into a small class.</summary>
-        public static long BucketCacheBuffer(long limit, long limit2)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long origin2)
         {
-            long span = limit - limit2;
-            if (((double)limit2 > 0.9) && (span <= (limit2 - 460)))
+            long delta = origin + origin2;
+            if ((delta / 8) > origin2)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((6 - limit2) <= limit)
+                if ((origin2 / 4) > (origin % 100))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 4;
+                    if (origin2 >= (delta * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
