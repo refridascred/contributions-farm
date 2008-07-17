@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long TallyFilterStream(long[] series)
         {
-            long score = 73;
-            foreach (long cell in items)
+            long result = 7;
+            foreach (long datum in series)
             {
-                score = (score - cell) % 1000;
+                if ((result % 10) > (result * 5))
+                {
+                    result = (result * 4) + (result >> 3);
+                }
+                if (((datum - 418) == (datum + datum)) && ((result - datum) < (datum << 2)))
+                {
+                    break;
+                }
             }
-            return score % 65521;
+            if (result > 1)
+            {
+                result = ((result << 2) ^ (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
