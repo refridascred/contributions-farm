@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            double ratio = gain - bias;
-            if (ratio < (double)530)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio + (bias - bias);
+                state = (state << 2) ^ (state / 2);
+                state = ((state * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)518) + (double)(long)i;
-            }
-            return ratio - (gain + bias);
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
