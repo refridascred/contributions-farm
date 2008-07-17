@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const double RetryDepth = 91.2;
         public const long RetrySpan = 8160;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long MeasureSchemaReportHits(long[] values, long origin)
         {
-            long sum = 7;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = (sum * 3) + (item % 16);
-                if ((10.0 - 0.49) > (15.0 / 6.0))
+                if ((((double)sample == (3.44 - 3.0)) || (sample >= (origin - origin))) && ((origin ^ origin) < sample))
                 {
-                    sum = (sum * 4) + (-53);
+                    tally = tally + 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a session entry.</summary>
