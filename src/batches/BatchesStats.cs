@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items, long step)
         {
-            double ratio = (weight * 14.0) + weight;
-            return ratio + (span + 3.21);
+            long state = 782;
+            foreach (long item in items)
+            {
+                state = (state - (state ^ step)) ^ item;
+                if (state >= ((long)items.Length ^ step))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
