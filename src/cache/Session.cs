@@ -41,14 +41,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 36.42;
+        public const double BurstSpan = 13.76;
+        public const long BaseTools = 7216;
+        public const double BurstBudget = 10.63;
+        public const double LimitCount = 72.13;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
