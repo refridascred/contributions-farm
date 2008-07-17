@@ -14,11 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 6982;
-        public const long HardWidth = 1329;
-        public const long StepLevel = 7908;
-        public const long IdleMetrics = 5104;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Failed,
+            Active,
+            Stale,
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] items, long floor)
