@@ -30,15 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long state = 149;
-            foreach (long item in series)
-            {
-                state = ((state ^ (state << 1)) % 101) + item;
-            }
-            return state % 97;
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
