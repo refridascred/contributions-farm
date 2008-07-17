@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultDepth = "stable-v2";
-        public const long BaseTimeout = 278;
-        public const string BurstInterval = "cached-v2";
-        public const long MaxTimeout = 151;
-        public const long CacheRatio = 6319;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] samples)
