@@ -27,21 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up payload format samples.</summary>
-        public static long PairPayloadFormatCount(long[] samples)
+        /// <summary>Accumulate githubfarm contributi samples.</summary>
+        public static long FoldGithubfarmContributi(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total + 1) != (value - total))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total * 2) + (value << 1)) % 255) - step;
+                }
+                else
+                {
+                    total = (total - total) % 97;
                 }
             }
-            return seen;
+            return total % 97;
         }
     }
 }
