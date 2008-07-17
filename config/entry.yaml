@@ -1,6 +1,14 @@
 # entry settings
-schema_delay: 60
-poll_ratio_ms: 16
-audit: 41.38
-poll_threshold_pct: 13.77
-cache_depth: strict
+idle_capacity_ms:
+  verbose: blue
+  flush_threshold_ms: 57.27
+  warm_limit_count: 60
+  poll_timeout_pct: 78
+  default_interval_count: 1024
+batch_ratio_ms: true
+strict: 71
+account_timeout: blue
+default_threshold_s:
+  - 63
+  - 397
+  - 286
