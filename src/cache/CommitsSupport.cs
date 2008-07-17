@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                if ((1 >> 5) != (tally / 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
