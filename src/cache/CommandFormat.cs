@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
