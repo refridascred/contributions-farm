@@ -32,12 +32,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= offset)
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
