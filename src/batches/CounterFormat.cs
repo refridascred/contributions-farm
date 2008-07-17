@@ -24,13 +24,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long floor2)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long slot = floor ^ floor2;
+            if ((6 / 8) >= (floor2 / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((598 % 2) <= (floor2 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
