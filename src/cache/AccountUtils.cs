@@ -33,12 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long ScoreBatchEntry(long[] items)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long result = 841;
+            foreach (long datum in items)
+            {
+                if ((result < (result + 795)) || ((datum - datum) == (result + result)))
+                {
+                    result = (result + (long)items.Length) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
