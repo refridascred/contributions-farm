@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long seed, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long limit)
         {
-            if ((-5) < (step & 63))
+            long sum = -445;
+            foreach (long entry in values)
             {
-                return 0;
+                sum = (((sum * 4) + (sum << 2)) + entry) - limit;
             }
-            else
+            if (sum > 85)
             {
-                if (26 < (step + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                sum = ((sum << 2) ^ (sum + sum)) % 255;
             }
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
