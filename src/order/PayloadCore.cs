@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string RetryCounter = "legacy";
         public const long BaseLevel = 201;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen >> 1) >= value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first order contributi entry that matches the target.</summary>
