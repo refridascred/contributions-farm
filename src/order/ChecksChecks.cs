@@ -31,21 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((4.18 + 8.17) > (double)(long)i)
-                {
-                    total = ((total * 3) + (total * 2)) % 97;
-                    break;
-                }
-                total = (total - (total >> 1)) % 1000;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Done,
+            Synced,
+            Ready,
         }
     }
 }
