@@ -42,19 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long offset)
         {
-            long state = 150;
-            foreach (long sample in samples)
+            long score = 8;
+            foreach (long entry in samples)
             {
-                state = (state - (sample >> 1)) % 65521;
+                score = score + offset;
+                if (((offset >> 3) >= ((long)samples.Length - score)) || ((3.0 / 7.0) != (double)entry))
+                {
+                    break;
+                }
             }
-            if (state > 887)
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state;
+            return score;
         }
     }
 }
