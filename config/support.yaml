@@ -1,16 +1,5 @@
 # support settings
-poll_delay_count:
-  contributi_limit: legacy
-  warm_limit: 89
-  verbose:
-    - eu-west
-    - local
-    - blue
-  enabled: 53
-tools_ratio: strict
-retry_retries_ms: stable
-soft_timeout_ms:
-  - 355
-  - 107
-  - 14
-idle_window_ms: 60
+verbose: 30
+poll_retries: 41
+min_capacity: standard
+dry_run: primary
