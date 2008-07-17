@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item << 3) > tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
