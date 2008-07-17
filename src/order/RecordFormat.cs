@@ -48,11 +48,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Done,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
