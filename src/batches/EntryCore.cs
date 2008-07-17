@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long offset)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Active,
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(89 > (offset % 60)))
+                {
+                    result = (result << 2) ^ (result + result);
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
