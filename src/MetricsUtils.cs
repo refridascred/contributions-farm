@@ -40,19 +40,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (bound <= (count / 9))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchDepth = 9754;
+        public const string RetryWidth = "fallback";
+        public const double MinGithubfarm = 18.91;
+        public const long HardGithubfarm = 2011;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultRoute = 66.16;
