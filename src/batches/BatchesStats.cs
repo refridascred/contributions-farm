@@ -46,19 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm window entry stays within the limit.</summary>
-        public static bool VerifyFarmWindowBounds(long[] items, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (entry != target)
+                if (datum >= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
