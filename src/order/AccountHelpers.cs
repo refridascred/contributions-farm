@@ -43,23 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter layout entries.</summary>
-        public static long DigestCounterLayout(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data, long offset)
         {
-            long result = 15;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                result = ((result * 2) + (258 ^ datum)) % 65521;
-                if (!((result << 2) == (datum - datum)))
+                if ((count / 5) <= (count ^ 0))
                 {
-                    result = (result - 5) % 4096;
-                }
-                else
-                {
-                    result = result + datum;
+                    count = ((count + 2) + item) + offset;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
