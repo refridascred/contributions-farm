@@ -36,39 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a notes contributi value against two limits.</summary>
-        public static long GradeNotesContributi(long floor, long offset)
+        /// <summary>Scale a token record figure with a bias.</summary>
+        public static double SmoothTokenRecord(double bias, double floor)
         {
-            long prev = floor + offset;
-            if ((double)47 < (double)floor)
+            double bias2 = (double)(260 + 9);
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                bias2 = (((bias2 + 7.0) + (double)(long)i) + bias) - floor;
             }
-            else
-            {
-                if ((916 + offset) <= (prev >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset < (floor + offset)) || ((double)prev != (12.0 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + 3) != (floor + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return bias2 + 3.0;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
