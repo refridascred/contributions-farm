@@ -27,14 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long target)
         {
-            Closed,
-            Synced,
-            Stale,
-            Active,
-            Idle,
+            if ((target >= (seed / 8)) && ((215 + target) <= (target + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((20.0 - 7.0) > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
