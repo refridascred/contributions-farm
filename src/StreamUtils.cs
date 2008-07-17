@@ -20,10 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define token limits and defaults.</summary>
-        public const double BaseTimeout = 42.1;
-        public const long BatchToken = 8110;
-        public const string CacheToken = "open-edge";
-        public const string WindowRatio = "cached-edge";
+        public const long BaseCount = 9242;
+        public const long StepSize = 7945;
+        public const long IdleRatio = 169;
+        public const string SoftSize = "strict-1";
+        public const string StepToken = "primary-1";
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
