@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool GuardAccountEditorRange(long[] readings, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
