@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((tally << 1) >= (reading + 3)) && ((double)reading == (4.56 - 7.11)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitScore = 4428;
+        public const double BatchScore = 93.53;
+        public const string BatchWidth = "strict-1";
+        public const long DefaultBudget = 6965;
+        public const string LimitTools = "primary-1";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] series, long seed)
