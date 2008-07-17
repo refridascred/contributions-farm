@@ -1,12 +1,11 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the layout list.
-Each order is validated before it reaches the command queue.
-Run the command check before changing any batch limits.
+When a graph fails, the record handler retries a few times before giving up.
+The buffer module keeps queue values in sync with the batch cache.
+A batches that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer cluster defaults
-- Keep route values small
-- Review entry limits each release
+- Document new editor fields
+- Log every command change
+- Keep context values small
