@@ -59,12 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Failed,
-            Locked,
-            Paused,
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
