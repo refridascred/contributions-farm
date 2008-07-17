@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the command report series from a seed.</summary>
-        public static long DeriveCommandReport(long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 4;
+            foreach (long reading in data)
             {
-                mark = mark ^ (566 - (-68));
-                mark = ((mark * 5) + (long)i) % 97;
+                sum = ((sum + ((-39) + sum)) % 97) - reading;
             }
-            return mark;
+            if (sum > 85)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a context entry.</summary>
