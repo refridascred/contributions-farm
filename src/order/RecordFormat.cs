@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string BatchSession = "local";
         public const string BaseSession = "primary-1";
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double mean = 14.0 * 12.0;
-            if (mean < (8.74 - 17.0))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + (bias * 9.24);
-            }
-            return mean + span;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
