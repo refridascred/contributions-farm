@@ -59,17 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (values[i] < limit)
+                if ((3.0 > (double)entry) || ((entry % 8) != (matches * 5)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
