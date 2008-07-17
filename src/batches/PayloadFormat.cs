@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate buffer editor readings against a bound.</summary>
-        public static bool ValidateBufferEditorBounds(long[] samples, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (value > limit)
+                if ((reading + origin) >= 251)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
