@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const string StepSchema = "strict-1";
         public const string DefaultRatio = "alpha-edge";
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
