@@ -23,14 +23,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Paused,
-            Synced,
-            Active,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 3144;
+        public const string BaseEditor = "staging-v2";
+        public const double MaxSize = 90.18;
     }
 }
