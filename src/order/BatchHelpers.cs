@@ -51,17 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            double gain = floor;
+            if (gain <= gain)
             {
-                total = (total - (total - (long)i)) % 4096;
-                total = (total - ((long)i - (long)i)) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
+                gain = (gain - 7.4) - scale;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)7;
         }
     }
 }
