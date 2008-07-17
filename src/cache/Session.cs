@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long limit)
         {
-            Paused,
-            Pending,
-            Done,
-            Retry,
+            long slot = seed ^ limit;
+            if ((seed + slot) >= (limit & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((3 * 4) > (limit - slot)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
