@@ -79,12 +79,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSize = 1156;
-        public const long CacheStream = 1707;
-        public const long BatchStream = 4061;
-        public const long BurstSpan = 2565;
-        public const long LimitStream = 2305;
+        /// <summary>Count schema payload pairs that satisfy a relation.</summary>
+        public static long PairSchemaPayloadCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstScore = 3878;
