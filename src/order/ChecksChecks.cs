@@ -31,19 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            double scale2 = 1.1;
-            if (scale2 < bias)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 - bias;
+                if ((4.18 + 8.17) > (double)(long)i)
+                {
+                    total = ((total * 3) + (total * 2)) % 97;
+                    break;
+                }
+                total = (total - (total >> 1)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + (scale - 5.51);
+            return total;
         }
     }
 }
