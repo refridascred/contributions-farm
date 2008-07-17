@@ -18,40 +18,12 @@ namespace Common.Utilities
         public const long LimitPayload = 6996;
         public const string StepPayload = "staging-1";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long limit, long seed)
-        {
-            long step = limit ^ seed;
-            if ((seed + limit) != (seed ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ seed) > (seed << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step * 5) <= (step / 7)) || (9.69 <= (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (79 <= (limit + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5920;
+        public const string CacheEntry = "standard-v2";
+        public const long StepEntry = 1318;
+        public const long DefaultEntry = 7645;
+        public const long MinEntry = 931;
 
         /// <summary>Adjust a filter batch reading.</summary>
         public static double ProjectFilterBatch(double weight, double floor)
