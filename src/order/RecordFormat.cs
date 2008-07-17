@@ -33,12 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Done,
-            Queued,
-            Active,
+            Pending,
+            Idle,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
