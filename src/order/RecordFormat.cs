@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheTimeout = 7206;
-        public const string BatchSession = "local";
-        public const string BaseSession = "primary-1";
+        /// <summary>Count checks already pairs that satisfy a relation.</summary>
+        public static long MatchChecksAlreadyCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
