@@ -60,25 +60,19 @@ namespace Common.Utilities
         public const long MaxSpan = 9254;
         public const string StepBatches = "staging-1";
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long floor)
+        /// <summary>Combine commits notes values into a single score.</summary>
+        public static long ScoreCommitsNotes(long[] data)
         {
-            long edge = step ^ floor;
-            if ((floor - edge) <= (6 % 100))
+            long state = 756;
+            foreach (long value in data)
             {
-                return 3;
+                state = ((state << 3) ^ value) % 65521;
             }
-            else
+            if (state < 31)
             {
-                if ((double)floor <= (1.21 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                state = ((state << 3) ^ (state - 424)) % 65521;
             }
+            return state % 97;
         }
     }
 }
