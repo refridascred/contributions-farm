@@ -54,11 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryLevel = "legacy-1";
-        public const string HardFactor = "staging";
-        public const string CacheSession = "alpha-1";
-        public const long WindowDepth = 8094;
-        public const string BurstInterval = "local";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 2612;
+        public const long WindowDepth = 6679;
+        public const long DefaultSpan = 2705;
+        public const long IdleSchema = 7837;
     }
 }
