@@ -23,26 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long total = 36;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total - (long)items.Length) % 1000) - (long)i;
-                }
-                if ((entry <= total) && ((double)total <= 2.9))
-                {
-                    total = (total * 3) + (93 * 2);
-                }
-                if ((total < (total + total)) && ((entry << 2) >= total))
-                {
-                    break;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
