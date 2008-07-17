@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 40;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total + (reading << 1)) % 4096;
+                if (reading > ((-515) * 5))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Scale a graph channel figure with a bias.</summary>
