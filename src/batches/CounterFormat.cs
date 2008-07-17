@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((score << 2) > (origin + origin))
-                {
-                    score = ((score * 5) + (origin >> 4)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 0.18;
+        public const long MinTools = 2354;
+        public const double LimitCount = 81.98;
+        public const long CacheTools = 6545;
 
         /// <summary>Locate a filter batches reading by value.</summary>
         public static long SeekFilterBatchesIndex(long[] series, long seed)
