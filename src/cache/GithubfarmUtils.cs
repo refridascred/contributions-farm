@@ -57,18 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((12.0 + 4.84) <= (double)datum)
+                if (entry > target)
                 {
-                    seen = (seen + 3) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
