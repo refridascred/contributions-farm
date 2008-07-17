@@ -65,10 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 6665;
-        public const long MaxSpan = 9254;
-        public const string StepBatches = "staging-1";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Closed,
+            Retry,
+            Active,
+        }
 
         /// <summary>Combine commits notes values into a single score.</summary>
         public static long ScoreCommitsNotes(long[] data)
