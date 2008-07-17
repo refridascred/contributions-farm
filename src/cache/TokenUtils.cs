@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Stale,
-            Pending,
-            Paused,
-            Active,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the metrics class values.</summary>
