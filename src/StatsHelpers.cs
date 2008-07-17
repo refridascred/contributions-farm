@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format account readings against a rule.</summary>
-        public static long AuditFormatAccountOutliers(long[] readings, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)step <= (16.0 * 1.0))
+                if (levels[i] >= bound)
                 {
-                    hits = (hits + 2) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate metric already samples.</summary>
