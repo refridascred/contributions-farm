@@ -41,12 +41,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 36.42;
-        public const double BurstSpan = 13.76;
-        public const long BaseTools = 7216;
-        public const double BurstBudget = 10.63;
-        public const double LimitCount = 72.13;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Retry,
+            Stale,
+            Done,
+            Paused,
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
