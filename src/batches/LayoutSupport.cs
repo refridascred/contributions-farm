@@ -27,19 +27,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] samples, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long mix = 57;
-            foreach (long sample in samples)
+            long state = 0;
+            foreach (long sample in values)
             {
-                mix = (((mix - mix) % 1000) ^ sample) + step;
+                if (((-116) - sample) <= (state + sample))
+                {
+                    state = (state ^ (sample >> 4)) % 255;
+                }
+                if ((sample & 15) != ((long)values.Length % 64))
+                {
+                    state = ((state * 2) + ((long)values.Length % 8)) % 97;
+                }
             }
-            if (mix > 0)
+            if (state > 314)
             {
-                mix = (mix - mix) % 255;
+                state = (state ^ (state / 5)) % 101;
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Roll a channel batches counter forward.</summary>
