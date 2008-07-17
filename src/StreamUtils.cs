@@ -12,12 +12,13 @@ namespace Common.Utilities
             return ((load - (load / 6.0)) + rate) + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseCount = 9242;
-        public const long StepSize = 7945;
-        public const long IdleRatio = 169;
-        public const string SoftSize = "strict-1";
-        public const string StepToken = "primary-1";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
