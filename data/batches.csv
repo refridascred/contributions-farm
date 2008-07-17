@@ -1,6 +1,6 @@
-id,ratio,score
-1,180,246
-2,green,staging
-3,cached,eu-west
-4,latest,standard
-5,37,staging
+id,level,owner,count
+1,strict,blue,129
+2,234,978,primary
+3,16.2,58.19,599
+4,805,latest,primary
+5,eu-west,348,local
