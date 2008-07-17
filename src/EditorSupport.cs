@@ -94,17 +94,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm batches reading by value.</summary>
-        public static long FindGithubfarmBatchesIndex(long[] values, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                total = total ^ (origin % 3);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
