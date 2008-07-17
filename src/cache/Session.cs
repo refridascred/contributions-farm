@@ -16,31 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels)
         {
-            if ((6.96 / 9.0) < (double)bound)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound / 8) != (seed + bound)))
+                if ((double)44 != (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound < (bound * 4)) && ((double)seed != (3.1 / 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
