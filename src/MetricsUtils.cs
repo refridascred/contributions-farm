@@ -34,10 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepLevel = 4647;
-        public const double LimitTools = 61.54;
-        public const long BurstSpan = 1712;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchDepth = 9754;
