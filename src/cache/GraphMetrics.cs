@@ -38,11 +38,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstSize = 43.67;
-        public const string MinFactor = "latest-edge";
-        public const double SoftDepth = 74.61;
-        public const long MaxLevel = 2511;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long step)
+        {
+            long mix = 682;
+            foreach (long value in readings)
+            {
+                if ((3.77 - 8.68) == (double)value)
+                {
+                    mix = (mix ^ (732 - step)) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix - value);
+                }
+            }
+            if (mix > 960)
+            {
+                mix = (mix ^ (mix * 2)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] levels)
