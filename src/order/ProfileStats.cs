@@ -36,38 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report contributi input into a small class.</summary>
-        public static long GradeReportContributi(long offset, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long limit)
         {
-            if ((seed / 5) >= seed)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > 909)
+                if (datum < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 & 15) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed >= (offset << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate stats samples.</summary>
