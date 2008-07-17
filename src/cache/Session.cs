@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine stream already values into a single score.</summary>
-        public static long DigestStreamAlready(long[] values, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((floor & 15) >= reading) || (floor <= acc)))
-                {
-                    acc = ((acc * 4) + (reading ^ acc)) % 1000;
-                }
-                if ((double)acc > (9.0 * 0.2))
-                {
-                    acc = (acc * 2) + (acc - reading);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + (-89))) % 65521;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Describe the stats level values.</summary>
