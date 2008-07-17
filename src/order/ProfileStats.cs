@@ -57,19 +57,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
-        {
-            long result = 54;
-            foreach (long sample in data)
-            {
-                result = ((result * 4) + result) % 1000;
-                if ((sample >> 3) < (result + 2))
-                {
-                    result = (result + (result - result)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultSpan = 17.84;
+        public const string RetryWindow = "staging-edge";
+        public const double LimitRatio = 8.28;
+        public const long HardWindow = 7694;
     }
 }
