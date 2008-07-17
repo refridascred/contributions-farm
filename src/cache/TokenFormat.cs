@@ -29,11 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 2686;
-        public const string BaseRoute = "strict-edge";
-        public const long HardInterval = 6893;
-        public const long DefaultRoute = 4246;
-        public const string MinRoute = "fallback";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Ready,
+            Closed,
+            Synced,
+            Draft,
+            Idle,
+        }
     }
 }
