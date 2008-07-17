@@ -62,11 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 3127;
-        public const long DefaultGithubfarm = 5192;
-        public const long HardFactor = 5640;
-        public const long RetryGithubfarm = 6204;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Dropped,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Locate a token buffer reading by value.</summary>
         public static long LocateTokenBufferIndex(long[] samples, long step)
