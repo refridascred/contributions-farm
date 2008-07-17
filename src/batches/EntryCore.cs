@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] data, long floor)
+        /// <summary>Derive the next queue contributi value from a seed.</summary>
+        public static long SeriesQueueContributi(long limit)
         {
-            long score = 27;
-            foreach (long value in data)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                score = ((score + score) ^ value) - floor;
-                score = (score * 3) + (-791);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (score > 143)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
