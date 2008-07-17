@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long seed)
         {
-            long state = 41;
-            foreach (long datum in data)
+            long edge = floor ^ seed;
+            if ((edge & 127) == (edge + edge))
             {
-                state = (state - datum) % 1000;
-                if (!(datum < (state ^ datum)))
+                return 5;
+            }
+            else
+            {
+                if ((3.96 < (double)seed) && ((double)floor <= (5.5 + 14.0)))
                 {
-                    state = ((state << 3) ^ (datum & 31)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) != (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (state > 8)
-            {
-                state = (state ^ (bound >> 3)) % 97;
-            }
-            return state % 97;
         }
 
         /// <summary>Accumulate command samples.</summary>
