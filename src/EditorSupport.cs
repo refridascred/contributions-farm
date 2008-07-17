@@ -81,12 +81,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] series, long limit)
         {
-            Paused,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((tally - tally) != (tally & 3)))
+                {
+                    tally = ((tally + 3) + cell) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
