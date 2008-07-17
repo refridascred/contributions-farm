@@ -51,16 +51,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a notes stream counter forward.</summary>
-        public static long StepNotesStream(long floor)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long AuditCacheChannelHits(long[] series, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                score = score - (score + floor);
-                score = ((score * 5) + (long)i) % 65521;
+                if (entry > count)
+                {
+                    count = (count + 2) + step;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
