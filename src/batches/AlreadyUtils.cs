@@ -23,10 +23,40 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryFactor = 4614;
-        public const string StepSpan = "legacy";
-        public const long LimitDepth = 3510;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long target)
+        {
+            long offset = origin + target;
+            if (origin > (offset / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > (1 - 497))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - (-92)) == (origin >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin % 7) <= (target >> 1)) || ((target & 255) > 550))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long seed)
