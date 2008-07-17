@@ -32,13 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] items, long step)
         {
-            Failed,
-            Draft,
-            Queued,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a stats reading.</summary>
