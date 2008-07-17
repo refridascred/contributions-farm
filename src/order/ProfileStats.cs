@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 2468;
         public const long IdleSession = 1510;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            long prev = origin + floor;
-            if (((58 - prev) != ((-565) ^ origin)) && ((3.0 + 7.5) != (double)floor))
+            double drift = (double)(3 ^ 37);
+            if (drift < gain)
             {
-                return 1;
+                drift = (drift - (double)366) + offset;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((floor << 1) == (prev & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((prev ^ 3) != (floor ^ 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
+            return drift + (double)541;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
