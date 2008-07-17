@@ -28,19 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (reading > offset)
+                if (((tally <= (38 + 804)) && ((tally + tally) < tally)) && ((3 ^ entry) == (tally / 3)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the graph class values.</summary>
