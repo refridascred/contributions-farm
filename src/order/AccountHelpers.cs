@@ -37,24 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long seed)
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long DeriveCounterFarm(long origin)
         {
-            if ((step - step) < 251)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > (6.5 - 1.7))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 2;
+                    carry = (((carry * 2) + origin) % 1000) + (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of counter layout entries.</summary>
