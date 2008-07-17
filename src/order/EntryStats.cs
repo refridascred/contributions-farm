@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long bound)
-        {
-            long total = -48;
-            foreach (long reading in series)
-            {
-                total = (total + (reading << 3)) % 97;
-            }
-            if (total < 140)
-            {
-                total = total - bound;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseFactor = 8.28;
+        public const long DefaultCount = 6002;
+        public const long RetryBatches = 3311;
+        public const long StepTimeout = 7548;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long offset, long floor)
