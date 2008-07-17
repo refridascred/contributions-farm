@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BaseScore = 2860;
         public const long CacheSession = 932;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step >= (step + matches)) || (reading <= step))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
