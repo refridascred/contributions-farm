@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every token filter entry stays within the limit.</summary>
-        public static bool GuardTokenFilterLimits(long[] levels, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (cell < origin)
+                if (reading <= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
