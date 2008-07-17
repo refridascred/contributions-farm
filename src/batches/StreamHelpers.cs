@@ -58,11 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepBudget = "cached-v2";
-        public const string MaxEntry = "cached";
-        public const double SoftEntry = 14.51;
-        public const double IdleCount = 86.32;
-        public const long BatchEntry = 9199;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell >> 1) >= (7 % 8)) && (matches <= (matches & 1)))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
     }
 }
