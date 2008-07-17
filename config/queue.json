@@ -1,6 +1,15 @@
 {
-  "dry_run": false,
-  "farm_ratio": 500,
-  "commits_interval": false,
-  "sync_capacity_pct": "eu-west"
+  "soft_depth": 3074,
+  "default_window": false,
+  "enabled": {
+    "default_retries_s": {
+      "batch_interval": "open",
+      "enabled": true,
+      "schema_window": 65.74,
+      "idle_threshold_pct": 100
+    },
+    "metrics_capacity": 43.97,
+    "enabled": [418, 81, 38, 284]
+  },
+  "commits_ratio": "strict"
 }
