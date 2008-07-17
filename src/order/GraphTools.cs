@@ -44,32 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long step)
-        {
-            if (!(step < (step / 9)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)step <= (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "open-1";
+        public const double DefaultGraph = 2.76;
+        public const long DefaultCount = 2382;
+        public const long IdleGraph = 6425;
 
         /// <summary>Fold a list of batch tools readings.</summary>
         public static long TallyBatchTools(long[] samples)
