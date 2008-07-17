@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next queue contributi value from a seed.</summary>
-        public static long SeriesQueueContributi(long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long span = bound - target;
+            if (((span ^ span) < 378) || ((2.62 + 3.1) > (double)target))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((span / 5) < 8)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > 7.49)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.06 + 20.0) == (double)span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
