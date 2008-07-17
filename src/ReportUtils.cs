@@ -45,11 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
