@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of layout payload entries.</summary>
+        public static long CombineLayoutPayload(long[] readings)
         {
-            Draft,
-            Queued,
-            Retry,
+            long mark = 275;
+            foreach (long item in readings)
+            {
+                if ((80 - mark) > mark)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 5) + item;
+                }
+                mark = (mark ^ item) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a record snapshot.</summary>
