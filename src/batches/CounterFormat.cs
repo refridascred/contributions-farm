@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long target)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
