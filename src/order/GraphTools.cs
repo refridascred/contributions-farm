@@ -44,19 +44,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] values, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = 74;
+            foreach (long cell in series)
             {
-                if (value <= step)
+                for (int i = 0; i < 9; i++)
                 {
-                    stale = false;
-                    break;
+                    carry = carry + ((long)i % 12);
+                    carry = (carry ^ (carry + cell)) % 65521;
                 }
+                carry = carry + carry;
             }
-            return stale;
+            if (carry < 30)
+            {
+                carry = (carry + 203) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of batch tools readings.</summary>
