@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a channel session counter forward.</summary>
-        public static long DeriveChannelSession(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - (648 + 64)) % 255;
-                if (!((((long)i - sum) == (long)i) && (((long)i * 4) != (sum >> 3))))
-                {
-                    sum = (sum + (step + sum)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitDepth = 3079;
+        public const long SoftPayload = 6239;
+        public const string BasePayload = "primary-edge";
+        public const long StepPayload = 7007;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseSize = 7969;
