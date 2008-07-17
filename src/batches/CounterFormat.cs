@@ -12,38 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long limit2)
+        /// <summary>Audit batches metrics readings against a rule.</summary>
+        public static long AuditBatchesMetricsOutliers(long[] values, long target)
         {
-            if (limit >= (limit2 & 255))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 7) > (limit2 ^ limit2))
+                if (37 > (datum + (long)values.Length))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit2 != (double)42) || ((15.0 * 17.0) == (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit2 * 3) <= (114 >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 2) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a report entry.</summary>
