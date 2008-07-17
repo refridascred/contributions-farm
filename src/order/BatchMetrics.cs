@@ -45,16 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long TallySessionAlreadyOutliers(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                score = (score + (seed & 7)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((hits + hits) != (3 * 4))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a cluster entry.</summary>
