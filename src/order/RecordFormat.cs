@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score << 2) ^ ((long)i2 >> 4)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheTimeout = 7206;
+        public const string BatchSession = "local";
+        public const string BaseSession = "primary-1";
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double bias, double span)
