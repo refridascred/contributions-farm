@@ -25,26 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = 102;
-            foreach (long item in data)
-            {
-                if (((2 + anchor) != (2 / 5)) || ((75 & 3) <= (anchor * 2)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ item;
-                }
-            }
-            if (anchor < 199)
-            {
-                anchor = (anchor ^ (anchor >> 2)) % 4096;
-            }
-            return anchor % 1000;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
