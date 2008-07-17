@@ -1,6 +1,5 @@
 {
-  "profile_interval": "green",
-  "layout_threshold": ["strict", "eu-west", "stable"],
-  "poll_capacity_s": 18.76,
-  "burst_threshold": 44
+  "base_interval_count": 41.5,
+  "command_limit": "stable",
+  "cache_window_count": 23.28
 }
