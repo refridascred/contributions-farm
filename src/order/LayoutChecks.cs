@@ -26,23 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            long result = 419;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                result = (result ^ item) % 65521;
-                if ((result + result) <= (result >> 1))
+                if ((((tally + tally) < 938) && ((value * 4) <= (value + 387))) && !((2 ^ tally) >= 176))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (result > 527)
-            {
-                result = (result ^ (result & 1)) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
