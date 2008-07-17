@@ -35,14 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long floor)
         {
-            Pending,
-            Paused,
-            Queued,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
