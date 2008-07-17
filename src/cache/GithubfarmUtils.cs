@@ -32,11 +32,16 @@ namespace Common.Utilities
             return load + (load + 2.38);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long result = 3;
+            foreach (long cell in series)
+            {
+                result = (result + result) - cell;
+                result = ((result * 5) + (7 % 10)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a command options.</summary>
