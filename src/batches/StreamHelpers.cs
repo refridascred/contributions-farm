@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate stream editor readings against a bound.</summary>
-        public static bool ValidateStreamEditorRange(long[] values, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
