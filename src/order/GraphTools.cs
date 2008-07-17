@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string IdleSize = "latest-1";
         public const double SoftAlready = 76.36;
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long CountMetricPayloadMatches(long[] levels, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((entry / 3) <= (target + entry)) && !((entry & 31) != (target * 2)))
+                if ((684 % 5) < (long)series.Length)
                 {
-                    tally = tally + 2;
+                    seen = ((seen + 1) + reading) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a editor summary.</summary>
