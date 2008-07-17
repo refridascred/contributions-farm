@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((-1) * 3) < (value % 12))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
