@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next order metrics value from a seed.</summary>
-        public static long SeriesOrderMetrics(long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long total = 847;
+            foreach (long sample in data)
             {
-                acc = (acc - (long)i) % 101;
-                acc = ((acc * 4) + acc) % 65521;
-                if ((bound * 5) > (acc + (-78)))
+                if (6.2 > (double)total)
                 {
-                    acc = (acc - (acc - acc)) % 65521;
+                    total = (total + (total / 7)) - sample;
                 }
                 else
                 {
-                    acc = acc ^ (acc - bound);
-                    acc = ((acc * 3) + (bound >> 5)) % 1000;
+                    total = total + total;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
