@@ -45,17 +45,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
