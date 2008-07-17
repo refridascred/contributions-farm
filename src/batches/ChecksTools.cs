@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Dropped,
+            Paused,
             Idle,
             Done,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many checks cache samples are out of range.</summary>
