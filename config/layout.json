@@ -1,6 +1,10 @@
 {
-  "poll_threshold_ms": "strict",
-  "retry_retries_pct": true,
-  "persist": [254, 8, 43, 402],
-  "burst_size": 48
+  "stream_delay": 100,
+  "format_interval": ["staging", "blue", "eu-west", "eu-west"],
+  "cache_retries": {
+    "compress": 93.93,
+    "max_interval_ms": "edge",
+    "max_capacity": "legacy"
+  },
+  "verbose": 4991
 }
