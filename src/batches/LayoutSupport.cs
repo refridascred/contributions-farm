@@ -49,16 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a channel batches counter forward.</summary>
-        public static long DeriveChannelBatches(long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ (12 - target)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
