@@ -72,12 +72,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            Pending,
-            Active,
-            Stale,
+            double mean = 9.9;
+            if (mean >= 1.0)
+            {
+                mean = ((mean - (double)3) + rate) + offset;
+            }
+            else
+            {
+                mean = mean + (mean / 4.0);
+            }
+            return mean - 0.83;
         }
     }
 }
