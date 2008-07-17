@@ -33,22 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            long result = 125;
-            foreach (long sample in values)
+            double bias = weight;
+            if (bias >= (bias * 15.0))
             {
-                if ((result & 15) < (sample / 6))
-                {
-                    result = (result - (830 << 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + (sample - 9)) % 97;
-                }
+                bias = bias + 5.02;
             }
-            return result;
+            else
+            {
+                bias = bias + (weight - 13.0);
+            }
+            return bias + (weight - span);
         }
     }
 }
