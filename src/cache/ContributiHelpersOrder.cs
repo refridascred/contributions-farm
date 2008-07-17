@@ -49,13 +49,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Compare every pair of buffer session readings.</summary>
+        public static long MatchBufferSessionCount(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
