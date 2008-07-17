@@ -1,14 +1,12 @@
 # Command notes
 
-The support report groups every window by channel.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-
-A channel that stays idle for too long is moved to the report list.
-The stats module keeps record values in sync with the token cache.
+Use channel settings to tune how often metric data is refreshed.
+The batches report groups every session by batch.
+Use commits settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Review graph limits each release
-- Document new window fields
-- Validate farm input early
-- Prefer format defaults
+- Prefer schema defaults
+- Validate already input early
+- Log every command change
+- Keep checks values small
