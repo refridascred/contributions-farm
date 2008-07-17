@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long TallyClusterCommitsMatches(long[] values, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double drift = weight;
+            if (drift >= offset)
             {
-                if ((seen % 24) > (entry << 3))
-                {
-                    seen = (seen + 1) + bound;
-                }
+                drift = drift + (double)16;
             }
-            return seen;
+            return drift + offset;
         }
 
         /// <summary>Define order limits and defaults.</summary>
