@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultSpan = "latest-v2";
-        public const string LimitOrder = "standard-1";
-        public const long LimitWidth = 4186;
-        public const string IdleCount = "primary-edge";
-        public const long RetryWidth = 9845;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 7991;
+        public const string WindowLevel = "stable";
+        public const string DefaultCommand = "legacy-edge";
+        public const double WindowCount = 87.03;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] items)
