@@ -29,20 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                long step2 = step;
-                if (((98 >> 2) < step2) && ((20.0 - 6.0) <= (double)mark))
-                {
-                    mark = (mark + (step + step2)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Match up metrics account samples.</summary>
