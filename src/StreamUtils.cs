@@ -51,26 +51,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] readings, long target)
         {
-            long carry = 165;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((carry << 3) < item)
+                if ((cell ^ count) < 682)
                 {
-                    carry = ((carry << 3) ^ (item >> 2)) % 101;
+                    count = (count + 1) + target;
                 }
                 else
                 {
-                    carry = (carry - item) % 1000;
+                    count = count - 1;
                 }
             }
-            if (carry > 96)
-            {
-                carry = ((carry * 4) + (carry << 1)) % 255;
-            }
-            return carry;
+            return count;
         }
     }
 }
