@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-edge";
         public const long LimitRoute = 574;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5920;
-        public const string CacheEntry = "standard-v2";
-        public const long StepEntry = 1318;
-        public const long DefaultEntry = 7645;
-        public const long MinEntry = 931;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Idle,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowRatio = 1917;
