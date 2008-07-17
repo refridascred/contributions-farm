@@ -62,19 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((seed >> 2) < sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 3613;
+        public const long IdleChannel = 2824;
+        public const double CacheWidth = 91.63;
+        public const long LimitScore = 5843;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
