@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const string CacheQueue = "standard-1";
         public const long WindowWidth = 8149;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >= (reading << 3)) && ((tally < (tally >> 1)) || ((double)reading > (2.0 / 7.0))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitSize = 3215;
+        public const double DefaultLevel = 97.93;
+        public const double BatchScore = 65.08;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
