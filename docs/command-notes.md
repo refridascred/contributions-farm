@@ -1,14 +1,15 @@
 # Command notes
 
-A window that stays idle for too long is moved to the layout list.
-A route that stays idle for too long is moved to the stats list.
+When a support fails, the tools handler retries a few times before giving up.
+The report report groups every metrics by metrics.
 
-Run the schema check before changing any entry limits.
-A layout that stays idle for too long is moved to the token list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps githubfarm values in sync with the entry cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every order change
-- Document new format fields
-- Keep contributi values small
-- Review layout limits each release
+- Document new graph fields
+- Prefer buffer defaults
+- Keep command values small
+- Log every farm change
