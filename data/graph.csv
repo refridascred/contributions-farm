@@ -1,9 +1,7 @@
-id,state,ratio,label
-1,eu-west,235,930
-2,237,strict,primary
-3,45.66,70.27,95.4
-4,staging,54,541
-5,921,792,188
-6,221,27.67,907
-7,stable,582,207
-8,137,368,461
+id,weight,label,state
+1,blue,585,blue
+2,394,33.8,443
+3,edge,green,43.75
+4,846,latest,green
+5,staging,44.93,58.03
+6,77.73,707,12.26
