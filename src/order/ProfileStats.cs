@@ -33,24 +33,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the channel metrics series from a seed.</summary>
-        public static long DeriveChannelMetrics(long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)step != (10.0 / 6.0))
+                if ((hits + hits) != (bound + bound))
                 {
-                    break;
+                    hits = (hits + 1) + cell;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state ^ (step % 8)) % 97) ^ (long)i2;
-                    state = ((state << 2) ^ (step * 5)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
