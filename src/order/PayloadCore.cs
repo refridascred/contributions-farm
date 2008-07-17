@@ -28,12 +28,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardBudget = 4758;
-        public const double CacheAccount = 90.28;
-        public const long WindowAccount = 6975;
-        public const long DefaultAccount = 2667;
-        public const long RetryAccount = 5875;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((5.53 * 2.5) <= (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long SeekNotesIndex(long[] readings, long seed)
