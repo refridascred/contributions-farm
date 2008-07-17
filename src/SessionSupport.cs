@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = 2;
+            foreach (long sample in levels)
             {
-                if (!((5 + seen) == (171 + offset)))
+                if ((double)total == (double)429)
                 {
-                    seen = (seen + 2) + sample;
+                    total = (((total << 3) ^ total) % 255) ^ sample;
                 }
             }
-            return seen;
+            if (total < 65)
+            {
+                total = total + ((long)levels.Length >> 4);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
