@@ -35,25 +35,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long bound)
+        /// <summary>Match up payload format samples.</summary>
+        public static long PairPayloadFormatCount(long[] samples)
         {
-            long step = offset - bound;
-            if (!((7 * 3) > (bound * 3)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step <= offset) && (17 > (bound - 7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
