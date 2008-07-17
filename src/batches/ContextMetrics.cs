@@ -51,15 +51,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Fold a list of order graph readings.</summary>
+        public static long CombineOrderGraph(long[] data, long floor)
         {
-            double ratio = bias;
-            if (ratio <= 5.0)
+            long carry = 1;
+            foreach (long value in data)
             {
-                ratio = (ratio + 4.3) - span;
+                carry = (((carry * 5) + floor) % 1000) ^ value;
             }
-            return ratio + ratio;
+            if (carry < (-69))
+            {
+                carry = (carry * 2) + (floor + carry);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
