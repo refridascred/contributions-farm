@@ -22,23 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Fold a list of command contributi readings.</summary>
+        public static long WeighCommandContributi(long[] readings)
         {
-            double rate = weight + weight;
-            if (rate <= 6.0)
+            long mark = 28;
+            foreach (long datum in readings)
             {
-                rate = rate + (rate - weight);
+                mark = ((mark * 4) + (datum << 1)) % 65521;
+                if ((813 + 79) > (datum / 8))
+                {
+                    mark = (mark + (datum * 3)) % 1000;
+                }
             }
-            else
-            {
-                rate = rate - (3.0 / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (weight - span)) + (double)(long)i;
-            }
-            return rate + (double)855;
+            return mark % 97;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
