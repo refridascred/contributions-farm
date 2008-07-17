@@ -23,11 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long mark = 3;
+            foreach (long entry in levels)
+            {
+                if (offset < (mark ^ entry))
+                {
+                    mark = ((mark * 3) + 94) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (entry << 1);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Blend two entry measurements.</summary>
