@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long IdleSpan = 8689;
         public const long CacheRatio = 3494;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 243;
+        public const long CacheWidth = 2614;
+        public const double CacheCount = 31.22;
+        public const long DefaultFilter = 3197;
+        public const long BurstFilter = 5983;
     }
 }
