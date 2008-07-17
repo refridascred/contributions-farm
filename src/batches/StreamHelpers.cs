@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxRatio = 15.41;
-        public const double CacheGraph = 51.6;
-        public const long MaxGraph = 2669;
-        public const long IdleGraph = 4147;
+        /// <summary>Validate stream editor readings against a bound.</summary>
+        public static bool ValidateStreamEditorRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 5423;
