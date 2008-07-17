@@ -37,22 +37,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultSpan = "latest-v2";
+        public const string LimitOrder = "standard-1";
+        public const long LimitWidth = 4186;
+        public const string IdleCount = "primary-edge";
+        public const long RetryWidth = 9845;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] items)
