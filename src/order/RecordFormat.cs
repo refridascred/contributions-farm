@@ -44,18 +44,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 0;
+            foreach (long value in levels)
             {
-                if ((((offset >> 2) > (matches << 3)) && (offset > (offset + datum))) || (18.0 < (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc << 2) ^ (target - value)) % 255;
             }
-            return matches;
+            if (acc > (-93))
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
