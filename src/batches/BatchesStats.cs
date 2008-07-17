@@ -32,11 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "cached-v2";
-        public const long DefaultCount = 777;
-        public const long DefaultBatch = 6916;
-        public const string BurstBatch = "staging-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Active,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] levels, long offset)
