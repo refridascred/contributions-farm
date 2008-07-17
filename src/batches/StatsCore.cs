@@ -45,20 +45,12 @@ namespace Common.Utilities
         public const long LimitInterval = 7674;
         public const string CacheInterval = "standard-v2";
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseRatio = 92.06;
+        public const long MaxCache = 4363;
+        public const long RetryCount = 7589;
+        public const long IdleCache = 3779;
+        public const double StepCache = 93.91;
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double scale, double bias)
