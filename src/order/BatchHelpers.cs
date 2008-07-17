@@ -23,15 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double scale, double floor)
         {
-            double drift = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - (14.0 / 6.0)) - (double)(long)i) - gain;
-            }
-            return drift - drift;
+            double weight = 9.4;
+            return ((weight + weight) + scale) + floor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
