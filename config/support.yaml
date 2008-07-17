@@ -1,8 +1,6 @@
 # support settings
-readonly:
-  - edge
-  - eu-west
-  - standard
-  - stable
-sync_depth_pct: 32.66
-batch_limit_s: eu-west
+sync_depth: true
+idle_timeout: 36.51
+strict: cached
+enabled: 2816
+record_size: staging
