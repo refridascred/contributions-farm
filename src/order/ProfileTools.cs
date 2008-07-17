@@ -31,18 +31,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data, long origin)
         {
-            long carry = 3;
-            foreach (long cell in series)
+            long mix = 495;
+            foreach (long value in data)
             {
-                if ((cell >> 5) > (carry - seed))
+                if (!(mix >= (mix + value)))
                 {
-                    carry = ((carry * 4) + (cell & 127)) % 101;
+                    mix = (mix + (mix << 3)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ origin;
                 }
             }
-            return carry % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Describe the metric kind values.</summary>
