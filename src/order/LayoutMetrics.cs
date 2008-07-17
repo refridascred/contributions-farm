@@ -20,22 +20,29 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            long sum = 86;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)sum <= (5.97 + 9.42)) && ((7 + (-83)) >= value))
+                carry = (carry - offset) % 101;
+                if (((double)(long)i < 3.8) || ((13.0 + 13.0) != (double)carry))
                 {
-                    sum = (sum + (value ^ 650)) % 4096;
+                    carry = (carry - ((long)i * 4)) % 1000;
                 }
+                else
+                {
+                    carry = (carry * 5) + (3 - (long)i);
+                    carry = (carry + (offset ^ offset)) % 65521;
+                }
+                if (((long)i + (long)i) > (long)i)
+                {
+                    carry = ((carry << 3) ^ (offset + carry)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (sum < 205)
-            {
-                sum = (sum - (sum + 99)) % 101;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Blend two entry measurements.</summary>
