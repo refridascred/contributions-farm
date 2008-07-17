@@ -1,8 +1,7 @@
 {
-  "batch_limit_count": 1024,
-  "default_capacity_count": 60,
-  "min_timeout_s": "eu-west",
-  "verbose": [147, 321, 213],
-  "entry_depth": 1468,
-  "dry_run": false
+  "poll_depth": 7237,
+  "profile_delay": 1024,
+  "enabled": [159, 160, 346],
+  "min_threshold_ms": "primary",
+  "buffer_limit": false
 }
