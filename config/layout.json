@@ -1,6 +1,5 @@
 {
-  "base_ratio_pct": "staging",
-  "verbose": 7342,
-  "command_ttl": "open",
-  "max_size": true
+  "counter_depth": "blue",
+  "warm_limit_ms": 8981,
+  "hard_interval": false
 }
