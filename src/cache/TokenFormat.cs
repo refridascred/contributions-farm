@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels, long target)
         {
-            long result = 25;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                result = result + (item / 9);
+                if ((cell & 15) >= (cell & 1))
+                {
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > 3)
-            {
-                result = ((result << 3) ^ (result << 1)) % 65521;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
