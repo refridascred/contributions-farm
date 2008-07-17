@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache context samples are out of range.</summary>
-        public static long MeasureCacheContextOutliers(long[] items, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 3) < (limit << 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
