@@ -49,21 +49,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = offset - bound;
+            if (!((7 * 3) > (bound * 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step <= offset) && (17 > (bound - 7)))
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
