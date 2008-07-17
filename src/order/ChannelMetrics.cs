@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7213;
-        public const long RetryChannel = 1751;
-        public const long LimitCount = 9656;
-        public const long BaseChannel = 8802;
-        public const double SoftChannel = 4.69;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryProfile = 6864;
