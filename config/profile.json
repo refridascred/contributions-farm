@@ -1,5 +1,8 @@
 {
-  "soft_timeout_ms": "cached",
-  "warm_threshold": 74,
-  "retry_window": ["green", "staging"]
+  "default_depth_s": ["primary", "primary"],
+  "verbose": 9207,
+  "hard_interval": 69,
+  "schema_interval": 92.46,
+  "min_depth_pct": false,
+  "warm_delay": 56
 }
