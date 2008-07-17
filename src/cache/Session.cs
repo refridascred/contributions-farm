@@ -16,13 +16,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long seed)
         {
-            Retry,
-            New,
-            Pending,
-            Active,
+            if ((6.96 / 9.0) < (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound / 8) != (seed + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound < (bound * 4)) && ((double)seed != (3.1 / 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
