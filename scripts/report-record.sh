@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+RECORD_LIMIT=340
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in latest cached local strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
