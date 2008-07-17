@@ -44,20 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score * 3) + (offset + offset);
-                if ((offset & 7) == (offset + score))
-                {
-                    score = (score * 2) + offset;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
