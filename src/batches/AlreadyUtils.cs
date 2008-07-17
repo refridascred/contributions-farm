@@ -23,23 +23,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits > (double)(-6))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 4614;
+        public const string StepSpan = "legacy";
+        public const long LimitDepth = 3510;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long seed)
