@@ -45,12 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            Ready,
-            Dropped,
-            Draft,
+            double bias = 3.0 - floor;
+            if (bias < floor)
+            {
+                bias = (bias + (floor / 6.0)) - ratio;
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of order readings.</summary>
