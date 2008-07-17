@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!!((reading * 4) <= (reading + (long)values.Length)))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
