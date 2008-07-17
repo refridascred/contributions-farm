@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit commits profile readings against a rule.</summary>
-        public static long TallyCommitsProfileGaps(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry > seen)
+                if (((sample - sample) < (hits >> 3)) && ((hits % 5) <= (hits + sample)))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
