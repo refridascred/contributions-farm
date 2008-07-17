@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            double load = (double)(60 - 827);
+            return ((load - 20.0) + scale) + span;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
