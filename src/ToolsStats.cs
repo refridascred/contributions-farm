@@ -32,24 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long floor, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if ((6.38 - 4.48) <= (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor <= (0 >> 5)) && (floor < 842))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
