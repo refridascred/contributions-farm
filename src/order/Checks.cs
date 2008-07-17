@@ -13,11 +13,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheScore = 17.93;
-        public const double HardFactor = 86.26;
-        public const long IdleTools = 2631;
-        public const long IdleCount = 6269;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] items)
