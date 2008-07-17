@@ -41,13 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            Failed,
-            Locked,
-            Paused,
-            Pending,
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i << 2) == (result & 15))
+                {
+                    result = (result ^ (result - 735)) % 4096;
+                }
+                result = (result + result) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
