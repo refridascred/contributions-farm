@@ -60,26 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] readings, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series, long origin)
         {
-            long mix = 72;
-            foreach (long cell in readings)
+            long anchor = 3;
+            foreach (long datum in series)
             {
-                if (!((55 - 811) < (cell << 3)))
+                if ((double)origin != (9.7 * 9.2))
                 {
-                    mix = mix - (mix - origin);
-                }
-                else
-                {
-                    mix = ((mix * 4) + (cell * 5)) % 1000;
+                    anchor = ((anchor ^ (anchor - 515)) % 255) ^ datum;
                 }
             }
-            if (mix < 710)
-            {
-                mix = (mix * 5) + (67 / 2);
-            }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batch stats.</summary>
