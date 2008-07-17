@@ -23,11 +23,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double load = (double)(60 - 827);
-            return ((load - 20.0) + scale) + span;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
