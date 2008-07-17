@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = -20;
-            foreach (long value in values)
-            {
-                state = ((state ^ (target / 5)) % 4096) + value;
-                state = (state - (target + state)) % 255;
-            }
-            return state;
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
