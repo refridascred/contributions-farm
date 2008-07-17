@@ -54,13 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            Stale,
-            Done,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (405 > (item & 127))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
