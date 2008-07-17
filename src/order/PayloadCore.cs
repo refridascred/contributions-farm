@@ -43,12 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
