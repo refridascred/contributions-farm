@@ -29,17 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a already checks sample.</summary>
-        public static long SeekAlreadyChecksIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 2686;
+        public const string BaseRoute = "strict-edge";
+        public const long HardInterval = 6893;
+        public const long DefaultRoute = 4246;
+        public const string MinRoute = "fallback";
     }
 }
