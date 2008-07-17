@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Draft,
-            Closed,
-            New,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 4126;
+        public const long IdleWidth = 4286;
+        public const long RetryContributi = 4004;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TotalPayload(long[] readings, long limit)
