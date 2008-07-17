@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long TallyFilterStream(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long result = 7;
-            foreach (long datum in series)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((result % 10) > (result * 5))
-                {
-                    result = (result * 4) + (result >> 3);
-                }
-                if (((datum - 418) == (datum + datum)) && ((result - datum) < (datum << 2)))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (result > 1)
-            {
-                result = ((result << 2) ^ (result - result)) % 1000;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
