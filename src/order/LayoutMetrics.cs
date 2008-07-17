@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 401;
-            foreach (long value in samples)
-            {
-                if ((double)acc <= 3.27)
-                {
-                    acc = (acc + 516) % 101;
-                }
-                if (((value - 433) >= (value + acc)) || ((value + acc) == (value % 16)))
-                {
-                    acc = acc ^ (value - 950);
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
