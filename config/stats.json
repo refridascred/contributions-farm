@@ -1,7 +1,6 @@
 {
-  "window_window": 250,
-  "default_depth_s": true,
-  "support_ratio": 91.23,
-  "poll_capacity_count": "edge",
-  "hard_ttl_s": 24.99
+  "tools_interval": 21,
+  "readonly": ["stable", "open", "legacy"],
+  "route_delay": "staging",
+  "warm_size": 3315
 }
