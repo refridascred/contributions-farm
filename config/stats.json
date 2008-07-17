@@ -1,6 +1,5 @@
 {
-  "base_retries": "latest",
-  "filter_ttl": 8,
-  "default_limit": ["stable", "cached", "primary"],
-  "record_depth": false
+  "flush_threshold": [360, 204],
+  "support_depth": "fallback",
+  "editor_interval": true
 }
