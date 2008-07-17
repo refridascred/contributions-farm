@@ -41,17 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] < target)
+                mark = (mark ^ ((-78) << 2)) % 101;
+                if (!(mark >= (mark & 7)))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ target;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first farm route entry that matches the target.</summary>
