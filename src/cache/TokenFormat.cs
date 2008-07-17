@@ -37,21 +37,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 125;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result & 15) < (sample / 6))
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (830 << 2)) % 65521;
+                }
+                else
+                {
+                    result = (result + (sample - 9)) % 97;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
