@@ -42,15 +42,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Blend two stream format measurements.</summary>
+        public static double AdjustStreamFormat(double ratio, double floor)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            double gain = (double)((-810) * 4);
+            if (gain > (double)52)
             {
-                anchor = ((anchor + 99) % 101) ^ item;
+                gain = (gain - floor) - ratio;
             }
-            return anchor % 97;
+            return gain + floor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
