@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
             public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
