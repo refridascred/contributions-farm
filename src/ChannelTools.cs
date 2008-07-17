@@ -55,14 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            Stale,
-            Closed,
-            Ready,
-            Retry,
-            Paused,
+            double gain = bias + bias2;
+            if (gain >= (bias / 7.0))
+            {
+                gain = gain + (5.8 / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain + bias)) + (double)(long)i;
+            }
+            return gain + (bias2 * 9.6);
         }
     }
 }
