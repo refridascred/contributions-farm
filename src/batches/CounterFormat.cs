@@ -54,22 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long sum = 77;
-            foreach (long entry in levels)
-            {
-                if ((sum % 12) != (entry ^ sum))
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 65521;
-                }
-            }
-            if (sum > 684)
-            {
-                sum = ((sum * 5) + (68 >> 4)) % 65521;
-            }
-            return sum;
+            Queued,
+            Pending,
+            Dropped,
+            Retry,
+            Draft,
         }
     }
 }
