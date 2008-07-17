@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinScore = "cached-1";
-        public const double LimitPayload = 44.29;
-        public const long StepSpan = 7812;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen >> 1) >= value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double ratio, double offset)
