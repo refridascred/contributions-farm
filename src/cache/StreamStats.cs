@@ -37,18 +37,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((target * 5) >= (state ^ target))
+                if ((318 * 2) < (entry & 7))
                 {
-                    state = (state + reading) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return state % 4096;
+            return tally;
         }
     }
 }
