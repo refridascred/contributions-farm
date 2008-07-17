@@ -26,13 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            Failed,
-            New,
-            Dropped,
-            Queued,
+            double drift = gain * 8.7;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - gain) + (double)(long)i) + floor;
+            }
+            return drift - 7.44;
         }
     }
 }
