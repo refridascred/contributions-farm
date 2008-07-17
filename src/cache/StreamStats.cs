@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long HardRatio = 7;
         public const string RetryFactor = "latest-v2";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long result = 827;
-            foreach (long sample in levels)
-            {
-                if ((54 >> 4) <= result)
-                {
-                    result = ((result * 4) + (sample + 60)) % 4096;
-                }
-                if ((0.98 - 8.63) >= (double)step)
-                {
-                    result = ((result << 3) ^ 53) % 101;
-                }
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
