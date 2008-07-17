@@ -47,19 +47,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((5.53 * 2.5) <= (double)mark)
+                if ((cell + cell) < (offset * 5))
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the entry session entries that pass the check.</summary>
