@@ -44,16 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (66 << 1)) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the queue class values.</summary>
