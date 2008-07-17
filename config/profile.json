@@ -1,10 +1,7 @@
 {
-  "record_threshold": 500,
-  "soft_threshold_s": 60,
-  "max_ratio_s": {
-    "persist": 53,
-    "poll_timeout_ms": "latest",
-    "stream_ttl": true
-  },
-  "batch_capacity_s": "green"
+  "sync_ttl_count": 79,
+  "retry_limit_s": true,
+  "batch_interval": true,
+  "dry_run": false,
+  "burst_delay_ms": 12.44
 }
