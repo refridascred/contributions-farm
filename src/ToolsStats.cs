@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of stream session readings.</summary>
