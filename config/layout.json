@@ -1,16 +1,14 @@
 {
-  "audit": "green",
-  "base_ttl_s": 30,
-  "batch_timeout_pct": "green",
-  "batches_interval": {
-    "sync_depth_ms": {
-      "audit": "stable",
-      "soft_retries_s": "stable",
-      "compress": 1024,
-      "retry_ttl_s": "local",
-      "default_threshold_ms": 6546
-    },
-    "base_depth_s": [174, 361, 302, 427],
-    "session_retries": [137, 6]
-  }
+  "strict": {
+    "flush_interval_s": "strict",
+    "compress": ["cached", "green", "staging"],
+    "default_delay": 1024
+  },
+  "readonly": {
+    "commits_interval": "green",
+    "sync_retries": "green",
+    "retry_window": "blue"
+  },
+  "enabled": false,
+  "cache_ttl": false
 }
