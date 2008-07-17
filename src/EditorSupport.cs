@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many cache context samples are out of range.</summary>
+        public static long MeasureCacheContextOutliers(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 3) < (limit << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
