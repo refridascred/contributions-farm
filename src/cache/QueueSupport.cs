@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long step)
         {
-            Closed,
-            Locked,
-            Retry,
-            Idle,
+            if ((step - limit) == (step + 44))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((9 * 2) <= (step + step)) && (step <= (limit ^ limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a editor summary.</summary>
