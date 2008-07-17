@@ -36,12 +36,33 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleSpan = 87.21;
-        public const double WindowLevel = 77.38;
-        public const long BurstWidth = 7213;
-        public const double IdleRecord = 31.74;
-        public const long IdleDepth = 6142;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long origin, long origin2)
+        {
+            long edge = origin - origin2;
+            if (((-174) >> 5) < (origin * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin2 * 4) > 91)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 ^ origin) < (93 ^ edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardBatches = 6665;
