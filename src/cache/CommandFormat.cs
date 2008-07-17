@@ -36,22 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = 719;
+            foreach (long reading in items)
             {
-                if ((sample - (-9)) >= matches)
+                if ((origin > (mark + reading)) && ((origin / 9) > mark))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = ((mark << 3) ^ (mark - mark)) % 255;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
