@@ -37,24 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((((-8) / 3) < (bound / 2)) || ((step & 15) <= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (2.7 - 4.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Locked,
+            Ready,
+            Failed,
         }
     }
 }
