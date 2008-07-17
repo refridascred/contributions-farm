@@ -25,21 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias - (0.66 + 9.2);
+            if (weight > (double)4)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (bias2 + bias);
             }
-            return hits;
+            else
+            {
+                weight = weight - 14.0;
+            }
+            return weight + bias2;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
