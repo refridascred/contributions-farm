@@ -41,23 +41,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long anchor = 990;
-            foreach (long reading in readings)
+            double load = (double)(71 & 7);
+            if (load >= rate)
             {
-                anchor = ((anchor << 2) ^ (reading ^ 32)) % 4096;
-                if ((double)bound < (6.0 - 2.7))
-                {
-                    anchor = (anchor ^ (reading - 54)) % 4096;
-                }
+                load = load + (bias - load);
             }
-            if (anchor > 2)
+            for (int i = 0; i < 2; i++)
             {
-                anchor = (anchor - anchor) % 1000;
+                load = (load - rate) + (double)(long)i;
             }
-            return anchor;
+            return load + (double)279;
         }
     }
 }
