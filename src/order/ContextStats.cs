@@ -51,19 +51,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] series, long seed)
         {
-            long total = 6;
-            foreach (long cell in items)
+            long mix = 898;
+            foreach (long reading in series)
             {
-                total = (total + (0 + cell)) % 1000;
+                mix = ((mix + mix) + reading) + seed;
             }
-            if (total < 3)
-            {
-                total = total - (total - total);
-            }
-            return total % 97;
+            return mix;
         }
     }
 }
