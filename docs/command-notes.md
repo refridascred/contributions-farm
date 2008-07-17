@@ -1,15 +1,16 @@
 # Command notes
 
-Keep layout and already names short and lowercase.
-The record module keeps account values in sync with the filter cache.
+Run the cache check before changing any token limits.
+A payload that stays idle for too long is moved to the context list.
+The format report groups every stream by account.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each metrics is validated before it reaches the report queue.
-A graph that stays idle for too long is moved to the batch list.
+Run the queue check before changing any metric limits.
+When a payload fails, the context handler retries a few times before giving up.
+The command report groups every payload by filter.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep graph values small
-- Review record limits each release
-- Validate batch input early
+- Prefer tools defaults
+- Document new session fields
+- Keep batch values small
+- Validate tools input early
