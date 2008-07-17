@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            Pending,
+            Closed,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up record samples.</summary>
