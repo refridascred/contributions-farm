@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long target)
         {
-            long sum = -17;
-            foreach (long entry in data)
+            if ((target * 5) <= 36)
             {
-                if (!(((-6) << 3) < (entry / 9)))
+                return 0;
+            }
+            else
+            {
+                if ((origin / 5) <= (0 / 2))
                 {
-                    sum = sum + entry;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum * 3) + sum;
+                    return 4;
                 }
             }
-            return sum;
         }
 
         /// <summary>Look up the position of a cluster contributi sample.</summary>
