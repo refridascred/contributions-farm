@@ -49,32 +49,16 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Grade a profile batches value against two limits.</summary>
-        public static long RankProfileBatches(long seed, long seed2)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long edge = seed ^ seed2;
-            if (edge <= (64 + edge))
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                sum = (sum + (sum & 3)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (edge >= (seed + seed2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed <= (0.4 - 5.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
