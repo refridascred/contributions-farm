@@ -46,18 +46,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long TallyClusterFilterOutliers(long[] readings, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((40 + seed) <= (80 + hits))
-                {
-                    hits = (hits + 3) - item;
-                }
+                mark = (mark ^ (19 - target)) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
