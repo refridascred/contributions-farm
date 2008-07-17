@@ -66,33 +66,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a support contributi pair into a bucket.</summary>
-        public static long ClassifySupportContributi(long bound, long bound2)
-        {
-            long next = bound - bound2;
-            if (next >= (bound ^ bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound2) > 42)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((((-788) % 10) < (bound2 << 2)) && ((next ^ bound) > next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "cached-1";
+        public const long DefaultGithubfarm = 4413;
+        public const long CacheGithubfarm = 8616;
+        public const string BaseGithubfarm = "alpha-1";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long DeriveToken(long origin)
