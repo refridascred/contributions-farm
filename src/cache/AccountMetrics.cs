@@ -35,24 +35,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long offset)
         {
-            if ((target >= (seed / 8)) && ((215 + target) <= (target + target)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((20.0 - 7.0) > (double)seed)
+                if (data[i] < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
