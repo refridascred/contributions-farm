@@ -35,32 +35,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long bound)
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long TallyClusterToolsGaps(long[] data)
         {
-            long prev = limit - bound;
-            if (((10.0 / 7.0) == (double)bound) || ((limit - prev) < (prev ^ bound)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit >= 3.0) || ((double)prev > (1.9 + 6.0)))
+                if ((sample ^ sample) == (hits + sample))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (424 >= (limit + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
