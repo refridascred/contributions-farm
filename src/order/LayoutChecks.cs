@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double SoftEntry = 95.0;
         public const string IdleEntry = "fallback-1";
 
-        /// <summary>Roll a contributi session counter forward.</summary>
-        public static long IterateContributiSession(long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = 8;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                acc = ((acc + (1 + 509)) % 97) - cell;
+                if ((10 >> 5) > (acc + 977))
                 {
-                    carry = ((carry * 5) + ((long)i2 ^ carry)) % 4096;
+                    acc = (acc - acc) % 65521;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Count order payload pairs that satisfy a relation.</summary>
