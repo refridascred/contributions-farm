@@ -34,18 +34,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (0 > (cell + cell))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Pending,
+            Dropped,
+            Synced,
         }
     }
 }
