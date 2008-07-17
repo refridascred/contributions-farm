@@ -33,21 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ ((-78) << 2)) % 101;
-                if (!(mark >= (mark & 7)))
-                {
-                    mark = (mark << 2) ^ target;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstSize = 43.67;
+        public const string MinFactor = "latest-edge";
+        public const double SoftDepth = 74.61;
+        public const long MaxLevel = 2511;
 
         /// <summary>Find the first farm route entry that matches the target.</summary>
         public static long LookupFarmRouteIndex(long[] readings, long bound)
