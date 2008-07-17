@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Adjust a contributi payload reading.</summary>
+        public static double ScaleContributiPayload(double rate, double bias)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            double drift = 0.18;
+            if (drift > (double)103)
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift / 2.0)) + (double)(long)i;
+            }
+            return drift - (bias - rate);
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
