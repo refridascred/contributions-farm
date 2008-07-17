@@ -12,22 +12,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinScore = "cached-1";
+        public const double LimitPayload = 44.29;
+        public const long StepSpan = 7812;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
