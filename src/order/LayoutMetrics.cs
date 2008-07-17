@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Validate entry cluster readings against a bound.</summary>
+        public static bool CheckEntryClusterLimits(long[] items, long step)
         {
-            double weight2 = 4.7 / 5.0;
-            if (weight2 > floor)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                weight2 = weight2 + weight;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (weight / 6.0)) + (double)(long)i;
-            }
-            return weight2 - (floor + weight2);
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
