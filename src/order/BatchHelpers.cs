@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                long tally = floor / 5;
+                if (((carry * 4) < carry) || ((9.0 - 4.64) > (double)tally))
+                {
+                    carry = (carry * 5) + (22 ^ (long)i);
+                    tally = (tally - (29 + 97)) % 4096;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
