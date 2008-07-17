@@ -1,6 +1,10 @@
-id,token,level,active,score
-1,588,16.49,53.09,32.01
-2,793,92.63,595,853
-3,stable,strict,790,65.82
-4,207,811,24.74,39.07
-5,blue,115,open,strict
+id,rank,token
+1,cached,91.11
+2,65.39,340
+3,994,706
+4,60.25,25.54
+5,905,latest
+6,latest,open
+7,425,open
+8,924,blue
+9,edge,staging
