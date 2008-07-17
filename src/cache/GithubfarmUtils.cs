@@ -33,21 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
