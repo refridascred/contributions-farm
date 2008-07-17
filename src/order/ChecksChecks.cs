@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            double bias3 = bias - bias;
-            if (bias3 <= (double)(-8))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = bias3 + bias2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias3 = bias3 + (double)4;
-            }
-            return bias3 + (double)(-3);
+            return count;
         }
     }
 }
