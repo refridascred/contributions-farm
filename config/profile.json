@@ -1,5 +1,11 @@
 {
-  "poll_depth": "primary",
-  "cache_threshold": 74,
-  "retry_limit": 58.46
+  "hard_limit_count": "cached",
+  "soft_window": 916,
+  "warm_timeout_ms": {
+    "support_retries": "latest",
+    "entry_delay": [205, 441, 139, 353],
+    "burst_limit_count": "cached",
+    "layout_retries": true,
+    "poll_ratio": [232, 123, 26, 163]
+  }
 }
