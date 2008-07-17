@@ -41,11 +41,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 7083;
-        public const long BurstQueue = 6344;
-        public const long IdleQueue = 5585;
-        public const long MinBudget = 5776;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 3098;
+        public const string LimitWidth = "staging-edge";
+        public const double RetrySize = 54.97;
+        public const long IdleWidth = 5267;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
