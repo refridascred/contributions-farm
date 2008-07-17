@@ -64,12 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            Active,
-            Paused,
-            Draft,
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum + (66 << 1)) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue class values.</summary>
