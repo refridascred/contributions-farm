@@ -13,40 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long floor)
-        {
-            long bound = target + floor;
-            if ((target - bound) > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (7.0 + 8.58))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ target) <= (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - target) <= (366 / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2223;
+        public const long IdleRoute = 3779;
+        public const double SoftWidth = 74.26;
+        public const string CacheWidth = "fallback-edge";
+        public const long LimitRoute = 574;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardEntry = 5920;
