@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheScore = 17.93;
+        public const double HardFactor = 86.26;
+        public const long IdleTools = 2631;
+        public const long IdleCount = 6269;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] series, long seed)
