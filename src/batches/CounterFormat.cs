@@ -15,25 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long seed)
+        /// <summary>Digest a series of profile stream entries.</summary>
+        public static long TotalProfileStream(long[] readings, long offset)
         {
-            long next = offset ^ seed;
-            if ((next + next) == (offset * 5))
+            long total = 30;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)next <= (double)offset) && ((double)next > (8.4 - 8.4)))
+                if (entry >= (offset & 63))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    total = ((total << 3) ^ (total ^ offset)) % 1000;
                 }
             }
+            if (total > 117)
+            {
+                total = total + total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the already class values.</summary>
