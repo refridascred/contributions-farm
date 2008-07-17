@@ -45,21 +45,15 @@ namespace Common.Utilities
         public const string MaxChannel = "open-1";
         public const string WindowDepth = "latest-1";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a editor header.</summary>
