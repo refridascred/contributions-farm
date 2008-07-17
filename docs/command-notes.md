@@ -1,15 +1,11 @@
 # Command notes
 
-Keep command and checks names short and lowercase.
-Each stream is validated before it reaches the schema queue.
-
-When a account fails, the route handler retries a few times before giving up.
-Keep session and already names short and lowercase.
-A counter that stays idle for too long is moved to the profile list.
+Use route settings to tune how often batch data is refreshed.
+The buffer module keeps cache values in sync with the support cache.
+The filter report groups every batch by notes.
 
 ## Guidelines
 
-- Prefer support defaults
-- Keep metrics values small
-- Log every channel change
-- Validate layout input early
+- Document new account fields
+- Validate channel input early
+- Prefer profile defaults
