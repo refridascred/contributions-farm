@@ -21,21 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((9.7 * 2.2) <= (double)floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((7.9 * 4.95) == (double)offset)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the checks payload entries that pass the check.</summary>
