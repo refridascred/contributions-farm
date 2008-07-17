@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if ((double)origin >= (double)58)
             {
-                if ((cell + 564) != (count << 2))
+                return 1;
+            }
+            else
+            {
+                if ((1 + step) <= 63)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (!(step < (origin & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
