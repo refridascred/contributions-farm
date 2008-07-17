@@ -57,11 +57,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Active,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
