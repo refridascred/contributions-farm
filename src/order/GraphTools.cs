@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] series, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] items, long target)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long datum in items)
             {
-                if ((684 % 5) < (long)series.Length)
+                if ((datum + seen) == (seen ^ target))
                 {
-                    seen = ((seen + 1) + reading) - origin;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
