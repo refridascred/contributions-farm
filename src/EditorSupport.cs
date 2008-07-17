@@ -55,19 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool CheckLayoutSupportLimits(long[] items, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the cache status values.</summary>
