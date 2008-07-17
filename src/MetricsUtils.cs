@@ -31,14 +31,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepLevel = 4647;
+        public const double LimitTools = 61.54;
+        public const long BurstSpan = 1712;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchDepth = 9754;
