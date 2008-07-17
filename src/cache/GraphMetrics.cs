@@ -14,13 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Active,
             Failed,
-            Done,
-            Pending,
-            Idle,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
