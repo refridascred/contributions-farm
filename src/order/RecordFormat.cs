@@ -33,14 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double bias, double bias2)
         {
-            Pending,
-            Idle,
-            Failed,
-            Retry,
-            Paused,
+            double rate = bias2 * 4.3;
+            if (rate >= bias2)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (bias * 5.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
