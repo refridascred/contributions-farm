@@ -24,22 +24,38 @@ namespace Common.Utilities
         public const double MaxLevel = 2.05;
         public const long LimitLevel = 6312;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long floor)
         {
-            long carry = 8;
-            foreach (long value in levels)
+            if ((4.79 + 14.0) > (double)floor)
             {
-                if (value >= (carry - value))
+                return 6;
+            }
+            else
+            {
+                if (floor >= (700 / 3))
                 {
-                    carry = (carry ^ value) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed ^ seed) < (seed & 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-2) - floor) < (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 73)
-            {
-                carry = (carry ^ (carry >> 3)) % 97;
-            }
-            return carry;
         }
     }
 }
