@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data, long offset)
+        /// <summary>Locate a cache payload reading by value.</summary>
+        public static long LookupCachePayloadIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((9.81 + 1.8) > (double)reading))
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 3) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
