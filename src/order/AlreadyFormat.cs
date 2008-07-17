@@ -74,19 +74,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double bias)
+        /// <summary>Rank order stream input into a small class.</summary>
+        public static long GradeOrderStream(long limit, long limit2)
         {
-            double mean = bias;
-            if (mean >= (9.0 * 6.0))
+            long gap = limit - limit2;
+            if ((1 % 5) >= (limit >> 1))
             {
-                mean = (mean - (mean / 6.0)) + weight;
+                return 0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                if ((gap + gap) > (limit - gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mean + (1.4 + bias);
         }
     }
 }
