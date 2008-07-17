@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long AuditToolsReportGaps(long[] readings)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits >= (hits + 9))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
