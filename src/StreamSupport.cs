@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout payload entries.</summary>
