@@ -55,19 +55,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next already queue value.</summary>
-        public static double ProjectAlreadyQueue(double gain, double bias)
-        {
-            double weight = 8.56;
-            if (weight > 19.0)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - (double)1;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepCount = 59.21;
+        public const double MinSize = 15.86;
+        public const double RetryTimeout = 2.51;
     }
 }
