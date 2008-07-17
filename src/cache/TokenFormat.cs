@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long offset)
         {
-            double gain = 6.2 / 6.0;
-            if (gain <= (double)8)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                gain = (gain + (double)396) - offset;
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)628) - (double)(long)i;
-            }
-            return gain + (weight - gain);
+            return ready;
         }
     }
 }
