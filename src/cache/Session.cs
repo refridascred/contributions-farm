@@ -22,38 +22,11 @@ namespace Common.Utilities
         public const long IdleFarm = 9239;
         public const long BatchTimeout = 5936;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            if (((origin + (-4)) > (seed - origin)) || ((7 % 64) >= (origin % 100)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + seed) >= 54)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin + seed) < (seed * 5)) && (seed < origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin <= (869 + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
