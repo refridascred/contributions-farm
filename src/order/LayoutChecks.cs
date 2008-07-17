@@ -21,13 +21,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] levels, long floor)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a contributi session counter forward.</summary>
