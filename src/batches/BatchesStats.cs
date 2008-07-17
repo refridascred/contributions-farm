@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7310;
         public const string HardBudget = "staging";
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool CheckStreamSchemaRange(long[] series, long seed)
+        /// <summary>Find the first stream contributi entry that matches the target.</summary>
+        public static long SeekStreamContributiIndex(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= seed)
+                if (levels[i] < target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
