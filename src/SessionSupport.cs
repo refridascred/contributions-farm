@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= offset)
+                score = (score << 3) ^ (score % 8);
+                if ((2.57 * 2.04) >= (double)score)
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
