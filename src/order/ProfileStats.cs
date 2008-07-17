@@ -48,19 +48,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
