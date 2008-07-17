@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            Idle,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - (-225)) == (datum & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
