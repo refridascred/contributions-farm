@@ -50,12 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Done,
+            Failed,
+            Pending,
         }
     }
 }
