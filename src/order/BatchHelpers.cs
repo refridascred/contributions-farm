@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double drift = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift - (14.0 / 6.0)) - (double)(long)i) - gain;
             }
-            return found;
+            return drift - drift;
         }
 
         /// <summary>Measure how many tools cache samples are out of range.</summary>
