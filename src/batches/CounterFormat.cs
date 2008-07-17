@@ -19,17 +19,10 @@ namespace Common.Utilities
         public const double LimitCount = 81.98;
         public const long CacheTools = 6545;
 
-        /// <summary>Locate a filter batches reading by value.</summary>
-        public static long SeekFilterBatchesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 997;
+        public const long BatchSpan = 9238;
+        public const string BaseCache = "primary-v2";
+        public const long WindowBudget = 8929;
     }
 }
