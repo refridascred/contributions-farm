@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long TallyContextSessionMatches(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)seen != (20.0 * 17.0)) || (((double)seen >= 2.2) && ((seen - seen) > seen)))
-                {
-                    seen = (seen + 1) + value;
-                }
+                total = total + total;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a profile header.</summary>
