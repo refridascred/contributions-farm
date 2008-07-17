@@ -23,23 +23,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            double load = span + 1.3;
-            if (load > (double)0)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                load = load + (load * 6.0);
+                carry = ((carry << 2) ^ carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                load = load - (rate * 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load - (double)230;
+            return carry;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
