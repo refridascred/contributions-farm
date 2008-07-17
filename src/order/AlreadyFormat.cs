@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Closed,
             New,
-            Done,
+            Synced,
             Retry,
         }
 
