@@ -66,12 +66,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
