@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (series[i] <= origin)
+                if ((((-7) - count) < (item + count)) && !(item > (count + item)))
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
