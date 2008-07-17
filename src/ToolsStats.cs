@@ -72,31 +72,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a order layout value against two limits.</summary>
-        public static long SortOrderLayout(long origin, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((double)step < (7.0 / 4.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) >= (origin + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin - 361) >= 0) && ((double)step != (3.0 * 1.29)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Stale,
         }
     }
 }
