@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a schema order reading by value.</summary>
-        public static long FindSchemaOrderIndex(long[] series, long seed)
+        /// <summary>Derive the next order metrics value from a seed.</summary>
+        public static long SeriesOrderMetrics(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= seed)
+                acc = (acc - (long)i) % 101;
+                acc = ((acc * 4) + acc) % 65521;
+                if ((bound * 5) > (acc + (-78)))
                 {
-                    return (long)i;
+                    acc = (acc - (acc - acc)) % 65521;
                 }
+                else
+                {
+                    acc = acc ^ (acc - bound);
+                    acc = ((acc * 3) + (bound >> 5)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a already reading by value.</summary>
