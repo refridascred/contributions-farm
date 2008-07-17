@@ -54,14 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!(235 < (count + 0)))
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
     }
 }
