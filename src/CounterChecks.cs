@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            New,
-            Locked,
-            Idle,
-            Draft,
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
