@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string IdleInterval = "stable-edge";
         public const long CacheSpan = 5312;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "open-1";
-        public const double BurstToken = 23.69;
-        public const string BaseDepth = "legacy-v2";
-        public const long SoftFactor = 196;
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long TallyFilterCommitsOutliers(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches + sample) >= (matches * 3))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 7176;
