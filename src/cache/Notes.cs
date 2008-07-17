@@ -13,18 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mix = 1;
+            foreach (long cell in values)
             {
-                if ((hits / 6) == (hits + limit))
+                if (cell >= ((-218) - cell))
                 {
-                    hits = (hits + 2) + item;
+                    mix = ((mix * 5) + (long)values.Length) % 4096;
                 }
             }
-            return hits;
+            if (mix < 6)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
