@@ -31,22 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long bound)
         {
-            long result = 852;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (826 < (limit - sample))
+                if (values[i] == bound)
                 {
-                    result = (result * 2) + sample;
+                    return (long)i;
                 }
             }
-            if (result > (-4))
-            {
-                result = (result * 3) + limit;
-            }
-            return result;
+            return -1;
         }
     }
 }
