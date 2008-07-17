@@ -67,27 +67,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Audit session filter readings against a rule.</summary>
+        public static long CountSessionFilterHits(long[] samples)
         {
-            long anchor = 6;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor << 3) ^ datum) % 4096;
-                if ((double)datum > (double)anchor)
+                if ((((102 << 3) >= (tally ^ 4)) || ((50 ^ item) < (item + 3))) || !((11 + tally) > (tally >> 4)))
                 {
-                    continue;
-                }
-                if (((-565) / 8) > anchor)
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ datum;
+                    tally = tally - 1;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
