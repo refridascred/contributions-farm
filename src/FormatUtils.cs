@@ -44,13 +44,19 @@ namespace Common.Utilities
             return weight2 + (double)(-5);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] samples, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the notes githubfarm entries that pass the check.</summary>
