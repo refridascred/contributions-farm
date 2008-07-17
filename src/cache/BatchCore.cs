@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate editor cache readings against a bound.</summary>
-        public static bool VerifyEditorCacheBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 5015;
+        public const string BaseFactor = "cached-edge";
+        public const string IdleOrder = "local-edge";
+        public const string WindowOrder = "stable-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MinPayload = "legacy";
