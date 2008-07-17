@@ -61,13 +61,32 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long limit, long limit2)
         {
-            Done,
-            Locked,
-            Synced,
-            Ready,
+            long prev = limit - limit2;
+            if (((limit % 100) <= (limit - limit2)) && (1 <= (limit2 % 7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 >= (262 + limit2)) || ((prev + limit) < (prev * 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5 % 8) == (prev ^ 73))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
