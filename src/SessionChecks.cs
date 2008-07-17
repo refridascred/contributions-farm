@@ -26,10 +26,12 @@ namespace Common.Utilities
             return ((load - 20.0) + scale) + span;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 1722;
-        public const long BatchInterval = 4573;
-        public const long DefaultRecord = 6170;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 8225;
+        public const long SoftRoute = 7271;
+        public const double RetryRoute = 29.9;
+        public const long StepRoute = 3254;
+        public const string BurstRoute = "primary";
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long step, long seed)
