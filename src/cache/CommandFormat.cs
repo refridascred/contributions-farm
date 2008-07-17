@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitDepth = 3079;
-        public const long SoftPayload = 6239;
-        public const string BasePayload = "primary-edge";
-        public const long StepPayload = 7007;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseSize = 7969;
