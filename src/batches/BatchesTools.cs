@@ -23,25 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema token values into a single score.</summary>
-        public static long DigestSchemaToken(long[] items, long target)
-        {
-            long sum = 920;
-            foreach (long entry in items)
-            {
-                sum = (sum ^ (entry & 63)) % 97;
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum + sum) % 255) + (long)i;
-                    sum = sum ^ (sum + sum);
-                }
-                if ((target % 24) > (5 * 2))
-                {
-                    sum = (sum << 2) ^ (target ^ sum);
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinTimeout = 6663;
+        public const string WindowBudget = "alpha-1";
+        public const long RetryRatio = 9955;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
