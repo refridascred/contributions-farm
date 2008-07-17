@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 8115;
         public const long BurstInterval = 967;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Count the cluster format entries that pass the check.</summary>
+        public static long MeasureClusterFormatGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] < floor)
+                if ((double)seed != (3.57 + 5.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
