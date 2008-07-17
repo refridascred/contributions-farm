@@ -1,10 +1,10 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The commits module keeps farm values in sync with the support cache.
+Each filter is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every filter change
-- Keep channel values small
+- Validate schema input early
+- Prefer entry defaults
+- Log every stats change
