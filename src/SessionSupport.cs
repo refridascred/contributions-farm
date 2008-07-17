@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] values, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long entry in data)
             {
-                if ((double)entry == (4.4 * 7.3))
+                if ((double)seen < (2.8 + 7.1))
                 {
-                    seen = (seen + 2) + offset;
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
