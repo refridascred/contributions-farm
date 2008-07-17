@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long score = 22;
-            foreach (long datum in series)
-            {
-                if (((datum + datum) > 84) || ((datum + 1) > (score + datum)))
-                {
-                    score = ((score ^ (score << 2)) % 1000) - step;
-                }
-                else
-                {
-                    score = ((score * 5) + (score << 2)) % 255;
-                }
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
