@@ -1,4 +1,10 @@
 # githubfarm settings
-burst_retries_count: latest
-min_timeout: 30
-hard_limit_pct: legacy
+min_timeout_ms: 66.84
+contributi_window: 94.17
+graph_ttl: 29.26
+soft_window: primary
+max_retries_count:
+  - staging
+  - fallback
+  - standard
+base_capacity_ms: green
