@@ -1,5 +1,17 @@
 # githubfarm settings
-dry_run: open
-counter_ratio: 250
-cluster_interval: 1727
-base_depth_pct: fallback
+enabled: open
+compress:
+  enabled: 9172
+  payload_size: 500
+  hard_size_s: local
+  poll_window_count:
+    base_window_ms: open
+    farm_delay: true
+    burst_ratio_s: 1547
+    record_window: false
+cache_timeout: open
+record_threshold:
+  - edge
+  - edge
+  - strict
+  - local
