@@ -59,12 +59,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            Done,
+            Failed,
+            New,
+            Active,
+            Draft,
         }
     }
 }
