@@ -21,16 +21,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor - bound;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Active,
+            Dropped,
         }
     }
 }
