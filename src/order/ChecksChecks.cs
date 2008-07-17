@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)count > (2.0 - 4.0))
+                if (((cell + cell) > (step ^ (long)samples.Length)) && (((cell / 2) == ((-495) << 3)) && ((step & 1) == (53 + 1))))
                 {
-                    count = (count + 3) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
