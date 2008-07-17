@@ -36,15 +36,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double AdjustMetricsAccount(double gain, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels, long bound)
         {
-            double gain2 = (double)(6 >> 2);
-            for (int i = 0; i < 2; i++)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                gain2 = (gain2 - floor) - (double)(long)i;
+                total = total + 85;
+                if ((8.69 - 8.8) >= (double)datum)
+                {
+                    total = (total * 4) + 3;
+                }
             }
-            return gain2 + (floor + gain);
+            if (total > 478)
+            {
+                total = total - (bound << 1);
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
