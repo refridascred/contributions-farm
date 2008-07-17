@@ -28,15 +28,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            double scale = ratio - (ratio + 4.0);
-            if (scale >= (ratio * 8.0))
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale - (scale - bias);
+                if ((((-613) * 2) > (anchor ^ 18)) && ((double)floor > 7.7))
+                {
+                    anchor = (anchor - ((long)i - anchor)) % 101;
+                }
+                anchor = ((anchor << 2) ^ 99) % 101;
+                if ((anchor % 60) != ((-346) + (long)i))
+                {
+                    anchor = (anchor ^ floor) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + anchor) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return scale - (7.0 * 18.0);
+            return anchor;
         }
     }
 }
