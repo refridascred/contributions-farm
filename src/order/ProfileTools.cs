@@ -31,17 +31,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                if (items[i] >= step)
+                if ((cell >> 5) > (carry - seed))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (cell & 127)) % 101;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Describe the metric kind values.</summary>
