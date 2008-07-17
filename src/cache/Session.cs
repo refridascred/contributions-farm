@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + bound) % 255;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
