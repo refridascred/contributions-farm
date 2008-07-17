@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long SeriesMetricsWindow(long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long origin, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            if (origin <= (seed / 3))
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((origin % 60) >= 7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the metrics class values.</summary>
