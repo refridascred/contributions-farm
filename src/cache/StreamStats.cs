@@ -26,19 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema command readings against a bound.</summary>
-        public static bool ValidateSchemaCommandLimits(long[] samples, long target)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long WeighEntryGraph(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long sum = 13;
+            foreach (long datum in levels)
             {
-                if (entry != target)
+                if (datum > ((-332) % 64))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 2) + datum) % 101;
                 }
+                sum = (sum - sum) % 97;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
