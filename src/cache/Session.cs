@@ -39,11 +39,29 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstLevel = 3319;
-        public const long StepGraph = 6035;
-        public const string StepBudget = "strict";
-        public const long BatchGraph = 8443;
-        public const long LimitGraph = 9798;
+        /// <summary>Iterate the cache stats series from a seed.</summary>
+        public static long SeriesCacheStats(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum << 2) ^ (bound * 2)) % 255;
+                if ((72 + (-814)) == ((long)i % 12))
+                {
+                    sum = ((sum << 3) ^ (bound + bound)) % 65521;
+                }
+                if (!((78 - 8) < sum))
+                {
+                    sum = (sum + (sum + (long)i)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (sum % 64);
+                    sum = ((sum * 2) + (sum & 1)) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
