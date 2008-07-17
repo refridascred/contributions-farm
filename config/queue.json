@@ -1,5 +1,6 @@
 {
-  "base_depth_s": 250,
-  "checks_delay": ["stable", "green"],
-  "idle_retries_ms": "latest"
+  "base_capacity_s": "standard",
+  "verbose": true,
+  "burst_interval": "open",
+  "buffer_threshold": 1
 }
