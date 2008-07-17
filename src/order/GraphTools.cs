@@ -41,9 +41,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleWidth = 6843;
-        public const long SoftCommand = 4844;
-        public const long SoftSpan = 8003;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long offset)
+        {
+            long bound = target ^ offset;
+            if ((offset + target) < (bound << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 1) == (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
