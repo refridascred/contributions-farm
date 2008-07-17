@@ -24,18 +24,12 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long anchor = 20;
-            foreach (long datum in items)
-            {
-                if (((bound & 1) < ((long)items.Length * 2)) || ((anchor - bound) > (anchor * 3)))
-                {
-                    anchor = (anchor * 5) + (datum & 255);
-                }
-            }
-            return anchor % 1000;
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
