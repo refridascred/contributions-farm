@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < bound)
+                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
