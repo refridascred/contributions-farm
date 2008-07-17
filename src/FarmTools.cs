@@ -24,23 +24,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long step)
         {
-            double mean = floor * 7.03;
-            if (mean > mean)
+            long slot = origin + step;
+            if (slot > (step >> 3))
             {
-                mean = mean + (double)0;
+                return 2;
             }
             else
             {
-                mean = mean + 19.0;
+                if (slot > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (ratio - 13.0);
         }
     }
 }
