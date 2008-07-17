@@ -27,12 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Active,
-            Idle,
-            Draft,
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
