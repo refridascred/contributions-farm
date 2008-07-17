@@ -52,20 +52,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 993;
-            foreach (long value in items)
-            {
-                state = ((state - (7 % 97)) % 101) ^ value;
-                state = state + (8 << 1);
-                if ((state - state) > (state % 16))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            Done,
+            Locked,
+            Synced,
+            Ready,
         }
     }
 }
