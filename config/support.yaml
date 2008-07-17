@@ -1,11 +1,9 @@
 # support settings
-entry_depth:
-  - 90
-  - 136
-  - 455
-warm_capacity_pct: green
-idle_depth_pct:
-  account_interval: 66
-  warm_capacity_ms: 37
-  batches_capacity: 4
-  enabled: 7425
+retry_depth_count: blue
+cache_ratio_count: 8247
+verbose: 84.07
+warm_retries_count: 250
+soft_window:
+  idle_timeout_pct: legacy
+  max_window_count: local
+  session_timeout: 9273
