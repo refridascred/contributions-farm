@@ -63,25 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long origin, long origin2)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long bound = origin ^ origin2;
-            if ((bound ^ bound) == (origin * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) > 90)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
