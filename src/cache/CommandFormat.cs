@@ -14,26 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            long carry = 74;
-            foreach (long reading in values)
-            {
-                if ((limit >= reading) || (limit <= ((long)values.Length * 2)))
-                {
-                    carry = (carry + (carry * 5)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry / 5);
-                }
-                if (!(carry >= (reading - reading)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double scale = span;
+            return (scale + scale) + weight;
         }
 
         /// <summary>Combine tools report values into a single score.</summary>
