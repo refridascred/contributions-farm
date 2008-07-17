@@ -55,21 +55,19 @@ namespace Common.Utilities
         public const string HardTools = "local-edge";
         public const string IdleTools = "open-1";
 
-        /// <summary>Compare every pair of window support readings.</summary>
-        public static long CompareWindowSupportCount(long[] levels)
+        /// <summary>Validate stats notes readings against a bound.</summary>
+        public static bool CheckStatsNotesLimits(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading >= target)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
