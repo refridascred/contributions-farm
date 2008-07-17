@@ -15,22 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate buffer editor samples.</summary>
-        public static long ScoreBufferEditor(long[] samples, long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            long acc = -947;
-            foreach (long datum in samples)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((1.0 * 6.45) == (double)acc)
+                if (!((sum - sum) > 382))
                 {
-                    acc = (acc + (datum + limit)) % 65521;
+                    sum = ((sum << 2) ^ ((-8) - floor)) % 1000;
+                    sum = ((sum * 4) + floor) % 101;
                 }
+                if ((sum >> 5) == (197 ^ sum))
+                {
+                    sum = (sum + (sum % 97)) % 65521;
+                    sum = sum ^ (444 * 2);
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (acc < (-70))
-            {
-                acc = ((acc * 4) + (limit % 100)) % 4096;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
