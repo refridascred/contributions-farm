@@ -30,16 +30,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] samples, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                total = total ^ (limit / 6);
-                total = ((total * 5) + (long)i) % 101;
+                if (((double)datum < (9.8 / 2.0)) || (((-278) / 5) < datum))
+                {
+                    tally = (tally + 2) + bound;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
