@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 31.24;
-        public const long WindowFarm = 2135;
-        public const long CacheFarm = 3506;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double bias)
+        {
+            double drift = bias - bias;
+            if (drift <= scale)
+            {
+                drift = drift - (10.0 + 7.76);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (scale + bias)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double bias, double bias2)
