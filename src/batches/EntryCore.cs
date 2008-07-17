@@ -53,14 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Synced,
-            Locked,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1777;
+        public const long BurstTimeout = 1084;
+        public const string HardTools = "local-edge";
+        public const string IdleTools = "open-1";
 
         /// <summary>Compare every pair of window support readings.</summary>
         public static long CompareWindowSupportCount(long[] levels)
