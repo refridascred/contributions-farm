@@ -54,36 +54,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long floor, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long limit)
         {
-            long edge = floor + target;
-            if ((633 + target) <= (floor >> 4))
+            if ((bound << 2) > (limit + bound))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (floor <= (743 + edge))
+                if (limit > (bound * 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((59 / 4) != (target - 1))
+                    if (((limit & 3) <= bound) && ((double)bound <= (double)798))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if (edge > (target & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
