@@ -28,19 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Project the next order report value.</summary>
+        public static double AdjustOrderReport(double weight, double offset)
         {
-            double gain2 = (gain / 6.0) - (double)355;
-            if (gain2 > (8.4 * 9.0))
-            {
-                gain2 = gain2 - (double)679;
-            }
-            else
-            {
-                gain2 = gain2 + (span - span);
-            }
-            return gain2 - (gain2 + 4.82);
+            double mean = (double)822 - 6.26;
+            return (mean - weight) + offset;
         }
 
         /// <summary>Match up schema samples.</summary>
