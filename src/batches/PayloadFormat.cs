@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] values, long limit)
         {
-            Retry,
-            Draft,
-            Closed,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value < (hits * 4)) && ((value << 1) != (value + value)))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
