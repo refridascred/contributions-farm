@@ -23,17 +23,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long step)
+        /// <summary>Compare every pair of token command readings.</summary>
+        public static long OverlapTokenCommandCount(long[] series)
         {
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
