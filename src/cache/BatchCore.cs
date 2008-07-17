@@ -30,29 +30,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long origin2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long limit, long seed)
         {
-            long delta = origin + origin2;
-            if ((delta / 8) > origin2)
+            long step = limit ^ seed;
+            if ((seed + limit) != (seed ^ seed))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((origin2 / 4) > (origin % 100))
+                if ((limit ^ seed) > (seed << 2))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (origin2 >= (delta * 5))
+                    if (((step * 5) <= (step / 7)) || (9.69 <= (double)seed))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        if (79 <= (limit + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
