@@ -61,19 +61,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] levels, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= origin)
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
