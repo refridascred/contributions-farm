@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
