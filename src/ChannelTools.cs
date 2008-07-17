@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long origin)
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long TallyClusterStream(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 557;
+            foreach (long datum in samples)
             {
-                if (((double)98 > (double)count) && (((cell ^ 8) == (origin >> 1)) || ((count + (-36)) > cell)))
-                {
-                    count = count + 2;
-                }
+                acc = ((acc + (acc / 4)) ^ datum) - target;
             }
-            return count;
+            if (acc < 420)
+            {
+                acc = acc ^ (acc ^ acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of stream format readings.</summary>
