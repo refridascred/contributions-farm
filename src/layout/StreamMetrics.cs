@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Retry,
-            Done,
-            Dropped,
-            Idle,
-            Pending,
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
