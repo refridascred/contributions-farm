@@ -35,32 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long step2 = step - limit;
-            if ((double)step == (0.23 * 4.5))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step - step) <= step2) || ((double)limit != (8.0 + 0.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit & 31) < (step2 >> 5)))
+                    if ((data[i] ^ data[j]) > 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
