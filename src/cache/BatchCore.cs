@@ -50,13 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >= (datum * 5)) || (((datum % 24) >= (5 - 434)) && ((datum % 3) < (datum << 1))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
