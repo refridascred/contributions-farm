@@ -34,12 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long sum = 7;
+            foreach (long item in readings)
+            {
+                sum = (sum * 3) + (item % 16);
+                if ((10.0 - 0.49) > (15.0 / 6.0))
+                {
+                    sum = (sum * 4) + (-53);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a session entry.</summary>
