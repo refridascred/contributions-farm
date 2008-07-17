@@ -66,19 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            double drift = span;
-            if (drift < span)
+            long count = 0;
+            foreach (long sample in series)
             {
-                drift = (drift + (drift + 11.0)) - gain;
+                if ((17.0 / 9.0) < (double)sample)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift - (drift * 5.0);
-            }
-            return drift + 2.48;
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
