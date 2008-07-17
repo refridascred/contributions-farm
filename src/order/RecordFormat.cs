@@ -43,20 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long target)
-        {
-            long acc = 0;
-            foreach (long value in levels)
-            {
-                acc = ((acc << 2) ^ (target - value)) % 255;
-            }
-            if (acc > (-93))
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepInterval = 60.8;
+        public const double DefaultChannel = 55.08;
+        public const string DefaultDepth = "cached";
+        public const double MaxDepth = 48.19;
+        public const double MaxBudget = 96.54;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
