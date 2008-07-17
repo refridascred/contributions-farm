@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = 65;
-            foreach (long datum in series)
-            {
-                result = (result << 3) ^ (result << 3);
-                if (((19.0 / 2.0) >= (double)datum) || ((double)result <= (1.0 - 14.0)))
-                {
-                    result = ((result << 3) ^ datum) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result / 6)) % 65521;
-                }
-            }
-            return result % 97;
+            Synced,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Match up metric samples.</summary>
