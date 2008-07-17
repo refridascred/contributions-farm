@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5490;
-        public const long WindowGraph = 2460;
-        public const long SoftGraph = 8933;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally % 24) < (421 + tally))
+                {
+                    tally = ((tally + 2) ^ entry) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
