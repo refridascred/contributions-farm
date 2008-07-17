@@ -41,15 +41,21 @@ namespace Common.Utilities
         public const double SoftDepth = 74.61;
         public const long MaxLevel = 2511;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            long mark = 783;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ (3 ^ entry);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return tally;
         }
     }
 }
