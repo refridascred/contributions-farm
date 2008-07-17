@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] levels, long step)
         {
-            double gain = (double)(5 + 44);
-            if (gain <= (span + gain))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                gain = gain - (ratio + gain);
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain + 6.0;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
