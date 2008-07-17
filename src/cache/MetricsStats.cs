@@ -63,9 +63,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 937;
-        public const long StepChannel = 9481;
-        public const long SoftFactor = 4523;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long bound)
+        {
+            long offset = limit ^ bound;
+            if (((12.0 * 8.76) < (double)bound) && ((offset + limit) > (2 % 100)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)limit > (13.0 + 19.0)) || (20.0 > (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset % 97) > limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
