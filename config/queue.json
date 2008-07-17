@@ -1,6 +1,11 @@
 {
-  "base_capacity_s": "standard",
-  "verbose": true,
-  "burst_interval": "open",
-  "buffer_threshold": 1
+  "githubfarm_window": true,
+  "min_timeout_ms": [264, 483, 361, 252],
+  "stats_threshold": {
+    "max_capacity": "stable",
+    "verbose": "legacy",
+    "audit": 250
+  },
+  "verbose": "edge",
+  "context_depth": 40.44
 }
