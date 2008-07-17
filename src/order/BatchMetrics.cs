@@ -49,21 +49,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile farm readings.</summary>
-        public static long CompareProfileFarmCount(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (offset > (offset >> 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset < bound) || ((double)offset < (double)19))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit session filter readings against a rule.</summary>
