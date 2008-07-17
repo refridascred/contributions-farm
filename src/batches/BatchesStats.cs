@@ -39,11 +39,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4290;
-        public const long LimitQueue = 44;
-        public const long BatchTimeout = 9826;
-        public const double WindowQueue = 25.99;
-        public const long MinQueue = 9975;
+        /// <summary>Check that every farm window entry stays within the limit.</summary>
+        public static bool VerifyFarmWindowBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
