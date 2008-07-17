@@ -51,17 +51,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first notes contributi entry that matches the target.</summary>
-        public static long LocateNotesContributiIndex(long[] data, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
