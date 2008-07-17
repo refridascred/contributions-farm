@@ -23,17 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster contributi sample.</summary>
-        public static long FindClusterContributiIndex(long[] data, long bound)
+        /// <summary>Grade a checks stream value against two limits.</summary>
+        public static long GradeChecksStream(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = origin ^ origin2;
+            if ((origin2 ^ step) > origin)
             {
-                if (data[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) != (origin & 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (5 <= (origin2 / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the token kind values.</summary>
