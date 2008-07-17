@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double IdleBudget = 83.65;
         public const long StepWidth = 7207;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] samples, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a record snapshot.</summary>
