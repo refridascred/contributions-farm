@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 8115;
         public const long BurstInterval = 967;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9450;
-        public const long MaxSupport = 6933;
-        public const string SoftSupport = "legacy-1";
-        public const long MaxSize = 3845;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] series, long origin)
