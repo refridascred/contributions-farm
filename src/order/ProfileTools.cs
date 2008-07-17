@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] levels, long seed)
+        /// <summary>Combine filter metric values into a single score.</summary>
+        public static long FoldFilterMetric(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 95;
+            foreach (long sample in levels)
             {
-                if (levels[i] < seed)
+                mix = (((mix << 2) ^ sample) % 255) - seed;
+                if ((-23) <= sample)
                 {
-                    return (long)i;
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = mix + (425 & 255);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a stats info.</summary>
