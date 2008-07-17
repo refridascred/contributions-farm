@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long CacheFarm = 9232;
         public const double WindowLevel = 92.78;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3850;
+        public const string DefaultChecks = "legacy-v2";
+        public const string CacheLevel = "primary-edge";
+        public const double RetryDepth = 91.2;
+        public const long RetrySpan = 8160;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long ScoreBuffer(long[] readings)
