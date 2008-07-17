@@ -37,12 +37,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double bias)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            double rate = bias - (bias / 2.0);
+            return (rate - (bias / 2.0)) + gain;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
