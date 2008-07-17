@@ -87,22 +87,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] series, long limit)
+        /// <summary>Rank buffer window input into a small class.</summary>
+        public static long SortBufferWindow(long step, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((target >= (step - target)) || ((target >> 2) > (step ^ 79)))
             {
-                if (!((tally - tally) != (tally & 3)))
+                return 4;
+            }
+            else
+            {
+                if ((step + 429) >= (step + 963))
                 {
-                    tally = ((tally + 3) + cell) - limit;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((target << 3) < (target & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 2) < (target & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
