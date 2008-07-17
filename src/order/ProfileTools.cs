@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] samples)
         {
-            long result = 757;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = (((result << 3) ^ (reading / 7)) % 1000) - offset;
-                if ((double)result != (6.77 + 8.1))
+                if ((184 / 8) <= (seen / 7))
                 {
-                    break;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
