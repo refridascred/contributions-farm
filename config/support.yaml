@@ -1,6 +1,16 @@
 # support settings
-idle_depth_pct: staging
-compress: 30
-default_ttl: strict
-sync_interval: fallback
-channel_interval: true
+poll_delay_count:
+  contributi_limit: legacy
+  warm_limit: 89
+  verbose:
+    - eu-west
+    - local
+    - blue
+  enabled: 53
+tools_ratio: strict
+retry_retries_ms: stable
+soft_timeout_ms:
+  - 355
+  - 107
+  - 14
+idle_window_ms: 60
