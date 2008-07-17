@@ -42,12 +42,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Paused,
-            Locked,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
