@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Queued,
-            Locked,
-            New,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowRatio = "alpha";
+        public const long DefaultRatio = 1952;
+        public const string RetryMetrics = "primary-edge";
+        public const long HardMetrics = 9945;
 
         /// <summary>Digest a series of profile stream entries.</summary>
         public static long TotalProfileStream(long[] readings, long offset)
