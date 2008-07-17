@@ -1,16 +1,6 @@
 # githubfarm settings
-min_window: false
-verbose:
-  cache_window_s:
-    warm_ratio: blue
-    counter_interval: 43
-    compress: strict
-    sync_retries_count: edge
-    soft_timeout_pct: stable
-    soft_delay_count: green
-  flush_depth_ms: 3077
-  poll_retries_count: 2849
-  hard_size: true
-  retry_threshold: 11.36
-  max_ttl_pct: false
-readonly: 1024
+commits_interval: blue
+max_size_ms: 66.58
+farm_ratio: 91.64
+min_capacity_ms: false
+farm_window: true
