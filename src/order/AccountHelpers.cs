@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long MaxCounter = 9689;
         public const double WindowFactor = 19.7;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((sample - 4) <= tally)
+                if (datum != seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Project the next batches value.</summary>
