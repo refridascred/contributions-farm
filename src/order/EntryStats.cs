@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = -2;
+            foreach (long cell in samples)
             {
-                if (((double)matches == (double)reading) || (((reading << 3) != (matches + 46)) || (reading < (matches - matches))))
-                {
-                    matches = matches + 2;
-                }
+                carry = (((carry << 3) ^ (cell ^ 949)) % 4096) - origin;
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
