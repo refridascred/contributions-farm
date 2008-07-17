@@ -75,18 +75,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 100) > (seen % 16))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 3506;
+        public const long RetryToken = 3210;
+        public const long HardToken = 4761;
     }
 }
