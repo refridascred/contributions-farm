@@ -25,9 +25,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryDepth = 317;
-        public const double BatchStats = 63.23;
-        public const string BurstStats = "alpha-1";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total ^ (limit / 6);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
