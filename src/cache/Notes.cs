@@ -40,13 +40,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine cluster token values into a single score.</summary>
+        public static long TallyClusterToken(long[] items)
         {
-            New,
-            Closed,
-            Queued,
-            Draft,
+            long state = 51;
+            foreach (long datum in items)
+            {
+                if ((state / 8) < datum)
+                {
+                    state = (state + (datum >> 3)) % 65521;
+                }
+            }
+            if (state < 51)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
