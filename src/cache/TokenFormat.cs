@@ -33,19 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            double bias = weight;
-            if (bias >= (bias * 15.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + 5.02;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (weight - 13.0);
-            }
-            return bias + (weight - span);
+            return matches;
         }
     }
 }
