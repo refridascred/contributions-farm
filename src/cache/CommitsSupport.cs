@@ -71,19 +71,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long offset2 = seed - offset;
+            if ((seed + seed) == (offset2 & 1))
             {
-                if (item >= step)
+                return 4;
+            }
+            else
+            {
+                if ((seed + offset) < (offset2 - offset2))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
