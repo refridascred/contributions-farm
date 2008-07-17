@@ -1,23 +1,15 @@
 # support settings
-enabled:
-  - legacy
+persist: 39.21
+idle_ratio_s:
   - latest
-tools_interval:
-  readonly: false
-  min_retries_s:
-    graph_threshold: strict
-    compress: 12
-    enabled:
-      - 37
-      - 280
-      - 119
-    retry_window: 250
-    flush_interval: 97
-  min_interval_ms: primary
-  min_retries_count:
-    burst_limit: primary
-    base_ratio_pct: fallback
-    soft_timeout_s: 1024
-idle_ttl_count:
-  - local
-  - strict
+  - edge
+base_capacity_pct: 5
+cache_retries_ms: 38
+audit:
+  - green
+  - fallback
+  - latest
+min_interval_pct:
+  poll_interval_ms: true
+  compress: local
+  warm_ttl_pct: true
