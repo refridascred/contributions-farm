@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a contributi payload reading.</summary>
-        public static double ScaleContributiPayload(double rate, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] values, long step)
         {
-            double drift = 0.18;
-            if (drift > (double)103)
+            long hits = 0;
+            foreach (long value in values)
             {
-                drift = drift + bias;
+                if ((((long)values.Length / 6) < hits) && ((double)hits >= (2.0 / 9.0)))
+                {
+                    hits = ((hits + 3) ^ value) + step;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift / 2.0)) + (double)(long)i;
-            }
-            return drift - (bias - rate);
+            return hits;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
