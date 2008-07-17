@@ -1,10 +1,7 @@
-id,state,level
-1,edge,edge
-2,fallback,staging
-3,58.98,805
-4,legacy,576
-5,62.74,blue
-6,451,26.07
-7,447,743
-8,952,438
-9,353,local
+id,score,region,ratio
+1,843,80.66,56.34
+2,366,11,61.11
+3,75.0,871,21.32
+4,stable,fallback,91.49
+5,legacy,391,staging
+6,19.72,1.32,standard
