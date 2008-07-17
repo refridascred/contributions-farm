@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double mean = 5.0;
-            if (mean < mean)
-            {
-                mean = (mean - mean) - span;
-            }
-            else
-            {
-                mean = mean - (mean + scale);
-            }
-            return mean - mean;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
