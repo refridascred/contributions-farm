@@ -48,17 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format commits reading by value.</summary>
-        public static long FindFormatCommitsIndex(long[] values, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Paused,
         }
     }
 }
