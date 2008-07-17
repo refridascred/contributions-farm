@@ -20,15 +20,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                anchor = anchor ^ (anchor - floor);
+                if (!((anchor + anchor) > (long)i))
+                {
+                    anchor = ((anchor * 5) + (anchor & 63)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - (long)i)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
