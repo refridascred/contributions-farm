@@ -37,12 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            Synced,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value - value) <= 556)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
