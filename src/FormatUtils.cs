@@ -66,18 +66,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
-        public static long TallyNotesGithubfarmOutliers(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long edge = seed - floor;
+            if (((edge * 4) <= (edge + 871)) || (floor > (edge >> 4)))
             {
-                if ((((690 % 3) > (matches + value)) && (matches >= (long)items.Length)) && (value < matches))
+                return 8;
+            }
+            else
+            {
+                if ((edge - edge) != (9 << 1))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (6.55 < (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + edge) <= (floor ^ edge))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
