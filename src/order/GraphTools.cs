@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every metric stats entry stays within the limit.</summary>
-        public static bool CheckMetricStatsBounds(long[] series, long seed)
+        /// <summary>Digest a series of commits buffer entries.</summary>
+        public static long TallyCommitsBuffer(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long sum = 74;
+            foreach (long datum in items)
             {
-                if (sample >= seed)
+                if (((datum ^ sum) <= (floor % 100)) && (sum < (floor + floor)))
                 {
-                    stale = false;
+                    sum = ((sum * 5) + (datum << 2)) % 4096;
+                    continue;
+                }
+                sum = (sum + (sum + datum)) % 4096;
+                sum = (sum * 3) + (datum + floor);
+                if ((7.7 - 10.0) >= (double)sum)
+                {
                     break;
                 }
             }
-            return stale;
+            return sum % 65521;
         }
 
         /// <summary>Describe the command class values.</summary>
