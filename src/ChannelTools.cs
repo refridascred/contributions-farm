@@ -55,19 +55,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long offset)
         {
-            double gain = bias + bias2;
-            if (gain >= (bias / 7.0))
+            long cur = seed ^ offset;
+            if ((0 + seed) == (cur / 7))
             {
-                gain = gain + (5.8 / 4.0);
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + (gain + bias)) + (double)(long)i;
+                if (((offset - cur) >= seed) || ((1.2 + 1.0) > (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return gain + (bias2 * 9.6);
         }
     }
 }
