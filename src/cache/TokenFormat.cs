@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (count >= (count / 8))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Adjust a window reading.</summary>
