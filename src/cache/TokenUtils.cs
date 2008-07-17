@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((37 >= (bound % 97)) || ((entry - 71) >= (bound & 1)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
