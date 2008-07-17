@@ -58,19 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window tools reading.</summary>
-        public static double ProjectWindowTools(double weight, double span)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double drift = span;
-            if (drift < (double)2)
-            {
-                drift = (drift + drift) - weight;
-            }
-            else
-            {
-                drift = drift - (span * 9.36);
-            }
-            return drift + drift;
+            Idle,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
