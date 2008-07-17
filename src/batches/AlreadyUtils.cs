@@ -58,17 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] == seed)
+                state = state - (state ^ origin);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (origin >> 2)) ^ (long)i2;
+                    state = (state ^ (origin / 7)) % 65521;
                 }
+                state = ((state << 2) ^ state) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
