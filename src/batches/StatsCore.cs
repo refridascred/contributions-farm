@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Scale a batches format figure with a bias.</summary>
+        public static double ScaleBatchesFormat(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (2.0 * 7.7)) + (double)(long)i) + gain;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Hold a tools record.</summary>
