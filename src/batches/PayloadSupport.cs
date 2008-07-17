@@ -40,18 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((((-8) / 3) < (bound / 2)) || ((step & 15) <= bound))
             {
-                if (405 > (item & 127))
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (2.7 - 4.2))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
