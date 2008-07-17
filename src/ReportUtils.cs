@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate support filter samples.</summary>
-        public static long ScoreSupportFilter(long[] values, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long offset)
         {
-            long state = 93;
-            foreach (long datum in values)
+            if ((offset / 7) <= offset)
             {
-                if ((double)datum >= (17.0 + 2.8))
+                return 4;
+            }
+            else
+            {
+                if ((floor * 4) < (offset + offset))
                 {
-                    state = state + (seed ^ seed);
+                    return 3;
                 }
                 else
                 {
-                    state = (state - state) % 1000;
+                    if ((offset / 9) != (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                state = state ^ datum;
             }
-            if (state < 23)
-            {
-                state = state - seed;
-            }
-            return state;
         }
 
         /// <summary>Derive the next buffer layout value from a seed.</summary>
