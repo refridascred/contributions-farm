@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long anchor = 160;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (origin / 7)) % 255;
-                if ((((-620) / 9) <= (entry << 3)) || ((18.0 - 3.1) < (double)origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (anchor & 63)) % 97;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
