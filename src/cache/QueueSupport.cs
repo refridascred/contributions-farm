@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowDepth = 3388;
-        public const string HardWidth = "primary-1";
-        public const double HardMetric = 46.24;
-        public const long StepScore = 5552;
-        public const long BaseSpan = 9086;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
