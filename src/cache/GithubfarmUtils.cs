@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSpan = 6174;
-        public const long HardSchema = 3998;
-        public const long MaxSchema = 436;
-        public const long StepSchema = 1903;
-        public const double WindowSchema = 96.33;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ProjectWindow(double bias, double span)
