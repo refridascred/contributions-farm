@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
