@@ -54,11 +54,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            Idle,
+            Paused,
+            Retry,
+            Queued,
         }
     }
 }
