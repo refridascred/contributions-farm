@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((floor % 97) < (count % 100)) && !((double)count <= (8.0 - 0.1)))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
