@@ -45,21 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long OverlapBatchSupportCount(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Active,
+            Dropped,
         }
     }
 }
