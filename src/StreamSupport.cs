@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] readings, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (item > floor)
+                if ((step + step) > seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
