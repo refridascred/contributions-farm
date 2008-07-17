@@ -41,22 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route metrics samples are out of range.</summary>
-        public static long MeasureRouteMetricsMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (0.8 > (double)seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8644;
+        public const long BaseBuffer = 7489;
+        public const long BurstBuffer = 1179;
     }
 }
