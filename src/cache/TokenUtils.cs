@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] levels, long seed)
+        /// <summary>Audit commits profile readings against a rule.</summary>
+        public static long TallyCommitsProfileGaps(long[] levels)
         {
-            long sum = 497;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((reading + seed) != (sum + seed))
+                if (entry > seen)
                 {
-                    sum = sum - ((long)levels.Length / 3);
+                    seen = seen + 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
