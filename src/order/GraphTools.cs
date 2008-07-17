@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryScore = 6316;
-        public const string IdleSize = "latest-1";
-        public const double SoftAlready = 76.36;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels)
+        {
+            long mix = 338;
+            foreach (long cell in levels)
+            {
+                mix = (mix ^ (cell & 63)) % 101;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueMatches(long[] series, long origin)
