@@ -58,21 +58,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
