@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate editor cache readings against a bound.</summary>
+        public static bool VerifyEditorCacheBounds(long[] values, long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
