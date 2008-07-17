@@ -25,38 +25,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long floor)
-        {
-            if ((4.79 + 14.0) > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (700 / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed ^ seed) < (seed & 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-2) - floor) < (seed + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 9268;
+        public const long WindowFilter = 1385;
+        public const long BaseSpan = 1418;
+        public const string BatchFilter = "primary-edge";
+        public const long BaseWidth = 693;
     }
 }
