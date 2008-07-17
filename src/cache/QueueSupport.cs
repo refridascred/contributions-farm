@@ -41,16 +41,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (state % 3)) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
