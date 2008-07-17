@@ -33,14 +33,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultScore = "open-edge";
+        public const long MaxSpan = 7578;
+        public const long RetryRatio = 971;
+        public const long StepMetric = 1715;
+        public const long LimitMetric = 1816;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] samples)
