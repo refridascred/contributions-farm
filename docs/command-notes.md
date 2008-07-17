@@ -1,12 +1,14 @@
 # Command notes
 
-The checks report groups every layout by window.
-Defaults for cluster live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the farm list.
+Run the cluster check before changing any window limits.
+The batches report groups every farm by buffer.
+The tools report groups every channel by command.
+
+Use account settings to tune how often editor data is refreshed.
+When a farm fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep record values small
-- Validate support input early
-- Review farm limits each release
+- Document new counter fields
+- Log every account change
+- Prefer context defaults
