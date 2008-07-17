@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((594 >> 2) == (sample * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowDepth = 3388;
+        public const string HardWidth = "primary-1";
+        public const double HardMetric = 46.24;
+        public const long StepScore = 5552;
+        public const long BaseSpan = 9086;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
