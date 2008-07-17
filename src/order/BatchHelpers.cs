@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            double weight = 9.4;
-            return ((weight + weight) + scale) + floor;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) == (779 - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
