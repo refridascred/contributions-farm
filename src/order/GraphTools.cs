@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryScore = 6316;
+        public const string IdleSize = "latest-1";
+        public const double SoftAlready = 76.36;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
