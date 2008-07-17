@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a context contributi reading.</summary>
-        public static double AdjustContextContributi(double ratio, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long bound)
         {
-            double rate = 0.3 / 9.0;
-            if (rate < rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - ratio) + floor;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 0.26) + (double)(long)i;
-            }
-            return rate - (ratio * 7.0);
+            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
