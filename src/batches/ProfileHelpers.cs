@@ -14,21 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = gain - gain;
+            if (rate >= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (gain * 17.0)) + floor;
             }
-            return matches;
+            else
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + (gain / 5.0);
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
