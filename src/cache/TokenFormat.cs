@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            double scale = (double)(58 + 0);
+            if (scale < scale)
             {
-                mix = (mix * 5) + (step & 31);
-                mix = ((mix * 2) + (long)i) % 65521;
+                scale = (scale - bias) - weight;
             }
-            return mix;
+            return scale + (scale / 5.0);
         }
 
         /// <summary>Roll a account editor counter forward.</summary>
