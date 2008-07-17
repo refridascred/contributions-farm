@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate entry cluster readings against a bound.</summary>
-        public static bool CheckEntryClusterLimits(long[] items, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
