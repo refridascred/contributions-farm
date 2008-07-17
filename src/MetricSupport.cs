@@ -21,24 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long seed)
         {
-            if ((step << 2) <= (step % 24))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor ^ floor) < floor) && ((floor + floor) == (873 << 3)))
+                if (datum > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
