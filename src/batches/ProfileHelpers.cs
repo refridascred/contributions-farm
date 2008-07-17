@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const double BaseInterval = 81.93;
         public const long WindowRatio = 4751;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
