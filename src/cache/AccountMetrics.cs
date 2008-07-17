@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (seen < entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
