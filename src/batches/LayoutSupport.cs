@@ -60,25 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            long next = bound - target;
-            if ((9.9 - 15.0) >= (double)next)
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (4.52 + 6.4))
+                if ((reading + reading) == (count + count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
