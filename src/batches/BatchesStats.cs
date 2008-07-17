@@ -35,10 +35,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetrySize = 3364;
-        public const long MaxToken = 3569;
-        public const long MinToken = 9191;
-        public const string WindowSpan = "strict-1";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long bound)
+        {
+            long prev = limit - bound;
+            if (((10.0 / 7.0) == (double)bound) || ((limit - prev) < (prev ^ bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)limit >= 3.0) || ((double)prev > (1.9 + 6.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (424 >= (limit + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
