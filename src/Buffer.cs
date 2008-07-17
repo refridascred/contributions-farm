@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] values, long step)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((step & 31) < step) && !(((-580) - hits) < hits))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the contributi cache entries that pass the check.</summary>
