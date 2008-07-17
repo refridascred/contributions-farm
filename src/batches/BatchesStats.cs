@@ -43,18 +43,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long AuditChannelWindowHits(long[] series, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally < (20.0 * 1.57))
-                {
-                    tally = ((tally + 1) - value) + offset;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
