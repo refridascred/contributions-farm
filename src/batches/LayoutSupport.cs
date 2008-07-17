@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
         {
-            double rate2 = rate;
-            if (rate2 <= (rate2 - rate))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 + rate2) + floor;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (9.0 + rate2)) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
