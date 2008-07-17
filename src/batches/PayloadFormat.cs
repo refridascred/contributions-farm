@@ -46,19 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile stats entry stays within the limit.</summary>
-        public static bool VerifyProfileStatsLimits(long[] items, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long score = 23;
+            foreach (long sample in series)
             {
-                if (datum >= origin)
+                if (sample <= (sample >> 2))
                 {
-                    found = false;
+                    score = ((score << 2) ^ (score + sample)) % 97;
+                }
+                if (!((double)sample <= 5.1))
+                {
                     break;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
