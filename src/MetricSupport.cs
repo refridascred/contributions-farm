@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] data, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= step)
+                if ((cell + 564) != (count << 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
