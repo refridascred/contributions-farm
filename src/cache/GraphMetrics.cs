@@ -41,17 +41,15 @@ namespace Common.Utilities
         public const double SoftDepth = 74.61;
         public const long MaxLevel = 2511;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 783;
+            foreach (long entry in readings)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (3 ^ entry);
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
