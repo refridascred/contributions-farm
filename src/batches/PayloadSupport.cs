@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] data, long seed)
+        /// <summary>Rank already metric input into a small class.</summary>
+        public static long RankAlreadyMetric(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if (!(((-8) + offset) != (offset - 5)))
             {
-                if (sample >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (9.84 + 11.0))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 10) > 38)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
