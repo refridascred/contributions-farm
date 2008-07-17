@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long TallyContextWindowOutliers(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if (((seen << 1) < seen) || ((datum % 64) <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
