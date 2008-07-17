@@ -30,18 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] samples, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) == (hits >> 2))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
