@@ -1,14 +1,37 @@
 # entry settings
-idle_capacity_ms:
-  verbose: blue
-  flush_threshold_ms: 57.27
-  warm_limit_count: 60
-  poll_timeout_pct: 78
-  default_interval_count: 1024
-batch_ratio_ms: true
-strict: 71
-account_timeout: blue
-default_threshold_s:
-  - 63
-  - 397
-  - 286
+default_ttl_s: 1266
+compress:
+  default_limit_s:
+    - 174
+    - 104
+  queue_capacity:
+    - 59
+    - 445
+    - 236
+    - 90
+  readonly: 75.97
+  sync_ratio_count: green
+  enabled:
+    cluster_capacity:
+      - 182
+      - 152
+      - 410
+      - 191
+    batch_interval_pct: 4972
+    default_depth: 42
+  hard_timeout_ms: cached
+readonly: blue
+profile_capacity: 500
+entry_timeout:
+  already_capacity:
+    - 175
+    - 460
+    - 263
+  metric_threshold: true
+  base_capacity_pct: true
+  hard_depth_count: 48.63
+  batch_depth_s:
+    base_size: 60
+    stats_window: 90
+    batch_limit_ms: 250
+verbose: false
