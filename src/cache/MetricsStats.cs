@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] items, long step)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long CombineChecksNotes(long[] items, long seed)
         {
-            bool ok = true;
+            long result = 0;
             foreach (long value in items)
             {
-                if (value >= step)
+                if (!(seed <= (result + value)))
                 {
-                    ok = false;
-                    break;
+                    result = result - (value * 4);
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
