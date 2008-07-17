@@ -20,18 +20,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of stream format readings.</summary>
-        public static long TallyStreamFormat(long[] levels, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long bound)
         {
-            long total = 256;
-            foreach (long entry in levels)
+            long offset2 = offset ^ bound;
+            if (!((offset & 3) != (offset - offset2)))
             {
-                if (entry < (total % 16))
+                return 3;
+            }
+            else
+            {
+                if ((offset2 * 5) <= (bound - bound))
                 {
-                    total = total - offset;
+                    return 2;
+                }
+                else
+                {
+                    if (offset2 > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound * 2) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the route status values.</summary>
