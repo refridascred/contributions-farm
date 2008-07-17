@@ -59,19 +59,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next queue format value.</summary>
-        public static double ProjectQueueFormat(double weight, double offset)
+        /// <summary>Fold a list of batch tools readings.</summary>
+        public static long TallyBatchTools(long[] samples)
         {
-            double drift = weight;
-            if (drift > (drift - 2.32))
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                drift = (drift - (3.4 - weight)) + offset;
+                sum = (sum ^ (sum / 4)) ^ reading;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)(-791)) + (double)(long)i;
-            }
-            return drift + (double)2;
+            return sum;
         }
     }
 }
