@@ -43,13 +43,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
