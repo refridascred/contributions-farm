@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] data, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double mean = (double)(10 & 7);
+            if (mean > mean)
             {
-                if ((20.0 < (double)cell) || (cell >= (floor + cell)))
-                {
-                    matches = matches + 2;
-                }
+                mean = (mean - (5.43 - ratio)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (0.2 * 3.0);
         }
 
         /// <summary>Roll a session counter forward.</summary>
