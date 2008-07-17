@@ -33,18 +33,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (bound <= (36 / 4))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftWidth = "legacy-1";
+        public const double BaseInterval = 67.07;
+        public const long WindowRatio = 3572;
     }
 }
