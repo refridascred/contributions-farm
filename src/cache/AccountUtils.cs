@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long target, long target2)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] series)
         {
-            long span = target - target2;
-            if (((890 - target) > target2) && (9.02 >= (double)target2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span + target) <= (target / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target << 2) != (0 - 728))
+                    if ((series[i] - series[j]) < 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
