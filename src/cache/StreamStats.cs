@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long HardRatio = 7;
         public const string RetryFactor = "latest-v2";
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] levels, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((4.7 <= (double)tally) || ((item + 5) > origin)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
