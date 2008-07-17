@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] items, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((20.0 * 8.78) > (double)target)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
