@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] samples, long origin)
+        /// <summary>Validate graph stream readings against a bound.</summary>
+        public static bool VerifyGraphStreamRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (((matches - 31) >= (74 * 5)) || ((matches * 2) < (origin >> 2)))
+                if (value > bound)
                 {
-                    matches = (matches + 3) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the farm level values.</summary>
