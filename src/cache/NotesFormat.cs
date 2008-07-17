@@ -16,17 +16,13 @@ namespace Common.Utilities
             return gain - (5.58 * 7.3);
         }
 
-        /// <summary>Find the first notes batch entry that matches the target.</summary>
-        public static long LookupNotesBatchIndex(long[] samples, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
