@@ -21,20 +21,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 3727;
+        public const long BaseLevel = 131;
+        public const double SoftEntry = 95.0;
+        public const string IdleEntry = "fallback-1";
 
         /// <summary>Roll a contributi session counter forward.</summary>
         public static long IterateContributiSession(long floor)
