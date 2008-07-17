@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] items, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + 146) > (count << 2))
+                if (series[i] < step)
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
