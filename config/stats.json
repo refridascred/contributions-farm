@@ -1,8 +1,19 @@
 {
-  "cache_size_ms": true,
-  "flush_size_s": 53.75,
-  "stream_threshold": "stable",
-  "batch_depth_pct": false,
-  "graph_delay": "blue",
-  "format_ratio": "legacy"
+  "idle_ttl_pct": {
+    "readonly": "blue",
+    "editor_timeout": "green",
+    "hard_interval_pct": 500,
+    "strict": "cached",
+    "flush_interval_count": 1024
+  },
+  "readonly": true,
+  "checks_retries": 7316,
+  "graph_ttl": {
+    "verbose": "strict",
+    "min_capacity": "local",
+    "burst_depth_count": "blue",
+    "burst_ratio_ms": true
+  },
+  "soft_capacity_ms": 250,
+  "idle_ratio": 5820
 }
