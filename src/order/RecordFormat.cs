@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long TotalCounterBatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long sum = 775;
+            foreach (long reading in items)
             {
-                if ((count + 0) >= (reading * 5))
+                if ((97 ^ 64) <= sum)
                 {
-                    count = count + 2;
+                    sum = (sum << 2) ^ reading;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (6 % 64);
+                }
+                if (((sum << 1) > reading) && (sum < ((-44) / 3)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
