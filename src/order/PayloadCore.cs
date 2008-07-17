@@ -61,22 +61,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long CountEntrySessionMatches(long[] items, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.6 / 8.0) <= (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
