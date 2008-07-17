@@ -40,21 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != origin)
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
