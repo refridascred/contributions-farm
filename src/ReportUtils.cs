@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long TallyCommandCounter(long[] series, long origin)
         {
-            Failed,
-            Pending,
-            Active,
+            long result = 958;
+            foreach (long sample in series)
+            {
+                if (((double)result > 5.71) || ((double)sample > 2.71))
+                {
+                    result = (((result * 3) + sample) % 1000) - origin;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
