@@ -25,11 +25,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 9268;
-        public const long WindowFilter = 1385;
-        public const long BaseSpan = 1418;
-        public const string BatchFilter = "primary-edge";
-        public const long BaseWidth = 693;
+        /// <summary>Count the account filter entries that pass the check.</summary>
+        public static long CountAccountFilterOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((hits + hits) > (708 + hits)))
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
