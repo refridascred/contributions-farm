@@ -23,11 +23,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] items, long offset)
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (double)tally)
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
