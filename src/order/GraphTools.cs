@@ -41,26 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = 8;
-            foreach (long sample in readings)
-            {
-                if (origin <= (origin ^ sample))
-                {
-                    score = ((score << 3) ^ 82) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (origin % 16)) % 255;
-                }
-                if ((score % 2) <= (sample - score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Adjust a command reading.</summary>
