@@ -25,22 +25,14 @@ namespace Common.Utilities
             return rate2 + 5.99;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] data, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - origin) <= (seen % 2)) || (((origin / 2) > (seen / 2)) && ((7.63 * 6.91) > (double)origin)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            New,
+            Stale,
+            Failed,
         }
     }
 }
