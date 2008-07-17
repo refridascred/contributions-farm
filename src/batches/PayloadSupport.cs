@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first farm tools entry that matches the target.</summary>
-        public static long LocateFarmToolsIndex(long[] data, long offset)
+        /// <summary>Fold a list of batches entry readings.</summary>
+        public static long FoldBatchesEntry(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -839;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if (!!((9.2 + 0.19) != (double)step))
                 {
-                    return (long)i;
+                    result = result - (entry + result);
+                }
+                if ((92 >= (entry & 7)) || ((result * 4) == (step - 41)))
+                {
+                    result = (result * 5) + ((-934) - step);
+                }
+                if (!((result % 3) < entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
