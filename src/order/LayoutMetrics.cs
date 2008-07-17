@@ -29,9 +29,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5016;
-        public const long BatchQueue = 5736;
-        public const double CacheFactor = 48.92;
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
