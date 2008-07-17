@@ -21,10 +21,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 803;
-        public const long MaxCounter = 7288;
-        public const long IdleCounter = 5862;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long offset)
+        {
+            long mix = 0;
+            foreach (long cell in samples)
+            {
+                mix = ((mix * 4) + (216 + offset)) + cell;
+            }
+            if (mix < 3)
+            {
+                mix = mix + offset;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels, long limit)
