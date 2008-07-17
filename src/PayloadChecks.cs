@@ -39,19 +39,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool ValidateChecksRecordRange(long[] values, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (value > target)
+                if ((offset + offset) < (offset ^ tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
