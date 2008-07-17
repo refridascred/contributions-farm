@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples, long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((limit + 1) < matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
