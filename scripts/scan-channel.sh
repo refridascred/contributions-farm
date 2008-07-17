@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local latest; do
+for item in edge green open; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
