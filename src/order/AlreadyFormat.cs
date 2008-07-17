@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            double weight = (rate - 1.46) / 7.0;
-            if (weight < (double)6)
+            double scale = 7.2;
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight - (span * 13.0);
+                scale = ((scale + (2.0 + ratio)) + (double)(long)i) + floor;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (weight * 4.0);
+            return scale - (double)8;
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
