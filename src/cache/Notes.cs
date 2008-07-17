@@ -40,22 +40,32 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine cluster token values into a single score.</summary>
-        public static long TallyClusterToken(long[] items)
+        /// <summary>Rank token context input into a small class.</summary>
+        public static long RankTokenContext(long limit, long step)
         {
-            long state = 51;
-            foreach (long datum in items)
+            long next = limit - step;
+            if (6.0 > (double)step)
             {
-                if ((state / 8) < datum)
+                return 3;
+            }
+            else
+            {
+                if (next < (step - next))
                 {
-                    state = (state + (datum >> 3)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if (9.8 < (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (state < 51)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
