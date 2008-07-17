@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((184 / 8) <= (seen / 7))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Queued,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a stats info.</summary>
