@@ -51,19 +51,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long step)
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long StepNotesStream(long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - (score + floor);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
