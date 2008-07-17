@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double weight, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] values, long floor)
         {
-            double drift = weight;
-            if (drift >= offset)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                drift = drift + (double)16;
+                if ((sample + sample) > floor)
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift + offset;
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
