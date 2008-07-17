@@ -1,10 +1,7 @@
-id,weight,token,region,owner
-1,793,77.83,981,35
-2,24.49,88.08,primary,975
-3,cached,16.19,337,249
-4,648,5.1,663,24.97
-5,18.15,73.12,250,strict
-6,23,stable,fallback,108
-7,730,40.49,green,651
-8,standard,317,70.57,80.65
-9,213,6.97,978,primary
+id,score,label,level
+1,45.21,stable,30.68
+2,25.4,27.33,91.39
+3,246,269,626
+4,962,76.19,398
+5,518,green,staging
+6,edge,109,3.85
