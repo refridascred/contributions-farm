@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the order token series from a seed.</summary>
-        public static long SeriesOrderToken(long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result << 3) ^ result) % 65521;
-                result = ((result << 2) ^ (target % 24)) % 4096;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
