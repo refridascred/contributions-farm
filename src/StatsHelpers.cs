@@ -52,10 +52,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryInterval = "local-v2";
-        public const long BatchGraph = 8055;
-        public const long StepLevel = 6669;
-        public const long MaxInterval = 1156;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
+        {
+            long state = -5;
+            foreach (long datum in levels)
+            {
+                if (!((327 + state) > 0))
+                {
+                    state = state - ((long)levels.Length - state);
+                }
+                else
+                {
+                    state = (state << 2) ^ (datum + datum);
+                }
+            }
+            if (state < (-822))
+            {
+                state = state + (state + state);
+            }
+            return state % 4096;
+        }
     }
 }
