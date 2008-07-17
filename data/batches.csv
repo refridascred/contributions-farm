@@ -1,8 +1,7 @@
-id,score,state
-1,primary,514
-2,255,local
-3,10,909
-4,blue,85.64
-5,fallback,blue
-6,staging,997
-7,385,open
+id,score,owner,active
+1,local,215,135
+2,staging,legacy,83.87
+3,35.72,28.29,793
+4,394,blue,primary
+5,79.33,21.37,4.05
+6,167,85.57,local
