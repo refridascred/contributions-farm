@@ -42,29 +42,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the cache stats series from a seed.</summary>
-        public static long SeriesCacheStats(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum << 2) ^ (bound * 2)) % 255;
-                if ((72 + (-814)) == ((long)i % 12))
-                {
-                    sum = ((sum << 3) ^ (bound + bound)) % 65521;
-                }
-                if (!((78 - 8) < sum))
-                {
-                    sum = (sum + (sum + (long)i)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum % 64);
-                    sum = ((sum * 2) + (sum & 1)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2200;
+        public const long CacheEntry = 322;
+        public const long BaseFactor = 8735;
+        public const long StepEntry = 7289;
+        public const long SoftEntry = 4946;
     }
 }
