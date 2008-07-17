@@ -80,17 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitSize = 48.38;
+        public const long IdleCount = 1971;
+        public const long WindowRoute = 1528;
+        public const long MaxRatio = 5368;
     }
 }
