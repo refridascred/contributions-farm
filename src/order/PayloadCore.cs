@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetrySize = "strict-1";
-        public const string MaxCounter = "legacy-1";
-        public const long DefaultLevel = 8707;
-        public const string RetryCounter = "legacy";
-        public const long BaseLevel = 201;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long bound, long origin)
+        {
+            if (!(1 < bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (3.4 * 5.28))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound != (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
