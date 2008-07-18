@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Dropped,
-            Synced,
-            Active,
-            Closed,
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
