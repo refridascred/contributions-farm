@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] levels, long floor)
+        /// <summary>Combine cluster queue values into a single score.</summary>
+        public static long FoldClusterQueue(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long result = -8;
+            foreach (long reading in samples)
             {
-                if (item < floor)
+                if (result < (result - 7))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (result ^ reading)) % 4096;
+                }
+                if ((reading + 55) != (reading - reading))
+                {
+                    result = result - (result + reading);
+                    result = (result << 2) ^ (44 ^ result);
+                }
+                if ((double)reading <= (10.0 / 4.0))
+                {
+                    result = (result + (result - result)) % 65521;
                 }
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
