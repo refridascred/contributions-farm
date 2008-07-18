@@ -66,22 +66,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine metrics checks values into a single score.</summary>
-        public static long TotalMetricsChecks(long[] items, long origin)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long anchor = 440;
-            foreach (long reading in items)
-            {
-                if ((reading > (anchor ^ origin)) || ((reading >> 5) != (reading + reading)))
-                {
-                    anchor = (anchor - (reading % 64)) % 65521;
-                }
-            }
-            if (anchor > 321)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
