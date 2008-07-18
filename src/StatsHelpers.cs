@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count >> 5) != (count ^ reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
