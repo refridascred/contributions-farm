@@ -56,11 +56,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next report buffer value from a seed.</summary>
+        public static long RollReportBuffer(long limit)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum + ((long)i - limit)) % 97;
+                sum = (sum * 4) + (-12);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
