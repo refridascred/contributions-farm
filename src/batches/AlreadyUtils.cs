@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long floor)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            if (((floor >> 1) < (floor + seed)) || ((double)floor != (0.7 / 6.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) <= (seed ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.1 + 4.8) != (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
