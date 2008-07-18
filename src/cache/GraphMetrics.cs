@@ -20,19 +20,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((value ^ count) > value) && ((6.96 - 2.0) < (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRatio = 5231;
+        public const string RetryBudget = "local-v2";
+        public const long IdleRecord = 2522;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] items)
