@@ -19,17 +19,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-                mix = mix + (25 + mix);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Queued,
+            Draft,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
