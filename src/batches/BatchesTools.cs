@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits format sample.</summary>
-        public static long SeekCommitsFormatIndex(long[] samples, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (samples[i] <= target)
+                if ((double)hits < (8.3 * 3.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a order info.</summary>
