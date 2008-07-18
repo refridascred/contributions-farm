@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            Draft,
-            Done,
-            Queued,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((cell << 3) > (cell & 127)) || !((double)cell > (15.0 / 5.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
