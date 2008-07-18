@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BurstDepth = 8380;
         public const double BaseCounter = 13.5;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] levels, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell != (6.0 + 5.2)))
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
