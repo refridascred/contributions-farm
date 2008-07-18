@@ -52,10 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxRatio = 15.62;
-        public const long HardMetrics = 5968;
-        public const long LimitMetrics = 2716;
-        public const long SoftMetrics = 3144;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels, long offset)
+        {
+            long acc = -2;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    acc = ((acc * 2) + offset) % 255;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
