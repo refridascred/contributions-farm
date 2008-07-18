@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Rank account farm input into a small class.</summary>
+        public static long ClassifyAccountFarm(long seed, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long edge = seed ^ limit;
+            if (10 <= seed)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((limit & 15) != (edge + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
