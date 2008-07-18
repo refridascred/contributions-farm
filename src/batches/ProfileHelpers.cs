@@ -49,15 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric record readings against a rule.</summary>
-        public static long CountMetricRecordMatches(long[] levels, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 6) == (859 + matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) - step;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
