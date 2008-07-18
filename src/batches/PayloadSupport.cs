@@ -20,13 +20,34 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin * 3) < 314)
+                {
+                    sum = (sum + ((long)i + 7)) % 101;
+                    sum = (sum ^ (sum ^ 552)) % 255;
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 3) + (sum / 6);
+                }
+                if ((sum + origin) > (long)i)
+                {
+                    sum = ((sum << 3) ^ (21 + origin)) % 4096;
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 3) + (1 + origin);
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
