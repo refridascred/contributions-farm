@@ -26,22 +26,10 @@ namespace Common.Utilities
         public const string BatchFormat = "latest-1";
         public const double BaseFormat = 27.01;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long offset)
-        {
-            long mix = 834;
-            foreach (long entry in data)
-            {
-                if (entry > (mix + mix))
-                {
-                    mix = ((mix ^ (870 << 2)) % 97) - offset;
-                }
-                else
-                {
-                    mix = (mix + entry) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitTimeout = 817;
+        public const long RetrySession = 906;
+        public const double SoftCount = 24.65;
+        public const long BatchSession = 545;
     }
 }
