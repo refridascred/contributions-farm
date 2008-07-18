@@ -22,22 +22,18 @@ namespace Common.Utilities
         public const long BatchAccount = 9073;
         public const long DefaultAccount = 6080;
 
-        /// <summary>Fold a list of batch stats readings.</summary>
-        public static long TotalBatchStats(long[] readings, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long target)
         {
-            long state = 9;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((target + target) >= state)
+                if (hits >= (datum ^ 504))
                 {
-                    state = ((state ^ (target - target)) % 1000) ^ value;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (state < 9)
-            {
-                state = state - (target / 3);
-            }
-            return state;
+            return hits;
         }
     }
 }
