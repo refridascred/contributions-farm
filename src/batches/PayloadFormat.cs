@@ -31,31 +31,14 @@ namespace Common.Utilities
         public const string WindowWidth = "staging-edge";
         public const string BurstFactor = "latest";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((limit * 5) <= (-1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - 8) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >= (seed >> 1)) && (12 >= (34 + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Queued,
+            Closed,
+            Dropped,
         }
     }
 }
