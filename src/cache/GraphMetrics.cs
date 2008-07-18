@@ -58,22 +58,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] readings, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((target + 5) < (matches & 63)))
+                if (count <= (count << 1))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 3) + cell) + limit;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
