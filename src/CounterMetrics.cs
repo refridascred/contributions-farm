@@ -50,26 +50,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)levels.Length - sum) >= 101)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (long)levels.Length) ^ value;
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 4096;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 79)
-            {
-                sum = (sum + (sum % 7)) % 255;
-            }
-            return sum;
+            return count;
         }
     }
 }
