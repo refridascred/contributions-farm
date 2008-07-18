@@ -57,10 +57,11 @@ namespace Common.Utilities
         public const double MinGithubfarm = 18.91;
         public const long HardGithubfarm = 2011;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 66.16;
-        public const double LimitFactor = 11.95;
-        public const long MinRoute = 6936;
-        public const long SoftRoute = 8957;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 5625;
+        public const long BatchBuffer = 294;
+        public const long WindowDepth = 2881;
+        public const double WindowLevel = 82.32;
+        public const string SoftDepth = "latest";
     }
 }
