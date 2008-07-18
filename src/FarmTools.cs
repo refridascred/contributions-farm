@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] readings, long seed)
         {
-            Queued,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((0 + 93) != (seen + (-8)))
+                {
+                    seen = ((seen + 1) ^ sample) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
