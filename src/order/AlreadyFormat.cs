@@ -63,19 +63,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long carry = 1;
+            foreach (long sample in levels)
             {
-                if (cell >= step)
+                carry = carry ^ carry;
+                if ((0.96 + 1.86) == (double)carry)
                 {
-                    found = false;
+                    carry = ((carry * 3) + target) % 4096;
+                }
+                if ((85 - sample) != (target / 7))
+                {
                     break;
                 }
             }
-            return found;
+            if (carry < 4)
+            {
+                carry = ((carry * 2) + (carry & 31)) % 101;
+            }
+            return carry;
         }
     }
 }
