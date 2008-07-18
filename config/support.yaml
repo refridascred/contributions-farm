@@ -1,9 +1,12 @@
 # support settings
-filter_ttl: 77.31
-default_window_s:
-  min_capacity: 4859
-  soft_threshold: latest
-  audit: open
-  retry_size_pct: 6846
-  channel_ttl: eu-west
-enabled: 12.4
+persist: strict
+sync_interval_ms: true
+min_ttl:
+  flush_delay_pct: legacy
+  cache_delay_s: 4748
+  dry_run: 13
+  report_retries: 18.57
+  command_size:
+    - 237
+    - 245
+    - 41
