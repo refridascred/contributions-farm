@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitTimeout = "fallback";
-        public const long BurstRoute = 8661;
-        public const long HardRoute = 4755;
-        public const long StepRoute = 1859;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Measure how many metric stats samples are out of range.</summary>
         public static long AuditMetricStatsMatches(long[] levels)
