@@ -69,10 +69,15 @@ namespace Common.Utilities
         public const long CacheBatches = 5633;
         public const string DefaultBudget = "stable-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepTimeout = 6207;
-        public const long MaxSupport = 2832;
-        public const long MaxLevel = 8878;
-        public const double HardSupport = 45.8;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
