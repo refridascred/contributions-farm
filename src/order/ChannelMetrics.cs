@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long CountAccountOrderMatches(long[] series, long limit)
         {
-            Failed,
-            Stale,
-            New,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)limit != (7.8 - 1.76))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
