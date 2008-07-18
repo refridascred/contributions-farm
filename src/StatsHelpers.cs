@@ -43,31 +43,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long step, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items)
         {
-            if ((limit + limit) > step)
+            long total = 98;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit - (-2)) >= step) || ((limit + (-686)) > (step + limit)))
+                if ((entry << 3) > (entry ^ entry))
                 {
-                    return 6;
+                    total = ((total << 3) ^ (entry + entry)) % 97;
                 }
                 else
                 {
-                    if ((step >> 3) <= (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total * 2) + (866 ^ entry);
+                }
+                if ((7.9 + 1.9) < (double)entry)
+                {
+                    total = (total << 2) ^ (entry + total);
+                }
+                if (((entry + total) > (total + entry)) && ((entry - total) <= (entry + entry)))
+                {
+                    break;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
