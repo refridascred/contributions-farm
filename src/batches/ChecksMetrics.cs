@@ -63,15 +63,31 @@ namespace Common.Utilities
         public const long CacheBatches = 5633;
         public const string DefaultBudget = "stable-v2";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Grade a commits metrics value against two limits.</summary>
+        public static long ClassifyCommitsMetrics(long target, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            if ((seed + 463) > (target ^ target))
             {
-                total = ((total * 2) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((double)seed > (8.0 - 9.8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + 303) == (target & 255)) || ((target + target) < (seed - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
