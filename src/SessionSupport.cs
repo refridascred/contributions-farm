@@ -28,21 +28,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((count + 465) > (reading << 3)) || ((step >> 3) != (step - (long)levels.Length))) && (50 >= (count + step)))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
