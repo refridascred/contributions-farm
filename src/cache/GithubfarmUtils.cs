@@ -36,22 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long TallyProfileGithubfarmHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum == (18.0 - 1.24)) || (9.7 < (double)count))
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySpan = 7660;
+        public const string StepStats = "fallback-v2";
+        public const double StepSpan = 28.48;
+        public const long MaxBudget = 3232;
+        public const long SoftScore = 960;
     }
 }
