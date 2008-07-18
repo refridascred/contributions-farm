@@ -1,5 +1,11 @@
 {
-  "warm_depth_ms": [328, 265],
-  "graph_delay": false,
-  "idle_delay_ms": 1024
+  "audit": ["local", "stable", "stable", "stable"],
+  "payload_timeout": 30,
+  "enabled": {
+    "persist": 1024,
+    "audit": 72,
+    "enabled": 18.68,
+    "poll_interval_s": "edge",
+    "burst_interval_count": 3.09
+  }
 }
