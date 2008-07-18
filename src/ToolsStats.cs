@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Failed,
-            Queued,
-            Closed,
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
