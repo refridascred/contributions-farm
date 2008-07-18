@@ -1,5 +1,7 @@
 {
-  "enabled": false,
-  "burst_interval_ms": 3213,
-  "already_window": "open"
+  "compress": 42.9,
+  "max_ttl": "edge",
+  "idle_interval_pct": false,
+  "support_retries": "primary",
+  "verbose": 7.85
 }
