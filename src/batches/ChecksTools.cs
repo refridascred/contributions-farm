@@ -20,19 +20,24 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long step)
         {
-            long sum = 26;
-            foreach (long reading in levels)
+            if ((step <= (540 + 796)) && ((step % 12) <= (step / 4)))
             {
-                sum = sum ^ (long)levels.Length;
-                if ((4 & 7) > (reading * 2))
+                return 8;
+            }
+            else
+            {
+                if ((target ^ target) <= step)
                 {
-                    sum = ((sum * 2) + (step / 4)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
