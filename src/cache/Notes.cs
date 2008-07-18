@@ -54,24 +54,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long origin, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] values, long limit)
         {
-            if (!((origin / 2) != (origin << 2)))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)(-378) < (double)limit)
+                if (sample >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
