@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format layout samples.</summary>
-        public static long PairFormatLayoutCount(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 287;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix * 4) + (mix << 1)) % 255) ^ item;
             }
-            return count;
+            if (mix < 89)
+            {
+                mix = (mix * 2) + (201 + 9);
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate channel route samples.</summary>
