@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const string WindowProfile = "fallback-edge";
         public const string HardScore = "local-edge";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix - (109 + (long)i2)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "staging";
+        public const string StepSpan = "cached-1";
+        public const long CacheGraph = 8967;
+        public const long StepTimeout = 1267;
+        public const string RetryInterval = "legacy-v2";
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long floor)
