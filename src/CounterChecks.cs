@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 7171;
-        public const double SoftRecord = 42.75;
-        public const long BaseRecord = 7844;
-        public const long MaxCount = 4407;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series)
+        {
+            long anchor = 593;
+            foreach (long sample in series)
+            {
+                if ((anchor + (-3)) < (anchor + (long)series.Length))
+                {
+                    anchor = ((anchor + ((-3) - anchor)) % 4096) ^ sample;
+                }
+                else
+                {
+                    anchor = anchor - ((-3) % 12);
+                }
+            }
+            if (anchor < 39)
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] levels)
