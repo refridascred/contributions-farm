@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long offset)
         {
-            long mark = 2;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark + (reading + 87);
-                if (reading <= (reading % 5))
+                if (levels[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
