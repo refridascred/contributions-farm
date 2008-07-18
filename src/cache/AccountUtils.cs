@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            double weight2 = span;
+            if (weight2 < (weight2 + weight))
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (weight2 - span);
         }
 
         /// <summary>Hold a payload summary.</summary>
