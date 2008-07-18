@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
