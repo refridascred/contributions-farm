@@ -46,18 +46,20 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] items, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((origin / 2) <= (686 % 16)) && ((origin + matches) > (matches + 8))))
+                long prev = (long)i;
+                if ((double)(-5) <= (double)result)
                 {
-                    matches = (matches + 2) + reading;
+                    result = (result ^ (prev - result)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
