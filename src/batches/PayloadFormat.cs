@@ -33,10 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowSize = 42.11;
-        public const string CacheRatio = "fallback-v2";
-        public const string StepRatio = "alpha-edge";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a payload layout counter forward.</summary>
         public static long IteratePayloadLayout(long limit)
