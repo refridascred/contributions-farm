@@ -36,23 +36,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long floor)
         {
-            long carry = 66;
-            foreach (long item in readings)
+            long mix = 719;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 4; i++)
+                mix = ((mix + floor) % 4096) ^ entry;
+                if (((floor << 3) <= mix) && (2.4 >= (double)floor))
                 {
-                    carry = ((((carry << 3) ^ (item * 2)) % 97) - (long)i) - origin;
+                    break;
                 }
-                carry = (carry + (item * 3)) % 4096;
             }
-            if (carry < 71)
+            if (mix < 8)
             {
-                carry = (carry + ((-78) + carry)) % 4096;
+                mix = (mix + (mix / 4)) % 4096;
             }
-            return carry % 65521;
+            return mix;
         }
     }
 }
