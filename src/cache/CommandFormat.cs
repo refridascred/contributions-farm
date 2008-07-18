@@ -44,39 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            long span = floor - step;
-            if (!((5.3 + 4.76) == (double)span))
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (step > 135)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor >> 4) < step) || ((51 + span) != (span - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((span << 1) <= ((-954) / 2)) && (29 <= (span + floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
