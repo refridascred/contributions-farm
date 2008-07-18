@@ -33,18 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] readings)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((sample / 7) >= (tally << 1))
+                if (datum < offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a layout options.</summary>
