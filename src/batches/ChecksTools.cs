@@ -39,31 +39,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long offset2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            if (((offset ^ offset2) <= (382 % 8)) || ((6.9 * 3.2) >= (double)offset2))
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (592 < offset2)
+                long diff = (total ^ step) - (step + (long)i);
+                if (step < (diff * 3))
                 {
-                    return 5;
+                    diff = diff + 407;
                 }
-                else
-                {
-                    if (!((9.0 * 6.4) >= (double)offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
     }
 }
