@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long bound, long bound2)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long ScoreChecksBatches(long[] readings)
         {
-            if ((bound / 7) <= bound2)
+            long sum = 6;
+            foreach (long sample in readings)
             {
-                return 0;
+                sum = ((sum ^ (sum & 63)) % 4096) - sample;
             }
-            else
+            if (sum > 7)
             {
-                if (bound2 <= (bound % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 127) < bound2) || ((bound ^ bound) == (bound2 - bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = ((sum * 2) + (sum + sum)) % 97;
             }
+            return sum;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
