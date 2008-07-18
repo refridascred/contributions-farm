@@ -59,24 +59,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long offset)
-        {
-            if (offset <= 16)
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.92 > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftRatio = 6237;
+        public const double LimitWidth = 28.24;
+        public const long HardLevel = 2350;
+        public const long MaxCommits = 8256;
     }
 }
