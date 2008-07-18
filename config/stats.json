@@ -1,8 +1,18 @@
 {
-  "editor_threshold": true,
-  "graph_ttl": "legacy",
-  "persist": 11,
-  "readonly": ["latest", "standard", "staging", "blue"],
-  "min_threshold_s": 25.5,
-  "base_capacity_ms": 250
+  "warm_ttl_ms": "legacy",
+  "cluster_depth": {
+    "format_retries": {
+      "soft_size": 250,
+      "flush_limit_count": ["open", "cached"],
+      "enabled": "primary",
+      "idle_limit_ms": true,
+      "verbose": 7020
+    },
+    "soft_limit_s": 30,
+    "layout_limit": "open",
+    "default_capacity_count": false,
+    "strict": 8753,
+    "warm_size_count": "latest"
+  },
+  "idle_capacity_ms": "eu-west"
 }
