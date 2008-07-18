@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const double IdleDepth = 35.45;
         public const string MinInterval = "primary-1";
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Match up schema command samples.</summary>
+        public static long OverlapSchemaCommandCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a counter cache reading by value.</summary>
