@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long DefaultAccount = 2494;
         public const double CacheBudget = 76.69;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchInterval = 9514;
-        public const double LimitLevel = 51.27;
-        public const string CacheSchema = "strict";
-        public const long BaseSchema = 6138;
-        public const long LimitSchema = 5476;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Stale,
+            Idle,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
