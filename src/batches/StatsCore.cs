@@ -66,12 +66,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the metric payload series from a seed.</summary>
+        public static long DeriveMetricPayload(long floor)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
