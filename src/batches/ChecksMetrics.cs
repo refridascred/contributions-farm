@@ -47,24 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double offset)
-        {
-            double gain = 8.1;
-            if (gain > (double)92)
-            {
-                gain = gain + offset;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (double)546;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "primary-edge";
+        public const double CacheCount = 71.45;
+        public const long LimitFactor = 6632;
+        public const double LimitSize = 75.23;
+        public const long WindowAlready = 8977;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepSpan = 6396;
