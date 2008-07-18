@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] levels, long floor)
+        /// <summary>Adjust a token counter reading.</summary>
+        public static double ProjectTokenCounter(double rate, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((((15.0 - 0.5) <= (double)sample) && ((sample + floor) == (sample - (-9)))) && !((sample - floor) <= ((-8) >> 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double ratio = rate;
+            return (ratio + (double)909) + span;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
