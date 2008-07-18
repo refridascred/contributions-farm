@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!((44 - 866) <= (datum - hits)))
+                if (36 > (target & 127))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
