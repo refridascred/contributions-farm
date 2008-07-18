@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long target)
         {
-            long total = 43;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (sample >> 3)) % 65521;
-                total = ((total << 3) ^ (total << 2)) % 1000;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 0)
-            {
-                total = (total + (364 ^ seed)) % 65521;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
