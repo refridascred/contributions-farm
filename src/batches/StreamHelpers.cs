@@ -79,18 +79,11 @@ namespace Common.Utilities
         public const long RetryCount = 4829;
         public const double WindowCommand = 32.55;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell >> 1) >= (7 % 8)) && (matches <= (matches & 1)))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
