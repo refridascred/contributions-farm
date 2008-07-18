@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Combine already format values into a single score.</summary>
+        public static long TallyAlreadyFormat(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item * 5) < (result + target)) || (result > item))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 2) ^ 9) % 65521;
+                }
+                if ((75 * 2) < target)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
