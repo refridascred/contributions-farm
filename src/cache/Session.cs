@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] data, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != limit)
+                if ((levels[i] == step) && ((levels[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
