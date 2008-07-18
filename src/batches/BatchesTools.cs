@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long limit)
         {
-            long mix = 482;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (value < limit)
                 {
-                    mix = (((mix << 3) ^ mix) % 4096) ^ (long)i;
-                }
-                if ((floor << 1) >= (mix + cell))
-                {
-                    mix = ((mix << 2) ^ (floor + (long)series.Length)) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 4) + (floor + floor);
-                }
-                if ((mix <= (mix - mix)) || ((mix >> 3) >= (608 + 7)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
