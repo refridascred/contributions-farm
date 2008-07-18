@@ -31,32 +31,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long offset)
-        {
-            if (((double)seed < (14.0 + 17.0)) || (seed > 76))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 24) != (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((124 - (-5)) >= (seed % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchInterval = 968;
+        public const long IdleWidth = 132;
+        public const long MinAccount = 9884;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
