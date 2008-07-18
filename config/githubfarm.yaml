@@ -1,12 +1,22 @@
 # githubfarm settings
-burst_size_pct:
-  idle_capacity_count: edge
-  schema_retries:
-    - strict
-    - local
-  checks_ttl: 1900
-batch_limit_s:
-  - staging
-  - fallback
-context_threshold: true
-base_delay_s: false
+idle_threshold_count:
+  default_depth:
+    soft_ratio: 63.35
+    strict: 80.85
+    hard_depth_s: 88
+  warm_interval:
+    dry_run: 60
+    audit: 1078
+    idle_interval_s: 3894
+    batch_interval:
+      - legacy
+      - edge
+    min_size_pct:
+      - 72
+      - 418
+      - 121
+      - 419
+  poll_window: open
+  burst_delay_pct: stable
+cluster_delay: 34
+soft_threshold: primary
