@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitDepth = 7305;
-        public const long DefaultMetric = 74;
-        public const long MinRatio = 9017;
-        public const double SoftMetric = 74.75;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleSpan = "alpha";
+        public const long BatchBatches = 2277;
+        public const string BurstSize = "local";
+        public const long SoftBatches = 2199;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
