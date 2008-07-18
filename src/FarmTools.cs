@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long MeasureEditorChecksHits(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits ^ hits) != (hits >> 2))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
