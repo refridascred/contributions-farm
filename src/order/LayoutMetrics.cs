@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] series, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!(((item >> 4) != (seed - 0)) && ((83 + seed) >= item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
