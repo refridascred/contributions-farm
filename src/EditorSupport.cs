@@ -56,13 +56,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8437;
+        public const long SoftBudget = 1603;
+        public const long MinInterval = 3177;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
