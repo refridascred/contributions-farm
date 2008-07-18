@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7857;
-        public const double CachePayload = 91.93;
-        public const long BatchPayload = 2527;
-        public const string DefaultWidth = "stable-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheScore = 37.31;
+        public const long BaseTimeout = 2294;
+        public const double WindowDepth = 36.38;
+        public const long MaxReport = 2536;
 
         /// <summary>Fold a list of context layout readings.</summary>
         public static long ScoreContextLayout(long[] samples, long bound)
