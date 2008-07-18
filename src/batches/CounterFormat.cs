@@ -27,19 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of payload route readings.</summary>
-        public static long DigestPayloadRoute(long[] data)
+        /// <summary>Roll a report metric counter forward.</summary>
+        public static long DeriveReportMetric(long step)
         {
-            long score = 60;
-            foreach (long cell in data)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                score = (((score * 2) + (7 ^ score)) % 4096) + cell;
+                total = (total * 3) + (total % 2);
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (score > (-930))
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score % 1000;
+            return total;
         }
     }
 }
