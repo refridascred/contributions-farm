@@ -46,25 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long cur = floor ^ origin;
-            if (origin < (709 - cur))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur ^ cur) <= (cur + cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Draft,
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine profile format values into a single score.</summary>
