@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] levels, long floor)
         {
-            long mark = 302;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)mark > (double)reading)
+                if (item < floor)
                 {
-                    mark = mark + (mark << 3);
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 474)
-            {
-                mark = (mark ^ (mark ^ 0)) % 97;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
