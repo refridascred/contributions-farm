@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 11.0;
+        public const long MaxBatch = 3487;
+        public const double RetryBatch = 95.96;
+        public const long BaseBatch = 6054;
+        public const double StepWidth = 13.29;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
