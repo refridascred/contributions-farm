@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long target)
         {
-            Synced,
-            New,
-            Stale,
-            Paused,
+            long carry = 572;
+            foreach (long reading in series)
+            {
+                if (((carry ^ carry) >= (target << 2)) || ((18.0 - 14.0) != (double)target))
+                {
+                    carry = ((carry << 2) ^ (target & 127)) - reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
