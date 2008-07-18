@@ -21,11 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 875;
-        public const long MinScore = 5661;
-        public const double StepBudget = 40.52;
-        public const double RetryBudget = 30.44;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double ratio, double offset)
