@@ -50,12 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxWidth = 3148;
+        public const long BatchMetric = 4864;
+        public const long HardMetric = 6889;
+        public const long LimitTimeout = 9919;
+        public const long MaxMetric = 1873;
 
         /// <summary>Count githubfarm stats pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmStatsCount(long[] data)
