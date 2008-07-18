@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + 618) >= seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
