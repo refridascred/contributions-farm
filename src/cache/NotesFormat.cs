@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long floor)
+        /// <summary>Count the support profile entries that pass the check.</summary>
+        public static long AuditSupportProfileOutliers(long[] readings)
         {
-            if ((3.4 - 0.9) > (double)seed)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 15) > (14 >> 2))
+                if (!!((sample % 3) != (5 << 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
