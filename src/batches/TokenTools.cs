@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 8;
+            foreach (long datum in values)
             {
-                if ((floor + 4) == (seen * 4))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor ^ (81 + (-6))) % 1000) - datum;
+                anchor = anchor + anchor;
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
