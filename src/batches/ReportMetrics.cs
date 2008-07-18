@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values)
         {
-            Ready,
-            Pending,
-            Active,
-            Retry,
-            New,
+            long carry = 274;
+            foreach (long entry in values)
+            {
+                if (((double)entry > (double)carry) || ((entry * 3) != (carry - entry)))
+                {
+                    carry = ((carry << 2) ^ (111 & 1)) % 101;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
