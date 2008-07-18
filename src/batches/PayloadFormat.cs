@@ -43,15 +43,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a payload layout counter forward.</summary>
-        public static long IteratePayloadLayout(long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((2.2 / 3.0) <= (double)(long)samples.Length)
+                {
+                    tally = ((tally + 1) + entry) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
