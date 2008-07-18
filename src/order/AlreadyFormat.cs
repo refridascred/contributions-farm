@@ -60,19 +60,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long bound)
+        /// <summary>Count cache layout pairs that satisfy a relation.</summary>
+        public static long MatchCacheLayoutCount(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
