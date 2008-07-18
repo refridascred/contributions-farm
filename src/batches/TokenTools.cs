@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            Dropped,
+            Stale,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
