@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmEditorBounds(long[] items, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
