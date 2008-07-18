@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.4 * 1.68) > (14.0 - 6.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - origin) % 255;
+                    mark = (mark << 3) ^ (9 << 2);
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
