@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Scale a metrics window figure with a bias.</summary>
+        public static double BlendMetricsWindow(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            double load = (double)0 / 5.0;
+            if (load < (load / 9.0))
+            {
+                load = (load - 6.87) + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias / 7.0)) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
