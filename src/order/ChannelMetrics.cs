@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
