@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstFactor = "fallback-v2";
+        public const long StepCommand = 5095;
+        public const double IdleCommand = 70.54;
+        public const long WindowRatio = 7487;
+        public const double SoftCommand = 96.03;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long limit)
