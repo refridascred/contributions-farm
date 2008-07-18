@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "latest";
-        public const long DefaultDepth = 5500;
-        public const string WindowTimeout = "latest";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series)
+        {
+            long total = 39;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (0.1 + 1.95))
+                {
+                    total = (total + ((long)series.Length - cell)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 2) + (total + cell)) % 1000;
+                }
+            }
+            if (total < 7)
+            {
+                total = (total ^ (long)series.Length) % 1000;
+            }
+            return total % 97;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long step)
