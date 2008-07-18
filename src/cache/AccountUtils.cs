@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Find the first report format entry that matches the target.</summary>
+        public static long SeekReportFormatIndex(long[] series, long step)
         {
-            double weight2 = span;
-            if (weight2 < (weight2 + weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - weight;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (weight2 - span);
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
