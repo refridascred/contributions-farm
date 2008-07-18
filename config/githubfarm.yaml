@@ -1,4 +1,16 @@
 # githubfarm settings
-batches_delay: staging
-max_capacity: false
-dry_run: 1940
+dry_run:
+  - standard
+  - local
+  - cached
+  - blue
+compress: 30
+channel_interval: 34.55
+poll_depth:
+  verbose: 59.43
+  compress: local
+  default_limit:
+    - 365
+    - 258
+    - 79
+  cache_retries_ms: local
