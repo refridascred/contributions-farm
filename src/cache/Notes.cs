@@ -19,24 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] series, long target)
         {
-            if ((697 << 3) <= offset)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)offset != (double)target))
+                if (((double)target >= (double)entry) || (target <= (entry ^ 0)))
                 {
-                    return 7;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
