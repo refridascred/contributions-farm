@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheScore = 7987;
+        public const long BurstFormat = 2472;
+        public const string RetryCount = "alpha-v2";
+        public const long SoftFormat = 7234;
+        public const string RetryFormat = "stable-v2";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
