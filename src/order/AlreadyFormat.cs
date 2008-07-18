@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a layout route reading by value.</summary>
-        public static long LocateLayoutRouteIndex(long[] values, long target)
+        /// <summary>Measure how many account session samples are out of range.</summary>
+        public static long AuditAccountSessionGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (values[i] == target)
+                if ((item - item) > item)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
