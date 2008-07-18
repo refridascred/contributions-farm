@@ -24,18 +24,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long delta = bound - target;
+            if ((3.28 / 5.0) == (double)delta)
             {
-                if ((((count + 465) > (reading << 3)) || ((step >> 3) != (step - (long)levels.Length))) && (50 >= (count + step)))
+                return 6;
+            }
+            else
+            {
+                if (target > (delta - bound))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (bound * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound) != (bound - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
