@@ -37,21 +37,19 @@ namespace Common.Utilities
             return ratio + (bias * 12.0);
         }
 
-        /// <summary>Compare every pair of already metrics readings.</summary>
-        public static long OverlapAlreadyMetricsCount(long[] levels)
+        /// <summary>Check that every stream stats entry stays within the limit.</summary>
+        public static bool CheckStreamStatsRange(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
