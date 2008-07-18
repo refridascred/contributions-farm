@@ -14,22 +14,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] data, long step)
+        /// <summary>Compare every pair of schema cluster readings.</summary>
+        public static long CompareSchemaClusterCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((10.0 / 8.0) == (double)hits) || (((hits ^ step) > item) || ((step ^ step) < (item * 4))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
