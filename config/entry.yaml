@@ -1,22 +1,5 @@
 # entry settings
-flush_retries_ms:
-  enabled: blue
-  max_capacity_ms: 60
-  default_interval_s:
-    - green
-    - standard
-    - strict
-    - edge
-  poll_window_s:
-    - 138
-    - 12
-  persist: edge
-  compress: 7651
-default_threshold_count:
-  stats_capacity: false
-  burst_capacity: primary
-  session_window: 60
-  queue_ttl: 62.59
-sync_interval_ms: 11
-idle_size_count: latest
-strict: primary
+idle_window_ms: 26.11
+schema_retries: false
+readonly: 30
+base_limit_ms: standard
