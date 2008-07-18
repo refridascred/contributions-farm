@@ -53,19 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long acc = 315;
-            foreach (long cell in items)
-            {
-                acc = (((acc * 5) + cell) % 65521) + limit;
-                if ((17.0 >= (double)cell) && ((double)acc >= (10.0 - 8.97)))
-                {
-                    acc = acc + (acc - cell);
-                }
-            }
-            return acc;
+            Draft,
+            Pending,
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the route phase values.</summary>
