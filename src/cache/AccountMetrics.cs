@@ -51,38 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long seed2)
+        /// <summary>Adjust a payload token reading.</summary>
+        public static double ProjectPayloadToken(double gain, double span)
         {
-            if ((seed2 << 1) > (seed2 * 3))
+            double scale = (double)(601 ^ 532);
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                scale = (scale + scale) - (double)(long)i;
             }
-            else
-            {
-                if ((seed2 >= 40) || (seed2 < (seed + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed >= (9.0 / 7.0)) && ((seed - seed) <= (seed ^ seed2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((309 + seed) >= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return scale + (gain + span);
         }
 
         /// <summary>Describe the channel class values.</summary>
