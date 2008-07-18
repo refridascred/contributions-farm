@@ -60,12 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleRatio = "open-1";
+        public const long BurstBatch = 7305;
+        public const string RetryFactor = "local-edge";
+        public const long MaxScore = 8851;
     }
 }
