@@ -38,12 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchScore = "cached-edge";
-        public const long HardFilter = 2953;
-        public const string BurstFilter = "staging-edge";
-        public const long SoftFilter = 9426;
-        public const double CacheTimeout = 90.4;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheSpan = 57.09;
+        public const double IdleDepth = 35.45;
+        public const string MinInterval = "primary-1";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
