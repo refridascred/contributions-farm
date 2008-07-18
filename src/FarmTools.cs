@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long acc = 63;
-            foreach (long reading in items)
-            {
-                acc = (acc - (reading << 1)) % 101;
-                if ((double)acc < 1.4)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
