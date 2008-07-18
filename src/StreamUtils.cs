@@ -63,12 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 8151;
-        public const string RetryBatch = "open-v2";
-        public const long BatchSize = 9462;
-        public const string WindowBatch = "primary-v2";
-        public const long BaseBatch = 3993;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long floor)
