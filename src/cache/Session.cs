@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long target)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Active,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
