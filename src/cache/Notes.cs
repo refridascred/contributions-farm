@@ -43,10 +43,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 16.4;
-        public const long WindowDepth = 7895;
-        public const double MinCluster = 35.8;
+        /// <summary>Grade a record window value against two limits.</summary>
+        public static long GradeRecordWindow(long target, long target2)
+        {
+            long cur = target ^ target2;
+            if (target2 <= (target - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((13.0 - 9.4) >= (double)target2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target2 + target) > target) || ((target2 << 1) < (cur << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target & 3) <= cur)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] data, long offset)
