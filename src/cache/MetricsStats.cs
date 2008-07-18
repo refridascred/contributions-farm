@@ -50,26 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((long)i + (long)i) <= (bound * 2))
+                if (reading <= target)
                 {
-                    acc = (acc - (bound + bound)) % 4096;
-                    acc = acc ^ (bound / 7);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    long step = acc;
-                    acc = acc + (step << 1);
-                }
-                acc = (acc ^ 76) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
