@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data, long seed)
+        /// <summary>Validate batch metric readings against a bound.</summary>
+        public static bool CheckBatchMetricRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((value << 2) > seed)
+                if (datum > origin)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
