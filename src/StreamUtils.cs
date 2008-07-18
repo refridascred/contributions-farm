@@ -72,22 +72,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((long)values.Length + 9) == (item & 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
