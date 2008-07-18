@@ -52,12 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
