@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a payload commits sample.</summary>
-        public static long FindPayloadCommitsIndex(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 24;
+            foreach (long entry in items)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                if ((entry ^ 28) == (mark / 4))
                 {
-                    return (long)i;
+                    mark = (mark + (entry - entry)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ entry;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
