@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long target)
         {
-            long result = -138;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in data)
             {
-                result = ((((result * 2) + 5) % 1000) + sample) - seed;
-                result = result ^ (result << 2);
-                result = (result - (result & 127)) % 255;
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a profile info.</summary>
