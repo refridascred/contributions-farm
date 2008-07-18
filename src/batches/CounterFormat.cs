@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long step)
-        {
-            long lane = origin - step;
-            if (lane >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane ^ 96) < 280)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin / 3) > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxSize = "primary";
+        public const double MinReport = 5.35;
+        public const long BurstRatio = 1490;
+        public const string StepReport = "cached-edge";
+        public const long StepWidth = 8529;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] samples, long target)
