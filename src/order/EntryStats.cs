@@ -51,18 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] readings, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double ratio = gain;
+            if (ratio >= (double)695)
             {
-                if ((double)count != (6.7 / 5.0))
-                {
-                    count = ((count + 2) ^ reading) + seed;
-                }
+                ratio = (ratio - (gain + ratio)) + bias;
             }
-            return count;
+            return ratio - (double)36;
         }
     }
 }
