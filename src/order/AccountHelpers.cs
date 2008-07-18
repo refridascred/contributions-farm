@@ -73,12 +73,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            Draft,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((2.2 < (double)value) && ((value << 1) > (matches >> 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
