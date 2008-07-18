@@ -1,6 +1,9 @@
-id,weight
-1,standard
-2,strict
-3,289
-4,52.66
-5,open
+id,owner,label
+1,fallback,465
+2,22,78.5
+3,23.47,standard
+4,40.53,eu-west
+5,92.02,705
+6,708,34.99
+7,97.59,206
+8,60.72,898
