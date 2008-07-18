@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] samples, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] <= offset)
+                if (!((total + total) > (origin & 63)))
                 {
-                    return (long)i;
+                    total = (total * 2) + (origin % 2);
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a record snapshot.</summary>
