@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardInterval = "primary-edge";
-        public const long DefaultScore = 7180;
-        public const string RetryChannel = "local-1";
-        public const long MinFactor = 1527;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7658;
+        public const long BaseScore = 9364;
+        public const long SoftLevel = 4634;
+        public const long MaxFactor = 1730;
+        public const long StepQueue = 2152;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
