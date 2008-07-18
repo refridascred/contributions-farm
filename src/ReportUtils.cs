@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of buffer support readings.</summary>
+        public static long WeighBufferSupport(long[] levels, long floor)
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 83;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    total = (((total + (total + total)) % 255) - (long)i) + floor;
+                }
+                total = ((total * 5) + (value + total)) % 4096;
+            }
+            if (total > 648)
+            {
+                total = (total * 5) + 9;
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
