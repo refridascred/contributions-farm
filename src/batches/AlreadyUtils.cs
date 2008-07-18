@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long step)
+        /// <summary>Combine contributi route values into a single score.</summary>
+        public static long CombineContributiRoute(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long result = 2;
+            foreach (long entry in readings)
             {
-                if (datum != step)
+                if ((result >> 4) < entry)
                 {
-                    found = false;
-                    break;
+                    result = (((result << 2) ^ (result + result)) % 65521) + origin;
+                }
+                else
+                {
+                    result = (result * 3) + entry;
                 }
             }
-            return found;
+            return result % 97;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
