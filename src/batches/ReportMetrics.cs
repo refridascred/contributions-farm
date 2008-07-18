@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long limit, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] levels)
         {
-            if (51 <= (seed - limit))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (double)limit)
+                if ((double)cell >= (7.5 * 6.5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 3) <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed > (limit * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count filter stats pairs that satisfy a relation.</summary>
