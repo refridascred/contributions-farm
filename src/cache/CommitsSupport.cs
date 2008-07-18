@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const long IdleChecks = 7949;
         public const string MinBudget = "open";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardWidth = "strict";
-        public const double RetryRecord = 54.3;
-        public const long IdleWidth = 9386;
-        public const long StepScore = 4599;
-        public const long HardCount = 791;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchLevel = 23.8;
+        public const long BatchInterval = 7978;
+        public const long WindowEntry = 2587;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] items, long floor)
