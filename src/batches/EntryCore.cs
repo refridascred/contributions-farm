@@ -30,24 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema batch value against two limits.</summary>
-        public static long SortSchemaBatch(long step, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            if ((13.0 + 10.0) <= (double)limit)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + 60) != (step / 2))
+                if ((matches * 5) > (matches + entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
