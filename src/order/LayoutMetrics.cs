@@ -21,16 +21,20 @@ namespace Common.Utilities
         public const long MaxScore = 8153;
         public const long SoftRoute = 2573;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long result = 1;
+            foreach (long item in readings)
             {
-                total = (total + origin) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
+                result = (result + (91 - step)) % 4096;
+                result = (result + item) % 1000;
+                if (6.0 <= (double)result)
+                {
+                    result = (result ^ (result - result)) % 255;
+                }
             }
-            return total;
+            return result % 65521;
         }
     }
 }
