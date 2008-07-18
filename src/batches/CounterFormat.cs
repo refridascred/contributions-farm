@@ -36,19 +36,19 @@ namespace Common.Utilities
             return scale + (double)4;
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool ValidateRecordAlreadyLimits(long[] readings, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long result = 1;
+            foreach (long reading in items)
             {
-                if (reading != target)
+                result = (result + result) % 101;
+                if ((2.9 > (double)reading) && ((result / 5) != (35 - result)))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 5) + (result >> 5);
                 }
             }
-            return flag;
+            return result;
         }
     }
 }
