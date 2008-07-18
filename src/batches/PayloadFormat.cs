@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] readings, long offset)
         {
-            Active,
-            Done,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (offset >= (offset ^ hits))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
