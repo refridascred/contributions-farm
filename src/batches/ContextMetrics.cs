@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinDepth = "standard-edge";
-        public const long DefaultScore = 6387;
-        public const long BurstFactor = 6592;
-        public const string RetryLevel = "local-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count ^ 79) != (step / 9))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] levels)
