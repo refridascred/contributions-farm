@@ -48,14 +48,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            Queued,
-            Done,
-            Closed,
-            Idle,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
