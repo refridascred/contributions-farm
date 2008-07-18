@@ -71,11 +71,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCount = 395;
+        public const long StepDepth = 6821;
+        public const double RetryLevel = 1.68;
+        public const double IdleCounter = 59.99;
     }
 }
