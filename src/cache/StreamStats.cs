@@ -13,12 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
