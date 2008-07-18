@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long origin)
         {
-            long acc = 84;
-            foreach (long item in data)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (acc + offset) - item;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (acc < 3)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
