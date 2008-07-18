@@ -27,19 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileLimits(long[] values, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (entry != offset)
+                if (entry > origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
