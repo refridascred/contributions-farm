@@ -53,12 +53,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] samples)
         {
-            Locked,
-            Ready,
-            Closed,
+            long anchor = 9;
+            foreach (long sample in samples)
+            {
+                anchor = anchor - sample;
+            }
+            if (anchor < 601)
+            {
+                anchor = (anchor ^ (anchor >> 3)) % 101;
+            }
+            return anchor;
         }
     }
 }
