@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Validate cache layout readings against a bound.</summary>
+        public static bool VerifyCacheLayoutLimits(long[] levels, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
