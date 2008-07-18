@@ -20,15 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next buffer layout value from a seed.</summary>
-        public static long SeriesBufferLayout(long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((double)limit > (3.9 * 4.29))
+                {
+                    state = ((state << 3) ^ (state + limit)) % 1000;
+                }
+                else
+                {
+                    state = (state + (state / 2)) % 65521;
+                    state = ((state << 2) ^ 95) % 97;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
