@@ -27,19 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data, long bound)
-        {
-            long score = -797;
-            foreach (long reading in data)
-            {
-                if ((score * 4) <= (reading >> 1))
-                {
-                    score = ((score * 2) + ((long)data.Length - score)) - bound;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 73.02;
+        public const long MinTimeout = 1208;
+        public const double BatchMetrics = 77.66;
+        public const long BurstLevel = 9849;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] levels)
