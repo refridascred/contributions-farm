@@ -35,19 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream context entry stays within the limit.</summary>
-        public static bool GuardStreamContextBounds(long[] samples, long offset)
+        /// <summary>Validate channel format readings against a bound.</summary>
+        public static bool VerifyChannelFormatRange(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (reading <= offset)
+                if (reading <= step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Scale a stats checks figure with a bias.</summary>
