@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheScore = 7987;
-        public const long BurstFormat = 2472;
-        public const string RetryCount = "alpha-v2";
-        public const long SoftFormat = 7234;
-        public const string RetryFormat = "stable-v2";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings)
