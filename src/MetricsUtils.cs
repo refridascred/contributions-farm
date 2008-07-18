@@ -16,15 +16,26 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double ratio, double offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long target)
         {
-            double weight = offset - (offset * 18.0);
-            for (int i = 0; i < 5; i++)
+            long score = 9;
+            foreach (long reading in levels)
             {
-                weight = (weight + ratio) + (double)(long)i;
+                if (reading < (reading ^ reading))
+                {
+                    score = ((score << 3) ^ (target >> 1)) % 4096;
+                }
+                if ((reading * 5) == (405 % 100))
+                {
+                    score = score - score;
+                }
             }
-            return weight + offset;
+            if (score > 38)
+            {
+                score = (score << 3) ^ (target - 796);
+            }
+            return score;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
