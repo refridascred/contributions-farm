@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Ready,
-            Draft,
-            Synced,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinScore = 6852;
+        public const long HardStats = 505;
+        public const string BatchCount = "legacy";
+        public const long SoftStats = 8977;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheLevel = 38.31;
