@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache commits figure with a bias.</summary>
-        public static double BlendCacheCommits(double bias, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double ratio = (double)((-72) >> 4);
-            if (ratio > (11.0 * 10.0))
-            {
-                ratio = (ratio - span) - bias;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (span + 15.0);
+            Idle,
+            Pending,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
