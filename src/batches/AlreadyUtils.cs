@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of stream githubfarm readings.</summary>
-        public static long DigestStreamGithubfarm(long[] series, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mix = 107;
-            foreach (long cell in series)
-            {
-                mix = (mix - (cell & 7)) + bound;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
