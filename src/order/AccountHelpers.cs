@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate graph stream readings against a bound.</summary>
-        public static bool VerifyGraphStreamRange(long[] levels, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long limit, long target)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long delta = limit - target;
+            if (((6.9 - 0.4) != (double)delta) && ((0.5 - 15.0) >= (double)delta))
             {
-                if (value > bound)
+                return 2;
+            }
+            else
+            {
+                if ((delta ^ limit) > delta)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the format level values.</summary>
