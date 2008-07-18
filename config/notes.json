@@ -1,7 +1,11 @@
 {
-  "hard_interval_s": 541,
-  "max_interval_pct": "cached",
-  "strict": 41.3,
-  "burst_interval_s": 30,
-  "dry_run": 2640
+  "min_capacity": 1595,
+  "cache_limit_pct": 48,
+  "soft_capacity": 53,
+  "queue_depth": [110, 298, 458],
+  "retry_window_s": {
+    "flush_ratio_ms": 8,
+    "schema_interval": ["legacy", "legacy"],
+    "stream_capacity": 4478
+  }
 }
