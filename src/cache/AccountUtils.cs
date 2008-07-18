@@ -39,10 +39,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleWidth = "alpha-1";
-        public const double BurstFactor = 67.26;
-        public const long RetryEditor = 5912;
-        public const long StepEditor = 7711;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
