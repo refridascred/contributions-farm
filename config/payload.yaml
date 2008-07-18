@@ -1,9 +1,7 @@
 # payload settings
-retry_timeout_pct: true
-filter_size: standard
-warm_capacity_count: eu-west
-min_interval_s: open
-route_retries:
-  - 495
-  - 8
-warm_delay_pct: 31
+farm_retries: 46.05
+layout_interval: 94
+retry_ttl_ms: 96.71
+base_timeout_count: 53.72
+support_threshold: 96.34
+strict: false
