@@ -65,19 +65,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine commits notes values into a single score.</summary>
-        public static long ScoreCommitsNotes(long[] data)
-        {
-            long state = 756;
-            foreach (long value in data)
-            {
-                state = ((state << 3) ^ value) % 65521;
-            }
-            if (state < 31)
-            {
-                state = ((state << 3) ^ (state - 424)) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 50.44;
+        public const long WindowStats = 6924;
+        public const long BatchStats = 4312;
+        public const long DefaultCount = 2187;
     }
 }
