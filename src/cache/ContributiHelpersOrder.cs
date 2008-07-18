@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 6479;
+        public const long MaxNotes = 4960;
+        public const long CacheWidth = 6784;
+        public const double BaseTimeout = 26.83;
+        public const long DefaultNotes = 3133;
 
         /// <summary>Derive the next notes cache value from a seed.</summary>
         public static long SeriesNotesCache(long limit)
