@@ -1,5 +1,6 @@
 # githubfarm settings
-editor_delay: 44.01
-enabled: 1190
-poll_retries: eu-west
-min_delay_s: 47
+flush_interval_pct: 26.9
+enabled: cached
+batches_size: true
+batch_ttl: true
+persist: legacy
