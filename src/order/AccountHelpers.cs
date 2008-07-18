@@ -55,22 +55,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings, long step)
         {
-            long mix = 458;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((751 + mix) < ((-834) & 1))
+                if (!((step / 6) != (tally * 3)))
                 {
-                    mix = (mix ^ (23 % 12)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (cell + cell)) % 65521;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
