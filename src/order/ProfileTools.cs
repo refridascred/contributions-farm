@@ -40,19 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cluster support entry stays within the limit.</summary>
-        public static bool GuardClusterSupportLimits(long[] samples, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (sample != seed)
+                if (reading > seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
