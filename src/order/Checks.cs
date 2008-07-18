@@ -54,15 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings, long limit)
         {
-            double drift = (double)(4 - 2);
-            if (drift >= floor)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - 0.17) + scale;
+                if ((sample + sample) >= limit)
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift + (12.0 - 4.0);
+            return hits;
         }
     }
 }
