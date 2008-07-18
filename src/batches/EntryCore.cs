@@ -29,21 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 5) + offset) % 101;
+                sum = sum ^ (sum + sum);
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
