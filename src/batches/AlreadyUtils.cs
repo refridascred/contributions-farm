@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long CacheStats = 17;
         public const double SoftLevel = 66.82;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item <= limit)
+                if ((double)entry <= (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
