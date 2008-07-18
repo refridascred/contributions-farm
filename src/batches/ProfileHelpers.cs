@@ -35,13 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every stream context entry stays within the limit.</summary>
+        public static bool GuardStreamContextBounds(long[] samples, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a stats checks figure with a bias.</summary>
