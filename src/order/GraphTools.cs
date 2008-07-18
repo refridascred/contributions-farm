@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] values)
         {
-            if (origin > (limit + limit))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 2) < (limit % 8))
+                if ((seen + 618) >= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 3) >= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
