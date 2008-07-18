@@ -58,19 +58,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((step / 6) != (tally * 3)))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 5986;
+        public const long BatchMetric = 8198;
+        public const long BatchFactor = 56;
+        public const long BaseMetric = 8558;
+        public const long BurstFactor = 3033;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ScaleSchema(double scale, double offset)
