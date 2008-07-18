@@ -48,12 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileLimits(long[] values, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
