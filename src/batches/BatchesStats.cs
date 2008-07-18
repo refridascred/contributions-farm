@@ -27,21 +27,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
