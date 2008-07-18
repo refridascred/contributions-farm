@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch support readings.</summary>
-        public static long CombineBatchSupport(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long floor)
         {
-            long mix = 391;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                mix = (((mix * 5) + (mix << 1)) % 65521) + item;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Locate a layout session reading by value.</summary>
