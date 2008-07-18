@@ -1,8 +1,7 @@
 {
-  "schema_limit": ["blue", "primary", "legacy"],
-  "command_interval": 9848,
-  "flush_capacity_ms": true,
-  "soft_delay_pct": 1024,
-  "context_capacity": "blue",
-  "burst_size_s": "cached"
+  "dry_run": "standard",
+  "sync_capacity_ms": 78.93,
+  "warm_threshold": "latest",
+  "base_limit_pct": "standard",
+  "stream_window": 60.71
 }
