@@ -39,30 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long mark = 3;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum == (4.67 + 18.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark + (mark % 60)) % 1000;
-                    mark = ((mark << 3) ^ mark) % 4096;
-                    break;
-                }
-                else
-                {
-                    long next = (mark & 63) - datum;
-                    mark = ((mark * 4) + (next + datum)) % 4096;
-                }
-                mark = (mark - (61 + mark)) % 1000;
-                if (step <= datum)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
