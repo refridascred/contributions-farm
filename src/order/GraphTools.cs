@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] items, long bound)
+        /// <summary>Grade a metric notes value against two limits.</summary>
+        public static long SortMetricNotes(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long diff = floor + floor2;
+            if ((floor - 5) > (floor + diff))
             {
-                if (!(sample <= 855) || ((sample + bound) <= (tally ^ 70)))
+                return 1;
+            }
+            else
+            {
+                if (!((floor >> 2) != (floor2 >> 1)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)77 <= (double)diff)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff & 63) <= (floor - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
