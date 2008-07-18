@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long MinNotes = 9670;
         public const long RetryNotes = 2220;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((8.35 - 1.7) == (double)value)
-                {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySize = "strict-v2";
+        public const string IdleSpan = "strict-v2";
+        public const double MinCount = 22.53;
+        public const long DefaultSchema = 8689;
+        public const string IdleDepth = "local";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] series)
