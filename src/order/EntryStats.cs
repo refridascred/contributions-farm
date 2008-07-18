@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double rate = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (203 < (sample + sample))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                rate = (rate + (double)(long)i) - floor;
             }
-            return seen;
+            return rate + bias;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
