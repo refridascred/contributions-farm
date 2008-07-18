@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = -58;
-            foreach (long item in values)
-            {
-                result = (result - (item + floor)) % 101;
-                if (floor <= (item - floor))
-                {
-                    result = result - (745 % 3);
-                }
-            }
-            if (result < 648)
-            {
-                result = ((result << 2) ^ (floor >> 4)) % 65521;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a stats summary.</summary>
