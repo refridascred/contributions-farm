@@ -40,10 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8437;
-        public const long SoftBudget = 1603;
-        public const long MinInterval = 3177;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((target % 97) >= (target >> 1)) || (((double)9 > (double)count) || ((count & 15) != (target + target))))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] series, long target)
