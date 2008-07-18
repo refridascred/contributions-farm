@@ -1,5 +1,12 @@
 {
-  "cache_window": [206, 158, 125],
-  "context_threshold": 2011,
-  "queue_delay": 8276
+  "sync_ttl_count": "standard",
+  "base_ttl_pct": 3027,
+  "session_ratio": 2626,
+  "sync_ttl_s": {
+    "cache_limit": 9483,
+    "min_size_pct": 54.94,
+    "sync_capacity_s": "eu-west",
+    "max_interval_s": "strict"
+  },
+  "hard_timeout_count": ["fallback", "stable", "strict"]
 }
