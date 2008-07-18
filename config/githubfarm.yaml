@@ -1,22 +1,16 @@
 # githubfarm settings
-idle_threshold_count:
-  default_depth:
-    soft_ratio: 63.35
-    strict: 80.85
-    hard_depth_s: 88
-  warm_interval:
-    dry_run: 60
-    audit: 1078
-    idle_interval_s: 3894
-    batch_interval:
-      - legacy
-      - edge
-    min_size_pct:
-      - 72
-      - 418
-      - 121
-      - 419
-  poll_window: open
-  burst_delay_pct: stable
-cluster_delay: 34
-soft_threshold: primary
+notes_ttl: 9767
+warm_delay_s:
+  base_threshold_count: 1024
+  metrics_window: 86.56
+  audit:
+    - 265
+    - 173
+    - 179
+  warm_ttl: true
+  persist: blue
+  burst_delay_s:
+    - fallback
+    - standard
+tools_window: 78.03
+poll_size: false
