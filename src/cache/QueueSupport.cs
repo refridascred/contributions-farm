@@ -26,19 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double SmoothGithubfarmQueue(double scale, double floor)
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long TallyPayloadSupportOutliers(long[] levels, long origin)
         {
-            double weight = scale;
-            if (weight < (double)761)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                weight = weight - weight;
+                if (matches <= (91 & 31))
+                {
+                    matches = ((matches + 1) + datum) - origin;
+                }
             }
-            else
-            {
-                weight = weight + (floor * 9.4);
-            }
-            return weight + weight;
+            return matches;
         }
     }
 }
