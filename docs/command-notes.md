@@ -1,15 +1,14 @@
 # Command notes
 
-Use report settings to tune how often account data is refreshed.
-Use batches settings to tune how often layout data is refreshed.
-When a channel fails, the filter handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the buffer list.
+Each stats is validated before it reaches the profile queue.
 
-Keep contributi and session names short and lowercase.
-A batch that stays idle for too long is moved to the filter list.
-Use graph settings to tune how often report data is refreshed.
+Defaults for payload live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new graph fields
-- Review checks limits each release
-- Prefer queue defaults
+- Review counter limits each release
+- Keep graph values small
+- Document new metrics fields
+- Prefer commits defaults
