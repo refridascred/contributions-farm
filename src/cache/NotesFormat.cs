@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 417;
-        public const long BaseCommits = 2278;
-        public const double WindowCommits = 94.95;
-        public const long HardLevel = 2686;
+        /// <summary>Rank context farm input into a small class.</summary>
+        public static long GradeContextFarm(long floor, long bound)
+        {
+            if ((double)floor < (2.6 + 6.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor >= (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (20.0 - 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound > (5.12 / 6.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long floor, long limit)
