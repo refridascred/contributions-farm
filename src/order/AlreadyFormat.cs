@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long DefaultRoute = 6799;
         public const long CacheTimeout = 7396;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (cell >= offset)
+                if ((seed + cell) != (594 + cell))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
