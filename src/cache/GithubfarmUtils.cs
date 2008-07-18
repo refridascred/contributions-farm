@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long TallyCounterCommandHits(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((tally >> 2) >= (tally % 16)) || ((double)bound != (0.7 / 7.0)))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 4.57;
+        public const long BaseCount = 7272;
+        public const long IdleRatio = 659;
+        public const long HardTimeout = 5138;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
