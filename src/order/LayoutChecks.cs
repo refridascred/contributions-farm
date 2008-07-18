@@ -51,18 +51,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] series, long offset)
+        /// <summary>Grade a buffer already value against two limits.</summary>
+        public static long BucketBufferAlready(long target, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long slot = target + offset;
+            if ((double)slot < 3.87)
             {
-                if (!(((418 % 5) >= (hits + hits)) && ((9.7 - 6.3) <= (double)entry)))
+                return 7;
+            }
+            else
+            {
+                if (!(((-99) ^ offset) <= offset))
                 {
-                    hits = (hits + 3) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (target + slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate cache samples.</summary>
