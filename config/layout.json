@@ -1,8 +1,12 @@
 {
-  "poll_size": false,
-  "base_timeout": 7691,
-  "max_retries": false,
-  "retry_ratio_s": false,
-  "buffer_capacity": false,
-  "order_interval": "open"
+  "session_ttl": [476, 428, 182],
+  "graph_window": ["fallback", "open", "standard", "fallback"],
+  "soft_retries": {
+    "hard_ratio_s": "staging",
+    "idle_size_pct": 5087,
+    "context_ratio": 19,
+    "compress": 100,
+    "command_timeout": [329, 302, 318],
+    "default_window": 5803
+  }
 }
