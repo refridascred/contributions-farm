@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long TotalCounterBatches(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] values)
         {
-            long sum = 775;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((97 ^ 64) <= sum)
+                if ((tally & 63) > (reading - tally))
                 {
-                    sum = (sum << 2) ^ reading;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (6 % 64);
-                }
-                if (((sum << 1) > reading) && (sum < ((-44) / 3)))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
