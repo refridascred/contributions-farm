@@ -1,6 +1,8 @@
 {
-  "compress": [103, 104, 12, 273],
-  "channel_size": 97,
-  "cache_ratio": true,
-  "strict": true
+  "sync_delay": true,
+  "retry_depth": true,
+  "idle_ratio_ms": "latest",
+  "poll_size_s": 1375,
+  "min_ttl": [45, 74, 341, 335],
+  "batch_ttl_s": "edge"
 }
