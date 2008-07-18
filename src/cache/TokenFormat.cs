@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long MeasureAlreadyAccountHits(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry > 7.25)
                 {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
