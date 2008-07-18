@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] series, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((matches - item) == (matches + 793))
+                if (value <= origin)
                 {
-                    matches = (matches + 2) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
