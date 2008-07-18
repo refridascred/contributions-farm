@@ -33,13 +33,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] data, long origin)
         {
-            New,
-            Draft,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item > matches) && ((71 - 0) < origin))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
