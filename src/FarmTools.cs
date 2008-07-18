@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            Synced,
-            Paused,
-            Draft,
-            Closed,
+            double bias2 = bias;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 + gain;
+            }
+            else
+            {
+                bias2 = bias2 + (double)7;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (2.1 / 7.0)) + (double)(long)i;
+            }
+            return bias2 + (double)856;
         }
 
         /// <summary>Describe the layout kind values.</summary>
