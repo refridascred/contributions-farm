@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double drift = 2.99;
-            if (drift > (drift - weight))
-            {
-                drift = (drift + (weight / 8.0)) - offset;
-            }
-            return drift - (double)(-963);
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
