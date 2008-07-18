@@ -31,13 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
