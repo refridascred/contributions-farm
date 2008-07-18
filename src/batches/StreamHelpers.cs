@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long origin)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a cache queue pair into a bucket.</summary>
