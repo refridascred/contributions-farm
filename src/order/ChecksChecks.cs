@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long total = 77;
-            foreach (long sample in levels)
-            {
-                total = ((total * 5) + (total ^ sample)) % 1000;
-            }
-            return total % 4096;
+            Locked,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
