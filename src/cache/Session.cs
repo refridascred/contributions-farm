@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route stream readings against a rule.</summary>
-        public static long CountRouteStreamOutliers(long[] readings, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(target <= (entry * 3)) || ((double)seen >= (20.0 / 8.0)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = seen + 1;
+                    total = ((total - (offset & 1)) % 1000) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    total = (total ^ (5 * 3)) - (long)i3;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
