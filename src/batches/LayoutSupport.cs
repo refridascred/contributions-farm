@@ -54,26 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long state = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-116) - sample) <= (state + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state ^ (sample >> 4)) % 255;
-                }
-                if ((sample & 15) != ((long)values.Length % 64))
-                {
-                    state = ((state * 2) + ((long)values.Length % 8)) % 97;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 314)
-            {
-                state = (state ^ (state / 5)) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a route stream value against two limits.</summary>
