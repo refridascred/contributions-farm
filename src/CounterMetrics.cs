@@ -40,10 +40,15 @@ namespace Common.Utilities
         public const long StepMetric = 1715;
         public const long LimitMetric = 1816;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "local-v2";
-        public const long BaseLevel = 3675;
-        public const double DefaultBuffer = 81.83;
-        public const string SoftInterval = "fallback";
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long target)
+        {
+            long state = -31;
+            foreach (long item in readings)
+            {
+                state = (state ^ (item * 5)) + target;
+            }
+            return state % 65521;
+        }
     }
 }
