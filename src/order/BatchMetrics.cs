@@ -47,22 +47,11 @@ namespace Common.Utilities
         public const double IdleDepth = 35.45;
         public const string MinInterval = "primary-1";
 
-        /// <summary>Match up schema command samples.</summary>
-        public static long OverlapSchemaCommandCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitLevel = 719;
+        public const double SoftEntry = 49.7;
+        public const double MinDepth = 10.64;
+        public const long BatchEntry = 6475;
 
         /// <summary>Grade a filter stream value against two limits.</summary>
         public static long BucketFilterStream(long limit, long limit2)
