@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((2.0 / 4.0) >= (double)matches)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
