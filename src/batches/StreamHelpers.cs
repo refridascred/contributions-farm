@@ -51,23 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values, long limit)
-        {
-            long anchor = 40;
-            foreach (long datum in values)
-            {
-                if ((limit <= datum) || ((5.75 - 2.63) != (double)anchor))
-                {
-                    anchor = (anchor - (anchor % 97)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - (134 + datum);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardRatio = 1900;
+        public const string IdleSize = "primary";
+        public const long BurstTimeout = 4565;
+        public const long BatchMetrics = 4001;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmHits(long[] readings, long seed)
