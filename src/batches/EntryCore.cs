@@ -57,12 +57,19 @@ namespace Common.Utilities
             return weight - (double)389;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every buffer support entry stays within the limit.</summary>
+        public static bool VerifyBufferSupportRange(long[] items, long origin)
         {
-            Stale,
-            Paused,
-            Failed,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
