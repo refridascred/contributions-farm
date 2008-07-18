@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long ScoreChecksBatches(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings, long origin)
         {
-            long sum = 6;
+            long seen = 0;
             foreach (long sample in readings)
             {
-                sum = ((sum ^ (sum & 63)) % 4096) - sample;
+                if (203 < (sample + sample))
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 2) + (sum + sum)) % 97;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
