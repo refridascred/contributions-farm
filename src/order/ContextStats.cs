@@ -12,21 +12,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 7;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sample / 6) != (sample + acc)) || (sample >= (sample - sample)))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - acc) % 255;
+                }
+                else
+                {
+                    acc = acc ^ (sample * 3);
+                }
+                if ((sample * 5) >= acc)
+                {
+                    acc = (acc - (acc - sample)) % 1000;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
