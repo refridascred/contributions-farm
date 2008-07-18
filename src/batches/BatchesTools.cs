@@ -14,21 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 157;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target << 2) == (state - value))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (state & 3)) % 4096;
                 }
             }
-            return tally;
+            if (state < 633)
+            {
+                state = state + (state + (-10));
+            }
+            return state % 97;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
