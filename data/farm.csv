@@ -1,9 +1,8 @@
-id,label,state
-1,886,252
-2,39.14,73.25
-3,629,18.37
-4,824,182
-5,49.48,stable
-6,277,cached
-7,88.31,588
-8,legacy,31.47
+id,region,state,token
+1,65.36,local,6.56
+2,fallback,679,93
+3,81.54,fallback,open
+4,533,658,601
+5,legacy,268,green
+6,996,24.72,fallback
+7,22.43,458,21
