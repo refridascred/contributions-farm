@@ -24,21 +24,14 @@ namespace Common.Utilities
         public const double SoftEntry = 95.0;
         public const string IdleEntry = "fallback-1";
 
-        /// <summary>Compare every pair of report tools readings.</summary>
-        public static long CompareReportToolsCount(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
