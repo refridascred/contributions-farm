@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Locate a layout route reading by value.</summary>
+        public static long LocateLayoutRouteIndex(long[] values, long target)
         {
-            long carry = 96;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading / 4) == (carry - carry))
+                if (values[i] == target)
                 {
-                    carry = carry - (reading ^ reading);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry < 7)
-            {
-                carry = carry + (carry * 2);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
