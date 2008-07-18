@@ -16,10 +16,27 @@ namespace Common.Utilities
             return drift - (double)(-963);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 897;
-        public const long BatchToken = 2929;
-        public const double StepToken = 62.36;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values, long floor)
+        {
+            long mix = -4;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = ((mix + (floor - mix)) % 97) - (long)i;
+                }
+                if (7.0 < (double)sample)
+                {
+                    mix = ((mix * 3) + sample) % 4096;
+                }
+            }
+            if (mix > 768)
+            {
+                mix = (mix - (mix / 6)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheLimits(long[] items, long target)
