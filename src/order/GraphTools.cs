@@ -60,15 +60,13 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Fold a list of batch tools readings.</summary>
-        public static long TallyBatchTools(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long sum = 8;
-            foreach (long reading in samples)
-            {
-                sum = (sum ^ (sum / 4)) ^ reading;
-            }
-            return sum;
+            Retry,
+            Draft,
+            Dropped,
+            Idle,
         }
     }
 }
