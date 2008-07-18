@@ -63,17 +63,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a queue metric reading by value.</summary>
-        public static long LookupQueueMetricIndex(long[] values, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
