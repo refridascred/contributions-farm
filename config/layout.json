@@ -1,13 +1,8 @@
 {
-  "soft_depth": "green",
-  "sync_interval_s": "edge",
-  "dry_run": 1024,
-  "hard_depth": "cached",
-  "flush_limit": {
-    "metrics_ttl": [163, 367],
-    "retry_timeout_count": 85,
-    "poll_ttl_pct": 4053,
-    "dry_run": 3276,
-    "burst_size": "open"
-  }
+  "batch_ttl_count": 15,
+  "retry_ratio": 5.51,
+  "poll_size": [265, 331, 181],
+  "max_ratio": 80.32,
+  "poll_ttl_ms": 8.63,
+  "persist": "stable"
 }
