@@ -54,20 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] samples, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            long state = 90;
-            foreach (long sample in samples)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = (((state * 2) + (limit * 4)) % 255) + sample;
-                state = ((state * 2) + (157 << 3)) % 4096;
+                mark = (mark + mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (state < 71)
-            {
-                state = ((state << 2) ^ (state % 60)) % 4096;
-            }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Classify a route buffer pair into a bucket.</summary>
