@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits queue counter forward.</summary>
-        public static long IterateCommitsQueue(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc * 3) + offset;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc + (offset % 12)) - (long)i2;
-                }
-                acc = (acc - (acc % 24)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitBudget = 5244;
+        public const long StepRatio = 879;
+        public const double BatchWidth = 87.59;
+        public const string CacheCommand = "fallback-v2";
+        public const long LimitWidth = 5919;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long limit, long seed)
