@@ -61,11 +61,26 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long seed)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            long sum = 365;
+            foreach (long item in values)
+            {
+                if (!((sum + (-1)) >= (item % 100)))
+                {
+                    sum = (sum ^ (sum - sum)) % 1000;
+                }
+                if (!((129 - sum) >= sum))
+                {
+                    sum = ((sum << 2) ^ (2 ^ sum)) % 97;
+                }
+                if ((seed & 127) < (item << 3))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
