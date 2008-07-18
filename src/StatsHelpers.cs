@@ -60,18 +60,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(seed >= (seen - seed)))
+                if (values[i] > limit)
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
