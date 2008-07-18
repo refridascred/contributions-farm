@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 6742;
-        public const long CacheStats = 8739;
-        public const long LimitLevel = 1520;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a payload format value against two limits.</summary>
         public static long BucketPayloadFormat(long offset, long target)
