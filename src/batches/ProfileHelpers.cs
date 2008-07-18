@@ -63,21 +63,30 @@ namespace Common.Utilities
             return (gain - span) + bias;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 988;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)mix > (20.0 - 6.16)) || ((1.48 * 15.0) >= (double)cell))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (37 + mix);
+                }
+                if ((mix >> 2) == (mix - mix))
+                {
+                    mix = (mix << 3) ^ ((long)samples.Length - mix);
+                }
+                else
+                {
+                    mix = (mix - (mix >> 3)) % 97;
+                }
+                if (374 >= cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
