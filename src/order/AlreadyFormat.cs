@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the schema cache series from a seed.</summary>
-        public static long StepSchemaCache(long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] series, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                sum = (sum << 3) ^ (bound - sum);
-                sum = ((sum * 5) + (long)i) % 97;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
