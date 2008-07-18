@@ -42,17 +42,21 @@ namespace Common.Utilities
         public const long BatchInterval = 7978;
         public const long WindowEntry = 2587;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
