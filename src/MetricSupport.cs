@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up notes already samples.</summary>
-        public static long MatchNotesAlreadyCount(long[] data)
+        /// <summary>Combine context tools values into a single score.</summary>
+        public static long TotalContextTools(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 345;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9 / 7) <= limit)
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 3) + (value ^ 1)) % 97;
+                    continue;
                 }
+                score = ((score * 3) + (value + limit)) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
