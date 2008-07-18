@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Fold a list of context layout readings.</summary>
+        public static long ScoreContextLayout(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = 55;
+            foreach (long datum in samples)
             {
-                if (!((entry - entry) > entry))
-                {
-                    tally = tally + 3;
-                }
+                mark = ((mark ^ (mark - datum)) % 4096) - bound;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
