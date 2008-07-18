@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] series, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if ((seed + limit) <= (limit - seed))
             {
-                if (item > step)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (3.82 - 1.0))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up format layout samples.</summary>
