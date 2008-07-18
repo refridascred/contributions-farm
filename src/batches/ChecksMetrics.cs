@@ -62,31 +62,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a commits metrics value against two limits.</summary>
-        public static long ClassifyCommitsMetrics(long target, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
         {
-            if ((seed + 463) > (target ^ target))
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                score = (score - (bound % 100)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed > (8.0 - 9.8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + 303) == (target & 255)) || ((target + target) < (seed - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
