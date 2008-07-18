@@ -23,15 +23,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] data, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((8 % 5) >= (limit * 3))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
