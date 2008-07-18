@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const string WindowProfile = "fallback-edge";
         public const string HardScore = "local-edge";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] samples, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((35 + target) < value)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 2;
+                    mix = (mix - (109 + (long)i2)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a already counter forward.</summary>
