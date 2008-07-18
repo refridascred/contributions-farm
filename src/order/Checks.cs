@@ -32,30 +32,22 @@ namespace Common.Utilities
         public const long WindowScore = 7896;
         public const long WindowRoute = 544;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values)
         {
-            long acc = 873;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)item == (2.34 - 9.88))
+                if (((reading << 2) > tally) && (5.34 < (double)(long)values.Length))
                 {
-                    acc = acc ^ (acc & 15);
+                    tally = tally + 2;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ (item >> 2);
-                }
-                if (((acc << 2) == (item << 1)) && ((item - item) > ((long)data.Length >> 4)))
-                {
-                    acc = (acc << 2) ^ item;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (item + item);
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many editor format samples are out of range.</summary>
