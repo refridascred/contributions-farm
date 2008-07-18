@@ -1,5 +1,10 @@
 # entry settings
-retry_threshold: standard
-base_threshold: 4540
-cache_ratio_s: fallback
-default_retries_ms: 9682
+buffer_limit:
+  session_size: open
+  hard_threshold: 3308
+  max_delay_count:
+    - edge
+    - staging
+  idle_ratio_count: 1024
+readonly: 2297
+enabled: true
