@@ -13,15 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean + (mean * 14.0)) + (double)(long)i) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - 5.24;
+            return count;
         }
 
         /// <summary>Combine batches entry values into a single score.</summary>
