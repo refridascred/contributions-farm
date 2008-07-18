@@ -43,18 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] samples, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((tally % 3) >= bound) || ((bound - bound) == (426 >> 2)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
