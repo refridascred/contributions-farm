@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long IdleCache = 6668;
         public const long BatchCache = 9874;
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long AuditBatchesProfileMatches(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((7.9 / 5.0) > (double)cell)
+                if (cell > (origin + (long)data.Length))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
