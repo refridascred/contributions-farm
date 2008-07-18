@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 741;
-        public const long BurstSpan = 3796;
-        public const string StepSize = "stable-edge";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count <= (2.0 + 1.0))
+                {
+                    count = ((count + 2) + sample) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
