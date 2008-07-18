@@ -27,15 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double drift = 6.9 * 10.0;
-            if (drift >= (double)70)
-            {
-                drift = ((drift - 13.0) - scale) + floor;
-            }
-            return drift - (double)504;
+            Done,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a already reading by value.</summary>
