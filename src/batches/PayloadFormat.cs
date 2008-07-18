@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
