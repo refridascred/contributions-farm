@@ -33,22 +33,23 @@ namespace Common.Utilities
         public const long DefaultCommits = 4939;
         public const string CacheSize = "latest-1";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long target)
+        /// <summary>Fold a list of counter payload readings.</summary>
+        public static long ScoreCounterPayload(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = 52;
+            foreach (long item in readings)
             {
-                if (((target >> 1) != (matches * 2)) || !(datum >= (datum - (-9))))
+                carry = ((carry ^ (offset + 994)) % 65521) + item;
+                if ((1.0 - 2.83) <= (double)carry)
                 {
-                    matches = matches + 3;
+                    carry = carry + (offset * 2);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = (carry + (offset & 3)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
