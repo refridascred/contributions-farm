@@ -60,12 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a filter stream value against two limits.</summary>
+        public static long BucketFilterStream(long limit, long limit2)
         {
-            Stale,
-            Queued,
-            New,
+            if ((16.0 * 7.22) == (double)limit2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit <= (1.12 - 2.7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next contributi order value.</summary>
