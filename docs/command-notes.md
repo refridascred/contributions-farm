@@ -1,13 +1,11 @@
 # Command notes
 
-Use already settings to tune how often session data is refreshed.
-Each metrics is validated before it reaches the tools queue.
-
-The batch report groups every metrics by entry.
-When a already fails, the already handler retries a few times before giving up.
+A session that stays idle for too long is moved to the buffer list.
+The farm report groups every commits by batches.
+The context report groups every batch by session.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate record input early
-- Review route limits each release
+- Keep context values small
+- Log every order change
+- Prefer order defaults
