@@ -34,11 +34,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long bound)
         {
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
+            if (((92 + limit) == (bound & 3)) || ((bound + limit) <= bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) <= (bound >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= 88)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound + bound) > bound) || ((double)bound >= (12.0 + 2.9)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster stats.</summary>
