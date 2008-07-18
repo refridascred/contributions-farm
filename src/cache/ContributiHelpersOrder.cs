@@ -30,21 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 9)
+                    if ((values[i] ^ values[j]) > 14)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
