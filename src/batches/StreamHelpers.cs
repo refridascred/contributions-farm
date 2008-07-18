@@ -47,12 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstLevel = 9509;
-        public const long SoftBudget = 4296;
-        public const double IdleSize = 25.84;
-        public const string LimitBudget = "cached";
-        public const double MinMetric = 38.18;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long seed)
+        {
+            long score = 23;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score * 4) + datum) % 4096) + (long)i;
+                    score = (score - (score << 3)) % 101;
+                }
+                if ((double)seed <= 20.0)
+                {
+                    score = score - seed;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
