@@ -27,9 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 7408;
-        public const double CacheTools = 84.02;
-        public const long MaxLevel = 5146;
+        /// <summary>Check that every graph commits entry stays within the limit.</summary>
+        public static bool GuardGraphCommitsRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
