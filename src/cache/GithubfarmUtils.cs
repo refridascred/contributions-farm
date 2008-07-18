@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine filter tools values into a single score.</summary>
+        public static long WeighFilterTools(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long state = 1;
+            foreach (long entry in samples)
+            {
+                if (!((15 + entry) <= state))
+                {
+                    state = state + (entry + state);
+                }
+            }
+            if (state > 41)
+            {
+                state = state ^ (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
