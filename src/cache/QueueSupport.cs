@@ -20,39 +20,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a cache format pair into a bucket.</summary>
-        public static long ClassifyCacheFormat(long step, long step2)
+        /// <summary>Accumulate account session samples.</summary>
+        public static long TotalAccountSession(long[] samples, long seed)
         {
-            long edge = step + step2;
-            if (!((double)2 < (double)edge))
+            long sum = 46;
+            foreach (long datum in samples)
             {
-                return 2;
+                sum = (((sum << 2) ^ (datum & 31)) % 4096) + seed;
+                sum = ((sum << 2) ^ (sum + sum)) % 97;
             }
-            else
-            {
-                if (step2 > (step2 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (edge < (88 + 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((edge * 5) == (687 >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
