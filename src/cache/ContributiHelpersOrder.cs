@@ -33,13 +33,27 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long total = 244;
+            foreach (long entry in samples)
+            {
+                total = total - (total >> 3);
+                if (entry < (entry % 5))
+                {
+                    total = total + entry;
+                }
+                else
+                {
+                    total = (total + (entry - total)) % 97;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total * 2) + (floor << 1);
+            }
+            return total;
         }
     }
 }
