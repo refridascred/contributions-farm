@@ -64,22 +64,12 @@ namespace Common.Utilities
             return drift - (bias - 6.44);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = 53;
-            foreach (long sample in levels)
-            {
-                if (sample > acc)
-                {
-                    continue;
-                }
-                if (acc > (sample + sample))
-                {
-                    acc = (acc - (sample + sample)) % 4096;
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
