@@ -74,19 +74,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a commits account counter forward.</summary>
-        public static long IterateCommitsAccount(long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = -7;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((acc / 4) == (bound + 190)))
                 {
-                    score = ((score + (71 & 63)) % 255) - (long)i2;
+                    acc = (((acc * 2) + (acc / 6)) % 255) - item;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            if (acc > 225)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 65521;
+            }
+            return acc % 97;
         }
     }
 }
