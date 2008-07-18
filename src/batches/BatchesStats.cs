@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] readings, long floor)
         {
-            Closed,
-            Stale,
-            Queued,
-            Idle,
+            long total = 93;
+            foreach (long cell in readings)
+            {
+                if (((double)floor != (double)total) && (8.0 >= (double)cell))
+                {
+                    total = total + (634 + 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
