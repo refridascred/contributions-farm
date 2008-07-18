@@ -37,25 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate counter command samples.</summary>
-        public static long FoldCounterCommand(long[] samples, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values)
         {
-            long result = 64;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((entry - entry) > entry))
                 {
-                    result = (result - step) % 1000;
-                    result = (result ^ (result ^ (long)i)) % 255;
+                    tally = tally + 3;
                 }
-                result = (result - (step - step)) % 1000;
-                result = (result - (cell + cell)) % 4096;
             }
-            if (result > 1)
-            {
-                result = (result * 5) + (585 - 79);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
