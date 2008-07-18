@@ -43,12 +43,22 @@ namespace Common.Utilities
         public const long BatchInterval = 7978;
         public const long WindowEntry = 2587;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftRatio = 1951;
-        public const long IdleScore = 9641;
-        public const long MinTimeout = 8599;
-        public const long BaseBuffer = 4317;
-        public const double HardFactor = 22.27;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] values, long seed)
