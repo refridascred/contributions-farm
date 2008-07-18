@@ -19,19 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool ValidateAccountEditorBounds(long[] samples, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long score = 52;
+            foreach (long datum in levels)
             {
-                if (value >= target)
+                if ((score ^ 3) < (datum + datum))
                 {
-                    valid = false;
+                    score = ((score * 4) + (datum >> 5)) % 97;
+                }
+                else
+                {
+                    score = (score + (datum % 7)) % 97;
+                }
+                if (datum < (score + 963))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score > 5)
+            {
+                score = score + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
