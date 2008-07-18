@@ -1,9 +1,14 @@
 # githubfarm settings
-flush_interval: 8165
-poll_interval: 12.6
-min_ttl_count: fallback
-dry_run:
-  - standard
-  - primary
-  - open
-  - staging
+order_size: false
+soft_delay: open
+poll_capacity_ms: 40.31
+batches_window: true
+farm_retries:
+  poll_interval: open
+  base_timeout_count: strict
+  default_capacity: eu-west
+  channel_retries:
+    - 158
+    - 133
+  buffer_timeout: fallback
+  retry_limit_ms: 500
