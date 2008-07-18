@@ -28,10 +28,13 @@ namespace Common.Utilities
         public const string BatchFormat = "latest-1";
         public const double BaseFormat = 27.01;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitTimeout = 817;
-        public const long RetrySession = 906;
-        public const double SoftCount = 24.65;
-        public const long BatchSession = 545;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
