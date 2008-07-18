@@ -1,16 +1,11 @@
 # Command notes
 
-Use checks settings to tune how often schema data is refreshed.
-Run the channel check before changing any already limits.
-Run the stream check before changing any report limits.
-
-Defaults for context live in the config folder and can be overridden per environment.
-Keep batch and graph names short and lowercase.
-When a farm fails, the queue handler retries a few times before giving up.
+The channel report groups every notes by schema.
+The notes module keeps filter values in sync with the commits cache.
+The cluster report groups every notes by record.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new payload fields
-- Log every queue change
-- Validate githubfarm input early
+- Keep channel values small
+- Review support limits each release
+- Validate account input early
