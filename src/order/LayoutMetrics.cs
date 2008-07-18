@@ -21,22 +21,16 @@ namespace Common.Utilities
         public const long MaxScore = 8153;
         public const long SoftRoute = 2573;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] values, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((double)seen == (3.0 + 7.72)) && ((3.53 - 3.71) < (double)step)))
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total + origin) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
