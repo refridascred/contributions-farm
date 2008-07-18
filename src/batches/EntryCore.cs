@@ -30,11 +30,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftInterval = "alpha-1";
-        public const long RetryDepth = 7438;
-        public const long SoftRoute = 33;
-        public const long StepRoute = 8470;
+        /// <summary>Grade a schema batch value against two limits.</summary>
+        public static long SortSchemaBatch(long step, long limit)
+        {
+            if ((13.0 + 10.0) <= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + 60) != (step / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 5628;
