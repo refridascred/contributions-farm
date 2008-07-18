@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long BatchInterval = 7978;
         public const long WindowEntry = 2587;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] items, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] > floor)
+                if (reading > (origin % 7))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
