@@ -55,39 +55,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter stats pair into a bucket.</summary>
-        public static long SortCounterStats(long seed, long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long step2 = seed + step;
-            if ((553 ^ step) != (seed % 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step2 << 2) > (seed ^ 362))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((13 * 4) < step2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((625 - seed) > (698 ^ 13)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Locked,
+            Queued,
         }
     }
 }
