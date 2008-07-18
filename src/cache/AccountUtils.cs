@@ -42,13 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Pending,
-            Idle,
-            Paused,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "latest-edge";
+        public const long MinCache = 17;
+        public const long BurstCache = 7561;
+        public const long LimitScore = 6088;
+        public const long SoftWidth = 3974;
     }
 }
