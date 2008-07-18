@@ -1,8 +1,15 @@
 {
-  "min_interval": false,
-  "min_limit_pct": 45,
-  "min_interval_pct": 57.42,
-  "enabled": "fallback",
-  "layout_capacity": 92.07,
-  "cache_depth": 74.29
+  "verbose": "cached",
+  "soft_threshold": {
+    "readonly": 4766,
+    "cache_depth": "primary",
+    "cache_ratio_pct": 4192,
+    "audit": 5701,
+    "cache_window_count": 16.01
+  },
+  "record_delay": {
+    "idle_depth_count": 63,
+    "max_timeout": true,
+    "token_interval": 50
+  }
 }
