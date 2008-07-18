@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7857;
+        public const double CachePayload = 91.93;
+        public const long BatchPayload = 2527;
+        public const string DefaultWidth = "stable-edge";
 
         /// <summary>Fold a list of context layout readings.</summary>
         public static long ScoreContextLayout(long[] samples, long bound)
