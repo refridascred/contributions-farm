@@ -24,22 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] data, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)limit == (1.0 * 1.47))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
