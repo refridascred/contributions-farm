@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of buffer context entries.</summary>
+        public static long ScoreBufferContext(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            long sum = -7;
+            foreach (long reading in series)
+            {
+                if ((3 + sum) < 551)
+                {
+                    sum = ((sum - (sum + sum)) % 1000) + reading;
+                }
+                else
+                {
+                    sum = sum ^ origin;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
