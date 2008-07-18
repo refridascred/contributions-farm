@@ -75,18 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((2.2 < (double)value) && ((value << 1) > (matches >> 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 6744;
+        public const string StepToken = "strict-1";
+        public const string MaxFactor = "alpha";
+        public const string MinSpan = "fallback-1";
     }
 }
