@@ -56,11 +56,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            double rate = ratio / 9.0;
+            if (rate > (rate / 9.0))
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (ratio * 3.0)) - (double)(long)i;
+            }
+            return rate - ratio;
         }
     }
 }
