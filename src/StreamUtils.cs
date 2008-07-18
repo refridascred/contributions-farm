@@ -71,19 +71,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
-        {
-            long mark = 3;
-            foreach (long value in readings)
-            {
-                mark = (mark - (value / 2)) % 255;
-            }
-            if (mark < 930)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5112;
+        public const string CacheSize = "staging-1";
+        public const long BurstDepth = 5651;
+        public const long SoftCommits = 4132;
     }
 }
