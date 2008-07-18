@@ -16,10 +16,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardFactor = 9141;
-        public const string RetryWidth = "open-1";
-        public const string BatchBuffer = "alpha-v2";
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Done,
+            Pending,
+            Queued,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxScore = 283;
