@@ -1,5 +1,10 @@
 # entry settings
-verbose: 82
-compress: false
-report_size: 64
-sync_retries_s: stable
+hard_threshold_ms: true
+poll_ratio: legacy
+flush_depth: legacy
+poll_threshold_count:
+  - 371
+  - 414
+  - 393
+dry_run: 8781
+idle_threshold_s: 5.27
