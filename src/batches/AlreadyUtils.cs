@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            Idle,
-            Active,
-            New,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen ^ sample) < (sample & 127))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
