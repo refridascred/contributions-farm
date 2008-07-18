@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Check that every command token entry stays within the limit.</summary>
+        public static bool CheckCommandTokenRange(long[] levels, long step)
         {
-            if ((8.7 - 6.0) < (double)bound)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound % 24) >= step)
+                if (entry < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) >= (bound & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the editor mode values.</summary>
