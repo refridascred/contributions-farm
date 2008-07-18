@@ -35,18 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double scale2 = (offset + 3.63) * 0.86;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item - 91) < target)
-                {
-                    hits = hits + 2;
-                }
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return hits;
+            return scale2 + offset;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
