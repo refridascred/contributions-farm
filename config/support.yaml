@@ -1,25 +1,14 @@
 # support settings
-sync_capacity_s: 0.18
-verbose: true
-persist: 7208
-soft_depth_pct:
-  - 499
-  - 96
-  - 186
-cache_timeout_ms: cached
-githubfarm_ttl:
-  soft_threshold_s: standard
-  base_ttl_s: staging
-  warm_limit: green
-  flush_capacity_pct: 7.8
-  compress:
-    - blue
-    - strict
-    - local
-  audit:
-    layout_timeout: 25.2
-    soft_capacity_pct:
-      - fallback
-      - standard
-      - local
-    min_retries: 28.16
+poll_retries:
+  githubfarm_delay: false
+  compress: false
+  retry_delay_count:
+    - 54
+    - 208
+    - 242
+record_threshold: 9099
+min_window_s:
+  - open
+  - local
+contributi_interval: 61.62
+hard_window_s: 500
