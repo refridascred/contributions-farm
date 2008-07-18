@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 23;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (offset > (long)series.Length)
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (sample + sample)) % 97;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the channel state values.</summary>
