@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)offset != (8.9 / 2.0))
-                {
-                    mix = mix ^ ((-60) * 2);
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next notes cache value from a seed.</summary>
