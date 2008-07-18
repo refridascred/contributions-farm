@@ -54,18 +54,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] items, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((offset << 1) <= (88 >> 3))
+                if (cell <= offset)
                 {
-                    count = (count + 3) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
