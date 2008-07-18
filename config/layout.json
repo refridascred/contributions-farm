@@ -1,7 +1,19 @@
 {
-  "soft_timeout_count": 80.03,
-  "report_window": ["standard", "fallback"],
-  "enabled": 88,
-  "strict": 1024,
-  "report_retries": 96.13
+  "poll_retries_count": false,
+  "idle_capacity": {
+    "retry_retries_pct": {
+      "sync_depth_s": 31,
+      "cache_size": "stable",
+      "idle_interval": 12,
+      "sync_timeout_count": ["staging", "open", "standard", "latest"],
+      "poll_capacity_count": "legacy",
+      "context_capacity": "standard"
+    },
+    "verbose": 6.7,
+    "hard_window": 65,
+    "already_interval": ["open", "fallback", "edge", "eu-west"]
+  },
+  "soft_threshold": [64, 182, 292, 113],
+  "min_size_count": true,
+  "batch_limit_ms": 8764
 }
