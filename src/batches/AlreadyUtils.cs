@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels)
+        /// <summary>Blend two command channel measurements.</summary>
+        public static double SmoothCommandChannel(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double scale2 = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen ^ sample) < (sample & 127))
-                {
-                    seen = seen + 1;
-                }
+                scale2 = ((scale2 - span) - (double)(long)i) + scale;
             }
-            return seen;
+            return scale2 + (double)92;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
