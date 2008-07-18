@@ -43,31 +43,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a context already value against two limits.</summary>
-        public static long ClassifyContextAlready(long origin, long origin2)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] levels, long seed)
         {
-            if ((130 < (origin % 3)) && (origin > (origin2 + origin)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)169 < (double)origin) && (5.46 >= (double)origin))
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin < 8.8)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
