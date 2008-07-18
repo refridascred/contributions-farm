@@ -27,14 +27,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Combine counter schema values into a single score.</summary>
+        public static long WeighCounterSchema(long[] samples, long offset)
         {
-            Retry,
-            Locked,
-            Synced,
-            Ready,
-            Failed,
+            long total = 24;
+            foreach (long item in samples)
+            {
+                total = (((total * 4) + (offset - offset)) % 97) + item;
+            }
+            return total;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
