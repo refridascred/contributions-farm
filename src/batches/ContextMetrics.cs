@@ -33,15 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits metric value.</summary>
-        public static double SmoothCommitsMetric(double ratio, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                drift = (drift + drift) + (double)(long)i;
+                if (((double)sample == (7.33 + 8.88)) && (((matches << 1) == (sample >> 1)) || ((22 & 1) < sample)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift + ratio;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
