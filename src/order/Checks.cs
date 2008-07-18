@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next order format value.</summary>
-        public static double ProjectOrderFormat(double gain, double floor)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long AuditTokenCommitsHits(long[] readings)
         {
-            double scale = (floor - gain) / 2.0;
-            if (scale <= (gain - 2.93))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                scale = scale - gain;
+                if ((double)26 <= (double)cell)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                scale = scale - (scale / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale * 1.6)) + (double)(long)i;
-            }
-            return scale + floor;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
