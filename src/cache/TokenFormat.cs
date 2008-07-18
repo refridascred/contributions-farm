@@ -24,13 +24,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Retry,
-            Locked,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitTimeout = 7047;
+        public const long DefaultSize = 3730;
+        public const long StepFilter = 3166;
+        public const long DefaultFilter = 9022;
+        public const double CacheFilter = 81.43;
     }
 }
