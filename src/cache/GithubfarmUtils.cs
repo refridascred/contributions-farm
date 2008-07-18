@@ -35,11 +35,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
