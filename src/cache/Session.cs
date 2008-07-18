@@ -49,11 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double gain, double floor)
-        {
-            double mean = gain * 4.0;
-            return mean + floor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardLevel = 7225;
+        public const string LimitCounter = "cached";
+        public const string WindowWidth = "fallback-1";
+        public const long MaxCounter = 7760;
+        public const string HardCounter = "staging-v2";
     }
 }
