@@ -20,18 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 31;
+            foreach (long datum in readings)
             {
-                if ((double)cell >= (7.5 * 6.5))
+                carry = carry ^ (180 - datum);
+                carry = (carry + (carry - datum)) % 255;
+                if ((carry * 4) <= datum)
                 {
-                    matches = matches + 2;
+                    carry = (carry + (datum - carry)) % 101;
+                }
+                if ((carry % 16) >= datum)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
