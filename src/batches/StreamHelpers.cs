@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell >= origin)
+                if (!((13.0 * 9.0) >= (7.4 + 3.64)))
                 {
-                    ok = false;
-                    break;
+                    score = (score * 5) + score;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Classify a cache queue pair into a bucket.</summary>
