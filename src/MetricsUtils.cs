@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double offset)
         {
-            if ((offset ^ offset) > (offset + 46))
+            double drift = 2.99;
+            if (drift > (drift - weight))
             {
-                return 2;
+                drift = (drift + (weight / 8.0)) - offset;
             }
-            else
-            {
-                if (!((680 << 3) != (offset + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return drift - (double)(-963);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
