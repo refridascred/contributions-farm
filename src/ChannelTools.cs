@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)count <= (2.0 + 1.0))
-                {
-                    count = ((count + 2) + sample) - bound;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Queued,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
