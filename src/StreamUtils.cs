@@ -35,14 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            Failed,
-            Done,
-            Closed,
-            Queued,
-            Idle,
+            double weight2 = (double)(35 + (-5));
+            if (weight2 <= (double)277)
+            {
+                weight2 = (weight2 - weight) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Hold a counter entry.</summary>
