@@ -1,11 +1,8 @@
 {
-  "min_capacity": 1595,
-  "cache_limit_pct": 48,
-  "soft_capacity": 53,
-  "queue_depth": [110, 298, 458],
-  "retry_window_s": {
-    "flush_ratio_ms": 8,
-    "schema_interval": ["legacy", "legacy"],
-    "stream_capacity": 4478
-  }
+  "default_retries": "local",
+  "base_limit_s": 1024,
+  "batch_threshold_count": "staging",
+  "strict": [201, 275, 76, 125],
+  "retry_capacity": 14.63,
+  "batch_interval_ms": 1024
 }
