@@ -1,6 +1,5 @@
 {
-  "max_timeout": "local",
-  "poll_size": "staging",
-  "layout_depth": 12.28,
-  "sync_ttl": "green"
+  "default_threshold_count": "staging",
+  "metric_ttl": ["latest", "open"],
+  "burst_ratio_ms": true
 }
