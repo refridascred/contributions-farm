@@ -1,10 +1,16 @@
 # githubfarm settings
-base_depth_pct: 46.9
-max_depth_s: cached
-max_size:
-  verbose: open
-  idle_limit_count: 500
-  idle_retries_ms: standard
-  batch_window_ms: local
-retry_depth: 9327
-min_size_ms: open
+compress:
+  flush_interval: false
+  max_ttl_ms: true
+  default_ratio_count: true
+payload_depth:
+  default_capacity_ms:
+    base_retries_count: 30
+    flush_ttl_s: 5158
+    farm_capacity: 66.57
+    sync_ratio_pct: green
+    enabled: true
+  notes_ttl: 3469
+  entry_delay: false
+  batch_threshold_ms: 1024
+burst_limit: eu-west
