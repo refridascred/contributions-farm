@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (36 > (target & 127))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 7579;
+        public const string BatchCommits = "latest";
+        public const double BurstFactor = 39.04;
+        public const string IdleWidth = "cached-1";
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] samples, long bound)
