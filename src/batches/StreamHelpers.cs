@@ -12,39 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long origin)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double floor)
         {
-            long next = bound ^ origin;
-            if ((next * 2) >= (next + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound / 4) <= 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (origin % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + origin) > 807)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double weight = (double)(62 ^ 3);
+            return weight - (rate - floor);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
