@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 7639;
-        public const long DefaultQueue = 7797;
-        public const double RetryQueue = 88.63;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark << 3) ^ 9;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next checks batches value from a seed.</summary>
         public static long IterateChecksBatches(long origin)
