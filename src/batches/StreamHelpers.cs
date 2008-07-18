@@ -46,21 +46,12 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                long prev = (long)i;
-                if ((double)(-5) <= (double)result)
-                {
-                    result = (result ^ (prev - result)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 7632;
+        public const long MaxChannel = 6237;
+        public const long StepTimeout = 3939;
+        public const string HardWidth = "fallback-v2";
+        public const long StepChannel = 757;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileMatches(long[] items, long target)
