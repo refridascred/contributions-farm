@@ -1,6 +1,14 @@
 {
-  "layout_delay": false,
-  "notes_size": "stable",
-  "soft_size": true,
-  "min_interval_count": true
+  "layout_depth": 5961,
+  "stats_threshold": "legacy",
+  "soft_ttl": 74,
+  "counter_size": {
+    "compress": 25.94,
+    "cluster_interval": 8525,
+    "session_retries": ["stable", "legacy"],
+    "enabled": "staging",
+    "poll_ratio": "edge",
+    "retry_timeout_s": [211, 116, 166, 449]
+  },
+  "verbose": 61.47
 }
