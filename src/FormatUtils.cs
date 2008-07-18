@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 9204;
-        public const long BaseFilter = 4708;
-        public const string BurstWidth = "stable-1";
-        public const double WindowFilter = 90.6;
-        public const double MaxFilter = 93.83;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
