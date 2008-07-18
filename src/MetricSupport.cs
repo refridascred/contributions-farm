@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Look up the position of a githubfarm stream sample.</summary>
