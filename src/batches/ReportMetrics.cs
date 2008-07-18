@@ -31,26 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long total = -82;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading - limit) <= (19 + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ (reading % 10)) % 1000;
-                }
-                if ((reading + reading) >= (limit * 4))
-                {
-                    total = ((total * 4) + (limit << 3)) % 1000;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = (total << 2) ^ (total & 63);
-            }
-            return total;
+            return tally;
         }
     }
 }
