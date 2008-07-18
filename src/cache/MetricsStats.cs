@@ -61,15 +61,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            long mix = -633;
-            foreach (long reading in readings)
+            long sum = 822;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 5) + (24 % 10)) - reading;
+                if (!((double)6 >= (double)sum))
+                {
+                    sum = (((sum * 2) + sum) % 1000) ^ datum;
+                }
             }
-            return mix % 1000;
+            return sum;
         }
     }
 }
