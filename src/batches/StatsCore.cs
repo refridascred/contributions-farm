@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)series.Length * 3) != (item & 1))
+                if (levels[i] < origin)
                 {
-                    matches = (matches + 1) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
