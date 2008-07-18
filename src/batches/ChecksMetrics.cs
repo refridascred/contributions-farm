@@ -35,18 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long RankFilterQueue(long offset, long offset2)
         {
-            long acc = -293;
-            foreach (long reading in items)
+            if (offset2 >= (offset2 * 4))
             {
-                if ((13.0 / 7.0) <= (double)acc)
+                return 1;
+            }
+            else
+            {
+                if (((double)offset < (double)offset2) && ((offset - 5) == (offset2 + offset)))
                 {
-                    acc = ((acc - (acc * 4)) % 101) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 - offset) == (699 & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset2 == (10.0 - 6.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Blend two notes measurements.</summary>
