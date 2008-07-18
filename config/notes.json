@@ -1,5 +1,5 @@
 {
-  "max_depth_ms": "open",
-  "checks_retries": 100,
-  "soft_threshold": "edge"
+  "cache_window": [206, 158, 125],
+  "context_threshold": 2011,
+  "queue_delay": 8276
 }
