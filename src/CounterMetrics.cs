@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] data, long seed)
         {
-            long prev = offset ^ origin;
-            if (((origin >> 2) <= 105) && ((double)prev < (7.02 + 16.0)))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (offset * 2))
+                if (reading > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two already measurements.</summary>
