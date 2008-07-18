@@ -53,27 +53,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long anchor = -79;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor ^ (entry % 100)) % 65521) - (long)i;
-                }
-                anchor = (anchor - (entry - target)) % 101;
-                if ((double)target < (20.0 + 9.98))
-                {
-                    anchor = anchor ^ (9 - entry);
-                }
-                else
-                {
-                    anchor = (anchor - (target << 1)) % 97;
-                }
-            }
-            return anchor % 97;
+            Active,
+            Done,
+            Synced,
+            Failed,
+            Draft,
         }
     }
 }
