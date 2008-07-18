@@ -47,14 +47,21 @@ namespace Common.Utilities
         public const long SoftWidth = 9959;
         public const long IdleTimeout = 2788;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count contributi already pairs that satisfy a relation.</summary>
+        public static long CompareContributiAlreadyCount(long[] readings)
         {
-            New,
-            Draft,
-            Queued,
-            Active,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
