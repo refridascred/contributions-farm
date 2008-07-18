@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheScore = 37.31;
-        public const long BaseTimeout = 2294;
-        public const double WindowDepth = 36.38;
-        public const long MaxReport = 2536;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long limit)
+        {
+            long carry = 217;
+            foreach (long datum in readings)
+            {
+                if ((8.0 + 2.52) < (double)datum)
+                {
+                    carry = (carry - (carry + datum)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ datum;
+                }
+            }
+            if (carry > 58)
+            {
+                carry = (carry - (limit / 9)) % 1000;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] levels, long seed)
