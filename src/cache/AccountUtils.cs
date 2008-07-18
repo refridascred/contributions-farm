@@ -29,31 +29,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a tools batches value against two limits.</summary>
-        public static long GradeToolsBatches(long limit, long target)
+        /// <summary>Locate a contributi editor reading by value.</summary>
+        public static long LocateContributiEditorIndex(long[] readings, long seed)
         {
-            if ((limit > (0 + 8)) || ((target + target) > limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit >= (348 / 5))
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 3) != (target % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
