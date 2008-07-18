@@ -59,26 +59,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = 2;
-            foreach (long value in values)
-            {
-                if (!((acc ^ acc) != (acc - 5)))
-                {
-                    acc = ((acc * 4) + acc) % 97;
-                }
-                else
-                {
-                    acc = acc + (value << 3);
-                }
-            }
-            if (acc > 86)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
