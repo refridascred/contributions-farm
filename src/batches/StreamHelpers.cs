@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long origin2)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            if (((4.95 * 2.0) > (double)origin) && (origin2 > origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 ^ origin) <= (23 % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - origin2) < origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin2 <= (double)252)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
