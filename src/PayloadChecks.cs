@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "alpha-v2";
-        public const long StepDepth = 8077;
-        public const long BurstSize = 3854;
-        public const long WindowPayload = 138;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 3459;
+        public const long RetrySize = 5369;
+        public const double WindowGraph = 48.59;
+        public const double SoftBudget = 4.37;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
