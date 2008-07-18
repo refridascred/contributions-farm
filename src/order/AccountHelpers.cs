@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long TallyBatchesMetricHits(long[] readings, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((1.07 - 7.88) > 7.3) || (datum > (datum + 26)))
+                if (!((32 - (-30)) >= (value & 7)))
                 {
-                    count = (count + 2) - floor;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
