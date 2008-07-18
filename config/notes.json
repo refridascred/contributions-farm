@@ -1,5 +1,7 @@
 {
-  "min_size_ms": 42,
-  "burst_limit_count": 29.71,
-  "cache_ttl_ms": 391
+  "min_size_count": 6383,
+  "default_window": "eu-west",
+  "flush_ratio_count": true,
+  "batch_limit": 40.31,
+  "readonly": "strict"
 }
