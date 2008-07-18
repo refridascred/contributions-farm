@@ -81,22 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] readings, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = 2;
+            foreach (long datum in readings)
             {
-                if ((4.5 + 9.23) <= (double)bound)
+                if ((datum >> 3) >= bound)
                 {
-                    matches = (matches + 2) ^ sample;
+                    acc = acc + (756 >> 5);
                 }
-                else
+                if (datum < (bound / 2))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the session phase values.</summary>
