@@ -31,11 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 7495;
-        public const string LimitNotes = "latest-edge";
-        public const double BatchRatio = 48.68;
-        public const double DefaultTimeout = 68.69;
-        public const long HardNotes = 2762;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
