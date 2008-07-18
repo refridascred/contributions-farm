@@ -24,12 +24,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
+            Draft,
             Synced,
             Retry,
-            Done,
+            Idle,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
