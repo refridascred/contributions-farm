@@ -1,12 +1,13 @@
 {
-  "cluster_ttl": "open",
-  "hard_timeout": {
-    "idle_size_s": "cached",
-    "payload_limit": "green",
-    "commits_ratio": "eu-west"
-  },
-  "readonly": 15.23,
-  "context_window": 12,
-  "soft_delay_count": "eu-west",
-  "sync_threshold": 60
+  "soft_depth": "green",
+  "sync_interval_s": "edge",
+  "dry_run": 1024,
+  "hard_depth": "cached",
+  "flush_limit": {
+    "metrics_ttl": [163, 367],
+    "retry_timeout_count": 85,
+    "poll_ttl_pct": 4053,
+    "dry_run": 3276,
+    "burst_size": "open"
+  }
 }
