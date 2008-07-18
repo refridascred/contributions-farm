@@ -78,19 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long carry = -6;
-            foreach (long sample in readings)
-            {
-                carry = (((carry - ((-248) << 1)) % 1000) + sample) + offset;
-            }
-            if (carry < 6)
-            {
-                carry = (carry - (812 % 24)) % 97;
-            }
-            return carry % 1000;
+            New,
+            Failed,
+            Queued,
         }
     }
 }
