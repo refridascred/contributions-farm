@@ -48,18 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count <= (count << 1))
-                {
-                    count = ((count + 3) + cell) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 468;
+        public const double CacheEditor = 43.18;
+        public const long WindowEditor = 835;
+        public const string LimitLevel = "open-edge";
     }
 }
