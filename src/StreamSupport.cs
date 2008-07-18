@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] levels)
+        /// <summary>Measure how many stats route samples are out of range.</summary>
+        public static long AuditStatsRouteOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((double)4 != (double)seen) && (((double)datum < 5.5) && ((11.0 * 6.3) > (double)datum)))
+                if ((6.0 * 1.1) < (double)cell)
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of batch support readings.</summary>
