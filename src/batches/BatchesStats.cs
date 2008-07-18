@@ -33,18 +33,15 @@ namespace Common.Utilities
         public const double MaxWidth = 6.63;
         public const long RetryInterval = 3845;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] samples, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                if (!((2.6 * 17.0) <= (double)hits) && (((hits ^ offset) < (offset - cell)) || ((offset - cell) >= (997 / 3))))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry + (6 / 9)) % 97) ^ entry;
             }
-            return hits;
+            return carry;
         }
     }
 }
