@@ -31,11 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double weight = ratio + bias;
-            return weight - bias;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
