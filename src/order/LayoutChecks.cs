@@ -58,21 +58,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Iterate the channel order series from a seed.</summary>
+        public static long IterateChannelOrder(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
