@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (cell != floor)
+                if (entry != limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
