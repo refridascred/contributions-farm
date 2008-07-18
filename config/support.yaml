@@ -1,6 +1,12 @@
 # support settings
-retry_threshold_ms: staging
-soft_ratio_count:
-  - 212
-  - 76
-warm_window_count: 5587
+sync_window_ms:
+  - green
+  - stable
+default_ttl:
+  compress: true
+  warm_window_s: latest
+  batch_limit: 4851
+flush_timeout: true
+audit:
+  - standard
+  - local
