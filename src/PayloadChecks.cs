@@ -19,11 +19,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] items, long seed)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + 0) == (cell + 1))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
