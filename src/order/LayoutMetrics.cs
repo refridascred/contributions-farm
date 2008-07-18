@@ -29,18 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine counter order values into a single score.</summary>
-        public static long TallyCounterOrder(long[] values)
+        /// <summary>Audit batch already readings against a rule.</summary>
+        public static long TallyBatchAlreadyHits(long[] series)
         {
-            long acc = 3;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!(acc < (79 & 63)))
+                if ((seen / 9) == (value / 8))
                 {
-                    acc = ((acc ^ (981 - acc)) % 255) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
