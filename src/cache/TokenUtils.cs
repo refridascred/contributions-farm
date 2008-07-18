@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double weight2 = weight - (double)6;
-            if (weight2 > weight2)
-            {
-                weight2 = weight2 + (weight + weight);
-            }
-            else
-            {
-                weight2 = weight2 - (double)13;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + offset;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
