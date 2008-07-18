@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((cell << 3) > (cell & 127)) || !((double)cell > (15.0 / 5.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultFactor = 2075;
+        public const long RetryChannel = 4902;
+        public const long LimitChannel = 4966;
+        public const double WindowFactor = 48.36;
+        public const long BatchChannel = 929;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleDepth = 63.62;
