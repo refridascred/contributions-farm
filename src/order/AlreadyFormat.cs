@@ -64,18 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry != (7.47 * 7.44))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSpan = 5103;
+        public const long IdleCount = 6949;
+        public const long MaxCommits = 8428;
+        public const long WindowTimeout = 7210;
+        public const long BurstCommits = 7456;
     }
 }
