@@ -44,19 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream stats entry stays within the limit.</summary>
-        public static bool CheckStreamStatsRange(long[] series, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (datum >= floor)
+                if (value < (value * 5))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
