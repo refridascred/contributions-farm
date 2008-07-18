@@ -36,23 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] items, long offset)
         {
-            long acc = 15;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = (acc ^ (9 + entry)) % 65521;
-                if ((entry << 3) < (entry + acc))
+                if ((offset - 137) >= (seen - seen))
                 {
-                    break;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (acc > 56)
-            {
-                acc = (acc ^ (acc & 7)) % 97;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
