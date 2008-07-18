@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total + (long)i) % 4096;
-                long step2 = step;
-                if ((step2 ^ step2) > (step2 + step2))
-                {
-                    total = total + (step + (long)i);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
