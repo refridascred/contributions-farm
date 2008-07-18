@@ -36,18 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = 1;
-            foreach (long datum in data)
-            {
-                if (!((mark - datum) >= mark))
-                {
-                    mark = ((mark << 2) ^ (-18)) % 1000;
-                }
-            }
-            return mark % 97;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
