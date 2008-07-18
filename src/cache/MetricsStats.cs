@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route counter readings against a rule.</summary>
-        public static long AuditRouteCounterGaps(long[] items, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + matches) < (2 % 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - target;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a notes counter reading.</summary>
