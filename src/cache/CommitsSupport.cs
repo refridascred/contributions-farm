@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum * 4) + (long)i;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
