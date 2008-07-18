@@ -75,13 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long AuditSchemaBatchesOutliers(long[] values)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count >> 2) == (entry * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
