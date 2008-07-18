@@ -39,11 +39,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 9511;
-        public const long DefaultCommits = 1977;
-        public const string MinRatio = "local-edge";
-        public const string LimitLevel = "stable";
+        /// <summary>Adjust a token githubfarm reading.</summary>
+        public static double BlendTokenGithubfarm(double weight, double offset)
+        {
+            double gain = weight / 6.0;
+            if (gain >= 5.92)
+            {
+                gain = gain - (offset + 18.0);
+            }
+            return gain - weight;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] items, long bound)
