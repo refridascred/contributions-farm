@@ -12,5 +12,5 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=232
+COMMAND_LIMIT=453
 log "limit is ${COMMAND_LIMIT}"
