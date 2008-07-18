@@ -1,12 +1,7 @@
 {
-  "retry_depth_pct": {
-    "strict": true,
-    "flush_window_count": true,
-    "cache_interval_s": "cached",
-    "sync_interval_s": 8016,
-    "flush_limit": [338, 223],
-    "default_interval": 60
-  },
-  "record_interval": 30,
-  "audit": 9187
+  "idle_threshold": "primary",
+  "batch_ttl": "primary",
+  "persist": "local",
+  "warm_delay_count": "legacy",
+  "metric_retries": 66.42
 }
