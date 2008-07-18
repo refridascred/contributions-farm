@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((matches >> 1) >= (36 % 8))
+                {
+                    matches = ((matches + 3) ^ entry) + bound;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
