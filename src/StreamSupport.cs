@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Paused,
-            Done,
             New,
-            Retry,
-            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
