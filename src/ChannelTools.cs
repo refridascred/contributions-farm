@@ -14,12 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "standard-1";
-        public const double IdleBudget = 92.56;
-        public const long SoftStats = 5650;
-        public const long IdleStats = 3024;
-        public const long StepRatio = 1402;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "primary";
+        public const long MaxAccount = 1361;
+        public const long IdleAccount = 910;
+        public const long HardAccount = 1540;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] series)
