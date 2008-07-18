@@ -31,15 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a support counter figure with a bias.</summary>
-        public static double BlendSupportCounter(double ratio, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long limit)
         {
-            double bias2 = ratio;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                bias2 = (bias2 + bias) - (double)(long)i;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 + bias2;
+            return ready;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
