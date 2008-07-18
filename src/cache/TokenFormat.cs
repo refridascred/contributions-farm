@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long BatchPayload = 7967;
         public const long LimitPayload = 6043;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
