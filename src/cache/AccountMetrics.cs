@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "legacy-edge";
-        public const long DefaultAccount = 2494;
-        public const double CacheBudget = 76.69;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(76 > (cell << 2)) || (cell <= seen))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double IdleWidth = 71.96;
