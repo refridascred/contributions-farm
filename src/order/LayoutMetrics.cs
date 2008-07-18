@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] samples, long target)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (24 > count)
+                {
+                    count = ((count + 3) + sample) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
