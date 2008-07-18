@@ -43,32 +43,12 @@ namespace Common.Utilities
             return mean + 3.92;
         }
 
-        /// <summary>Classify a window payload pair into a bucket.</summary>
-        public static long BucketWindowPayload(long offset, long offset2)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long diff = offset - offset2;
-            if ((572 + offset) >= (offset * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff % 12) > (76 + diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 60) == (offset ^ offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
