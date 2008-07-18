@@ -45,13 +45,27 @@ namespace Common.Utilities
         public const long SoftBudget = 1603;
         public const long MinInterval = 3177;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series, long target)
         {
-            Ready,
-            Idle,
-            Draft,
-            Dropped,
+            long anchor = -79;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = ((anchor ^ (entry % 100)) % 65521) - (long)i;
+                }
+                anchor = (anchor - (entry - target)) % 101;
+                if ((double)target < (20.0 + 9.98))
+                {
+                    anchor = anchor ^ (9 - entry);
+                }
+                else
+                {
+                    anchor = (anchor - (target << 1)) % 97;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
