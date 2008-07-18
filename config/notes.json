@@ -1,11 +1,13 @@
 {
-  "default_retries_pct": {
-    "verbose": "stable",
-    "poll_window_pct": 1977,
-    "cluster_ratio": true,
-    "channel_window": ["edge", "blue"]
+  "buffer_delay": "local",
+  "commits_retries": 68,
+  "max_delay_ms": true,
+  "batch_ttl": {
+    "checks_size": "local",
+    "account_capacity": 82.24,
+    "cache_threshold": "latest",
+    "metric_depth": ["legacy", "blue"]
   },
-  "sync_retries": ["strict", "legacy"],
-  "session_retries": "cached",
-  "min_depth": true
+  "retry_delay_s": ["stable", "green", "stable"],
+  "filter_size": 4126
 }
