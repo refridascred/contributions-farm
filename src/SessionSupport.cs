@@ -14,25 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long sum = 7;
+            foreach (long entry in values)
             {
-                mix = mix ^ (mix % 97);
-                mix = (mix - (floor * 5)) % 97;
-                if (((long)i + mix) <= (mix & 15))
+                if (((double)sum <= (13.0 - 0.61)) || (sum > (entry & 255)))
                 {
-                    mix = ((mix * 4) + (mix >> 5)) % 101;
+                    sum = sum + sum;
                 }
-                else
-                {
-                    mix = mix ^ (mix ^ 72);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Match up contributi samples.</summary>
