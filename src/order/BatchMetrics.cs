@@ -58,15 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record graph entries.</summary>
-        public static long WeighRecordGraph(long[] samples)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = 584;
-            foreach (long entry in samples)
-            {
-                carry = (carry + (carry / 3)) + entry;
-            }
-            return carry;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
