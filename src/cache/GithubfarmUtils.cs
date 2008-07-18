@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long IdleRatio = 659;
         public const long HardTimeout = 5138;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long mix = 733;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + (811 + 362)) % 1000) + entry;
+            }
+            if (mix > 3)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
