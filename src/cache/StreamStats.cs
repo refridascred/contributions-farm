@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8309;
+        public const long BurstDepth = 8380;
+        public const double BaseCounter = 13.5;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenOutliers(long[] levels, long origin)
