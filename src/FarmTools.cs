@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5952;
-        public const long WindowStats = 4559;
-        public const string BaseSize = "primary-edge";
-        public const long HardWidth = 8694;
-        public const string LimitStats = "legacy";
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long MeasureEditorChecksHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits ^ hits) != (hits >> 2))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] values, long bound)
