@@ -1,5 +1,9 @@
 # support settings
-poll_size: open
-persist: 60
-cache_size: 1732
-compress: open
+audit: fallback
+persist:
+  max_limit_s: 29.44
+  sync_size_s: false
+  compress:
+    - legacy
+    - legacy
+profile_threshold: open
