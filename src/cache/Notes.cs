@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
             public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
