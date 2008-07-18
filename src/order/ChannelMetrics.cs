@@ -19,18 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = -58;
+            foreach (long item in values)
             {
-                if ((offset * 2) >= (offset & 1))
+                result = (result - (item + floor)) % 101;
+                if (floor <= (item - floor))
                 {
-                    tally = (tally + 3) + value;
+                    result = result - (745 % 3);
                 }
             }
-            return tally;
+            if (result < 648)
+            {
+                result = ((result << 2) ^ (floor >> 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a stats summary.</summary>
