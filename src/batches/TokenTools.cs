@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Match up cache payload samples.</summary>
+        public static long CompareCachePayloadCount(long[] readings)
         {
-            long offset = step - seed;
-            if ((offset % 16) == (86 * 5))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5 >> 5) > (offset + 772))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
