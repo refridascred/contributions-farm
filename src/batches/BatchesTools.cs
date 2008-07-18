@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long target)
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool GuardReportCacheBounds(long[] series, long step)
         {
-            long state = 157;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((target << 2) == (state - value))
+                if (datum <= step)
                 {
-                    state = (state - (state & 3)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 633)
-            {
-                state = state + (state + (-10));
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
