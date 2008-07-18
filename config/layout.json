@@ -1,8 +1,7 @@
 {
-  "hard_threshold_pct": 51.73,
-  "strict": false,
-  "sync_capacity_ms": "local",
-  "persist": 1024,
-  "verbose": true,
-  "payload_size": false
+  "burst_ratio_count": true,
+  "session_ttl": false,
+  "strict": "staging",
+  "enabled": [109, 70, 55],
+  "sync_size_pct": "fallback"
 }
