@@ -19,14 +19,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] data, long step)
         {
-            Queued,
-            Draft,
-            Paused,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((10.0 / 8.0) == (double)hits) || (((hits ^ step) > item) || ((step ^ step) < (item * 4))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
