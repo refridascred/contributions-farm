@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long step)
+        /// <summary>Digest a series of order batches entries.</summary>
+        public static long TallyOrderBatches(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                if ((entry >> 4) < (34 / 2))
                 {
-                    return (long)i;
+                    result = ((result ^ result) % 1000) - origin;
+                }
+                if ((result + entry) < (83 * 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Match up context samples.</summary>
