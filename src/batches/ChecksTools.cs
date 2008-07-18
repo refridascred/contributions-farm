@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            if ((double)481 < (double)floor)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (limit / 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 255) != (limit >> 2))
+                    if ((items[i] ^ items[j]) != 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + 55) >= (773 % 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
