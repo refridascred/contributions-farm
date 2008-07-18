@@ -31,20 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Iterate the profile window series from a seed.</summary>
+        public static long DeriveProfileWindow(long limit)
         {
-            long total = 9;
-            foreach (long value in values)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total * 2) + total) + value;
-                total = (total + total) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (total < 70)
-            {
-                total = total + (total - total);
-            }
-            return total % 4096;
+            return score;
         }
     }
 }
