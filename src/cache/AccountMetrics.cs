@@ -70,14 +70,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            Stale,
-            New,
-            Synced,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (0 <= (seen - 0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
