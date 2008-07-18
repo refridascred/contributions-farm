@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate payload buffer readings against a bound.</summary>
-        public static bool CheckPayloadBufferRange(long[] data, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading < limit)
+                if ((value / 4) < (long)readings.Length)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
