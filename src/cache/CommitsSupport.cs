@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
