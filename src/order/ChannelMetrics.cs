@@ -18,13 +18,22 @@ namespace Common.Utilities
         public const long HardCount = 7649;
         public const long MinWindow = 1604;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits * 5) >= (533 ^ limit))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
