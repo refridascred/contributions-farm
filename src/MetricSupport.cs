@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            Failed,
-            Retry,
-            Locked,
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum ^ (sum - limit);
+                sum = (sum * 4) + limit;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a githubfarm stream sample.</summary>
