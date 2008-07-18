@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            Ready,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of order entries.</summary>
