@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
