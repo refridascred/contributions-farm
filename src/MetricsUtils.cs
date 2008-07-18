@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const long BatchToken = 2929;
         public const double StepToken = 62.36;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] items, long target)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long datum in items)
             {
-                if ((4 & 127) < (count >> 4))
+                if (datum <= target)
                 {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
