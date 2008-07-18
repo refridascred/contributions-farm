@@ -58,26 +58,23 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double ratio, double bias)
         {
-            long state = -5;
-            foreach (long datum in levels)
+            double ratio2 = ratio;
+            if (ratio2 <= (bias - 9.6))
             {
-                if (!((327 + state) > 0))
-                {
-                    state = state - ((long)levels.Length - state);
-                }
-                else
-                {
-                    state = (state << 2) ^ (datum + datum);
-                }
+                ratio2 = ratio2 - (ratio / 8.0);
             }
-            if (state < (-822))
+            else
             {
-                state = state + (state + state);
+                ratio2 = ratio2 + (double)32;
             }
-            return state % 4096;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 - (double)8;
         }
     }
 }
