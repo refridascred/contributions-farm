@@ -43,32 +43,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a metric profile pair into a bucket.</summary>
-        public static long GradeMetricProfile(long floor, long bound)
-        {
-            if ((bound + bound) <= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((453 < (bound % 8)) && ((floor % 12) < (94 - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 16) <= (3 + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 7667;
+        public const long RetrySize = 4198;
+        public const long BaseBudget = 2521;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftRatio = 6237;
