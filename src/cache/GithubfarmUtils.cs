@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Done,
-            Closed,
-            Queued,
-            Active,
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
