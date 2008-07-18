@@ -41,13 +41,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            New,
-            Synced,
-            Ready,
+            Pending,
+            Closed,
             Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
