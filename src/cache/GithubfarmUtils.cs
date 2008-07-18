@@ -36,19 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
