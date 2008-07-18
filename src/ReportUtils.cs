@@ -39,18 +39,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long TallyCommandCounter(long[] series, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = 958;
-            foreach (long sample in series)
-            {
-                if (((double)result > 5.71) || ((double)sample > 2.71))
-                {
-                    result = (((result * 3) + sample) % 1000) - origin;
-                }
-            }
-            return result;
+            Synced,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
