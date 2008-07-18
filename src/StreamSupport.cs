@@ -27,22 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item + seen) < (884 ^ item))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
