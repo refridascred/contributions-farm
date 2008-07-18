@@ -1,6 +1,8 @@
 {
-  "readonly": "local",
-  "poll_depth_s": "standard",
-  "soft_threshold_pct": 78,
-  "window_size": false
+  "schema_limit": ["blue", "primary", "legacy"],
+  "command_interval": 9848,
+  "flush_capacity_ms": true,
+  "soft_delay_pct": 1024,
+  "context_capacity": "blue",
+  "burst_size_s": "cached"
 }
