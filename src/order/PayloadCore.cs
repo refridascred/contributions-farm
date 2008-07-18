@@ -15,16 +15,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long origin, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long lane = origin - floor;
+            if (floor < (origin ^ origin))
             {
-                total = (total << 2) ^ origin;
-                total = ((total * 3) + (long)i) % 65521;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((double)origin > (10.0 + 18.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((15.0 - 3.91) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)lane <= (2.0 - 0.99))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
