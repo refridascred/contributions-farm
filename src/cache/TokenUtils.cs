@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long seed)
+        /// <summary>Blend two report account measurements.</summary>
+        public static double BlendReportAccount(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double drift = (ratio + floor) / 3.0;
+            if (drift < (ratio + floor))
             {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (floor - floor);
             }
-            return found;
+            else
+            {
+                drift = drift + (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + 1.27;
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
