@@ -53,20 +53,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a order cluster counter forward.</summary>
-        public static long RollOrderCluster(long offset)
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double AdjustStatsLayout(double bias, double bias2)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((11.0 / 4.0) >= (double)offset)
-                {
-                    acc = (acc ^ (offset - acc)) % 101;
-                    acc = acc ^ (offset - (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            double weight = 4.5;
+            return (weight + (bias * 14.0)) + bias2;
         }
     }
 }
