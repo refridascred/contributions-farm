@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] readings, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
