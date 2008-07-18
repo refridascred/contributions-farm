@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
             public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
