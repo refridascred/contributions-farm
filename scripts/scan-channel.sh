@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in blue primary; do
+for item in open stable; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=372
+log "limit is ${CHANNEL_LIMIT}"
