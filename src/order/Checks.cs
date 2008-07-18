@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a report metric figure with a bias.</summary>
-        public static double BlendReportMetric(double bias, double bias2)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            double rate = bias2;
-            return (rate + (double)996) + bias;
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry * 2) + (carry - (long)i);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
