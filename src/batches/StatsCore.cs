@@ -48,17 +48,27 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long origin)
+        /// <summary>Accumulate profile editor samples.</summary>
+        public static long WeighProfileEditor(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 335;
+            foreach (long reading in samples)
             {
-                if (levels[i] < origin)
+                mix = (mix + (mix % 12)) ^ reading;
+                if ((limit < (mix ^ limit)) && (2 <= ((-769) ^ limit)))
                 {
-                    return (long)i;
+                    mix = (mix + (mix / 2)) % 255;
+                }
+                else
+                {
+                    mix = (mix - (mix + limit)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = mix ^ limit;
+            }
+            return mix;
         }
 
         /// <summary>Roll a contributi buffer counter forward.</summary>
