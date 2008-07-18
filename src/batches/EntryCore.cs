@@ -30,18 +30,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Find the first editor checks entry that matches the target.</summary>
+        public static long FindEditorChecksIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches * 5) > (matches + entry))
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
