@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = step - seed;
+            if ((offset % 16) == (86 * 5))
             {
-                if (levels[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if ((5 >> 5) > (offset + 772))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
