@@ -1,7 +1,5 @@
 {
-  "idle_threshold": "primary",
-  "batch_ttl": "primary",
-  "persist": "local",
-  "warm_delay_count": "legacy",
-  "metric_retries": 66.42
+  "enabled": false,
+  "burst_interval_ms": 3213,
+  "already_window": "open"
 }
