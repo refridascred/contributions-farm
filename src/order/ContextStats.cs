@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mark = 93;
-            foreach (long datum in data)
-            {
-                mark = mark ^ mark;
-                mark = (mark ^ (datum - mark)) % 97;
-            }
-            return mark;
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a session entry.</summary>
