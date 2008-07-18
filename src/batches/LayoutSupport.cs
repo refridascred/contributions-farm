@@ -24,18 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] readings)
+        /// <summary>Adjust a commits counter reading.</summary>
+        public static double AdjustCommitsCounter(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double load = weight * 2.09;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= (2 << 1))
-                {
-                    tally = tally + 2;
-                }
+                load = ((load - (double)4) - (double)(long)i) + offset;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
