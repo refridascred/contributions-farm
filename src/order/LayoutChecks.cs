@@ -70,12 +70,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long FoldProfileFormat(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long total = 16;
+            foreach (long entry in series)
+            {
+                long seen = total;
+                if ((64 % 24) <= seen)
+                {
+                    total = ((total * 5) + (entry & 31)) % 1000;
+                    total = (total ^ seen) % 4096;
+                }
+                total = ((total << 3) ^ (entry >> 2)) % 101;
+                if (total < (total & 31))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the editor kind values.</summary>
