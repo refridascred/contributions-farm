@@ -30,19 +30,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double bias, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] levels, long seed)
         {
-            double weight = (bias / 5.0) / 2.0;
-            if (weight > bias)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                weight = weight - bias;
+                if (!((double)entry == (double)7))
+                {
+                    hits = (hits + 3) - seed;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (weight * 2.0);
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
