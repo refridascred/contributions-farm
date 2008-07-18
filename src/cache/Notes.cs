@@ -55,10 +55,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 50.44;
-        public const long WindowStats = 6924;
-        public const long BatchStats = 4312;
-        public const long DefaultCount = 2187;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long origin, long limit)
+        {
+            if (!((origin / 2) != (origin << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)(-378) < (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
