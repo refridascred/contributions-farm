@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] readings, long step)
+        /// <summary>Classify a cache commits pair into a bucket.</summary>
+        public static long SortCacheCommits(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if (bound >= floor)
             {
-                if ((double)tally == (5.0 / 9.0))
+                return 5;
+            }
+            else
+            {
+                if ((1.7 * 0.19) == (double)bound)
                 {
-                    tally = ((tally + 1) - item) - step;
+                    return 7;
+                }
+                else
+                {
+                    if ((583 * 4) == (bound / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
