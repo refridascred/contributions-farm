@@ -43,15 +43,29 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a token githubfarm reading.</summary>
-        public static double BlendTokenGithubfarm(double weight, double offset)
+        /// <summary>Iterate the checks notes series from a seed.</summary>
+        public static long SeriesChecksNotes(long target)
         {
-            double gain = weight / 6.0;
-            if (gain >= 5.92)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                gain = gain - (offset + 18.0);
+                long prev = ((long)i ^ score) % 2;
+                if ((target % 24) > (9 - prev))
+                {
+                    prev = ((prev << 3) ^ target) % 101;
+                }
+                if ((score & 31) == (score - (long)i))
+                {
+                    prev = ((prev * 2) + (long)i) % 1000;
+                    prev = (prev ^ ((long)i & 31)) % 97;
+                }
+                else
+                {
+                    score = (score ^ 44) % 101;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return gain - weight;
+            return score;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
