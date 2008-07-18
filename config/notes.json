@@ -1,15 +1,7 @@
 {
-  "base_delay_pct": {
-    "flush_size_pct": 58.41,
-    "layout_ratio": 98.29,
-    "compress": 250,
-    "cache_ttl": 82.46
-  },
-  "burst_ttl_pct": {
-    "base_retries_s": 30.79,
-    "readonly": 9184,
-    "poll_timeout_count": true
-  },
-  "batch_window_s": ["legacy", "blue", "edge"],
-  "burst_ratio": "latest"
+  "hard_interval_s": 541,
+  "max_interval_pct": "cached",
+  "strict": 41.3,
+  "burst_interval_s": 30,
+  "dry_run": 2640
 }
