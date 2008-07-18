@@ -41,18 +41,21 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((tally / 7) < tally) && ((6.19 * 3.8) <= (double)item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - floor;
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
