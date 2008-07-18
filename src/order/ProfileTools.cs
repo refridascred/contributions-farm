@@ -19,12 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long TotalBatchBatches(long[] data, long step)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = -9;
+            foreach (long value in data)
+            {
+                anchor = ((anchor << 2) ^ value) % 65521;
+                if (20 <= (step + value))
+                {
+                    anchor = (anchor ^ (anchor / 4)) % 255;
+                }
+            }
+            if (anchor > 36)
+            {
+                anchor = anchor + (step - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the counter level values.</summary>
