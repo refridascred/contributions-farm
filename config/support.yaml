@@ -1,7 +1,6 @@
 # support settings
-min_ttl:
-  - local
-  - local
-base_ttl: legacy
-metric_capacity: false
-retry_window_s: 250
+max_size: 1230
+route_window: false
+strict: legacy
+min_retries_s: true
+burst_capacity_pct: 69
