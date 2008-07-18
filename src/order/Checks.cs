@@ -66,18 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] readings, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long score = -81;
+            foreach (long entry in samples)
             {
-                if ((tally >> 2) != ((long)readings.Length * 4))
+                if ((95 >> 2) >= (entry - score))
                 {
-                    tally = ((tally + 1) + datum) - target;
+                    score = (score ^ (offset & 1)) % 255;
                 }
             }
-            return tally;
+            if (score < 670)
+            {
+                score = (score << 2) ^ (41 % 7);
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a filter reading.</summary>
