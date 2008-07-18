@@ -14,18 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] readings, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count + datum) <= (87 * 4))
+                total = (total + (long)i) % 4096;
+                long step2 = step;
+                if ((step2 ^ step2) > (step2 + step2))
                 {
-                    count = (count + 1) + offset;
+                    total = total + (step + (long)i);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a order summary.</summary>
