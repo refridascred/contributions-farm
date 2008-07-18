@@ -38,40 +38,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long floor)
-        {
-            long next = bound ^ floor;
-            if (next >= (bound / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next - bound) < (bound - 258))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound - next) == (next * 4)) && (floor > (next + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor != (7.83 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardTimeout = 8033;
+        public const string CacheNotes = "alpha-edge";
+        public const string LimitCount = "staging";
+        public const long BurstNotes = 5458;
+        public const double BaseNotes = 16.21;
 
         /// <summary>Check that every buffer support entry stays within the limit.</summary>
         public static bool VerifyBufferSupportRange(long[] items, long origin)
