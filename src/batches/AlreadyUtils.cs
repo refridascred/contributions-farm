@@ -42,18 +42,17 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Fold a list of counter buffer readings.</summary>
-        public static long ScoreCounterBuffer(long[] levels)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long origin)
         {
-            long result = 94;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 % 3) != (result + result))
+                if (items[i] == origin)
                 {
-                    result = ((result + 601) % 4096) - cell;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
