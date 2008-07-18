@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine token report values into a single score.</summary>
-        public static long DigestTokenReport(long[] levels, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = -96;
-            foreach (long datum in levels)
-            {
-                if ((94 << 2) > (datum << 2))
-                {
-                    score = (score ^ score) + origin;
-                }
-            }
-            return score % 65521;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
