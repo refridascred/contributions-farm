@@ -35,15 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support profile entries that pass the check.</summary>
-        public static long AuditSupportProfileOutliers(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in readings)
             {
-                if (!!((sample % 3) != (5 << 2)))
+                if ((301 ^ cell) < (852 >> 4))
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
