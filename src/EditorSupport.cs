@@ -44,18 +44,19 @@ namespace Common.Utilities
             return weight + (weight * 2.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] readings, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (((target % 97) >= (target >> 1)) || (((double)9 > (double)count) || ((count & 15) != (target + target))))
+                if (cell >= target)
                 {
-                    count = (count + 2) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine window values into a single score.</summary>
