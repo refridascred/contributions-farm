@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm filter reading.</summary>
-        public static double BlendGithubfarmFilter(double gain, double bias)
+        /// <summary>Audit layout counter readings against a rule.</summary>
+        public static long MeasureLayoutCounterOutliers(long[] readings)
         {
-            double bias2 = bias;
-            if (bias2 >= gain)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                bias2 = bias2 - (double)1;
+                if ((tally * 2) != (long)readings.Length)
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
-            }
-            return bias2 - (gain / 2.0);
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
