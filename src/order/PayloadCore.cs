@@ -15,39 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long origin, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long bound)
         {
-            long lane = origin - floor;
-            if (floor < (origin ^ origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin > (10.0 + 18.0))
+                if (levels[i] >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((15.0 - 3.91) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)lane <= (2.0 - 0.99))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
