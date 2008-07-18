@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Synced,
+            Closed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a layout entry.</summary>
