@@ -21,35 +21,27 @@ namespace Common.Utilities
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long step)
+        public static long RankGithubfarm(long step, long floor)
         {
-            long gap = limit ^ step;
-            if ((gap + 1) > (limit + limit))
+            if ((step + floor) < (floor + floor))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((double)step < (1.71 * 9.0))
+                if (step > (floor / 9))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((6 & 3) >= (gap + gap))
+                    if ((step - step) != (step >> 3))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if ((limit & 63) >= (148 - gap))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 5;
                     }
                 }
             }
