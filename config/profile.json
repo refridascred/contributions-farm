@@ -1,20 +1,6 @@
 {
-  "max_limit": 5512,
-  "max_size_ms": {
-    "hard_depth_s": 100,
-    "cache_timeout_ms": false,
-    "hard_interval_count": "edge"
-  },
-  "audit": 4171,
-  "warm_threshold_count": {
-    "window_limit": {
-      "compress": "open",
-      "readonly": 97,
-      "record_delay": 90.76,
-      "editor_threshold": 26.25
-    },
-    "min_interval": 11,
-    "batch_timeout": ["latest", "primary", "stable"],
-    "default_limit_pct": "primary"
-  }
+  "flush_size_s": [471, 247, 226, 187],
+  "warm_limit_pct": 2576,
+  "record_window": ["latest", "eu-west"],
+  "verbose": 98.34
 }
