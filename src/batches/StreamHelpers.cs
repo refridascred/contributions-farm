@@ -47,23 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long score = 23;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score * 4) + datum) % 4096) + (long)i;
-                    score = (score - (score << 3)) % 101;
-                }
-                if ((double)seed <= 20.0)
-                {
-                    score = score - seed;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
