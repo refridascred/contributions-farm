@@ -31,12 +31,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor + limit)) % 65521;
+                anchor = (anchor - ((long)i - limit)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
