@@ -41,19 +41,13 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] data, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
