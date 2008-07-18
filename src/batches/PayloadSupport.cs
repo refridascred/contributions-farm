@@ -20,21 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Roll a channel metrics counter forward.</summary>
+        public static long SeriesChannelMetrics(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((limit / 8) <= (-9)))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (sum + 7)) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
