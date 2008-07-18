@@ -1,16 +1,10 @@
 {
-  "retry_threshold_pct": 9593,
-  "base_timeout_pct": 100,
-  "idle_window": {
-    "idle_window": "legacy",
-    "cache_limit": ["staging", "edge", "standard"],
-    "default_interval_s": {
-      "max_interval": 947,
-      "min_threshold": "legacy",
-      "stats_limit": 17
-    },
-    "audit": "legacy",
-    "burst_ttl_ms": 77
+  "batches_capacity": {
+    "account_window": "staging",
+    "idle_retries_s": "standard",
+    "cache_depth_count": 8623,
+    "soft_ttl_pct": "edge"
   },
-  "batch_ratio": 1024
+  "schema_depth": "standard",
+  "retry_depth_s": 8.49
 }
