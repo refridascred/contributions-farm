@@ -1,8 +1,5 @@
 {
-  "hard_limit_pct": 69.32,
-  "verbose": false,
-  "cache_capacity": 13.0,
-  "base_ratio_pct": "blue",
-  "stats_window": 87.36,
-  "checks_depth": ["primary", "green", "staging"]
+  "compress": true,
+  "enabled": 4893,
+  "max_timeout_s": 4982
 }
