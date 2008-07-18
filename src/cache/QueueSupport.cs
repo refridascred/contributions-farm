@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two channel graph measurements.</summary>
-        public static double AdjustChannelGraph(double rate, double floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double mean = (double)(9 + 693);
-            if (mean < (rate / 9.0))
-            {
-                mean = mean + mean;
-            }
-            return mean - floor;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
