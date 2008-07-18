@@ -22,22 +22,13 @@ namespace Common.Utilities
         public const string BurstSize = "local";
         public const long SoftBatches = 2199;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long carry = 60;
-            foreach (long cell in values)
-            {
-                if ((cell + carry) == (91 + cell))
-                {
-                    carry = (carry * 5) + (cell >> 5);
-                }
-            }
-            if (carry < 17)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry % 4096;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
