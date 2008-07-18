@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long CountStatsContributiOutliers(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((6.4 * 1.68) > (14.0 - 6.0))
+                if (!(460 >= (item * 2)))
                 {
-                    mark = (mark - origin) % 255;
-                    mark = (mark << 3) ^ (9 << 2);
-                    break;
+                    hits = hits + 3;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
