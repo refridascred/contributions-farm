@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= (6.8 / 5.0))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
