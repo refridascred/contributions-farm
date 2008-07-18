@@ -64,12 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] series, long step)
         {
-            Locked,
-            Retry,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
