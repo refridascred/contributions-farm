@@ -1,13 +1,11 @@
 # Command notes
 
-When a token fails, the filter handler retries a few times before giving up.
-Each metric is validated before it reaches the account queue.
-
-Keep session and channel names short and lowercase.
-Run the batches check before changing any metrics limits.
+The already module keeps metric values in sync with the batch cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep counter and account names short and lowercase.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every schema change
-- Review context limits each release
+- Validate session input early
+- Prefer stream defaults
+- Document new queue fields
