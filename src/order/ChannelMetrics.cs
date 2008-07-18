@@ -22,15 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                acc = acc - (acc + step);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Hold a order entry.</summary>
