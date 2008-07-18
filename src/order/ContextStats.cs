@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (data[i] < bound)
+                if (floor >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stats class values.</summary>
