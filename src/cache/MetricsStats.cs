@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix ^ bound;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheBudget = 2744;
+        public const long BurstAlready = 367;
+        public const double MaxAlready = 70.49;
+        public const double HardAlready = 48.9;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftCount = 9537;
