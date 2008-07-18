@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long CountGraphAccountMatches(long[] values, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (((long)values.Length + 1) > (step << 1))
+                if (datum < seed)
                 {
-                    matches = (matches + 2) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
