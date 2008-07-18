@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Look up the position of a contributi token sample.</summary>
+        public static long SeekContributiTokenIndex(long[] series, long seed)
         {
-            Paused,
-            Failed,
-            Stale,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
