@@ -68,17 +68,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long anchor = 98;
-            foreach (long reading in items)
+            long anchor = 164;
+            foreach (long value in readings)
             {
-                anchor = (anchor ^ anchor) ^ reading;
+                anchor = ((anchor << 3) ^ 5) ^ value;
             }
-            if (anchor > 45)
+            if (anchor < 6)
             {
-                anchor = (anchor * 5) + (anchor + anchor);
+                anchor = ((anchor * 2) + (anchor << 2)) % 255;
             }
             return anchor % 97;
         }
