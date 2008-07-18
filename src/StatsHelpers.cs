@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSize = 4336;
-        public const double BaseTools = 43.22;
-        public const string MaxTools = "standard-1";
-        public const long LimitTools = 2581;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long origin)
