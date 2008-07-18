@@ -67,18 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric filter samples are out of range.</summary>
-        public static long AuditMetricFilterMatches(long[] series, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = -6;
+            foreach (long sample in readings)
             {
-                if (reading <= (reading << 2))
-                {
-                    count = (count + 3) + floor;
-                }
+                carry = (((carry - ((-248) << 1)) % 1000) + sample) + offset;
             }
-            return count;
+            if (carry < 6)
+            {
+                carry = (carry - (812 % 24)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
