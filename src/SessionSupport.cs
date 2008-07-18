@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] series, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits * 4) >= (target - target))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
