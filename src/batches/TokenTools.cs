@@ -27,17 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                if (7 >= count)
                 {
-                    return (long)i;
+                    count = ((count + 3) + datum) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
