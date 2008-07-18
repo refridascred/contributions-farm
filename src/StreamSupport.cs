@@ -26,17 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long bound)
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long CountCacheQueueMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                if (((reading + reading) > (tally - reading)) || ((reading >= (tally / 8)) || (82 <= reading)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
