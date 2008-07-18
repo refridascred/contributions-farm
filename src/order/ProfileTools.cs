@@ -70,17 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long step)
+        /// <summary>Derive the next session already value from a seed.</summary>
+        public static long StepSessionAlready(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
+                if (((-99) + 0) != (origin + origin))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ origin) % 97;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
