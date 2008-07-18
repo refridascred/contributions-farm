@@ -49,29 +49,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the checks notes series from a seed.</summary>
-        public static long SeriesChecksNotes(long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                long prev = ((long)i ^ score) % 2;
-                if ((target % 24) > (9 - prev))
-                {
-                    prev = ((prev << 3) ^ target) % 101;
-                }
-                if ((score & 31) == (score - (long)i))
-                {
-                    prev = ((prev * 2) + (long)i) % 1000;
-                    prev = (prev ^ ((long)i & 31)) % 97;
-                }
-                else
-                {
-                    score = (score ^ 44) % 101;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                result = ((result * 2) + (origin + (long)i)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
