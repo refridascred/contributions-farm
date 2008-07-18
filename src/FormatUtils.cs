@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] items, long floor)
+        /// <summary>Scale a account metric figure with a bias.</summary>
+        public static double AdjustAccountMetric(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double weight = scale - (floor + floor);
+            if (weight < (weight - weight))
             {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (double)818;
             }
-            return valid;
+            else
+            {
+                weight = weight + (weight - weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + 9.0;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
