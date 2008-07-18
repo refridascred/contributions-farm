@@ -1,14 +1,6 @@
 {
-  "layout_depth": 5961,
-  "stats_threshold": "legacy",
-  "soft_ttl": 74,
-  "counter_size": {
-    "compress": 25.94,
-    "cluster_interval": 8525,
-    "session_retries": ["stable", "legacy"],
-    "enabled": "staging",
-    "poll_ratio": "edge",
-    "retry_timeout_s": [211, 116, 166, 449]
-  },
-  "verbose": 61.47
+  "min_capacity": [485, 358, 227, 334],
+  "min_interval_pct": 5935,
+  "cache_retries_count": "stable",
+  "sync_ttl": true
 }
