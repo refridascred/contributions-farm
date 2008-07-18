@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Find the first cache schema entry that matches the target.</summary>
+        public static long FindCacheSchemaIndex(long[] series, long step)
         {
-            double ratio = (double)(994 << 2);
-            if (ratio > (gain + gain))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + bias;
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)361) + (double)(long)i;
-            }
-            return ratio + (bias * 12.0);
+            return -1;
         }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
