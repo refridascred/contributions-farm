@@ -33,19 +33,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long limit)
+        /// <summary>Grade a command cluster value against two limits.</summary>
+        public static long SortCommandCluster(long offset, long bound)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((264 <= (bound - offset)) && (offset <= (bound * 4)))
             {
-                if (entry != limit)
+                return 1;
+            }
+            else
+            {
+                if ((bound < (offset + offset)) || ((offset - bound) <= (bound - offset)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset % 3) <= (651 - 8)) || (offset >= (bound + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - 50) < (offset ^ offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
