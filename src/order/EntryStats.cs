@@ -47,27 +47,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine editor counter values into a single score.</summary>
-        public static long TallyEditorCounter(long[] levels, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long result = 982;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                result = ((result * 3) + (origin - origin)) % 255;
-                if ((8.0 * 5.89) >= (double)reading)
+                if ((item >> 2) == (item >> 1))
                 {
-                    result = ((result * 3) + (reading + reading)) % 4096;
-                }
-                if (!((result >> 4) == (reading + result)))
-                {
-                    result = (result * 2) + 559;
+                    seen = seen + 1;
                 }
             }
-            if (result > 3)
-            {
-                result = ((result * 3) + (result & 3)) % 65521;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the window command entries that pass the check.</summary>
