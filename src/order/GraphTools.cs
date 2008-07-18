@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metric notes value against two limits.</summary>
-        public static long SortMetricNotes(long floor, long floor2)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long diff = floor + floor2;
-            if ((floor - 5) > (floor + diff))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor >> 2) != (floor2 >> 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)77 <= (double)diff)
+                    if ((series[i] + series[j]) == 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff & 63) <= (floor - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
