@@ -27,19 +27,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] data, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= limit)
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
