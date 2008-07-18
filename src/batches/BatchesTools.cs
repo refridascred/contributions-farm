@@ -36,25 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long floor, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long delta = floor + target;
-            if (((double)delta < 4.66) || ((target - target) > (floor - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((delta * 2) == (target / 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
