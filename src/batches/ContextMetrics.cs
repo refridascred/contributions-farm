@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already format values into a single score.</summary>
-        public static long TallyAlreadyFormat(long[] samples, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] series, long origin)
         {
-            long result = 2;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((item * 5) < (result + target)) || (result > item))
+                if ((19 & 3) <= cell)
                 {
-                    result = ((result << 2) ^ 9) % 65521;
-                }
-                if ((75 * 2) < target)
-                {
-                    break;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
