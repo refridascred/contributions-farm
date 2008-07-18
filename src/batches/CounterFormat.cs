@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long floor, long bound)
         {
-            Synced,
-            Paused,
-            New,
-            Locked,
+            if ((double)floor < (double)332)
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.0 <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a channel format reading by value.</summary>
