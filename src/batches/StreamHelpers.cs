@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-v2";
         public const double WindowSchema = 10.5;
 
-        /// <summary>Measure how many graph account samples are out of range.</summary>
-        public static long MeasureGraphAccountGaps(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > (-923))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
