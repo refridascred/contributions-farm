@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = mix ^ bound;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a stats header.</summary>
