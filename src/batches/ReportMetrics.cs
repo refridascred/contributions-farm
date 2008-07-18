@@ -18,31 +18,17 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Classify a counter context pair into a bucket.</summary>
-        public static long ClassifyCounterContext(long offset, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long origin)
         {
-            if (offset > (floor * 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 4) <= (offset - floor))
+                if (data[i] > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - offset) == (floor >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
