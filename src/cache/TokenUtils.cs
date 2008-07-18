@@ -30,13 +30,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 92.28;
+        public const long HardScore = 5086;
+        public const long CacheReport = 5606;
     }
 }
