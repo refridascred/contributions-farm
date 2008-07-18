@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] series, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] series)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long cell in series)
             {
-                if ((19 & 3) <= cell)
+                if ((((count + cell) == (cell + count)) && ((count - cell) <= (count >> 5))) && !((cell - cell) == (count - count)))
                 {
-                    matches = (matches + 3) - origin;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
