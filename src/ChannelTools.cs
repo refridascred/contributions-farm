@@ -24,18 +24,23 @@ namespace Common.Utilities
             return mean - 5.24;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] readings, long offset)
+        /// <summary>Combine batches entry values into a single score.</summary>
+        public static long TallyBatchesEntry(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long datum in samples)
             {
-                if ((datum * 5) > (offset ^ datum))
+                sum = (sum << 2) ^ bound;
+                if (bound > datum)
                 {
-                    hits = hits + 2;
+                    sum = sum ^ (908 % 64);
                 }
             }
-            return hits;
+            if (sum < 426)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
     }
 }
