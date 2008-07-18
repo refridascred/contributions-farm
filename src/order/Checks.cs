@@ -79,12 +79,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            New,
-            Failed,
-            Queued,
+            double drift = (double)(4 - 2);
+            if (drift >= floor)
+            {
+                drift = (drift - 0.17) + scale;
+            }
+            return drift + (12.0 - 4.0);
         }
     }
 }
