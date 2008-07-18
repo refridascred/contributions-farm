@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a cache commits pair into a bucket.</summary>
-        public static long SortCacheCommits(long floor, long bound)
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmEditorBounds(long[] items, long step)
         {
-            if (bound >= floor)
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.7 * 0.19) == (double)bound)
+                if (cell >= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((583 * 4) == (bound / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a metrics summary.</summary>
