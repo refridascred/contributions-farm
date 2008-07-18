@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items, long target)
         {
-            long state = 96;
-            foreach (long value in series)
+            long carry = 0;
+            foreach (long item in items)
             {
-                state = (state * 3) + (value % 12);
+                carry = ((carry - (target - target)) % 65521) + item;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine account values into a single score.</summary>
