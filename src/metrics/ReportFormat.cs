@@ -30,22 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples)
         {
-            long mark = 86;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((sample - mark) != (sample % 5))
+                if (((6.64 / 9.0) > (double)cell) || (((81 + cell) == (cell ^ tally)) && ((635 + tally) <= cell)))
                 {
-                    mark = mark - (mark / 9);
+                    tally = tally + 3;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (mark % 7)) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
