@@ -38,19 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
