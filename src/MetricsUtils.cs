@@ -19,26 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double ratio, double offset)
         {
-            long mix = -4;
-            foreach (long sample in values)
+            double weight = offset - (offset * 18.0);
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = ((mix + (floor - mix)) % 97) - (long)i;
-                }
-                if (7.0 < (double)sample)
-                {
-                    mix = ((mix * 3) + sample) % 4096;
-                }
+                weight = (weight + ratio) + (double)(long)i;
             }
-            if (mix > 768)
-            {
-                mix = (mix - (mix / 6)) % 4096;
-            }
-            return mix;
+            return weight + offset;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
