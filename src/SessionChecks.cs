@@ -27,20 +27,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long DerivePayloadBuffer(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark * 3) + mark) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultCount = 7599;
+        public const string WindowProfile = "fallback-edge";
+        public const string HardScore = "local-edge";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsMatches(long[] samples, long target)
