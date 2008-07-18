@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BurstSize = 3854;
         public const long WindowPayload = 138;
 
-        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
-        public static bool CheckGithubfarmWindowRange(long[] readings, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (sample > floor)
+                if (item <= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a support options.</summary>
