@@ -58,29 +58,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long step, long step2)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long floor2)
         {
-            long lane = step - step2;
-            if (((step - lane) != (38 % 2)) && ((double)lane <= (double)step2))
+            long cur = floor - floor2;
+            if ((cur + floor) == (floor * 5))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (11.0 > (double)step)
+                if ((floor2 >> 5) != (cur - floor))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((lane + step2) >= step2) || (12.0 <= (double)step2))
+                    if (floor < (floor2 + cur))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 3;
+                        if (((floor2 + floor2) <= floor2) && (6.7 > (double)cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
