@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long sum = 520;
-            foreach (long reading in items)
-            {
-                if (((offset - sum) < 323) && (sum > (sum & 127)))
-                {
-                    sum = ((sum << 3) ^ (offset >> 5)) + reading;
-                }
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
