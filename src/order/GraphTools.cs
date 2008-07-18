@@ -17,19 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] values, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= origin)
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
