@@ -28,23 +28,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry >= (matches & 7))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 92.81;
+        public const long DefaultCommits = 4939;
+        public const string CacheSize = "latest-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings, long target)
