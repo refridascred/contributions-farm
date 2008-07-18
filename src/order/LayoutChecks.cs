@@ -49,19 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            long state = 52;
-            foreach (long cell in items)
+            long cur = floor ^ origin;
+            if (origin < (709 - cur))
             {
-                state = ((state - (state * 4)) % 65521) - cell;
+                return 8;
             }
-            if (state < 8)
+            else
             {
-                state = ((state << 2) ^ state) % 255;
+                if ((cur ^ cur) <= (cur + cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
