@@ -37,19 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)(-659) > (double)step)
-                {
-                    sum = (sum + (sum + step)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            Done,
+            Queued,
+            Dropped,
+            Active,
         }
     }
 }
