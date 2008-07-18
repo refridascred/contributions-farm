@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long floor)
         {
-            long mix = -17;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((reading + (-3)) < reading)
+                if ((floor + 4) == (seen * 4))
                 {
-                    continue;
+                    seen = (seen + 1) ^ value;
                 }
-                if ((mix - mix) < (mix >> 3))
+                else
                 {
-                    mix = (mix << 3) ^ (mix ^ reading);
+                    seen = seen - 1;
                 }
-                mix = ((mix * 3) + (mix << 1)) % 4096;
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
