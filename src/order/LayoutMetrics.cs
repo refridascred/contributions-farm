@@ -13,19 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] items, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Combine counter order values into a single score.</summary>
