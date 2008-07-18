@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank account farm input into a small class.</summary>
-        public static long ClassifyAccountFarm(long seed, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long origin)
         {
-            long edge = seed ^ limit;
-            if (10 <= seed)
+            long prev = offset ^ origin;
+            if (((origin >> 2) <= 105) && ((double)prev < (7.02 + 16.0)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((limit & 15) != (edge + limit))
+                if (offset < (offset * 2))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    return 6;
                 }
             }
         }
