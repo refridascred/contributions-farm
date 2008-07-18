@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = 81;
+            foreach (long value in samples)
             {
-                if (floor >= matches)
+                if ((13.0 / 3.0) < (double)value)
                 {
-                    matches = (matches + 2) + sample;
+                    anchor = (anchor + (anchor << 2)) % 101;
                 }
             }
-            return matches;
+            if (anchor > 62)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the entry mode values.</summary>
