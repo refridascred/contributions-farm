@@ -51,10 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 3858;
-        public const double BaseSpan = 54.37;
-        public const long MaxBatches = 7648;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Draft,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] series, long limit)
