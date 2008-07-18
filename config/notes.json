@@ -1,5 +1,10 @@
 {
-  "readonly": 23,
-  "enabled": "strict",
-  "burst_interval_pct": true
+  "base_timeout_s": false,
+  "base_window_s": {
+    "flush_retries_ms": true,
+    "burst_capacity": false,
+    "cache_ratio": 46.06
+  },
+  "burst_capacity_s": 2,
+  "sync_ttl": ["stable", "blue", "local"]
 }
