@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((count ^ 79) != (step / 9))
+                if ((reading ^ tally) >= limit)
                 {
-                    count = (count + 2) ^ cell;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next commits metric value.</summary>
