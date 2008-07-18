@@ -39,22 +39,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double ratio = 4.39 + (gain * 0.1);
+            if (ratio < (ratio + 5.0))
             {
-                if ((8.8 + 10.0) != (double)count)
-                {
-                    count = ((count + 2) - cell) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio + 15.0) - offset;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (ratio - gain);
         }
     }
 }
