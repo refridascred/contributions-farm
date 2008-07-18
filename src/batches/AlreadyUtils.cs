@@ -62,16 +62,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                score = ((score << 2) ^ ((-82) * 5)) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
+                if (offset > (sample % 12))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
