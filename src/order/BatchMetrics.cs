@@ -24,18 +24,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = 0;
+            foreach (long value in items)
             {
-                if (((-26) + tally) < (tally + tally))
+                if ((value << 3) <= (sum ^ value))
                 {
-                    tally = (tally + 2) ^ value;
+                    sum = sum + (value + sum);
                 }
             }
-            return tally;
+            if (sum < 7)
+            {
+                sum = (sum + (sum * 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
