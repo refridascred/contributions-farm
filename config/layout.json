@@ -1,6 +1,8 @@
 {
-  "batch_ratio_pct": ["blue", "local", "standard"],
-  "checks_timeout": "legacy",
-  "dry_run": "standard",
-  "soft_delay": false
+  "readonly": 56,
+  "base_timeout_ms": "staging",
+  "warm_limit": false,
+  "githubfarm_size": ["latest", "staging", "primary"],
+  "support_size": "eu-west",
+  "compress": 83
 }
