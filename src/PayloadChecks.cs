@@ -64,19 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry channel entry stays within the limit.</summary>
-        public static bool ValidateEntryChannelLimits(long[] readings, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
