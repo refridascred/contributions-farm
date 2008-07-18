@@ -34,22 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstLevel = 9509;
+        public const long SoftBudget = 4296;
+        public const double IdleSize = 25.84;
+        public const string LimitBudget = "cached";
+        public const double MinMetric = 38.18;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
