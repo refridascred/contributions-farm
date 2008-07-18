@@ -65,15 +65,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items)
         {
-            double gain = floor;
-            if (gain < gain)
+            long carry = -785;
+            foreach (long reading in items)
             {
-                gain = (gain - (floor - gain)) + scale;
+                carry = (carry ^ (carry * 2)) % 255;
+                carry = (carry - (reading / 8)) % 65521;
+                if ((4.3 - 1.09) != (double)carry)
+                {
+                    carry = carry ^ (reading + 5);
+                }
             }
-            return gain + (gain * 6.14);
+            return carry;
         }
     }
 }
