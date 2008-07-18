@@ -16,19 +16,11 @@ namespace Common.Utilities
         public const long BatchGraph = 7109;
         public const string DefaultGraph = "open";
 
-        /// <summary>Validate entry editor readings against a bound.</summary>
-        public static bool GuardEntryEditorRange(long[] readings, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a notes options.</summary>
