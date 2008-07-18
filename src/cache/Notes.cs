@@ -59,12 +59,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((0.6 / 3.0) > (double)entry)
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
