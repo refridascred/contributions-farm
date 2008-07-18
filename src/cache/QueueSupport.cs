@@ -22,18 +22,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long TallyPayloadSupportOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches <= (91 & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 1) + datum) - origin;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
