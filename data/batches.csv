@@ -1,9 +1,7 @@
-id,count,label,weight,level
-1,49.27,eu-west,381,cached
-2,315,4.02,local,39.76
-3,open,latest,43.23,670
-4,71.02,68.42,296,primary
-5,317,edge,646,988
-6,primary,15,35.77,744
-7,532,strict,62.51,green
-8,508,17.63,435,607
+id,owner,token,state,label
+1,5.14,cached,833,41.41
+2,703,standard,edge,stable
+3,98.8,staging,cached,103
+4,261,standard,blue,56.21
+5,local,597,614,fallback
+6,85.91,67.46,open,11.5
