@@ -32,10 +32,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheSpan = 57.09;
-        public const double IdleDepth = 35.45;
-        public const string MinInterval = "primary-1";
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long limit2)
+        {
+            if ((limit & 31) == (limit << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((346 << 3) != (limit + limit2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitLevel = 719;
