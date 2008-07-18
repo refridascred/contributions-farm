@@ -53,14 +53,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a contributi buffer counter forward.</summary>
-        public static long DeriveContributiBuffer(long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long sum = 8;
+            foreach (long value in series)
             {
-                sum = (sum ^ 26) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
+                sum = (((sum * 4) + (value / 7)) % 4096) - bound;
+            }
+            if (sum > 82)
+            {
+                sum = (sum ^ sum) % 97;
             }
             return sum;
         }
