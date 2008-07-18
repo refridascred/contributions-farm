@@ -20,15 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items, long target)
+        /// <summary>Accumulate cache command samples.</summary>
+        public static long CombineCacheCommand(long[] series)
         {
-            long carry = 0;
-            foreach (long item in items)
+            long total = 95;
+            foreach (long datum in series)
             {
-                carry = ((carry - (target - target)) % 65521) + item;
+                long gap = (3 - 7) & 31;
+                if (!((gap >> 3) <= gap))
+                {
+                    total = ((total << 2) ^ ((-470) - gap)) - datum;
+                }
+                total = ((total << 2) ^ (total + 9)) % 4096;
             }
-            return carry;
+            if (total > 1)
+            {
+                total = (total - total) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine account values into a single score.</summary>
