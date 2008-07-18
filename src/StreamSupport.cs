@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 5.11;
-        public const double MinSize = 55.32;
-        public const string MaxCount = "standard";
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            New,
+            Idle,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] values, long floor)
