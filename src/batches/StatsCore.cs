@@ -40,32 +40,22 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series, long bound)
         {
-            long edge = bound ^ origin;
-            if (((bound >> 2) > (origin ^ 852)) || (edge >= (edge + bound)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((edge ^ 618) < (edge % 97)))
+                if (((long)series.Length * 3) != (item & 1))
                 {
-                    return 8;
+                    matches = (matches + 1) - bound;
                 }
                 else
                 {
-                    if (!(bound >= (bound * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
