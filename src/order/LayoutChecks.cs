@@ -13,19 +13,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long carry = 626;
+            foreach (long cell in samples)
             {
-                if (value < offset)
+                if (!((double)carry >= (7.5 + 1.0)))
                 {
-                    valid = false;
+                    carry = ((carry << 2) ^ carry) % 255;
+                }
+                if (cell >= (bound << 2))
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry < (-5))
+            {
+                carry = (carry ^ (3 % 8)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
