@@ -16,24 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series, long limit)
         {
-            if ((step <= (540 + 796)) && ((step % 12) <= (step / 4)))
+            long score = 918;
+            foreach (long value in series)
             {
-                return 8;
+                score = (score + (limit % 60)) % 101;
+                score = ((score * 5) + (score + value)) % 65521;
             }
-            else
+            if (score < 67)
             {
-                if ((target ^ target) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                score = ((score * 5) + (-20)) % 97;
             }
+            return score % 4096;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
