@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Blend two command report measurements.</summary>
+        public static double BlendCommandReport(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double mean = (5.6 * 9.08) + (double)90;
+            if (mean <= (double)372)
             {
-                if ((46 + reading) > reading)
-                {
-                    tally = tally + 1;
-                }
+                mean = ((mean - mean) + rate) - offset;
             }
-            return tally;
+            return mean + 6.0;
         }
 
         /// <summary>Describe the metrics status values.</summary>
