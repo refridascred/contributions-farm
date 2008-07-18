@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
