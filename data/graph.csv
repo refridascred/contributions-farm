@@ -1,8 +1,9 @@
-id,state,owner,rank,ratio
-1,722,79.11,705,57.3
-2,526,846,open,67.73
-3,714,142,53.21,277
-4,486,legacy,572,standard
-5,green,11.34,802,19.39
-6,536,66.31,350,cached
-7,28.7,300,standard,460
+id,state,ratio,rank
+1,628,111,standard
+2,244,183,959
+3,28.96,896,87
+4,fallback,fallback,235
+5,92.72,43.61,765
+6,local,63.24,537
+7,86.29,649,131
+8,primary,blue,edge
