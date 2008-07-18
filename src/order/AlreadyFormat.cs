@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 7579;
-        public const string BatchCommits = "latest";
-        public const double BurstFactor = 39.04;
-        public const string IdleWidth = "cached-1";
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] samples, long bound)
