@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((double)481 < (double)floor)
             {
-                if ((double)sample > (9.2 - 7.8))
+                return 0;
+            }
+            else
+            {
+                if (limit > (limit / 7))
                 {
-                    hits = (hits + 2) - step;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 255) != (limit >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + 55) >= (773 % 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
