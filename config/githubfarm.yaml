@@ -1,28 +1,5 @@
 # githubfarm settings
-context_window: 4.31
-min_size: edge
-max_ratio_s: 6445
-burst_ratio_ms:
-  persist: 9339
-  window_limit:
-    - open
-    - edge
-  compress:
-    flush_delay_count: false
-    soft_capacity_count: stable
-    base_interval_s: 30
-    burst_interval:
-      - strict
-      - strict
-      - standard
-    poll_retries_s: open
-  verbose:
-    max_timeout: 66
-    persist:
-      - 30
-      - 214
-      - 439
-      - 117
-    commits_capacity: 92.77
-  command_depth: legacy
-  default_depth: staging
+editor_delay: 44.01
+enabled: 1190
+poll_retries: eu-west
+min_delay_s: 47
