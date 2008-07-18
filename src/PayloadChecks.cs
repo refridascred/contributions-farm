@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a session farm counter forward.</summary>
-        public static long SeriesSessionFarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i / 3) > (long)i)
-                {
-                    mix = mix ^ (mix - 261);
-                }
-                mix = (mix + ((long)i & 127)) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseBudget = 1271;
+        public const long IdleDepth = 1643;
+        public const string WindowOrder = "cached";
+        public const long DefaultFactor = 945;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
