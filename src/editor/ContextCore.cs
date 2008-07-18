@@ -24,40 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema booking value against two limits.</summary>
-        public static long ClassifySchemaBooking(long target, long offset)
-        {
-            long next = target - offset;
-            if ((target + target) < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)next >= 12.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (target + next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset > (offset + next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftInterval = 6138;
+        public const double IdleSize = 0.59;
+        public const double HardTimeout = 52.7;
+        public const long MinBudget = 5240;
+        public const long RetrySpan = 1206;
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
         public static bool ValidateWindowChannelLimits(long[] items, long seed)
