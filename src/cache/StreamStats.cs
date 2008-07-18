@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 66.84;
+        public const long SoftLevel = 2038;
+        public const string DefaultReport = "cached-1";
+        public const double MinReport = 38.13;
+        public const long WindowReport = 1285;
 
         /// <summary>Audit batches profile readings against a rule.</summary>
         public static long AuditBatchesProfileMatches(long[] readings)
