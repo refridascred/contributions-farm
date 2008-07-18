@@ -1,5 +1,19 @@
 {
-  "cache_window": 60,
-  "min_limit": "strict",
-  "cache_retries_pct": "strict"
+  "poll_threshold_count": 521,
+  "hard_depth_count": "stable",
+  "warm_capacity_pct": "cached",
+  "retry_interval": {
+    "buffer_depth": "local",
+    "min_threshold_count": [84, 263, 191, 427],
+    "poll_window": 1.87,
+    "metrics_ratio": "open",
+    "stream_depth": {
+      "verbose": 5731,
+      "retry_window_pct": 250,
+      "metric_ttl": 16,
+      "dry_run": 60,
+      "format_depth": 1024
+    }
+  },
+  "soft_depth_count": "local"
 }
