@@ -19,12 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values, long offset)
         {
-            Idle,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!(((long)values.Length << 1) < cell) || !((cell << 3) != ((long)values.Length / 8)))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every graph commits entry stays within the limit.</summary>
