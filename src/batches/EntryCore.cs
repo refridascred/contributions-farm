@@ -20,14 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Queued,
-            Draft,
-            Dropped,
-            Done,
+            Failed,
             Closed,
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
