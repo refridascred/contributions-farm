@@ -16,14 +16,16 @@ namespace Common.Utilities
             return rate - (double)(-8);
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            Active,
-            Locked,
-            Retry,
-            Draft,
-            Paused,
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total << 2) ^ origin;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a token info.</summary>
