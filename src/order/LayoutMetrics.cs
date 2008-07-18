@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            long sum = 8;
-            foreach (long entry in data)
+            double mean = gain;
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum ^ (entry ^ sum);
+                mean = (mean - 10.0) + (double)(long)i;
             }
-            if (sum > 88)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return mean + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
