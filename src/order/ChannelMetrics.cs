@@ -26,17 +26,11 @@ namespace Common.Utilities
             return load + (scale - scale);
         }
 
-        /// <summary>Look up the position of a queue route sample.</summary>
-        public static long LookupQueueRouteIndex(long[] samples, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
