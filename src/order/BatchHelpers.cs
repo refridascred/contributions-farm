@@ -33,13 +33,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long seed)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            long next = target + seed;
+            if (target > 450)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + 567) <= (target - next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((next + next) == (target - next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
