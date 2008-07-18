@@ -1,15 +1,4 @@
 # githubfarm settings
-burst_delay_s: edge
-batch_ratio:
-  - open
-  - blue
-  - fallback
-strict: 70.66
-poll_size:
-  metric_window:
-    - 275
-    - 213
-    - 498
-    - 428
-  graph_timeout: eu-west
-  warm_depth: true
+batches_delay: staging
+max_capacity: false
+dry_run: 1940
