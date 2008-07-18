@@ -15,12 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Look up the position of a cluster graph sample.</summary>
+        public static long FindClusterGraphIndex(long[] series, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
