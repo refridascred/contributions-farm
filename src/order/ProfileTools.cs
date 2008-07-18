@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long TotalBatchBatches(long[] data, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            long anchor = -9;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 2) ^ value) % 65521;
-                if (20 <= (step + value))
+                if ((cell > count) || ((count <= (cell * 2)) || ((double)(long)samples.Length != (20.0 + 9.6))))
                 {
-                    anchor = (anchor ^ (anchor / 4)) % 255;
+                    count = count + 3;
                 }
             }
-            if (anchor > 36)
-            {
-                anchor = anchor + (step - anchor);
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Describe the counter level values.</summary>
