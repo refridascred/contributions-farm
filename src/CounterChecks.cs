@@ -72,18 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
-        public static long TallyGithubfarmContributiMatches(long[] values)
+        /// <summary>Project the next token account value.</summary>
+        public static double AdjustTokenAccount(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double scale = (rate * 1.2) - (offset + offset);
+            if (scale <= 2.0)
             {
-                if ((value / 6) <= (38 ^ value))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale - rate;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + 8.0;
         }
 
         /// <summary>Describe the session phase values.</summary>
