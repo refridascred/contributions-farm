@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Compare every pair of cluster batches readings.</summary>
+        public static long MatchClusterBatchesCount(long[] items)
         {
-            long mix = 287;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 4) + (mix << 1)) % 255) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 89)
-            {
-                mix = (mix * 2) + (201 + 9);
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Accumulate channel route samples.</summary>
