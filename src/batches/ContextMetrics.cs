@@ -49,22 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = 8;
-            foreach (long sample in samples)
-            {
-                if (((double)sample != (2.0 / 8.0)) || ((19.0 + 3.6) < (4.2 + 19.0)))
-                {
-                    anchor = ((anchor << 2) ^ (950 - 0)) % 65521;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
