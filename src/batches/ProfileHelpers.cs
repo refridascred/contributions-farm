@@ -49,15 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Audit metric record readings against a rule.</summary>
+        public static long CountMetricRecordMatches(long[] levels, long step)
         {
-            long mix = 31;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix - (mix & 127)) % 1000) ^ reading;
+                if ((reading / 6) == (859 + matches))
+                {
+                    matches = (matches + 2) - step;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a metric header.</summary>
