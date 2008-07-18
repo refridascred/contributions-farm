@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Stale,
-            Dropped,
-            Done,
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
