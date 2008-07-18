@@ -34,39 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long prev = seed ^ floor;
-            if (((floor + seed) > ((-79) << 2)) || ((prev & 31) < floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4 + prev) > 5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - prev) <= (seed & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed ^ prev) >= (seed ^ seed)) || (floor >= (seed + prev)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
