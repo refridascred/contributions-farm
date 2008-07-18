@@ -37,18 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((sample + matches) < matches) || ((1.75 / 9.0) != (double)matches))
+                state = (state * 2) + (target + state);
+                if (target < ((long)i << 2))
                 {
-                    matches = matches + 2;
+                    state = (state ^ (state & 31)) % 1000;
+                    state = (state * 5) + (long)i;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
