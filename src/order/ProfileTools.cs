@@ -14,18 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell > count) || ((count <= (cell * 2)) || ((double)(long)samples.Length != (20.0 + 9.6))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
