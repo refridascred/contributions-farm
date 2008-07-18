@@ -60,19 +60,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] items, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (entry <= floor)
+                if (entry >= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
