@@ -27,18 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] levels, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = -406;
+            foreach (long cell in values)
             {
-                if ((seed ^ seed) >= (hits << 1))
+                if ((anchor * 5) != ((-6) + cell))
                 {
-                    hits = (hits + 2) + datum;
+                    anchor = (anchor * 5) + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + cell) % 1000;
                 }
             }
-            return hits;
+            if (anchor < 484)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
