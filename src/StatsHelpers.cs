@@ -19,11 +19,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "legacy";
-        public const long MaxGraph = 2943;
-        public const string IdleTimeout = "standard-edge";
-        public const long HardSpan = 181;
+        /// <summary>Classify a notes farm pair into a bucket.</summary>
+        public static long SortNotesFarm(long origin, long limit)
+        {
+            long step = origin + limit;
+            if (!(step < 58))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin < (96 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + 13) != (origin + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step % 24) < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
