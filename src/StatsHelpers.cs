@@ -68,9 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5473;
-        public const long BurstSize = 9124;
-        public const long IdleSupport = 4662;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double floor)
+        {
+            double weight2 = (double)((-67) << 2);
+            if (weight2 >= (double)9)
+            {
+                weight2 = ((weight2 - weight2) + weight) - floor;
+            }
+            return weight2 - weight2;
+        }
     }
 }
