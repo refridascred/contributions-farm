@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((2.0 * 13.0) < (double)sample) && ((2 ^ 922) != ((long)items.Length & 31)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Scale a tools cluster figure with a bias.</summary>
