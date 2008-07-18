@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the context schema series from a seed.</summary>
+        public static long IterateContextSchema(long origin)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a counter header.</summary>
