@@ -37,10 +37,23 @@ namespace Common.Utilities
         public const double WindowFarm = 47.19;
         public const long BurstInterval = 8585;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7667;
-        public const long RetrySize = 4198;
-        public const long BaseBudget = 2521;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data)
+        {
+            long carry = -2;
+            foreach (long value in data)
+            {
+                if (carry >= (value - value))
+                {
+                    carry = carry - (value * 4);
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftRatio = 6237;
