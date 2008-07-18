@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a contributi metrics value against two limits.</summary>
-        public static long GradeContributiMetrics(long offset, long seed)
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long LocateAccountBatchIndex(long[] series, long step)
         {
-            if ((seed * 4) < (seed + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (263 + seed))
+                if (series[i] == step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((1.9 + 20.0) != (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
