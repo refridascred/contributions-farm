@@ -41,13 +41,21 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Match up commits contributi samples.</summary>
+        public static long CompareCommitsContributiCount(long[] data)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
