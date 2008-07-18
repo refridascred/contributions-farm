@@ -25,17 +25,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long seed)
+        /// <summary>Count batch checks pairs that satisfy a relation.</summary>
+        public static long MatchBatchChecksCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
