@@ -21,22 +21,18 @@ namespace Common.Utilities
         public const long MaxSpan = 1178;
         public const long HardReport = 6500;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = 70;
+            foreach (long reading in levels)
             {
-                if (7 >= count)
+                if ((2.6 + 13.0) > (double)offset)
                 {
-                    count = ((count + 3) + datum) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (((mix << 2) ^ offset) % 1000) ^ reading;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
