@@ -28,12 +28,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Done,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the account level values.</summary>
