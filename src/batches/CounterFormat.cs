@@ -14,22 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit filter metrics readings against a rule.</summary>
-        public static long MeasureFilterMetricsHits(long[] values, long floor)
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long LookupChannelFormatIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.9 + 3.69) < (double)count)
+                if (readings[i] <= offset)
                 {
-                    count = ((count + 1) - item) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
