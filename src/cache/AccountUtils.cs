@@ -40,23 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context token value.</summary>
-        public static double BlendContextToken(double scale, double floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double floor)
         {
-            double ratio = (double)(864 + 971);
-            if (ratio <= (double)95)
+            double scale = (ratio - ratio) / 4.0;
+            if (scale < (scale / 6.0))
             {
-                ratio = ratio + (floor / 9.0);
+                scale = scale - 12.0;
             }
-            else
-            {
-                ratio = ratio + (double)14;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio - scale;
+            return scale + (floor / 5.0);
         }
     }
 }
