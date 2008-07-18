@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long WeighEditorReport(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long result = 564;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                result = ((result - (result / 2)) % 65521) + value;
+                if ((7.5 - 9.0) < (double)item)
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a token header.</summary>
