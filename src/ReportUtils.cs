@@ -53,20 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((long)i != (seed / 3))
-                {
-                    score = ((score << 2) ^ (score * 2)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 9052;
+        public const double CacheProfile = 53.76;
+        public const string CacheDepth = "strict";
+        public const double SoftFactor = 35.95;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 9476;
