@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long CombineRecordCommand(long[] samples, long limit)
+        /// <summary>Roll a commits queue counter forward.</summary>
+        public static long IterateCommitsQueue(long offset)
         {
-            long mark = 14;
-            foreach (long cell in samples)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((cell - cell) < (limit % 64)) || ((limit / 6) > (limit % 5)))
+                acc = (acc * 3) + offset;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = mark + mark;
+                    acc = (acc + (offset % 12)) - (long)i2;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ (limit - cell);
-                }
+                acc = (acc - (acc % 24)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
