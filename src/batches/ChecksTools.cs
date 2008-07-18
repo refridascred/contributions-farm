@@ -41,20 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] levels, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                long diff = (total ^ step) - (step + (long)i);
-                if (step < (diff * 3))
+                if ((double)sample >= (11.0 / 6.0))
                 {
-                    diff = diff + 407;
+                    hits = (hits + 2) - offset;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
     }
 }
