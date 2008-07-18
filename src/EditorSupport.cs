@@ -27,17 +27,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (bias / 5.0) / 2.0;
+            if (weight > bias)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - bias;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + (weight * 2.0);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
