@@ -51,11 +51,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((mark & 127) != (833 * 4))
+                {
+                    break;
+                }
+                mark = (mark * 3) + (offset & 127);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up account samples.</summary>
