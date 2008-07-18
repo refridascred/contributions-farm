@@ -40,12 +40,33 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSize = 1743;
-        public const string WindowFactor = "primary-v2";
-        public const long RetryOrder = 6791;
-        public const long BatchCount = 2326;
-        public const long RetryTimeout = 4312;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long origin)
+        {
+            long edge = bound ^ origin;
+            if (((bound >> 2) > (origin ^ 852)) || (edge >= (edge + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((edge ^ 618) < (edge % 97)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound >= (bound * 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double bias2)
