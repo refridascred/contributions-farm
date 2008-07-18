@@ -31,17 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a contributi editor reading by value.</summary>
-        public static long LocateContributiEditorIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleWidth = "alpha-1";
+        public const double BurstFactor = 67.26;
+        public const long RetryEditor = 5912;
+        public const long StepEditor = 7711;
     }
 }
