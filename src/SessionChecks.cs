@@ -54,15 +54,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            long result = 6;
-            foreach (long item in values)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result - limit) % 1000) ^ item;
+                if ((double)(-659) > (double)step)
+                {
+                    sum = (sum + (sum + step)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return result % 4096;
+            return sum;
         }
     }
 }
