@@ -28,23 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout notes samples are out of range.</summary>
-        public static long TallyLayoutNotesGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "strict-1";
+        public const double MinBuffer = 24.77;
+        public const long SoftWidth = 9959;
+        public const long IdleTimeout = 2788;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
