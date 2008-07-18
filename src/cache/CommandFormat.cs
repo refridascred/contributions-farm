@@ -44,23 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (step < (carry * 3))
-                {
-                    carry = (carry ^ (step - 76)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - step)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
