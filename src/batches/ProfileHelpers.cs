@@ -46,19 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel format readings against a bound.</summary>
-        public static bool VerifyChannelFormatRange(long[] data, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mix = 31;
+            foreach (long reading in samples)
             {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix - (mix & 127)) % 1000) ^ reading;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Scale a stats checks figure with a bias.</summary>
