@@ -1,6 +1,9 @@
 # githubfarm settings
-flush_interval_pct: 26.9
-enabled: cached
-batches_size: true
-batch_ttl: true
-persist: legacy
+farm_retries: false
+min_limit:
+  - latest
+  - local
+flush_timeout_count: true
+queue_delay: 39
+persist: false
+verbose: 60
