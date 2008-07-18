@@ -37,18 +37,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long delta = bound - floor;
+            if (((bound + floor) == (bound >> 4)) && ((bound << 3) >= delta))
             {
-                if ((2.0 / 7.0) >= (double)(long)values.Length)
+                return 5;
+            }
+            else
+            {
+                if ((delta + bound) != (7 * 5))
                 {
-                    matches = (matches + 2) - datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((delta + floor) > (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)delta == (13.0 - 15.0)) || ((floor - 221) >= (floor / 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
