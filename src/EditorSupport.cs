@@ -63,19 +63,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] values, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
