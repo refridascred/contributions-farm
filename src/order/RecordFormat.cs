@@ -36,18 +36,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long AuditMetricsRouteMatches(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (matches >= (matches ^ 40))
+                if ((double)sample >= (double)tally)
                 {
-                    matches = (matches + 2) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many order record samples are out of range.</summary>
