@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two already batch measurements.</summary>
-        public static double AdjustAlreadyBatch(double bias, double bias2)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long seed)
         {
-            double load = (bias2 + bias2) / 4.0;
-            if (load >= load)
+            if ((offset ^ offset) > (offset + 46))
             {
-                load = load - (double)0;
+                return 2;
             }
             else
             {
-                load = load + (bias / 3.0);
+                if (!((680 << 3) != (offset + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + (1.21 * 11.0);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
