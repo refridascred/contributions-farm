@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSize = 1743;
+        public const string WindowFactor = "primary-v2";
+        public const long RetryOrder = 6791;
+        public const long BatchCount = 2326;
+        public const long RetryTimeout = 4312;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double bias2)
