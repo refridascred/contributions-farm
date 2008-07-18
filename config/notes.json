@@ -1,10 +1,11 @@
 {
-  "base_timeout_s": false,
-  "base_window_s": {
-    "flush_retries_ms": true,
-    "burst_capacity": false,
-    "cache_ratio": 46.06
+  "graph_size": true,
+  "warm_size_s": false,
+  "buffer_timeout": {
+    "cache_timeout_ms": 60,
+    "cluster_ratio": 250,
+    "compress": 70,
+    "soft_threshold_pct": "staging"
   },
-  "burst_capacity_s": 2,
-  "sync_ttl": ["stable", "blue", "local"]
+  "batch_threshold": "latest"
 }
