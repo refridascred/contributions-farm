@@ -46,13 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the checks layout series from a seed.</summary>
+        public static long SeriesChecksLayout(long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
