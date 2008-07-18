@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first report format entry that matches the target.</summary>
-        public static long SeekReportFormatIndex(long[] series, long step)
+        /// <summary>Grade a contributi metrics value against two limits.</summary>
+        public static long GradeContributiMetrics(long offset, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed * 4) < (seed + offset))
             {
-                if (series[i] >= step)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (263 + seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((1.9 + 20.0) != (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
