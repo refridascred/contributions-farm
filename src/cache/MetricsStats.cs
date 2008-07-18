@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long CountAccountAlreadyHits(long[] items, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = 524;
+            foreach (long sample in samples)
             {
-                if (count >= (count + 1))
+                if (((double)floor == (double)sample) && (619 < sample))
                 {
-                    count = ((count + 2) + item) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((carry << 2) ^ (sample - floor)) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
