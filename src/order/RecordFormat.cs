@@ -57,15 +57,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data, long origin)
+        /// <summary>Classify a route buffer pair into a bucket.</summary>
+        public static long RankRouteBuffer(long offset, long target)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            if ((target - offset) > offset)
             {
-                mix = ((mix - (4 + origin)) % 1000) ^ cell;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((2 - offset) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
