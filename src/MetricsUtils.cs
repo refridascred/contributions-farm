@@ -40,11 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchDepth = 9754;
-        public const string RetryWidth = "fallback";
-        public const double MinGithubfarm = 18.91;
-        public const long HardGithubfarm = 2011;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long bound)
