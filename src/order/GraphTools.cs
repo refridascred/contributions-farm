@@ -45,19 +45,12 @@ namespace Common.Utilities
             return mean + (mean + ratio);
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double gain = (double)63 + (double)35;
-            if (gain <= 4.9)
-            {
-                gain = (gain - (gain - ratio)) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain * 10.0)) - (double)(long)i;
-            }
-            return gain - ratio;
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
