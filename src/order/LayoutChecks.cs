@@ -70,13 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            New,
-            Stale,
-            Synced,
-            Failed,
+            double gain = floor;
+            if (gain < gain)
+            {
+                gain = (gain - (floor - gain)) + scale;
+            }
+            return gain + (gain * 6.14);
         }
     }
 }
