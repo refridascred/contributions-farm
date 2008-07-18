@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1362;
-        public const string DefaultStream = "alpha-v2";
-        public const long StepTimeout = 2554;
-        public const string BurstStream = "local";
-        public const double LimitScore = 42.41;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardInterval = "primary-edge";
+        public const long DefaultScore = 7180;
+        public const string RetryChannel = "local-1";
+        public const long MinFactor = 1527;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] items, long offset)
