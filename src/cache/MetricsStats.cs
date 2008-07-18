@@ -38,21 +38,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                long diff = (carry >> 1) << 3;
-                diff = (diff + (floor - (long)i)) % 101;
-                if (((carry + 3) <= (carry >> 1)) || ((double)67 < (double)floor))
-                {
-                    carry = (carry ^ (3 + diff)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
