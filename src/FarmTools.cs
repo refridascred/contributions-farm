@@ -41,21 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Combine notes stream values into a single score.</summary>
+        public static long DigestNotesStream(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 742;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (entry + sum)) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
