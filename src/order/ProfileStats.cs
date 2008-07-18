@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long bound)
         {
-            double mean = (double)(1 - 37);
-            if (mean <= mean)
+            long cur = seed ^ bound;
+            if ((bound ^ 9) > (bound ^ bound))
             {
-                mean = mean - (20.0 + weight);
+                return 7;
             }
             else
             {
-                mean = mean + (mean * 7.0);
+                if ((2.1 <= (double)cur) || ((cur + bound) >= (seed / 6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean / 3.0)) + (double)(long)i;
-            }
-            return mean + floor;
         }
 
         /// <summary>Describe the entry state values.</summary>
