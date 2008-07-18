@@ -17,15 +17,16 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings, long floor)
+        /// <summary>Iterate the stream filter series from a seed.</summary>
+        public static long SeriesStreamFilter(long limit)
         {
-            long result = 1;
-            foreach (long cell in readings)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result - floor) % 97) + cell;
+                total = (total + (total + limit)) % 255;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Hold a format info.</summary>
