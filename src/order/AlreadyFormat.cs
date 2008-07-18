@@ -41,11 +41,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
