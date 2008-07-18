@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxInterval = 13.8;
-        public const long StepLayout = 7733;
-        public const long BaseDepth = 8252;
-        public const double RetryWidth = 58.95;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((9.63 + 9.23) == (double)origin) && ((1.2 + 5.26) <= (double)tally))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long step, long floor)
