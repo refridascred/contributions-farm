@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=171
-log "limit is ${BUFFER_LIMIT}"
-
-for item in fallback strict; do
+for item in blue latest fallback green; do
     log "checking ${item}"
 done
