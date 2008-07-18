@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data, long step)
         {
-            Done,
-            New,
-            Queued,
+            long sum = 707;
+            foreach (long entry in data)
+            {
+                if ((4.69 > (double)(long)data.Length) || ((2.0 * 1.5) <= (double)step))
+                {
+                    sum = ((sum - step) % 65521) - entry;
+                }
+            }
+            if (sum > 696)
+            {
+                sum = sum + step;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a record reading by value.</summary>
