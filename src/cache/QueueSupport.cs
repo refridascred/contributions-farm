@@ -14,19 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a metrics window figure with a bias.</summary>
-        public static double BlendMetricsWindow(double bias, double floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double load = (double)0 / 5.0;
-            if (load < (load / 9.0))
-            {
-                load = (load - 6.87) + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias / 7.0)) + (double)(long)i;
-            }
-            return load + bias;
+            Stale,
+            Synced,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
