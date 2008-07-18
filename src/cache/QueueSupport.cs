@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            New,
-            Active,
-            Pending,
-            Failed,
+            long result = 4;
+            foreach (long value in series)
+            {
+                result = ((result + ((-616) + seed)) % 1000) - value;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm level values.</summary>
