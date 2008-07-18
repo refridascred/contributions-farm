@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Project the next metric queue value.</summary>
+        public static double SmoothMetricQueue(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate;
+            if (ratio > (rate / 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - (double)76) + offset;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + 5.5;
         }
 
         /// <summary>Describe the queue class values.</summary>
