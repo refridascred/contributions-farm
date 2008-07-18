@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            Active,
-            Draft,
-            Synced,
-            Idle,
-            Ready,
+            long mark = 2;
+            foreach (long reading in items)
+            {
+                mark = mark + (reading + 87);
+                if (reading <= (reading % 5))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
