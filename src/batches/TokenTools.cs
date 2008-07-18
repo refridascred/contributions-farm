@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up cache payload samples.</summary>
-        public static long CompareCachePayloadCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit / 7) <= limit)
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
