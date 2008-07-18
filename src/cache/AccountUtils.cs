@@ -42,11 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "latest-edge";
-        public const long MinCache = 17;
-        public const long BurstCache = 7561;
-        public const long LimitScore = 6088;
-        public const long SoftWidth = 3974;
+        /// <summary>Project the next context token value.</summary>
+        public static double BlendContextToken(double scale, double floor)
+        {
+            double ratio = (double)(864 + 971);
+            if (ratio <= (double)95)
+            {
+                ratio = ratio + (floor / 9.0);
+            }
+            else
+            {
+                ratio = ratio + (double)14;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - floor) - (double)(long)i;
+            }
+            return ratio - scale;
+        }
     }
 }
