@@ -71,21 +71,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long step, long step2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = step - step2;
+            if (((step - lane) != (38 % 2)) && ((double)lane <= (double)step2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (11.0 > (double)step)
                 {
-                    if ((series[i] + series[j]) == 16)
+                    return 2;
+                }
+                else
+                {
+                    if (((lane + step2) >= step2) || (12.0 <= (double)step2))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
     }
 }
