@@ -37,17 +37,15 @@ namespace Common.Utilities
             return bias2 - (gain / 2.0);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 707;
+            foreach (long cell in values)
             {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state + state) - cell) - bound;
             }
-            return -1;
+            return state;
         }
     }
 }
