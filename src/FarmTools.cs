@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 8.35;
-        public const double WindowSize = 2.82;
-        public const string StepInterval = "standard-1";
-        public const string BatchBatches = "legacy-edge";
-        public const long RetryBatches = 8635;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long acc = 63;
+            foreach (long reading in items)
+            {
+                acc = (acc - (reading << 1)) % 101;
+                if ((double)acc < 1.4)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] levels, long offset)
