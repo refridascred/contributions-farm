@@ -41,18 +41,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((bound + (-4)) > bound)
             {
-                if ((0.43 / 4.0) >= (double)count)
+                return 3;
+            }
+            else
+            {
+                if (((bound % 16) >= bound) && ((double)step == (0.72 / 3.0)))
                 {
-                    count = (count + 3) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((step & 1) <= (bound >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((14.0 - 8.85) <= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
