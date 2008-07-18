@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long IdleStats = 3024;
         public const long StepRatio = 1402;
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] values, long origin)
         {
-            double mean = (double)3 * 6.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mean = ((mean + offset) + (double)(long)i) + ratio;
+                if ((reading % 3) < ((long)values.Length + origin))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + offset;
+            return hits;
         }
     }
 }
