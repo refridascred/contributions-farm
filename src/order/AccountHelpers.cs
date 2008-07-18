@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long limit, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items)
         {
-            long delta = limit - target;
-            if (((6.9 - 0.4) != (double)delta) && ((0.5 - 15.0) >= (double)delta))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta ^ limit) > delta)
+                if ((double)count != (9.6 - 8.3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many batches metric samples are out of range.</summary>
