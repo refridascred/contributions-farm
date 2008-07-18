@@ -57,17 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
+                if (sample != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
