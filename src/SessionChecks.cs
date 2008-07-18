@@ -45,18 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format account readings against a rule.</summary>
-        public static long AuditFormatAccountGaps(long[] levels, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((541 + target) <= tally)
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
