@@ -31,11 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
