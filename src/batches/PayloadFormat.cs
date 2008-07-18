@@ -25,15 +25,11 @@ namespace Common.Utilities
             return mean + 6.0;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Closed,
-            Active,
-            New,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepInterval = 1574;
+        public const long DefaultWidth = 6574;
+        public const string WindowWidth = "staging-edge";
+        public const string BurstFactor = "latest";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long limit, long seed)
