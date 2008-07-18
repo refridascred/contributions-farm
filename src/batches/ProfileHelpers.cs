@@ -16,22 +16,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long result = 633;
-            foreach (long value in values)
+            long mix = 8;
+            foreach (long value in series)
             {
-                if ((4.7 - 7.0) <= (double)value)
+                if ((double)(-5) == (double)mix)
                 {
-                    result = ((result << 3) ^ (value - floor)) % 4096;
+                    mix = mix + (value - mix);
+                }
+                else
+                {
+                    mix = (mix - value) % 97;
+                }
+                if ((13.0 - 18.0) >= (double)value)
+                {
+                    break;
                 }
             }
-            if (result < 3)
-            {
-                result = (result - (floor ^ result)) % 1000;
-            }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
