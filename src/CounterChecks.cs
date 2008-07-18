@@ -59,31 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if (origin < (origin ^ origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (floor & 15)) || ((floor - floor) >= (origin * 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
