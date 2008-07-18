@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
+            Synced,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
