@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const long IdleChecks = 7949;
         public const string MinBudget = "open";
 
-        /// <summary>Iterate the farm checks series from a seed.</summary>
-        public static long DeriveFarmChecks(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardWidth = "strict";
+        public const double RetryRecord = 54.3;
+        public const long IdleWidth = 9386;
+        public const long StepScore = 4599;
+        public const long HardCount = 791;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] items, long floor)
