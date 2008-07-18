@@ -55,17 +55,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next report buffer value from a seed.</summary>
-        public static long RollReportBuffer(long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 458;
+            foreach (long cell in readings)
             {
-                sum = (sum + ((long)i - limit)) % 97;
-                sum = (sum * 4) + (-12);
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((751 + mix) < ((-834) & 1))
+                {
+                    mix = (mix ^ (23 % 12)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (cell + cell)) % 65521;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
