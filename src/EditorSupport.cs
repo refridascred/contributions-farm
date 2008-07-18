@@ -66,39 +66,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            long gap = limit ^ seed;
-            if (((double)limit >= (double)seed) && ((seed * 4) == (limit + gap)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((650 << 3) > (limit * 3))
+                if ((matches % 60) > (matches >> 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((4.82 + 6.0) <= (double)limit) || ((gap / 5) >= (limit + gap)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((39 << 1) <= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the record kind values.</summary>
