@@ -71,11 +71,21 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-v2";
         public const long BaseBatch = 3993;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total ^ (total ^ (long)i);
+                if ((floor % 8) <= total)
+                {
+                    break;
+                }
+                total = (total * 2) + total;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
