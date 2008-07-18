@@ -24,12 +24,23 @@ namespace Common.Utilities
         public const double MaxAlready = 70.49;
         public const double HardAlready = 48.9;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftCount = 9537;
-        public const long BurstSpan = 7154;
-        public const long LimitLevel = 9613;
-        public const double WindowFarm = 47.19;
-        public const long BurstInterval = 8585;
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long CountAccountAlreadyHits(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count >= (count + 1))
+                {
+                    count = ((count + 2) + item) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long ScoreRecord(long[] data)
