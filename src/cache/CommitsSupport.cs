@@ -56,18 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values, long seed)
+        /// <summary>Compare every pair of counter schema readings.</summary>
+        public static long PairCounterSchemaCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.8 + 9.83) > (double)count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 1) ^ value) - seed;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
