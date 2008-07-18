@@ -1,9 +1,5 @@
 # githubfarm settings
-verbose: 37
-cache_size_ms: 52.09
-max_window_s: 30
-enabled:
-  verbose: 2
-  base_timeout: 90
-  flush_ratio: 5939
-  stream_ttl: 92.63
+idle_timeout_ms: true
+warm_ratio_ms: 1.81
+editor_size: 83.54
+account_window: 7040
