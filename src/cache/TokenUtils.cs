@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long seed, long origin)
+        /// <summary>Accumulate channel route samples.</summary>
+        public static long ScoreChannelRoute(long[] readings, long target)
         {
-            if (((double)origin >= (double)seed) || ((origin & 63) >= origin))
+            long acc = 93;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 1) >= (416 + origin))
+                acc = acc + acc;
+                if (entry < (target ^ entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    acc = (acc + (acc - acc)) % 255;
                 }
             }
+            return acc % 1000;
         }
     }
 }
