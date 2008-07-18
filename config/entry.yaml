@@ -1,7 +1,4 @@
 # entry settings
-editor_depth: cached
-cache_capacity: false
-audit: standard
-sync_threshold: 91.86
-buffer_ttl: 500
-max_interval: 8466
+buffer_retries: fallback
+metrics_retries: 41
+layout_timeout: 41.13
