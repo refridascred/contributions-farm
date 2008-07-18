@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchInterval = 9514;
+        public const double LimitLevel = 51.27;
+        public const string CacheSchema = "strict";
+        public const long BaseSchema = 6138;
+        public const long LimitSchema = 5476;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
