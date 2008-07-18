@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Derive the next queue metrics value from a seed.</summary>
+        public static long DeriveQueueMetrics(long seed)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((total << 2) == (long)i)
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate entry samples.</summary>
