@@ -20,10 +20,40 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRatio = 5231;
-        public const string RetryBudget = "local-v2";
-        public const long IdleRecord = 2522;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long target)
+        {
+            long slot = floor + target;
+            if ((floor + (-5)) <= (8 >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (slot > (target << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ target) <= slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((81 / 2) < (target - 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] items)
