@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 53.86;
-        public const long BaseRatio = 8334;
-        public const long BatchCluster = 4881;
-        public const long MinLevel = 2358;
-        public const string CacheCluster = "local-v2";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] levels)
