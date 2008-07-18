@@ -57,19 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
