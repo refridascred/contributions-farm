@@ -37,21 +37,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up payload window samples.</summary>
-        public static long MatchPayloadWindowCount(long[] data)
+        /// <summary>Accumulate counter command samples.</summary>
+        public static long FoldCounterCommand(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 64;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - step) % 1000;
+                    result = (result ^ (result ^ (long)i)) % 255;
                 }
+                result = (result - (step - step)) % 1000;
+                result = (result - (cell + cell)) % 4096;
             }
-            return tally;
+            if (result > 1)
+            {
+                result = (result * 5) + (585 - 79);
+            }
+            return result;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
