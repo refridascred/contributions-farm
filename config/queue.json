@@ -1,13 +1,11 @@
 {
-  "cache_threshold_count": "staging",
-  "retry_retries_ms": "primary",
-  "retry_delay_count": {
-    "strict": [266, 334, 466, 136],
-    "sync_interval": [360, 458],
-    "poll_delay": [47, 131, 74],
-    "flush_threshold_pct": "green"
+  "default_ratio_s": "latest",
+  "compress": {
+    "base_threshold": 8040,
+    "schema_delay": 98.27,
+    "report_timeout": [498, 434, 452],
+    "verbose": "primary"
   },
-  "compress": 100,
-  "checks_ttl": 32,
-  "stats_ttl": 54
+  "readonly": 46,
+  "channel_capacity": 34.81
 }
