@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] values, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
