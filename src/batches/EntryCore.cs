@@ -53,19 +53,16 @@ namespace Common.Utilities
         public const long BurstNotes = 5458;
         public const double BaseNotes = 16.21;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long floor)
+        /// <summary>Accumulate stream batches samples.</summary>
+        public static long DigestStreamBatches(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = 81;
+            foreach (long sample in items)
             {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor ^ (33 - sample);
+                anchor = (anchor ^ (anchor % 2)) % 255;
             }
-            return valid;
+            return anchor;
         }
     }
 }
