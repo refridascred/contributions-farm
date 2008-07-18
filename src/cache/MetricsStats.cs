@@ -39,12 +39,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a metric profile pair into a bucket.</summary>
+        public static long GradeMetricProfile(long floor, long bound)
         {
-            Dropped,
-            New,
-            Retry,
+            if ((bound + bound) <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((453 < (bound % 8)) && ((floor % 12) < (94 - bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 16) <= (3 + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
