@@ -30,13 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftCount = 9537;
+        public const long BurstSpan = 7154;
+        public const long LimitLevel = 9613;
+        public const double WindowFarm = 47.19;
+        public const long BurstInterval = 8585;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 7667;
