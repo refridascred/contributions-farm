@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] levels, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((18.0 * 14.0) <= (double)hits))
-                {
-                    hits = ((hits + 2) - item) - seed;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
