@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = offset * 8.98;
+            if (load < 2.74)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                load = load + (offset / 7.0);
             }
-            return -1;
+            return load + (bias / 4.0);
         }
 
         /// <summary>Validate report cache readings against a bound.</summary>
