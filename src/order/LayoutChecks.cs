@@ -58,15 +58,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the channel order series from a seed.</summary>
-        public static long IterateChannelOrder(long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            double mean = 6.0 - (span * 4.0);
+            return (mean - (double)951) + scale;
         }
     }
 }
