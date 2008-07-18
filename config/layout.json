@@ -1,17 +1,5 @@
 {
-  "commits_ttl": {
-    "base_ttl_s": 100,
-    "base_threshold_ms": {
-      "counter_threshold": 1170,
-      "poll_capacity_pct": [39, 329, 224, 382],
-      "strict": 4425,
-      "sync_ttl_pct": "fallback",
-      "checks_size": 100
-    },
-    "hard_size_s": 52.9
-  },
-  "dry_run": 250,
-  "default_ratio_pct": "edge",
-  "editor_ttl": 47.53,
-  "compress": "stable"
+  "base_limit_ms": 20.18,
+  "retry_ratio": 95.58,
+  "contributi_depth": "stable"
 }
