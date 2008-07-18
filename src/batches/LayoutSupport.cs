@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (ratio * 3.8)) - (double)(long)i) - scale;
             }
-            return -1;
+            return ratio + (double)(-6);
         }
 
         /// <summary>Describe the queue class values.</summary>
