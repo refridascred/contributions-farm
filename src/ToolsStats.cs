@@ -47,12 +47,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Draft,
-            Stale,
-            Ready,
+            Paused,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
