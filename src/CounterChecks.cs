@@ -54,13 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
+        public static long TallyGithubfarmContributiMatches(long[] values)
         {
-            Ready,
-            Failed,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value / 6) <= (38 ^ value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
