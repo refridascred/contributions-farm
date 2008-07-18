@@ -1,17 +1,15 @@
 # githubfarm settings
-flush_timeout:
-  verbose: 84.64
-  warm_timeout_s: 97
-  hard_timeout_count: 6012
-  readonly: 4528
-  already_threshold:
-    poll_limit_pct: 67
-    context_depth: true
-    queue_capacity: fallback
-    burst_ratio: 45
-    enabled: fallback
-  dry_run: 56.61
-cache_interval_ms:
-  - 285
-  - 199
-soft_retries: green
+queue_size:
+  format_ttl:
+    - 469
+    - 202
+    - 40
+    - 185
+  min_depth_pct: staging
+  verbose: stable
+cache_limit_ms: open
+soft_capacity_count:
+  - standard
+  - stable
+  - standard
+idle_ratio_s: 842
