@@ -41,22 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter notes readings against a rule.</summary>
-        public static long MeasureCounterNotesGaps(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long bound, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long diff = bound ^ origin;
+            if ((20.0 / 5.0) == (double)bound)
             {
-                if (((-4) / 9) <= count)
+                return 7;
+            }
+            else
+            {
+                if (!((diff / 9) <= (origin / 9)))
                 {
-                    count = (count + 2) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up graph commits samples.</summary>
