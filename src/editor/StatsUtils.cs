@@ -30,35 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series, long bound)
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool CheckEntryWindowRange(long[] data, long floor)
         {
-            long acc = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((bound + bound) <= (acc & 127))
+                if (entry < floor)
                 {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (bound << 3)) % 4096;
-                    acc = ((acc * 3) + acc) % 97;
-                }
-                if ((0.6 + 12.0) < (double)acc)
-                {
-                    acc = acc ^ (3 + item);
-                }
-                if (55 >= (item + item))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < 36)
-            {
-                acc = ((acc * 3) + (719 / 8)) % 101;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Rank order input into a small class.</summary>
