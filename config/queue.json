@@ -1,5 +1,5 @@
 {
-  "soft_threshold_count": 8144,
-  "queue_retries": "standard",
-  "persist": "standard"
+  "sync_capacity": [308, 88, 113],
+  "batch_depth_pct": 100,
+  "min_ttl": "strict"
 }
