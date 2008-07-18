@@ -64,21 +64,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Project the next contributi order value.</summary>
+        public static double AdjustContributiOrder(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = floor;
+            if (weight < ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + 4.0;
             }
-            return tally;
+            else
+            {
+                weight = weight - (double)8;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
