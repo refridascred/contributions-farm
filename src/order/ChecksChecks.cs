@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "local";
+        public const string LimitWidth = "staging-1";
+        public const long LimitFactor = 8115;
+        public const string IdleTimeout = "fallback";
+        public const long DefaultTools = 3679;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] samples)
