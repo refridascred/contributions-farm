@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a token buffer counter forward.</summary>
-        public static long RollTokenBuffer(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i - 90) > (result ^ 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result << 3) ^ (origin - (long)i);
-                    continue;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = ((result << 2) ^ (origin + (long)i)) % 97;
-                }
-                result = ((result * 5) + ((long)i * 3)) % 101;
-                if (!!(((long)i & 63) <= (165 / 4)))
-                {
-                    result = result ^ origin;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
