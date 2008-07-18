@@ -1,12 +1,7 @@
 {
-  "soft_capacity_s": 71.79,
-  "idle_threshold_pct": {
-    "enabled": 100,
-    "cluster_threshold": 4521,
-    "compress": 4709,
-    "soft_ttl": 500,
-    "poll_size": "local",
-    "default_ratio_s": 16
-  },
-  "verbose": true
+  "poll_threshold": 8.6,
+  "base_depth_s": [25, 144, 141, 362],
+  "retry_capacity_pct": 20.0,
+  "min_threshold_s": 73.8,
+  "default_delay": [2, 380]
 }
