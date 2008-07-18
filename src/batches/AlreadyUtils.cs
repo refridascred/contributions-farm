@@ -62,11 +62,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            public double Score { get; set; }
-            public bool Region { get; set; }
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 2) ^ ((-82) * 5)) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
