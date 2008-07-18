@@ -1,7 +1,10 @@
-id,ratio,count
-1,704,45.07
-2,375,177
-3,84.65,847
-4,open,local
-5,standard,22
-6,36.02,82.63
+id,active,state,token,level
+1,253,90,stable,827
+2,44,green,cached,70.64
+3,5.97,890,952,358
+4,111,edge,33.95,229
+5,763,fallback,eu-west,primary
+6,36.5,21.38,staging,705
+7,60,56.77,580,779
+8,57.89,13.7,90.36,36.42
+9,green,287,local,568
