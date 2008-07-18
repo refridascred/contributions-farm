@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 646;
-        public const string MinChecks = "local-v2";
-        public const long IdleChecks = 7949;
-        public const string MinBudget = "open";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchLevel = 23.8;
