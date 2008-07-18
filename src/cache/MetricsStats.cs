@@ -45,18 +45,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((reading / 2) > reading) || (matches < (matches & 63)))
+                long diff = (carry >> 1) << 3;
+                diff = (diff + (floor - (long)i)) % 101;
+                if (((carry + 3) <= (carry >> 1)) || ((double)67 < (double)floor))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ (3 + diff)) % 97;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
