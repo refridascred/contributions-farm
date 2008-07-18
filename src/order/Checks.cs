@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches >= datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already record.</summary>
