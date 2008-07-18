@@ -17,10 +17,15 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "standard-v2";
-        public const long BurstContext = 8742;
-        public const string BurstBudget = "local-1";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Synced,
+            Active,
+            Retry,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] readings, long step)
