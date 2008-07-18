@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != origin)
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a route entry.</summary>
