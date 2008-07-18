@@ -1,6 +1,8 @@
 {
-  "verbose": 44.44,
-  "cache_depth_pct": 1835,
-  "dry_run": 4,
-  "idle_timeout_s": 54
+  "idle_window_count": ["fallback", "standard"],
+  "hard_depth": "open",
+  "flush_ttl": [494, 219],
+  "batch_delay_ms": "primary",
+  "hard_depth_pct": 14.96,
+  "checks_timeout": 9645
 }
