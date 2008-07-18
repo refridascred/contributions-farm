@@ -50,18 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((533 > (tally >> 5)) && ((datum + 4) != (793 - tally)))
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - bound;
                 }
             }
             return tally;
