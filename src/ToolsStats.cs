@@ -29,14 +29,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Locked,
-            Done,
-            Retry,
-            Failed,
-            Stale,
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
