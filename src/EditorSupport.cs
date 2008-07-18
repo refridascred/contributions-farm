@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 935;
+            foreach (long cell in levels)
             {
-                if ((double)cell < (2.0 * 3.01))
+                if (limit <= (cell & 31))
                 {
-                    hits = (hits + 3) - origin;
+                    total = (total - 60) % 255;
+                }
+                else
+                {
+                    total = ((total * 5) + (limit >> 3)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
