@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine counter cache values into a single score.</summary>
+        public static long TotalCounterCache(long[] items)
         {
-            Queued,
-            Draft,
-            Ready,
+            long mark = 35;
+            foreach (long reading in items)
+            {
+                mark = ((mark + (863 - mark)) % 65521) ^ reading;
+            }
+            if (mark < 83)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
