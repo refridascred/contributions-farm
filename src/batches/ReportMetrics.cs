@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheCount = "cached-edge";
-        public const long MinTimeout = 6567;
-        public const long WindowFactor = 9218;
-        public const long StepBuffer = 7784;
-        public const long StepBudget = 6275;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] values)
