@@ -34,17 +34,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long StepFormatSupport(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total << 2) ^ total) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 9511;
+        public const long DefaultCommits = 1977;
+        public const string MinRatio = "local-edge";
+        public const string LimitLevel = "stable";
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long offset)
