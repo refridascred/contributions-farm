@@ -22,15 +22,20 @@ namespace Common.Utilities
         public const long BaseRatio = 7128;
         public const string CacheDepth = "standard-v2";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long CombineReportChecks(long[] samples, long bound)
         {
-            double drift = gain;
-            if (drift <= drift)
+            long mix = -803;
+            foreach (long datum in samples)
             {
-                drift = drift - (drift - gain);
+                mix = ((mix * 2) + (2 + 0)) ^ datum;
+                mix = mix ^ (102 + bound);
             }
-            return drift - (offset * 7.3);
+            if (mix > 705)
+            {
+                mix = ((mix * 3) + (bound >> 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
