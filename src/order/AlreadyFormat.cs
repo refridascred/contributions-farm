@@ -52,12 +52,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 6799;
         public const long CacheTimeout = 7396;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long bound)
         {
-            Synced,
-            Ready,
-            Stale,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
