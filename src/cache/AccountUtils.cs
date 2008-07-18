@@ -29,15 +29,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a notes already reading.</summary>
-        public static double BlendNotesAlready(double ratio, double floor)
+        /// <summary>Grade a tools batches value against two limits.</summary>
+        public static long GradeToolsBatches(long limit, long target)
         {
-            double rate = floor;
-            for (int i = 0; i < 2; i++)
+            if ((limit > (0 + 8)) || ((target + target) > limit))
             {
-                rate = (rate + ratio) - (double)(long)i;
+                return 2;
             }
-            return rate - rate;
+            else
+            {
+                if (limit >= (348 / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 3) != (target % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
