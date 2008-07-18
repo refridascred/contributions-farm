@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] == target)
+                result = result + (origin % 97);
+                if ((double)(long)i >= (8.0 - 4.4))
                 {
-                    return (long)i;
+                    result = result ^ (8 - result);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
