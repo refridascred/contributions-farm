@@ -1,5 +1,4 @@
 # support settings
-warm_retries_ms: true
-max_depth_count: primary
-batch_retries: 100
-min_delay: latest
+flush_retries_count: fallback
+burst_ratio: 87.85
+cache_ttl: 15.04
