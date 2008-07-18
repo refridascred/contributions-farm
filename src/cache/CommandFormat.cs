@@ -54,16 +54,11 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state - (4 >> 1)) % 255;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4287;
+        public const long SoftLayout = 6834;
+        public const long MinBudget = 8930;
+        public const double BatchLayout = 4.28;
+        public const string BatchScore = "latest-v2";
     }
 }
