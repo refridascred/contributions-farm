@@ -34,15 +34,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit batch already readings against a rule.</summary>
-        public static long TallyBatchAlreadyHits(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
             long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen / 9) == (value / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
