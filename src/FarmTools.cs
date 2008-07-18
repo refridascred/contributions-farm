@@ -27,12 +27,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Idle,
+            Queued,
+            Ready,
             Stale,
-            Closed,
+            Dropped,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
