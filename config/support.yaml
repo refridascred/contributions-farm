@@ -1,7 +1,15 @@
 # support settings
-max_depth: 56.39
-default_delay: 100
-batch_limit: 7.74
-report_retries: false
-flush_timeout: 5895
-compress: 5833
+sync_depth_pct:
+  githubfarm_ttl:
+    - local
+    - staging
+  batch_limit: false
+  dry_run:
+    - 374
+    - 67
+    - 103
+  poll_window: 4109
+sync_limit: blue
+min_interval_pct: false
+max_interval: 60.16
+default_retries: 24
