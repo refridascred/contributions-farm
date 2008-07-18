@@ -76,15 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings, long seed)
         {
-            double weight2 = (double)((-67) << 2);
-            if (weight2 >= (double)9)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                weight2 = ((weight2 - weight2) + weight) - floor;
+                if (!(seed >= (seen - seed)))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            return weight2 - weight2;
+            return seen;
         }
     }
 }
