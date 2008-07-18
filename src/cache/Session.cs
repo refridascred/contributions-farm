@@ -41,38 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if ((bound + (-4)) > bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound % 16) >= bound) && ((double)step == (0.72 / 3.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step & 1) <= (bound >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((14.0 - 8.85) <= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
