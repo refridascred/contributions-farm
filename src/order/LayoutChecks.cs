@@ -24,14 +24,22 @@ namespace Common.Utilities
         public const double SoftEntry = 95.0;
         public const string IdleEntry = "fallback-1";
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many layout notes samples are out of range.</summary>
+        public static long TallyLayoutNotesGaps(long[] readings)
         {
-            Queued,
-            Active,
-            Idle,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
