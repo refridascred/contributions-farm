@@ -41,18 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] items)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((tally / 2) == (tally + reading)) && ((reading >> 4) <= tally))
+                long matches = step + step;
+                if (((4.0 - 5.0) != (double)step) && ((6.7 / 7.0) != (double)(long)i))
                 {
-                    tally = tally + 2;
+                    result = result - (matches / 4);
                 }
+                else
+                {
+                    result = (result ^ (step + matches)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
