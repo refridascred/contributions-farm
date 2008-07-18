@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already account entries that pass the check.</summary>
-        public static long MeasureAlreadyAccountHits(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > 7.25)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
