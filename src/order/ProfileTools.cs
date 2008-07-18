@@ -26,11 +26,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double mean = gain;
-            return (mean - (double)606) + floor;
+            Synced,
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
