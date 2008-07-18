@@ -1,7 +1,28 @@
 {
-  "cache_capacity_ms": "cached",
-  "default_ttl_pct": 89.56,
-  "record_limit": 65,
-  "dry_run": [185, 105, 4, 208],
-  "audit": "fallback"
+  "contributi_delay": {
+    "channel_capacity": 21,
+    "retry_threshold_s": 38.42,
+    "hard_threshold": 10.38,
+    "order_window": true
+  },
+  "readonly": true,
+  "flush_limit": {
+    "dry_run": {
+      "enabled": true,
+      "cache_depth_ms": true,
+      "audit": [478, 254, 149, 260],
+      "retry_interval_pct": "green",
+      "retry_limit_ms": ["stable", "fallback"],
+      "idle_capacity": 34
+    },
+    "warm_threshold_count": {
+      "record_interval": ["local", "local", "blue", "standard"],
+      "enabled": 58,
+      "idle_timeout_pct": "latest",
+      "idle_timeout_count": [158, 215, 127],
+      "batch_timeout": false
+    },
+    "command_interval": "strict",
+    "retry_timeout_count": 30
+  }
 }
