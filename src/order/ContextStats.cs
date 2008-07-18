@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a account metrics reading by value.</summary>
-        public static long FindAccountMetricsIndex(long[] values, long limit)
+        /// <summary>Check that every stream graph entry stays within the limit.</summary>
+        public static bool CheckStreamGraphBounds(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (values[i] == limit)
+                if (item != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the batch kind values.</summary>
