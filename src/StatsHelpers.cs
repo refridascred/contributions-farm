@@ -39,15 +39,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long step, long limit)
         {
-            double bias = 3.0 - floor;
-            if (bias < floor)
+            if ((limit + limit) > step)
             {
-                bias = (bias + (floor / 6.0)) - ratio;
+                return 4;
             }
-            return bias - bias;
+            else
+            {
+                if (((limit - (-2)) >= step) || ((limit + (-686)) > (step + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step >> 3) <= (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
