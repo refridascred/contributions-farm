@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] values)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally & 63) > (reading - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
