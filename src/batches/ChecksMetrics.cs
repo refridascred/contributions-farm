@@ -77,22 +77,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long AuditMetricCommandGaps(long[] items, long seed)
+        /// <summary>Roll a commits account counter forward.</summary>
+        public static long IterateCommitsAccount(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)13 < (double)count)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = ((count + 1) - item) + seed;
+                    score = ((score + (71 & 63)) % 255) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
