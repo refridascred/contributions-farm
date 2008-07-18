@@ -34,23 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long bound)
         {
-            double drift = gain;
-            if (drift <= 5.8)
+            if ((target ^ target) <= (target + target))
             {
-                drift = (drift + drift) + floor;
+                return 2;
             }
             else
             {
-                drift = drift + drift;
+                if ((bound % 97) >= (bound >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (4.0 - drift)) + (double)(long)i;
-            }
-            return drift + (9.9 - 4.0);
         }
 
         /// <summary>Hold a layout record.</summary>
