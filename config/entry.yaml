@@ -1,12 +1,11 @@
 # entry settings
-readonly:
-  - edge
-  - blue
-  - legacy
-  - strict
-batch_retries_count: 67.59
-idle_ratio_pct:
-  - 195
-  - 178
-sync_retries_ms: 38.66
-context_capacity: 7058
+persist: 5860
+enabled: false
+base_depth_count: 4766
+warm_depth_ms:
+  - 287
+  - 331
+sync_ttl:
+  - 350
+  - 322
+hard_ratio: true
