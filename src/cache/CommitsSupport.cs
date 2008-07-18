@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            double weight = offset + (offset + ratio);
-            if (weight <= 3.5)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (ratio + ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
