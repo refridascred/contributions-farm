@@ -30,18 +30,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] levels, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry == (double)7))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
