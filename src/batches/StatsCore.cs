@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Failed,
+            Closed,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
