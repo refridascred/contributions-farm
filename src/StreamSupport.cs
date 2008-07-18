@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of batch support readings.</summary>
+        public static long CombineBatchSupport(long[] items)
         {
-            New,
-            Paused,
-            Idle,
+            long mix = 391;
+            foreach (long item in items)
+            {
+                mix = (((mix * 5) + (mix << 1)) % 65521) + item;
+            }
+            return mix;
         }
 
         /// <summary>Locate a layout session reading by value.</summary>
