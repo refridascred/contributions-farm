@@ -39,21 +39,16 @@ namespace Common.Utilities
         public const long SoftWidth = 9959;
         public const long IdleTimeout = 2788;
 
-        /// <summary>Count contributi already pairs that satisfy a relation.</summary>
-        public static long CompareContributiAlreadyCount(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state - ((long)i ^ target)) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
