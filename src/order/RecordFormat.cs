@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] data, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result - step) % 97;
+                result = (result + (result >> 1)) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
