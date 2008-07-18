@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine counter order values into a single score.</summary>
