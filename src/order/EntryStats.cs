@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            if ((3 ^ 71) <= seed)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((7.0 - 1.0) != (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((12 + offset) < seed)
+                    if ((levels[i] + levels[j]) > 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of cache already readings.</summary>
