@@ -1,6 +1,22 @@
 {
-  "warm_timeout_s": 21,
-  "retry_depth": ["eu-west", "cached", "primary", "blue"],
-  "cache_size_count": ["standard", "cached", "standard"],
-  "queue_delay": true
+  "enabled": 96,
+  "already_window": 5.63,
+  "compress": {
+    "order_threshold": 62.36,
+    "entry_ratio": false,
+    "audit": 62,
+    "poll_threshold_s": "local"
+  },
+  "audit": {
+    "layout_size": true,
+    "retry_timeout_ms": 1024,
+    "command_ratio": {
+      "readonly": false,
+      "dry_run": 94.26,
+      "default_window_ms": [314, 181, 392, 310],
+      "cache_ttl_pct": 71.85,
+      "buffer_ratio": 84.77,
+      "sync_ttl_s": ["eu-west", "standard", "eu-west"]
+    }
+  }
 }
