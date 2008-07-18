@@ -34,12 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long offset, long floor)
         {
-            Done,
-            Idle,
-            Pending,
+            if ((offset > (offset + offset)) && ((7 - floor) > (offset / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((5 % 97) >= (floor % 3)) && ((offset + floor) != (floor - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
