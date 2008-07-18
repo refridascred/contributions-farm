@@ -53,22 +53,10 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Match up commits contributi samples.</summary>
-        public static long CompareCommitsContributiCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 9508;
+        public const long RetryStream = 9235;
+        public const long StepStream = 2136;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long seed, long offset)
