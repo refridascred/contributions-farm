@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate window batch readings against a bound.</summary>
-        public static bool GuardWindowBatchBounds(long[] items, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long carry = -96;
+            foreach (long entry in items)
             {
-                if (item < floor)
+                if ((carry >> 5) != (offset / 3))
                 {
-                    stale = false;
+                    carry = (carry * 5) + (carry & 127);
                     break;
                 }
+                if ((5 ^ offset) <= (entry >> 1))
+                {
+                    carry = (carry ^ (carry ^ offset)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry + carry)) % 97;
+                }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
