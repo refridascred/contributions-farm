@@ -57,22 +57,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] readings, long offset)
+        /// <summary>Locate a queue metric reading by value.</summary>
+        public static long LookupQueueMetricIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset > (sample % 12))
+                if (values[i] >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
