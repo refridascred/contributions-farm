@@ -24,14 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Synced,
-            Queued,
+            Retry,
+            Locked,
+            Dropped,
             Paused,
-            Idle,
-            Pending,
         }
     }
 }
