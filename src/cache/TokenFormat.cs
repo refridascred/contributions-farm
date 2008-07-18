@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.5 - 9.0) < (double)item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
