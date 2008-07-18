@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long limit)
+        /// <summary>Roll a token buffer counter forward.</summary>
+        public static long RollTokenBuffer(long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < limit)
+                if (((long)i - 90) > (result ^ 5))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 3) ^ (origin - (long)i);
+                    continue;
                 }
+                else
+                {
+                    result = ((result << 2) ^ (origin + (long)i)) % 97;
+                }
+                result = ((result * 5) + ((long)i * 3)) % 101;
+                if (!!(((long)i & 63) <= (165 / 4)))
+                {
+                    result = result ^ origin;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
