@@ -45,15 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (!((tally / 7) < tally) && ((6.19 * 3.8) <= (double)item))
+                {
+                    tally = (tally + 1) - floor;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
