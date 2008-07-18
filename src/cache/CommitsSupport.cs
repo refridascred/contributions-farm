@@ -46,12 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 65.07;
-        public const string DefaultDepth = "stable-1";
-        public const long BatchStream = 9557;
-        public const long BaseStream = 4712;
-        public const long BatchFactor = 928;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] values, long seed)
