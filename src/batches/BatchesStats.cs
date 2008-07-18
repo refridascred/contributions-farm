@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const double MaxWidth = 6.63;
         public const long RetryInterval = 3845;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] samples, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] samples, long offset)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long cell in samples)
             {
-                if (cell < seed)
+                if (!((2.6 * 17.0) <= (double)hits) && (((hits ^ offset) < (offset - cell)) || ((offset - cell) >= (997 / 3))))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
