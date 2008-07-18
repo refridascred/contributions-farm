@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            Paused,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
