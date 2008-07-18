@@ -31,19 +31,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double ratio = scale;
-            if (ratio <= 3.33)
-            {
-                ratio = (ratio + (scale / 6.0)) + span;
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            return ratio + (double)49;
+            Stale,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the notes class values.</summary>
