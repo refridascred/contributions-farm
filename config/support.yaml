@@ -1,12 +1,5 @@
 # support settings
-sync_window_ms:
-  - green
-  - stable
-default_ttl:
-  compress: true
-  warm_window_s: latest
-  batch_limit: 4851
-flush_timeout: true
-audit:
-  - standard
-  - local
+warm_limit_count: true
+compress: 100
+soft_threshold: 55
+buffer_timeout: 9782
