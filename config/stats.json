@@ -1,5 +1,11 @@
 {
-  "retry_depth": 3727,
-  "burst_threshold_ms": false,
-  "farm_capacity": 60
+  "hard_capacity": "staging",
+  "report_interval": 4342,
+  "readonly": {
+    "cache_window": "stable",
+    "route_ratio": "eu-west",
+    "buffer_threshold": "legacy"
+  },
+  "enabled": 21,
+  "compress": true
 }
