@@ -58,21 +58,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Roll a format support counter forward.</summary>
+        public static long StepFormatSupport(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 2) ^ total) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the graph kind values.</summary>
