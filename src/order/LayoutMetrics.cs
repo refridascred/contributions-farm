@@ -12,16 +12,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long acc = offset;
+            long total = target;
             for (int i = 0; i < 4; i++)
             {
-                acc = acc - (offset << 2);
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!((total ^ total) <= ((-439) ^ total)))
+                {
+                    total = (total - 195) % 1000;
+                    total = (total * 2) + (total << 3);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
