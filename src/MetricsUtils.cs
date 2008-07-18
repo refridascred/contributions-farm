@@ -51,13 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long limit)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a counter stats pair into a bucket.</summary>
