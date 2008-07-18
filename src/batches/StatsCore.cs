@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count tools schema pairs that satisfy a relation.</summary>
-        public static long PairToolsSchemaCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -9;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target << 1) != (reading ^ reading))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (target + 7)) % 4096;
+                    mark = mark + (reading * 3);
                 }
+                if ((((-29) - target) >= (target << 2)) || ((reading + target) <= (target - reading)))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (target - mark)) % 101;
+                    mark = (mark << 2) ^ (mark + reading);
+                }
+                mark = ((mark * 5) + (372 + 1)) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the account status values.</summary>
