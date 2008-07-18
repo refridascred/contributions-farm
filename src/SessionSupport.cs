@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout counter readings against a rule.</summary>
-        public static long MeasureLayoutCounterOutliers(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double rate = floor;
+            if (rate < (bias / 3.0))
             {
-                if ((tally * 2) != (long)readings.Length)
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - (double)33;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate / 6.0)) - (double)(long)i;
+            }
+            return rate - 6.3;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
