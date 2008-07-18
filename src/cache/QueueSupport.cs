@@ -32,14 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            Closed,
-            Dropped,
-            Idle,
-            New,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
