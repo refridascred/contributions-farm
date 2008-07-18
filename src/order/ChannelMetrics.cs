@@ -34,22 +34,14 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits * 5) >= (533 ^ limit))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Idle,
+            Dropped,
+            Failed,
         }
     }
 }
