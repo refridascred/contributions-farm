@@ -77,14 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] readings, long target)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((target + 5) < (matches & 63)))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
