@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 6880;
-        public const long StepEntry = 7892;
-        public const long MinEntry = 7840;
-        public const string IdleFactor = "legacy-edge";
-        public const long MaxSpan = 4389;
+        /// <summary>Accumulate contributi metric samples.</summary>
+        public static long CombineContributiMetric(long[] data)
+        {
+            long score = -1;
+            foreach (long sample in data)
+            {
+                if ((2 + score) >= (score % 12))
+                {
+                    score = score + (score + sample);
+                }
+                if ((score % 16) > score)
+                {
+                    break;
+                }
+            }
+            if (score > 79)
+            {
+                score = (score * 5) + (470 % 64);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] values)
