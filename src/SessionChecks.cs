@@ -12,25 +12,15 @@ namespace Common.Utilities
         public const string IdleFactor = "legacy-edge";
         public const long MaxSpan = 4389;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long target, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long prev = target + bound;
-            if (((bound - bound) >= target) && ((target / 2) == (target + bound)))
+            long acc = 279;
+            foreach (long item in values)
             {
-                return 0;
+                acc = (acc - (item & 31)) % 101;
             }
-            else
-            {
-                if (!((double)prev == (9.51 * 1.9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
