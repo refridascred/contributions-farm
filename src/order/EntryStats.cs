@@ -16,21 +16,26 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 321;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)offset <= (7.8 + 0.24)) || ((offset - offset) > ((-381) - result)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result - result) % 65521) - value;
+                }
+                else
+                {
+                    result = result - offset;
                 }
             }
-            return seen;
+            if (result < 11)
+            {
+                result = (result ^ ((-7) / 6)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the command status values.</summary>
