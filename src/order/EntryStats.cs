@@ -16,26 +16,21 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long result = 321;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)offset <= (7.8 + 0.24)) || ((offset - offset) > ((-381) - result)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result - result) % 65521) - value;
-                }
-                else
-                {
-                    result = result - offset;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 11)
-            {
-                result = (result ^ ((-7) / 6)) % 4096;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
