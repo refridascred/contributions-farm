@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long MaxSupport = 5540;
         public const string CacheInterval = "fallback-edge";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] samples, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
