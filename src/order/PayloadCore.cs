@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            Retry,
+            Stale,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
