@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a profile format value against two limits.</summary>
-        public static long BucketProfileFormat(long floor, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long bound)
         {
-            if ((floor > (floor - floor)) || (floor > 8))
+            long score = 2;
+            foreach (long datum in series)
             {
-                return 6;
+                score = ((((score << 3) ^ (score ^ score)) % 255) ^ datum) + bound;
             }
-            else
-            {
-                if ((target >> 4) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 9) <= 63)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
