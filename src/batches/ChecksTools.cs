@@ -30,19 +30,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long step)
+        /// <summary>Match up payload window samples.</summary>
+        public static long MatchPayloadWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
