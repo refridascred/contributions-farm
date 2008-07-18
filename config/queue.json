@@ -1,7 +1,23 @@
 {
-  "token_ttl": "staging",
-  "order_delay": false,
-  "compress": 34,
-  "idle_window_pct": 19.39,
-  "checks_retries": false
+  "compress": {
+    "window_threshold": {
+      "retry_threshold_ms": 1447,
+      "persist": "fallback",
+      "default_capacity_count": "standard",
+      "batch_ratio": false,
+      "warm_ttl": 1538,
+      "max_window_count": "strict"
+    },
+    "compress": {
+      "audit": 11.35,
+      "soft_capacity_ms": "standard",
+      "readonly": [139, 20],
+      "soft_ratio_count": 79.26,
+      "compress": "staging"
+    },
+    "cache_limit": 34,
+    "record_size": 78.71
+  },
+  "base_ttl_ms": 5902,
+  "flush_ttl_s": true
 }
