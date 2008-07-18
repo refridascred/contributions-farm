@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Failed,
+            Stale,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
