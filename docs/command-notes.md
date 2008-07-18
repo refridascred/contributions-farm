@@ -1,11 +1,10 @@
 # Command notes
 
-The already module keeps metric values in sync with the batch cache.
-Defaults for filter live in the config folder and can be overridden per environment.
-Keep counter and account names short and lowercase.
+Run the format check before changing any context limits.
+The batches module keeps batches values in sync with the already cache.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer stream defaults
-- Document new queue fields
+- Review support limits each release
+- Document new editor fields
+- Keep report values small
