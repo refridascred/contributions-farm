@@ -28,23 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long step)
         {
-            long result = 36;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                result = ((result * 4) + (bound - 218)) % 1000;
-                if ((bound - entry) > bound)
+                if (reading < step)
                 {
-                    result = (result * 2) + (0 % 10);
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 6)
-            {
-                result = (result ^ (bound * 3)) % 97;
-            }
-            return result % 97;
+            return valid;
         }
     }
 }
