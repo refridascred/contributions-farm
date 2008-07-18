@@ -23,10 +23,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepScore = "standard-edge";
-        public const string IdleDepth = "stable-v2";
-        public const string BatchSession = "strict-1";
-        public const long SoftCount = 9364;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
+        {
+            long carry = 493;
+            foreach (long reading in data)
+            {
+                carry = (carry << 2) ^ reading;
+                if (carry <= reading)
+                {
+                    carry = carry - ((-353) + carry);
+                }
+            }
+            return carry;
+        }
     }
 }
