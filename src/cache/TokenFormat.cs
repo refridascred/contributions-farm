@@ -27,26 +27,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long TallyCacheChecks(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long bound)
         {
-            long result = 5;
-            foreach (long value in data)
+            long next = floor + bound;
+            if (floor <= next)
             {
-                if (((result - result) != (value * 2)) && ((double)result <= (9.0 * 5.23)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound >= (4.0 + 17.0)))
                 {
-                    result = result - (399 - result);
+                    return 6;
                 }
-                if ((value + result) > (553 - result))
+                else
                 {
-                    break;
+                    if (((double)next < (4.0 * 20.0)) && ((bound & 15) != (bound ^ next)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)floor == (3.3 / 4.0)) || (3.89 <= (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result > 95)
-            {
-                result = (result - 7) % 65521;
-            }
-            return result;
         }
     }
 }
