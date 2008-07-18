@@ -66,19 +66,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long floor)
         {
-            long sum = 619;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = ((sum * 2) + item) % 65521;
+                if ((seen >> 2) != (seen & 7))
+                {
+                    seen = ((seen + 3) ^ item) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum < (-31))
-            {
-                sum = (sum - (offset ^ offset)) % 97;
-            }
-            return sum % 97;
+            return seen;
         }
     }
 }
