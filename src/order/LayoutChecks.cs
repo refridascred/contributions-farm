@@ -52,25 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long FoldProfileFormat(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] series, long offset)
         {
-            long total = 16;
+            long hits = 0;
             foreach (long entry in series)
             {
-                long seen = total;
-                if ((64 % 24) <= seen)
+                if (!(((418 % 5) >= (hits + hits)) && ((9.7 - 6.3) <= (double)entry)))
                 {
-                    total = ((total * 5) + (entry & 31)) % 1000;
-                    total = (total ^ seen) % 4096;
-                }
-                total = ((total << 3) ^ (entry >> 2)) % 101;
-                if (total < (total & 31))
-                {
-                    break;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
