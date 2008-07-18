@@ -1,11 +1,7 @@
 {
-  "sync_size": false,
-  "readonly": [302, 209],
-  "batch_size": "primary",
-  "cache_interval_pct": {
-    "batch_depth_ms": false,
-    "default_threshold": "eu-west",
-    "verbose": 24.4
-  },
-  "base_depth_pct": 95
+  "enabled": "fallback",
+  "retry_limit_pct": "latest",
+  "soft_window": "primary",
+  "cache_interval": true,
+  "burst_threshold_s": 73.31
 }
