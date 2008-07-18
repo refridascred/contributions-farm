@@ -48,18 +48,19 @@ namespace Common.Utilities
         public const long WindowDepth = 7895;
         public const double MinCluster = 35.8;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] data, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = 713;
+            foreach (long sample in data)
             {
-                if ((0.6 / 3.0) > (double)entry)
-                {
-                    count = (count + 2) - seed;
-                }
+                sum = (((sum ^ (long)data.Length) % 97) ^ sample) - offset;
             }
-            return count;
+            if (sum < 7)
+            {
+                sum = sum + (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
