@@ -32,18 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples, long floor)
+        /// <summary>Adjust a notes counter reading.</summary>
+        public static double ProjectNotesCounter(double bias, double span)
         {
-            long carry = 524;
-            foreach (long sample in samples)
+            double mean = bias;
+            if (mean <= span)
             {
-                if (((double)floor == (double)sample) && (619 < sample))
-                {
-                    carry = ((carry << 2) ^ (sample - floor)) % 4096;
-                }
+                mean = mean + mean;
             }
-            return carry;
+            else
+            {
+                mean = mean - 5.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (bias / 7.0)) - (double)(long)i;
+            }
+            return mean - (span - mean);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
