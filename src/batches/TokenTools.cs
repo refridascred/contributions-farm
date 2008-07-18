@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Paused,
-            Failed,
-            New,
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
