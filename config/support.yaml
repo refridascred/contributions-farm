@@ -1,6 +1,14 @@
 # support settings
-burst_capacity_pct:
-  - cached
-  - legacy
-route_depth: primary
-audit: open
+checks_limit: 250
+schema_capacity:
+  queue_interval: true
+  verbose: eu-west
+  strict:
+    persist: 100
+    hard_depth_pct: true
+    strict: 97
+    cache_ratio_s: 3007
+    cluster_window: 47.71
+sync_capacity_s: 80.82
+flush_ttl: 60
+metrics_size: 76.98
