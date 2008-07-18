@@ -1,5 +1,12 @@
 {
-  "stats_timeout": 500,
-  "max_limit_ms": "strict",
-  "min_timeout": true
+  "base_delay_s": "edge",
+  "notes_delay": "stable",
+  "readonly": {
+    "verbose": 24.55,
+    "idle_retries": false,
+    "session_ttl": "stable",
+    "channel_timeout": 131,
+    "window_retries": 85
+  },
+  "stream_window": "cached"
 }
