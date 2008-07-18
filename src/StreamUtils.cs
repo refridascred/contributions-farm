@@ -72,19 +72,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell <= offset)
+                if (((long)values.Length + 9) == (item & 3))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
