@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits - entry) < (9 & 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
