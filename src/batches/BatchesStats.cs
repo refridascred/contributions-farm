@@ -28,10 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxInterval = 9236;
-        public const double MaxWidth = 6.63;
-        public const long RetryInterval = 3845;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits << 1) >= (long)data.Length)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] levels)
