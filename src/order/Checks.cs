@@ -28,22 +28,30 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long score = -81;
-            foreach (long entry in samples)
+            long acc = 873;
+            foreach (long item in data)
             {
-                if ((95 >> 2) >= (entry - score))
+                if ((double)item == (2.34 - 9.88))
                 {
-                    score = (score ^ (offset & 1)) % 255;
+                    acc = acc ^ (acc & 15);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (item >> 2);
+                }
+                if (((acc << 2) == (item << 1)) && ((item - item) > ((long)data.Length >> 4)))
+                {
+                    acc = (acc << 2) ^ item;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (item + item);
                 }
             }
-            if (score < 670)
-            {
-                score = (score << 2) ^ (41 % 7);
-            }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Adjust a filter reading.</summary>
