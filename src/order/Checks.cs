@@ -52,10 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinScore = "strict";
-        public const long WindowScore = 7896;
-        public const long WindowRoute = 544;
+        /// <summary>Check that every stats checks entry stays within the limit.</summary>
+        public static bool GuardStatsChecksLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] values)
