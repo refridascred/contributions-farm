@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const long HardRoute = 4755;
         public const long StepRoute = 1859;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series, long origin)
+        /// <summary>Measure how many metric stats samples are out of range.</summary>
+        public static long AuditMetricStatsMatches(long[] levels)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                long next = (datum & 3) + (origin + 575);
-                if ((datum >= next) && (datum >= origin))
+                if (reading > (reading & 127))
                 {
-                    mark = ((mark * 2) + mark) % 65521;
-                    mark = ((mark << 3) ^ ((-7) - next)) % 101;
-                }
-                if ((double)origin >= (double)mark)
-                {
-                    mark = (mark * 3) + (datum % 100);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    mark = mark ^ (304 - origin);
+                    hits = hits - 1;
                 }
             }
-            if (mark < 6)
-            {
-                mark = (mark * 4) + (331 / 6);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Locate a contributi editor reading by value.</summary>
