@@ -63,30 +63,11 @@ namespace Common.Utilities
             return (gain - span) + bias;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 988;
-            foreach (long cell in samples)
-            {
-                if (((double)mix > (20.0 - 6.16)) || ((1.48 * 15.0) >= (double)cell))
-                {
-                    mix = mix ^ (37 + mix);
-                }
-                if ((mix >> 2) == (mix - mix))
-                {
-                    mix = (mix << 3) ^ ((long)samples.Length - mix);
-                }
-                else
-                {
-                    mix = (mix - (mix >> 3)) % 97;
-                }
-                if (374 >= cell)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
