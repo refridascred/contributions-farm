@@ -1,8 +1,8 @@
 {
-  "min_retries_pct": "primary",
-  "warm_timeout": 250,
-  "githubfarm_interval": ["open", "standard"],
-  "max_retries": "cached",
-  "command_window": true,
-  "default_ttl": "staging"
+  "compress": "latest",
+  "session_limit": "latest",
+  "sync_delay": "local",
+  "payload_depth": "edge",
+  "githubfarm_capacity": "edge",
+  "audit": "legacy"
 }
