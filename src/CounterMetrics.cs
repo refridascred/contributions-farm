@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheFactor = 5871;
+        public const double BatchCount = 18.29;
+        public const long RetryAlready = 680;
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double gain, double floor)
