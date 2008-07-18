@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile window series from a seed.</summary>
-        public static long DeriveProfileWindow(long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
