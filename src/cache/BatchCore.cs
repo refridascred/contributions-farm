@@ -38,17 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] < offset)
+                if (((state - sample) >= (sample ^ sample)) || ((double)state > (1.0 - 8.96)))
                 {
-                    return (long)i;
+                    state = (state ^ 210) % 101;
                 }
             }
-            return -1;
+            if (state > 7)
+            {
+                state = state + (6 << 1);
+            }
+            return state;
         }
     }
 }
