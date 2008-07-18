@@ -1,5 +1,6 @@
 {
-  "checks_interval": "fallback",
-  "default_ttl_ms": 11.86,
-  "account_threshold": "eu-west"
+  "layout_delay": false,
+  "notes_size": "stable",
+  "soft_size": true,
+  "min_interval_count": true
 }
