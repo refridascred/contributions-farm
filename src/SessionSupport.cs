@@ -14,14 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            Active,
-            Locked,
-            New,
-            Failed,
-            Synced,
+            long total = 19;
+            foreach (long entry in items)
+            {
+                if ((entry - 384) < (12 * 5))
+                {
+                    total = total ^ (entry - 39);
+                }
+            }
+            if (total > 27)
+            {
+                total = (total << 2) ^ (total & 63);
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
