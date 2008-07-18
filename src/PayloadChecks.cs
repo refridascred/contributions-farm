@@ -75,32 +75,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long step)
+        /// <summary>Count the notes commits entries that pass the check.</summary>
+        public static long AuditNotesCommitsHits(long[] series)
         {
-            long lane = target + step;
-            if ((double)lane == (double)step)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + target) <= (step & 63))
+                if (cell <= (tally & 127))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.31 - 4.2) > (double)lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
