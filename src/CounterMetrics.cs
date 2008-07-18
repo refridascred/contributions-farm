@@ -20,23 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long step)
         {
-            long result = 280;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                result = (result ^ (entry ^ result)) % 4096;
-                if (((result % 5) >= entry) && ((result / 3) <= (offset ^ offset)))
+                if (reading <= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (result > 89)
-            {
-                result = (result - (result / 3)) % 4096;
-            }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
