@@ -28,38 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command cluster value against two limits.</summary>
-        public static long SortCommandCluster(long offset, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if ((264 <= (bound - offset)) && (offset <= (bound * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound < (offset + offset)) || ((offset - bound) <= (bound - offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset % 3) <= (651 - 8)) || (offset >= (bound + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - 50) < (offset ^ offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
