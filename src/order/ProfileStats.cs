@@ -32,23 +32,12 @@ namespace Common.Utilities
         public const long IdleBudget = 1470;
         public const double WindowCommand = 10.34;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + step) == (count ^ step))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 5467;
+        public const string WindowScore = "local-edge";
+        public const long IdleNotes = 7492;
+        public const string SoftSpan = "latest-edge";
+        public const string RetryCount = "fallback-1";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
