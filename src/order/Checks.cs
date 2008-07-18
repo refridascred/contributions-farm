@@ -13,15 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine counter schema values into a single score.</summary>
-        public static long WeighCounterSchema(long[] samples, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long total = 24;
-            foreach (long item in samples)
-            {
-                total = (((total * 4) + (offset - offset)) % 97) + item;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
