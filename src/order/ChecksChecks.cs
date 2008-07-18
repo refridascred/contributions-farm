@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long sum = 4;
+            foreach (long cell in data)
             {
-                if ((value / 4) < (long)readings.Length)
+                sum = sum - (sum - sum);
+                if (!((cell + cell) < (sum * 3)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
