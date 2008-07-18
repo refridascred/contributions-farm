@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 417;
+        public const long BaseCommits = 2278;
+        public const double WindowCommits = 94.95;
+        public const long HardLevel = 2686;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long floor, long limit)
