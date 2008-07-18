@@ -37,13 +37,27 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            Paused,
-            Idle,
-            Closed,
-            Done,
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((bound * 2) == ((long)i + (long)i))
+                {
+                    mark = (mark + (711 << 3)) % 65521;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark << 2) ^ bound) - (long)i2;
+                }
+                if (((long)i >> 1) > mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
