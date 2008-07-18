@@ -1,5 +1,30 @@
 {
-  "retry_limit_ms": "primary",
-  "idle_delay": 5.15,
-  "soft_limit": 30.04
+  "min_depth": "staging",
+  "compress": {
+    "stats_timeout": {
+      "soft_ratio": 55.22,
+      "warm_retries_ms": "edge",
+      "profile_ttl": [351, 485, 41],
+      "readonly": "standard",
+      "flush_limit_count": "local",
+      "sync_threshold_s": [436, 10]
+    },
+    "buffer_limit": "green",
+    "sync_ratio": 86.46
+  },
+  "entry_window": "open",
+  "payload_timeout": {
+    "metrics_limit": 30,
+    "default_delay_ms": 6868,
+    "record_limit": 500,
+    "min_retries_s": {
+      "persist": "standard",
+      "cache_window_count": 9,
+      "window_size": 5372,
+      "sync_delay": "edge",
+      "account_delay": false
+    },
+    "hard_capacity_s": "cached"
+  },
+  "format_depth": 60
 }
