@@ -39,20 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((offset - acc) > acc))
-                {
-                    acc = (acc - (offset % 5)) % 1000;
-                }
-                acc = (acc ^ (long)i) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up channel payload samples.</summary>
