@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count << 1) > (21 - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 5.11;
+        public const double MinSize = 55.32;
+        public const string MaxCount = "standard";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] values, long floor)
