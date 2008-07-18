@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = -784;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (double)target)
-                {
-                    score = (score - (1 % 2)) % 1000;
-                }
-                else
-                {
-                    score = score + (target << 2);
-                }
-            }
-            if (score < 94)
-            {
-                score = score - (target >> 4);
-            }
-            return score % 1000;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
