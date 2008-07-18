@@ -17,32 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Compare every pair of entry githubfarm readings.</summary>
+        public static long MatchEntryGithubfarmCount(long[] levels)
         {
-            long delta = target + floor;
-            if (((9 / 5) <= (delta - target)) && ((double)8 == (double)delta))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target % 16) <= (floor & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) < (target + delta))
+                    if ((levels[i] ^ levels[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
