@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every command token entry stays within the limit.</summary>
-        public static bool CheckCommandTokenRange(long[] levels, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double rate = bias - (double)6;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = ((rate + (double)24) + (double)(long)i) - ratio;
             }
-            return valid;
+            return rate - (double)(-8);
         }
 
         /// <summary>Describe the editor mode values.</summary>
