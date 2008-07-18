@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long floor)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
