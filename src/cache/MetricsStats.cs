@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a contributi token sample.</summary>
-        public static long SeekContributiTokenIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSize = 1505;
+        public const long DefaultSize = 8900;
+        public const long BaseTimeout = 9117;
+        public const double CacheRatio = 3.52;
+        public const double BatchCache = 92.81;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] readings)
