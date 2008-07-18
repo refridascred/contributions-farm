@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            Failed,
-            Locked,
-            Closed,
+            double load = scale;
+            if (load < scale)
+            {
+                load = (load + (scale * 14.0)) - span;
+            }
+            else
+            {
+                load = load + (2.2 - load);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 6.3) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
