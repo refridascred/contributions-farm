@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long MinWidth = 2154;
         public const double MaxStats = 25.35;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
