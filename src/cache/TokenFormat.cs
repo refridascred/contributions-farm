@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxSpan = "legacy-v2";
-        public const long HardPayload = 5660;
-        public const double IdlePayload = 18.2;
-        public const long BatchPayload = 7967;
-        public const long LimitPayload = 6043;
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long WeighEditorReport(long[] data)
+        {
+            long result = 564;
+            foreach (long value in data)
+            {
+                result = ((result - (result / 2)) % 65521) + value;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
