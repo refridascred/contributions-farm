@@ -36,19 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] samples, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
     }
 }
