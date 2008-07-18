@@ -26,19 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
