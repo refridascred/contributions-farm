@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] samples, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit / 7) <= limit)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Accumulate entry samples.</summary>
