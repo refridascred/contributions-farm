@@ -70,11 +70,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc * 3) + (acc + target);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
