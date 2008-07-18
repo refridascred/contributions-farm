@@ -15,11 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "open-1";
-        public const long StepDepth = 416;
-        public const long CacheStats = 17;
-        public const double SoftLevel = 66.82;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] readings)
