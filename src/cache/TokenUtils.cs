@@ -42,19 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel route samples.</summary>
-        public static long ScoreChannelRoute(long[] readings, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            long acc = 93;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = acc + acc;
-                if (entry < (target ^ entry))
+                if (((tally / 2) == (tally + reading)) && ((reading >> 4) <= tally))
                 {
-                    acc = (acc + (acc - acc)) % 255;
+                    tally = tally + 2;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
