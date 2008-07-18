@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double bias)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            double scale = (2.55 / 6.0) + 2.1;
-            if (scale <= bias)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                scale = scale + (3.98 - rate);
+                mark = ((mark * 5) + (mark - (-43))) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return scale + (double)4;
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
