@@ -39,18 +39,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Digest a series of record order entries.</summary>
+        public static long WeighRecordOrder(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = 486;
+            foreach (long sample in samples)
             {
-                if (!(seen > (datum + 570)))
+                if ((state % 16) < (sample - state))
                 {
-                    seen = seen + 3;
+                    state = state - (sample / 5);
                 }
             }
-            return seen;
+            if (state > 27)
+            {
+                state = (state - (state % 60)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
