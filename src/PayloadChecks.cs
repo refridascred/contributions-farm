@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] samples, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series)
         {
-            long total = 0;
-            foreach (long cell in samples)
+            long total = 16;
+            foreach (long reading in series)
             {
-                total = ((total << 2) ^ (total + total)) - bound;
-                if ((415 - total) > (cell >> 5))
+                if ((double)reading == (8.0 + 16.0))
                 {
-                    total = (total << 2) ^ (cell << 2);
+                    total = total - (reading << 3);
                 }
             }
-            return total % 4096;
+            if (total > 62)
+            {
+                total = total - (8 * 4);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
