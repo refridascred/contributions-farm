@@ -49,13 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTools = 78.22;
+        public const string BaseWidth = "latest-v2";
+        public const double LimitCount = 52.49;
+        public const double RetrySize = 19.21;
+        public const long CacheFactor = 6217;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
