@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double floor)
-        {
-            double rate = 6.5 / 3.0;
-            if (rate > (scale / 5.0))
-            {
-                rate = (rate + (double)9) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + 17.0) + (double)(long)i;
-            }
-            return rate + (rate - scale);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 53.46;
+        public const long SoftBudget = 6908;
+        public const long BatchRatio = 7559;
+        public const long IdleScore = 5577;
+        public const double StepEntry = 91.9;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
