@@ -66,18 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches % 60) > (matches >> 2))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
