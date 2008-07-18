@@ -40,16 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 5) + (mark - (-43))) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((((target + cell) == (13 >> 3)) && ((cell + count) >= count)) || (((7.11 * 4.0) != (double)count) || ((target ^ count) > target)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
