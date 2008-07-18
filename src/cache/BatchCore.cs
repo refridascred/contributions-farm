@@ -26,30 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mark = 51;
-            foreach (long value in data)
-            {
-                if ((mark * 3) > mark)
-                {
-                    mark = (mark ^ value) % 101;
-                }
-                if (value > (mark ^ value))
-                {
-                    mark = ((mark * 4) + value) % 255;
-                }
-                else
-                {
-                    mark = (mark + (value * 5)) % 255;
-                }
-                if (((double)value == (3.0 / 8.0)) || (8.7 < (double)(long)data.Length))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a cache record.</summary>
