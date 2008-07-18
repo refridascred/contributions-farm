@@ -40,26 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = -406;
-            foreach (long cell in values)
-            {
-                if ((anchor * 5) != ((-6) + cell))
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + cell) % 1000;
-                }
-            }
-            if (anchor < 484)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor % 4096;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
