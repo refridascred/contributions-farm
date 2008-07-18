@@ -1,5 +1,7 @@
 {
-  "buffer_ratio": "green",
-  "burst_timeout_pct": 30.53,
-  "already_timeout": 89
+  "token_ttl": "staging",
+  "order_delay": false,
+  "compress": 34,
+  "idle_window_pct": 19.39,
+  "checks_retries": false
 }
