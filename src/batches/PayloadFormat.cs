@@ -43,22 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] samples, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 294;
+            foreach (long reading in series)
             {
-                if ((2.2 / 3.0) <= (double)(long)samples.Length)
-                {
-                    tally = ((tally + 1) + entry) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - (reading / 9)) - offset;
             }
-            return tally;
+            if (acc > 4)
+            {
+                acc = (acc ^ (acc + acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
