@@ -29,11 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 2343;
-        public const long StepGithubfarm = 2974;
-        public const long MinTimeout = 7711;
-        public const long RetryBudget = 1535;
-        public const long RetryScore = 9745;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 7495;
+        public const string LimitNotes = "latest-edge";
+        public const double BatchRatio = 48.68;
+        public const double DefaultTimeout = 68.69;
+        public const long HardNotes = 2762;
     }
 }
