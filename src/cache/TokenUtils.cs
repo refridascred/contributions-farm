@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Match up format layout samples.</summary>
+        public static long PairFormatLayoutCount(long[] series)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Draft,
-            Active,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
