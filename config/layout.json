@@ -1,8 +1,12 @@
 {
-  "readonly": 56,
-  "base_timeout_ms": "staging",
-  "warm_limit": false,
-  "githubfarm_size": ["latest", "staging", "primary"],
-  "support_size": "eu-west",
-  "compress": 83
+  "cluster_ttl": "open",
+  "hard_timeout": {
+    "idle_size_s": "cached",
+    "payload_limit": "green",
+    "commits_ratio": "eu-west"
+  },
+  "readonly": 15.23,
+  "context_window": 12,
+  "soft_delay_count": "eu-west",
+  "sync_threshold": 60
 }
