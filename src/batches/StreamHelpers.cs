@@ -63,17 +63,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] items, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 782;
+            foreach (long item in data)
             {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
+                if ((score - 19) != (score % 2))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (item + score);
+                }
+                if ((double)score == (0.44 - 4.64))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 3)
+            {
+                score = (score - (long)data.Length) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of record cache entries.</summary>
