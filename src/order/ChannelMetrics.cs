@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
