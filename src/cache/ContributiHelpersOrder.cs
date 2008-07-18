@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-1";
         public const string WindowBudget = "alpha-v2";
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadMatches(long[] levels)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count / 4) != (count % 10))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
