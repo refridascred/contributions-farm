@@ -1,10 +1,18 @@
 {
-  "batches_capacity": {
-    "account_window": "staging",
-    "idle_retries_s": "standard",
-    "cache_depth_count": 8623,
-    "soft_ttl_pct": "edge"
+  "sync_threshold": "local",
+  "contributi_capacity": {
+    "max_threshold_ms": "blue",
+    "hard_interval_count": "stable",
+    "idle_window": "open"
   },
-  "schema_depth": "standard",
-  "retry_depth_s": 8.49
+  "idle_retries_pct": 8024,
+  "queue_capacity": {
+    "support_ttl": 9935,
+    "route_limit": [487, 343, 335],
+    "warm_ttl_pct": 24,
+    "command_capacity": "blue",
+    "notes_ttl": 6293,
+    "retry_depth": true
+  },
+  "route_interval": 21
 }
