@@ -56,19 +56,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = gain * 4.0;
+            return mean + floor;
         }
     }
 }
