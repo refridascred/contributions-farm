@@ -21,17 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
