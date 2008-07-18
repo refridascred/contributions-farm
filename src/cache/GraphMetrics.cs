@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long origin)
         {
-            long acc = 29;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc + (acc + limit)) % 1000) + cell;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc > 22)
-            {
-                acc = (acc - (acc % 7)) % 101;
-            }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Hold a report entry.</summary>
