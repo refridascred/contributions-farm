@@ -61,18 +61,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = -633;
+            foreach (long reading in readings)
             {
-                if ((entry + entry) > 3)
-                {
-                    hits = hits + 2;
-                }
+                mix = ((mix * 5) + (24 % 10)) - reading;
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
