@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long bound)
-        {
-            long result = 45;
-            foreach (long reading in readings)
-            {
-                if ((bound << 2) < (bound + 9))
-                {
-                    result = result ^ result;
-                }
-                result = (result * 5) + (reading - reading);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardDepth = 4217;
+        public const string DefaultNotes = "standard";
+        public const string DefaultWidth = "fallback-1";
+        public const long RetrySize = 3449;
+        public const long MaxWidth = 4855;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
