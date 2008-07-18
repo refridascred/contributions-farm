@@ -20,24 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache queue pair into a bucket.</summary>
-        public static long SortCacheQueue(long floor, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            if ((14.0 - 9.12) > (double)seed)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 255) == (9 + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up entry samples.</summary>
