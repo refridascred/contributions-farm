@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 1;
+            foreach (long reading in items)
             {
-                sum = sum ^ (sum - limit);
-                sum = (sum * 4) + limit;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (floor >= (reading - floor))
+                {
+                    sum = (sum * 2) + floor;
+                    break;
+                }
+                sum = sum ^ (sum % 16);
             }
             return sum;
         }
