@@ -36,22 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer context entries.</summary>
-        public static long ScoreBufferContext(long[] series, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long floor, long target)
         {
-            long sum = -7;
-            foreach (long reading in series)
+            long delta = floor + target;
+            if (((double)delta < 4.66) || ((target - target) > (floor - floor)))
             {
-                if ((3 + sum) < 551)
+                return 8;
+            }
+            else
+            {
+                if (!((delta * 2) == (target / 2)))
                 {
-                    sum = ((sum - (sum + sum)) % 1000) + reading;
+                    return 2;
                 }
                 else
                 {
-                    sum = sum ^ origin;
+                    return 6;
                 }
             }
-            return sum % 65521;
         }
     }
 }
