@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Find the first notes commits entry that matches the target.</summary>
+        public static long FindNotesCommitsIndex(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
