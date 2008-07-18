@@ -1,9 +1,8 @@
-id,token,weight
-1,25,88.5
-2,66.35,551
-3,blue,98.36
-4,74.43,81.51
-5,798,212
-6,latest,625
-7,edge,370
-8,stable,staging
+id,label,active,state,owner
+1,48.19,716,684,9.38
+2,86.16,standard,42.1,10
+3,73.85,standard,269,primary
+4,38.68,76.56,510,325
+5,47.07,45.8,85.02,edge
+6,637,open,83.93,869
+7,blue,981,97.86,17.06
