@@ -1,12 +1,6 @@
 {
-  "poll_interval_pct": {
-    "base_ttl_pct": 8589,
-    "record_retries": 59.03,
-    "sync_capacity_s": 72.81,
-    "batch_threshold_s": 100
-  },
-  "compress": true,
-  "notes_delay": 13,
-  "batch_threshold_s": "latest",
-  "already_capacity": "stable"
+  "batch_retries": [323, 112, 423, 131],
+  "poll_delay": 2745,
+  "max_window_pct": "fallback",
+  "base_size_pct": false
 }
