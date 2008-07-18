@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long limit, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            if ((3.73 * 4.95) >= (double)origin)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((58 * 5) != (origin >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 3) < origin)
+                    if ((data[i] - data[j]) != 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit / 7) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
