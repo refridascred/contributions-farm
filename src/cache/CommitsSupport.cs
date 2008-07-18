@@ -20,12 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Match up route editor samples.</summary>
+        public static long PairRouteEditorCount(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
