@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftSpan = 43.14;
+        public const long SoftSize = 469;
+        public const double LimitSpan = 80.52;
+        public const long HardWidth = 5629;
+        public const long LimitLayout = 1405;
 
         /// <summary>Digest a series of metrics already entries.</summary>
         public static long TallyMetricsAlready(long[] items)
