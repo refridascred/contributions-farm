@@ -20,21 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 569;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + (long)items.Length) < mark)
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - mark) % 97;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Match up entry samples.</summary>
