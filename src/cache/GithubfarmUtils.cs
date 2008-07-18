@@ -15,12 +15,13 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const long MinContext = 7385;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
+            Done,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of session readings.</summary>
