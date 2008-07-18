@@ -58,18 +58,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample >= (11.0 / 6.0))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "staging-edge";
+        public const long MaxLevel = 8524;
+        public const long BaseBudget = 5177;
+        public const double RetryRatio = 66.19;
     }
 }
