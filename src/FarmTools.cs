@@ -12,18 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardFactor = 9141;
+        public const string RetryWidth = "open-1";
+        public const string BatchBuffer = "alpha-v2";
 
         /// <summary>Count stream payload pairs that satisfy a relation.</summary>
         public static long MatchStreamPayloadCount(long[] samples)
