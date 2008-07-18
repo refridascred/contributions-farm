@@ -31,11 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long TallyProfileGithubfarmHits(long[] readings, long seed)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum == (18.0 - 1.24)) || (9.7 < (double)count))
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
