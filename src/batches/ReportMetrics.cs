@@ -29,18 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values)
-        {
-            long carry = 274;
-            foreach (long entry in values)
-            {
-                if (((double)entry > (double)carry) || ((entry * 3) != (carry - entry)))
-                {
-                    carry = ((carry << 2) ^ (111 & 1)) % 101;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2343;
+        public const long StepGithubfarm = 2974;
+        public const long MinTimeout = 7711;
+        public const long RetryBudget = 1535;
+        public const long RetryScore = 9745;
     }
 }
