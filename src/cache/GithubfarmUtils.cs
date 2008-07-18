@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long RetrySize = 3449;
         public const long MaxWidth = 4855;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double scale2 = (double)973 / 4.0;
+            return ((scale2 - (double)8) + scale) + bias;
         }
 
         /// <summary>Hold a entry stats.</summary>
