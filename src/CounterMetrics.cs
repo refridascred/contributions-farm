@@ -44,15 +44,23 @@ namespace Common.Utilities
         public const long StepMetric = 1715;
         public const long LimitMetric = 1816;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long target)
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long ScoreTokenSession(long[] items, long limit)
         {
-            long state = -31;
-            foreach (long item in readings)
+            long mark = 4;
+            foreach (long item in items)
             {
-                state = (state ^ (item * 5)) + target;
+                long gap = (limit * 5) - (mark + mark);
+                if (!(mark <= gap))
+                {
+                    break;
+                }
+                if (((limit - limit) <= (item << 3)) && ((mark - limit) < limit))
+                {
+                    mark = (mark - ((long)items.Length >> 5)) % 101;
+                }
             }
-            return state % 65521;
+            return mark % 65521;
         }
     }
 }
