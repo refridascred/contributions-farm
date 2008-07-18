@@ -1,8 +1,7 @@
 {
-  "retry_window_ms": true,
-  "farm_capacity": 1825,
-  "retry_limit_pct": "strict",
-  "hard_capacity_count": "green",
-  "max_delay_count": "strict",
-  "sync_interval": 60
+  "layout_retries": true,
+  "default_size_pct": 3.6,
+  "batch_limit_ms": false,
+  "sync_ttl_count": 665,
+  "max_depth": "strict"
 }
