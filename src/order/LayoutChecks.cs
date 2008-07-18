@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 3727;
-        public const long BaseLevel = 131;
-        public const double SoftEntry = 95.0;
-        public const string IdleEntry = "fallback-1";
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout notes samples are out of range.</summary>
         public static long TallyLayoutNotesGaps(long[] readings)
