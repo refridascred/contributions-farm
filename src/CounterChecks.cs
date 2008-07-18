@@ -46,15 +46,31 @@ namespace Common.Utilities
         public const long CacheSchema = 457;
         public const long BurstTimeout = 498;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            if (origin < (origin ^ origin))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((floor < (floor & 15)) || ((floor - floor) >= (origin * 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
