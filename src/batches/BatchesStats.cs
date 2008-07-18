@@ -39,22 +39,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record order entries.</summary>
-        public static long WeighRecordOrder(long[] samples)
-        {
-            long state = 486;
-            foreach (long sample in samples)
-            {
-                if ((state % 16) < (sample - state))
-                {
-                    state = state - (sample / 5);
-                }
-            }
-            if (state > 27)
-            {
-                state = (state - (state % 60)) % 65521;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 8491;
+        public const long IdleFactor = 4518;
+        public const long DefaultLevel = 9303;
+        public const string IdleCount = "latest-edge";
     }
 }
