@@ -18,12 +18,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxDepth = 30.44;
-        public const long StepAccount = 7330;
-        public const long HardAccount = 8092;
-        public const string LimitCount = "latest-edge";
-        public const double BatchFactor = 87.88;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a support counter figure with a bias.</summary>
         public static double BlendSupportCounter(double ratio, double bias)
