@@ -1,7 +1,17 @@
 {
-  "dry_run": "standard",
-  "sync_capacity_ms": 78.93,
-  "warm_threshold": "latest",
-  "base_limit_pct": "standard",
-  "stream_window": 60.71
+  "dry_run": {
+    "route_retries": "stable",
+    "base_window_count": "staging",
+    "queue_delay": "blue",
+    "retry_limit_count": true,
+    "dry_run": 1551
+  },
+  "min_ttl": 60,
+  "readonly": {
+    "max_window_ms": ["blue", "open", "fallback"],
+    "strict": 52.24,
+    "max_retries": "stable"
+  },
+  "strict": 8880,
+  "hard_size": 11.09
 }
