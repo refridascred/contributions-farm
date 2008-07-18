@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const long MaxRecord = 2768;
         public const double HardRecord = 19.46;
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long TallySupportQueueGaps(long[] items, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((43 - target) == (tally * 4)) || ((item * 2) < (item + 38)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
