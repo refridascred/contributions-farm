@@ -1,4 +1,19 @@
 # githubfarm settings
-strict: legacy
-sync_interval: 3248
-burst_timeout: local
+persist:
+  hard_depth_ms: 8656
+  cache_depth:
+    - 34
+    - 487
+    - 374
+  base_depth_pct: false
+  record_threshold:
+    - 261
+    - 122
+    - 222
+burst_size_count: 1024
+hard_depth_s:
+  - standard
+  - eu-west
+poll_size_ms: 4713
+schema_threshold: stable
+soft_window_pct: 60
