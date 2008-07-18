@@ -44,11 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Locked,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
