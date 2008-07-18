@@ -57,16 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream batches samples.</summary>
-        public static long DigestStreamBatches(long[] items)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long floor)
         {
-            long anchor = 81;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                anchor = anchor ^ (33 - sample);
-                anchor = (anchor ^ (anchor % 2)) % 255;
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
