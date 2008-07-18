@@ -23,39 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long step, long floor)
+        /// <summary>Find the first counter profile entry that matches the target.</summary>
+        public static long FindCounterProfileIndex(long[] values, long bound)
         {
-            long lane = step - floor;
-            if (!((double)lane >= 15.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)67 <= (double)floor))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor > (5.0 * 1.4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
