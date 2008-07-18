@@ -73,15 +73,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes metric readings.</summary>
-        public static long CombineNotesMetric(long[] samples, long offset)
+        /// <summary>Count the window command entries that pass the check.</summary>
+        public static long TallyWindowCommandMatches(long[] series, long seed)
         {
-            long result = 29;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                result = (result - item) - offset;
+                if ((((0 - seed) >= matches) || ((seed - matches) >= matches)) && (((seed & 1) >= 392) && (reading < (146 << 3))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
