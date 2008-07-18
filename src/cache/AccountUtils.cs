@@ -13,22 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metric stats samples are out of range.</summary>
-        public static long AuditMetricStatsMatches(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (reading & 127))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
