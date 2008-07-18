@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Match up session tools samples.</summary>
+        public static long PairSessionToolsCount(long[] values)
         {
-            long total = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (total ^ total)) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
