@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 7960;
-        public const long MaxOrder = 5461;
-        public const double DefaultOrder = 80.07;
-        public const long CacheSpan = 313;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up counter contributi samples.</summary>
         public static long PairCounterContributiCount(long[] data)
