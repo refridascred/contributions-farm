@@ -74,21 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(datum < (seen - datum)))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of record cache entries.</summary>
