@@ -36,38 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long origin, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((origin % 10) < origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.49 / 4.0) < (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.5 - 20.0) <= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor & 63) <= (origin << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next session already value from a seed.</summary>
