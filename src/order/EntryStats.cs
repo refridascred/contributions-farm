@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long seed)
         {
-            Paused,
-            Synced,
-            Closed,
-            Dropped,
-            Active,
+            if ((3 ^ 71) <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7.0 - 1.0) != (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((12 + offset) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
