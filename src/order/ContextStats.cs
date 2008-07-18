@@ -20,13 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Synced,
+            long mark = 93;
+            foreach (long datum in data)
+            {
+                mark = mark ^ mark;
+                mark = (mark ^ (datum - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session entry.</summary>
