@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long ScoreRecordStream(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = -905;
-            foreach (long item in items)
-            {
-                if ((item + 45) >= ((long)items.Length * 3))
-                {
-                    sum = ((sum * 4) + (sum - item)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (item ^ sum)) % 97;
-                }
-                if ((item / 7) >= (item + sum))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a support record.</summary>
