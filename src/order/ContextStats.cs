@@ -56,23 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            double rate = ratio / 9.0;
-            if (rate > (rate / 9.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                rate = rate - rate;
+                if (count <= (count + item))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (ratio * 3.0)) - (double)(long)i;
-            }
-            return rate - ratio;
+            return count;
         }
     }
 }
