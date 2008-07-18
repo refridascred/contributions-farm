@@ -1,7 +1,16 @@
 {
-  "layout_retries": true,
-  "default_size_pct": 3.6,
-  "batch_limit_ms": false,
-  "sync_ttl_count": 665,
-  "max_depth": "strict"
+  "retry_threshold_pct": 9593,
+  "base_timeout_pct": 100,
+  "idle_window": {
+    "idle_window": "legacy",
+    "cache_limit": ["staging", "edge", "standard"],
+    "default_interval_s": {
+      "max_interval": 947,
+      "min_threshold": "legacy",
+      "stats_limit": 17
+    },
+    "audit": "legacy",
+    "burst_ttl_ms": 77
+  },
+  "batch_ratio": 1024
 }
