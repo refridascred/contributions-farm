@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((4.7 * 2.0) < (double)seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
