@@ -68,12 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            New,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the entry state values.</summary>
