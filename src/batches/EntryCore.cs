@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of context format readings.</summary>
-        public static long TotalContextFormat(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            long anchor = 379;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((anchor * 5) <= (datum + datum))
+                if (9.0 <= (double)sample)
                 {
-                    anchor = ((anchor << 2) ^ (anchor - 1)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (5 % 7);
+                    matches = matches + 1;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Describe the route level values.</summary>
