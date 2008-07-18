@@ -1,5 +1,6 @@
 {
-  "session_limit": "cached",
-  "flush_threshold_s": ["stable", "strict"],
-  "default_limit_pct": "stable"
+  "flush_interval": 35.07,
+  "cache_capacity": "eu-west",
+  "max_ttl_s": 60,
+  "flush_ratio_ms": "edge"
 }
