@@ -22,14 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] levels, long seed)
         {
-            Draft,
-            Retry,
-            Ready,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((18.0 * 14.0) <= (double)hits))
+                {
+                    hits = ((hits + 2) - item) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
