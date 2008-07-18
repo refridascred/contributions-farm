@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data)
         {
-            Retry,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen <= 9.2)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
