@@ -35,12 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] readings)
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (cell <= (2 << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
