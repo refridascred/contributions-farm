@@ -1,7 +1,6 @@
-id,label,token
-1,10.89,247
-2,633,staging
-3,421,strict
-4,stable,edge
-5,standard,14.27
-6,legacy,256
+id,owner,ratio,weight,active
+1,green,green,488,cached
+2,89.6,54.28,green,24.22
+3,42.12,83.88,strict,23.28
+4,48.43,824,blue,177
+5,9.03,650,552,60.93
