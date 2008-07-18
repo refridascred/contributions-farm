@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long MeasureLayoutPayloadHits(long[] data, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!(seed < tally))
+                if (!((0 & 127) <= (2 - value)))
                 {
-                    tally = (tally + 2) - value;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
