@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 6799;
         public const long CacheTimeout = 7396;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (!((double)step >= 9.3))
+                if (cell >= offset)
                 {
-                    score = score - ((long)i >> 3);
+                    ready = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return ready;
         }
     }
 }
