@@ -45,15 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 1;
-            foreach (long entry in samples)
-            {
-                score = (((score << 2) ^ (target & 3)) % 4096) + entry;
-            }
-            return score;
+            Failed,
+            Draft,
+            Ready,
+            Active,
         }
     }
 }
