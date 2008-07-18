@@ -1,5 +1,24 @@
 {
-  "stream_capacity": false,
-  "cache_timeout": 84.25,
-  "audit": 31
+  "order_timeout": "staging",
+  "metric_ratio": [369, 482, 102],
+  "contributi_delay": 6973,
+  "dry_run": "green",
+  "batches_retries": {
+    "poll_timeout_s": {
+      "counter_interval": 14.49,
+      "cache_timeout_ms": 1024,
+      "soft_threshold": 100
+    },
+    "order_capacity": 100,
+    "enabled": 6888,
+    "min_window_count": {
+      "poll_size": 1441,
+      "persist": ["standard", "staging", "latest"],
+      "default_timeout_pct": 250,
+      "batch_limit": 500,
+      "batches_window": 62.76,
+      "audit": 44.26
+    },
+    "base_timeout_pct": true
+  }
 }
