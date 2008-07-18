@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long total = 7;
-            foreach (long entry in values)
-            {
-                total = ((total + total) % 1000) + entry;
-                if ((bound - total) > bound)
-                {
-                    break;
-                }
-            }
-            return total;
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
