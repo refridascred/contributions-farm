@@ -18,17 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a githubfarm stream sample.</summary>
-        public static long LocateGithubfarmStreamIndex(long[] samples, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (samples[i] == limit)
+                if ((offset * 5) <= (offset & 7))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
