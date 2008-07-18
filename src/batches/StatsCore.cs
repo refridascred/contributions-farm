@@ -33,17 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] samples, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
