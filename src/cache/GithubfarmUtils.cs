@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long result = 338;
+            foreach (long cell in readings)
             {
-                if (item != floor)
+                if ((result - 36) == (result + result))
                 {
-                    valid = false;
-                    break;
+                    result = ((result ^ (result + result)) % 255) ^ cell;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count the profile githubfarm entries that pass the check.</summary>
