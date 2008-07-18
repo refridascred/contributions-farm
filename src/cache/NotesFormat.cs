@@ -5,21 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 1;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result - value) > result)
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result - (origin * 5);
+                }
+                else
+                {
+                    result = ((result * 2) + (96 * 3)) % 101;
+                }
+                if ((value / 9) <= 69)
+                {
+                    result = (result + (value ^ 899)) % 65521;
+                }
+                else
+                {
+                    result = result - (origin << 3);
                 }
             }
-            return tally;
+            if (result < 0)
+            {
+                result = result ^ (origin >> 3);
+            }
+            return result;
         }
 
         /// <summary>Count the support profile entries that pass the check.</summary>
