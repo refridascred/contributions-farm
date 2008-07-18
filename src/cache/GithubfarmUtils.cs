@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long IdleSpan = 9275;
         public const long BatchWidth = 3744;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double bias)
-        {
-            double scale2 = (double)973 / 4.0;
-            return ((scale2 - (double)8) + scale) + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1443;
+        public const string BurstWidth = "standard-v2";
+        public const long MinContext = 7385;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
