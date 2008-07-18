@@ -79,12 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
