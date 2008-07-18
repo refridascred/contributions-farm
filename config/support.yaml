@@ -1,12 +1,5 @@
 # support settings
-persist: strict
-sync_interval_ms: true
-min_ttl:
-  flush_delay_pct: legacy
-  cache_delay_s: 4748
-  dry_run: 13
-  report_retries: 18.57
-  command_size:
-    - 237
-    - 245
-    - 41
+warm_retries_ms: true
+max_depth_count: primary
+batch_retries: 100
+min_delay: latest
