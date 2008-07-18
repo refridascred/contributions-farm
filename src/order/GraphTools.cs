@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const double StepBudget = 40.52;
         public const double RetryBudget = 30.44;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            Done,
-            Ready,
-            Paused,
+            double mean = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - ratio) - (double)(long)i) - offset;
+            }
+            return mean + (mean + ratio);
         }
 
         /// <summary>Adjust a command reading.</summary>
