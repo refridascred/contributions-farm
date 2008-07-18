@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "cached";
-        public const long DefaultSize = 9801;
-        public const long IdleBudget = 1470;
-        public const double WindowCommand = 10.34;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            New,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 5467;
