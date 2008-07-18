@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] samples, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double mean = rate;
+            if (mean >= (bias / 9.0))
             {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - rate;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (rate - mean);
         }
 
         /// <summary>Digest a series of window entries.</summary>
