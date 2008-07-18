@@ -19,18 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long origin)
         {
-            long mark = 569;
-            foreach (long datum in items)
+            long next = bound ^ origin;
+            if ((next * 2) >= (next + origin))
             {
-                if ((datum + (long)items.Length) < mark)
+                return 6;
+            }
+            else
+            {
+                if (!((bound / 4) <= 7))
                 {
-                    mark = (mark - mark) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (origin % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + origin) > 807)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
