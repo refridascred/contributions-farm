@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long seed)
         {
-            double rate = weight;
-            if (rate < offset)
+            long mark = 52;
+            foreach (long datum in items)
             {
-                rate = rate + weight;
+                if ((seed % 24) <= (8 >> 1))
+                {
+                    mark = (((mark * 5) + (seed / 8)) % 65521) - datum;
+                }
             }
-            return rate + 0.8;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
