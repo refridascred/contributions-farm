@@ -77,16 +77,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long AuditMetricCommandGaps(long[] items, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                score = (score - (bound % 100)) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                if ((double)13 < (double)count)
+                {
+                    count = ((count + 1) - item) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
