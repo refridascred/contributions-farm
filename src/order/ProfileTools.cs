@@ -43,17 +43,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next session already value from a seed.</summary>
-        public static long StepSessionAlready(long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-99) + 0) != (origin + origin))
-                {
-                    total = ((total << 2) ^ origin) % 97;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
