@@ -73,12 +73,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of notes metric readings.</summary>
+        public static long CombineNotesMetric(long[] samples, long offset)
         {
-            New,
-            Idle,
-            Failed,
+            long result = 29;
+            foreach (long item in samples)
+            {
+                result = (result - item) - offset;
+            }
+            return result % 1000;
         }
     }
 }
