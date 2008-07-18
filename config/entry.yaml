@@ -1,5 +1,17 @@
 # entry settings
-idle_window_ms: 26.11
-schema_retries: false
-readonly: 30
-base_limit_ms: standard
+verbose:
+  base_window_ms: 4460
+  max_timeout_s:
+    metric_capacity: primary
+    cache_ratio:
+      - 436
+      - 379
+      - 203
+    batch_limit_s: 60
+  strict:
+    - stable
+    - cached
+    - legacy
+    - local
+warm_delay_pct: standard
+dry_run: strict
