@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Scale a cache commits figure with a bias.</summary>
+        public static double BlendCacheCommits(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)((-72) >> 4);
+            if (ratio > (11.0 * 10.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - span) - bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (span + 15.0);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
