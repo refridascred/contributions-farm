@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            Dropped,
-            Stale,
-            Ready,
-            Idle,
-            Queued,
+            long mark = 285;
+            foreach (long datum in data)
+            {
+                mark = mark - datum;
+            }
+            if (mark > 0)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
