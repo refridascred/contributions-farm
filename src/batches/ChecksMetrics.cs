@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const long RetryRoute = 89;
         public const long MinSpan = 4224;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 285;
-        public const string MinBudget = "latest-edge";
-        public const double DefaultPayload = 27.71;
-        public const long BatchPayload = 8949;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double ratio, double floor)
