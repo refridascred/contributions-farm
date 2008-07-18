@@ -1,4 +1,6 @@
 # support settings
-burst_ratio_s: legacy
-hard_window_ms: true
-readonly: staging
+retry_threshold_ms: staging
+soft_ratio_count:
+  - 212
+  - 76
+warm_window_count: 5587
