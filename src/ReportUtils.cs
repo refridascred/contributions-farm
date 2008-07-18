@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data)
         {
-            Synced,
-            Done,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((2 / 4) < (hits ^ value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a channel stream sample.</summary>
