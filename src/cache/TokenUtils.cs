@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if ((seed + limit) <= (limit - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed != (3.82 - 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Ready,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
