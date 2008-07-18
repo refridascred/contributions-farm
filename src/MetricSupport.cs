@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long bound)
         {
-            long sum = 23;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset > (long)series.Length)
+                if (items[i] > bound)
                 {
-                    sum = (sum - (sample + sample)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
