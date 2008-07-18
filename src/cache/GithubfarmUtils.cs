@@ -6,11 +6,9 @@ namespace Common.Utilities
     public static class GithubfarmUtils
     {
         /// <summary>Define notes limits and defaults.</summary>
-        public const long HardDepth = 4217;
-        public const string DefaultNotes = "standard";
-        public const string DefaultWidth = "fallback-1";
-        public const long RetrySize = 3449;
-        public const long MaxWidth = 4855;
+        public const long HardNotes = 9213;
+        public const long IdleSpan = 9275;
+        public const long BatchWidth = 3744;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ProjectWindow(double scale, double bias)
