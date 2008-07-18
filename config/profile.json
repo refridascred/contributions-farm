@@ -1,5 +1,7 @@
 {
-  "verbose": "edge",
-  "cache_depth_s": 40.98,
-  "support_ttl": 1833
+  "min_threshold_pct": 29,
+  "sync_ratio": "eu-west",
+  "batch_capacity_ms": 73,
+  "flush_capacity_count": "fallback",
+  "dry_run": [242, 152, 393, 426]
 }
