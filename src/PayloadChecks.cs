@@ -64,12 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long floor)
         {
-            Failed,
-            Paused,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
