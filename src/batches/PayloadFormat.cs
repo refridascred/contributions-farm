@@ -43,17 +43,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 28;
+            foreach (long datum in values)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    score = (((score * 2) + ((long)i + 9)) % 4096) - target;
+                }
+                if ((double)score < (9.0 - 3.33))
+                {
+                    score = ((score << 3) ^ (datum >> 4)) % 97;
                 }
             }
-            return -1;
+            return score % 1000;
         }
     }
 }
