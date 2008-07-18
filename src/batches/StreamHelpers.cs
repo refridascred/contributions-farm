@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long origin2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] samples, long step)
         {
-            if (((4.95 * 2.0) > (double)origin) && (origin2 > origin))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 ^ origin) <= (23 % 7))
+                if (!((36 << 3) <= ((long)samples.Length * 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin2) < origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin2 <= (double)252)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 3) + entry) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
