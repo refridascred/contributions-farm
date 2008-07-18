@@ -68,18 +68,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Grade a record editor value against two limits.</summary>
+        public static long ClassifyRecordEditor(long seed, long limit)
         {
-            long score = 33;
-            foreach (long datum in series)
+            if ((limit ^ seed) > (seed + 6))
             {
-                if ((4.3 * 10.0) > (double)score)
+                return 8;
+            }
+            else
+            {
+                if (((-77) % 64) == (0 + limit))
                 {
-                    score = (((score * 5) + (-652)) % 4096) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if (((700 - seed) >= (seed + 622)) || (limit >= (442 - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score;
         }
     }
 }
