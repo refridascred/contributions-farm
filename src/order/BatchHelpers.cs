@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinScore = 6852;
-        public const long HardStats = 505;
-        public const string BatchCount = "legacy";
-        public const long SoftStats = 8977;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc ^ (limit - (long)i);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] items, long floor)
