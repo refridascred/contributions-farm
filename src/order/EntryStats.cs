@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
