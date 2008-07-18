@@ -53,21 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 70;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark * 3) < (entry + target))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + target) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - entry)) % 97;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
