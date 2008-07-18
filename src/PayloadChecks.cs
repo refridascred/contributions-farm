@@ -56,10 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 23.06;
-        public const string MinPayload = "fallback-1";
-        public const double IdleWidth = 64.54;
+        /// <summary>Digest a series of batch schema entries.</summary>
+        public static long TotalBatchSchema(long[] levels)
+        {
+            long result = -25;
+            foreach (long sample in levels)
+            {
+                result = (result + (result - result)) % 4096;
+                if ((sample + result) != (result ^ 8))
+                {
+                    result = ((result << 3) ^ (575 & 3)) % 255;
+                }
+                if (((sample + sample) >= (sample / 7)) || ((75 % 97) >= result))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long target, long step)
