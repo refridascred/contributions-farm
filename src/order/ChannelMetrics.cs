@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= count)
-                {
-                    count = count + 1;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
