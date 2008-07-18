@@ -40,13 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)tally <= (9.0 - 13.0)) || (((383 + sample) <= sample) && ((sample + sample) != (tally + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
