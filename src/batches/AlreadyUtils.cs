@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if (((floor >> 1) < (floor + seed)) || ((double)floor != (0.7 / 6.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) <= (seed ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.1 + 4.8) != (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
