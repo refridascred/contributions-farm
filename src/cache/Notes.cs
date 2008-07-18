@@ -43,17 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                if (((cell + 32) >= hits) || ((57 << 3) <= (hits + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
