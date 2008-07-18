@@ -1,7 +1,9 @@
-id,owner,token,count,state
-1,primary,52.41,959,26.93
-2,162,99,397,strict
-3,207,23,211,94.87
-4,63.04,445,370,94.64
-5,680,692,strict,latest
-6,723,0.86,31.34,69.13
+id,rank,token
+1,legacy,28.95
+2,973,657
+3,6.85,cached
+4,43.41,cached
+5,fallback,10.21
+6,268,645
+7,532,blue
+8,635,48.6
