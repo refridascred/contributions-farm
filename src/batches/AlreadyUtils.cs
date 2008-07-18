@@ -33,22 +33,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Scale a support counter figure with a bias.</summary>
+        public static double BlendSupportCounter(double ratio, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            double bias2 = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                state = state - (state ^ origin);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state << 3) ^ (origin >> 2)) ^ (long)i2;
-                    state = (state ^ (origin / 7)) % 65521;
-                }
-                state = ((state << 2) ^ state) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                bias2 = (bias2 + bias) - (double)(long)i;
             }
-            return state;
+            return bias2 + bias2;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
