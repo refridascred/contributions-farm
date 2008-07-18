@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] values, long bound)
         {
-            Draft,
-            New,
-            Idle,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
