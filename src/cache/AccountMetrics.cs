@@ -16,14 +16,19 @@ namespace Common.Utilities
         public const long BatchGraph = 7109;
         public const string DefaultGraph = "open";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate entry editor readings against a bound.</summary>
+        public static bool GuardEntryEditorRange(long[] readings, long limit)
         {
-            Done,
-            Locked,
-            New,
-            Draft,
-            Stale,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a notes options.</summary>
