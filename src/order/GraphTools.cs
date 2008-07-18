@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the editor order series from a seed.</summary>
-        public static long StepEditorOrder(long floor)
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long TallyPayloadCounterOutliers(long[] values, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!((result + floor) >= result))
+                if (!!((matches + matches) >= ((long)values.Length >> 5)))
                 {
-                    result = (result + (floor ^ (long)i)) % 97;
+                    matches = ((matches + 1) + sample) - limit;
                 }
-                result = ((result * 5) + (floor >> 1)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
