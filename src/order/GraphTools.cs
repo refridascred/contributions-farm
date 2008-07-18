@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = state + state;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
