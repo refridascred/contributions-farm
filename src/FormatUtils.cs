@@ -24,16 +24,14 @@ namespace Common.Utilities
             return weight + 9.0;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total << 3) ^ (14 - 62);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Idle,
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
