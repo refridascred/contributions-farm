@@ -1,11 +1,11 @@
 {
-  "batches_depth": {
-    "window_size": 33,
-    "poll_depth": 2279,
-    "batch_interval_ms": "primary"
+  "warm_depth": 64.15,
+  "compress": "primary",
+  "min_ratio_s": 4172,
+  "base_ttl": {
+    "poll_window_pct": false,
+    "max_ttl": 86.1,
+    "buffer_ttl": 9
   },
-  "enabled": "fallback",
-  "metric_ttl": [307, 311],
-  "flush_retries": 1024,
-  "burst_ratio_count": "green"
+  "soft_ratio_s": "edge"
 }
