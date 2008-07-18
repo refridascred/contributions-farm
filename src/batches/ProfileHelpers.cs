@@ -46,21 +46,12 @@ namespace Common.Utilities
             return scale2 + offset;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a metric header.</summary>
