@@ -43,19 +43,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((cell + 32) >= hits) || ((57 << 3) <= (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 16.4;
+        public const long WindowDepth = 7895;
+        public const double MinCluster = 35.8;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferOutliers(long[] data, long seed)
