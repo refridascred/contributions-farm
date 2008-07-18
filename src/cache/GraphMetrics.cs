@@ -76,22 +76,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen < (seed % 97)) || ((2.0 / 3.0) <= (double)value)) || ((seed << 1) <= (seed * 4)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Paused,
+            Stale,
+            Pending,
         }
     }
 }
