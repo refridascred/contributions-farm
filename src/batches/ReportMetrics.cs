@@ -31,11 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxRatio = "primary-edge";
-        public const double BaseCount = 79.99;
-        public const long StepMetrics = 3385;
-        public const long BurstMetrics = 613;
-        public const long IdleSize = 5433;
+        /// <summary>Count filter stats pairs that satisfy a relation.</summary>
+        public static long MatchFilterStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
