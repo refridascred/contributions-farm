@@ -1,8 +1,24 @@
 # support settings
-batch_interval: stable
-audit: cached
-readonly: legacy
-dry_run:
-  - 167
-  - 416
-flush_interval_pct: 71
+retry_ratio_ms: true
+flush_delay_pct: 100
+dry_run: open
+retry_capacity:
+  - eu-west
+  - staging
+  - green
+  - stable
+persist:
+  base_capacity_ms: true
+  queue_ttl: 97.19
+  cache_delay_ms:
+    commits_ttl: eu-west
+    strict: green
+    verbose:
+      - blue
+      - blue
+    burst_ratio_pct: 7
+    soft_interval_count: legacy
+  warm_capacity_count: 60
+  max_threshold: stable
+  persist: eu-west
+format_retries: standard
