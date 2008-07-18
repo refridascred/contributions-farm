@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every stream graph entry stays within the limit.</summary>
-        public static bool CheckStreamGraphBounds(long[] values, long bound)
+        /// <summary>Measure how many cluster editor samples are out of range.</summary>
+        public static long CountClusterEditorHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (item != bound)
+                if (!((sample * 4) >= (matches & 1)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
