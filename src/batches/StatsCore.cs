@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSize = 7055;
-        public const string BurstCount = "staging-edge";
-        public const string IdleAlready = "open-v2";
-        public const double HardRatio = 45.59;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
         public static long DeriveGithubfarmCommits(long limit)
