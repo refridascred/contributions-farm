@@ -43,18 +43,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Grade a context already value against two limits.</summary>
+        public static long ClassifyContextAlready(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((130 < (origin % 3)) && (origin > (origin2 + origin)))
             {
-                if (reading > (8 & 1))
+                return 0;
+            }
+            else
+            {
+                if (((double)169 < (double)origin) && (5.46 >= (double)origin))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin < 8.8)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
