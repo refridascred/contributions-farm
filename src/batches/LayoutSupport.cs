@@ -31,27 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long score = 204;
-            foreach (long item in samples)
-            {
-                long matches = (5 & 3) ^ target;
-                if (((score % 5) <= 90) && ((score + target) > (matches + 0)))
-                {
-                    continue;
-                }
-                if ((score & 127) >= target)
-                {
-                    score = ((score * 5) + (item * 3)) % 4096;
-                }
-                if ((double)item <= (3.6 - 1.0))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
