@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((target + (-3)) > anchor) && (anchor <= (target - target)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
