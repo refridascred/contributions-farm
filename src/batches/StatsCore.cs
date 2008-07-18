@@ -30,13 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            Locked,
-            Pending,
-            Dropped,
-            Queued,
+            long score = 196;
+            foreach (long entry in series)
+            {
+                if ((score - (-811)) < entry)
+                {
+                    score = ((score * 4) + (score / 6)) % 101;
+                }
+            }
+            if (score < (-924))
+            {
+                score = ((score * 3) + score) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Project the next queue value.</summary>
