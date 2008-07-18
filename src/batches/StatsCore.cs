@@ -29,17 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools farm series from a seed.</summary>
-        public static long StepToolsFarm(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 2) + (mix + (long)i)) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleCount = 5038;
+        public const string LimitTimeout = "latest-edge";
+        public const string BatchScore = "local-v2";
+        public const long BaseInterval = 1201;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
