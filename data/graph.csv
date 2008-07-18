@@ -1,8 +1,9 @@
-id,region,rank,score
-1,47.85,480,latest
-2,64,eu-west,893
-3,525,9.92,71.39
-4,247,cached,79.3
-5,397,200,stable
-6,762,edge,strict
-7,stable,legacy,blue
+id,active,token
+1,481,1
+2,latest,42.76
+3,local,62
+4,782,47.82
+5,767,966
+6,32.57,blue
+7,primary,blue
+8,87.91,19.16
