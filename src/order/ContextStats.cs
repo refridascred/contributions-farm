@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((double)tally <= (9.0 - 13.0)) || (((383 + sample) <= sample) && ((sample + sample) != (tally + tally))))
+                if ((bound / 7) <= (sample + (long)readings.Length))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
