@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Scale a metrics window figure with a bias.</summary>
