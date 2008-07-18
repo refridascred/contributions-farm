@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the window status values.</summary>
