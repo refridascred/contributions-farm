@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long result = 338;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result - 36) == (result + result))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result ^ (result + result)) % 255) ^ cell;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the profile githubfarm entries that pass the check.</summary>
