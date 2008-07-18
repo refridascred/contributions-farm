@@ -55,14 +55,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            Retry,
-            Active,
-            Paused,
-            Dropped,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
