@@ -12,23 +12,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series)
-        {
-            long sum = 61;
-            foreach (long cell in series)
-            {
-                if ((cell >> 2) >= (cell << 3))
-                {
-                    sum = (sum << 2) ^ 5;
-                }
-            }
-            if (sum < 161)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 6.43;
+        public const long MaxSpan = 1178;
+        public const long HardReport = 6500;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] levels, long offset)
