@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Combine token report values into a single score.</summary>
+        public static long DigestTokenReport(long[] levels, long origin)
         {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long score = -96;
+            foreach (long datum in levels)
+            {
+                if ((94 << 2) > (datum << 2))
+                {
+                    score = (score ^ score) + origin;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a support counter forward.</summary>
