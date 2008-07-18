@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate payload buffer readings against a bound.</summary>
+        public static bool CheckPayloadBufferRange(long[] data, long limit)
         {
-            Ready,
-            Pending,
-            Synced,
-            New,
-            Paused,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
