@@ -1,8 +1,6 @@
 {
-  "soft_size": [79, 477, 314, 443],
-  "format_threshold": ["local", "fallback", "latest"],
-  "default_timeout_s": "stable",
-  "context_ratio": 250,
-  "warm_capacity_pct": "edge",
-  "command_timeout": "edge"
+  "compress": [103, 104, 12, 273],
+  "channel_size": 97,
+  "cache_ratio": true,
+  "strict": true
 }
