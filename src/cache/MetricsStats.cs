@@ -59,18 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long CombineChecksNotes(long[] items, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long offset)
         {
-            long result = 0;
-            foreach (long value in items)
+            if (offset <= 16)
             {
-                if (!(seed <= (result + value)))
+                return 0;
+            }
+            else
+            {
+                if (6.92 > (double)step)
                 {
-                    result = result - (value * 4);
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result;
         }
     }
 }
