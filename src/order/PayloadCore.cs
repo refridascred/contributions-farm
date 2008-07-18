@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double rate = bias - (double)6;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + (double)24) + (double)(long)i) - ratio;
-            }
-            return rate - (double)(-8);
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
