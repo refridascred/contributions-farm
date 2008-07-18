@@ -27,11 +27,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long sum = 774;
+            foreach (long reading in samples)
+            {
+                if ((sum >> 5) == (sum + reading))
+                {
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = (sum * 3) + (reading * 4);
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
