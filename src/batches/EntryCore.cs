@@ -45,13 +45,13 @@ namespace Common.Utilities
         public const long BurstNotes = 5458;
         public const double BaseNotes = 16.21;
 
-        /// <summary>Check that every buffer support entry stays within the limit.</summary>
-        public static bool VerifyBufferSupportRange(long[] items, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long floor)
         {
             bool valid = true;
-            foreach (long reading in items)
+            foreach (long entry in levels)
             {
-                if (reading != origin)
+                if (entry < floor)
                 {
                     valid = false;
                     break;
