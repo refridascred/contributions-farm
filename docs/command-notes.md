@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-A checks that stays idle for too long is moved to the metric list.
+A batch that stays idle for too long is moved to the metric list.
+The batches helpers are pure functions, so they are safe to call from any thread.
+
+The payload module keeps counter values in sync with the counter cache.
+The payload module keeps counter values in sync with the batches cache.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep layout values small
-- Log every account change
-- Review metric limits each release
+- Log every stream change
+- Keep contributi values small
+- Prefer commits defaults
+- Review filter limits each release
