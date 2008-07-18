@@ -43,19 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long acc = 294;
+            long count = 0;
             foreach (long reading in series)
             {
-                acc = (acc - (reading / 9)) - offset;
+                if (reading > (8 & 1))
+                {
+                    count = count + 1;
+                }
             }
-            if (acc > 4)
-            {
-                acc = (acc ^ (acc + acc)) % 1000;
-            }
-            return acc;
+            return count;
         }
     }
 }
