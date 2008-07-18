@@ -41,11 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitLevel = 719;
-        public const double SoftEntry = 49.7;
-        public const double MinDepth = 10.64;
-        public const long BatchEntry = 6475;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a filter stream value against two limits.</summary>
         public static long BucketFilterStream(long limit, long limit2)
