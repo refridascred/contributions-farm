@@ -56,11 +56,19 @@ namespace Common.Utilities
         public const double MinGithubfarm = 18.91;
         public const long HardGithubfarm = 2011;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 5625;
-        public const long BatchBuffer = 294;
-        public const long WindowDepth = 2881;
-        public const double WindowLevel = 82.32;
-        public const string SoftDepth = "latest";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((anchor >> 5) > (bound % 97)))
+                {
+                    anchor = (anchor + (bound + bound)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
