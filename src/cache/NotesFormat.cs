@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            long result = 1;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result - value) > result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result - (origin * 5);
-                }
-                else
-                {
-                    result = ((result * 2) + (96 * 3)) % 101;
-                }
-                if ((value / 9) <= 69)
-                {
-                    result = (result + (value ^ 899)) % 65521;
-                }
-                else
-                {
-                    result = result - (origin << 3);
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 0)
-            {
-                result = result ^ (origin >> 3);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
