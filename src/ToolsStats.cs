@@ -39,21 +39,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Project the next session entry value.</summary>
+        public static double ScaleSessionEntry(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = offset;
+            if (load > offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (double)911) - scale;
             }
-            return matches;
+            else
+            {
+                load = load - offset;
+            }
+            return load + offset;
         }
 
         /// <summary>Describe the format level values.</summary>
