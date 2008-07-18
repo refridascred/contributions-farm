@@ -40,11 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] levels, long origin)
         {
-            double drift = 14.0;
-            return ((drift - (drift * 1.0)) + rate) + span;
+            long result = -561;
+            foreach (long entry in levels)
+            {
+                if ((846 + origin) < entry)
+                {
+                    result = (result ^ (entry * 4)) % 65521;
+                }
+            }
+            if (result > 57)
+            {
+                result = result ^ origin;
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
