@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] data, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = -3;
-            foreach (long entry in data)
-            {
-                if (((entry % 97) == (anchor & 127)) || ((entry - origin) >= origin))
-                {
-                    anchor = (anchor + origin) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (anchor - origin);
-                }
-            }
-            if (anchor < 586)
-            {
-                anchor = (anchor * 3) + (origin ^ origin);
-            }
-            return anchor % 97;
+            Synced,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the layout kind values.</summary>
