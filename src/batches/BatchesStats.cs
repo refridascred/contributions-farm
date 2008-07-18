@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((8.0 + 1.0) <= (double)datum) || ((bound ^ 406) >= (seen + seen)))
+                if ((floor / 9) <= 155)
                 {
-                    seen = seen + 3;
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
