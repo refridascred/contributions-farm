@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] samples, long floor)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long AuditStreamFarmMatches(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((floor / 9) <= 155)
+                if ((7.4 < (double)seen) && (seen < (cell + seen)))
                 {
-                    count = (count + 3) ^ item;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
