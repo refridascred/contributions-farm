@@ -37,22 +37,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (!(floor >= (offset >> 3)))
             {
-                if ((seen - seen) <= 84)
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 4) != (floor & 1))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)offset < (20.0 * 20.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
