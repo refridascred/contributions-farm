@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the context schema series from a seed.</summary>
-        public static long IterateContextSchema(long origin)
+        /// <summary>Look up the position of a payload commits sample.</summary>
+        public static long FindPayloadCommitsIndex(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
