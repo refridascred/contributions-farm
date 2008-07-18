@@ -17,22 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "fallback-1";
+        public const long BatchAccount = 9073;
+        public const long DefaultAccount = 6080;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
