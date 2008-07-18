@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Look up the position of a githubfarm stream sample.</summary>
+        public static long LocateGithubfarmStreamIndex(long[] samples, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the profile window series from a seed.</summary>
