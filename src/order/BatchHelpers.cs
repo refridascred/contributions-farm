@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string BatchCount = "legacy";
         public const long SoftStats = 8977;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheLevel = 38.31;
-        public const long IdleScore = 784;
-        public const long BatchTimeout = 7507;
-        public const string BaseBatches = "strict-edge";
-        public const string BatchBatches = "local";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
+        {
+            long mark = 60;
+            foreach (long entry in readings)
+            {
+                mark = (mark - (entry - 4)) % 255;
+            }
+            if (mark > 1)
+            {
+                mark = ((mark << 3) ^ (51 / 2)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string HardRatio = "staging-v2";
