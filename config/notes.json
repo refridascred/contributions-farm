@@ -1,8 +1,8 @@
 {
-  "default_retries": "local",
-  "base_limit_s": 1024,
-  "batch_threshold_count": "staging",
-  "strict": [201, 275, 76, 125],
-  "retry_capacity": 14.63,
-  "batch_interval_ms": 1024
+  "soft_ttl_count": 3755,
+  "sync_limit_count": 60,
+  "max_size": "strict",
+  "soft_timeout_count": "blue",
+  "contributi_ttl": "open",
+  "context_interval": 12.62
 }
