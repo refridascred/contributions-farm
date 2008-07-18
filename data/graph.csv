@@ -1,6 +1,10 @@
-id,token,state,rank
-1,560,668,staging
-2,211,16.44,blue
-3,589,20.7,869
-4,39.55,894,971
-5,415,staging,local
+id,region,label
+1,433,open
+2,416,7.34
+3,strict,708
+4,73.8,553
+5,open,blue
+6,69.29,91.36
+7,25.93,43.71
+8,68.7,48.12
+9,328,open
