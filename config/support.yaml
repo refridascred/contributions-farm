@@ -1,5 +1,7 @@
 # support settings
-warm_limit_count: true
-compress: 100
-soft_threshold: 55
-buffer_timeout: 9782
+sync_timeout: 71.59
+warm_timeout_s: false
+batch_capacity: false
+soft_interval: 500
+hard_ttl: edge
+githubfarm_interval: open
