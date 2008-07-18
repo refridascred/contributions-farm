@@ -51,20 +51,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Locate a counter cache reading by value.</summary>
+        public static long LookupCounterCacheIndex(long[] data, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark & 127) != (833 * 4))
+                if (data[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
-                mark = (mark * 3) + (offset & 127);
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
