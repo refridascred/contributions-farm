@@ -1,14 +1,10 @@
 # githubfarm settings
-notes_depth: 51.65
-audit:
-  burst_interval_ms: 72.34
-  sync_timeout_ms:
-    - green
-    - local
-    - latest
-  cache_threshold_s: true
-  soft_delay_pct: eu-west
-  order_threshold: true
-  batch_interval: true
-cluster_capacity: blue
-report_depth: standard
+base_depth_pct: 46.9
+max_depth_s: cached
+max_size:
+  verbose: open
+  idle_limit_count: 500
+  idle_retries_ms: standard
+  batch_window_ms: local
+retry_depth: 9327
+min_size_ms: open
