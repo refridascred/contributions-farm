@@ -24,18 +24,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account counter samples are out of range.</summary>
-        public static long AuditAccountCounterMatches(long[] levels, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)count <= (double)entry)
-                {
-                    count = (count + 2) + floor;
-                }
+                score = ((score * 5) + score) % 1000;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
