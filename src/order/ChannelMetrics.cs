@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally == (5.0 / 9.0))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) - item) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
