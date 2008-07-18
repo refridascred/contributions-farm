@@ -50,25 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long limit)
+        /// <summary>Measure how many order record samples are out of range.</summary>
+        public static long CountOrderRecordMatches(long[] items)
         {
-            long span = bound ^ limit;
-            if ((limit - 8) < (limit - span))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(bound >= (span ^ bound)))
+                if ((double)datum > (1.71 / 3.0))
                 {
-                    return 7;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
