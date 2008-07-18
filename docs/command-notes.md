@@ -1,11 +1,14 @@
 # Command notes
 
-The buffer report groups every route by support.
-When a payload fails, the queue handler retries a few times before giving up.
+Each graph is validated before it reaches the metric queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any channel limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every tools change
-- Keep filter values small
-- Review record limits each release
+- Prefer entry defaults
+- Review contributi limits each release
+- Log every already change
+- Validate command input early
