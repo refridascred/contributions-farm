@@ -31,18 +31,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 9;
+            foreach (long value in values)
             {
-                if ((hits - hits) >= (hits ^ hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                total = ((total * 2) + total) + value;
+                total = (total + total) % 1000;
             }
-            return hits;
+            if (total < 70)
+            {
+                total = total + (total - total);
+            }
+            return total % 4096;
         }
     }
 }
