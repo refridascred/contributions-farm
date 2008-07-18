@@ -1,5 +1,5 @@
 {
-  "burst_retries_s": "legacy",
-  "readonly": 1024,
-  "audit": 250
+  "soft_threshold_count": 8144,
+  "queue_retries": "standard",
+  "persist": "standard"
 }
