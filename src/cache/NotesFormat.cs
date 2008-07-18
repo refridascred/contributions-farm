@@ -39,25 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long floor, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long span = floor ^ limit;
-            if ((limit + (-292)) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)span == (5.0 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a record options.</summary>
