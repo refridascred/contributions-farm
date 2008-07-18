@@ -58,17 +58,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a counter route sample.</summary>
-        public static long FindCounterRouteIndex(long[] data, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
