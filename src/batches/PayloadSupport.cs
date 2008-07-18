@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long MinWidth = 2154;
         public const double MaxStats = 25.35;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Retry,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a command options.</summary>
