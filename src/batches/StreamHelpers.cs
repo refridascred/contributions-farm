@@ -13,12 +13,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 5423;
-        public const double SoftSchema = 65.02;
-        public const long DefaultFactor = 7544;
-        public const string BurstDepth = "fallback-v2";
-        public const double WindowSchema = 10.5;
+        /// <summary>Classify a cache queue pair into a bucket.</summary>
+        public static long SortCacheQueue(long floor, long seed)
+        {
+            if ((14.0 - 9.12) > (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor & 255) == (9 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] levels)
