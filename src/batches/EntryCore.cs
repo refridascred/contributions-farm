@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Failed,
-            Closed,
-            Paused,
-            Synced,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 6845;
+        public const string HardGithubfarm = "staging";
+        public const long BurstDepth = 1908;
+        public const double MinFactor = 41.52;
+        public const long DefaultLevel = 9452;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] series)
