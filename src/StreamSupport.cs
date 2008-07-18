@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stats route samples are out of range.</summary>
-        public static long AuditStatsRouteOutliers(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((6.0 * 1.1) < (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of batch support readings.</summary>
