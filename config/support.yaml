@@ -1,6 +1,7 @@
 # support settings
-idle_ratio_s: 2996
-farm_limit: green
-batch_delay_s: 400
-default_window_pct: 13.02
-soft_ratio_s: 100
+min_ttl:
+  - local
+  - local
+base_ttl: legacy
+metric_capacity: false
+retry_window_s: 250
