@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "standard-1";
+        public const double IdleBudget = 92.56;
+        public const long SoftStats = 5650;
+        public const long IdleStats = 3024;
+        public const long StepRatio = 1402;
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double ratio, double offset)
