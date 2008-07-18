@@ -49,19 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = 9;
-            foreach (long sample in samples)
-            {
-                anchor = anchor - sample;
-            }
-            if (anchor < 601)
-            {
-                anchor = (anchor ^ (anchor >> 3)) % 101;
-            }
-            return anchor;
+            Queued,
+            Stale,
+            Closed,
         }
     }
 }
