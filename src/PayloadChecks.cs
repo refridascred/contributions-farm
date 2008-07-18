@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepInterval = 3459;
-        public const long RetrySize = 5369;
-        public const double WindowGraph = 48.59;
-        public const double SoftBudget = 4.37;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] samples, long bound)
+        {
+            long total = 0;
+            foreach (long cell in samples)
+            {
+                total = ((total << 2) ^ (total + total)) - bound;
+                if ((415 - total) > (cell >> 5))
+                {
+                    total = (total << 2) ^ (cell << 2);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
