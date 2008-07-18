@@ -86,15 +86,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum ^ 3) % 255) ^ datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return matches;
         }
     }
 }
