@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Dropped,
-            Locked,
-            Queued,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 741;
+        public const long BurstSpan = 3796;
+        public const string StepSize = "stable-edge";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
