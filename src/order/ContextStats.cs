@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long seed)
         {
-            long carry = 8;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                carry = (carry + (sample & 63)) % 97;
+                if ((((entry % 12) >= entry) && ((count + count) >= (count * 2))) && (((entry % 8) <= (seed ^ (long)samples.Length)) && ((seed << 2) != (count / 7))))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
