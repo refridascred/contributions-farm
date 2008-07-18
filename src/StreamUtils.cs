@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches >> 1) >= (36 % 8))
+                if (items[i] <= origin)
                 {
-                    matches = ((matches + 3) ^ entry) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
