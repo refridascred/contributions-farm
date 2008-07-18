@@ -12,11 +12,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 86.92;
-        public const long BaseWindow = 9494;
-        public const long HardCount = 7649;
-        public const long MinWindow = 1604;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double bias)
+        {
+            double rate2 = bias;
+            if (rate2 <= (double)6)
+            {
+                rate2 = rate2 - (double)5;
+            }
+            else
+            {
+                rate2 = rate2 - (rate2 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (rate2 * 3.0)) + (double)(long)i;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] levels, long limit)
