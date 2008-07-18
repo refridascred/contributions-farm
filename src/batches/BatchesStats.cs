@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long seed)
+        /// <summary>Audit queue window readings against a rule.</summary>
+        public static long CountQueueWindowOutliers(long[] series)
         {
-            long total = 295;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((double)(long)levels.Length >= (double)seed))
+                if (28 <= (98 + (long)series.Length))
                 {
-                    total = (total + (cell * 5)) % 4096;
-                }
-                if ((6.54 < (double)cell) && ((8.1 + 0.7) > (double)seed))
-                {
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            if (total < 58)
-            {
-                total = (total - (seed * 3)) % 4096;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
