@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-RECORD_LIMIT=390
+RECORD_LIMIT=316
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
