@@ -65,10 +65,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftRatio = 6237;
-        public const double LimitWidth = 28.24;
-        public const long HardLevel = 2350;
-        public const long MaxCommits = 8256;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) > 3)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
