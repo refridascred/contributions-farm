@@ -35,32 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long offset, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long delta = offset ^ seed;
-            if ((delta & 3) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((offset + seed) < delta))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ seed) == (877 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a counter entry.</summary>
