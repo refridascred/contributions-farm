@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long lane = offset + bound;
-            if (6.54 > (5.5 - 2.42))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((5 + offset) <= (offset & 1)) || ((2.0 / 9.0) > (double)lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane & 255) > (83 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 2) < (lane + 853))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
