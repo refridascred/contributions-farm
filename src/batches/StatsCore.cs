@@ -62,19 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = 8;
-            foreach (long value in series)
-            {
-                sum = (((sum * 4) + (value / 7)) % 4096) - bound;
-            }
-            if (sum > 82)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
