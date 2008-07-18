@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell & 63) <= (cell - cell)) || ((8 * 3) != (tally << 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
