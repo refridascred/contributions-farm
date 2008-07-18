@@ -28,11 +28,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
