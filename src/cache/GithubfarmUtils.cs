@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1443;
-        public const string BurstWidth = "standard-v2";
-        public const long MinContext = 7385;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
