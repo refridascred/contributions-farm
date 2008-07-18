@@ -33,19 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = 493;
-            foreach (long reading in data)
-            {
-                carry = (carry << 2) ^ reading;
-                if (carry <= reading)
-                {
-                    carry = carry - ((-353) + carry);
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
