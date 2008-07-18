@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 4.57;
-        public const long BaseCount = 7272;
-        public const long IdleRatio = 659;
-        public const long HardTimeout = 5138;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BatchInterval = "fallback-1";
