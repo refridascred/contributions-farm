@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] values)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long item in values)
             {
-                if ((sample << 3) > (seen / 8))
+                if ((item - seen) > (76 - seen))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
