@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Derive the next contributi order value from a seed.</summary>
+        public static long StepContributiOrder(long bound)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((double)mark > 5.0))
+                {
+                    mark = mark + bound;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a farm options.</summary>
