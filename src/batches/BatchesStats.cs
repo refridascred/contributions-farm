@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache schema entry that matches the target.</summary>
-        public static long FindCacheSchemaIndex(long[] series, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                if ((target & 255) <= (4 % 2))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
