@@ -50,13 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
