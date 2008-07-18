@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Project the next commits already value.</summary>
+        public static double ProjectCommitsAlready(double rate, double offset)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            double drift = rate;
+            if (drift <= (rate - offset))
+            {
+                drift = drift - (rate + offset);
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift + (drift + rate);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
