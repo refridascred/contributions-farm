@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8309;
-        public const long BurstDepth = 8380;
-        public const double BaseCounter = 13.5;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Done,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
