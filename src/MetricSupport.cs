@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values, long offset)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long MeasureCacheBatchesHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((offset * 5) <= (offset & 7))
+                if ((value >> 2) >= count)
                 {
-                    matches = (matches + 2) ^ item;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
