@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
