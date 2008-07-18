@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 5952;
+        public const long WindowStats = 4559;
+        public const string BaseSize = "primary-edge";
+        public const long HardWidth = 8694;
+        public const string LimitStats = "legacy";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] values, long bound)
