@@ -24,24 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] items, long limit)
         {
-            long total = 5;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((total * 5) == (total >> 2))
+                if ((double)tally <= 9.8)
                 {
-                    total = total - total;
-                    break;
+                    tally = ((tally + 3) - reading) - limit;
                 }
-                if (!(((double)372 >= (double)total) && ((total + item) > total)))
-                {
-                    total = ((total * 2) + ((-6) - total)) % 97;
-                }
-                total = total ^ total;
             }
-            return total;
+            return tally;
         }
     }
 }
