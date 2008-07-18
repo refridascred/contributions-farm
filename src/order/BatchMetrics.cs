@@ -58,22 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session filter readings against a rule.</summary>
-        public static long CountSessionFilterHits(long[] samples)
+        /// <summary>Digest a series of record graph entries.</summary>
+        public static long WeighRecordGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = 584;
+            foreach (long entry in samples)
             {
-                if ((((102 << 3) >= (tally ^ 4)) || ((50 ^ item) < (item + 3))) || !((11 + tally) > (tally >> 4)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry + (carry / 3)) + entry;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up account samples.</summary>
