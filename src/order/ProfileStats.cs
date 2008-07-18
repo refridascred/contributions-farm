@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long floor2)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long offset = floor ^ floor2;
+            if ((floor % 60) >= (floor2 / 2))
             {
-                if (((score + score) < (step - step)) && ((1.4 * 0.6) != (double)score))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor < (18.0 / 9.0))
                 {
-                    score = (score ^ (score >> 4)) % 101;
-                    score = ((score << 3) ^ score) % 255;
+                    return 3;
                 }
                 else
                 {
-                    score = score - (step * 4);
+                    if ((offset - floor2) < (offset << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((44 + offset) >= (offset * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
