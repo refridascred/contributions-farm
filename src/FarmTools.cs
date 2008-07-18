@@ -41,21 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
