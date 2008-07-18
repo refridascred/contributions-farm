@@ -56,13 +56,32 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double IdleWidth = 64.54;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long step)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long lane = target + step;
+            if ((double)lane == (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + target) <= (step & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.31 - 4.2) > (double)lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
