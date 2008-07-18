@@ -23,22 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] items, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((matches * 5) < datum)
+                if (cell < seed)
                 {
-                    matches = (matches + 3) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
