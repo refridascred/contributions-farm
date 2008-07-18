@@ -35,11 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long state = -57;
+            foreach (long entry in series)
+            {
+                state = (state - (entry - entry)) % 4096;
+                if ((state + entry) >= state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
