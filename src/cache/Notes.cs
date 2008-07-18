@@ -46,23 +46,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long state = 6;
-            foreach (long sample in values)
-            {
-                state = ((state << 2) ^ (sample << 2)) % 65521;
-                if (!((state % 24) != (sample + sample)))
-                {
-                    break;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state * 4) + (state + state);
-            }
-            return state % 97;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
