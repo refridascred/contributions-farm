@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-1";
         public const string WindowBudget = "alpha-v2";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadMatches(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count / 4) != (count % 10))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
     }
 }
