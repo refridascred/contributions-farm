@@ -32,19 +32,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double mean = span;
+            return (mean - 8.0) + ratio;
         }
     }
 }
