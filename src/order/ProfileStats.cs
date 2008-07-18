@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] levels, long bound)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 6.5 / 3.0;
+            if (rate > (scale / 5.0))
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)9) + floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 17.0) + (double)(long)i;
+            }
+            return rate + (rate - scale);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
