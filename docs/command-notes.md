@@ -1,15 +1,13 @@
 # Command notes
 
-The queue module keeps farm values in sync with the support cache.
-Run the profile check before changing any queue limits.
+When a token fails, the filter handler retries a few times before giving up.
+Each metric is validated before it reaches the account queue.
 
-The support report groups every notes by tools.
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
+Keep session and channel names short and lowercase.
+Run the batches check before changing any metrics limits.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every farm change
-- Review cache limits each release
-- Validate channel input early
+- Prefer payload defaults
+- Log every schema change
+- Review context limits each release
