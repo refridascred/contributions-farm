@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 881;
+            foreach (long datum in levels)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
+                if ((datum ^ state) < (state & 63))
                 {
-                    return (long)i;
+                    state = (state ^ 685) % 65521;
+                }
+                if (!(5.4 < (double)datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Hold a batch header.</summary>
