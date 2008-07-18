@@ -54,19 +54,23 @@ namespace Common.Utilities
             return mean - (span - mean);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if (reading <= target)
+                result = (((result << 2) ^ (8 + result)) % 97) ^ cell;
+                if (((result << 2) >= 18) || ((8.0 / 2.0) > (double)result))
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 2) + (result * 5)) % 1000;
                 }
             }
-            return ready;
+            if (result > 64)
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
