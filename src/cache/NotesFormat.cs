@@ -16,11 +16,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleSpan = "alpha";
-        public const long BatchBatches = 2277;
-        public const string BurstSize = "local";
-        public const long SoftBatches = 2199;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long floor, long limit)
+        {
+            long span = floor ^ limit;
+            if ((limit + (-292)) > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)span == (5.0 / 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
