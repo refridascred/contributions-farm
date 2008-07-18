@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] levels, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((double)(-26) != (double)(long)levels.Length)
+                if (sample != step)
                 {
-                    seen = ((seen + 2) + entry) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Accumulate account session samples.</summary>
