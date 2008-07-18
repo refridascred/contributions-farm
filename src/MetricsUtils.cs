@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next commits already value.</summary>
-        public static double ProjectCommitsAlready(double rate, double offset)
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long MeasureLayoutPayloadHits(long[] data, long seed)
         {
-            double drift = rate;
-            if (drift <= (rate - offset))
+            long tally = 0;
+            foreach (long value in data)
             {
-                drift = drift - (rate + offset);
+                if (!(seed < tally))
+                {
+                    tally = (tally + 2) - value;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift + (drift + rate);
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
