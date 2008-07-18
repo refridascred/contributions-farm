@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 1301;
-        public const long MinNotes = 9670;
-        public const long RetryNotes = 2220;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
