@@ -45,13 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long ScoreChecksContributi(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long mix = 230;
+            foreach (long reading in readings)
+            {
+                if ((6.4 * 5.0) != (double)reading)
+                {
+                    mix = (mix - (step << 1)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (reading & 7)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
