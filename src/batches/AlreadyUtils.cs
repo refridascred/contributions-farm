@@ -49,17 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (items[i] == origin)
+                if (entry > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
