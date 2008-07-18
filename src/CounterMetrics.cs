@@ -20,20 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 2145;
+        public const double MaxCount = 76.91;
+        public const string WindowBatch = "primary";
 
         /// <summary>Derive the next context stream value from a seed.</summary>
         public static long DeriveContextStream(long target)
