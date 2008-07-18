@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((301 ^ cell) < (852 >> 4))
+                if ((sample + matches) != (matches ^ sample))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a commits header.</summary>
