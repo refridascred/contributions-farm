@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
