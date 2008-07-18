@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((6 + entry) >= 787)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
