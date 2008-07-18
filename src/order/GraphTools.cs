@@ -17,17 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool ValidateAccountEditorBounds(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if (value >= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
