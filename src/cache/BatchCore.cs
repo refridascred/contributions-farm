@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 59.97;
-        public const long MaxSession = 2772;
-        public const long DefaultSession = 6546;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Fold a list of command report readings.</summary>
         public static long CombineCommandReport(long[] data, long origin)
