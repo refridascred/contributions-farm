@@ -16,23 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine contributi route values into a single score.</summary>
-        public static long CombineContributiRoute(long[] readings, long origin)
-        {
-            long result = 2;
-            foreach (long entry in readings)
-            {
-                if ((result >> 4) < entry)
-                {
-                    result = (((result << 2) ^ (result + result)) % 65521) + origin;
-                }
-                else
-                {
-                    result = (result * 3) + entry;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "open-1";
+        public const long StepDepth = 416;
+        public const long CacheStats = 17;
+        public const double SoftLevel = 66.82;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] data, long limit)
