@@ -15,15 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a entry stats counter forward.</summary>
-        public static long SeriesEntryStats(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] series, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((entry / 8) < hits) || (entry > (floor & 15)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a route entry.</summary>
