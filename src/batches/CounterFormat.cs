@@ -22,10 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCount = 997;
-        public const long BatchSpan = 9238;
-        public const string BaseCache = "primary-v2";
-        public const long WindowBudget = 8929;
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool ValidateRecordAlreadyLimits(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
