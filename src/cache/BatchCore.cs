@@ -20,13 +20,10 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-edge";
         public const long LimitRoute = 574;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Idle,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 6777;
+        public const long RetryGraph = 1767;
+        public const long LimitGraph = 7711;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
