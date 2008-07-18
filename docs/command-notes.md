@@ -1,15 +1,16 @@
 # Command notes
 
-Run the token check before changing any order limits.
-The report helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often schema data is refreshed.
+Run the channel check before changing any already limits.
+Run the stream check before changing any report limits.
 
-A profile that stays idle for too long is moved to the counter list.
-Keep buffer and tools names short and lowercase.
-The contributi module keeps stats values in sync with the filter cache.
+Defaults for context live in the config folder and can be overridden per environment.
+Keep batch and graph names short and lowercase.
+When a farm fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Review already limits each release
-- Validate filter input early
-- Document new command fields
+- Prefer metric defaults
+- Document new payload fields
+- Log every queue change
+- Validate githubfarm input early
