@@ -17,21 +17,10 @@ namespace Common.Utilities
         public const string RetryWidth = "open-1";
         public const string BatchBuffer = "alpha-v2";
 
-        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
-        public static long MatchStreamPayloadCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxScore = 283;
+        public const long SoftCount = 280;
+        public const long SoftInterval = 8989;
+        public const double IdleWindow = 55.37;
     }
 }
