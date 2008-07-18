@@ -48,19 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long sum = 713;
-            foreach (long sample in data)
-            {
-                sum = (((sum ^ (long)data.Length) % 97) ^ sample) - offset;
-            }
-            if (sum < 7)
-            {
-                sum = sum + (sum >> 4);
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a order cluster counter forward.</summary>
