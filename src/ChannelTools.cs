@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Scale a tools cluster figure with a bias.</summary>
+        public static double ProjectToolsCluster(double weight, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)(33 & 63);
+            if (bias < (double)5)
             {
-                anchor = anchor ^ (anchor - floor);
-                if (!((anchor + anchor) > (long)i))
-                {
-                    anchor = ((anchor * 5) + (anchor & 63)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - (long)i)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                bias = (bias + weight) - floor;
             }
-            return anchor;
+            return bias - (bias / 5.0);
         }
 
         /// <summary>Match up window samples.</summary>
