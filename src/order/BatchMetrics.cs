@@ -30,19 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (99 < (sample + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchScore = "cached-edge";
+        public const long HardFilter = 2953;
+        public const string BurstFilter = "staging-edge";
+        public const long SoftFilter = 9426;
+        public const double CacheTimeout = 90.4;
 
         /// <summary>Count the filter stats entries that pass the check.</summary>
         public static long CountFilterStatsHits(long[] data, long target)
