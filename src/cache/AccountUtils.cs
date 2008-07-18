@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings, long seed)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Retry,
-            Stale,
+            long score = 2;
+            foreach (long value in readings)
+            {
+                if (!((8.6 * 1.0) >= (double)score))
+                {
+                    score = (score - (score + value)) + seed;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
