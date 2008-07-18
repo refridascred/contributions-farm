@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public double Weight { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
