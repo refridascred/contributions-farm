@@ -52,15 +52,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool GuardClusterSupportLimits(long[] samples, long seed)
         {
-            double weight = bias;
-            if (weight >= (17.0 * 5.2))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                weight = (weight + bias) - bias2;
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + (double)8;
+            return ready;
         }
     }
 }
