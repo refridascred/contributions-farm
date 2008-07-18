@@ -40,17 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 14.0;
+            return ((drift - (drift * 1.0)) + rate) + span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
