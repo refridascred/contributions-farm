@@ -26,19 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools command value.</summary>
-        public static double BlendToolsCommand(double bias, double span)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            double drift = span;
-            if (drift < bias)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift + (span * 8.1);
+                carry = (carry - (carry % 2)) % 4096;
+                carry = ((carry * 2) + (carry ^ step)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (drift - drift);
-            }
-            return drift - (span / 4.0);
+            return carry;
         }
     }
 }
