@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long target2)
         {
-            Done,
-            Ready,
-            Locked,
-            Draft,
-            Closed,
+            long lane = target ^ target2;
+            if ((target2 > (target / 6)) && ((double)target2 > (6.99 - 8.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= (9.7 * 8.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (lane < (lane % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target2 >> 2) >= target2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
