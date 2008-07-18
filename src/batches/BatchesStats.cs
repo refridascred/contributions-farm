@@ -59,10 +59,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 8491;
-        public const long IdleFactor = 4518;
-        public const long DefaultLevel = 9303;
-        public const string IdleCount = "latest-edge";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
