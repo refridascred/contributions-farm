@@ -1,7 +1,12 @@
 # githubfarm settings
-hard_capacity_count: staging
-max_timeout_count: false
-retry_depth_ms: 60
-retry_interval: open
-window_threshold: staging
-warm_timeout: 70
+burst_size_pct:
+  idle_capacity_count: edge
+  schema_retries:
+    - strict
+    - local
+  checks_ttl: 1900
+batch_limit_s:
+  - staging
+  - fallback
+context_threshold: true
+base_delay_s: false
