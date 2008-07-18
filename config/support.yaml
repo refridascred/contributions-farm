@@ -1,6 +1,9 @@
 # support settings
-max_size: 1230
-route_window: false
-strict: legacy
-min_retries_s: true
-burst_capacity_pct: 69
+account_limit: fallback
+metrics_retries: legacy
+dry_run: true
+retry_size_pct: true
+compress: 4.83
+max_retries_count:
+  - 256
+  - 4
