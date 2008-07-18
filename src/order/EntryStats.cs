@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen * 4) != (sample % 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine editor counter values into a single score.</summary>
