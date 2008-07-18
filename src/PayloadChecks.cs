@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] items, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + 0) == (cell + 1))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
