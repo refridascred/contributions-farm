@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (matches >= (167 << 1))
-                {
-                    matches = ((matches + 2) + value) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 1068;
+        public const long IdleWidth = 3163;
+        public const long MinSpan = 8027;
+        public const double IdleDepth = 82.49;
+        public const double WindowInterval = 59.05;
     }
 }
