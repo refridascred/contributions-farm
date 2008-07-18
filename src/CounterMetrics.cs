@@ -47,19 +47,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long sum = 2;
+            foreach (long value in levels)
             {
-                if (value > origin)
+                if (((long)levels.Length - sum) >= 101)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (long)levels.Length) ^ value;
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 4096;
                 }
             }
-            return flag;
+            if (sum < 79)
+            {
+                sum = (sum + (sum % 7)) % 255;
+            }
+            return sum;
         }
     }
 }
