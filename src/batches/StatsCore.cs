@@ -57,26 +57,17 @@ namespace Common.Utilities
             return drift - (double)504;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] items, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.4 + 6.4) > (double)(long)i)
+                if (items[i] <= origin)
                 {
-                    score = (score * 5) + ((long)i << 3);
-                    score = ((score * 5) + (16 + (long)i)) % 97;
-                    continue;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score ^ origin) % 101) ^ (long)i2;
-                }
-                score = (score ^ (origin & 63)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
