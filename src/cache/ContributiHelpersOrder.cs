@@ -28,21 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -28;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound <= (reading / 9))
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total - total)) % 97;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
