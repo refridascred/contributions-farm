@@ -27,18 +27,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) != (count + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
