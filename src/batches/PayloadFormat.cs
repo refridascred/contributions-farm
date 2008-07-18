@@ -31,14 +31,15 @@ namespace Common.Utilities
         public const string WindowWidth = "staging-edge";
         public const string BurstFactor = "latest";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long step)
         {
-            Idle,
-            Done,
-            Queued,
-            Closed,
-            Dropped,
+            long state = 473;
+            foreach (long value in values)
+            {
+                state = ((state << 3) ^ (value << 3)) + step;
+            }
+            return state;
         }
     }
 }
