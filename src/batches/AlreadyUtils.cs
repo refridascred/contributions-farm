@@ -66,12 +66,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Look up the position of a counter route sample.</summary>
+        public static long FindCounterRouteIndex(long[] data, long step)
         {
-            Ready,
-            Retry,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
