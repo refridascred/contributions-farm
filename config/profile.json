@@ -1,17 +1,6 @@
 {
-  "base_window_ms": {
-    "max_limit_s": false,
-    "order_capacity": 3256,
-    "poll_delay_count": 30,
-    "batch_limit_pct": {
-      "soft_retries_s": 63.58,
-      "commits_capacity": "local",
-      "already_window": 31,
-      "strict": [192, 352, 102, 277]
-    },
-    "verbose": [171, 256]
-  },
-  "warm_depth_pct": ["open", "open", "staging"],
-  "idle_timeout_s": 16.9,
-  "metrics_ttl": true
+  "readonly": "local",
+  "poll_depth_s": "standard",
+  "soft_threshold_pct": 78,
+  "window_size": false
 }
