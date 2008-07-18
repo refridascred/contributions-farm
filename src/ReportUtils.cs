@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = score - score;
-                if ((770 <= ((long)i & 3)) || ((step >> 1) > ((long)i + (long)i)))
+                if ((cell * 5) < (cell >> 5))
                 {
-                    score = (score * 2) + ((long)i * 5);
+                    seen = seen + 3;
                 }
-                else
-                {
-                    score = (score + score) % 255;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of buffer support readings.</summary>
