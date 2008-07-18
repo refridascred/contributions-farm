@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cluster editor samples are out of range.</summary>
-        public static long CountClusterEditorHits(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample * 4) >= (matches & 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
