@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double bias2 = gain;
-            if (bias2 > gain)
-            {
-                bias2 = bias2 + bias2;
-            }
-            else
-            {
-                bias2 = bias2 - (double)15;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias * 16.0)) + (double)(long)i;
-            }
-            return bias2 - (6.85 + bias2);
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
