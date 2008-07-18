@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinDepth = "standard-edge";
+        public const long DefaultScore = 6387;
+        public const long BurstFactor = 6592;
+        public const string RetryLevel = "local-edge";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] levels)
