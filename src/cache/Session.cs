@@ -34,25 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data)
         {
-            long slot = seed ^ limit;
-            if ((seed + slot) >= (limit & 3))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((3 * 4) > (limit - slot)))
+                if ((0.43 / 4.0) >= (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
