@@ -52,39 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long floor2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            long cur = floor - floor2;
-            if ((cur + floor) == (floor * 5))
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 >> 5) != (cur - floor))
+                if (((double)(long)i != (2.93 - 4.0)) && (anchor > (floor + floor)))
                 {
-                    return 3;
+                    anchor = anchor - (floor * 4);
                 }
-                else
-                {
-                    if (floor < (floor2 + cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor2 + floor2) <= floor2) && (6.7 > (double)cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
