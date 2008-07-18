@@ -1,10 +1,8 @@
 {
-  "hard_threshold": 250,
-  "sync_ttl_count": true,
-  "dry_run": {
-    "strict": true,
-    "verbose": [417, 381, 256],
-    "order_window": 60,
-    "default_ratio": [323, 380, 146]
-  }
+  "min_retries_pct": "primary",
+  "warm_timeout": 250,
+  "githubfarm_interval": ["open", "standard"],
+  "max_retries": "cached",
+  "command_window": true,
+  "default_ttl": "staging"
 }
