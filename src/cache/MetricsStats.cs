@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSize = 1505;
-        public const long DefaultSize = 8900;
-        public const long BaseTimeout = 9117;
-        public const double CacheRatio = 3.52;
-        public const double BatchCache = 92.81;
+        /// <summary>Accumulate counter contributi samples.</summary>
+        public static long TotalCounterContributi(long[] samples)
+        {
+            long mark = 90;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (((mark * 4) + mark) % 1000) + (long)i;
+                }
+                mark = mark + (6 >> 5);
+                mark = mark ^ (mark - sample);
+            }
+            if (mark < 29)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
