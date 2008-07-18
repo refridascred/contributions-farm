@@ -34,15 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double scale2 = (offset + 3.63) * 0.86;
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + offset;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
