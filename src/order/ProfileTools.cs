@@ -53,10 +53,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinSpan = "stable-1";
-        public const string MaxWidth = "strict";
-        public const long MaxStats = 9170;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Pending,
+            Synced,
+            Locked,
+            Closed,
+            Active,
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
