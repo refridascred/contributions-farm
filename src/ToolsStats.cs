@@ -93,11 +93,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
