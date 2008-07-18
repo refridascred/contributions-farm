@@ -53,11 +53,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 9052;
-        public const double CacheProfile = 53.76;
-        public const string CacheDepth = "strict";
-        public const double SoftFactor = 35.95;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Queued,
+            Done,
+            Closed,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 9476;
