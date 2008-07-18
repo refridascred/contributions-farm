@@ -84,38 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long step)
         {
-            if ((origin << 1) >= (2 >> 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (13 * 3))
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin - origin) >= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin >= (8.0 / 7.0)) || ((8.51 + 6.92) <= (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
