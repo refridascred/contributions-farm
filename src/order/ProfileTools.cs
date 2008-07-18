@@ -30,23 +30,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((89 % 5) != (bound % 3)) && ((hits % 60) >= (cell & 3)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinSpan = "stable-1";
+        public const string MaxWidth = "strict";
+        public const long MaxStats = 9170;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
