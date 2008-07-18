@@ -76,29 +76,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    state = ((state * 4) + (577 % 10)) ^ (long)i3;
-                    state = (state - ((long)i ^ 26)) % 255;
-                }
-                if ((double)state <= (8.0 * 1.0))
-                {
-                    state = state - (state & 15);
-                    state = (state + (bound & 127)) % 97;
-                }
-                else
-                {
-                    state = state + 448;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8955;
+        public const long SoftWindow = 2727;
+        public const long LimitWindow = 3060;
     }
 }
