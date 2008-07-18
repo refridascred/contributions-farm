@@ -1,9 +1,5 @@
 # githubfarm settings
-farm_retries: false
-min_limit:
-  - latest
-  - local
-flush_timeout_count: true
-queue_delay: 39
-persist: false
-verbose: 60
+default_size: 59.54
+farm_interval: 500
+warm_retries_ms: 85.24
+cache_threshold_ms: true
