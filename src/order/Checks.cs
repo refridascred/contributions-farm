@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Scale a report metric figure with a bias.</summary>
+        public static double BlendReportMetric(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches >= datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double rate = bias2;
+            return (rate + (double)996) + bias;
         }
 
         /// <summary>Hold a already record.</summary>
