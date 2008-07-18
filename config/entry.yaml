@@ -1,6 +1,5 @@
 # entry settings
-max_interval_s: blue
-persist: 100
-max_capacity_s: stable
-base_ttl_s: 2.65
-audit: 5
+context_delay: 65
+batch_ratio: 3638
+max_delay_s: true
+editor_limit: 98.39
