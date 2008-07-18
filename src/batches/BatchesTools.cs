@@ -27,18 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample > limit) && ((sample >> 1) >= (922 * 5))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Active,
         }
     }
 }
