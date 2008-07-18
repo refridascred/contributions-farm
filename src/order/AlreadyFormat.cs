@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                if ((seed ^ seed) >= (hits << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
