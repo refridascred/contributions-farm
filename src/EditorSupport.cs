@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = 28;
-            foreach (long reading in levels)
-            {
-                if ((15.0 - 6.0) != (double)reading)
-                {
-                    state = state ^ (state ^ reading);
-                }
-                state = (state - 3) % 65521;
-                state = (state << 3) ^ (state << 3);
-            }
-            return state;
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
