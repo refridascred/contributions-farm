@@ -29,30 +29,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long result = 12;
-            foreach (long value in values)
-            {
-                if (result > (result - bound))
-                {
-                    result = ((result * 3) + (value / 4)) % 255;
-                }
-                else
-                {
-                    result = result + (result ^ result);
-                }
-                if (((3 ^ (long)values.Length) < (value + 40)) || ((double)bound > (double)result))
-                {
-                    break;
-                }
-            }
-            if (result > 3)
-            {
-                result = ((result << 2) ^ bound) % 97;
-            }
-            return result % 97;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a report summary.</summary>
