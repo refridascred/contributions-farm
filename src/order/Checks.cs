@@ -24,32 +24,14 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long offset = step - seed;
-            if ((87 + seed) >= (seed * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-13) - 962) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset * 5) < (offset % 12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every stats checks entry stays within the limit.</summary>
