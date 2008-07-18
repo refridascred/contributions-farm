@@ -37,19 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < origin)
+                if (readings[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
