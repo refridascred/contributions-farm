@@ -40,23 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = 719;
-            foreach (long entry in samples)
-            {
-                mix = ((mix + floor) % 4096) ^ entry;
-                if (((floor << 3) <= mix) && (2.4 >= (double)floor))
-                {
-                    break;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix + (mix / 4)) % 4096;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
