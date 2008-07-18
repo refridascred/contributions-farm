@@ -14,11 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 0.18;
-        public const long MinTools = 2354;
-        public const double LimitCount = 81.98;
-        public const long CacheTools = 6545;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Queued,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftCount = 997;
