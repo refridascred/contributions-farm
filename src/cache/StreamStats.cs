@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 66.84;
-        public const long SoftLevel = 2038;
-        public const string DefaultReport = "cached-1";
-        public const double MinReport = 38.13;
-        public const long WindowReport = 1285;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1735;
+        public const string SoftCount = "legacy-edge";
+        public const long BaseSpan = 706;
+        public const long IdleCache = 6668;
+        public const long BatchCache = 9874;
 
         /// <summary>Audit batches profile readings against a rule.</summary>
         public static long AuditBatchesProfileMatches(long[] readings)
