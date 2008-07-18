@@ -37,18 +37,12 @@ namespace Common.Utilities
         public const long SoftFilter = 9426;
         public const double CacheTimeout = 90.4;
 
-        /// <summary>Count the filter stats entries that pass the check.</summary>
-        public static long CountFilterStatsHits(long[] data, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally & 255) > sample)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
