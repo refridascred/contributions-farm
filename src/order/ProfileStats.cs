@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Idle,
-            Pending,
-            Synced,
-            Done,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "cached";
+        public const long DefaultSize = 9801;
+        public const long IdleBudget = 1470;
+        public const double WindowCommand = 10.34;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] readings, long step)
