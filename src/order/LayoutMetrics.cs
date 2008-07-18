@@ -20,23 +20,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the cache record entries that pass the check.</summary>
-        public static long AuditCacheRecordHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((2.3 - 8.86) < (double)seen)
-                {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchScore = "local-edge";
+        public const long MaxScore = 8153;
+        public const long SoftRoute = 2573;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] values, long step)
