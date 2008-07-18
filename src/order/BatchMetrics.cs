@@ -60,17 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a counter cache reading by value.</summary>
-        public static long LookupCounterCacheIndex(long[] data, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Project the next contributi order value.</summary>
