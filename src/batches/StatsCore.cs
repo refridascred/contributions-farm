@@ -17,21 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of entry githubfarm readings.</summary>
-        public static long MatchEntryGithubfarmCount(long[] levels)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
