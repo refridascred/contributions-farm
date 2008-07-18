@@ -64,22 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen >> 2) != (seen & 7))
-                {
-                    seen = ((seen + 3) ^ item) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
