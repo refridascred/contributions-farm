@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long CacheStats = 17;
         public const double SoftLevel = 66.82;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 382;
+            foreach (long datum in readings)
             {
-                if (((offset + offset) == (offset + carry)) || (((long)i / 5) < (carry + offset)))
+                if (!((acc * 5) < (38 % 8)))
                 {
-                    continue;
+                    acc = ((acc ^ ((-6) ^ (long)readings.Length)) % 65521) ^ datum;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            if (acc < 2)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a layout record.</summary>
