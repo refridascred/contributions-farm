@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a format tools reading.</summary>
-        public static double ProjectFormatTools(double gain, double span)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double drift = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - span)) + (double)(long)i;
-            }
-            return drift + (gain - gain);
+            Active,
+            Draft,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
