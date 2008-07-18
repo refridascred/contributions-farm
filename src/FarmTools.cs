@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] readings, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double scale = 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (((scale - (scale * 3.0)) + (double)(long)i) - rate) - offset;
             }
-            return found;
+            return scale - scale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
