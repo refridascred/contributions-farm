@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long limit)
-        {
-            if (((-1) << 2) < (86 - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((839 / 9) < floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "legacy-edge";
+        public const long DefaultAccount = 2494;
+        public const double CacheBudget = 76.69;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchInterval = 9514;
