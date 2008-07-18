@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long step)
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long SeekCommitsFormatIndex(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
