@@ -23,19 +23,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
