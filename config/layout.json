@@ -1,12 +1,5 @@
 {
-  "session_ttl": [476, 428, 182],
-  "graph_window": ["fallback", "open", "standard", "fallback"],
-  "soft_retries": {
-    "hard_ratio_s": "staging",
-    "idle_size_pct": 5087,
-    "context_ratio": 19,
-    "compress": 100,
-    "command_timeout": [329, 302, 318],
-    "default_window": 5803
-  }
+  "stats_timeout": 500,
+  "max_limit_ms": "strict",
+  "min_timeout": true
 }
