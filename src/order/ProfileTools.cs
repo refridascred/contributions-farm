@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine filter metric values into a single score.</summary>
-        public static long FoldFilterMetric(long[] levels, long seed)
-        {
-            long mix = 95;
-            foreach (long sample in levels)
-            {
-                mix = (((mix << 2) ^ sample) % 255) - seed;
-                if ((-23) <= sample)
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = mix + (425 & 255);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 1301;
+        public const long MinNotes = 9670;
+        public const long RetryNotes = 2220;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
