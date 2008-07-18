@@ -36,18 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long AuditBatchSupportGaps(long[] samples, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.2 / 5.0) >= (double)count)
+                if (values[i] == seed)
                 {
-                    count = ((count + 3) ^ reading) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
