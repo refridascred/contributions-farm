@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long mark = 285;
-            foreach (long datum in data)
+            long sum = 61;
+            foreach (long cell in series)
             {
-                mark = mark - datum;
+                if ((cell >> 2) >= (cell << 3))
+                {
+                    sum = (sum << 2) ^ 5;
+                }
             }
-            if (mark > 0)
+            if (sum < 161)
             {
-                mark = (mark ^ mark) % 97;
+                sum = (sum * 3) + sum;
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
