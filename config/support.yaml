@@ -1,23 +1,9 @@
 # support settings
-cache_ratio_count:
-  notes_retries: local
-  batches_limit:
-    - 131
-    - 421
-    - 412
-  idle_delay_pct: 69
-  cache_ttl: 1024
-  poll_ttl_count: 3632
-  min_timeout_ms: false
-warm_capacity_pct: false
-session_ttl: green
-readonly: 2228
-soft_size:
-  hard_ttl: 46.23
-  filter_ratio: true
-  account_interval: true
-persist:
-  - fallback
-  - stable
-  - fallback
-  - fallback
+filter_ttl: 77.31
+default_window_s:
+  min_capacity: 4859
+  soft_threshold: latest
+  audit: open
+  retry_size_pct: 6846
+  channel_ttl: eu-west
+enabled: 12.4
