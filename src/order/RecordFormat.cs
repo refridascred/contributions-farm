@@ -68,16 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] data, long origin)
         {
-            long mark = 93;
-            foreach (long value in samples)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                mark = (mark << 3) ^ (seed + value);
-                mark = (mark ^ (mark + 813)) % 4096;
+                mix = ((mix - (4 + origin)) % 1000) ^ cell;
             }
-            return mark;
+            return mix;
         }
     }
 }
