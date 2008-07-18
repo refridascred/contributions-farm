@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long state = 28;
+            foreach (long reading in levels)
+            {
+                if ((15.0 - 6.0) != (double)reading)
+                {
+                    state = state ^ (state ^ reading);
+                }
+                state = (state - 3) % 65521;
+                state = (state << 3) ^ (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
