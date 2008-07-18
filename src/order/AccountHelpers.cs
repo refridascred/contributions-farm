@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Synced,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
