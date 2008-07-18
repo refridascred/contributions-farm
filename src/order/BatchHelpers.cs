@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftTimeout = 7407;
+        public const long MaxRecord = 2768;
+        public const double HardRecord = 19.46;
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
         public static long TallySupportQueueGaps(long[] items, long target)
