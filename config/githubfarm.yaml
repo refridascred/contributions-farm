@@ -1,6 +1,5 @@
 # githubfarm settings
-hard_ttl_pct: true
-session_ratio: false
-audit: 12.68
-persist: 6343
-already_ttl: blue
+batch_capacity: true
+queue_retries: 52
+enabled: blue
+cluster_size: 85
