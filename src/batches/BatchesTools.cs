@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] items)
+        /// <summary>Combine command context values into a single score.</summary>
+        public static long WeighCommandContext(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = 384;
+            foreach (long sample in samples)
             {
-                if ((hits << 3) != (hits + reading))
+                if (((sample % 10) >= 676) || ((double)target != (13.0 - 5.7)))
                 {
-                    hits = hits + 1;
+                    mark = mark + 964;
                 }
             }
-            return hits;
+            if (mark < 54)
+            {
+                mark = (mark ^ (mark - target)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a commits format sample.</summary>
