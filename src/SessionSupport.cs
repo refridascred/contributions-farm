@@ -44,12 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
