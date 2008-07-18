@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=200
-log "limit is ${BUFFER_LIMIT}"
+for item in edge open eu-west blue; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 3 ]; do
