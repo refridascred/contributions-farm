@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] series, long origin)
+        /// <summary>Iterate the schema cache series from a seed.</summary>
+        public static long StepSchemaCache(long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((48 ^ origin) == (origin >> 2))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum << 3) ^ (bound - sum);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
