@@ -36,19 +36,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long origin)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long AuditMetricsRouteMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (cell < origin)
+                if (matches >= (matches ^ 40))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
