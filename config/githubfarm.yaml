@@ -1,5 +1,14 @@
 # githubfarm settings
-cache_capacity: 6573
-poll_interval: 1024
-sync_delay: fallback
-soft_depth_count: false
+notes_depth: 51.65
+audit:
+  burst_interval_ms: 72.34
+  sync_timeout_ms:
+    - green
+    - local
+    - latest
+  cache_threshold_s: true
+  soft_delay_pct: eu-west
+  order_threshold: true
+  batch_interval: true
+cluster_capacity: blue
+report_depth: standard
