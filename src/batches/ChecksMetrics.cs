@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats batch readings against a rule.</summary>
-        public static long MeasureStatsBatchGaps(long[] readings, long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)sample < (double)seed) || ((double)count < (5.6 + 2.19))) || ((double)seed <= 20.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
