@@ -66,17 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Combine metrics checks values into a single score.</summary>
+        public static long TotalMetricsChecks(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long anchor = 440;
+            foreach (long reading in items)
             {
-                mix = (mix << 3) ^ (mix << 3);
-                mix = ((mix * 2) + origin) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((reading > (anchor ^ origin)) || ((reading >> 5) != (reading + reading)))
+                {
+                    anchor = (anchor - (reading % 64)) % 65521;
+                }
             }
-            return mix;
+            if (anchor > 321)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
