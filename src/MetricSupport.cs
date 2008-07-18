@@ -32,17 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] values, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
+                if (matches >= (167 << 1))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + value) - target;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
