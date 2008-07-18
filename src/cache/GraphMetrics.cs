@@ -71,13 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Retry,
+            Dropped,
+            Pending,
+            Paused,
         }
     }
 }
