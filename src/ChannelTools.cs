@@ -25,23 +25,23 @@ namespace Common.Utilities
         public const string StepGithubfarm = "alpha-edge";
         public const long StepDepth = 7936;
 
-        /// <summary>Combine batches entry values into a single score.</summary>
-        public static long TallyBatchesEntry(long[] samples, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long bound)
         {
-            long sum = 1;
-            foreach (long datum in samples)
+            long result = 36;
+            foreach (long entry in items)
             {
-                sum = (sum << 2) ^ bound;
-                if (bound > datum)
+                result = ((result * 4) + (bound - 218)) % 1000;
+                if ((bound - entry) > bound)
                 {
-                    sum = sum ^ (908 % 64);
+                    result = (result * 2) + (0 % 10);
                 }
             }
-            if (sum < 426)
+            if (result > 6)
             {
-                sum = (sum - sum) % 1000;
+                result = (result ^ (bound * 3)) % 97;
             }
-            return sum;
+            return result % 97;
         }
     }
 }
