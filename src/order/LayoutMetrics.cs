@@ -12,14 +12,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of editor window readings.</summary>
+        public static long TotalEditorWindow(long[] readings)
         {
-            Stale,
-            Synced,
-            New,
-            Idle,
-            Done,
+            long carry = -79;
+            foreach (long entry in readings)
+            {
+                if (carry > (37 % 100))
+                {
+                    carry = carry - (entry + carry);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (entry & 15)) % 101;
+                }
+            }
+            if (carry < 983)
+            {
+                carry = (carry * 4) + (carry % 64);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit batch already readings against a rule.</summary>
