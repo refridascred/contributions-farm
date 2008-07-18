@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
