@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const string RetryChannel = "local-1";
         public const long MinFactor = 1527;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] items, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((((double)(long)items.Length < (1.0 + 3.56)) || (offset < (-72))) || (((double)offset > (16.0 / 2.0)) || ((cell % 7) <= (95 / 2))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
