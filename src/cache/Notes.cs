@@ -50,11 +50,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double AdjustStatsLayout(double bias, double bias2)
+        /// <summary>Iterate the queue schema series from a seed.</summary>
+        public static long DeriveQueueSchema(long floor)
         {
-            double weight = 4.5;
-            return (weight + (bias * 14.0)) + bias2;
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
