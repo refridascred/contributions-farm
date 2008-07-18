@@ -44,13 +44,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long span = floor - step;
+            if (!((5.3 + 4.76) == (double)span))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > 135)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor >> 4) < step) || ((51 + span) != (span - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((span << 1) <= ((-954) / 2)) && (29 <= (span + floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
