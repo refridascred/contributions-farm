@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks layout series from a seed.</summary>
-        public static long SeriesChecksLayout(long origin)
+        /// <summary>Audit counter notes readings against a rule.</summary>
+        public static long MeasureCounterNotesGaps(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (((-4) / 9) <= count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
