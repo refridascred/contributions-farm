@@ -25,19 +25,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a channel metrics counter forward.</summary>
-        public static long SeriesChannelMetrics(long limit)
+        /// <summary>Fold a list of record route readings.</summary>
+        public static long WeighRecordRoute(long[] samples, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = 6;
+            foreach (long cell in samples)
             {
-                if (!((limit / 8) <= (-9)))
-                {
-                    sum = (sum - (sum + 7)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                carry = ((carry ^ (floor & 1)) % 1000) - cell;
+                carry = carry - (carry & 1);
+                carry = (carry ^ ((-799) + floor)) % 101;
             }
-            return sum;
+            return carry;
         }
     }
 }
