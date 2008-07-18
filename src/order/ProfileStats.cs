@@ -31,12 +31,11 @@ namespace Common.Utilities
         public const long MaxSupport = 5540;
         public const string CacheInterval = "fallback-edge";
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
