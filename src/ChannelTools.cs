@@ -15,18 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Roll a entry stats counter forward.</summary>
+        public static long SeriesEntryStats(long step)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((anchor & 1) != (anchor - anchor)) || ((double)anchor < (1.23 / 4.0)))
-                {
-                    anchor = (((anchor << 2) ^ (32 ^ anchor)) % 255) + sample;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
