@@ -15,22 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] series, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((entry / 8) < hits) || (entry > (floor & 15)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
