@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] samples, long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (24 > count)
-                {
-                    count = ((count + 3) + sample) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
