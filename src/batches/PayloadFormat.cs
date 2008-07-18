@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((double)sum <= (13.0 + 1.24)) && ((long)i <= ((long)i / 6))))
-                {
-                    sum = (sum ^ (seed >> 4)) % 101;
-                }
-                sum = ((sum << 3) ^ (sum ^ (long)i)) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
