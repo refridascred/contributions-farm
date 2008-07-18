@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report cache readings against a bound.</summary>
-        public static bool GuardReportCacheBounds(long[] series, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
