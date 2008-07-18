@@ -23,18 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] data, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((step + step) >= ((long)data.Length - seen))
+                if ((hits - hits) >= (hits ^ hits))
                 {
-                    seen = (seen + 1) ^ item;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
