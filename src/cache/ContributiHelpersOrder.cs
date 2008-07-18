@@ -38,13 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long score = 44;
+            foreach (long item in levels)
+            {
+                if (((score + score) > item) || (item >= (item + 27)))
+                {
+                    score = (score * 3) + (bound * 5);
+                }
+            }
+            return score;
         }
     }
 }
