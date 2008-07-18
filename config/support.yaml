@@ -1,9 +1,20 @@
 # support settings
-audit: fallback
-persist:
-  max_limit_s: 29.44
-  sync_size_s: false
-  compress:
-    - legacy
-    - legacy
-profile_threshold: open
+verbose:
+  cache_timeout:
+    hard_interval_count: edge
+    default_ttl: false
+    burst_ttl_pct: cached
+    warm_ratio: 1024
+    soft_threshold_ms:
+      - 449
+      - 231
+      - 127
+  hard_timeout_s: primary
+  batch_threshold_s: 4291
+  batch_ratio_s: green
+  order_threshold: 98.1
+  entry_window:
+    - primary
+    - cached
+retry_retries: eu-west
+metric_depth: strict
