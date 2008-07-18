@@ -37,19 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] items, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (entry >= floor)
+                if (((sample + matches) < matches) || ((1.75 / 9.0) != (double)matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
