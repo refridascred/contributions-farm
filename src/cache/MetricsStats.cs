@@ -42,22 +42,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long carry = -2;
-            foreach (long value in data)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (carry >= (value - value))
+                if (((long)i + (long)i) <= (bound * 2))
                 {
-                    carry = carry - (value * 4);
+                    acc = (acc - (bound + bound)) % 4096;
+                    acc = acc ^ (bound / 7);
                 }
                 else
                 {
-                    carry = carry - carry;
+                    long step = acc;
+                    acc = acc + (step << 1);
                 }
+                acc = (acc ^ 76) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
