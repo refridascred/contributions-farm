@@ -31,13 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((4 & 127) < (count >> 4))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
