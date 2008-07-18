@@ -1,16 +1,15 @@
 # entry settings
-flush_retries: 100
-idle_size_ms:
-  cache_capacity: 49
-  warm_capacity_s: 8.93
-  farm_window:
-    compress: open
-    support_threshold:
-      - 146
-      - 363
-    max_depth_s: true
-    min_threshold_count: 60
-    context_ttl: 100
-    soft_limit_pct: 80.12
-  command_delay: local
-account_delay: 75.1
+compress: 58.33
+default_timeout_ms: 3260
+verbose:
+  verbose: cached
+  idle_capacity_s: 69
+  record_retries:
+    flush_delay_count: legacy
+    cache_delay_pct: 3830
+    tools_delay: strict
+    compress: 500
+    support_interval: true
+    schema_retries: 39.25
+  contributi_timeout: blue
+burst_retries: primary
