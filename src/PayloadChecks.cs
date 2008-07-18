@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
