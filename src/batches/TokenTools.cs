@@ -32,19 +32,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] items, long offset)
+        /// <summary>Validate cache commits readings against a bound.</summary>
+        public static bool CheckCacheCommitsLimits(long[] items, long seed)
         {
-            bool found = true;
+            bool stale = true;
             foreach (long value in items)
             {
-                if (value < offset)
+                if (value <= seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
