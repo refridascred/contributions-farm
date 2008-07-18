@@ -30,24 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                long matches = step + step;
-                if (((4.0 - 5.0) != (double)step) && ((6.7 / 7.0) != (double)(long)i))
-                {
-                    result = result - (matches / 4);
-                }
-                else
-                {
-                    result = (result ^ (step + matches)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstBudget = "staging-1";
+        public const string MaxSchema = "strict-v2";
+        public const string HardSchema = "latest-v2";
     }
 }
