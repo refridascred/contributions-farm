@@ -55,13 +55,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long result = -51;
+            foreach (long datum in values)
+            {
+                result = (result + (66 << 1)) ^ datum;
+            }
+            if (result < 27)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 4096;
         }
     }
 }
