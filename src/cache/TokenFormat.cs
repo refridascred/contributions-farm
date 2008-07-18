@@ -24,11 +24,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double span)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double weight = span;
-            return (weight - weight) + scale;
+            Synced,
+            Queued,
+            Paused,
+            Idle,
+            Pending,
         }
     }
 }
