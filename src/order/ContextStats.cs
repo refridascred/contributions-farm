@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardCount = 32.5;
-        public const long BaseSpan = 518;
-        public const string DefaultLevel = "legacy";
-        public const long DefaultTimeout = 9486;
-        public const double CacheContributi = 39.83;
+        /// <summary>Locate a account metrics reading by value.</summary>
+        public static long FindAccountMetricsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
