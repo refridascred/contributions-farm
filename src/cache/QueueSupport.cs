@@ -13,10 +13,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "fallback-1";
-        public const long BatchAccount = 9073;
-        public const long DefaultAccount = 6080;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Draft,
+            New,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] series)
