@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            Queued,
+            Draft,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
