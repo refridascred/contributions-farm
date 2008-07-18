@@ -13,15 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a tools cluster figure with a bias.</summary>
-        public static double ProjectToolsCluster(double weight, double floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double span)
         {
-            double bias = (double)(33 & 63);
-            if (bias < (double)5)
+            double mean = span;
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias + weight) - floor;
+                mean = ((mean + (mean * 14.0)) + (double)(long)i) + scale;
             }
-            return bias - (bias / 5.0);
+            return mean - 5.24;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
