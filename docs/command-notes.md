@@ -1,10 +1,11 @@
 # Command notes
 
-Run the format check before changing any context limits.
-The batches module keeps batches values in sync with the already cache.
+The account module keeps entry values in sync with the schema cache.
+Run the notes check before changing any checks limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new editor fields
-- Keep report values small
+- Log every layout change
+- Keep payload values small
+- Prefer schema defaults
+- Validate notes input early
