@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches >> 4) == (value - value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitTimeout = "fallback";
+        public const long BurstRoute = 8661;
+        public const long HardRoute = 4755;
+        public const long StepRoute = 1859;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long target, long limit)
