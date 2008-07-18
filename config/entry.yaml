@@ -1,11 +1,7 @@
 # entry settings
-persist: 5860
-enabled: false
-base_depth_count: 4766
-warm_depth_ms:
-  - 287
-  - 331
-sync_ttl:
-  - 350
-  - 322
-hard_ratio: true
+base_delay_count: false
+verbose: 56.63
+command_retries:
+  - 406
+  - 27
+soft_size_pct: 68.8
