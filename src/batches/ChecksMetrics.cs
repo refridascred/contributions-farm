@@ -84,18 +84,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long AuditSchemaBatchesOutliers(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count >> 2) == (entry * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
