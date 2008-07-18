@@ -1,4 +1,7 @@
 # githubfarm settings
-max_size: edge
-hard_delay_pct: legacy
-max_limit: 83
+base_ttl_pct: 60
+cache_ratio_s: 52.74
+flush_ratio: local
+notes_ratio:
+  - legacy
+  - edge
