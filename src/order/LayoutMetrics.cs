@@ -32,20 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            double rate = weight;
+            if (rate < offset)
             {
-                if (!((total ^ total) <= ((-439) ^ total)))
-                {
-                    total = (total - 195) % 1000;
-                    total = (total * 2) + (total << 3);
-                }
-                total = ((total * 4) + (long)i) % 101;
+                rate = rate + weight;
             }
-            return total;
+            return rate + 0.8;
         }
 
         /// <summary>Describe the window level values.</summary>
