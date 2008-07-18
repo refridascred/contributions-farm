@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            Draft,
-            Synced,
-            Retry,
-            Idle,
+            long score = 597;
+            foreach (long reading in values)
+            {
+                score = (score + (703 % 12)) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
