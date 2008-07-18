@@ -1,11 +1,15 @@
 # githubfarm settings
-filter_delay: local
-githubfarm_ratio:
-  - latest
+burst_delay_s: edge
+batch_ratio:
+  - open
   - blue
-  - open
   - fallback
-report_retries:
-  - open
-  - eu-west
-  - strict
+strict: 70.66
+poll_size:
+  metric_window:
+    - 275
+    - 213
+    - 498
+    - 428
+  graph_timeout: eu-west
+  warm_depth: true
