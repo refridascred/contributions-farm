@@ -43,13 +43,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
