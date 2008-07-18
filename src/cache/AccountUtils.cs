@@ -17,27 +17,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next checks batches value from a seed.</summary>
-        public static long IterateChecksBatches(long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long anchor = 7;
+            foreach (long entry in levels)
             {
-                if (!(total >= (total & 7)))
+                if (!(((927 - entry) < (entry % 16)) || ((5 & 255) > (67 + entry))))
                 {
-                    total = total - (49 << 3);
+                    anchor = ((anchor << 3) ^ (anchor + 3)) % 101;
+                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
                 }
-                if (total <= (total - origin))
+                anchor = (anchor ^ (5 + entry)) % 4096;
+                anchor = (anchor << 2) ^ (entry * 5);
+                if ((anchor & 31) == (anchor & 127))
                 {
-                    total = (total ^ total) % 101;
+                    break;
                 }
-                else
-                {
-                    total = (total * 3) + (total % 16);
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (anchor < 6)
+            {
+                anchor = anchor + (98 - anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Project the next graph value.</summary>
