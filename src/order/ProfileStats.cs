@@ -34,12 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 5467;
-        public const string WindowScore = "local-edge";
-        public const long IdleNotes = 7492;
-        public const string SoftSpan = "latest-edge";
-        public const string RetryCount = "fallback-1";
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
