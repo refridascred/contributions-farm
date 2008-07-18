@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            New,
-            Synced,
-            Failed,
-            Ready,
-            Dropped,
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
