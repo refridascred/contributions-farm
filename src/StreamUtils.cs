@@ -76,13 +76,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long mark = 3;
+            foreach (long value in readings)
+            {
+                mark = (mark - (value / 2)) % 255;
+            }
+            if (mark < 930)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
