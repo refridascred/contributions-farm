@@ -49,9 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 96.75;
-        public const long LimitCommand = 9706;
-        public const long WindowRatio = 3077;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
