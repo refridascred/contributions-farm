@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] levels, long offset)
         {
-            long acc = 45;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((acc + sample) == (sample * 3))
+                if ((double)entry < (9.1 + 2.2))
                 {
-                    acc = (acc * 3) + acc;
+                    matches = (matches + 1) - offset;
                 }
             }
-            if (acc > 26)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 97;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
