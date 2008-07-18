@@ -46,22 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already token values into a single score.</summary>
-        public static long DigestAlreadyToken(long[] samples, long bound)
+        /// <summary>Adjust a notes already reading.</summary>
+        public static double BlendNotesAlready(double ratio, double floor)
         {
-            long mix = 28;
-            foreach (long item in samples)
+            double rate = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)bound > (double)item)
-                {
-                    mix = (mix - 8) % 65521;
-                }
+                rate = (rate + ratio) - (double)(long)i;
             }
-            if (mix < 0)
-            {
-                mix = mix + (bound >> 3);
-            }
-            return mix;
+            return rate - rate;
         }
     }
 }
