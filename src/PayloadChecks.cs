@@ -34,19 +34,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((37 + origin) >= origin)
             {
-                if (item != origin)
+                return 8;
+            }
+            else
+            {
+                if ((seed & 31) > (origin * 5))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - seed) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate session samples.</summary>
