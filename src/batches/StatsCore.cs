@@ -39,11 +39,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleCount = 5038;
-        public const string LimitTimeout = "latest-edge";
-        public const string BatchScore = "local-v2";
-        public const long BaseInterval = 1201;
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double floor)
+        {
+            double drift = 6.9 * 10.0;
+            if (drift >= (double)70)
+            {
+                drift = ((drift - 13.0) - scale) + floor;
+            }
+            return drift - (double)504;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
