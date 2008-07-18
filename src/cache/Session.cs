@@ -47,11 +47,19 @@ namespace Common.Utilities
             return ((drift - (drift * 1.0)) + rate) + span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardLevel = 7225;
-        public const string LimitCounter = "cached";
-        public const string WindowWidth = "fallback-1";
-        public const long MaxCounter = 7760;
-        public const string HardCounter = "staging-v2";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
