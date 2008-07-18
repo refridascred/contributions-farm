@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftTimeout = 7407;
-        public const long MaxRecord = 2768;
-        public const double HardRecord = 19.46;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((seen + 580) > (item - seen)) || ((390 - 610) != (seen % 10))) || ((0.9 - 6.93) == (double)seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
