@@ -39,21 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell + step) == (count ^ step))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
