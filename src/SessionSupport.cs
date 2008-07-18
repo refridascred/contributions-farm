@@ -14,18 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long seed)
         {
-            long sum = 7;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)sum <= (13.0 - 0.61)) || (sum > (entry & 255)))
+                if (readings[i] <= seed)
                 {
-                    sum = sum + sum;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
