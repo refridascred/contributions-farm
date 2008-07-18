@@ -18,16 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long state = 31;
+            foreach (long item in values)
             {
-                anchor = (anchor ^ (origin / 3)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = (state + state) + item;
             }
-            return anchor;
+            if (state < (-81))
+            {
+                state = ((state * 5) + (step ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
