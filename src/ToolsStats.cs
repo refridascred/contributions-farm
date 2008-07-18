@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Draft,
-            New,
-            Active,
+            Failed,
+            Queued,
             Closed,
         }
 
