@@ -35,21 +35,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session queue readings.</summary>
-        public static long CompareSessionQueueCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 49;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (((acc * 3) + (sample - acc)) % 255) - target;
+                acc = ((acc * 2) + acc) % 101;
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
