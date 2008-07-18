@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double rate = offset;
+            if (rate >= offset)
             {
-                if ((double)entry < (9.1 + 2.2))
-                {
-                    matches = (matches + 1) - offset;
-                }
+                rate = (rate + (offset - offset)) + scale;
             }
-            return matches;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (offset - 6.4)) + (double)(long)i;
+            }
+            return rate - (rate * 6.0);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
