@@ -1,16 +1,7 @@
 {
-  "enabled": 24,
-  "retry_depth_pct": 100,
-  "cache_size": 16,
-  "burst_delay_ms": {
-    "profile_window": {
-      "retry_window": "strict",
-      "command_capacity": 96,
-      "max_depth_pct": 250
-    },
-    "default_depth_ms": 60,
-    "min_retries_ms": false
-  },
-  "idle_threshold_count": 36,
-  "cache_threshold_ms": 250
+  "soft_timeout_count": 80.03,
+  "report_window": ["standard", "fallback"],
+  "enabled": 88,
+  "strict": 1024,
+  "report_retries": 96.13
 }
