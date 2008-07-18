@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            New,
-            Queued,
-            Locked,
-            Pending,
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
