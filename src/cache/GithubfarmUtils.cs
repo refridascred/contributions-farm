@@ -19,16 +19,13 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Iterate the stream filter series from a seed.</summary>
-        public static long SeriesStreamFilter(long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + (total + limit)) % 255;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the profile githubfarm entries that pass the check.</summary>
