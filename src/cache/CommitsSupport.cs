@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const long MinToken = 1583;
         public const long SoftToken = 6159;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxCount = 7421;
-        public const string StepGraph = "strict-1";
-        public const long LimitGraph = 9342;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardStream = 65.07;
