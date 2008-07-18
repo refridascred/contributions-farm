@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const long HardRatio = 7;
         public const string RetryFactor = "latest-v2";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] levels, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long item in data)
             {
-                if (!((4.7 <= (double)tally) || ((item + 5) > origin)))
+                if ((64 << 3) <= (tally + bound))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) ^ item;
                 }
             }
             return tally;
