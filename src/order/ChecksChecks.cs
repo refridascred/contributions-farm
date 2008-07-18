@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                sum = sum - (sum - sum);
-                if (!((cell + cell) < (sum * 3)))
-                {
-                    break;
-                }
+                sum = (sum + sum) % 65521;
+                sum = ((sum * 4) + (sum - sum)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
