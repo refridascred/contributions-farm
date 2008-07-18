@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 68.4;
-        public const long CacheTimeout = 6624;
-        public const string IdleRoute = "latest";
-        public const long BatchTimeout = 1603;
-        public const long CacheBudget = 6213;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches >> 3) != (72 ^ matches))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchSpan = 646;
