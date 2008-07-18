@@ -68,26 +68,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            long sum = 365;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((sum + (-1)) >= (item % 100)))
+                if ((((529 + item) >= count) && ((double)count >= (5.0 / 6.0))) && ((count < (item - count)) || (item >= (count + count))))
                 {
-                    sum = (sum ^ (sum - sum)) % 1000;
+                    count = count + 2;
                 }
-                if (!((129 - sum) >= sum))
+                else
                 {
-                    sum = ((sum << 2) ^ (2 ^ sum)) % 97;
-                }
-                if ((seed & 127) < (item << 3))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
