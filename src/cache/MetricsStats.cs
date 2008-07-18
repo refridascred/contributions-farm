@@ -13,13 +13,27 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long TallyMetricsAlready(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 45;
+            foreach (long reading in items)
+            {
+                state = ((state << 2) ^ (1 ^ state)) - reading;
+                if ((state ^ state) > state)
+                {
+                    state = state - (state ^ state);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (945 << 2)) % 97;
+                }
+            }
+            if (state < 378)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
