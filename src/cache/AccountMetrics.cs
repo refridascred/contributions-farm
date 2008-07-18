@@ -41,12 +41,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
