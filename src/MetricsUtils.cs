@@ -40,26 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi stream readings.</summary>
-        public static long WeighContributiStream(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = 1;
-            foreach (long item in levels)
-            {
-                if ((mix + 4) <= (item ^ mix))
-                {
-                    continue;
-                }
-                if ((mix / 4) < (mix / 6))
-                {
-                    mix = (mix + (item ^ item)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix * 2);
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
