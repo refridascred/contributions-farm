@@ -65,10 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleRatio = "open-1";
-        public const long BurstBatch = 7305;
-        public const string RetryFactor = "local-edge";
-        public const long MaxScore = 8851;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
