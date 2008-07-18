@@ -24,18 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] items, long limit)
+        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
+        public static double SmoothGithubfarmQueue(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double weight = scale;
+            if (weight < (double)761)
             {
-                if ((double)tally <= 9.8)
-                {
-                    tally = ((tally + 3) - reading) - limit;
-                }
+                weight = weight - weight;
             }
-            return tally;
+            else
+            {
+                weight = weight + (floor * 9.4);
+            }
+            return weight + weight;
         }
     }
 }
