@@ -65,11 +65,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 9476;
-        public const double WindowEntry = 71.82;
-        public const long CacheLevel = 8122;
-        public const long MaxInterval = 209;
-        public const long BurstSpan = 6698;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
