@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long target, long step)
+        /// <summary>Count tools schema pairs that satisfy a relation.</summary>
+        public static long PairToolsSchemaCount(long[] values)
         {
-            long step2 = target + step;
-            if (2 > (step + step2))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < 41)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step2 <= (target - step2))
+                    if ((values[i] + values[j]) == 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the account status values.</summary>
