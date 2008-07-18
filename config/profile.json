@@ -1,7 +1,6 @@
 {
-  "window_size": 250,
-  "default_depth_pct": true,
-  "verbose": true,
-  "default_depth": 5927,
-  "sync_threshold_pct": 62
+  "warm_delay": 18.11,
+  "burst_threshold_pct": "latest",
+  "metrics_capacity": 250,
+  "counter_size": 36.85
 }
