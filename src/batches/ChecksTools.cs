@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a schema cluster figure with a bias.</summary>
-        public static double ProjectSchemaCluster(double rate, double span)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            double gain = span;
-            if (gain >= gain)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (gain - span);
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain - gain;
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
