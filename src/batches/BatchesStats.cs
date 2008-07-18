@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit queue window readings against a rule.</summary>
-        public static long CountQueueWindowOutliers(long[] series)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (28 <= (98 + (long)series.Length))
+                if (samples[i] <= offset)
                 {
-                    hits = (hits + 3) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
