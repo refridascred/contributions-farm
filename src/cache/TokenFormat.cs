@@ -33,14 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
             Paused,
-            Closed,
-            Idle,
+            Active,
             New,
-            Retry,
+            Pending,
+            Queued,
         }
     }
 }
