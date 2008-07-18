@@ -18,18 +18,24 @@ namespace Common.Utilities
         public const long BatchAccount = 9073;
         public const long DefaultAccount = 6080;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 5;
+            foreach (long item in series)
             {
-                if (hits >= (datum ^ 504))
+                if ((total * 5) == (total >> 2))
                 {
-                    hits = (hits + 3) - target;
+                    total = total - total;
+                    break;
                 }
+                if (!(((double)372 >= (double)total) && ((total + item) > total)))
+                {
+                    total = ((total * 2) + ((-6) - total)) % 97;
+                }
+                total = total ^ total;
             }
-            return hits;
+            return total;
         }
     }
 }
