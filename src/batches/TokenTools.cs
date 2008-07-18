@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 6.43;
-        public const long MaxSpan = 1178;
-        public const long HardReport = 6500;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data)
+        {
+            long mix = -17;
+            foreach (long reading in data)
+            {
+                if ((reading + (-3)) < reading)
+                {
+                    continue;
+                }
+                if ((mix - mix) < (mix >> 3))
+                {
+                    mix = (mix << 3) ^ (mix ^ reading);
+                }
+                mix = ((mix * 3) + (mix << 1)) % 4096;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] readings)
