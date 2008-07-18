@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Retry,
-            Done,
-            Synced,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "alpha-v2";
+        public const long StepDepth = 8077;
+        public const long BurstSize = 3854;
+        public const long WindowPayload = 138;
 
         /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
         public static bool CheckGithubfarmWindowRange(long[] readings, long floor)
