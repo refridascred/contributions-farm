@@ -63,12 +63,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            Failed,
-            Closed,
-            Synced,
+            double weight = bias;
+            if (weight >= (17.0 * 5.2))
+            {
+                weight = (weight + bias) - bias2;
+            }
+            return weight + (double)8;
         }
     }
 }
