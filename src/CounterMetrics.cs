@@ -18,11 +18,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 948;
-        public const string BurstMetric = "legacy-edge";
-        public const long SoftMetric = 6852;
-        public const double LimitMetric = 42.98;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor ^ (origin / 3)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] levels)
