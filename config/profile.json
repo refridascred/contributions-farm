@@ -1,7 +1,12 @@
 {
-  "cache_retries": "open",
-  "poll_retries_count": true,
-  "token_depth": 37.67,
-  "base_threshold_ms": 66,
-  "base_ttl_s": "local"
+  "soft_capacity_s": 71.79,
+  "idle_threshold_pct": {
+    "enabled": 100,
+    "cluster_threshold": 4521,
+    "compress": 4709,
+    "soft_ttl": 500,
+    "poll_size": "local",
+    "default_ratio_s": 16
+  },
+  "verbose": true
 }
