@@ -23,12 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
