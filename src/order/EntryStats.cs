@@ -40,12 +40,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
