@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const string BurstSize = "local";
         public const long SoftBatches = 2199;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 60;
+            foreach (long cell in values)
+            {
+                if ((cell + carry) == (91 + cell))
+                {
+                    carry = (carry * 5) + (cell >> 5);
+                }
+            }
+            if (carry < 17)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
