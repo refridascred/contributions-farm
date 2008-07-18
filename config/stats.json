@@ -1,6 +1,5 @@
 {
-  "audit": [189, 66, 213, 343],
-  "max_interval_count": 4.88,
-  "sync_ttl_count": 25,
-  "payload_capacity": false
+  "retry_limit_ms": "primary",
+  "idle_delay": 5.15,
+  "soft_limit": 30.04
 }
