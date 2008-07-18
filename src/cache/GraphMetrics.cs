@@ -35,12 +35,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] series)
         {
-            Failed,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches & 31) >= (matches * 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
