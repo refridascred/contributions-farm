@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchInterval = 968;
-        public const long IdleWidth = 132;
-        public const long MinAccount = 9884;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultSpan = 90.95;
+        public const double MinWidth = 77.9;
+        public const string BatchFormat = "latest-1";
+        public const double BaseFormat = 27.01;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] data, long offset)
