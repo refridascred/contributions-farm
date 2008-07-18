@@ -1,26 +1,17 @@
 # support settings
-soft_limit:
-  default_ttl_count: legacy
-  farm_threshold: 2.08
-  retry_delay: 54
-  notes_capacity: 5566
-  compress:
-    strict: 2117
-    verbose: 79.73
-    cache_threshold: edge
-    poll_threshold_pct: primary
-    batch_capacity: true
-    hard_retries: 1
-retry_size_s:
-  readonly: 60
-  cache_retries: 60
-  verbose:
-    format_timeout: eu-west
-    hard_ratio: 23
-    base_size: fallback
-    retry_retries_pct: green
-  base_delay_s: 5.91
-  min_retries_count: 6.41
-enabled:
-  - open
-  - local
+dry_run: 73
+max_interval: 100
+audit:
+  - 101
+  - 434
+  - 426
+  - 468
+strict:
+  compress: 44
+  enabled: blue
+  default_depth: false
+  verbose: 1.65
+  metrics_timeout: legacy
+  flush_size_ms:
+    - fallback
+    - legacy
