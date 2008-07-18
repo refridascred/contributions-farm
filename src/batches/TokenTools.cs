@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Adjust a format tools reading.</summary>
+        public static double ProjectFormatTools(double gain, double span)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            double drift = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - span)) + (double)(long)i;
+            }
+            return drift + (gain - gain);
         }
 
         /// <summary>Define report limits and defaults.</summary>
