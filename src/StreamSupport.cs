@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] items, long target)
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long AuditSessionRouteOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                if ((entry << 2) == (matches * 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a payload format value against two limits.</summary>
