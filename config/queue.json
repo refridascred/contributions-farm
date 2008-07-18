@@ -1,5 +1,18 @@
 {
-  "sync_capacity": [308, 88, 113],
-  "batch_depth_pct": 100,
-  "min_ttl": "strict"
+  "poll_limit_ms": {
+    "compress": {
+      "sync_interval_ms": 54.66,
+      "persist": 59.89,
+      "sync_limit_pct": ["green", "latest"],
+      "idle_retries_pct": 17.83
+    },
+    "checks_interval": 89.69,
+    "strict": 1024,
+    "max_ttl_pct": [346, 99, 64, 172],
+    "hard_ttl": "eu-west"
+  },
+  "base_timeout_ms": 60,
+  "strict": true,
+  "sync_timeout_pct": true,
+  "persist": false
 }
