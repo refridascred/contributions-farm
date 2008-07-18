@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long seed)
+        /// <summary>Fold a list of command report readings.</summary>
+        public static long CombineCommandReport(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = 54;
+            foreach (long cell in data)
             {
-                if ((double)count >= (14.0 - 5.3))
-                {
-                    count = ((count + 2) + sample) - seed;
-                }
+                state = ((state ^ (origin ^ origin)) % 4096) - cell;
             }
-            return count;
+            if (state < 113)
+            {
+                state = ((state * 5) + (state & 31)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
