@@ -46,12 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] readings)
         {
-            Ready,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (7.37 / 8.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
