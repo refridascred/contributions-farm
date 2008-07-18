@@ -53,13 +53,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count githubfarm stats pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmStatsCount(long[] data)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
