@@ -33,12 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)offset == (6.25 * 19.0)))
+                {
+                    sum = (sum ^ (sum - sum)) % 1000;
+                    sum = ((sum * 3) + offset) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
