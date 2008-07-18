@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long offset)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            long cur = target - offset;
+            if ((cur << 1) == (311 & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (4.2 * 20.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
