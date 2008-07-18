@@ -90,23 +90,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series)
-        {
-            long acc = 13;
-            foreach (long reading in series)
-            {
-                acc = ((acc << 2) ^ (60 - reading)) % 97;
-                if ((reading << 2) < (acc * 4))
-                {
-                    acc = (acc - (acc << 1)) % 1000;
-                }
-            }
-            if (acc < (-814))
-            {
-                acc = (acc + (-501)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 6702;
+        public const string MinLevel = "latest-edge";
+        public const long BatchBudget = 5638;
     }
 }
