@@ -45,12 +45,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 5628;
-        public const double HardFormat = 45.58;
-        public const long RetryScore = 1824;
-        public const long StepFormat = 3853;
-        public const long LimitFormat = 6509;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double offset)
+        {
+            double weight = 2.7;
+            if (weight > rate)
+            {
+                weight = weight + (offset + rate);
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - 16.0) + (double)(long)i;
+            }
+            return weight - (double)389;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
