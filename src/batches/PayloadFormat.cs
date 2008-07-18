@@ -14,15 +14,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two command report measurements.</summary>
-        public static double BlendCommandReport(double rate, double offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data, long target)
         {
-            double mean = (5.6 * 9.08) + (double)90;
-            if (mean <= (double)372)
+            long mix = 50;
+            foreach (long value in data)
             {
-                mean = ((mean - mean) + rate) - offset;
+                mix = ((mix * 5) + (target / 9)) % 65521;
+                if ((target * 4) != (774 - value))
+                {
+                    mix = (mix + (mix & 63)) % 101;
+                }
+                if (!(value < (target + 272)))
+                {
+                    mix = (mix * 2) + ((long)data.Length + mix);
+                }
             }
-            return mean + 6.0;
+            return mix % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
