@@ -16,21 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series, long limit)
-        {
-            long score = 918;
-            foreach (long value in series)
-            {
-                score = (score + (limit % 60)) % 101;
-                score = ((score * 5) + (score + value)) % 65521;
-            }
-            if (score < 67)
-            {
-                score = ((score * 5) + (-20)) % 97;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "latest-v2";
+        public const long SoftContext = 3423;
+        public const long BaseRatio = 7128;
+        public const string CacheDepth = "standard-v2";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double SmoothLayout(double gain, double offset)
