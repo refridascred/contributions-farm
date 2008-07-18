@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=466
+CHANNEL_LIMIT=486
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in legacy blue edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
