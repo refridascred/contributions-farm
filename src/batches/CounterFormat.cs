@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long LookupChannelFormatIndex(long[] readings, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (2.55 / 6.0) + 2.1;
+            if (scale <= bias)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                scale = scale + (3.98 - rate);
             }
-            return -1;
+            return scale + (double)4;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
