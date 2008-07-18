@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series, long bound)
         {
-            Synced,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((8.0 + 1.0) <= (double)datum) || ((bound ^ 406) >= (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
