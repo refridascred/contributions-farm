@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 9213;
-        public const long IdleSpan = 9275;
-        public const long BatchWidth = 3744;
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long TallyCounterCommandHits(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((tally >> 2) >= (tally % 16)) || ((double)bound != (0.7 / 7.0)))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryContext = 1443;
