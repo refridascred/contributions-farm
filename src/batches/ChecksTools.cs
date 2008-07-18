@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile filter entry stays within the limit.</summary>
-        public static bool GuardProfileFilterRange(long[] series, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long sum = 26;
+            foreach (long reading in levels)
             {
-                if (reading < offset)
+                sum = sum ^ (long)levels.Length;
+                if ((4 & 7) > (reading * 2))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 2) + (step / 4)) % 101;
                 }
             }
-            return ok;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
