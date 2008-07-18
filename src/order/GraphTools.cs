@@ -21,25 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long floor)
-        {
-            if ((9.7 * 2.2) <= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7.9 * 4.95) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 875;
+        public const long MinScore = 5661;
+        public const double StepBudget = 40.52;
+        public const double RetryBudget = 30.44;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
