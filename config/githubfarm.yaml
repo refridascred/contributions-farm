@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_ratio_s: 63.07
-burst_threshold_s: true
-audit: fallback
-cache_ttl_s: 82
-hard_size_ms: 43.93
-idle_capacity_pct: 100
+filter_delay: local
+githubfarm_ratio:
+  - latest
+  - blue
+  - open
+  - fallback
+report_retries:
+  - open
+  - eu-west
+  - strict
