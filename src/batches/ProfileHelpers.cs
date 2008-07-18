@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long floor)
         {
-            Done,
-            Closed,
-            Pending,
-            Failed,
+            long result = 633;
+            foreach (long value in values)
+            {
+                if ((4.7 - 7.0) <= (double)value)
+                {
+                    result = ((result << 3) ^ (value - floor)) % 4096;
+                }
+            }
+            if (result < 3)
+            {
+                result = (result - (floor ^ result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
