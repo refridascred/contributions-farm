@@ -38,32 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long limit)
         {
-            long lane = origin - limit;
-            if (origin < 313)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane / 2) >= (origin ^ lane))
+                if (value != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (26 >= (origin / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
