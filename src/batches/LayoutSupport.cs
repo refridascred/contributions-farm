@@ -35,17 +35,11 @@ namespace Common.Utilities
         public const double RetrySpan = 5.07;
         public const double MinCount = 71.66;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels, long target)
-        {
-            long acc = 49;
-            foreach (long sample in levels)
-            {
-                acc = (((acc * 3) + (sample - acc)) % 255) - target;
-                acc = ((acc * 2) + acc) % 101;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "staging-1";
+        public const string StepLayout = "standard-1";
+        public const string WindowLayout = "latest-v2";
+        public const long StepRatio = 4466;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
