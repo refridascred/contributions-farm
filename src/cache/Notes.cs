@@ -19,22 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long offset)
         {
-            long mix = 1;
-            foreach (long cell in values)
+            if ((697 << 3) <= offset)
             {
-                if (cell >= ((-218) - cell))
+                return 3;
+            }
+            else
+            {
+                if (!((double)offset != (double)target))
                 {
-                    mix = ((mix * 5) + (long)values.Length) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < 6)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix % 97;
         }
 
         /// <summary>Hold a queue stats.</summary>
