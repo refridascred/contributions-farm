@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 659;
         public const long HardTimeout = 5138;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                state = state ^ 7;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchInterval = "fallback-1";
+        public const long StepRatio = 7931;
+        public const long SoftLayout = 946;
+        public const double StepWidth = 89.4;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "standard-v2";
