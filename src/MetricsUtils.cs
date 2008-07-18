@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift - (double)(-963);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((((long)i + 1) == ((-540) / 4)) && ((score - seed) > (seed << 3)))
-                {
-                    score = (score + (seed + (long)i)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 897;
+        public const long BatchToken = 2929;
+        public const double StepToken = 62.36;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorOutliers(long[] items)
