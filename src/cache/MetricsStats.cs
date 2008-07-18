@@ -52,16 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                result = (result << 3) ^ result;
-                result = ((result * 3) + (long)i) % 4093;
+                if (!((reading / 2) > reading) || (matches < (matches & 63)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine checks notes values into a single score.</summary>
