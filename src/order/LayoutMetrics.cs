@@ -12,26 +12,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of editor window readings.</summary>
-        public static long TotalEditorWindow(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long carry = -79;
-            foreach (long entry in readings)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (carry > (37 % 100))
-                {
-                    carry = carry - (entry + carry);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (entry & 15)) % 101;
-                }
+                acc = acc - (offset << 2);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (carry < 983)
-            {
-                carry = (carry * 4) + (carry % 64);
-            }
-            return carry % 4096;
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
