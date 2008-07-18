@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine context tools values into a single score.</summary>
-        public static long TotalContextTools(long[] samples, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long score = 345;
-            foreach (long value in samples)
-            {
-                if ((9 / 7) <= limit)
-                {
-                    score = ((score * 3) + (value ^ 1)) % 97;
-                    continue;
-                }
-                score = ((score * 3) + (value + limit)) % 97;
-            }
-            return score;
+            Done,
+            Ready,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
