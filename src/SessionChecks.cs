@@ -52,19 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultRatio = "primary";
+        public const long DefaultGraph = 8376;
+        public const long BurstGraph = 78;
+        public const string DefaultDepth = "stable-edge";
+        public const long LimitGraph = 1587;
     }
 }
