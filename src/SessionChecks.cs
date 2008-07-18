@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Synced,
-            Failed,
-            Stale,
-            Paused,
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
