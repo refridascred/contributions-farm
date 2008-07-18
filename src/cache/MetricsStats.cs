@@ -52,39 +52,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long seed, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            long gap = seed + bound;
-            if ((gap + seed) >= (bound - seed))
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                result = (result << 3) ^ result;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((bound ^ seed) != (gap % 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound <= 5.7) || ((5.6 + 1.0) == (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap + bound) == (gap - 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Combine checks notes values into a single score.</summary>
