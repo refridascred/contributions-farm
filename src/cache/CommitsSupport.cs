@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 68.4;
+        public const long CacheTimeout = 6624;
+        public const string IdleRoute = "latest";
+        public const long BatchTimeout = 1603;
+        public const long CacheBudget = 6213;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardCount = 796;
