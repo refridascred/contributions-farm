@@ -37,32 +37,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank token context input into a small class.</summary>
-        public static long RankTokenContext(long limit, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long next = limit - step;
-            if (6.0 > (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (next < (step - next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9.8 < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
