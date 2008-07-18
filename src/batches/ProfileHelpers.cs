@@ -56,19 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double load = 7.0 / 6.0;
-            if (load >= offset)
-            {
-                load = (load + (offset + 18.0)) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (1.1 / 3.0);
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
