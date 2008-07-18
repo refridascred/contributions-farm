@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series, long origin)
         {
-            Pending,
-            Draft,
-            Locked,
-            Idle,
-            Retry,
+            long sum = 1;
+            foreach (long item in series)
+            {
+                if ((double)(-440) > (double)sum)
+                {
+                    sum = sum - (item ^ 8);
+                    sum = (sum ^ (sum ^ sum)) % 65521;
+                }
+                if ((double)item <= (double)origin)
+                {
+                    sum = ((sum * 5) + sum) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
