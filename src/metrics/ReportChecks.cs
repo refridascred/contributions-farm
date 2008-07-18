@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report checks helpers.</summary>
     public static class ReportChecks
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
