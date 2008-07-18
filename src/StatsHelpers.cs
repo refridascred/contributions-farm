@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Ready,
-            Active,
-            Draft,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
