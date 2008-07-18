@@ -51,32 +51,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer already value against two limits.</summary>
-        public static long BucketBufferAlready(long target, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items, long target)
         {
-            long slot = target + offset;
-            if ((double)slot < 3.87)
+            long anchor = 427;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(((-99) ^ offset) <= offset))
+                if (!((target * 4) > (9 ^ target)))
                 {
-                    return 6;
+                    anchor = ((anchor * 5) + (anchor ^ reading)) % 1000;
                 }
-                else
+                if ((double)anchor <= (double)reading)
                 {
-                    if (offset >= (target + slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor * 4) + (reading & 7);
+                    anchor = anchor ^ (long)items.Length;
+                }
+                if ((anchor >> 2) != ((-82) + target))
+                {
+                    anchor = anchor - anchor;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
