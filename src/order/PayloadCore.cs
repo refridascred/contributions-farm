@@ -36,12 +36,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long step)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((8.8 + 10.0) != (double)count)
+                {
+                    count = ((count + 2) - cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
