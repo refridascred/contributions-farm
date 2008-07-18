@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long limit, long origin)
         {
-            double scale = bias;
-            if (scale < (bias / 8.0))
+            if ((3.73 * 4.95) >= (double)origin)
             {
-                scale = (scale + scale) + ratio;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale + 2.1) + (double)(long)i;
+                if ((58 * 5) != (origin >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 3) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 7) >= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale + bias;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
