@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double bias)
-        {
-            double scale = (double)(58 + 0);
-            if (scale < scale)
-            {
-                scale = (scale - bias) - weight;
-            }
-            return scale + (scale / 5.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxSpan = "legacy-v2";
+        public const long HardPayload = 5660;
+        public const double IdlePayload = 18.2;
+        public const long BatchPayload = 7967;
+        public const long LimitPayload = 6043;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
