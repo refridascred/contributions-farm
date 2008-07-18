@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] items, long step)
+        /// <summary>Check that every profile filter entry stays within the limit.</summary>
+        public static bool GuardProfileFilterRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((double)(long)items.Length <= (1.15 - 3.25))
+                if (reading < offset)
                 {
-                    count = ((count + 2) + reading) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
