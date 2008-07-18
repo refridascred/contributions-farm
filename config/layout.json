@@ -1,5 +1,5 @@
 {
-  "base_ratio": ["latest", "staging", "staging"],
-  "base_retries_pct": 92,
-  "context_interval": 63.69
+  "session_limit": "cached",
+  "flush_threshold_s": ["stable", "strict"],
+  "default_limit_pct": "stable"
 }
