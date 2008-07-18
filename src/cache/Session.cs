@@ -41,12 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
