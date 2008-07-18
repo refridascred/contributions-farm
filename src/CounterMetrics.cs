@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 84;
+            foreach (long item in data)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + offset) - item;
             }
-            return -1;
+            if (acc < 3)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
