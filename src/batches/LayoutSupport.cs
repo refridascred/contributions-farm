@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Stale,
+            Ready,
             New,
-            Active,
-            Locked,
-            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the channel level values.</summary>
