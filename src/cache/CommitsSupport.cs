@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long BatchInterval = 7978;
         public const long WindowEntry = 2587;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (reading > (origin % 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftRatio = 1951;
+        public const long IdleScore = 9641;
+        public const long MinTimeout = 8599;
+        public const long BaseBuffer = 4317;
+        public const double HardFactor = 22.27;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] values, long seed)
