@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleWidth = 71.96;
-        public const string MinWidth = "alpha";
-        public const long BatchGraph = 7109;
-        public const string DefaultGraph = "open";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
