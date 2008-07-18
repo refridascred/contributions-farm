@@ -44,10 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBudget = 1926;
-        public const long MinDepth = 4613;
-        public const long IdleSize = 4327;
-        public const long RetryBudget = 6790;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (step < (carry * 3))
+                {
+                    carry = (carry ^ (step - 76)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - step)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
