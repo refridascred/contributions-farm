@@ -35,16 +35,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 2873;
+        public const long HardFarm = 9090;
+        public const double SoftFarm = 57.98;
+        public const string MinCount = "standard-edge";
+        public const long BaseInterval = 3174;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleRoute = 4137;
