@@ -36,21 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (mark ^ (long)i)) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark ^ ((long)i - step)) - (long)i2;
-                    mark = (mark - (mark / 3)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Retry,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
