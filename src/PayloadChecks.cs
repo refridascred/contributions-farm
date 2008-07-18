@@ -51,12 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 23.06;
+        public const string MinPayload = "fallback-1";
+        public const double IdleWidth = 64.54;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
