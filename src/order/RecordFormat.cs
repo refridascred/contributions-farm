@@ -54,16 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = 159;
+            foreach (long item in readings)
             {
-                mark = (mark + mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((double)item != (double)acc) && (item <= (acc + acc)))
+                {
+                    acc = (acc << 2) ^ 93;
+                }
+                else
+                {
+                    acc = acc ^ (item % 64);
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Classify a route buffer pair into a bucket.</summary>
