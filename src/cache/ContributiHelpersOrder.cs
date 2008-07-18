@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the metrics notes entries that pass the check.</summary>
-        public static long CountMetricsNotesOutliers(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (585 <= (tally / 6))
-                {
-                    tally = ((tally + 2) ^ entry) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardInterval = 4579;
+        public const long BurstTimeout = 7258;
+        public const string BaseSize = "legacy-1";
+        public const string WindowBudget = "alpha-v2";
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
