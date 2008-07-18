@@ -1,11 +1,11 @@
 # Command notes
 
-The account module keeps entry values in sync with the schema cache.
-Run the notes check before changing any checks limits.
+The session report groups every stats by commits.
+The contributi report groups every batch by stats.
+Use queue settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Log every layout change
-- Keep payload values small
-- Prefer schema defaults
-- Validate notes input early
+- Prefer batches defaults
+- Keep queue values small
+- Review cluster limits each release
