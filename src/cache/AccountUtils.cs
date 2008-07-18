@@ -19,18 +19,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long offset)
+        /// <summary>Derive the next checks batches value from a seed.</summary>
+        public static long IterateChecksBatches(long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((long)values.Length << 1) < cell) || !((cell << 3) != ((long)values.Length / 8)))
+                if (!(total >= (total & 7)))
                 {
-                    seen = (seen + 2) + offset;
+                    total = total - (49 << 3);
                 }
+                if (total <= (total - origin))
+                {
+                    total = (total ^ total) % 101;
+                }
+                else
+                {
+                    total = (total * 3) + (total % 16);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the buffer level values.</summary>
