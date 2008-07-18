@@ -32,21 +32,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long target, long step)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long edge = target - step;
+            if ((edge % 64) > 251)
             {
-                state = (state * 2) + (target + state);
-                if (target < ((long)i << 2))
-                {
-                    state = (state ^ (state & 31)) % 1000;
-                    state = (state * 5) + (long)i;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (((1 - 7) <= (edge + 57)) && ((target << 2) <= (step ^ target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
