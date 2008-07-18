@@ -41,11 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record cache measurements.</summary>
-        public static double SmoothRecordCache(double bias, double span)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            double ratio = span;
-            return (ratio + 7.0) + bias;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
