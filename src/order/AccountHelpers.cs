@@ -33,19 +33,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long DeriveCounterFarm(long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!(((long)i > (mix + mix)) && ((double)mix >= (double)(long)i)))
                 {
-                    carry = (((carry * 2) + origin) % 1000) + (long)i2;
+                    mix = (mix - (offset * 4)) % 4096;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                if (!(((long)i / 3) == ((long)i - (long)i)))
+                {
+                    mix = mix ^ offset;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix + (mix + mix)) % 97) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a metric stats.</summary>
