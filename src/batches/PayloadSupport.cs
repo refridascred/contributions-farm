@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of batches entry readings.</summary>
-        public static long FoldBatchesEntry(long[] samples, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long result = -839;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((9.2 + 0.19) != (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result - (entry + result);
-                }
-                if ((92 >= (entry & 7)) || ((result * 4) == (step - 41)))
-                {
-                    result = (result * 5) + ((-934) - step);
-                }
-                if (!((result % 3) < entry))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
