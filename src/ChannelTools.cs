@@ -39,25 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long cur = seed ^ offset;
-            if ((0 + seed) == (cur / 7))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset - cur) >= seed) || ((1.2 + 1.0) > (double)offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
