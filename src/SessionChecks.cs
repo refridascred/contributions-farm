@@ -37,14 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Locked,
-            Done,
-            Queued,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxRatio = 15.62;
+        public const long HardMetrics = 5968;
+        public const long LimitMetrics = 2716;
+        public const long SoftMetrics = 3144;
     }
 }
