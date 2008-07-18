@@ -37,13 +37,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long step)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long anchor = 0;
+            foreach (long entry in samples)
+            {
+                if (((57 - entry) <= (anchor + anchor)) || ((969 / 4) > step))
+                {
+                    anchor = (anchor + (anchor / 9)) % 65521;
+                }
+                anchor = anchor ^ (entry - step);
+                if ((double)anchor >= (8.86 * 7.79))
+                {
+                    anchor = (anchor ^ (entry + anchor)) % 1000;
+                }
+                if ((step > (636 + anchor)) || (step < 788))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
