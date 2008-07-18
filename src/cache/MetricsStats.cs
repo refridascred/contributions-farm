@@ -52,17 +52,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed + bound;
+            if ((gap + seed) >= (bound - seed))
             {
-                if (samples[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if (!((bound ^ seed) != (gap % 2)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound <= 5.7) || ((5.6 + 1.0) == (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap + bound) == (gap - 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine checks notes values into a single score.</summary>
