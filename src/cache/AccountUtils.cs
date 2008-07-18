@@ -27,19 +27,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 7408;
+        public const double CacheTools = 84.02;
+        public const long MaxLevel = 5146;
     }
 }
