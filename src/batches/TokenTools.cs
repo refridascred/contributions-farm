@@ -45,31 +45,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] items, long offset)
         {
-            if (!(floor >= (offset >> 3)))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 4) != (floor & 1))
+                if (value < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset < (20.0 * 20.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
