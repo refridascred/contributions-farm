@@ -64,11 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSpan = 5103;
-        public const long IdleCount = 6949;
-        public const long MaxCommits = 8428;
-        public const long WindowTimeout = 7210;
-        public const long BurstCommits = 7456;
+        /// <summary>Match up graph commits samples.</summary>
+        public static long CompareGraphCommitsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
