@@ -47,12 +47,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "primary-edge";
-        public const double CacheCount = 71.45;
-        public const long LimitFactor = 6632;
-        public const double LimitSize = 75.23;
-        public const long WindowAlready = 8977;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double floor)
+        {
+            double mean = ratio;
+            if (mean <= floor)
+            {
+                mean = mean - 7.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (ratio - floor);
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepSpan = 6396;
