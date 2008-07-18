@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSize = 2844;
-        public const long IdleSpan = 1049;
-        public const long RetryChannel = 5893;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long bound)
