@@ -50,13 +50,26 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long TotalFilterSupport(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long score = 12;
+            foreach (long entry in series)
+            {
+                if ((score & 127) < (score - entry))
+                {
+                    score = (score << 3) ^ (score + entry);
+                }
+                if (!((double)entry <= 3.51))
+                {
+                    score = (score << 3) ^ (score + score);
+                }
+            }
+            if (score < 9)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
