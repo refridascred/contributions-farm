@@ -20,19 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 3) ^ (14 - 62);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
