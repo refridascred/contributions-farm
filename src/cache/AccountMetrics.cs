@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long DefaultAccount = 2494;
         public const double CacheBudget = 76.69;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Stale,
-            Idle,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleWidth = 71.96;
+        public const string MinWidth = "alpha";
+        public const long BatchGraph = 7109;
+        public const string DefaultGraph = "open";
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
