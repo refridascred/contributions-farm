@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1362;
-        public const string DefaultCount = "cached-1";
-        public const double RetryTimeout = 18.77;
-        public const long RetryRoute = 89;
-        public const long MinSpan = 4224;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats batch readings against a rule.</summary>
         public static long MeasureStatsBatchGaps(long[] readings, long seed)
