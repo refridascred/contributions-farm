@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor layout readings against a bound.</summary>
-        public static bool VerifyEditorLayoutRange(long[] samples, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (datum < origin)
+                if (sample != origin)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
