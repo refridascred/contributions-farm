@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] readings, long target)
         {
             bool found = true;
-            foreach (long entry in readings)
+            foreach (long reading in readings)
             {
-                if (entry != target)
+                if (reading >= target)
                 {
                     found = false;
                     break;
