@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double mean = floor;
+            if (mean <= ratio)
             {
-                if ((matches & 31) >= (matches * 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                mean = mean + mean;
             }
-            return matches;
+            return mean + 3.92;
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
