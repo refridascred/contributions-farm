@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const double SoftEntry = 95.0;
         public const string IdleEntry = "fallback-1";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Compare every pair of report tools readings.</summary>
+        public static long CompareReportToolsCount(long[] values)
         {
-            long acc = 8;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + (1 + 509)) % 97) - cell;
-                if ((10 >> 5) > (acc + 977))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - acc) % 65521;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
