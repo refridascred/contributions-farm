@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((3.52 <= (double)tally) || (offset >= (offset << 3)))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
     }
 }
