@@ -43,37 +43,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a record window value against two limits.</summary>
-        public static long GradeRecordWindow(long target, long target2)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long offset)
         {
-            long cur = target ^ target2;
-            if (target2 <= (target - target))
+            long slot = target + offset;
+            if ((slot - offset) >= (7 - offset))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((13.0 - 9.4) >= (double)target2)
+                if (target <= (target + offset))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((target2 + target) > target) || ((target2 << 1) < (cur << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target & 3) <= cur)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
