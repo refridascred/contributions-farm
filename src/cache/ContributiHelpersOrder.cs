@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = 2;
-            foreach (long sample in levels)
-            {
-                if ((mix ^ sample) > floor)
-                {
-                    mix = (mix * 3) + floor;
-                }
-            }
-            return mix % 65521;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
