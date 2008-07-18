@@ -33,12 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long bound)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
