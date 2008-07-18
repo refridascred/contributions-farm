@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long origin, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long origin)
         {
-            if ((limit + limit) > (origin * 5))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 4) == (origin + 0))
+                if ((hits + reading) <= (reading % 8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(7.0 <= (0.24 * 5.7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 1) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
