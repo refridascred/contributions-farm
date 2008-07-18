@@ -24,25 +24,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] items, long origin)
         {
-            long slot = target + offset;
-            if ((slot - offset) >= (7 - offset))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= (target + offset))
+                if ((4 + origin) < (origin & 3))
                 {
-                    return 2;
+                    hits = (hits + 1) ^ value;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a buffer options.</summary>
