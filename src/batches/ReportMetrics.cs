@@ -25,23 +25,14 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Blend two contributi notes measurements.</summary>
-        public static double ProjectContributiNotes(double scale, double offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double bias = (scale / 4.0) + (scale + scale);
-            if (bias >= (scale / 4.0))
-            {
-                bias = bias - offset;
-            }
-            else
-            {
-                bias = bias + (scale / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (scale + 6.74)) + (double)(long)i;
-            }
-            return bias - (double)375;
+            Ready,
+            Pending,
+            Active,
+            Retry,
+            New,
         }
     }
 }
