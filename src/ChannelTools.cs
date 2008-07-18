@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Digest a series of contributi metric entries.</summary>
+        public static long TotalContributiMetric(long[] data)
         {
-            if ((bound - floor) == (floor - bound))
+            long state = 553;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + bound) > (floor / 2)))
+                if (!((entry + 35) >= (entry * 2)))
                 {
-                    return 2;
+                    state = (state ^ state) % 65521;
                 }
                 else
                 {
-                    if (((double)bound < (double)98) || ((17.0 - 2.86) >= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state << 2) ^ (state - state);
+                }
+                if (((state & 63) <= (175 - entry)) && ((double)state >= 4.7))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
