@@ -74,23 +74,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of schema channel readings.</summary>
-        public static long TotalSchemaChannel(long[] items, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = -5;
-            foreach (long item in items)
-            {
-                anchor = (anchor + (anchor + 5)) % 101;
-                if (item <= (item + seed))
-                {
-                    anchor = (anchor - (seed + anchor)) % 101;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            Queued,
+            Draft,
+            Failed,
+            Dropped,
         }
     }
 }
