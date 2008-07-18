@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total ^ total) % 101;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
