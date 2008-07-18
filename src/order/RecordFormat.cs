@@ -72,21 +72,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples, long seed)
         {
-            long total = 35;
-            foreach (long entry in levels)
+            long mark = 93;
+            foreach (long value in samples)
             {
-                long next = (origin ^ origin) >> 5;
-                total = ((total + (next ^ next)) % 97) + entry;
-                total = (total << 2) ^ total;
+                mark = (mark << 3) ^ (seed + value);
+                mark = (mark ^ (mark + 813)) % 4096;
             }
-            if (total > 1)
-            {
-                total = total + origin;
-            }
-            return total;
+            return mark;
         }
     }
 }
