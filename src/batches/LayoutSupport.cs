@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] data)
         {
-            double ratio = bias;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + (ratio * 3.8)) - (double)(long)i) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + (double)(-6);
+            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
