@@ -28,18 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batches entry readings against a rule.</summary>
-        public static long MeasureBatchesEntryOutliers(long[] items, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (origin < value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Draft,
+            Retry,
         }
     }
 }
