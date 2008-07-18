@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 1603;
         public const long CacheBudget = 6213;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardCount = 796;
-        public const long BaseToken = 9112;
-        public const long MaxToken = 1322;
-        public const long MinToken = 1583;
-        public const long SoftToken = 6159;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 646;
+        public const string MinChecks = "local-v2";
+        public const long IdleChecks = 7949;
+        public const string MinBudget = "open";
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] levels)
