@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                if (value < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many layout notes samples are out of range.</summary>
