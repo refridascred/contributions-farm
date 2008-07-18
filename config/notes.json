@@ -1,12 +1,11 @@
 {
-  "sync_ttl_count": "standard",
-  "base_ttl_pct": 3027,
-  "session_ratio": 2626,
-  "sync_ttl_s": {
-    "cache_limit": 9483,
-    "min_size_pct": 54.94,
-    "sync_capacity_s": "eu-west",
-    "max_interval_s": "strict"
+  "default_retries_pct": {
+    "verbose": "stable",
+    "poll_window_pct": 1977,
+    "cluster_ratio": true,
+    "channel_window": ["edge", "blue"]
   },
-  "hard_timeout_count": ["fallback", "stable", "strict"]
+  "sync_retries": ["strict", "legacy"],
+  "session_retries": "cached",
+  "min_depth": true
 }
