@@ -1,11 +1,5 @@
 {
-  "editor_delay": ["edge", "local"],
-  "context_depth": {
-    "burst_ttl": false,
-    "contributi_capacity": "blue",
-    "layout_limit": "cached"
-  },
-  "farm_delay": "legacy",
-  "verbose": false,
-  "batch_limit_pct": "cached"
+  "session_size": false,
+  "flush_depth_pct": 45.18,
+  "default_ttl_ms": "edge"
 }
