@@ -13,39 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a schema stats pair into a bucket.</summary>
-        public static long SortSchemaStats(long step, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            long slot = step + limit;
-            if (step > (limit & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 5) >= slot)
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) >= (79 + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((slot % 60) > 80) || ((7.5 / 8.0) != (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next buffer farm value from a seed.</summary>
