@@ -14,17 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                if ((count + datum) <= (87 * 4))
                 {
-                    return (long)i;
+                    count = (count + 1) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a order summary.</summary>
