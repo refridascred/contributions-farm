@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "cached-v2";
-        public const double RetryScore = 38.67;
-        public const long IdleTimeout = 8439;
-        public const long BatchSize = 5651;
-        public const double IdleLayout = 61.05;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Stale,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] readings)
