@@ -48,13 +48,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
