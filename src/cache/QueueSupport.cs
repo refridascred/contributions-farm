@@ -20,14 +20,39 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a cache format pair into a bucket.</summary>
+        public static long ClassifyCacheFormat(long step, long step2)
         {
-            Stale,
-            Synced,
-            Done,
-            Closed,
-            Queued,
+            long edge = step + step2;
+            if (!((double)2 < (double)edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step2 > (step2 << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (edge < (88 + 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((edge * 5) == (687 >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
