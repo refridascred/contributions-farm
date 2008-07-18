@@ -14,13 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            Retry,
-            Draft,
-            Synced,
-            Idle,
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
