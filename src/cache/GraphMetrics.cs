@@ -40,12 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Draft,
-            Paused,
+            Active,
+            Failed,
             Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
