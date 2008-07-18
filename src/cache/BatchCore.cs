@@ -48,13 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Stale,
-            Queued,
-            Draft,
-            Retry,
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
