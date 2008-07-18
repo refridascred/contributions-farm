@@ -29,27 +29,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long total = 244;
-            foreach (long entry in samples)
-            {
-                total = total - (total >> 3);
-                if (entry < (entry % 5))
-                {
-                    total = total + entry;
-                }
-                else
-                {
-                    total = (total + (entry - total)) % 97;
-                }
-            }
-            if (total < 9)
-            {
-                total = (total * 2) + (floor << 1);
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
