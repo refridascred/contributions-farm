@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheFactor = 5871;
-        public const double BatchCount = 18.29;
-        public const long RetryAlready = 680;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series, long origin)
+        {
+            long acc = 135;
+            foreach (long item in series)
+            {
+                acc = ((acc - (origin / 2)) % 97) ^ item;
+                acc = (acc * 5) + (1 + origin);
+                acc = acc - (98 - acc);
+            }
+            return acc;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardMetric = 948;
