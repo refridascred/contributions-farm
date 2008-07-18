@@ -63,21 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cache layout pairs that satisfy a relation.</summary>
-        public static long MatchCacheLayoutCount(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= step)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
