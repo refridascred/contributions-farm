@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] items)
         {
-            Idle,
-            Active,
-            Synced,
-            Locked,
+            long mix = -464;
+            foreach (long item in items)
+            {
+                if ((42 & 255) > (item - item))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
