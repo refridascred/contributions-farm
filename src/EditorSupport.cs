@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] levels, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
