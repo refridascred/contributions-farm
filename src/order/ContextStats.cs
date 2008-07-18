@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples)
-        {
-            long anchor = 81;
-            foreach (long value in samples)
-            {
-                if ((13.0 / 3.0) < (double)value)
-                {
-                    anchor = (anchor + (anchor << 2)) % 101;
-                }
-            }
-            if (anchor > 62)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardCount = 32.5;
+        public const long BaseSpan = 518;
+        public const string DefaultLevel = "legacy";
+        public const long DefaultTimeout = 9486;
+        public const double CacheContributi = 39.83;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
