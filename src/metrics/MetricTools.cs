@@ -66,10 +66,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3883;
-        public const long StepChecks = 9167;
-        public const string HardSpan = "fallback-edge";
-        public const string MaxChecks = "strict-v2";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Region { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
