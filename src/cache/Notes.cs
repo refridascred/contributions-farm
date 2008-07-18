@@ -70,19 +70,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] values, long limit)
+        /// <summary>Roll a order cluster counter forward.</summary>
+        public static long RollOrderCluster(long offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= limit)
+                if ((11.0 / 4.0) >= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (offset - acc)) % 101;
+                    acc = acc ^ (offset - (long)i);
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
