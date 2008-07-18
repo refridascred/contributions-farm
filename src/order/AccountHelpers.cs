@@ -33,27 +33,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long result = 499;
+            foreach (long entry in values)
             {
-                if (!(((long)i > (mix + mix)) && ((double)mix >= (double)(long)i)))
+                if (target < (entry - entry))
                 {
-                    mix = (mix - (offset * 4)) % 4096;
+                    result = (result + (75 - target)) % 1000;
                 }
-                if (!(((long)i / 3) == ((long)i - (long)i)))
+                else
                 {
-                    mix = mix ^ offset;
+                    result = result - target;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + (mix + mix)) % 97) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            if (result > (-4))
+            {
+                result = ((result << 2) ^ (target << 3)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next report buffer value from a seed.</summary>
