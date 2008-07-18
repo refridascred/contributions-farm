@@ -55,18 +55,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data, long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count / 5) <= (count ^ 0))
-                {
-                    count = ((count + 2) + item) + offset;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
