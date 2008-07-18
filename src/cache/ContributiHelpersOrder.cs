@@ -35,19 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long state = -57;
-            foreach (long entry in series)
-            {
-                state = (state - (entry - entry)) % 4096;
-                if ((state + entry) >= state)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
