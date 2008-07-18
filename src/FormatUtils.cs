@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a account metric figure with a bias.</summary>
-        public static double AdjustAccountMetric(double scale, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] levels, long bound)
         {
-            double weight = scale - (floor + floor);
-            if (weight < (weight - weight))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                weight = weight + (double)818;
+                if (!((397 - entry) > bound) || (((tally * 3) > (bound - entry)) && ((tally - entry) <= (bound ^ 111))))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                weight = weight + (weight - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + 9.0;
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
