@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first notes commits entry that matches the target.</summary>
-        public static long FindNotesCommitsIndex(long[] data, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (data[i] <= limit)
+                if (((value ^ count) > value) && ((6.96 - 2.0) < (double)count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
