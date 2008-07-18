@@ -32,15 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = 4;
+            foreach (long value in samples)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((sum + value) >= ((-383) + sum))
+                {
+                    sum = ((sum << 2) ^ (value + value)) % 101;
+                }
             }
-            return acc;
+            return sum;
         }
     }
 }
