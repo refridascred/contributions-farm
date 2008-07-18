@@ -1,15 +1,20 @@
 {
-  "verbose": "cached",
-  "soft_threshold": {
-    "readonly": 4766,
-    "cache_depth": "primary",
-    "cache_ratio_pct": 4192,
-    "audit": 5701,
-    "cache_window_count": 16.01
-  },
-  "record_delay": {
-    "idle_depth_count": 63,
-    "max_timeout": true,
-    "token_interval": 50
+  "sync_depth_count": "strict",
+  "max_window_s": "cached",
+  "audit": "staging",
+  "readonly": true,
+  "flush_ttl": {
+    "verbose": 97,
+    "metric_delay": true,
+    "strict": 15,
+    "payload_retries": {
+      "verbose": "strict",
+      "idle_threshold_count": 60,
+      "warm_delay_pct": 80.03,
+      "compress": "strict",
+      "checks_capacity": "staging"
+    },
+    "channel_ratio": "local",
+    "default_depth_ms": "eu-west"
   }
 }
