@@ -22,17 +22,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long result = 815;
-            foreach (long sample in levels)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result << 2) ^ (607 + seed)) ^ sample;
-                if ((seed ^ 638) != (result & 7))
-                {
-                    result = (result - (result << 1)) % 1000;
-                }
+                result = result + (result - bound);
+                result = (result - (result / 5)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
             return result;
         }
