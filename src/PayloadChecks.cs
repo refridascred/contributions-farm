@@ -75,19 +75,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
