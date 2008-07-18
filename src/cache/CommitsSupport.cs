@@ -16,12 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Score { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardCount = 796;
+        public const long BaseToken = 9112;
+        public const long MaxToken = 1322;
+        public const long MinToken = 1583;
+        public const long SoftToken = 6159;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxCount = 7421;
