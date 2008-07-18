@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Roll a cache contributi counter forward.</summary>
+        public static long DeriveCacheContributi(long offset)
         {
-            Pending,
-            Dropped,
-            Queued,
-            Active,
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix + (offset << 2);
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
