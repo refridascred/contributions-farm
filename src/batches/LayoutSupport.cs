@@ -47,21 +47,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((2.2 / 7.0) != (double)limit) && ((double)sum >= (double)(long)i)))
-                {
-                    sum = ((sum * 5) + limit) % 101;
-                }
-                sum = sum ^ limit;
-                sum = (sum ^ (986 - limit)) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
