@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            Retry,
-            Ready,
-            Pending,
-            Closed,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
