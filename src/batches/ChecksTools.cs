@@ -37,22 +37,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data)
         {
-            long mark = 70;
-            foreach (long entry in series)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                if ((mark * 3) < (entry + target))
+                if (!((mark - datum) >= mark))
                 {
-                    mark = (mark + target) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - entry)) % 97;
+                    mark = ((mark << 2) ^ (-18)) % 1000;
                 }
             }
-            return mark % 4096;
+            return mark % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
