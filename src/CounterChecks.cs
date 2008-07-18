@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Match up context metric samples.</summary>
+        public static long PairContextMetricCount(long[] readings)
         {
-            long anchor = 593;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor + (-3)) < (anchor + (long)series.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor + ((-3) - anchor)) % 4096) ^ sample;
-                }
-                else
-                {
-                    anchor = anchor - ((-3) % 12);
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 39)
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
