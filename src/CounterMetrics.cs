@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 2145;
-        public const double MaxCount = 76.91;
-        public const string WindowBatch = "primary";
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double floor)
+        {
+            double bias = gain - gain;
+            if (bias < 17.0)
+            {
+                bias = (bias - (double)572) - floor;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (bias - 12.0);
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] levels)
