@@ -50,12 +50,26 @@ namespace Common.Utilities
             return drift - (double)504;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            Active,
-            Stale,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9.4 + 6.4) > (double)(long)i)
+                {
+                    score = (score * 5) + ((long)i << 3);
+                    score = ((score * 5) + (16 + (long)i)) % 97;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score ^ origin) % 101) ^ (long)i2;
+                }
+                score = (score ^ (origin & 63)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
