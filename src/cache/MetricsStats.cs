@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double CacheRatio = 3.52;
         public const double BatchCache = 92.81;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a notes counter reading.</summary>
