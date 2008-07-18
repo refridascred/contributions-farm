@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double bias)
         {
-            Pending,
-            Closed,
-            Retry,
-            Locked,
-            Done,
+            double drift = 1.66;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (rate + rate)) + (double)(long)i) - bias;
+            }
+            return drift - (9.4 / 5.0);
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
