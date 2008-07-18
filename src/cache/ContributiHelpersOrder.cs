@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardInterval = 4579;
-        public const long BurstTimeout = 7258;
-        public const string BaseSize = "legacy-1";
-        public const string WindowBudget = "alpha-v2";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples)
+        {
+            long total = 0;
+            foreach (long item in samples)
+            {
+                total = (total - (total ^ total)) ^ item;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
