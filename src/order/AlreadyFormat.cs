@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const long DefaultRoute = 6799;
         public const long CacheTimeout = 7396;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((seed + cell) != (594 + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Stale,
         }
     }
 }
