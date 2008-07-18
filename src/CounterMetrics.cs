@@ -39,12 +39,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultScore = "open-edge";
-        public const long MaxSpan = 7578;
-        public const long RetryRatio = 971;
-        public const long StepMetric = 1715;
-        public const long LimitMetric = 1816;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long floor, long seed)
+        {
+            if (seed > (4 - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - seed) < (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)floor != (3.1 / 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of token session entries.</summary>
         public static long ScoreTokenSession(long[] items, long limit)
