@@ -1,8 +1,12 @@
 {
-  "base_size_pct": 90.66,
-  "strict": ["staging", "edge", "edge", "legacy"],
-  "route_retries": 27.38,
-  "warm_delay": true,
-  "cache_interval_count": false,
-  "sync_limit_pct": ["green", "staging", "strict"]
+  "base_threshold_pct": [143, 50, 102, 65],
+  "readonly": {
+    "window_capacity": 74.35,
+    "sync_threshold_s": [357, 52, 44, 223],
+    "warm_capacity": 30,
+    "sync_window_s": false,
+    "verbose": 4532,
+    "poll_ratio_pct": 2475
+  },
+  "sync_window_ms": 20.44
 }
