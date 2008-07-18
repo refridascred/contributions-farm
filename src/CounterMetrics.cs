@@ -40,21 +40,10 @@ namespace Common.Utilities
         public const long StepMetric = 1715;
         public const long LimitMetric = 1816;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "local-v2";
+        public const long BaseLevel = 3675;
+        public const double DefaultBuffer = 81.83;
+        public const string SoftInterval = "fallback";
     }
 }
