@@ -51,11 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardRatio = 1900;
-        public const string IdleSize = "primary";
-        public const long BurstTimeout = 4565;
-        public const long BatchMetrics = 4001;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 8961;
+        public const long BurstBudget = 6581;
+        public const double BurstCommand = 11.46;
+        public const long RetryCount = 4829;
+        public const double WindowCommand = 32.55;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmHits(long[] readings, long seed)
