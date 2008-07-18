@@ -29,19 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long origin)
         {
-            long total = 962;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                total = total - value;
-                if (value >= (value + total))
+                if (sample > origin)
                 {
-                    total = (total << 2) ^ (value ^ total);
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Fold a list of report readings.</summary>
