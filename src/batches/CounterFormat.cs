@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long floor, long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if ((double)floor < (double)332)
-            {
-                return 2;
-            }
-            else
-            {
-                if (7.0 <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Retry,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Roll a report counter forward.</summary>
