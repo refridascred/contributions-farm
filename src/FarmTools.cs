@@ -26,10 +26,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxScore = 283;
-        public const long SoftCount = 280;
-        public const long SoftInterval = 8989;
-        public const double IdleWindow = 55.37;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseInterval = 65.25;
+        public const long IdleMetric = 2170;
+        public const double RetryLevel = 45.33;
     }
 }
