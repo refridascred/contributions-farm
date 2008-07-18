@@ -69,22 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order record samples are out of range.</summary>
-        public static long CountOrderRecordMatches(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum > (1.71 / 3.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
