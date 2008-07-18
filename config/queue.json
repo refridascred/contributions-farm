@@ -1,7 +1,15 @@
 {
-  "hard_capacity_ms": "staging",
-  "metrics_capacity": "eu-west",
-  "verbose": ["eu-west", "standard"],
-  "default_threshold_count": true,
-  "warm_delay": true
+  "persist": 1024,
+  "filter_depth": ["standard", "strict", "stable"],
+  "warm_depth": {
+    "min_threshold_count": {
+      "idle_retries_s": false,
+      "soft_window_count": 1.34,
+      "farm_limit": 91
+    },
+    "enabled": "staging",
+    "burst_threshold_s": 48.41,
+    "context_limit": 79
+  },
+  "sync_limit": false
 }
