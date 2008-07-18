@@ -46,39 +46,15 @@ namespace Common.Utilities
         public const long CacheSchema = 457;
         public const long BurstTimeout = 498;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long delta = bound - floor;
-            if (((bound + floor) == (bound >> 4)) && ((bound << 3) >= delta))
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((delta + bound) != (7 * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta + floor) > (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)delta == (13.0 - 15.0)) || ((floor - 221) >= (floor / 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
