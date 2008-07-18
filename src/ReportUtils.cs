@@ -48,17 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a channel stream sample.</summary>
-        public static long SeekChannelStreamIndex(long[] readings, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)7 - (scale - scale);
+            if (mean < (double)79)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (1.0 * 0.2)) - offset;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (scale + mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
