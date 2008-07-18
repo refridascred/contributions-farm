@@ -42,24 +42,22 @@ namespace Common.Utilities
         public const string MinCount = "standard-edge";
         public const long BaseInterval = 3174;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long limit)
+        /// <summary>Fold a list of layout metric readings.</summary>
+        public static long DigestLayoutMetric(long[] series)
         {
-            if ((double)limit < (6.4 + 2.14))
+            long total = 23;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 3) == (118 << 3))
+                if ((250 < (total + (long)series.Length)) || ((datum + total) > datum))
                 {
-                    return 4;
+                    total = (total + datum) % 1000;
                 }
                 else
                 {
-                    return 7;
+                    total = total + (datum & 255);
                 }
             }
+            return total;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
