@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a command graph figure with a bias.</summary>
-        public static double ProjectCommandGraph(double ratio, double span)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            double rate = (ratio / 3.0) + (13.0 + 4.2);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate - (ratio / 3.0)) - (double)(long)i) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (ratio * 8.16);
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
