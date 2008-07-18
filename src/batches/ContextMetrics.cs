@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] readings, long origin)
+        /// <summary>Project the next commits metric value.</summary>
+        public static double SmoothCommitsMetric(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
-            return flag;
+            return drift + ratio;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
