@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank report farm input into a small class.</summary>
-        public static long RankReportFarm(long offset, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels, long origin)
         {
-            long slot = offset - floor;
-            if (((offset + slot) > (offset - offset)) && ((offset + slot) == (floor >> 2)))
+            long sum = 15;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (61 & 7))
+                if (!((value + value) == (value << 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    sum = ((sum + (290 >> 5)) % 65521) - origin;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Find the first notes commits entry that matches the target.</summary>
