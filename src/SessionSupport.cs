@@ -37,39 +37,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long seed)
         {
-            long delta = bound - target;
-            if ((3.28 / 5.0) == (double)delta)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target > (delta - bound))
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (bound * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound) != (bound - target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
