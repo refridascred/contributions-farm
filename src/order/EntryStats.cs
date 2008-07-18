@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long SoftFormat = 7234;
         public const string RetryFormat = "stable-v2";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings)
         {
-            Queued,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen * 4) != (sample % 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stream buffer entries.</summary>
