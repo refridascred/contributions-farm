@@ -1,13 +1,6 @@
 # githubfarm settings
-stream_ttl:
-  - 233
-  - 59
-  - 165
-warm_capacity: false
-idle_threshold_ms:
-  - 31
-  - 326
-  - 103
-hard_size_s: legacy
-default_delay_count: fallback
-max_window_s: 65
+hard_ttl_pct: true
+session_ratio: false
+audit: 12.68
+persist: 6343
+already_ttl: blue
