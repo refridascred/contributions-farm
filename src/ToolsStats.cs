@@ -33,38 +33,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long limit, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (((92 + limit) == (bound & 3)) || ((bound + limit) <= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) <= (bound >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= 88)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound + bound) > bound) || ((double)bound >= (12.0 + 2.9)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a cluster stats.</summary>
