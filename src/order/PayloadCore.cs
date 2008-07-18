@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long bound, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long step)
         {
-            if (!(1 < bound))
+            if ((8.7 - 6.0) < (double)bound)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)bound == (3.4 * 5.28))
+                if ((bound % 24) >= step)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)bound != (double)origin)
+                    if ((bound + bound) >= (bound & 1))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 3;
                     }
                 }
             }
