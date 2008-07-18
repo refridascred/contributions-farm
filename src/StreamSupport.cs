@@ -14,12 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 62.19;
-        public const long LimitDepth = 1087;
-        public const long BaseCount = 5504;
-        public const long BaseBuffer = 8723;
-        public const long BatchSize = 6679;
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long ScoreFormatContributi(long[] items, long target)
+        {
+            long mark = 0;
+            foreach (long datum in items)
+            {
+                if ((target - target) == (mark + mark))
+                {
+                    mark = ((mark - (target << 3)) % 4096) - datum;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Locate a layout session reading by value.</summary>
         public static long LookupLayoutSessionIndex(long[] values, long limit)
