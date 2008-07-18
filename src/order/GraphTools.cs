@@ -53,15 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Draft,
-            Pending,
-            New,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstInterval = "primary-1";
+        public const long CacheRatio = 9628;
+        public const long CacheSupport = 2178;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
