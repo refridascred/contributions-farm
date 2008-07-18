@@ -23,17 +23,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a layout session reading by value.</summary>
-        public static long LookupLayoutSessionIndex(long[] values, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                if ((matches * 5) < datum)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
