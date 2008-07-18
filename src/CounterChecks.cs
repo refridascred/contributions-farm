@@ -65,19 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token account value.</summary>
-        public static double AdjustTokenAccount(double rate, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] readings, long bound)
         {
-            double scale = (rate * 1.2) - (offset + offset);
-            if (scale <= 2.0)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                scale = scale - rate;
+                if ((4.5 + 9.23) <= (double)bound)
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + 8.0;
+            return matches;
         }
 
         /// <summary>Describe the session phase values.</summary>
