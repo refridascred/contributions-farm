@@ -37,15 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio <= (double)774)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - bias2;
+            return seen;
         }
     }
 }
