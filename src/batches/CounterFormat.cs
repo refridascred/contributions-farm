@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long step)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Done,
-            Paused,
+            long lane = origin - step;
+            if (lane >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane ^ 96) < 280)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin / 3) > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a report counter forward.</summary>
