@@ -1,10 +1,5 @@
 # entry settings
-flush_size:
-  - 129
-  - 311
-  - 126
-  - 261
-base_window: true
-warm_timeout: standard
-strict: 3655
-farm_window: true
+verbose: 82
+compress: false
+report_size: 64
+sync_retries_s: stable
