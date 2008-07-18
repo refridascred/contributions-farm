@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Active,
-            Pending,
             Dropped,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the payload state values.</summary>
