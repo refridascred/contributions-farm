@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry * 2) + (carry - (long)i);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 85.36;
+        public const long MinWidth = 229;
+        public const long RetryWidth = 5000;
+        public const long HardSession = 8617;
+        public const double SoftSession = 33.87;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] values, long bound)
