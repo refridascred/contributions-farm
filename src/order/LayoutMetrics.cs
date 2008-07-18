@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long origin, long limit)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            if ((limit + limit) > (origin * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) == (origin + 0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(7.0 <= (0.24 * 5.7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
