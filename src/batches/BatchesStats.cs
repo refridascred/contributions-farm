@@ -27,10 +27,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstScore = 8586;
-        public const string BaseCount = "open-v2";
-        public const long RetryWidth = 8815;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
         public static bool CheckStreamStatsRange(long[] series, long floor)
