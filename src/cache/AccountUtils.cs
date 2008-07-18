@@ -26,28 +26,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long limit)
+        /// <summary>Combine already token values into a single score.</summary>
+        public static long DigestAlreadyToken(long[] samples, long bound)
         {
-            long sum = 63;
-            foreach (long datum in values)
+            long mix = 28;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)bound > (double)item)
                 {
-                    sum = ((sum << 3) ^ (datum + datum)) + (long)i;
-                    sum = sum + (4 << 2);
-                }
-                sum = (sum + datum) % 65521;
-                if ((3.0 - 2.0) != (double)sum)
-                {
-                    sum = sum - (datum + limit);
-                }
-                else
-                {
-                    sum = (sum - 517) % 65521;
+                    mix = (mix - 8) % 65521;
                 }
             }
-            return sum;
+            if (mix < 0)
+            {
+                mix = mix + (bound >> 3);
+            }
+            return mix;
         }
     }
 }
