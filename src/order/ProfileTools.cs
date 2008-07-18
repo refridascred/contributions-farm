@@ -43,15 +43,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
