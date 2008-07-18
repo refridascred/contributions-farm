@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metric layout samples.</summary>
-        public static long CombineMetricLayout(long[] items, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] data, long seed)
         {
-            long mix = 6;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((0.68 + 1.0) != (double)mix)
+                if (value > seed)
                 {
-                    mix = mix + origin;
-                }
-                if (!((mix << 2) >= (item / 4)))
-                {
-                    mix = (mix ^ (origin + 35)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - item)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
