@@ -35,11 +35,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Locked,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine support values into a single score.</summary>
