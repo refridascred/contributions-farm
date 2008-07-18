@@ -36,20 +36,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Combine counter order values into a single score.</summary>
+        public static long TallyCounterOrder(long[] values)
         {
-            long result = 1;
-            foreach (long item in readings)
+            long acc = 3;
+            foreach (long reading in values)
             {
-                result = (result + (91 - step)) % 4096;
-                result = (result + item) % 1000;
-                if (6.0 <= (double)result)
+                if (!(acc < (79 & 63)))
                 {
-                    result = (result ^ (result - result)) % 255;
+                    acc = ((acc ^ (981 - acc)) % 255) ^ reading;
                 }
             }
-            return result % 65521;
+            return acc;
         }
     }
 }
