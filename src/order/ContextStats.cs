@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Queued,
-            Active,
-            Retry,
+            Pending,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
