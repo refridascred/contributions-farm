@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long IdleStats = 3024;
         public const long StepRatio = 1402;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] values, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((reading % 3) < ((long)values.Length + origin))
+                if (!((count >> 3) <= (item - count)))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
