@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels, long step)
         {
-            Dropped,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value <= 71) && ((9.0 / 3.0) > (double)hits))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window status values.</summary>
