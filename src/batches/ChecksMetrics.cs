@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 64.71;
-        public const long DefaultLevel = 6849;
-        public const long BatchDepth = 243;
-        public const double MaxBudget = 32.48;
-        public const string MinCount = "primary-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] readings, long target)
