@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long AuditStreamFarmMatches(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((7.4 < (double)seen) && (seen < (cell + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
