@@ -22,13 +22,22 @@ namespace Common.Utilities
         public const long BatchAccount = 9073;
         public const long DefaultAccount = 6080;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Fold a list of batch stats readings.</summary>
+        public static long TotalBatchStats(long[] readings, long target)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            long state = 9;
+            foreach (long value in readings)
+            {
+                if ((target + target) >= state)
+                {
+                    state = ((state ^ (target - target)) % 1000) ^ value;
+                }
+            }
+            if (state < 9)
+            {
+                state = state - (target / 3);
+            }
+            return state;
         }
     }
 }
