@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long IdleCache = 6668;
         public const long BatchCache = 9874;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (origin + (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the batches kind values.</summary>
