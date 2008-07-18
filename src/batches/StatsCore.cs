@@ -48,27 +48,12 @@ namespace Common.Utilities
         public const string BatchScore = "local-v2";
         public const long BaseInterval = 1201;
 
-        /// <summary>Accumulate profile editor samples.</summary>
-        public static long WeighProfileEditor(long[] samples, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mix = 335;
-            foreach (long reading in samples)
-            {
-                mix = (mix + (mix % 12)) ^ reading;
-                if ((limit < (mix ^ limit)) && (2 <= ((-769) ^ limit)))
-                {
-                    mix = (mix + (mix / 2)) % 255;
-                }
-                else
-                {
-                    mix = (mix - (mix + limit)) % 65521;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = mix ^ limit;
-            }
-            return mix;
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Roll a contributi buffer counter forward.</summary>
