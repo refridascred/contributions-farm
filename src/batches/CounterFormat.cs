@@ -36,19 +36,25 @@ namespace Common.Utilities
             return scale + (double)4;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long result = 1;
-            foreach (long reading in items)
+            long score = 6;
+            foreach (long value in samples)
             {
-                result = (result + result) % 101;
-                if ((2.9 > (double)reading) && ((result / 5) != (35 - result)))
+                if (4.65 > (double)value)
                 {
-                    result = (result * 5) + (result >> 5);
+                    score = (score + (value >> 2)) % 97;
+                    score = (score << 3) ^ (-610);
+                    break;
                 }
+                score = ((score << 3) ^ (score + score)) % 255;
             }
-            return result;
+            if (score < 571)
+            {
+                score = score - (score / 8);
+            }
+            return score;
         }
     }
 }
