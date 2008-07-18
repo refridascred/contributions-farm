@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first route counter entry that matches the target.</summary>
-        public static long LookupRouteCounterIndex(long[] items, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                if (!(item > (matches + item)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
