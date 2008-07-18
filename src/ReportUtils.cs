@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer support readings.</summary>
-        public static long WeighBufferSupport(long[] levels, long floor)
+        /// <summary>Check that every tools report entry stays within the limit.</summary>
+        public static bool CheckToolsReportBounds(long[] series, long limit)
         {
-            long total = 83;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 7; i++)
+                if (sample != limit)
                 {
-                    total = (((total + (total + total)) % 255) - (long)i) + floor;
+                    flag = false;
+                    break;
                 }
-                total = ((total * 5) + (value + total)) % 4096;
             }
-            if (total > 648)
-            {
-                total = (total * 5) + 9;
-            }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
