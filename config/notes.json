@@ -1,13 +1,5 @@
 {
-  "buffer_delay": "local",
-  "commits_retries": 68,
-  "max_delay_ms": true,
-  "batch_ttl": {
-    "checks_size": "local",
-    "account_capacity": 82.24,
-    "cache_threshold": "latest",
-    "metric_depth": ["legacy", "blue"]
-  },
-  "retry_delay_s": ["stable", "green", "stable"],
-  "filter_size": 4126
+  "cache_window": 60,
+  "min_limit": "strict",
+  "cache_retries_pct": "strict"
 }
