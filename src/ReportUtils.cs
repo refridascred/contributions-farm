@@ -20,24 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)limit > (3.9 * 4.29))
-                {
-                    state = ((state << 3) ^ (state + limit)) % 1000;
-                }
-                else
-                {
-                    state = (state + (state / 2)) % 65521;
-                    state = ((state << 2) ^ 95) % 97;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
