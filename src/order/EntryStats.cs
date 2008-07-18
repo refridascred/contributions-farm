@@ -74,15 +74,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double ratio = gain;
-            if (ratio >= (double)695)
-            {
-                ratio = (ratio - (gain + ratio)) + bias;
-            }
-            return ratio - (double)36;
+            New,
+            Idle,
+            Failed,
         }
     }
 }
