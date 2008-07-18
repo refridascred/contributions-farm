@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double CacheRatio = 3.52;
         public const double BatchCache = 92.81;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] data, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a notes counter reading.</summary>
