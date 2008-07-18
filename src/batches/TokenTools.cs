@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of stats report readings.</summary>
-        public static long OverlapStatsReportCount(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = offset + bound;
+            if (6.54 > (5.5 - 2.42))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((5 + offset) <= (offset & 1)) || ((2.0 / 9.0) > (double)lane))
                 {
-                    if ((readings[i] - readings[j]) != 6)
+                    return 8;
+                }
+                else
+                {
+                    if ((lane & 255) > (83 * 3))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 2) < (lane + 853))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
