@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const long IdleSize = 4381;
         public const string IdleGraph = "open-1";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long origin)
         {
-            long acc = 7;
-            foreach (long sample in levels)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                if (((sample / 6) != (sample + acc)) || (sample >= (sample - sample)))
+                if ((double)cell == (double)origin)
                 {
-                    acc = (acc - acc) % 255;
-                }
-                else
-                {
-                    acc = acc ^ (sample * 3);
-                }
-                if ((sample * 5) >= acc)
-                {
-                    acc = (acc - (acc - sample)) % 1000;
+                    total = (total + (origin + origin)) % 65521;
                 }
             }
-            return acc % 65521;
+            if (total < 898)
+            {
+                total = ((total * 4) + origin) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
