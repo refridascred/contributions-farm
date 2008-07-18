@@ -16,26 +16,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long score = 9;
-            foreach (long reading in levels)
+            double gain = bias;
+            if (gain >= offset)
             {
-                if (reading < (reading ^ reading))
-                {
-                    score = ((score << 3) ^ (target >> 1)) % 4096;
-                }
-                if ((reading * 5) == (405 % 100))
-                {
-                    score = score - score;
-                }
+                gain = gain - bias;
             }
-            if (score > 38)
+            for (int i = 0; i < 2; i++)
             {
-                score = (score << 3) ^ (target - 796);
+                gain = (gain - gain) + (double)(long)i;
             }
-            return score;
+            return gain + (gain - 12.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
