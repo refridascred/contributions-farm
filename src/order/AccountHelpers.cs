@@ -70,19 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double offset)
         {
-            long anchor = 164;
-            foreach (long value in readings)
+            double ratio = 5.1 * 2.0;
+            if (ratio < (double)5)
             {
-                anchor = ((anchor << 3) ^ 5) ^ value;
+                ratio = ((ratio + (double)776) + scale) - offset;
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 2) + (anchor << 2)) % 255;
-            }
-            return anchor % 97;
+            return ratio - ratio;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
