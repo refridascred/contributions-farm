@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Look up the position of a buffer filter sample.</summary>
+        public static long FindBufferFilterIndex(long[] values, long step)
         {
-            Retry,
-            Stale,
-            Paused,
-            Failed,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
