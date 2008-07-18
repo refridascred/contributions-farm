@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items)
         {
-            Ready,
-            Retry,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) > (matches - 9))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
