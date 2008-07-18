@@ -64,23 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (16 < (state + (long)i))
-                {
-                    state = (state << 2) ^ (target + target);
-                }
-                else
-                {
-                    state = ((state * 5) + (state ^ target)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
