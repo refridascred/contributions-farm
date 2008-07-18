@@ -32,15 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double ratio, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            double mean = floor;
-            if (mean <= ratio)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + mean;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + 3.92;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
