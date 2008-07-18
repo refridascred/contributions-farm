@@ -16,27 +16,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series)
-        {
-            long mix = 8;
-            foreach (long value in series)
-            {
-                if ((double)(-5) == (double)mix)
-                {
-                    mix = mix + (value - mix);
-                }
-                else
-                {
-                    mix = (mix - value) % 97;
-                }
-                if ((13.0 - 18.0) >= (double)value)
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleWidth = 9487;
+        public const long LimitMetrics = 7555;
+        public const string RetryScore = "strict-edge";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterHits(long[] items, long target)
