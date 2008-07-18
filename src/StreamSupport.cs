@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Synced,
-            Closed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 9662;
+        public const long IdleEntry = 9606;
+        public const long DefaultEntry = 5944;
+        public const double MaxSize = 49.97;
+        public const long HardDepth = 6074;
 
         /// <summary>Measure how many cache queue samples are out of range.</summary>
         public static long CountCacheQueueMatches(long[] data)
