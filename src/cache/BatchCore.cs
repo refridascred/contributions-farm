@@ -49,18 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] values, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((533 > (tally >> 5)) && ((datum + 4) != (793 - tally)))
+                if (values[i] < offset)
                 {
-                    tally = (tally + 2) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
