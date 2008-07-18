@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            long mix = -464;
-            foreach (long item in items)
+            if (target >= seed)
             {
-                if ((42 & 255) > (item - item))
+                return 2;
+            }
+            else
+            {
+                if ((7.96 + 2.0) == (double)seed)
                 {
-                    mix = (mix << 2) ^ mix;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of batch batches readings.</summary>
