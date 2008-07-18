@@ -30,22 +30,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            long acc = 382;
-            foreach (long datum in readings)
+            double drift = gain;
+            if (drift <= 5.8)
             {
-                if (!((acc * 5) < (38 % 8)))
-                {
-                    acc = ((acc ^ ((-6) ^ (long)readings.Length)) % 65521) ^ datum;
-                }
+                drift = (drift + drift) + floor;
             }
-            if (acc < 2)
+            else
             {
-                acc = (acc << 3) ^ acc;
+                drift = drift + drift;
             }
-            return acc % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (4.0 - drift)) + (double)(long)i;
+            }
+            return drift + (9.9 - 4.0);
         }
 
         /// <summary>Hold a layout record.</summary>
