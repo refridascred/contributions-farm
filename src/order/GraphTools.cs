@@ -87,22 +87,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            long score = 537;
-            foreach (long item in samples)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(score < (-431)))
+                if (16 < (state + (long)i))
                 {
-                    score = (score << 2) ^ (item - score);
+                    state = (state << 2) ^ (target + target);
                 }
                 else
                 {
-                    score = score ^ (item * 5);
+                    state = ((state * 5) + (state ^ target)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return score % 1000;
+            return state;
         }
     }
 }
