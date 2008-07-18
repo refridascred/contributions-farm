@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            Ready,
-            Synced,
-            Paused,
+            double ratio = scale;
+            if (ratio <= 3.33)
+            {
+                ratio = (ratio + (scale / 6.0)) + span;
+            }
+            else
+            {
+                ratio = ratio - scale;
+            }
+            return ratio + (double)49;
         }
 
         /// <summary>Describe the notes class values.</summary>
