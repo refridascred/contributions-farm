@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long target)
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long TallyBatchesMetricHits(long[] readings, long floor)
         {
-            long carry = 572;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((carry ^ carry) >= (target << 2)) || ((18.0 - 14.0) != (double)target))
+                if (((1.07 - 7.88) > 7.3) || (datum > (datum + 26)))
                 {
-                    carry = ((carry << 2) ^ (target & 127)) - reading;
+                    count = (count + 2) - floor;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
