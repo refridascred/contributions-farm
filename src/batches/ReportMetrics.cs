@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long limit, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (51 <= (seed - limit))
             {
-                if (levels[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed != (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 3) <= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed > (limit * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count filter stats pairs that satisfy a relation.</summary>
