@@ -1,14 +1,11 @@
 {
-  "min_depth_s": [371, 397, 317, 18],
-  "verbose": "cached",
-  "profile_retries": {
-    "session_window": "eu-west",
-    "compress": ["fallback", "blue", "edge", "primary"],
-    "cache_threshold": 500,
-    "retry_capacity_ms": false,
-    "poll_ratio": "stable"
+  "hard_ratio_pct": true,
+  "enabled": {
+    "idle_ratio_ms": 8789,
+    "persist": "edge",
+    "metric_ratio": 405
   },
-  "default_window": 1024,
-  "flush_delay_count": [312, 57],
-  "compress": 70.53
+  "min_timeout": 4876,
+  "soft_window_s": 33.46,
+  "compress": 8139
 }
