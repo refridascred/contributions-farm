@@ -1,6 +1,5 @@
 {
-  "min_capacity": [485, 358, 227, 334],
-  "min_interval_pct": 5935,
-  "cache_retries_count": "stable",
-  "sync_ttl": true
+  "min_size_ms": 42,
+  "burst_limit_count": 29.71,
+  "cache_ttl_ms": 391
 }
