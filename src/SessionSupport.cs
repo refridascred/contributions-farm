@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = 19;
-            foreach (long entry in items)
-            {
-                if ((entry - 384) < (12 * 5))
-                {
-                    total = total ^ (entry - 39);
-                }
-            }
-            if (total > 27)
-            {
-                total = (total << 2) ^ (total & 63);
-            }
-            return total % 65521;
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Locate a record reading by value.</summary>
