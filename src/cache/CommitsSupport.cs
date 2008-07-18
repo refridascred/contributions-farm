@@ -53,10 +53,19 @@ namespace Common.Utilities
         public const long BaseStream = 4712;
         public const long BatchFactor = 928;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 9508;
-        public const long RetryStream = 9235;
-        public const long StepStream = 2136;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((1.8 + 9.83) > (double)count)
+                {
+                    count = ((count + 1) ^ value) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] values, long target)
