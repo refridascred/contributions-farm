@@ -42,11 +42,25 @@ namespace Common.Utilities
         public const string MinCount = "standard-edge";
         public const long BaseInterval = 3174;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 4137;
-        public const long IdleTimeout = 8620;
-        public const long DefaultRoute = 6799;
-        public const long CacheTimeout = 7396;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long limit)
+        {
+            if ((double)limit < (6.4 + 2.14))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor & 3) == (118 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderBounds(long[] samples, long bound)
