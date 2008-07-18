@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long MaxSpan = 1178;
         public const long HardReport = 6500;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long mix = 70;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((2.6 + 13.0) > (double)offset)
+                if ((seen - seen) <= 84)
                 {
-                    mix = (((mix << 2) ^ offset) % 1000) ^ reading;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
