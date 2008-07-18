@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long sum = 15;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value + value) == (value << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum + (290 >> 5)) % 65521) - origin;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
