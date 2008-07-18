@@ -50,9 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitFactor = 92.93;
-        public const long MinRatio = 2750;
-        public const string WindowSize = "standard-v2";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
