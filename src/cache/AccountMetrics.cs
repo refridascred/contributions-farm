@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi order value from a seed.</summary>
-        public static long StepContributiOrder(long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)mark > 5.0))
-                {
-                    mark = mark + bound;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
