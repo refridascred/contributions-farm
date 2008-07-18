@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Stale,
-            New,
-            Pending,
-            Paused,
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
