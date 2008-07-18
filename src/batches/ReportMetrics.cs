@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            double mean = rate;
-            if (mean >= (bias / 9.0))
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - rate;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (rate - mean);
+            return anchor;
         }
 
         /// <summary>Digest a series of window entries.</summary>
