@@ -63,18 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Measure how many editor format samples are out of range.</summary>
+        public static long MeasureEditorFormatHits(long[] readings, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell + cell) >= (seed / 8))
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
