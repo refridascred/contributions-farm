@@ -43,10 +43,11 @@ namespace Common.Utilities
             return drift - (offset * 7.3);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "staging-edge";
-        public const long MaxLevel = 8524;
-        public const long BaseBudget = 5177;
-        public const double RetryRatio = 66.19;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryDepth = 61.49;
+        public const double RetryTimeout = 19.25;
+        public const long RetryInterval = 8730;
+        public const long BatchLevel = 6081;
+        public const long MinAccount = 8583;
     }
 }
