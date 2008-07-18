@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= offset)
+                if ((double)offset != (8.9 / 2.0))
                 {
-                    return (long)i;
+                    mix = mix ^ ((-60) * 2);
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Match up session tools samples.</summary>
