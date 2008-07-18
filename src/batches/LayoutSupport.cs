@@ -16,12 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
