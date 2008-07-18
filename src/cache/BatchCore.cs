@@ -20,10 +20,31 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-edge";
         public const long LimitRoute = 574;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 6777;
-        public const long RetryGraph = 1767;
-        public const long LimitGraph = 7711;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data)
+        {
+            long mark = 51;
+            foreach (long value in data)
+            {
+                if ((mark * 3) > mark)
+                {
+                    mark = (mark ^ value) % 101;
+                }
+                if (value > (mark ^ value))
+                {
+                    mark = ((mark * 4) + value) % 255;
+                }
+                else
+                {
+                    mark = (mark + (value * 5)) % 255;
+                }
+                if (((double)value == (3.0 / 8.0)) || (8.7 < (double)(long)data.Length))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
