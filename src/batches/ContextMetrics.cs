@@ -33,11 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 1942;
-        public const long MaxWidth = 302;
-        public const long BatchFactor = 4096;
-        public const long BatchBatches = 1;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Paused,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings, long target)
