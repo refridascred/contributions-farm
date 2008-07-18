@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long seed)
-        {
-            long result = 4;
-            foreach (long value in series)
-            {
-                result = ((result + ((-616) + seed)) % 1000) - value;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowRatio = "legacy-1";
+        public const double StepCount = 8.87;
+        public const long BurstLevel = 5508;
+        public const long DefaultGraph = 8200;
+        public const long BatchSpan = 151;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
