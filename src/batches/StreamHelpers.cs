@@ -33,21 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sample >= (target >> 4)) && (((long)items.Length - seen) < (seen - (long)items.Length))) || (((double)target < (6.32 * 17.0)) || ((sample + sample) >= (sample / 6))))
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
