@@ -33,11 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many commits entry samples are out of range.</summary>
