@@ -92,32 +92,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long bound = step ^ seed;
-            if ((double)seed == (4.9 * 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ seed) < step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 5) == (seed >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
