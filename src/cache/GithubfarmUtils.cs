@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long IdleRatio = 659;
         public const long HardTimeout = 5138;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long mix = 733;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix + (811 + 362)) % 1000) + entry;
+                state = state ^ 7;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mix > 3)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
