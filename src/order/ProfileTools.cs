@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long score = 8;
-            foreach (long sample in readings)
-            {
-                if ((score < (floor + score)) && ((sample >> 4) <= 61))
-                {
-                    score = ((score * 4) + (floor - 89)) % 255;
-                }
-            }
-            return score % 97;
+            Synced,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
