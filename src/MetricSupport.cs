@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] data, long offset)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Failed,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
