@@ -30,14 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long floor)
         {
-            Stale,
-            Pending,
-            Active,
-            Failed,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
