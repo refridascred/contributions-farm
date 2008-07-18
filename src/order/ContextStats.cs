@@ -28,13 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            Failed,
-            Retry,
-            Stale,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
