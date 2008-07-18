@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double bias, double floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            double rate = bias;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (double)(long)i) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + bias;
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
