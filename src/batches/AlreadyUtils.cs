@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] series, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
