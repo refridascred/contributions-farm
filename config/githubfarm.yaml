@@ -1,14 +1,17 @@
 # githubfarm settings
-order_size: false
-soft_delay: open
-poll_capacity_ms: 40.31
-batches_window: true
-farm_retries:
-  poll_interval: open
-  base_timeout_count: strict
-  default_capacity: eu-west
-  channel_retries:
-    - 158
-    - 133
-  buffer_timeout: fallback
-  retry_limit_ms: 500
+flush_timeout:
+  verbose: 84.64
+  warm_timeout_s: 97
+  hard_timeout_count: 6012
+  readonly: 4528
+  already_threshold:
+    poll_limit_pct: 67
+    context_depth: true
+    queue_capacity: fallback
+    burst_ratio: 45
+    enabled: fallback
+  dry_run: 56.61
+cache_interval_ms:
+  - 285
+  - 199
+soft_retries: green
