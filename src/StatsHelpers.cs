@@ -60,17 +60,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 8741;
+        public const long HardBatches = 2929;
+        public const long LimitCount = 1324;
+        public const string MinDepth = "fallback-edge";
     }
 }
