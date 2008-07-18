@@ -1,16 +1,22 @@
 # githubfarm settings
-dry_run:
-  - standard
-  - local
-  - cached
-  - blue
-compress: 30
-channel_interval: 34.55
-poll_depth:
-  verbose: 59.43
-  compress: local
-  default_limit:
-    - 365
-    - 258
-    - 79
-  cache_retries_ms: local
+idle_ratio:
+  soft_limit_count: strict
+  compress:
+    burst_ttl_ms:
+      - stable
+      - green
+      - primary
+      - primary
+    support_depth: false
+    stream_depth:
+      - open
+      - stable
+    flush_depth: false
+    flush_retries_pct: stable
+    verbose: 89.85
+  persist: true
+  audit: true
+  burst_threshold_s: 1024
+stream_window: 6
+retry_ratio_count: 100
+readonly: true
