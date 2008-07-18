@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + matches) != (matches ^ sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitDepth = 7305;
+        public const long DefaultMetric = 74;
+        public const long MinRatio = 9017;
+        public const double SoftMetric = 74.75;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
