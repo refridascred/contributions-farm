@@ -14,20 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstScore = 8586;
+        public const string BaseCount = "open-v2";
+        public const long RetryWidth = 8815;
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
         public static bool CheckStreamStatsRange(long[] series, long floor)
