@@ -23,17 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first counter profile entry that matches the target.</summary>
-        public static long FindCounterProfileIndex(long[] values, long bound)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
