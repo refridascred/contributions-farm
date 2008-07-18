@@ -1,6 +1,8 @@
-id,score,ratio
-1,cached,34.54
-2,229,78.95
-3,legacy,71.43
-4,74.99,394
-5,287,legacy
+id,state,owner,rank,ratio
+1,722,79.11,705,57.3
+2,526,846,open,67.73
+3,714,142,53.21,277
+4,486,legacy,572,standard
+5,green,11.34,802,19.39
+6,536,66.31,350,cached
+7,28.7,300,standard,460
