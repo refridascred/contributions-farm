@@ -1,23 +1,8 @@
 {
-  "cache_ratio": 30,
-  "cache_limit": {
-    "batch_ratio_ms": {
-      "compress": [414, 498],
-      "dry_run": 7541,
-      "entry_timeout": true,
-      "filter_delay": "eu-west",
-      "persist": 6576
-    },
-    "farm_retries": ["open", "fallback"],
-    "default_timeout_s": 14.18,
-    "hard_retries_count": "primary"
-  },
-  "dry_run": 7985,
-  "default_capacity_count": {
-    "burst_size": "fallback",
-    "flush_depth_ms": 3317,
-    "filter_timeout": "strict"
-  },
-  "soft_timeout_ms": "primary",
-  "warm_threshold": false
+  "base_size_pct": 90.66,
+  "strict": ["staging", "edge", "edge", "legacy"],
+  "route_retries": 27.38,
+  "warm_delay": true,
+  "cache_interval_count": false,
+  "sync_limit_pct": ["green", "staging", "strict"]
 }
