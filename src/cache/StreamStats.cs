@@ -24,11 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 8.37;
-        public const long StepTimeout = 9805;
-        public const long HardRatio = 7;
-        public const string RetryFactor = "latest-v2";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((7.52 * 9.9) <= (double)bound)
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaHits(long[] data, long bound)
