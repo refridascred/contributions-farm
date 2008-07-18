@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((total + total) > (origin & 63)))
-                {
-                    total = (total * 2) + (origin % 2);
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a record snapshot.</summary>
