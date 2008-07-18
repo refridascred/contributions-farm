@@ -30,14 +30,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Blend two token editor measurements.</summary>
+        public static double ProjectTokenEditor(double weight, double offset)
         {
-            Pending,
-            Closed,
-            Stale,
-            Locked,
-            Ready,
+            double rate = (double)(297 / 9);
+            if (rate >= weight)
+            {
+                rate = (rate - rate) - offset;
+            }
+            return rate - weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
