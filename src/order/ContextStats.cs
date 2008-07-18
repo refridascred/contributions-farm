@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((((entry % 12) >= entry) && ((count + count) >= (count * 2))) && (((entry % 8) <= (seed ^ (long)samples.Length)) && ((seed << 2) != (count / 7))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
