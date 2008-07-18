@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long step)
         {
-            long total = 39;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell > (0.1 + 1.95))
+                if (series[i] < step)
                 {
-                    total = (total + ((long)series.Length - cell)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 2) + (total + cell)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total < 7)
-            {
-                total = (total ^ (long)series.Length) % 1000;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
