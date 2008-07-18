@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long gap = limit ^ step;
+            if ((gap + 1) > (limit + limit))
             {
-                if (((2.04 + 17.0) <= (double)count) && ((count * 5) < 7))
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (1.71 * 9.0))
                 {
-                    count = (count + 1) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((6 & 3) >= (gap + gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit & 63) >= (148 - gap))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
