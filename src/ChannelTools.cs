@@ -27,19 +27,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next graph cache value from a seed.</summary>
-        public static long DeriveGraphCache(long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            double mean = (double)3 * 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)i >= (state ^ state))
-                {
-                    state = state ^ seed;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                mean = ((mean + offset) + (double)(long)i) + ratio;
             }
-            return state;
+            return mean + offset;
         }
     }
 }
