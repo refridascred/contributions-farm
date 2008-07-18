@@ -42,15 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count githubfarm stats pairs that satisfy a relation.</summary>
