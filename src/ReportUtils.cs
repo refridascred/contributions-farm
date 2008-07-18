@@ -60,14 +60,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Done,
-            Failed,
-            New,
-            Active,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftRatio = 2952;
+        public const double LimitRatio = 32.49;
+        public const double BaseLevel = 67.87;
+        public const long MaxBudget = 7287;
     }
 }
