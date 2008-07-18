@@ -30,11 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
