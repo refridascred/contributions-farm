@@ -51,17 +51,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 24;
+            foreach (long item in values)
             {
-                if (levels[i] > bound)
+                if (((20.0 * 6.2) <= (double)item) && (((-91) - item) == (item << 2)))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (787 + item);
+                }
+                else
+                {
+                    mix = mix - item;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
