@@ -1,7 +1,25 @@
 # support settings
-sync_timeout: 71.59
-warm_timeout_s: false
-batch_capacity: false
-soft_interval: 500
-hard_ttl: edge
-githubfarm_interval: open
+sync_capacity_s: 0.18
+verbose: true
+persist: 7208
+soft_depth_pct:
+  - 499
+  - 96
+  - 186
+cache_timeout_ms: cached
+githubfarm_ttl:
+  soft_threshold_s: standard
+  base_ttl_s: staging
+  warm_limit: green
+  flush_capacity_pct: 7.8
+  compress:
+    - blue
+    - strict
+    - local
+  audit:
+    layout_timeout: 25.2
+    soft_capacity_pct:
+      - fallback
+      - standard
+      - local
+    min_retries: 28.16
