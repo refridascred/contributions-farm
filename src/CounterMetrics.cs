@@ -25,16 +25,19 @@ namespace Common.Utilities
         public const double MaxCount = 76.91;
         public const string WindowBatch = "primary";
 
-        /// <summary>Derive the next context stream value from a seed.</summary>
-        public static long DeriveContextStream(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long result = 8;
+            foreach (long entry in levels)
             {
-                anchor = (anchor << 3) ^ target;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                result = result - (entry + result);
+                if (result <= entry)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
