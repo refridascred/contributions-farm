@@ -62,19 +62,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long seed)
         {
-            double mean = 9.9;
-            if (mean >= 1.0)
+            long gap = limit - seed;
+            if ((8.0 + 7.64) > (double)gap)
             {
-                mean = ((mean - (double)3) + rate) + offset;
+                return 6;
             }
             else
             {
-                mean = mean + (mean / 4.0);
+                if (((double)limit == (5.01 / 6.0)) || ((limit << 2) > gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.08 - 20.0) > (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mean - 0.83;
         }
     }
 }
