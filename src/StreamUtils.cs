@@ -21,31 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long origin2)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long limit)
         {
-            if (origin2 >= (origin2 - 0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin2 < (7 + origin))
+                if (series[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin2 - origin2) <= (origin2 ^ origin2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
