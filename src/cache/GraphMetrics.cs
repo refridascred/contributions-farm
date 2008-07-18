@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 29;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc + (acc + limit)) % 1000) + cell;
             }
-            return matches;
+            if (acc > 22)
+            {
+                acc = (acc - (acc % 7)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
