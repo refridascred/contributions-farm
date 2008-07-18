@@ -25,17 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long offset)
+        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
+        public static long MatchStreamPayloadCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
