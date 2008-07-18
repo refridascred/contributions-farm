@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long target2)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (((target2 + target) < target2) || ((1.06 / 8.0) >= (double)target2))
             {
-                if ((double)count != (9.6 - 8.3))
+                return 3;
+            }
+            else
+            {
+                if ((target2 / 7) >= target)
                 {
-                    count = (count + 3) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
