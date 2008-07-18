@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings, long floor)
         {
-            if (target >= seed)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.96 + 2.0) == (double)seed)
+                if ((score < (floor + score)) && ((sample >> 4) <= 61))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    score = ((score * 4) + (floor - 89)) % 255;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
