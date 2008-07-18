@@ -34,11 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
