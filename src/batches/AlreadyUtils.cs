@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + mix;
-                mix = mix + (mix - mix);
-                mix = ((mix * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
