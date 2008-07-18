@@ -31,13 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels, long limit)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long total = -82;
+            foreach (long reading in levels)
+            {
+                if ((reading - limit) <= (19 + limit))
+                {
+                    total = (total ^ (reading % 10)) % 1000;
+                }
+                if ((reading + reading) >= (limit * 4))
+                {
+                    total = ((total * 4) + (limit << 3)) % 1000;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total << 2) ^ (total & 63);
+            }
+            return total;
         }
     }
 }
