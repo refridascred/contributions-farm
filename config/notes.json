@@ -1,5 +1,6 @@
 {
-  "default_threshold_count": "staging",
-  "metric_ttl": ["latest", "open"],
-  "burst_ratio_ms": true
+  "verbose": 44.44,
+  "cache_depth_pct": 1835,
+  "dry_run": 4,
+  "idle_timeout_s": 54
 }
