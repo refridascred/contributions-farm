@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) > (matches - 9))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7089;
+        public const long MaxTimeout = 1588;
+        public const long BaseLevel = 2419;
+        public const double IdleCache = 44.51;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] samples, long bound)
