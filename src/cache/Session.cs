@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] levels, long step)
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long CountRouteStreamOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
+                if (!(target <= (entry * 3)) || ((double)seen >= (20.0 / 8.0)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
