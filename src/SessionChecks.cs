@@ -27,15 +27,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long DerivePayloadBuffer(long offset)
         {
-            long acc = 279;
-            foreach (long item in values)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc - (item & 31)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark * 3) + mark) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
