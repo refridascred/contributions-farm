@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8 % 5) >= (limit * 3))
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
                 {
-                    tally = (tally + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
