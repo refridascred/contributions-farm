@@ -35,31 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long floor, long seed)
+        /// <summary>Derive the next context stream value from a seed.</summary>
+        public static long DeriveContextStream(long target)
         {
-            if (seed > (4 - seed))
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                anchor = (anchor << 3) ^ target;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor - seed) < (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)floor != (3.1 / 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token session entries.</summary>
