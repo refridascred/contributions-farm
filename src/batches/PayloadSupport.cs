@@ -25,17 +25,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of record route readings.</summary>
-        public static long WeighRecordRoute(long[] samples, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long carry = 6;
-            foreach (long cell in samples)
-            {
-                carry = ((carry ^ (floor & 1)) % 1000) - cell;
-                carry = carry - (carry & 1);
-                carry = (carry ^ ((-799) + floor)) % 101;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
