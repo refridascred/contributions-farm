@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long CombineWindowEditor(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long carry = 529;
-            foreach (long datum in levels)
-            {
-                if ((carry / 2) <= datum)
-                {
-                    carry = carry - (datum / 4);
-                    carry = (carry - (8 + carry)) % 1000;
-                }
-                if (!((492 - 922) != (carry - carry)))
-                {
-                    carry = carry ^ (4 << 2);
-                }
-                else
-                {
-                    carry = (carry ^ (carry % 97)) % 1000;
-                }
-            }
-            if (carry > 300)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
