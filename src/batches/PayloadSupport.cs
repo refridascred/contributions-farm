@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] series, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((9.63 + 9.23) == (double)origin) && ((1.2 + 5.26) <= (double)tally))
+                if ((reading ^ 5) != (53 % 7))
                 {
-                    tally = (tally + 1) ^ entry;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
