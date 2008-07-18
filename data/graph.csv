@@ -1,10 +1,7 @@
-id,owner,active
-1,27.92,572
-2,697,79
-3,225,blue
-4,682,71.65
-5,222,60.19
-6,638,430
-7,513,legacy
-8,308,860
-9,314,green
+id,weight,rank,ratio
+1,24.68,standard,legacy
+2,edge,196,59.83
+3,723,96.23,453
+4,48.29,304,strict
+5,latest,30.59,988
+6,standard,286,43.95
