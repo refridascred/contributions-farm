@@ -35,39 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long RankFilterQueue(long offset, long offset2)
-        {
-            if (offset2 >= (offset2 * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset < (double)offset2) && ((offset - 5) == (offset2 + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 - offset) == (699 & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset2 == (10.0 - 6.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 285;
+        public const string MinBudget = "latest-edge";
+        public const double DefaultPayload = 27.71;
+        public const long BatchPayload = 8949;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double ratio, double floor)
