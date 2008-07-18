@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1362;
+        public const string DefaultCount = "cached-1";
+        public const double RetryTimeout = 18.77;
+        public const long RetryRoute = 89;
+        public const long MinSpan = 4224;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 285;
