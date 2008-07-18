@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Scale a schema cluster figure with a bias.</summary>
+        public static double ProjectSchemaCluster(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = span;
+            if (gain >= gain)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - (gain - span);
             }
-            return count;
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of already entries.</summary>
