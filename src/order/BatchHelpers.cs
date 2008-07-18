@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitBudget = 5244;
-        public const long StepRatio = 879;
-        public const double BatchWidth = 87.59;
-        public const string CacheCommand = "fallback-v2";
-        public const long LimitWidth = 5919;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheLevel = 38.31;
+        public const long IdleScore = 784;
+        public const long BatchTimeout = 7507;
+        public const string BaseBatches = "strict-edge";
+        public const string BatchBatches = "local";
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long limit, long seed)
