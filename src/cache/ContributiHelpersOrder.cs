@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a command graph figure with a bias.</summary>
+        public static double ProjectCommandGraph(double ratio, double span)
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            double rate = (ratio / 3.0) + (13.0 + 4.2);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - (ratio / 3.0)) - (double)(long)i) - span;
+            }
+            return rate + (ratio * 8.16);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
