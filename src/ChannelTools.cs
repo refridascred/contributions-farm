@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
             Dropped,
-            Paused,
-            Ready,
-            Active,
-            Synced,
+            Locked,
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
