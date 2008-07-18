@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of profile layout entries.</summary>
-        public static long DigestProfileLayout(long[] series)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = 95;
-            foreach (long reading in series)
-            {
-                sum = (sum ^ ((long)series.Length + reading)) % 1000;
-            }
-            return sum;
+            New,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Match up record samples.</summary>
