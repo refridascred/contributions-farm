@@ -1,7 +1,10 @@
 {
-  "enabled": 8441,
-  "sync_threshold_ms": true,
-  "poll_ttl": [90, 155, 352, 124],
-  "editor_limit": false,
-  "hard_timeout_ms": 5776
+  "hard_threshold": 250,
+  "sync_ttl_count": true,
+  "dry_run": {
+    "strict": true,
+    "verbose": [417, 381, 256],
+    "order_window": 60,
+    "default_ratio": [323, 380, 146]
+  }
 }
