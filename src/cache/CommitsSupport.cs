@@ -29,21 +29,15 @@ namespace Common.Utilities
         public const long IdleChecks = 7949;
         public const string MinBudget = "open";
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Iterate the farm checks series from a seed.</summary>
+        public static long DeriveFarmChecks(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Locate a context reading by value.</summary>
