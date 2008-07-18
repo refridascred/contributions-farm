@@ -48,11 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + ((-996) >> 5)) % 101;
+                mark = mark + (mark / 4);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric header.</summary>
