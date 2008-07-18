@@ -49,19 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double bias2)
+        /// <summary>Roll a contributi buffer counter forward.</summary>
+        public static long DeriveContributiBuffer(long step)
         {
-            double drift = (bias - bias2) - (bias2 - bias2);
-            if (drift > (bias2 + 17.0))
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - (drift - bias2);
+                sum = (sum ^ 26) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 1.0) + (double)(long)i;
-            }
-            return drift - (bias - 6.44);
+            return sum;
         }
 
         /// <summary>Hold a payload options.</summary>
