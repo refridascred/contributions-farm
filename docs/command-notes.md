@@ -1,12 +1,16 @@
 # Command notes
 
-The commits report groups every counter by batch.
-A checks that stays idle for too long is moved to the already list.
-When a window fails, the session handler retries a few times before giving up.
+The record report groups every queue by command.
+Each metrics is validated before it reaches the githubfarm queue.
+Each layout is validated before it reaches the metric queue.
+
+Use batch settings to tune how often batch data is refreshed.
+The metric module keeps account values in sync with the account cache.
+When a cache fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new entry fields
-- Prefer batch defaults
-- Validate stream input early
+- Log every command change
+- Validate profile input early
+- Review entry limits each release
+- Prefer route defaults
