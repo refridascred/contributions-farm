@@ -19,22 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] items, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((92 << 2) < matches)
-                {
-                    matches = ((matches + 2) + value) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every farm profile entry stays within the limit.</summary>
