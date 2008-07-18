@@ -27,16 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a report metric counter forward.</summary>
-        public static long DeriveReportMetric(long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total * 3) + (total % 2);
-                total = ((total * 3) + (long)i) % 97;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
