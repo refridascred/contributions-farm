@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Grade a profile format value against two limits.</summary>
+        public static long BucketProfileFormat(long floor, long target)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Ready,
+            if ((floor > (floor - floor)) || (floor > 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 4) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target / 9) <= 63)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
