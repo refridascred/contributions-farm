@@ -36,13 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            double drift = gain;
+            if (drift <= drift)
+            {
+                drift = drift - (drift - gain);
+            }
+            return drift - (offset * 7.3);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
