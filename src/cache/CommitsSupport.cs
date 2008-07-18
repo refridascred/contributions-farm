@@ -16,10 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSize = 4920;
-        public const long MaxDepth = 7537;
-        public const long LimitTimeout = 7916;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Score { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxCount = 7421;
