@@ -1,8 +1,8 @@
-id,rank,count,active
-1,857,16.59,88.43
-2,82.73,65.89,95.18
-3,54.48,889,stable
-4,84.05,21.25,25.68
-5,22.92,487,64.13
-6,6.5,76.94,837
-7,141,15.38,strict
+id,region,rank,score
+1,47.85,480,latest
+2,64,eu-west,893
+3,525,9.92,71.39
+4,247,cached,79.3
+5,397,200,stable
+6,762,edge,strict
+7,stable,legacy,blue
