@@ -1,7 +1,7 @@
 # support settings
-readonly: legacy
-metrics_ttl: primary
-compress: 1024
-persist: edge
-max_timeout_s: 1024
-dry_run: 65.55
+max_depth: 56.39
+default_delay: 100
+batch_limit: 7.74
+report_retries: false
+flush_timeout: 5895
+compress: 5833
