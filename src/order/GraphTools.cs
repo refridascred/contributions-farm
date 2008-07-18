@@ -56,13 +56,22 @@ namespace Common.Utilities
         public const double RetrySize = 19.21;
         public const long CacheFactor = 6217;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Idle,
+            long score = 537;
+            foreach (long item in samples)
+            {
+                if (!(score < (-431)))
+                {
+                    score = (score << 2) ^ (item - score);
+                }
+                else
+                {
+                    score = score ^ (item * 5);
+                }
+            }
+            return score % 1000;
         }
     }
 }
