@@ -24,16 +24,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a commits counter reading.</summary>
-        public static double AdjustCommitsCounter(double weight, double offset)
-        {
-            double load = weight * 2.09;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - (double)4) - (double)(long)i) + offset;
-            }
-            return load - load;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryBudget = 83.0;
+        public const double RetrySpan = 5.07;
+        public const double MinCount = 71.66;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] levels, long target)
