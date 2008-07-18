@@ -46,19 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long score = 52;
-            foreach (long item in series)
-            {
-                score = ((score ^ ((long)series.Length * 4)) % 255) - item;
-            }
-            if (score < 52)
-            {
-                score = score + (score % 100);
-            }
-            return score % 65521;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
