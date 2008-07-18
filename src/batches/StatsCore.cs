@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate cache layout readings against a bound.</summary>
-        public static bool VerifyCacheLayoutLimits(long[] levels, long limit)
+        /// <summary>Derive the next stream cluster value from a seed.</summary>
+        public static long SeriesStreamCluster(long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result << 3) ^ (result / 2);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
