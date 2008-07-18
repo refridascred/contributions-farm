@@ -24,19 +24,32 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] values, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long step, long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long offset = step - seed;
+            if ((87 + seed) >= (seed * 4))
             {
-                if (datum != bound)
+                return 3;
+            }
+            else
+            {
+                if (((-13) - 962) <= step)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 5) < (offset % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
