@@ -29,10 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Level { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
             public bool Limit { get; set; }
         }
 
