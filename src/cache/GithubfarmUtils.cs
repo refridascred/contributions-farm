@@ -25,32 +25,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long bound2)
-        {
-            long lane = bound + bound2;
-            if ((bound2 - bound2) >= (793 - lane))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane + 92) >= (bound2 + bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane < bound) || ((5 - 63) > (bound2 - lane)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepScore = "standard-edge";
+        public const string IdleDepth = "stable-v2";
+        public const string BatchSession = "strict-1";
+        public const long SoftCount = 9364;
     }
 }
