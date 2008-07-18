@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long seed)
         {
-            Locked,
-            Stale,
-            Pending,
-            Draft,
-            Idle,
+            long total = 295;
+            foreach (long cell in levels)
+            {
+                if (!((double)(long)levels.Length >= (double)seed))
+                {
+                    total = (total + (cell * 5)) % 4096;
+                }
+                if ((6.54 < (double)cell) && ((8.1 + 0.7) > (double)seed))
+                {
+                    break;
+                }
+            }
+            if (total < 58)
+            {
+                total = (total - (seed * 3)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
