@@ -62,11 +62,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
