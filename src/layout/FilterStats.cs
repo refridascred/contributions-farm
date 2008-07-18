@@ -34,23 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((item / 7) > (230 % 97)) || ((offset - 396) <= 485)) || ((item << 1) != (offset ^ matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 6449;
+        public const long WindowCount = 4670;
+        public const double SoftScore = 61.82;
+        public const long HardLayout = 2879;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionMatches(long[] data, long bound)
