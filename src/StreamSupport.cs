@@ -27,11 +27,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Locate a layout session reading by value.</summary>
+        public static long LookupLayoutSessionIndex(long[] values, long limit)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
