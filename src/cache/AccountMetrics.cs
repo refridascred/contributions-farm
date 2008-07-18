@@ -49,16 +49,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (origin + (long)i)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Locked,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
