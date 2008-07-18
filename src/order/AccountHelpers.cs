@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((32 - (-30)) >= (value & 7)))
+                if (((target + (-3)) > anchor) && (anchor <= (target - target)))
                 {
-                    seen = seen + 1;
+                    break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Combine account values into a single score.</summary>
