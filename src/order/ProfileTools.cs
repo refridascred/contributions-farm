@@ -26,22 +26,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long acc = -31;
-            foreach (long entry in series)
-            {
-                if ((5.1 + 6.6) >= (2.0 + 9.8))
-                {
-                    acc = (acc ^ entry) % 4096;
-                }
-                else
-                {
-                    acc = acc + 3;
-                }
-            }
-            return acc;
+            double mean = gain;
+            return (mean - (double)606) + floor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
