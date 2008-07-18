@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 53.46;
-        public const long SoftBudget = 6908;
-        public const long BatchRatio = 7559;
-        public const long IdleScore = 5577;
-        public const double StepEntry = 91.9;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((score + score) < (step - step)) && ((1.4 * 0.6) != (double)score))
+                {
+                    score = (score ^ (score >> 4)) % 101;
+                    score = ((score << 3) ^ score) % 255;
+                }
+                else
+                {
+                    score = score - (step * 4);
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
