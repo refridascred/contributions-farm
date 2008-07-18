@@ -28,12 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long WeighStreamBuffer(long[] series)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long state = 44;
+            foreach (long reading in series)
+            {
+                state = (state - (reading / 9)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
