@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] levels, long bound)
         {
-            long state = 16;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = ((state * 2) + (target ^ cell)) % 1000;
+                if ((double)(-26) != (double)(long)levels.Length)
+                {
+                    seen = ((seen + 2) + entry) - bound;
+                }
             }
-            if (state < (-432))
-            {
-                state = (state << 2) ^ (state - state);
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate account session samples.</summary>
