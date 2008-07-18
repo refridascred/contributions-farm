@@ -49,13 +49,12 @@ namespace Common.Utilities
         public const string WindowMetrics = "cached-edge";
         public const long BatchSize = 4790;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Active,
-            New,
-            Locked,
-            Stale,
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
