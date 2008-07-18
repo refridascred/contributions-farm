@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a token counter reading.</summary>
-        public static double ProjectTokenCounter(double rate, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double ratio = rate;
-            return (ratio + (double)909) + span;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
