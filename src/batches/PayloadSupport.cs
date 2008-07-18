@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long MinWidth = 2154;
         public const double MaxStats = 25.35;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long bound)
         {
-            Draft,
-            Synced,
-            Closed,
-            Failed,
-            Paused,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a channel metrics counter forward.</summary>
