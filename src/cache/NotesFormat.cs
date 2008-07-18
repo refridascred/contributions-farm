@@ -37,27 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] series, long seed)
         {
-            long anchor = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((57 - entry) <= (anchor + anchor)) || ((969 / 4) > step))
+                if (series[i] <= seed)
                 {
-                    anchor = (anchor + (anchor / 9)) % 65521;
-                }
-                anchor = anchor ^ (entry - step);
-                if ((double)anchor >= (8.86 * 7.79))
-                {
-                    anchor = (anchor ^ (entry + anchor)) % 1000;
-                }
-                if ((step > (636 + anchor)) || (step < 788))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
