@@ -50,21 +50,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
