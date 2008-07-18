@@ -2,9 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
