@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            double drift = 1.66;
-            for (int i = 0; i < 7; i++)
+            long mark = 302;
+            foreach (long reading in data)
             {
-                drift = ((drift + (rate + rate)) + (double)(long)i) - bias;
+                if ((double)mark > (double)reading)
+                {
+                    mark = mark + (mark << 3);
+                }
             }
-            return drift - (9.4 / 5.0);
+            if (mark < 474)
+            {
+                mark = (mark ^ (mark ^ 0)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
