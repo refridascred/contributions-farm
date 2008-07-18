@@ -28,22 +28,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long offset, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long step)
         {
-            if ((offset > (offset + offset)) && ((7 - floor) > (offset / 3)))
+            if ((limit - 46) < (step * 3))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (((5 % 97) >= (floor % 3)) && ((offset + floor) != (floor - offset)))
+                if ((step % 64) > limit)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)limit <= (0.51 * 6.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
