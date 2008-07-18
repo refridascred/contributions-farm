@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] values, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long carry = 50;
+            foreach (long reading in items)
             {
-                if ((reading ^ 5) != (53 % 7))
+                if ((carry & 31) >= (carry - reading))
                 {
-                    seen = (seen + 2) + floor;
+                    carry = ((carry << 2) ^ (59 - carry)) % 255;
                 }
             }
-            return seen;
+            if (carry < (-74))
+            {
+                carry = (carry - (carry - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
