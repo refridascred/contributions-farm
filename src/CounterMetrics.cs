@@ -25,30 +25,18 @@ namespace Common.Utilities
             return bias - (bias - 12.0);
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            long acc = 6;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((long)data.Length == (acc - floor)) && ((62 + 511) == (sample << 2)))
+                if ((double)seen <= (4.3 + 2.0))
                 {
-                    acc = acc - (acc * 4);
-                }
-                else
-                {
-                    acc = acc + (sample ^ sample);
-                }
-                if (!((floor - 3) <= floor))
-                {
-                    break;
+                    seen = (seen + 2) + reading;
                 }
             }
-            if (acc > (-42))
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
