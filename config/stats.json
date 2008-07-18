@@ -1,5 +1,6 @@
 {
-  "audit": 8000,
-  "flush_ttl_ms": false,
-  "max_retries": 39
+  "audit": [189, 66, 213, 343],
+  "max_interval_count": 4.88,
+  "sync_ttl_count": 25,
+  "payload_capacity": false
 }
