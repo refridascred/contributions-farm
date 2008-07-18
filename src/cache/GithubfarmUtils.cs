@@ -13,11 +13,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchInterval = "fallback-1";
-        public const long StepRatio = 7931;
-        public const long SoftLayout = 946;
-        public const double StepWidth = 89.4;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "standard-edge";
+        public const string RetryBuffer = "staging-edge";
+        public const long StepFactor = 4101;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] data)
