@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long MinNotes = 9670;
         public const long RetryNotes = 2220;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySize = "strict-v2";
-        public const string IdleSpan = "strict-v2";
-        public const double MinCount = 22.53;
-        public const long DefaultSchema = 8689;
-        public const string IdleDepth = "local";
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] series)
