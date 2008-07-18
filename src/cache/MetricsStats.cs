@@ -20,27 +20,21 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long TallyMetricsAlready(long[] items)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long state = 45;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 2) ^ (1 ^ state)) - reading;
-                if ((state ^ state) > state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - (state ^ state);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (945 << 2)) % 97;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 378)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
