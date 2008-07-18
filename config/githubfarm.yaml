@@ -1,22 +1,7 @@
 # githubfarm settings
-idle_ratio:
-  soft_limit_count: strict
-  compress:
-    burst_ttl_ms:
-      - stable
-      - green
-      - primary
-      - primary
-    support_depth: false
-    stream_depth:
-      - open
-      - stable
-    flush_depth: false
-    flush_retries_pct: stable
-    verbose: 89.85
-  persist: true
-  audit: true
-  burst_threshold_s: 1024
-stream_window: 6
-retry_ratio_count: 100
-readonly: true
+hard_capacity_count: staging
+max_timeout_count: false
+retry_depth_ms: 60
+retry_interval: open
+window_threshold: staging
+warm_timeout: 70
