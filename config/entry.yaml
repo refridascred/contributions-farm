@@ -1,4 +1,5 @@
 # entry settings
-strict: edge
-entry_capacity: 30
-queue_threshold: 6.63
+retry_threshold: standard
+base_threshold: 4540
+cache_ratio_s: fallback
+default_retries_ms: 9682
