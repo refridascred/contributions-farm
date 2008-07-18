@@ -47,21 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((origin / 2) <= (686 % 16)) && ((origin + matches) > (matches + 8))))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
