@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long bound, long bound2)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            if ((bound / 7) <= bound2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound2 <= (bound % 12))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 127) < bound2) || ((bound ^ bound) == (bound2 - bound2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
