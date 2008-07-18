@@ -49,11 +49,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            double mean = 6.0 - (span * 4.0);
-            return (mean - (double)951) + scale;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((1.8 / 8.0) == (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
