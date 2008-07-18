@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const string WindowLayout = "latest-v2";
         public const long StepRatio = 4466;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            Stale,
-            Dropped,
-            Pending,
+            long score = -77;
+            foreach (long item in data)
+            {
+                if (!((16.0 + 8.0) <= (double)score))
+                {
+                    score = (score << 3) ^ item;
+                }
+            }
+            return score % 4096;
         }
     }
 }
