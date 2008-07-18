@@ -1,16 +1,4 @@
 # githubfarm settings
-notes_ttl: 9767
-warm_delay_s:
-  base_threshold_count: 1024
-  metrics_window: 86.56
-  audit:
-    - 265
-    - 173
-    - 179
-  warm_ttl: true
-  persist: blue
-  burst_delay_s:
-    - fallback
-    - standard
-tools_window: 78.03
-poll_size: false
+strict: legacy
+sync_interval: 3248
+burst_timeout: local
