@@ -22,31 +22,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long step)
+        /// <summary>Measure how many token buffer samples are out of range.</summary>
+        public static long MeasureTokenBufferOutliers(long[] series, long seed)
         {
-            if ((limit - 46) < (step * 3))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step % 64) > limit)
+                if ((15.0 / 6.0) < (7.1 - 4.1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit <= (0.51 * 6.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = ((tally + 1) - datum) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
