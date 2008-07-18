@@ -17,21 +17,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target + floor;
+            if (((9 / 5) <= (delta - target)) && ((double)8 == (double)delta))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target % 16) <= (floor & 3))
                 {
-                    if ((readings[i] + readings[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) < (target + delta))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
