@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable edge; do
+for item in eu-west edge stable; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-primary}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
