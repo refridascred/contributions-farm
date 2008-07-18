@@ -38,23 +38,39 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long floor)
         {
-            double weight = 2.7;
-            if (weight > rate)
+            long next = bound ^ floor;
+            if (next >= (bound / 5))
             {
-                weight = weight + (offset + rate);
+                return 5;
             }
             else
             {
-                weight = weight - weight;
+                if ((next - bound) < (bound - 258))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - next) == (next * 4)) && (floor > (next + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor != (7.83 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 16.0) + (double)(long)i;
-            }
-            return weight - (double)389;
         }
 
         /// <summary>Check that every buffer support entry stays within the limit.</summary>
