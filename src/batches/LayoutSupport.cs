@@ -20,38 +20,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long offset, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples, long target)
         {
-            if ((offset <= step) || (offset <= (step - 90)))
+            long score = 204;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (9.7 / 4.0))
+                long matches = (5 & 3) ^ target;
+                if (((score % 5) <= 90) && ((score + target) > (matches + 0)))
                 {
-                    return 4;
+                    continue;
                 }
-                else
+                if ((score & 127) >= target)
                 {
-                    if (((offset - offset) <= step) && ((double)5 <= (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (step & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score * 5) + (item * 3)) % 4096;
+                }
+                if ((double)item <= (3.6 - 1.0))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
