@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const long MaxSupport = 5540;
         public const string CacheInterval = "fallback-edge";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] samples, long limit)
         {
-            long state = 1;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                state = ((state + (state * 3)) % 97) + value;
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state > 27)
-            {
-                state = ((state << 3) ^ (604 % 5)) % 101;
-            }
-            return state;
+            return found;
         }
     }
 }
