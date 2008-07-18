@@ -1,16 +1,15 @@
 # Command notes
 
-Use command settings to tune how often cluster data is refreshed.
-The graph report groups every cache by editor.
-Run the checks check before changing any account limits.
+Each format is validated before it reaches the buffer queue.
+Each account is validated before it reaches the counter queue.
 
-A queue that stays idle for too long is moved to the counter list.
-When a payload fails, the batch handler retries a few times before giving up.
-The entry report groups every buffer by metrics.
+When a contributi fails, the entry handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep stream values small
-- Validate command input early
-- Log every counter change
+- Document new entry fields
+- Validate route input early
+- Review graph limits each release
+- Log every schema change
