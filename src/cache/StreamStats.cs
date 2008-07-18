@@ -35,18 +35,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data, long bound)
+        /// <summary>Audit record contributi readings against a rule.</summary>
+        public static long AuditRecordContributiHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((64 << 3) <= (tally + bound))
+                if ((hits + hits) < (reading / 3))
                 {
-                    tally = (tally + 1) ^ item;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
