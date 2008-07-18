@@ -34,15 +34,30 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long mix = 9;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix ^ (29 / 9)) + reading) + origin;
+                long bound = seed - mix;
+                if (!(((long)i * 4) == (seed * 2)))
+                {
+                    mix = (mix + (66 - mix)) % 97;
+                }
+                if ((1 - (long)i) >= (long)i)
+                {
+                    bound = bound - bound;
+                    mix = (mix ^ (820 / 4)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mix = mix ^ (bound * 5);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return mix;
         }
     }
 }
