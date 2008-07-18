@@ -1,11 +1,7 @@
 {
-  "warm_depth": 64.15,
-  "compress": "primary",
-  "min_ratio_s": 4172,
-  "base_ttl": {
-    "poll_window_pct": false,
-    "max_ttl": 86.1,
-    "buffer_ttl": 9
-  },
-  "soft_ratio_s": "edge"
+  "hard_capacity_ms": "staging",
+  "metrics_capacity": "eu-west",
+  "verbose": ["eu-west", "standard"],
+  "default_threshold_count": true,
+  "warm_delay": true
 }
