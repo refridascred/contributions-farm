@@ -37,11 +37,13 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4287;
-        public const long SoftLayout = 6834;
-        public const long MinBudget = 8930;
-        public const double BatchLayout = 4.28;
-        public const string BatchScore = "latest-v2";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Closed,
+            Ready,
+            Pending,
+            Dropped,
+        }
     }
 }
