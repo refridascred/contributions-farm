@@ -71,18 +71,12 @@ namespace Common.Utilities
             return gain - (double)546;
         }
 
-        /// <summary>Look up the position of a window checks sample.</summary>
-        public static long FindWindowChecksIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSpan = 6396;
+        public const long DefaultBatches = 3170;
+        public const long LimitBatches = 7998;
+        public const long CacheBatches = 5633;
+        public const string DefaultBudget = "stable-v2";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
