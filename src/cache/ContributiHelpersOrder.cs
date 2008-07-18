@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const double DefaultOrder = 80.07;
         public const long CacheSpan = 313;
 
-        /// <summary>Derive the next notes cache value from a seed.</summary>
-        public static long SeriesNotesCache(long limit)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool CheckContributiSupportBounds(long[] readings, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((1 > (limit % 10)) || ((carry << 3) <= (limit + carry)))
+                if (sample > origin)
                 {
-                    carry = ((carry * 5) + (17 + (long)i)) % 255;
-                    carry = ((carry << 2) ^ carry) % 101;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Match up payload samples.</summary>
