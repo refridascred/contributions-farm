@@ -30,17 +30,18 @@ namespace Common.Utilities
             return bias - (bias / 5.0);
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] levels, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if ((datum * 5) > (offset ^ datum))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
