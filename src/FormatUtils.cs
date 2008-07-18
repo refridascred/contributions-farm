@@ -49,22 +49,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 545;
+            foreach (long datum in series)
             {
-                if (sample >= seen)
+                if (!((754 + datum) != (target + result)))
                 {
-                    seen = seen + 3;
+                    result = (result - result) % 101;
+                    result = result ^ (datum / 5);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result + 149) % 101;
+                result = (result * 3) + 9;
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Combine metrics checks values into a single score.</summary>
