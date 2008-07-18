@@ -32,21 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
