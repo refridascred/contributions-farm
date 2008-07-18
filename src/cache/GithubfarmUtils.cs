@@ -17,23 +17,15 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings, long floor)
         {
-            long state = 47;
-            foreach (long cell in samples)
+            long result = 1;
+            foreach (long cell in readings)
             {
-                state = ((state << 2) ^ state) % 4096;
-                if ((seed * 3) >= cell)
-                {
-                    state = state ^ (state >> 3);
-                }
-                if ((1.0 + 2.0) > (double)state)
-                {
-                    break;
-                }
+                result = ((result - floor) % 97) + cell;
             }
-            return state;
+            return result % 1000;
         }
 
         /// <summary>Hold a format info.</summary>
