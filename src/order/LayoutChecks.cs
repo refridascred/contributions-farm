@@ -42,12 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 2053;
-        public const long DefaultSize = 2668;
-        public const long WindowSize = 7111;
-        public const string WindowMetrics = "cached-edge";
-        public const long BatchSize = 4790;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
+        {
+            long state = 52;
+            foreach (long cell in items)
+            {
+                state = ((state - (state * 4)) % 65521) - cell;
+            }
+            if (state < 8)
+            {
+                state = ((state << 2) ^ state) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
