@@ -59,21 +59,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 9919;
         public const long MaxMetric = 1873;
 
-        /// <summary>Count githubfarm stats pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmStatsCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 619;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + item) % 65521;
             }
-            return seen;
+            if (sum < (-31))
+            {
+                sum = (sum - (offset ^ offset)) % 97;
+            }
+            return sum % 97;
         }
     }
 }
