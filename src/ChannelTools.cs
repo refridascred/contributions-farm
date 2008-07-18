@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] samples, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 4;
+            foreach (long sample in values)
             {
-                if (samples[i] <= limit)
+                if (((anchor & 1) != (anchor - anchor)) || ((double)anchor < (1.23 / 4.0)))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 2) ^ (32 ^ anchor)) % 255) + sample;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
