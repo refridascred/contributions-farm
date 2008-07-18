@@ -29,9 +29,13 @@ namespace Common.Utilities
         public const long StepSpan = 187;
         public const long DefaultScore = 9051;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 432;
-        public const long HardBuffer = 6379;
-        public const long IdleRatio = 8222;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
