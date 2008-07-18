@@ -47,23 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long ScoreTokenSession(long[] items, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long origin)
         {
-            long mark = 4;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long value in items)
             {
-                long gap = (limit * 5) - (mark + mark);
-                if (!(mark <= gap))
+                if (value > origin)
                 {
+                    flag = false;
                     break;
                 }
-                if (((limit - limit) <= (item << 3)) && ((mark - limit) < limit))
-                {
-                    mark = (mark - ((long)items.Length >> 5)) % 101;
-                }
             }
-            return mark % 65521;
+            return flag;
         }
     }
 }
