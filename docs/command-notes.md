@@ -1,14 +1,13 @@
 # Command notes
 
-Each record is validated before it reaches the context queue.
-Keep profile and commits names short and lowercase.
+Use already settings to tune how often session data is refreshed.
+Each metrics is validated before it reaches the tools queue.
 
-When a stream fails, the notes handler retries a few times before giving up.
-Each command is validated before it reaches the schema queue.
+The batch report groups every metrics by entry.
+When a already fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every already change
-- Keep batch values small
-- Review githubfarm limits each release
+- Prefer githubfarm defaults
+- Validate record input early
+- Review route limits each release
