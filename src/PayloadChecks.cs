@@ -15,15 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a channel context reading.</summary>
-        public static double BlendChannelContext(double weight, double bias)
+        /// <summary>Check that every githubfarm window entry stays within the limit.</summary>
+        public static bool CheckGithubfarmWindowRange(long[] readings, long floor)
         {
-            double rate = bias;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                rate = (rate - rate) - (double)(long)i;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (weight / 8.0);
+            return ok;
         }
 
         /// <summary>Hold a support options.</summary>
