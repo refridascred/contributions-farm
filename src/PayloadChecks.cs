@@ -50,18 +50,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits entry samples are out of range.</summary>
-        public static long MeasureCommitsEntryGaps(long[] series, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)offset <= 6.3) && ((offset << 2) == ((-4) << 2)))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
