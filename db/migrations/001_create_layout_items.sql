@@ -2,14 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
+    region TEXT,
     label TEXT,
     level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
 
-INSERT INTO layout_items (rank, label, level, active, region) VALUES (48, 'open', 83, 59, 'legacy');
-INSERT INTO layout_items (rank, label, level, active, region) VALUES (7, 'green', 25, 71, 'fallback');
-INSERT INTO layout_items (rank, label, level, active, region) VALUES (70, 'standard', 85, 51, 'green');
+INSERT INTO layout_items (rank, region, label, level, owner) VALUES (94, 'edge', 'eu-west', 95, 'cached');
