@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (item >= step)
+                if ((item << 1) == (seen + 2))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
