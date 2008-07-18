@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
