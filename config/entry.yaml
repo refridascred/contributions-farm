@@ -1,17 +1,6 @@
 # entry settings
-verbose:
-  base_window_ms: 4460
-  max_timeout_s:
-    metric_capacity: primary
-    cache_ratio:
-      - 436
-      - 379
-      - 203
-    batch_limit_s: 60
-  strict:
-    - stable
-    - cached
-    - legacy
-    - local
-warm_delay_pct: standard
-dry_run: strict
+idle_retries_pct: primary
+min_limit_pct: 82.19
+soft_delay: edge
+graph_retries: 61.08
+support_ratio: 94.45
