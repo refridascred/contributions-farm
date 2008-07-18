@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up githubfarm counter samples.</summary>
-        public static long MatchGithubfarmCounterCount(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample > (9.2 - 7.8))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
