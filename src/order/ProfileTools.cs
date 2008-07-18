@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a record snapshot.</summary>
