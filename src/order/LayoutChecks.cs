@@ -33,11 +33,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "strict-1";
-        public const double MinBuffer = 24.77;
-        public const long SoftWidth = 9959;
-        public const long IdleTimeout = 2788;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Queued,
+            Idle,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long DeriveFarm(long target)
