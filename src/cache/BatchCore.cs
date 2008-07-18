@@ -27,12 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long AuditBatchSupportGaps(long[] samples, long seed)
         {
-            Failed,
-            Draft,
-            Done,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((2.2 / 5.0) >= (double)count)
+                {
+                    count = ((count + 3) ^ reading) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
