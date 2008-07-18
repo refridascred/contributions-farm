@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long TallyPayloadCounterOutliers(long[] values, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (origin > (limit + limit))
             {
-                if (!!((matches + matches) >= ((long)values.Length >> 5)))
+                return 6;
+            }
+            else
+            {
+                if ((limit / 2) < (limit % 8))
                 {
-                    matches = ((matches + 1) + sample) - limit;
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 3) >= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
