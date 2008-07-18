@@ -1,7 +1,8 @@
 # support settings
+batch_interval: stable
+audit: cached
 readonly: legacy
-cache_ratio_count: false
-warm_threshold_ms: stable
-persist: strict
-cache_window_ms: true
-githubfarm_ratio: strict
+dry_run:
+  - 167
+  - 416
+flush_interval_pct: 71
