@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftSpan = 43.14;
-        public const long SoftSize = 469;
-        public const double LimitSpan = 80.52;
-        public const long HardWidth = 5629;
-        public const long LimitLayout = 1405;
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double bias)
+        {
+            double scale = bias;
+            if (scale < (bias / 8.0))
+            {
+                scale = (scale + scale) + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 2.1) + (double)(long)i;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Digest a series of metrics already entries.</summary>
         public static long TallyMetricsAlready(long[] items)
