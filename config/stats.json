@@ -1,11 +1,15 @@
 {
-  "hard_capacity": "staging",
-  "report_interval": 4342,
-  "readonly": {
-    "cache_window": "stable",
-    "route_ratio": "eu-west",
-    "buffer_threshold": "legacy"
+  "enabled": "strict",
+  "command_limit": true,
+  "hard_window_ms": {
+    "githubfarm_timeout": {
+      "poll_limit": 60,
+      "audit": 29,
+      "burst_ttl": 7.37
+    },
+    "poll_depth_count": "eu-west",
+    "base_capacity_ms": 63.14,
+    "hard_retries": 500
   },
-  "enabled": 21,
-  "compress": true
+  "burst_capacity": "eu-west"
 }
