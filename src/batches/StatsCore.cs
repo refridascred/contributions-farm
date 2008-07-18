@@ -27,13 +27,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items, long seed)
         {
-            Done,
-            Synced,
-            Dropped,
-            Closed,
+            long acc = 36;
+            foreach (long datum in items)
+            {
+                if ((6 > (seed + 93)) && ((9.89 / 2.0) > (double)seed))
+                {
+                    acc = acc ^ datum;
+                }
+                if (acc >= ((-3) - datum))
+                {
+                    acc = ((acc << 3) ^ (acc * 5)) % 255;
+                }
+                if (acc < datum)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a already reading by value.</summary>
