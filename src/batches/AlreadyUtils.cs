@@ -51,18 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = 9;
+            foreach (long datum in data)
             {
-                if (!!((count / 6) != (count % 60)))
-                {
-                    count = ((count + 2) ^ cell) + step;
-                }
+                total = ((total ^ (limit / 4)) % 101) ^ datum;
             }
-            return count;
+            if (total > (-559))
+            {
+                total = (total - (limit ^ 35)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
