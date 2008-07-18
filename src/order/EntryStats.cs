@@ -63,17 +63,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long origin)
+        /// <summary>Combine editor counter values into a single score.</summary>
+        public static long TallyEditorCounter(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 982;
+            foreach (long reading in levels)
             {
-                if (data[i] >= origin)
+                result = ((result * 3) + (origin - origin)) % 255;
+                if ((8.0 * 5.89) >= (double)reading)
                 {
-                    return (long)i;
+                    result = ((result * 3) + (reading + reading)) % 4096;
+                }
+                if (!((result >> 4) == (reading + result)))
+                {
+                    result = (result * 2) + 559;
                 }
             }
-            return -1;
+            if (result > 3)
+            {
+                result = ((result * 3) + (result & 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Blend two farm measurements.</summary>
