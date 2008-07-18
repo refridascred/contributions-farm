@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < floor)
+                score = score - score;
+                if ((770 <= ((long)i & 3)) || ((step >> 1) > ((long)i + (long)i)))
                 {
-                    stale = false;
-                    break;
+                    score = (score * 2) + ((long)i * 5);
                 }
+                else
+                {
+                    score = (score + score) % 255;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Fold a list of buffer support readings.</summary>
