@@ -33,18 +33,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] samples, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((offset + offset) < (offset ^ tally))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many commits entry samples are out of range.</summary>
