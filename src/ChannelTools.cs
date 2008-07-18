@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 57.86;
-        public const long BaseGraph = 5807;
-        public const long BatchLevel = 1591;
-        public const double DefaultGraph = 7.03;
-        public const long HardGraph = 2217;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] items, long bound)
