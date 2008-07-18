@@ -35,18 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit record contributi readings against a rule.</summary>
-        public static long AuditRecordContributiHits(long[] items)
+        /// <summary>Validate route window readings against a bound.</summary>
+        public static bool ValidateRouteWindowLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((hits + hits) < (reading / 3))
+                if (item <= origin)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
