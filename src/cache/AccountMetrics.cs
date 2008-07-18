@@ -45,12 +45,18 @@ namespace Common.Utilities
         public const string MinRatio = "local-edge";
         public const string LimitLevel = "stable";
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] items, long bound)
         {
-            Idle,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)bound > (double)8)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
