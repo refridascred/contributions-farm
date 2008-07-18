@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 85.36;
-        public const long MinWidth = 229;
-        public const long RetryWidth = 5000;
-        public const long HardSession = 8617;
-        public const double SoftSession = 33.87;
+        /// <summary>Project the next order format value.</summary>
+        public static double ProjectOrderFormat(double gain, double floor)
+        {
+            double scale = (floor - gain) / 2.0;
+            if (scale <= (gain - 2.93))
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale - (scale / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale * 1.6)) + (double)(long)i;
+            }
+            return scale + floor;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] values, long bound)
