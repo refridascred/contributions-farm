@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] values, long target)
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long MeasureCounterSessionMatches(long[] values, long step)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (cell >= target)
+                if (((datum - 874) < (count + count)) || ((5 - datum) == (step / 7)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the window class values.</summary>
