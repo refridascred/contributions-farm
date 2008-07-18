@@ -1,7 +1,5 @@
 {
-  "poll_threshold": 8.6,
-  "base_depth_s": [25, 144, 141, 362],
-  "retry_capacity_pct": 20.0,
-  "min_threshold_s": 73.8,
-  "default_delay": [2, 380]
+  "max_retries_ms": false,
+  "base_capacity": 88,
+  "strict": 5367
 }
