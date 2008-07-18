@@ -31,20 +31,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor % 10) <= (bound % 100))
+                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
                 {
-                    anchor = anchor - ((long)i ^ 622);
-                    anchor = (anchor << 3) ^ (73 - bound);
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
