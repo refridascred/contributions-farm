@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry stream reading.</summary>
-        public static double BlendEntryStream(double scale, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings, long offset)
         {
-            double load = scale + floor;
-            return load + (scale - scale);
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((offset * 2) >= (offset & 1))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
