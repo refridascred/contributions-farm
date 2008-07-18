@@ -33,18 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((3.52 <= (double)tally) || (offset >= (offset << 3)))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Idle,
+            New,
+            Retry,
         }
     }
 }
