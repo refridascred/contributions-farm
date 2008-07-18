@@ -35,19 +35,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate route window readings against a bound.</summary>
-        public static bool ValidateRouteWindowLimits(long[] levels, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long result = 43;
+            foreach (long item in data)
             {
-                if (item <= origin)
+                if (!(((item + item) != (result << 2)) && ((item << 1) != (result + item))))
                 {
-                    found = false;
-                    break;
+                    result = result ^ (item + result);
+                }
+                if (result >= (item + item))
+                {
+                    result = result - (result & 255);
                 }
             }
-            return found;
+            if (result > 81)
+            {
+                result = (result + (result & 3)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
