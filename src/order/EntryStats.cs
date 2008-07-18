@@ -61,18 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window command entries that pass the check.</summary>
-        public static long TallyWindowCommandMatches(long[] series, long seed)
+        /// <summary>Fold a list of schema channel readings.</summary>
+        public static long TotalSchemaChannel(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = -5;
+            foreach (long item in items)
             {
-                if ((((0 - seed) >= matches) || ((seed - matches) >= matches)) && (((seed & 1) >= 392) && (reading < (146 << 3))))
+                anchor = (anchor + (anchor + 5)) % 101;
+                if (item <= (item + seed))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor - (seed + anchor)) % 101;
                 }
             }
-            return matches;
+            if (anchor < 6)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
