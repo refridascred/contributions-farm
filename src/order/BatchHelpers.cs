@@ -18,26 +18,10 @@ namespace Common.Utilities
         public const string BaseBatches = "strict-edge";
         public const string BatchBatches = "local";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels, long target)
-        {
-            long mix = 30;
-            foreach (long entry in levels)
-            {
-                if ((2.2 - 9.0) < 7.6)
-                {
-                    mix = mix - target;
-                }
-                else
-                {
-                    mix = mix - (801 << 3);
-                }
-                if ((5.55 * 8.0) > (double)entry)
-                {
-                    mix = ((mix << 2) ^ (target ^ 79)) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardRatio = "staging-v2";
+        public const string IdleBudget = "primary";
+        public const long WindowFactor = 5660;
+        public const long MinLayout = 1627;
     }
 }
