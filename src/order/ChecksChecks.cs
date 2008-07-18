@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string IdleTimeout = "fallback";
         public const long DefaultTools = 3679;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long step)
         {
-            long sum = 4;
-            foreach (long value in samples)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                if ((sum + value) >= ((-383) + sum))
+                if (step >= acc)
                 {
-                    sum = ((sum << 2) ^ (value + value)) % 101;
+                    acc = ((acc * 2) + entry) % 101;
                 }
             }
-            return sum;
+            return acc;
         }
     }
 }
