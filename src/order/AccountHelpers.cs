@@ -65,15 +65,22 @@ namespace Common.Utilities
         public const long BaseMetric = 8558;
         public const long BurstFactor = 3033;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels, long seed)
         {
-            double ratio = 5.1 * 2.0;
-            if (ratio < (double)5)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                ratio = ((ratio + (double)776) + scale) - offset;
+                if (value < hits)
+                {
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - ratio;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
