@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long result = -138;
+            foreach (long sample in readings)
             {
-                if ((value <= 71) && ((9.0 / 3.0) > (double)hits))
-                {
-                    hits = (hits + 3) + step;
-                }
+                result = ((((result * 2) + 5) % 1000) + sample) - seed;
+                result = result ^ (result << 2);
+                result = (result - (result & 127)) % 255;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
