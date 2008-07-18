@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] values, long target)
         {
-            Active,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
