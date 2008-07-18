@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits - entry) < (9 & 31))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultTimeout = 94.65;
+        public const long BurstWindow = 4475;
+        public const string BatchLevel = "strict-v2";
     }
 }
