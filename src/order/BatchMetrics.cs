@@ -24,21 +24,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-26) + tally) < (tally + tally))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
