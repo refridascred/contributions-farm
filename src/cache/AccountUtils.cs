@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long HardRoute = 4755;
         public const long StepRoute = 1859;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long total = 3;
-            foreach (long value in samples)
-            {
-                if (((value / 5) >= value) && ((3.01 * 1.0) >= (double)total))
-                {
-                    total = (total - value) % 4096;
-                }
-            }
-            if (total > 80)
-            {
-                total = ((total << 2) ^ (total - total)) % 4096;
-            }
-            return total % 97;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a contributi editor reading by value.</summary>
