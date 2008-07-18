@@ -74,26 +74,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long score = 782;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score - 19) != (score % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 3) ^ (item + score);
-                }
-                if ((double)score == (0.44 - 4.64))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 3)
-            {
-                score = (score - (long)data.Length) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of record cache entries.</summary>
