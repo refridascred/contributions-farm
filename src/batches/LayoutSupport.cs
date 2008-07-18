@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] samples, long offset)
         {
-            long mark = 24;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry ^ 28) == (mark / 4))
+                if (samples[i] > offset)
                 {
-                    mark = (mark + (entry - entry)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
