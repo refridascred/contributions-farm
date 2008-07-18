@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items, long floor)
+        /// <summary>Match up notes already samples.</summary>
+        public static long MatchNotesAlreadyCount(long[] data)
         {
-            long sum = 1;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor >= (reading - floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 2) + floor;
-                    break;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = sum ^ (sum % 16);
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
