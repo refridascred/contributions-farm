@@ -27,21 +27,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Locate a githubfarm counter reading by value.</summary>
+        public static long LocateGithubfarmCounterIndex(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] <= seed)
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
