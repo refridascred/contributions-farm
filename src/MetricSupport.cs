@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Ready,
-            New,
-            Paused,
-            Active,
-            Done,
+            Retry,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
