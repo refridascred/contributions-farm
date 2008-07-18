@@ -34,11 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route snapshot.</summary>
