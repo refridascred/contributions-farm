@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(1 - 37);
+            if (mean <= mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - (20.0 + weight);
             }
-            return count;
+            else
+            {
+                mean = mean + (mean * 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Describe the entry state values.</summary>
