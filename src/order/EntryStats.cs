@@ -34,15 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long WeighStreamBuffer(long[] series)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long origin)
         {
-            long state = 44;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (reading / 9)) % 1000;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
