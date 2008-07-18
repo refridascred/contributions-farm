@@ -29,13 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a format support counter forward.</summary>
