@@ -42,12 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
+                anchor = anchor - (origin - origin);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor ^ (origin + origin)) % 97) - (long)i2;
+                    anchor = ((anchor * 3) + origin) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the queue schema series from a seed.</summary>
