@@ -54,13 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
