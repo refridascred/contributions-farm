@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long total = 77;
+            foreach (long sample in levels)
             {
-                sum = (sum + sum) % 65521;
-                sum = ((sum * 4) + (sum - sum)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                total = ((total * 5) + (total ^ sample)) % 1000;
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
