@@ -27,12 +27,12 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] < bound)
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
