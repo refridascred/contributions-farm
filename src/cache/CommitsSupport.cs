@@ -17,12 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Dropped,
-            Paused,
-            Active,
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
