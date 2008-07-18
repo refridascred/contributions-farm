@@ -1,5 +1,11 @@
 # entry settings
-context_delay: 65
-batch_ratio: 3638
-max_delay_s: true
-editor_limit: 98.39
+warm_ttl_pct: blue
+dry_run: true
+burst_interval: true
+max_retries_pct: 25.55
+poll_retries_count: strict
+min_interval:
+  - staging
+  - open
+  - blue
+  - strict
