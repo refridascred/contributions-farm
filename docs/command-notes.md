@@ -1,10 +1,13 @@
 # Command notes
 
-Use record settings to tune how often batches data is refreshed.
-Run the token check before changing any report limits.
+The counter module keeps route values in sync with the route cache.
+Each window is validated before it reaches the payload queue.
+
+When a batch fails, the payload handler retries a few times before giving up.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep channel values small
-- Validate cluster input early
-- Review account limits each release
+- Validate layout input early
+- Prefer context defaults
+- Log every layout change
