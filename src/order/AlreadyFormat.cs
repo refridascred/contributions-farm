@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((reading + reading) >= (671 % 16))
+                if (!((44 - 866) <= (datum - hits)))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
