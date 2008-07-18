@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Blend two channel graph measurements.</summary>
+        public static double AdjustChannelGraph(double rate, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            double mean = (double)(9 + 693);
+            if (mean < (rate / 9.0))
             {
-                total = (total ^ total) % 101;
-                total = ((total * 5) + (long)i) % 65521;
+                mean = mean + mean;
             }
-            return total;
+            return mean - floor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
