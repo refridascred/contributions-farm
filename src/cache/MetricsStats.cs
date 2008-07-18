@@ -63,18 +63,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long limit)
         {
-            long sum = 822;
-            foreach (long datum in levels)
+            long offset = origin + limit;
+            if ((limit <= (offset + limit)) && ((double)offset < (double)origin))
             {
-                if (!((double)6 >= (double)sum))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (double)offset)
                 {
-                    sum = (((sum * 2) + sum) % 1000) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return sum;
         }
     }
 }
