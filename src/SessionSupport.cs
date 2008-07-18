@@ -14,19 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Locked,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
