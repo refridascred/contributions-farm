@@ -52,12 +52,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTools = 78.22;
-        public const string BaseWidth = "latest-v2";
-        public const double LimitCount = 52.49;
-        public const double RetrySize = 19.21;
-        public const long CacheFactor = 6217;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long limit)
+        {
+            long acc = 315;
+            foreach (long cell in items)
+            {
+                acc = (((acc * 5) + cell) % 65521) + limit;
+                if ((17.0 >= (double)cell) && ((double)acc >= (10.0 - 8.97)))
+                {
+                    acc = acc + (acc - cell);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] samples)
