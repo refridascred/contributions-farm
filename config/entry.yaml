@@ -1,21 +1,4 @@
 # entry settings
-retry_ttl:
-  farm_size: strict
-  idle_interval_pct: local
-  default_window: eu-west
-  min_delay_ms:
-    - 396
-    - 222
-    - 463
-    - 252
-contributi_interval: latest
-order_interval: stable
-stats_threshold:
-  max_interval: standard
-  idle_timeout: 30
-  notes_capacity: 92
-  warm_size_pct:
-    - 430
-    - 44
-    - 26
-  poll_interval_s: 250
+cache_capacity_s: false
+soft_retries_s: fallback
+queue_size: primary
