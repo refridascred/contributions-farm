@@ -20,15 +20,22 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-v2";
         public const double WindowSchema = 10.5;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data, long bound)
+        /// <summary>Measure how many graph account samples are out of range.</summary>
+        public static long MeasureGraphAccountGaps(long[] levels)
         {
-            long total = 13;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                total = (total ^ ((long)data.Length + item)) + bound;
+                if (datum > (-923))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
