@@ -37,27 +37,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound * 2) == ((long)i + (long)i))
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
                 {
-                    mark = (mark + (711 << 3)) % 65521;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark << 2) ^ bound) - (long)i2;
-                }
-                if (((long)i >> 1) > mark)
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
