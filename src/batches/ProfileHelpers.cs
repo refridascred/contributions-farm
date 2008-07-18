@@ -44,21 +44,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Scale a stats checks figure with a bias.</summary>
+        public static double SmoothStatsChecks(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double gain = (8.06 * 10.0) * 7.7;
+            return (gain - span) + bias;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
