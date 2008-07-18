@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSize = 7969;
-        public const double MaxTimeout = 86.21;
-        public const long IdleWidth = 6705;
-        public const long BaseToken = 7279;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1280;
+        public const long RetryMetrics = 1712;
+        public const long SoftRatio = 7232;
+        public const long MaxMetrics = 3487;
+        public const string WindowFactor = "cached-1";
 
         /// <summary>Fold a list of account stats readings.</summary>
         public static long TallyAccountStats(long[] data)
