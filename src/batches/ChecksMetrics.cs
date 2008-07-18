@@ -84,14 +84,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Draft,
-            Paused,
-            Ready,
+            Idle,
             Synced,
             Queued,
+            Paused,
+            Active,
         }
     }
 }
