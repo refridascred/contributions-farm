@@ -1,4 +1,6 @@
 # entry settings
-buffer_retries: fallback
-metrics_retries: 41
-layout_timeout: 41.13
+max_interval_s: blue
+persist: 100
+max_capacity_s: stable
+base_ttl_s: 2.65
+audit: 5
