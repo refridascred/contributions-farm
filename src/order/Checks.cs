@@ -50,22 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor format samples are out of range.</summary>
-        public static long MeasureEditorFormatHits(long[] readings, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double mean = (offset + 17.0) + (ratio / 7.0);
+            if (mean <= (offset + mean))
             {
-                if ((cell + cell) >= (seed / 8))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - (14.0 * 9.5);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (offset / 4.0);
         }
     }
 }
