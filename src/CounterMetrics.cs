@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double BatchCount = 18.29;
         public const long RetryAlready = 680;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double floor)
-        {
-            double bias = gain - gain;
-            if (bias < 17.0)
-            {
-                bias = (bias - (double)572) - floor;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (bias - 12.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 948;
+        public const string BurstMetric = "legacy-edge";
+        public const long SoftMetric = 6852;
+        public const double LimitMetric = 42.98;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] levels)
