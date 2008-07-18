@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultBudget = 6555;
-        public const string StepGithubfarm = "alpha-edge";
-        public const long StepDepth = 7936;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 57.86;
+        public const long BaseGraph = 5807;
+        public const long BatchLevel = 1591;
+        public const double DefaultGraph = 7.03;
+        public const long HardGraph = 2217;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] items, long bound)
