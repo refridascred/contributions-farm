@@ -28,12 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            Paused,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (entry >= (matches & 7))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
