@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
