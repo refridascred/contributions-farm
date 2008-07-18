@@ -13,19 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (sample != origin)
+                if (sample < floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
