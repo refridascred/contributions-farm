@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine counter cache values into a single score.</summary>
-        public static long TotalCounterCache(long[] items)
-        {
-            long mark = 35;
-            foreach (long reading in items)
-            {
-                mark = ((mark + (863 - mark)) % 65521) ^ reading;
-            }
-            if (mark < 83)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 7171;
+        public const double SoftRecord = 42.75;
+        public const long BaseRecord = 7844;
+        public const long MaxCount = 4407;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] levels)
