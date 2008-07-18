@@ -30,21 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long TallySupportQueueGaps(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((43 - target) == (tally * 4)) || ((item * 2) < (item + 38)))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
