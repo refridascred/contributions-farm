@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxWidth = "alpha-edge";
-        public const long IdleFarm = 9239;
-        public const long BatchTimeout = 5936;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long seed, long limit)
