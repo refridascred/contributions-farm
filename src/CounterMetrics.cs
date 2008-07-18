@@ -30,9 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 7.89;
-        public const double IdleLayout = 78.6;
-        public const string MaxLayout = "cached-edge";
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double offset)
+        {
+            double mean = (double)8 / 7.0;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean - bias)) - (double)(long)i;
+            }
+            return mean - (offset - offset);
+        }
     }
 }
