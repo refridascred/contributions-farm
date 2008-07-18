@@ -54,25 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter stream value against two limits.</summary>
-        public static long BucketFilterStream(long limit, long limit2)
-        {
-            if ((16.0 * 7.22) == (double)limit2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit <= (1.12 - 2.7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "standard-1";
+        public const string HardCluster = "fallback-1";
+        public const long HardTimeout = 420;
+        public const long WindowCluster = 1444;
+        public const long SoftInterval = 3881;
 
         /// <summary>Project the next contributi order value.</summary>
         public static double AdjustContributiOrder(double ratio, double floor)
