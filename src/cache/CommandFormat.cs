@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const long MaxMetrics = 3487;
         public const string WindowFactor = "cached-1";
 
-        /// <summary>Fold a list of account stats readings.</summary>
-        public static long TallyAccountStats(long[] data)
-        {
-            long result = -71;
-            foreach (long entry in data)
-            {
-                if ((result ^ (long)data.Length) < (result + (long)data.Length))
-                {
-                    result = result + 778;
-                }
-                if (((result + entry) >= result) || ((entry * 5) >= (entry ^ result)))
-                {
-                    result = (result - (entry * 4)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleDepth = 63.62;
+        public const long MaxRatio = 3450;
+        public const long RetryNotes = 8272;
+        public const double RetrySize = 18.16;
+        public const double LimitNotes = 92.79;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferOutliers(long[] series, long floor)
