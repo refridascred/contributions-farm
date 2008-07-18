@@ -14,18 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long ScoreFormatContributi(long[] items, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long mark = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target - target) == (mark + mark))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark - (target << 3)) % 4096) - datum;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a layout session reading by value.</summary>
