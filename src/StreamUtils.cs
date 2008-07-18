@@ -71,10 +71,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5112;
-        public const string CacheSize = "staging-1";
-        public const long BurstDepth = 5651;
-        public const long SoftCommits = 4132;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((-89) - offset) <= (1 - item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
