@@ -82,10 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 6744;
-        public const string StepToken = "strict-1";
-        public const string MaxFactor = "alpha";
-        public const string MinSpan = "fallback-1";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
+        {
+            long sum = 0;
+            foreach (long datum in readings)
+            {
+                sum = ((sum ^ 3) % 255) ^ datum;
+            }
+            return sum % 97;
+        }
     }
 }
