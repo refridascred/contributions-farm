@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many account session samples are out of range.</summary>
-        public static long AuditAccountSessionGaps(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((item - item) > item)
+                if ((48 ^ origin) == (origin >> 2))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
