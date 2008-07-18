@@ -1,12 +1,5 @@
 # githubfarm settings
-hard_retries: 51
-persist: 74.4
-base_size_count:
-  - 308
-  - 369
-max_ratio:
-  - stable
-  - standard
-  - cached
-  - standard
-warm_threshold: false
+cache_capacity: 6573
+poll_interval: 1024
+sync_delay: fallback
+soft_depth_count: false
