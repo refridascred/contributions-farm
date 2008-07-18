@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload format value against two limits.</summary>
-        public static long BucketPayloadFormat(long offset, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long delta = offset - target;
-            if ((double)target > (7.0 / 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target >> 3) < (target - delta)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Done,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
