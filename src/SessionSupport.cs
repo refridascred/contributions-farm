@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] series, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step % 2) < (tally >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
