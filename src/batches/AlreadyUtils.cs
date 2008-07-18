@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long carry = 882;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (carry >= (carry * 5))
-                {
-                    carry = (carry ^ entry) % 4096;
-                }
-                if ((double)bound >= 6.82)
-                {
-                    break;
-                }
+                mix = mix + mix;
+                mix = mix + (mix - mix);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Describe the metric phase values.</summary>
