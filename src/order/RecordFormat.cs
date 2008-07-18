@@ -41,11 +41,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long state = 90;
+            foreach (long sample in samples)
+            {
+                state = (((state * 2) + (limit * 4)) % 255) + sample;
+                state = ((state * 2) + (157 << 3)) % 4096;
+            }
+            if (state < 71)
+            {
+                state = ((state << 2) ^ (state % 60)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
