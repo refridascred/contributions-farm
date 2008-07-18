@@ -13,17 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                if ((tally + 621) <= item)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next buffer farm value from a seed.</summary>
