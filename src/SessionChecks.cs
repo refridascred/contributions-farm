@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi metric samples.</summary>
-        public static long CombineContributiMetric(long[] data)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = -1;
-            foreach (long sample in data)
-            {
-                if ((2 + score) >= (score % 12))
-                {
-                    score = score + (score + sample);
-                }
-                if ((score % 16) > score)
-                {
-                    break;
-                }
-            }
-            if (score > 79)
-            {
-                score = (score * 5) + (470 % 64);
-            }
-            return score % 1000;
+            Ready,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
