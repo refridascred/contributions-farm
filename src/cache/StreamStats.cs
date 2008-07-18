@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long AuditBatchesProfileMatches(long[] readings)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((7.9 / 5.0) > (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
