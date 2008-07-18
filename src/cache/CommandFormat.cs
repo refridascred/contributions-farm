@@ -20,31 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if ((step + floor) < (floor + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step > (floor / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) != (step >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
