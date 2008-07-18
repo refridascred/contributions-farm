@@ -25,17 +25,23 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Locate a profile order reading by value.</summary>
-        public static long LookupProfileOrderIndex(long[] levels, long step)
+        /// <summary>Blend two contributi notes measurements.</summary>
+        public static double ProjectContributiNotes(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (scale / 4.0) + (scale + scale);
+            if (bias >= (scale / 4.0))
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias = bias - offset;
             }
-            return -1;
+            else
+            {
+                bias = bias + (scale / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (scale + 6.74)) + (double)(long)i;
+            }
+            return bias - (double)375;
         }
     }
 }
