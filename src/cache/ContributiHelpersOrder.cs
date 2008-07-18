@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 6479;
-        public const long MaxNotes = 4960;
-        public const long CacheWidth = 6784;
-        public const double BaseTimeout = 26.83;
-        public const long DefaultNotes = 3133;
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool GuardAlreadyCounterLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next notes cache value from a seed.</summary>
         public static long SeriesNotesCache(long limit)
