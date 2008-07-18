@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Fold a list of stream githubfarm readings.</summary>
+        public static long DigestStreamGithubfarm(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 107;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (cell & 7)) + bound;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
