@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] levels, long floor)
         {
-            long sum = 1;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)(-440) > (double)sum)
+                if ((((15.0 - 0.5) <= (double)sample) && ((sample + floor) == (sample - (-9)))) && !((sample - floor) <= ((-8) >> 1)))
                 {
-                    sum = sum - (item ^ 8);
-                    sum = (sum ^ (sum ^ sum)) % 65521;
-                }
-                if ((double)item <= (double)origin)
-                {
-                    sum = ((sum * 5) + sum) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
