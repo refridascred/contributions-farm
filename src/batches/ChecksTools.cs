@@ -54,13 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long offset2)
         {
-            Failed,
-            Draft,
-            Ready,
-            Active,
+            if (((offset ^ offset2) <= (382 % 8)) || ((6.9 * 3.2) >= (double)offset2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (592 < offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((9.0 * 6.4) >= (double)offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
