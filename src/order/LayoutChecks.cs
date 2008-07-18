@@ -79,20 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = -785;
-            foreach (long reading in items)
-            {
-                carry = (carry ^ (carry * 2)) % 255;
-                carry = (carry - (reading / 8)) % 65521;
-                if ((4.3 - 1.09) != (double)carry)
-                {
-                    carry = carry ^ (reading + 5);
-                }
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
