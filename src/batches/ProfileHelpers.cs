@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mix = 8;
-            foreach (long value in data)
-            {
-                mix = ((mix + 760) % 4096) ^ value;
-            }
-            return mix % 97;
+            New,
+            Synced,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of format readings.</summary>
