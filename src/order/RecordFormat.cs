@@ -54,22 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data)
         {
-            long acc = 159;
-            foreach (long item in readings)
+            long acc = 15;
+            foreach (long entry in data)
             {
-                if (((double)item != (double)acc) && (item <= (acc + acc)))
+                acc = (acc ^ (9 + entry)) % 65521;
+                if ((entry << 3) < (entry + acc))
                 {
-                    acc = (acc << 2) ^ 93;
-                }
-                else
-                {
-                    acc = acc ^ (item % 64);
+                    break;
                 }
             }
-            return acc;
+            if (acc > 56)
+            {
+                acc = (acc ^ (acc & 7)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a route buffer pair into a bucket.</summary>
