@@ -41,15 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes stream values into a single score.</summary>
-        public static long DigestNotesStream(long[] levels)
+        /// <summary>Blend two record cache measurements.</summary>
+        public static double SmoothRecordCache(double bias, double span)
         {
-            long sum = 742;
-            foreach (long entry in levels)
-            {
-                sum = ((sum << 2) ^ (entry + sum)) % 65521;
-            }
-            return sum;
+            double ratio = span;
+            return (ratio + 7.0) + bias;
         }
     }
 }
