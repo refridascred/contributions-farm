@@ -30,22 +30,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Roll a githubfarm commits counter forward.</summary>
+        public static long DeriveGithubfarmCommits(long limit)
         {
-            long score = 196;
-            foreach (long entry in series)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((score - (-811)) < entry)
+                if ((sum << 3) < (sum & 63))
                 {
-                    score = ((score * 4) + (score / 6)) % 101;
+                    sum = ((sum * 5) + (sum - sum)) % 65521;
                 }
+                sum = (sum << 2) ^ ((long)i & 63);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (score < (-924))
-            {
-                score = ((score * 3) + score) % 65521;
-            }
-            return score % 97;
+            return sum;
         }
 
         /// <summary>Project the next queue value.</summary>
