@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long bound)
         {
-            New,
-            Idle,
-            Draft,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
