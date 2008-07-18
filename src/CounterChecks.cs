@@ -44,10 +44,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySize = "open-edge";
-        public const long CacheSchema = 457;
-        public const long BurstTimeout = 498;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i > (2.6 - 6.8))
+                {
+                    acc = acc ^ acc;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long floor, long origin)
