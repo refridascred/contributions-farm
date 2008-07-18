@@ -31,19 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch filter readings against a bound.</summary>
-        public static bool ValidateBatchFilterLimits(long[] readings, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = ratio + bias;
+            return weight - bias;
         }
     }
 }
