@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] values, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value < (hits * 4)) && ((value << 1) != (value + value)))
+                if (!(((double)sum <= (13.0 + 1.24)) && ((long)i <= ((long)i / 6))))
                 {
-                    hits = (hits + 2) + limit;
+                    sum = (sum ^ (seed >> 4)) % 101;
                 }
+                sum = ((sum << 3) ^ (sum ^ (long)i)) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
