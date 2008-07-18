@@ -34,13 +34,15 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long origin)
         {
-            Closed,
-            Ready,
-            Pending,
-            Dropped,
+            long mix = 9;
+            foreach (long reading in items)
+            {
+                mix = ((mix ^ (29 / 9)) + reading) + origin;
+            }
+            return mix % 4096;
         }
     }
 }
