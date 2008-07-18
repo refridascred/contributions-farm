@@ -36,11 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] series, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((89 % 5) != (bound % 3)) && ((hits % 60) >= (cell & 3)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
