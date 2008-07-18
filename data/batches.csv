@@ -1,6 +1,9 @@
-id,weight,region,active,rank
-1,524,257,open,33.95
-2,778,eu-west,edge,26.92
-3,local,40.87,25.36,768
-4,289,74.09,597,14.24
-5,441,fallback,31.65,85.41
+id,active,state,owner
+1,31.81,310,349
+2,standard,local,primary
+3,53.4,22.8,eu-west
+4,local,305,566
+5,green,stable,451
+6,28.73,47.18,edge
+7,36.36,221,172
+8,38.22,533,55.05
