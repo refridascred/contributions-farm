@@ -55,19 +55,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values)
-        {
-            long result = -51;
-            foreach (long datum in values)
-            {
-                result = (result + (66 << 1)) ^ datum;
-            }
-            if (result < 27)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepLevel = 39.04;
+        public const long SoftDepth = 161;
+        public const string RetryBatch = "latest-edge";
+        public const long StepBatch = 3662;
     }
 }
