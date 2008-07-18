@@ -43,22 +43,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long seed)
         {
-            long score = 28;
-            foreach (long datum in values)
+            if ((limit * 5) <= (-1))
             {
-                for (int i = 0; i < 7; i++)
+                return 1;
+            }
+            else
+            {
+                if ((seed - 8) >= limit)
                 {
-                    score = (((score * 2) + ((long)i + 9)) % 4096) - target;
+                    return 7;
                 }
-                if ((double)score < (9.0 - 3.33))
+                else
                 {
-                    score = ((score << 3) ^ (datum >> 4)) % 97;
+                    if ((limit >= (seed >> 1)) && (12 >= (34 + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score % 1000;
         }
     }
 }
