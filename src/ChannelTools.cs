@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long floor)
         {
-            Stale,
-            Idle,
-            Ready,
+            if ((bound - floor) == (floor - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor + bound) > (floor / 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound < (double)98) || ((17.0 - 2.86) >= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
