@@ -29,26 +29,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
-        {
-            long result = 43;
-            foreach (long item in data)
-            {
-                if (!(((item + item) != (result << 2)) && ((item << 1) != (result + item))))
-                {
-                    result = result ^ (item + result);
-                }
-                if (result >= (item + item))
-                {
-                    result = result - (result & 255);
-                }
-            }
-            if (result > 81)
-            {
-                result = (result + (result & 3)) % 97;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 432;
+        public const long HardBuffer = 6379;
+        public const long IdleRatio = 8222;
     }
 }
