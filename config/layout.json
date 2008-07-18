@@ -1,7 +1,12 @@
 {
-  "burst_ratio_count": true,
-  "session_ttl": false,
-  "strict": "staging",
-  "enabled": [109, 70, 55],
-  "sync_size_pct": "fallback"
+  "poll_interval_pct": {
+    "base_ttl_pct": 8589,
+    "record_retries": 59.03,
+    "sync_capacity_s": 72.81,
+    "batch_threshold_s": 100
+  },
+  "compress": true,
+  "notes_delay": 13,
+  "batch_threshold_s": "latest",
+  "already_capacity": "stable"
 }
