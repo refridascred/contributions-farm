@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Adjust a entry stream reading.</summary>
+        public static double BlendEntryStream(double scale, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc - (acc + step);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            double load = scale + floor;
+            return load + (scale - scale);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
