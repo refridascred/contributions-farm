@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((seen - 577) <= seen) || !(seen > datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
