@@ -76,11 +76,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of record cache entries.</summary>
+        public static long CombineRecordCache(long[] samples)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long carry = 7;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= (double)carry)
+                {
+                    carry = (carry * 4) + (carry % 24);
+                }
+                if ((carry - 68) < (carry + carry))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = (carry - (entry ^ carry)) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
