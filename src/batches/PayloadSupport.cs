@@ -27,11 +27,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 73.02;
-        public const long MinTimeout = 1208;
-        public const double BatchMetrics = 77.66;
-        public const long BurstLevel = 9849;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long step, long floor)
+        {
+            long lane = step - floor;
+            if (!((double)lane >= 15.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)67 <= (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor > (5.0 * 1.4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] levels)
