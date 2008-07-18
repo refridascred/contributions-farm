@@ -19,15 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            if (!(limit >= (offset - limit)))
             {
-                state = ((state * 5) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((offset % 64) <= (338 - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine counter order values into a single score.</summary>
