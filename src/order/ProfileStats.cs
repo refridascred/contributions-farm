@@ -50,13 +50,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitFactor = 92.93;
+        public const long MinRatio = 2750;
+        public const string WindowSize = "standard-v2";
     }
 }
