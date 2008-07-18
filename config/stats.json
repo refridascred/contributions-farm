@@ -1,5 +1,5 @@
 {
-  "hard_timeout_s": 4.63,
-  "default_ttl_pct": 2544,
-  "cluster_retries": 11.17
+  "default_window_pct": 1024,
+  "dry_run": false,
+  "burst_size_count": 54.57
 }
