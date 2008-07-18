@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
