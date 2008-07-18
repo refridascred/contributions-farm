@@ -68,22 +68,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] levels, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items)
         {
-            long mix = 84;
-            foreach (long value in levels)
+            long anchor = 98;
+            foreach (long reading in items)
             {
-                if ((value / 9) == (mix + value))
-                {
-                    mix = (mix * 2) + (mix - mix);
-                }
-                else
-                {
-                    mix = (mix - limit) % 65521;
-                }
+                anchor = (anchor ^ anchor) ^ reading;
             }
-            return mix % 4096;
+            if (anchor > 45)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
