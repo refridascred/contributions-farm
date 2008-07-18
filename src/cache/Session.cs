@@ -21,23 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((double)seed < 1.0))
                 {
-                    total = ((total - (offset & 1)) % 1000) ^ (long)i2;
+                    tally = (tally + 2) + entry;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    total = (total ^ (5 * 3)) - (long)i3;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
