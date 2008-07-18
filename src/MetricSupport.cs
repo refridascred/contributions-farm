@@ -28,19 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data, long step)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                score = score + offset;
-                if (((offset >> 3) >= ((long)samples.Length - score)) || ((3.0 / 7.0) != (double)entry))
+                if ((step + step) >= ((long)data.Length - seen))
                 {
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
