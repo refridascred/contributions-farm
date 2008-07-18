@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            Paused,
-            Active,
-            New,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((98 + cell) < (cell >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
