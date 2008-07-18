@@ -51,12 +51,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long seed2)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            if ((seed2 << 1) > (seed2 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed2 >= 40) || (seed2 < (seed + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed >= (9.0 / 7.0)) && ((seed - seed) <= (seed ^ seed2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((309 + seed) >= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
