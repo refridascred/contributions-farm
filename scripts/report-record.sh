@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict primary; do
+for item in eu-west primary; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
