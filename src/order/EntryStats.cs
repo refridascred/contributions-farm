@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
