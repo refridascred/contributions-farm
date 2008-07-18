@@ -56,11 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stats checks figure with a bias.</summary>
-        public static double SmoothStatsChecks(double bias, double span)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double offset)
         {
-            double gain = (8.06 * 10.0) * 7.7;
-            return (gain - span) + bias;
+            double load = 7.0 / 6.0;
+            if (load >= offset)
+            {
+                load = (load + (offset + 18.0)) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (1.1 / 3.0);
         }
 
         /// <summary>Hold a batch snapshot.</summary>
