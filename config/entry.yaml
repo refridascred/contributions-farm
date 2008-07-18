@@ -1,15 +1,7 @@
 # entry settings
-compress: 58.33
-default_timeout_ms: 3260
+cache_retries: 24.23
+persist: primary
 verbose:
-  verbose: cached
-  idle_capacity_s: 69
-  record_retries:
-    flush_delay_count: legacy
-    cache_delay_pct: 3830
-    tools_delay: strict
-    compress: 500
-    support_interval: true
-    schema_retries: 39.25
-  contributi_timeout: blue
-burst_retries: primary
+  - stable
+  - strict
+  - open
