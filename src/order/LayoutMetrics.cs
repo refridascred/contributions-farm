@@ -13,10 +13,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchScore = "local-edge";
-        public const long MaxScore = 8153;
-        public const long SoftRoute = 2573;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] readings, long step)
