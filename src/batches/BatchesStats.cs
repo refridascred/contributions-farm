@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] readings, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 93;
-            foreach (long cell in readings)
-            {
-                if (((double)floor != (double)total) && (8.0 >= (double)cell))
-                {
-                    total = total + (634 + 1);
-                }
-            }
-            return total;
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
