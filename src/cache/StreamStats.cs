@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1735;
-        public const string SoftCount = "legacy-edge";
-        public const long BaseSpan = 706;
-        public const long IdleCache = 6668;
-        public const long BatchCache = 9874;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Failed,
+            Synced,
+            Queued,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
