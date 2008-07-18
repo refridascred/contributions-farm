@@ -67,18 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) >= limit)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
