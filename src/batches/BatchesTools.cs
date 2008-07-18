@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = 482;
+            foreach (long cell in series)
             {
-                if ((item - seen) > (76 - seen))
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = seen + 2;
+                    mix = (((mix << 3) ^ mix) % 4096) ^ (long)i;
+                }
+                if ((floor << 1) >= (mix + cell))
+                {
+                    mix = ((mix << 2) ^ (floor + (long)series.Length)) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 4) + (floor + floor);
+                }
+                if ((mix <= (mix - mix)) || ((mix >> 3) >= (608 + 7)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
