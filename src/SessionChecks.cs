@@ -45,23 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long ScoreChecksContributi(long[] readings, long step)
-        {
-            long mix = 230;
-            foreach (long reading in readings)
-            {
-                if ((6.4 * 5.0) != (double)reading)
-                {
-                    mix = (mix - (step << 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (reading & 7)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseWidth = 1818;
+        public const long BatchTimeout = 8897;
+        public const double RetryCount = 62.87;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long step)
