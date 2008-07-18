@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of contributi metric entries.</summary>
-        public static long TotalContributiMetric(long[] data)
+        /// <summary>Accumulate metric layout samples.</summary>
+        public static long CombineMetricLayout(long[] items, long origin)
         {
-            long state = 553;
-            foreach (long entry in data)
+            long mix = 6;
+            foreach (long item in items)
             {
-                if (!((entry + 35) >= (entry * 2)))
+                if ((0.68 + 1.0) != (double)mix)
                 {
-                    state = (state ^ state) % 65521;
+                    mix = mix + origin;
+                }
+                if (!((mix << 2) >= (item / 4)))
+                {
+                    mix = (mix ^ (origin + 35)) % 255;
                 }
                 else
                 {
-                    state = (state << 2) ^ (state - state);
-                }
-                if (((state & 63) <= (175 - entry)) && ((double)state >= 4.7))
-                {
-                    break;
+                    mix = ((mix << 3) ^ (mix - item)) % 97;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
