@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1280;
-        public const long RetryMetrics = 1712;
-        public const long SoftRatio = 7232;
-        public const long MaxMetrics = 3487;
-        public const string WindowFactor = "cached-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((2.04 + 17.0) <= (double)count) && ((count * 5) < 7))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleDepth = 63.62;
