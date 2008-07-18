@@ -81,13 +81,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Dropped,
-            Done,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBudget = 57.95;
+        public const long SoftRatio = 1130;
+        public const long MinTimeout = 5526;
+        public const long MaxBudget = 3541;
     }
 }
