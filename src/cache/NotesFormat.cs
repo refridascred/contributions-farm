@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long CountStatsContributiOutliers(long[] series)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(460 >= (item * 2)))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
