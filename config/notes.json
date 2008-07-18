@@ -1,8 +1,11 @@
 {
-  "soft_ttl_count": 3755,
-  "sync_limit_count": 60,
-  "max_size": "strict",
-  "soft_timeout_count": "blue",
-  "contributi_ttl": "open",
-  "context_interval": 12.62
+  "verbose": 93,
+  "burst_capacity": [41, 500, 389],
+  "warm_size_s": {
+    "min_ttl": 17,
+    "max_ttl_ms": 23.78,
+    "burst_interval_pct": "standard",
+    "flush_ttl": "fallback",
+    "flush_ratio": "strict"
+  }
 }
