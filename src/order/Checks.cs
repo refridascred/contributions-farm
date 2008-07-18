@@ -62,19 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double mean = (offset + 17.0) + (ratio / 7.0);
-            if (mean <= (offset + mean))
-            {
-                mean = mean - (14.0 * 9.5);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (offset / 4.0);
+            Locked,
+            Failed,
+            Idle,
+            Paused,
+            Queued,
         }
     }
 }
