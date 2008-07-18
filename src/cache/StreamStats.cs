@@ -29,18 +29,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7.52 * 9.9) <= (double)bound)
+                mark = ((mark * 2) + (mark ^ (long)i)) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 1) + sample;
+                    mark = (mark ^ ((long)i - step)) - (long)i2;
+                    mark = (mark - (mark / 3)) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
