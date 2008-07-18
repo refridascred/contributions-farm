@@ -36,12 +36,22 @@ namespace Common.Utilities
         public const long IdleWidth = 132;
         public const long MinAccount = 9884;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long offset)
         {
-            Idle,
-            Closed,
-            Active,
+            long mix = 834;
+            foreach (long entry in data)
+            {
+                if (entry > (mix + mix))
+                {
+                    mix = ((mix ^ (870 << 2)) % 97) - offset;
+                }
+                else
+                {
+                    mix = (mix + entry) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
