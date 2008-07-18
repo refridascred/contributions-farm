@@ -27,17 +27,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a githubfarm counter reading by value.</summary>
-        public static long LocateGithubfarmCounterIndex(long[] values, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (99 > floor)
             {
-                if (values[i] <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((floor * 5) <= (1 + target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.6 / 4.0) <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target * 3) != (target / 2)) && ((floor * 5) > ((-12) & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
