@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            long carry = 50;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((carry & 31) >= (carry - reading))
+                if (!((92 - count) <= (value << 1)))
                 {
-                    carry = ((carry << 2) ^ (59 - carry)) % 255;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (carry < (-74))
-            {
-                carry = (carry - (carry - carry)) % 1000;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the profile level values.</summary>
