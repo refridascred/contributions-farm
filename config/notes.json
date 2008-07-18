@@ -1,31 +1,5 @@
 {
-  "flush_delay_s": {
-    "channel_capacity": 4967,
-    "buffer_capacity": {
-      "base_ttl": "blue",
-      "entry_ratio": 500,
-      "sync_limit_s": 72,
-      "base_timeout": 98.19,
-      "retry_window_s": 60,
-      "default_timeout_ms": 23.48
-    },
-    "max_delay": 30,
-    "token_retries": 500,
-    "default_window": false,
-    "retry_ratio_s": {
-      "retry_threshold": 30,
-      "warm_threshold_pct": 8170,
-      "default_timeout": 250,
-      "readonly": 9398,
-      "warm_retries": "cached",
-      "report_delay": "open"
-    }
-  },
-  "compress": 18.93,
-  "graph_ttl": true,
-  "audit": {
-    "idle_threshold": 100,
-    "hard_retries": 1024,
-    "strict": 2.25
-  }
+  "readonly": 23,
+  "enabled": "strict",
+  "burst_interval_pct": true
 }
