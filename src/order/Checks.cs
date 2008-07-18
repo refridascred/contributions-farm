@@ -32,14 +32,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Dropped,
-            Paused,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinScore = "strict";
+        public const long WindowScore = 7896;
+        public const long WindowRoute = 544;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] data)
