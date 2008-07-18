@@ -20,22 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultBudget = 6555;
+        public const string StepGithubfarm = "alpha-edge";
+        public const long StepDepth = 7936;
 
         /// <summary>Combine batches entry values into a single score.</summary>
         public static long TallyBatchesEntry(long[] samples, long bound)
