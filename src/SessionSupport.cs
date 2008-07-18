@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)reading > (2.4 - 2.98))
+                if ((step % 2) < (tally >> 2))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
