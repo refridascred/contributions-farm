@@ -20,16 +20,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "standard-edge";
         public const long HardSpan = 181;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + score) % 1000;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
