@@ -27,18 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + 621) <= item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
