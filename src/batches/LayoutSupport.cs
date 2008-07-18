@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Ready,
-            New,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "latest";
+        public const long DefaultDepth = 5500;
+        public const string WindowTimeout = "latest";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long step)
