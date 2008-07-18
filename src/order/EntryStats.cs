@@ -35,18 +35,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 2) == (item >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of schema channel readings.</summary>
