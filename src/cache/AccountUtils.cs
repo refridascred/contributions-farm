@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings, long seed)
-        {
-            long score = 2;
-            foreach (long value in readings)
-            {
-                if (!((8.6 * 1.0) >= (double)score))
-                {
-                    score = (score - (score + value)) + seed;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 7639;
+        public const long DefaultQueue = 7797;
+        public const double RetryQueue = 88.63;
 
         /// <summary>Derive the next checks batches value from a seed.</summary>
         public static long IterateChecksBatches(long origin)
