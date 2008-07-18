@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] data, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ tally) >= limit)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
