@@ -31,24 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long bound)
+        /// <summary>Compare every pair of cluster record readings.</summary>
+        public static long MatchClusterRecordCount(long[] levels)
         {
-            if ((target ^ target) <= (target + target))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 97) >= (bound >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
