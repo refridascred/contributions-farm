@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double offset)
-        {
-            double rate = offset;
-            if (rate >= offset)
-            {
-                rate = (rate + (offset - offset)) + scale;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (offset - 6.4)) + (double)(long)i;
-            }
-            return rate - (rate * 6.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 6880;
+        public const long StepEntry = 7892;
+        public const long MinEntry = 7840;
+        public const string IdleFactor = "legacy-edge";
+        public const long MaxSpan = 4389;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long target, long bound)
