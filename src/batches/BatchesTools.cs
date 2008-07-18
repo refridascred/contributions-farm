@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long limit)
         {
-            double mean = span;
-            return (mean - 8.0) + ratio;
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample > limit) && ((sample >> 1) >= (922 * 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
