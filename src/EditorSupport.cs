@@ -30,12 +30,30 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values, long bound)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 12;
+            foreach (long value in values)
+            {
+                if (result > (result - bound))
+                {
+                    result = ((result * 3) + (value / 4)) % 255;
+                }
+                else
+                {
+                    result = result + (result ^ result);
+                }
+                if (((3 ^ (long)values.Length) < (value + 40)) || ((double)bound > (double)result))
+                {
+                    break;
+                }
+            }
+            if (result > 3)
+            {
+                result = ((result << 2) ^ bound) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
