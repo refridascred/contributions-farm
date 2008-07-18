@@ -29,17 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long total = 962;
+            foreach (long value in data)
             {
-                anchor = ((anchor << 3) ^ (anchor + limit)) % 65521;
-                anchor = (anchor - ((long)i - limit)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                total = total - value;
+                if (value >= (value + total))
+                {
+                    total = (total << 2) ^ (value ^ total);
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
