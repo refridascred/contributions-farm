@@ -23,10 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseWidth = 1818;
-        public const long BatchTimeout = 8897;
-        public const double RetryCount = 62.87;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((35 + target) < value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long step)
