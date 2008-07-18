@@ -69,39 +69,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long step, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series, long seed)
         {
-            long prev = step + floor;
-            if ((step << 3) <= (prev - step))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev + step) >= prev)
+                if (((seen < (seed % 97)) || ((2.0 / 3.0) <= (double)value)) || ((seed << 1) <= (seed * 4)))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((double)step <= (3.4 * 2.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > (prev % 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
