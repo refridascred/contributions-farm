@@ -54,32 +54,17 @@ namespace Common.Utilities
             return gain - (double)546;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long offset)
+        /// <summary>Look up the position of a window checks sample.</summary>
+        public static long FindWindowChecksIndex(long[] data, long floor)
         {
-            long diff = floor ^ offset;
-            if (!((offset - floor) < diff))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor >= (4.5 - 5.0)) && (638 > (offset << 1)))
+                if (data[i] == floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((19 - offset) < 146) && ((double)diff == (10.0 + 2.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema batches entries that pass the check.</summary>
