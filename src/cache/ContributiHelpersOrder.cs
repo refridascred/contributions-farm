@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool GuardAlreadyCounterLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 7960;
+        public const long MaxOrder = 5461;
+        public const double DefaultOrder = 80.07;
+        public const long CacheSpan = 313;
 
         /// <summary>Derive the next notes cache value from a seed.</summary>
         public static long SeriesNotesCache(long limit)
