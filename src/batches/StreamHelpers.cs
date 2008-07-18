@@ -26,12 +26,12 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 7632;
-        public const long MaxChannel = 6237;
-        public const long StepTimeout = 3939;
-        public const string HardWidth = "fallback-v2";
-        public const long StepChannel = 757;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "open-v2";
+        public const long HardRatio = 8133;
+        public const long LimitSpan = 4992;
+        public const long DefaultStream = 8868;
+        public const long StepStream = 8002;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileMatches(long[] items, long target)
