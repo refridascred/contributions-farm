@@ -31,11 +31,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 84.26;
-        public const double MaxContext = 74.43;
-        public const double MinContext = 45.14;
-        public const long MinRatio = 6099;
-        public const long HardDepth = 8932;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long seed)
+        {
+            long span = limit ^ seed;
+            if (!(780 >= (seed ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-1) >= limit) || (limit > (limit / 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((5.57 * 1.3) >= (double)span) && (span < (span << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
