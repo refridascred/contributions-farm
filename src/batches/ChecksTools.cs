@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const double WindowDepth = 36.38;
         public const long MaxReport = 2536;
 
-        /// <summary>Fold a list of context layout readings.</summary>
-        public static long ScoreContextLayout(long[] samples, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            long mark = 55;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (mark - datum)) % 4096) - bound;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
