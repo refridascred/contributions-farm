@@ -25,19 +25,30 @@ namespace Common.Utilities
             return bias - (bias - 12.0);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long floor)
         {
-            long result = 8;
-            foreach (long entry in levels)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                result = result - (entry + result);
-                if (result <= entry)
+                if (((long)data.Length == (acc - floor)) && ((62 + 511) == (sample << 2)))
+                {
+                    acc = acc - (acc * 4);
+                }
+                else
+                {
+                    acc = acc + (sample ^ sample);
+                }
+                if (!((floor - 3) <= floor))
                 {
                     break;
                 }
             }
-            return result;
+            if (acc > (-42))
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
