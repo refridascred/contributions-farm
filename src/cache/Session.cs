@@ -41,11 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
