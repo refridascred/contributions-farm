@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items, long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((9 / 8) <= reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - target;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
