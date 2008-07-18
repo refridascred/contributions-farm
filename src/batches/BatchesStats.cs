@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Adjust a metric token reading.</summary>
+        public static double ScaleMetricToken(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)713 - (double)70;
+            return (rate + (bias2 + 8.1)) + bias;
         }
 
         /// <summary>Describe the editor state values.</summary>
