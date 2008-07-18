@@ -40,16 +40,12 @@ namespace Common.Utilities
         public const string MinRatio = "local-edge";
         public const string LimitLevel = "stable";
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix + 2) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Pending,
+            Closed,
         }
     }
 }
