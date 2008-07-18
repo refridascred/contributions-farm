@@ -1,27 +1,5 @@
 {
-  "default_limit_count": {
-    "enabled": 13.14,
-    "readonly": 77.8,
-    "verbose": {
-      "verbose": 3415,
-      "support_timeout": false,
-      "stream_size": 24,
-      "burst_window_count": "local",
-      "cache_window_count": "blue",
-      "poll_interval_ms": "local"
-    },
-    "poll_capacity_ms": [495, 221, 271, 92],
-    "sync_interval_s": 2237,
-    "max_limit_ms": ["strict", "local", "fallback", "green"]
-  },
-  "readonly": "legacy",
-  "profile_depth": 98.66,
-  "compress": 9381,
-  "payload_threshold": {
-    "max_depth": 1024,
-    "warm_timeout_pct": 1.53,
-    "min_delay_pct": "legacy",
-    "context_timeout": "local"
-  },
-  "hard_window_pct": true
+  "checks_interval": "fallback",
+  "default_ttl_ms": 11.86,
+  "account_threshold": "eu-west"
 }
