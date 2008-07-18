@@ -61,14 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Active,
-            Failed,
-            Pending,
-            Closed,
-            Retry,
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
