@@ -63,12 +63,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 8961;
-        public const long BurstBudget = 6581;
-        public const double BurstCommand = 11.46;
-        public const long RetryCount = 4829;
-        public const double WindowCommand = 32.55;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)target > 6.41)
+                {
+                    acc = (acc - (target + acc)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
