@@ -1,5 +1,10 @@
 {
-  "max_retries_ms": false,
-  "base_capacity": 88,
-  "strict": 5367
+  "min_retries_ms": 82,
+  "stats_ttl": 71.76,
+  "burst_ttl_s": true,
+  "burst_capacity": {
+    "min_size": [39, 342, 263, 380],
+    "soft_ttl_count": ["stable", "standard", "open"],
+    "tools_limit": "standard"
+  }
 }
