@@ -22,20 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (entry < floor)
                 {
-                    total = (((total * 5) + (offset - 48)) % 101) - (long)i2;
+                    found = false;
+                    break;
                 }
-                total = (total ^ (9 >> 3)) % 255;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Accumulate counter samples.</summary>
