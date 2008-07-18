@@ -17,27 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] values, long bound)
         {
-            long mark = 44;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                mark = (mark << 3) ^ (162 + mark);
-                if ((mark << 2) < (datum + mark))
+                if (datum != bound)
                 {
-                    mark = mark - (2 >> 5);
-                }
-                else
-                {
-                    mark = (mark ^ (long)readings.Length) % 65521;
-                }
-                if ((0 - 322) >= (mark ^ datum))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the payload status values.</summary>
