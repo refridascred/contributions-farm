@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double DefaultOrder = 80.07;
         public const long CacheSpan = 313;
 
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool CheckContributiSupportBounds(long[] readings, long origin)
+        /// <summary>Match up counter contributi samples.</summary>
+        public static long PairCounterContributiCount(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up payload samples.</summary>
