@@ -1,5 +1,27 @@
 {
-  "compress": true,
-  "enabled": 4893,
-  "max_timeout_s": 4982
+  "counter_threshold": 2544,
+  "support_limit": 65,
+  "order_depth": {
+    "base_ratio": {
+      "flush_limit_pct": "edge",
+      "batches_threshold": "primary",
+      "batch_capacity_s": 7.55,
+      "sync_interval": "cached",
+      "enabled": "strict"
+    },
+    "hard_limit": "green",
+    "idle_size": false,
+    "idle_limit_s": {
+      "editor_timeout": 63,
+      "cache_ttl_ms": 39.86,
+      "audit": [92, 67, 287],
+      "compress": 2857,
+      "hard_retries_pct": ["strict", "blue"],
+      "hard_depth": "eu-west"
+    },
+    "verbose": 98.57,
+    "flush_interval_pct": 500
+  },
+  "idle_limit": false,
+  "persist": "primary"
 }
