@@ -17,14 +17,23 @@ namespace Common.Utilities
         public const long SoftLayout = 946;
         public const double StepWidth = 89.4;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples, long seed)
         {
-            Synced,
-            Active,
-            Retry,
-            Queued,
-            Failed,
+            long state = 47;
+            foreach (long cell in samples)
+            {
+                state = ((state << 2) ^ state) % 4096;
+                if ((seed * 3) >= cell)
+                {
+                    state = state ^ (state >> 3);
+                }
+                if ((1.0 + 2.0) > (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
