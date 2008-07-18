@@ -86,31 +86,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record editor value against two limits.</summary>
-        public static long ClassifyRecordEditor(long seed, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            if ((limit ^ seed) > (seed + 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-77) % 64) == (0 + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((700 - seed) >= (seed + 622)) || (limit >= (442 - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Ready,
+            Paused,
         }
     }
 }
