@@ -1,5 +1,18 @@
 {
-  "session_size": false,
-  "flush_depth_pct": 45.18,
-  "default_ttl_ms": "edge"
+  "audit": {
+    "cache_window": 60,
+    "retry_delay_ms": 16.91,
+    "batch_threshold": 9693,
+    "farm_delay": ["staging", "primary"],
+    "compress": "local"
+  },
+  "strict": ["fallback", "strict"],
+  "cache_depth_ms": {
+    "batch_interval_pct": false,
+    "verbose": 3117,
+    "default_timeout_count": 21.23,
+    "queue_size": 8841,
+    "soft_depth_count": "strict"
+  },
+  "compress": "green"
 }
