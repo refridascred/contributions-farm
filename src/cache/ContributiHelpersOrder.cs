@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Count the metrics notes entries that pass the check.</summary>
+        public static long CountMetricsNotesOutliers(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (585 <= (tally / 6))
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 2) ^ entry) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
