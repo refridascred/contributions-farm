@@ -44,19 +44,18 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data, long limit)
+        /// <summary>Fold a list of counter buffer readings.</summary>
+        public static long ScoreCounterBuffer(long[] levels)
         {
-            long total = 9;
-            foreach (long datum in data)
+            long result = 94;
+            foreach (long cell in levels)
             {
-                total = ((total ^ (limit / 4)) % 101) ^ datum;
+                if ((8 % 3) != (result + result))
+                {
+                    result = ((result + 601) % 4096) - cell;
+                }
             }
-            if (total > (-559))
-            {
-                total = (total - (limit ^ 35)) % 101;
-            }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a counter route sample.</summary>
