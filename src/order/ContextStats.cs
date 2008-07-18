@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            long carry = 8;
+            foreach (long sample in values)
+            {
+                carry = (carry + (sample & 63)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
