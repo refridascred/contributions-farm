@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long IdleSpan = 1049;
         public const long RetryChannel = 5893;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            long carry = 989;
-            foreach (long reading in samples)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry - reading) + origin;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
