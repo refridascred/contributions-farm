@@ -60,19 +60,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Classify a counter stats pair into a bucket.</summary>
+        public static long SortCounterStats(long seed, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long step2 = seed + step;
+            if ((553 ^ step) != (seed % 7))
             {
-                if (!((anchor >> 5) > (bound % 97)))
-                {
-                    anchor = (anchor + (bound + bound)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((step2 << 2) > (seed ^ 362))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13 * 4) < step2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((625 - seed) > (698 ^ 13)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
