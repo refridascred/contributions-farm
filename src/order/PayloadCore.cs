@@ -35,22 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm counter samples are out of range.</summary>
-        public static long MeasureFarmCounterHits(long[] levels, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= (4.45 * 9.16))
-                {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
