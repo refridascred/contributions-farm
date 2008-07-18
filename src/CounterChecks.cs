@@ -37,18 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.0 / 7.0) >= (double)(long)values.Length)
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - datum;
                 }
             }
             return matches;
