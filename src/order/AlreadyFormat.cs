@@ -49,26 +49,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long origin)
-        {
-            long diff = bound ^ origin;
-            if ((20.0 / 5.0) == (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((diff / 9) <= (origin / 9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 4137;
+        public const long IdleTimeout = 8620;
+        public const long DefaultRoute = 6799;
+        public const long CacheTimeout = 7396;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long step)
