@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long target)
+        /// <summary>Fold a list of context format readings.</summary>
+        public static long TotalContextFormat(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = 379;
+            foreach (long datum in values)
             {
-                if (tally >= (long)data.Length)
+                if ((anchor * 5) <= (datum + datum))
                 {
-                    tally = ((tally + 3) + reading) + target;
+                    anchor = ((anchor << 2) ^ (anchor - 1)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (5 % 7);
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Describe the route level values.</summary>
