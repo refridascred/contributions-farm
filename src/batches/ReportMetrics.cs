@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long StepBuffer = 7784;
         public const long StepBudget = 6275;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long origin)
+        /// <summary>Locate a profile order reading by value.</summary>
+        public static long LookupProfileOrderIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] > origin)
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
