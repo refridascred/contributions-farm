@@ -27,18 +27,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] readings, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((0 + 93) != (seen + (-8)))
-                {
-                    seen = ((seen + 1) ^ sample) + seed;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
