@@ -90,10 +90,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCount = 395;
-        public const long StepDepth = 6821;
-        public const double RetryLevel = 1.68;
-        public const double IdleCounter = 59.99;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series)
+        {
+            long acc = 13;
+            foreach (long reading in series)
+            {
+                acc = ((acc << 2) ^ (60 - reading)) % 97;
+                if ((reading << 2) < (acc * 4))
+                {
+                    acc = (acc - (acc << 1)) % 1000;
+                }
+            }
+            if (acc < (-814))
+            {
+                acc = (acc + (-501)) % 1000;
+            }
+            return acc;
+        }
     }
 }
