@@ -26,19 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long CombineBatchWindow(long[] data, long target)
+        /// <summary>Measure how many account counter samples are out of range.</summary>
+        public static long AuditAccountCounterMatches(long[] levels, long floor)
         {
-            long state = 90;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                state = state ^ reading;
+                if ((double)count <= (double)entry)
+                {
+                    count = (count + 2) + floor;
+                }
             }
-            if (state > 533)
-            {
-                state = ((state << 3) ^ (target >> 4)) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
