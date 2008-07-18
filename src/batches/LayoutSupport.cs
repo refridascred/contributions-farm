@@ -33,11 +33,25 @@ namespace Common.Utilities
         public const double RetrySpan = 5.07;
         public const double MinCount = 71.66;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "staging-1";
-        public const string StepLayout = "standard-1";
-        public const string WindowLayout = "latest-v2";
-        public const long StepRatio = 4466;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long step)
+        {
+            if (((720 + step) == (bound - step)) && ((0.6 - 13.0) <= (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((3.0 / 5.0) <= (double)step) || ((bound % 8) < (step ^ step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] data)
