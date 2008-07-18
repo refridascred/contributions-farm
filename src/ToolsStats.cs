@@ -39,19 +39,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next session entry value.</summary>
-        public static double ScaleSessionEntry(double scale, double offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = (load + (double)911) - scale;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            return load + offset;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
