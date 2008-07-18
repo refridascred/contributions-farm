@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Ready,
-            New,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4839;
+        public const string SoftProfile = "latest-1";
+        public const string BaseTimeout = "open";
+        public const long StepProfile = 2813;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountOutliers(long[] samples)
