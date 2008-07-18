@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] data, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (sample != offset)
+                if (cell != step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
