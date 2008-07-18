@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            long state = 1;
+            foreach (long value in data)
+            {
+                state = ((state + (state * 3)) % 97) + value;
+            }
+            if (state > 27)
+            {
+                state = ((state << 3) ^ (604 % 5)) % 101;
+            }
+            return state;
         }
     }
 }
