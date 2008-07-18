@@ -35,22 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] levels, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long offset)
         {
-            long result = -561;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((846 + origin) < entry)
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
                 {
-                    result = (result ^ (entry * 4)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 57)
-            {
-                result = result ^ origin;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
