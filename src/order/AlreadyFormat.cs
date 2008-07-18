@@ -55,25 +55,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank order stream input into a small class.</summary>
-        public static long GradeOrderStream(long limit, long limit2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            long gap = limit - limit2;
-            if ((1 % 5) >= (limit >> 1))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap + gap) > (limit - gap))
+                if ((double)entry != (7.47 * 7.44))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
