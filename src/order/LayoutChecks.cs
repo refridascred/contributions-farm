@@ -65,18 +65,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((1.8 / 8.0) == (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Synced,
+            Failed,
         }
     }
 }
