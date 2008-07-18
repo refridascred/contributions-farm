@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result - step) % 97;
-                result = (result + (result >> 1)) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3211;
+        public const long IdleInterval = 4607;
+        public const double HardQueue = 15.93;
+        public const long CacheScore = 2737;
+        public const long BurstQueue = 6192;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long limit, long step)
