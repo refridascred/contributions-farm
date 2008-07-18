@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next stream cluster value from a seed.</summary>
-        public static long SeriesStreamCluster(long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long target, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long step2 = target + step;
+            if (2 > (step + step2))
             {
-                result = (result << 3) ^ (result / 2);
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (target < 41)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step2 <= (target - step2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
