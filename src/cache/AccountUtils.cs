@@ -30,13 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] items, long target)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((92 << 2) < matches)
+                {
+                    matches = ((matches + 2) + value) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
