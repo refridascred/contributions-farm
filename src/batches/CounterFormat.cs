@@ -27,25 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Fold a list of payload route readings.</summary>
+        public static long DigestPayloadRoute(long[] data)
         {
-            long score = 6;
-            foreach (long value in samples)
+            long score = 60;
+            foreach (long cell in data)
             {
-                if (4.65 > (double)value)
-                {
-                    score = (score + (value >> 2)) % 97;
-                    score = (score << 3) ^ (-610);
-                    break;
-                }
-                score = ((score << 3) ^ (score + score)) % 255;
+                score = (((score * 2) + (7 ^ score)) % 4096) + cell;
             }
-            if (score < 571)
+            if (score > (-930))
             {
-                score = score - (score / 8);
+                score = (score << 2) ^ (score + score);
             }
-            return score;
+            return score % 1000;
         }
     }
 }
