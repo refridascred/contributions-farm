@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "staging-v2";
-        public const string IdleBatch = "local";
-        public const long IdleRatio = 533;
-        public const long IdleCount = 6120;
-        public const double WindowBatch = 55.67;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
