@@ -52,19 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)(long)i != (2.93 - 4.0)) && (anchor > (floor + floor)))
+                if (!(((2.2 / 7.0) != (double)limit) && ((double)sum >= (double)(long)i)))
                 {
-                    anchor = anchor - (floor * 4);
+                    sum = ((sum * 5) + limit) % 101;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                sum = sum ^ limit;
+                sum = (sum ^ (986 - limit)) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
     }
 }
