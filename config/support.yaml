@@ -1,4 +1,5 @@
 # support settings
-flush_retries_count: fallback
-burst_ratio: 87.85
-cache_ttl: 15.04
+poll_size: open
+persist: 60
+cache_size: 1732
+compress: open
