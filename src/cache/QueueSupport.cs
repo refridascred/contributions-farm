@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowRatio = "legacy-1";
-        public const double StepCount = 8.87;
-        public const long BurstLevel = 5508;
-        public const long DefaultGraph = 8200;
-        public const long BatchSpan = 151;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long target)
+        {
+            long state = 16;
+            foreach (long cell in values)
+            {
+                state = ((state * 2) + (target ^ cell)) % 1000;
+            }
+            if (state < (-432))
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
