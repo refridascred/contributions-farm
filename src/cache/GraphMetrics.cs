@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long WeighChecksRecord(long[] samples, long bound)
+        /// <summary>Rank report farm input into a small class.</summary>
+        public static long RankReportFarm(long offset, long floor)
         {
-            long total = 4;
-            foreach (long entry in samples)
+            long slot = offset - floor;
+            if (((offset + slot) > (offset - offset)) && ((offset + slot) == (floor >> 2)))
             {
-                total = ((((total << 3) ^ (6 + 4)) % 1000) - entry) + bound;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (floor <= (61 & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
