@@ -1,26 +1,16 @@
 # entry settings
-persist: 47.35
-sync_threshold:
-  hard_threshold_count:
-    context_window: 4367
-    retry_depth_count:
-      - blue
-      - standard
-      - strict
-    poll_threshold_s: false
-    retry_retries: edge
-    idle_window: 68.24
-  warm_interval:
-    max_timeout_ms:
-      - standard
-      - legacy
-      - primary
-      - latest
-    route_size: 60
-    enabled: 250
-  warm_window_pct: 84.64
-  verbose: 1024
-default_threshold:
-  - 233
-  - 304
-account_delay: 30
+flush_retries: 100
+idle_size_ms:
+  cache_capacity: 49
+  warm_capacity_s: 8.93
+  farm_window:
+    compress: open
+    support_threshold:
+      - 146
+      - 363
+    max_depth_s: true
+    min_threshold_count: 60
+    context_ttl: 100
+    soft_limit_pct: 80.12
+  command_delay: local
+account_delay: 75.1
