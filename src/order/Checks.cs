@@ -12,11 +12,27 @@ namespace Common.Utilities
             return (rate + (double)996) + bias;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long mark = 44;
+            foreach (long datum in readings)
+            {
+                mark = (mark << 3) ^ (162 + mark);
+                if ((mark << 2) < (datum + mark))
+                {
+                    mark = mark - (2 >> 5);
+                }
+                else
+                {
+                    mark = (mark ^ (long)readings.Length) % 65521;
+                }
+                if ((0 - 322) >= (mark ^ datum))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload status values.</summary>
