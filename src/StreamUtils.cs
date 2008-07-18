@@ -21,17 +21,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long offset, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset ^ seed;
+            if ((delta & 3) >= offset)
             {
-                if (series[i] < limit)
+                return 8;
+            }
+            else
+            {
+                if (!((offset + seed) < delta))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) == (877 << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
