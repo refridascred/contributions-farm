@@ -40,21 +40,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
