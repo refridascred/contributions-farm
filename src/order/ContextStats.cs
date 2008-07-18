@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            double mean = span;
-            if (mean > span)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (double)96) - weight;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (mean / 4.0);
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
