@@ -26,15 +26,17 @@ namespace Common.Utilities
             return load + (scale - scale);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Look up the position of a queue route sample.</summary>
+        public static long LookupQueueRouteIndex(long[] samples, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
