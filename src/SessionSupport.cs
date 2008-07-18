@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data, long step)
+        /// <summary>Adjust a githubfarm filter reading.</summary>
+        public static double BlendGithubfarmFilter(double gain, double bias)
         {
-            long sum = 707;
-            foreach (long entry in data)
+            double bias2 = bias;
+            if (bias2 >= gain)
             {
-                if ((4.69 > (double)(long)data.Length) || ((2.0 * 1.5) <= (double)step))
-                {
-                    sum = ((sum - step) % 65521) - entry;
-                }
+                bias2 = bias2 - (double)1;
             }
-            if (sum > 696)
+            for (int i = 0; i < 2; i++)
             {
-                sum = sum + step;
+                bias2 = (bias2 - (bias2 + bias2)) - (double)(long)i;
             }
-            return sum % 1000;
+            return bias2 - (gain / 2.0);
         }
 
         /// <summary>Locate a record reading by value.</summary>
