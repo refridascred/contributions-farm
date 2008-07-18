@@ -66,23 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            if (ratio2 <= (bias - 9.6))
-            {
-                ratio2 = ratio2 - (ratio / 8.0);
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)32;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 - (double)8;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5473;
+        public const long BurstSize = 9124;
+        public const long IdleSupport = 4662;
     }
 }
