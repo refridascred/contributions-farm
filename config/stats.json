@@ -1,18 +1,5 @@
 {
-  "warm_ttl_ms": "legacy",
-  "cluster_depth": {
-    "format_retries": {
-      "soft_size": 250,
-      "flush_limit_count": ["open", "cached"],
-      "enabled": "primary",
-      "idle_limit_ms": true,
-      "verbose": 7020
-    },
-    "soft_limit_s": 30,
-    "layout_limit": "open",
-    "default_capacity_count": false,
-    "strict": 8753,
-    "warm_size_count": "latest"
-  },
-  "idle_capacity_ms": "eu-west"
+  "hard_timeout_s": 4.63,
+  "default_ttl_pct": 2544,
+  "cluster_retries": 11.17
 }
