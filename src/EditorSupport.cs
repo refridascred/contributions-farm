@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
             public double Label { get; set; }
-            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
