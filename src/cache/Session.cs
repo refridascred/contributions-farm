@@ -53,19 +53,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] values, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Closed,
         }
     }
 }
