@@ -38,10 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowFactor = "cached-v2";
-        public const long MaxCommand = 5948;
-        public const long IdleWidth = 7063;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
+        {
+            long acc = -293;
+            foreach (long reading in items)
+            {
+                if ((13.0 / 7.0) <= (double)acc)
+                {
+                    acc = ((acc - (acc * 4)) % 101) ^ reading;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double weight, double offset)
