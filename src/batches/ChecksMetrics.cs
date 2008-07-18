@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const double MaxBudget = 32.48;
         public const string MinCount = "primary-edge";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings, long target)
         {
-            long state = 5;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                state = (((state << 3) ^ (state % 3)) % 101) - datum;
+                if ((double)reading != (1.5 / 7.0))
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
