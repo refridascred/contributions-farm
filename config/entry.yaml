@@ -1,7 +1,10 @@
 # entry settings
-base_delay_count: false
-verbose: 56.63
-command_retries:
-  - 406
-  - 27
-soft_size_pct: 68.8
+flush_size:
+  - 129
+  - 311
+  - 126
+  - 261
+base_window: true
+warm_timeout: standard
+strict: 3655
+farm_window: true
