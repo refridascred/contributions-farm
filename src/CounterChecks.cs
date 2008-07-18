@@ -91,13 +91,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            Draft,
-            Synced,
-            Ready,
-            Paused,
+            long carry = -379;
+            foreach (long datum in readings)
+            {
+                if (((-5) % 24) > ((long)readings.Length + carry))
+                {
+                    carry = (((carry * 3) + carry) % 101) + datum;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
