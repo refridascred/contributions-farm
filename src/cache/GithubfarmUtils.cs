@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long MinDepth = 5783;
         public const long RetrySize = 9971;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
