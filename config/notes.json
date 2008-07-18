@@ -1,12 +1,5 @@
 {
-  "base_threshold_pct": [143, 50, 102, 65],
-  "readonly": {
-    "window_capacity": 74.35,
-    "sync_threshold_s": [357, 52, 44, 223],
-    "warm_capacity": 30,
-    "sync_window_s": false,
-    "verbose": 4532,
-    "poll_ratio_pct": 2475
-  },
-  "sync_window_ms": 20.44
+  "batch_window_count": 4,
+  "commits_capacity": 48.78,
+  "flush_interval_pct": 89.4
 }
