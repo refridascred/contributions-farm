@@ -14,18 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] readings, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((target & 255) <= (4 % 2))
+                if (datum >= origin)
                 {
-                    tally = (tally + 2) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Check that every stream stats entry stays within the limit.</summary>
