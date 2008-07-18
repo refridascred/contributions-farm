@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Use tools settings to tune how often farm data is refreshed.
+Use record settings to tune how often batches data is refreshed.
+Run the token check before changing any report limits.
 
 ## Guidelines
 
-- Log every stats change
+- Keep channel values small
 - Validate cluster input early
-- Review support limits each release
-- Document new account fields
+- Review account limits each release
