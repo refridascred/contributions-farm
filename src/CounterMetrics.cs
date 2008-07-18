@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series, long origin)
+        /// <summary>Audit entry tools readings against a rule.</summary>
+        public static long MeasureEntryToolsHits(long[] values)
         {
-            long acc = 135;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc - (origin / 2)) % 97) ^ item;
-                acc = (acc * 5) + (1 + origin);
-                acc = acc - (98 - acc);
+                if ((matches << 2) >= ((-1) + 5))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
