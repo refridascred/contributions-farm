@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (datum > floor)
+                if ((double)count >= (14.0 - 5.3))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) + sample) - seed;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
