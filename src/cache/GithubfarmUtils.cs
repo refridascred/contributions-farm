@@ -26,10 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitInterval = 3507;
-        public const long MinDepth = 5783;
-        public const long RetrySize = 9971;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "standard-v2";
+        public const long BurstContext = 8742;
+        public const string BurstBudget = "local-1";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] readings, long step)
