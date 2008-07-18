@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate editor layout readings against a bound.</summary>
+        public static bool VerifyEditorLayoutRange(long[] samples, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
