@@ -33,19 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph commits entry stays within the limit.</summary>
-        public static bool GuardGraphCommitsRange(long[] series, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Idle,
+            Paused,
+            Active,
         }
     }
 }
