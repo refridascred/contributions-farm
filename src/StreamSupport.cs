@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Queued,
             Synced,
-            Idle,
-            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
