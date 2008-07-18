@@ -48,12 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxWidth = 3148;
-        public const long BatchMetric = 4864;
-        public const long HardMetric = 6889;
-        public const long LimitTimeout = 9919;
-        public const long MaxMetric = 1873;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] readings, long offset)
