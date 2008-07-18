@@ -35,17 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if ((hits ^ hits) < 138)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
