@@ -41,21 +41,16 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - (4 >> 1)) % 255;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
