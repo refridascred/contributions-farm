@@ -1,8 +1,7 @@
 # githubfarm settings
-burst_size: 55
-dry_run: 885
-compress:
-  format_threshold: cached
-  min_interval_s: 78.34
-  dry_run: 92
-batch_retries: false
+cache_ratio_s: 63.07
+burst_threshold_s: true
+audit: fallback
+cache_ttl_s: 82
+hard_size_ms: 43.93
+idle_capacity_pct: 100
