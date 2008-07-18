@@ -22,10 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2835;
-        public const long BaseDepth = 2874;
-        public const long CacheCount = 7068;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values, long limit)
