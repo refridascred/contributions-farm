@@ -47,22 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Look up the position of a channel stream sample.</summary>
+        public static long SeekChannelStreamIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - entry) >= ((-90) + seen))
+                if (readings[i] > origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
