@@ -45,14 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long AuditFormatAccountGaps(long[] levels, long target)
         {
-            Pending,
-            Locked,
-            Synced,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((541 + target) <= tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
