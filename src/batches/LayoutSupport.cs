@@ -39,12 +39,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
