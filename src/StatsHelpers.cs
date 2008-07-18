@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + step) >= (hits >> 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a support counter forward.</summary>
