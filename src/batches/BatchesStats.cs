@@ -37,19 +37,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (value < (value * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxInterval = 9236;
+        public const double MaxWidth = 6.63;
+        public const long RetryInterval = 3845;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderBounds(long[] samples, long seed)
