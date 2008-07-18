@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7658;
-        public const long BaseScore = 9364;
-        public const long SoftLevel = 4634;
-        public const long MaxFactor = 1730;
-        public const long StepQueue = 2152;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 3472;
+        public const long IdleBatch = 1494;
+        public const long MinDepth = 7527;
+        public const long MinBatch = 1297;
+        public const long WindowTimeout = 1602;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
