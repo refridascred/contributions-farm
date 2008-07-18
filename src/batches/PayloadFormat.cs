@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
