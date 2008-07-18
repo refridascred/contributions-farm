@@ -1,15 +1,13 @@
 # githubfarm settings
-queue_size:
-  format_ttl:
-    - 469
-    - 202
-    - 40
-    - 185
-  min_depth_pct: staging
-  verbose: stable
-cache_limit_ms: open
-soft_capacity_count:
-  - standard
-  - stable
-  - standard
-idle_ratio_s: 842
+stream_ttl:
+  - 233
+  - 59
+  - 165
+warm_capacity: false
+idle_threshold_ms:
+  - 31
+  - 326
+  - 103
+hard_size_s: legacy
+default_delay_count: fallback
+max_window_s: 65
