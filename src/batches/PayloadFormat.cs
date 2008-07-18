@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-v2";
         public const string StepRatio = "alpha-edge";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] items, long target)
+        /// <summary>Roll a payload layout counter forward.</summary>
+        public static long IteratePayloadLayout(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum >> 4) <= target)
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
