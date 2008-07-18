@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long CacheStats = 17;
         public const double SoftLevel = 66.82;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry <= (double)count)
+                if (((offset + offset) == (offset + carry)) || (((long)i / 5) < (carry + offset)))
                 {
-                    count = count + 3;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a layout record.</summary>
