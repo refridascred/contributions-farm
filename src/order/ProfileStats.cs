@@ -26,10 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 431;
-        public const long MaxSupport = 5540;
-        public const string CacheInterval = "fallback-edge";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample / 7) >= (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
