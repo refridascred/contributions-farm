@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Measure how many buffer farm samples are out of range.</summary>
+        public static long TallyBufferFarmOutliers(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                state = state + state;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((value ^ value) <= value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate account editor readings against a bound.</summary>
