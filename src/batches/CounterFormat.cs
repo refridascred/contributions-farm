@@ -14,12 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Queued,
-            Synced,
-            Locked,
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
