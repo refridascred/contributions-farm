@@ -23,12 +23,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already info.</summary>
