@@ -27,18 +27,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long TallyCacheChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = 5;
+            foreach (long value in data)
             {
-                if ((98 + cell) < (cell >> 4))
+                if (((result - result) != (value * 2)) && ((double)result <= (9.0 * 5.23)))
                 {
-                    seen = seen + 2;
+                    result = result - (399 - result);
+                }
+                if ((value + result) > (553 - result))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 95)
+            {
+                result = (result - 7) % 65521;
+            }
+            return result;
         }
     }
 }
