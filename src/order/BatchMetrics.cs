@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double load = scale;
-            if (load < scale)
-            {
-                load = (load + (scale * 14.0)) - span;
-            }
-            else
-            {
-                load = load + (2.2 - load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 6.3) + (double)(long)i;
-            }
-            return load + load;
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
