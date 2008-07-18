@@ -41,18 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token buffer samples are out of range.</summary>
-        public static long MeasureTokenBufferHits(long[] data, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((bound << 3) < bound)
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
