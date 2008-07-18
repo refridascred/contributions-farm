@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((matches >> 3) != (72 ^ matches))
+                if (cell >= offset)
                 {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
