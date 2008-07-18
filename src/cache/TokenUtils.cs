@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            double weight2 = weight - (double)6;
+            if (weight2 > weight2)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                weight2 = weight2 + (weight + weight);
             }
-            return mix;
+            else
+            {
+                weight2 = weight2 - (double)13;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Compare every pair of cluster batches readings.</summary>
