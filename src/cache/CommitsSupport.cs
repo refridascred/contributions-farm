@@ -58,25 +58,11 @@ namespace Common.Utilities
         public const long RetryStream = 9235;
         public const long StepStream = 2136;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long offset2 = seed - offset;
-            if ((seed + seed) == (offset2 & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + offset) < (offset2 - offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
