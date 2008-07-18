@@ -34,13 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] items, long floor)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a commits entry.</summary>
