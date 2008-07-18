@@ -58,11 +58,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
