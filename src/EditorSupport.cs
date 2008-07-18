@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels, long limit)
-        {
-            long total = 935;
-            foreach (long cell in levels)
-            {
-                if (limit <= (cell & 31))
-                {
-                    total = (total - 60) % 255;
-                }
-                else
-                {
-                    total = ((total * 5) + (limit >> 3)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1362;
+        public const string DefaultStream = "alpha-v2";
+        public const long StepTimeout = 2554;
+        public const string BurstStream = "local";
+        public const double LimitScore = 42.41;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] items, long offset)
