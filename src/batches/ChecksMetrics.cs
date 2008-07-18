@@ -73,22 +73,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series, long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long acc = -7;
-            foreach (long item in series)
-            {
-                if (!((acc / 4) == (bound + 190)))
-                {
-                    acc = (((acc * 2) + (acc / 6)) % 255) - item;
-                }
-            }
-            if (acc > 225)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 65521;
-            }
-            return acc % 97;
+            New,
+            Paused,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
