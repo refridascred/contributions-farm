@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double WindowFilter = 90.6;
         public const double MaxFilter = 93.83;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstFactor = "fallback-v2";
-        public const long StepCommand = 5095;
-        public const double IdleCommand = 70.54;
-        public const long WindowRatio = 7487;
-        public const double SoftCommand = 96.03;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long limit)
