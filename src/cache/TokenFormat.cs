@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 11.0;
-        public const long MaxBatch = 3487;
-        public const double RetryBatch = 95.96;
-        public const long BaseBatch = 6054;
-        public const double StepWidth = 13.29;
+        /// <summary>Roll a entry order counter forward.</summary>
+        public static long SeriesEntryOrder(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
