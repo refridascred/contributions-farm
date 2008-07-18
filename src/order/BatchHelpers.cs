@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            if ((target << 1) <= target)
             {
-                acc = acc ^ (limit - (long)i);
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((double)target == (4.0 - 8.13))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
