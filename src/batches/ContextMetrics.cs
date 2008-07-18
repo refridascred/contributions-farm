@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample == (7.33 + 8.88)) && (((matches << 1) == (sample >> 1)) || ((22 & 1) < sample)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 1942;
+        public const long MaxWidth = 302;
+        public const long BatchFactor = 4096;
+        public const long BatchBatches = 1;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings, long target)
