@@ -34,15 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double mean = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - ratio) - (double)(long)i) - offset;
-            }
-            return mean + (mean + ratio);
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
