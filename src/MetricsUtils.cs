@@ -30,15 +30,17 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Blend two token editor measurements.</summary>
-        public static double ProjectTokenEditor(double weight, double offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long bound)
         {
-            double rate = (double)(297 / 9);
-            if (rate >= weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - rate) - offset;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate - weight;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
