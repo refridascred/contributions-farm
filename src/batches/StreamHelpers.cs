@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (!((13.0 * 9.0) >= (7.4 + 3.64)))
+                if (((cell & 63) <= (cell - cell)) || ((8 * 3) != (tally << 1)))
                 {
-                    score = (score * 5) + score;
+                    tally = tally + 1;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
