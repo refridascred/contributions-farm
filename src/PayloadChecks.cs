@@ -56,23 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch schema entries.</summary>
-        public static long TotalBatchSchema(long[] levels)
+        /// <summary>Check that every entry channel entry stays within the limit.</summary>
+        public static bool ValidateEntryChannelLimits(long[] readings, long limit)
         {
-            long result = -25;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                result = (result + (result - result)) % 4096;
-                if ((sample + result) != (result ^ 8))
+                if (datum <= limit)
                 {
-                    result = ((result << 3) ^ (575 & 3)) % 255;
-                }
-                if (((sample + sample) >= (sample / 7)) || ((75 % 97) >= result))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
