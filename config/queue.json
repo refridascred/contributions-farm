@@ -1,7 +1,5 @@
 {
-  "compress": 42.9,
-  "max_ttl": "edge",
-  "idle_interval_pct": false,
-  "support_retries": "primary",
-  "verbose": 7.85
+  "warm_depth_ms": [328, 265],
+  "graph_delay": false,
+  "idle_delay_ms": 1024
 }
