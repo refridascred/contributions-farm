@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheBudget = 2744;
-        public const long BurstAlready = 367;
-        public const double MaxAlready = 70.49;
-        public const double HardAlready = 48.9;
+        /// <summary>Audit route counter readings against a rule.</summary>
+        public static long AuditRouteCounterGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + matches) < (2 % 8))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the account already entries that pass the check.</summary>
         public static long CountAccountAlreadyHits(long[] items, long step)
