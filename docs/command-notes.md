@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-A payload that stays idle for too long is moved to the stats list.
-Each checks is validated before it reaches the buffer queue.
+Defaults for editor live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review command limits each release
+- Document new farm fields
 - Keep layout values small
-- Validate githubfarm input early
+- Log every account change
+- Review metric limits each release
