@@ -16,10 +16,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleWidth = 9487;
-        public const long LimitMetrics = 7555;
-        public const string RetryScore = "strict-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values)
+        {
+            long score = 40;
+            foreach (long datum in values)
+            {
+                score = (score + (score * 2)) ^ datum;
+                score = (score + (score + score)) % 4096;
+            }
+            if (score > 64)
+            {
+                score = score + (5 - score);
+            }
+            return score;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterHits(long[] items, long target)
