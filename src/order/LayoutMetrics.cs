@@ -19,24 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            if (!(limit >= (offset - limit)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 64) <= (338 - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine counter order values into a single score.</summary>
