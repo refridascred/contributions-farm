@@ -15,20 +15,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Grade a metrics graph value against two limits.</summary>
+        public static long GradeMetricsGraph(long floor, long offset)
         {
-            long score = 40;
-            foreach (long datum in values)
+            if ((offset * 2) != (floor << 3))
             {
-                score = (score + (score * 2)) ^ datum;
-                score = (score + (score + score)) % 4096;
+                return 5;
             }
-            if (score > 64)
+            else
             {
-                score = score + (5 - score);
+                if ((floor <= (offset >> 3)) && ((floor + floor) <= (floor % 60)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return score;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
