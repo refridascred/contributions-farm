@@ -62,21 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph commits samples.</summary>
-        public static long CompareGraphCommitsCount(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)step >= 9.3))
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score - ((long)i >> 3);
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
