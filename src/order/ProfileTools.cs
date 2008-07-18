@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MinNotes = 9670;
         public const long RetryNotes = 2220;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((8.35 - 1.7) == (double)value)
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
