@@ -47,10 +47,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepLevel = 39.04;
-        public const long SoftDepth = 161;
-        public const string RetryBatch = "latest-edge";
-        public const long StepBatch = 3662;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Stale,
+            Dropped,
+            Pending,
+        }
     }
 }
