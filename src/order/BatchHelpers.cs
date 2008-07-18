@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string BatchCount = "legacy";
         public const long SoftStats = 8977;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long floor)
         {
-            long mark = 60;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (entry - 4)) % 255;
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 1)
-            {
-                mark = ((mark << 3) ^ (51 / 2)) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
