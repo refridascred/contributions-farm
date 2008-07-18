@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long RetryRoute = 89;
         public const long MinSpan = 4224;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit stats batch readings against a rule.</summary>
+        public static long MeasureStatsBatchGaps(long[] readings, long seed)
         {
-            Dropped,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)sample < (double)seed) || ((double)count < (5.6 + 2.19))) || ((double)seed <= 20.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two notes measurements.</summary>
