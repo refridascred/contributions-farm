@@ -68,17 +68,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 84;
+            foreach (long value in levels)
             {
-                if (series[i] <= floor)
+                if ((value / 9) == (mix + value))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix - mix);
+                }
+                else
+                {
+                    mix = (mix - limit) % 65521;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
