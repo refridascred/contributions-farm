@@ -1,18 +1,12 @@
 # githubfarm settings
-persist: false
-queue_ratio: true
-layout_ttl: cached
-hard_ttl_pct: blue
-report_timeout:
-  sync_interval_count: false
-  burst_threshold: blue
-  cache_limit_s: 37.55
-  soft_ttl_ms:
-    - green
-    - standard
-    - stable
-  cache_size:
-    - 430
-    - 376
-  soft_size_count: 4
-poll_delay_s: false
+hard_retries: 51
+persist: 74.4
+base_size_count:
+  - 308
+  - 369
+max_ratio:
+  - stable
+  - standard
+  - cached
+  - standard
+warm_threshold: false
