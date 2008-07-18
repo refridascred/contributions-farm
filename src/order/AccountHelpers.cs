@@ -58,19 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
