@@ -65,17 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] == limit)
+                if ((tally >> 2) != ((long)readings.Length * 4))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + datum) - target;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
