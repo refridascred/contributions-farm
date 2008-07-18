@@ -71,10 +71,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 468;
-        public const double CacheEditor = 43.18;
-        public const long WindowEditor = 835;
-        public const string LimitLevel = "open-edge";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long floor)
+        {
+            long prev = step + floor;
+            if ((step << 3) <= (prev - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((prev + step) >= prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step <= (3.4 * 2.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > (prev % 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
