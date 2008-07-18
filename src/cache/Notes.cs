@@ -46,18 +46,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long state = 6;
+            foreach (long sample in values)
             {
-                if (((33 % 64) <= (6 - tally)) || ((value >> 1) >= 325))
+                state = ((state << 2) ^ (sample << 2)) % 65521;
+                if (!((state % 24) != (sample + sample)))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            if (state < 1)
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
