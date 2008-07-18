@@ -1,6 +1,8 @@
 {
-  "flush_size_s": [471, 247, 226, 187],
-  "warm_limit_pct": 2576,
-  "record_window": ["latest", "eu-west"],
-  "verbose": 98.34
+  "soft_size": [79, 477, 314, 443],
+  "format_threshold": ["local", "fallback", "latest"],
+  "default_timeout_s": "stable",
+  "context_ratio": 250,
+  "warm_capacity_pct": "edge",
+  "command_timeout": "edge"
 }
