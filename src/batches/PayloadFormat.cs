@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (offset >= (offset ^ hits))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
