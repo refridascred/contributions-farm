@@ -54,21 +54,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] items, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                total = total ^ (total ^ (long)i);
-                if ((floor % 8) <= total)
+                if ((offset << 1) <= (88 >> 3))
                 {
-                    break;
+                    count = (count + 3) ^ entry;
                 }
-                total = (total * 2) + total;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
