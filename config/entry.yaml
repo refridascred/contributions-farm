@@ -1,4 +1,7 @@
 # entry settings
-cache_capacity_s: false
-soft_retries_s: fallback
-queue_size: primary
+editor_depth: cached
+cache_capacity: false
+audit: standard
+sync_threshold: 91.86
+buffer_ttl: 500
+max_interval: 8466
