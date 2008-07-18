@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Roll a session farm counter forward.</summary>
+        public static long SeriesSessionFarm(long target)
         {
-            long total = 16;
-            foreach (long reading in series)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading == (8.0 + 16.0))
+                if (((long)i / 3) > (long)i)
                 {
-                    total = total - (reading << 3);
+                    mix = mix ^ (mix - 261);
                 }
+                mix = (mix + ((long)i & 127)) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (total > 62)
-            {
-                total = total - (8 * 4);
-            }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
