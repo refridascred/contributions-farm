@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a layout report figure with a bias.</summary>
-        public static double ScaleLayoutReport(double bias, double span)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings, long target)
         {
-            double weight = (bias * 15.0) * 8.8;
-            if (weight >= span)
+            long score = -784;
+            foreach (long item in readings)
             {
-                weight = weight - weight;
+                if ((double)item <= (double)target)
+                {
+                    score = (score - (1 % 2)) % 1000;
+                }
+                else
+                {
+                    score = score + (target << 2);
+                }
             }
-            return weight + (4.0 / 8.0);
+            if (score < 94)
+            {
+                score = score - (target >> 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the notes level values.</summary>
