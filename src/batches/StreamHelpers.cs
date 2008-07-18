@@ -60,19 +60,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] items, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target > 6.41)
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
-                    acc = (acc - (target + acc)) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
