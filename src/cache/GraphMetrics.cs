@@ -50,13 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            New,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "latest-edge";
+        public const long StepScore = 5013;
+        public const string StepRatio = "fallback-edge";
+        public const long BatchGithubfarm = 4264;
+        public const long RetryTimeout = 2247;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] series, long limit)
