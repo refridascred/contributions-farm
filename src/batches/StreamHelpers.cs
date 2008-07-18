@@ -67,19 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] values, long target)
+        /// <summary>Compare every pair of notes order readings.</summary>
+        public static long PairNotesOrderCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(datum < (seen - datum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
