@@ -37,18 +37,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            long score = 44;
-            foreach (long item in levels)
+            double ratio = bias;
+            if (ratio <= (double)774)
             {
-                if (((score + score) > item) || (item >= (item + 27)))
-                {
-                    score = (score * 3) + (bound * 5);
-                }
+                ratio = ratio + bias;
             }
-            return score;
+            return ratio - bias2;
         }
     }
 }
