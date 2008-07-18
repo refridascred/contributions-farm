@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] samples)
         {
-            if ((target << 1) <= target)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target == (4.0 - 8.13))
+                if ((((3 + 846) <= (matches >> 5)) || ((sample / 3) != (1 % 64))) && ((matches + sample) > matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
