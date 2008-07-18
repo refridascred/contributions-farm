@@ -71,38 +71,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route stream value against two limits.</summary>
-        public static long BucketRouteStream(long seed, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            if ((double)seed <= (5.4 / 8.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step < (step + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 4) != (step + seed))
+                    if ((series[i] + series[j]) == 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step / 4) > (step + 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
