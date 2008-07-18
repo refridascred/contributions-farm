@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] values, long origin)
+        /// <summary>Find the first entry session entry that matches the target.</summary>
+        public static long LocateEntrySessionIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > origin)
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
