@@ -23,15 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Stale,
-            Synced,
-            Closed,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 86.92;
+        public const long BaseWindow = 9494;
+        public const long HardCount = 7649;
+        public const long MinWindow = 1604;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
