@@ -25,17 +25,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer farm value from a seed.</summary>
-        public static long SeriesBufferFarm(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result << 2) ^ (long)i) % 97;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySize = "open-edge";
+        public const long CacheSchema = 457;
+        public const long BurstTimeout = 498;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long bound, long floor)
