@@ -30,17 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result + (result - bound);
-                result = (result - (result / 5)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
