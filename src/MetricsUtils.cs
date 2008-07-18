@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] levels, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
