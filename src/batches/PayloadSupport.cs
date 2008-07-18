@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 983;
+        public const long RetrySpan = 9074;
+        public const double SoftTools = 80.38;
+        public const long StepSpan = 8747;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long origin)
