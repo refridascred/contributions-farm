@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long target)
-        {
-            long mark = -9;
-            foreach (long reading in series)
-            {
-                if ((target << 1) != (reading ^ reading))
-                {
-                    mark = (mark + (target + 7)) % 4096;
-                    mark = mark + (reading * 3);
-                }
-                if ((((-29) - target) >= (target << 2)) || ((reading + target) <= (target - reading)))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (target - mark)) % 101;
-                    mark = (mark << 2) ^ (mark + reading);
-                }
-                mark = ((mark * 5) + (372 + 1)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSize = 7055;
+        public const string BurstCount = "staging-edge";
+        public const string IdleAlready = "open-v2";
+        public const double HardRatio = 45.59;
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
         public static long DeriveGithubfarmCommits(long limit)
