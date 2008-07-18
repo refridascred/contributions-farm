@@ -30,17 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first editor checks entry that matches the target.</summary>
-        public static long FindEditorChecksIndex(long[] levels, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                if (sample >= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
