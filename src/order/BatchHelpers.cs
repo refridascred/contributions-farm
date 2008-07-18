@@ -13,22 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long CombineRecordCommand(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = 14;
+            foreach (long cell in samples)
             {
-                if ((reading + reading) == (779 - seen))
+                if (((cell - cell) < (limit % 64)) || ((limit / 6) > (limit % 5)))
                 {
-                    seen = seen + 2;
+                    mark = mark + mark;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark << 3) ^ (limit - cell);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
