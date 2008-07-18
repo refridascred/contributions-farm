@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Failed,
-            Closed,
-            Stale,
-            Pending,
-            Ready,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
