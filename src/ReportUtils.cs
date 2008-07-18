@@ -68,10 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 2952;
-        public const double LimitRatio = 32.49;
-        public const double BaseLevel = 67.87;
-        public const long MaxBudget = 7287;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 9476;
+        public const double WindowEntry = 71.82;
+        public const long CacheLevel = 8122;
+        public const long MaxInterval = 209;
+        public const long BurstSpan = 6698;
     }
 }
