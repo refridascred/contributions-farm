@@ -37,9 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 92.28;
-        public const long HardScore = 5086;
-        public const long CacheReport = 5606;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long seed, long origin)
+        {
+            if (((double)origin >= (double)seed) || ((origin & 63) >= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin & 1) >= (416 + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
