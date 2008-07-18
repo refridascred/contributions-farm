@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Measure how many payload profile samples are out of range.</summary>
+        public static long CountPayloadProfileOutliers(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (9.0 <= (double)sample)
+                if ((tally >= (target % 12)) && ((value & 15) > (tally + 217)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
