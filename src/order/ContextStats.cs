@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryScore = 8658;
+        public const long IdleSize = 4381;
+        public const string IdleGraph = "open-1";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] levels)
