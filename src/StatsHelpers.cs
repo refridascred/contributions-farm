@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of schema cluster readings.</summary>
-        public static long CompareSchemaClusterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "legacy";
+        public const long MaxGraph = 2943;
+        public const string IdleTimeout = "standard-edge";
+        public const long HardSpan = 181;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long bound)
