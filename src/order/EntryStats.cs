@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload cluster samples.</summary>
-        public static long ComparePayloadClusterCount(long[] samples)
+        /// <summary>Fold a list of cache already readings.</summary>
+        public static long FoldCacheAlready(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 7;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark - (884 + item)) % 101;
+                if (!((double)101 >= (double)item))
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (767 + item);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ step) % 1000;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
