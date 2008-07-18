@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-standard}"
+mode="${1:-open}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
