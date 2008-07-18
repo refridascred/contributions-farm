@@ -18,32 +18,26 @@ namespace Common.Utilities
         public const string BaseBatches = "strict-edge";
         public const string BatchBatches = "local";
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels, long target)
         {
-            long span = limit ^ seed;
-            if (!(780 >= (seed ^ limit)))
+            long mix = 30;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-1) >= limit) || (limit > (limit / 3)))
+                if ((2.2 - 9.0) < 7.6)
                 {
-                    return 0;
+                    mix = mix - target;
                 }
                 else
                 {
-                    if (((5.57 * 1.3) >= (double)span) && (span < (span << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = mix - (801 << 3);
+                }
+                if ((5.55 * 8.0) > (double)entry)
+                {
+                    mix = ((mix << 2) ^ (target ^ 79)) % 101;
                 }
             }
+            return mix % 1000;
         }
     }
 }
