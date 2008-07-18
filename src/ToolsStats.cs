@@ -50,32 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long gap = limit - seed;
-            if ((8.0 + 7.64) > (double)gap)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit == (5.01 / 6.0)) || ((limit << 2) > gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.08 - 20.0) > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
