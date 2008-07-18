@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] levels, long bound)
         {
-            long cur = seed ^ bound;
-            if ((bound ^ 9) > (bound ^ bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.1 <= (double)cur) || ((cur + bound) >= (seed / 6)))
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
