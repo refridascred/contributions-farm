@@ -1,11 +1,8 @@
 {
-  "hard_ratio_pct": true,
-  "enabled": {
-    "idle_ratio_ms": 8789,
-    "persist": "edge",
-    "metric_ratio": 405
-  },
-  "min_timeout": 4876,
-  "soft_window_s": 33.46,
-  "compress": 8139
+  "min_interval": false,
+  "min_limit_pct": 45,
+  "min_interval_pct": 57.42,
+  "enabled": "fallback",
+  "layout_capacity": 92.07,
+  "cache_depth": 74.29
 }
