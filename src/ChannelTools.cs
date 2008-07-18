@@ -18,13 +18,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Derive the next graph cache value from a seed.</summary>
+        public static long DeriveGraphCache(long seed)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((long)i >= (state ^ state))
+                {
+                    state = state ^ seed;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
