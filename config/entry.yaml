@@ -1,7 +1,4 @@
 # entry settings
-cache_retries: 24.23
-persist: primary
-verbose:
-  - stable
-  - strict
-  - open
+strict: edge
+entry_capacity: 30
+queue_threshold: 6.63
