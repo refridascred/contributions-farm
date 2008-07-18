@@ -1,16 +1,9 @@
 # githubfarm settings
-compress:
-  flush_interval: false
-  max_ttl_ms: true
-  default_ratio_count: true
-payload_depth:
-  default_capacity_ms:
-    base_retries_count: 30
-    flush_ttl_s: 5158
-    farm_capacity: 66.57
-    sync_ratio_pct: green
-    enabled: true
-  notes_ttl: 3469
-  entry_delay: false
-  batch_threshold_ms: 1024
-burst_limit: eu-west
+verbose: 37
+cache_size_ms: 52.09
+max_window_s: 30
+enabled:
+  verbose: 2
+  base_timeout: 90
+  flush_ratio: 5939
+  stream_ttl: 92.63
