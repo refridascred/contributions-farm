@@ -27,17 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long sum = 2;
-            foreach (long cell in samples)
-            {
-                sum = ((sum - (floor + sum)) % 101) ^ cell;
-                sum = sum + (99 - sum);
-                sum = ((sum * 4) + ((long)samples.Length % 24)) % 255;
-            }
-            return sum % 97;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a format support counter forward.</summary>
