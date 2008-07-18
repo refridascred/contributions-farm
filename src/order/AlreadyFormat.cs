@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long carry = 96;
+            foreach (long reading in readings)
+            {
+                if ((reading / 4) == (carry - carry))
+                {
+                    carry = carry - (reading ^ reading);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry >> 3)) % 4096;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = carry + (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
