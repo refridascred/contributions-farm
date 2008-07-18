@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate profile queue readings against a bound.</summary>
-        public static bool ValidateProfileQueueLimits(long[] items, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell >= offset)
+                if (tally >= (long)data.Length)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 3) + reading) + target;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
