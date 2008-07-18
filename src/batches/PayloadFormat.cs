@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((reading + origin) >= 251)
+                if ((46 + reading) > reading)
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a command cluster value against two limits.</summary>
