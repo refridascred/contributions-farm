@@ -15,12 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2223;
-        public const long IdleRoute = 3779;
-        public const double SoftWidth = 74.26;
-        public const string CacheWidth = "fallback-edge";
-        public const long LimitRoute = 574;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] data)
