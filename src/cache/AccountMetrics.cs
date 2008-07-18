@@ -46,18 +46,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (0 <= (seen - 0))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                mix = (mix + 2) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
