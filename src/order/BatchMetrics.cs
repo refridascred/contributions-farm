@@ -24,22 +24,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 0;
-            foreach (long value in items)
-            {
-                if ((value << 3) <= (sum ^ value))
-                {
-                    sum = sum + (value + sum);
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum + (sum * 5)) % 65521;
-            }
-            return sum;
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
