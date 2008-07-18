@@ -52,18 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = -2;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    acc = ((acc * 2) + offset) % 255;
-                }
-            }
-            return acc % 1000;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
