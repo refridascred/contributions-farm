@@ -52,11 +52,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultRatio = "primary";
-        public const long DefaultGraph = 8376;
-        public const long BurstGraph = 78;
-        public const string DefaultDepth = "stable-edge";
-        public const long LimitGraph = 1587;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state + floor) % 255;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
