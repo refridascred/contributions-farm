@@ -27,11 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
