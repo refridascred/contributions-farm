@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            double load = offset * 8.98;
-            if (load < 2.74)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                load = load + (offset / 7.0);
+                if ((sample << 3) > (seen / 8))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + (bias / 4.0);
+            return seen;
         }
 
         /// <summary>Validate report cache readings against a bound.</summary>
