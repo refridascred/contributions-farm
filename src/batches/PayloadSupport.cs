@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxInterval = 13.8;
+        public const long StepLayout = 7733;
+        public const long BaseDepth = 8252;
+        public const double RetryWidth = 58.95;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long step, long floor)
