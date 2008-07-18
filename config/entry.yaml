@@ -1,10 +1,26 @@
 # entry settings
-hard_threshold_ms: true
-poll_ratio: legacy
-flush_depth: legacy
-poll_threshold_count:
-  - 371
-  - 414
-  - 393
-dry_run: 8781
-idle_threshold_s: 5.27
+persist: 47.35
+sync_threshold:
+  hard_threshold_count:
+    context_window: 4367
+    retry_depth_count:
+      - blue
+      - standard
+      - strict
+    poll_threshold_s: false
+    retry_retries: edge
+    idle_window: 68.24
+  warm_interval:
+    max_timeout_ms:
+      - standard
+      - legacy
+      - primary
+      - latest
+    route_size: 60
+    enabled: 250
+  warm_window_pct: 84.64
+  verbose: 1024
+default_threshold:
+  - 233
+  - 304
+account_delay: 30
