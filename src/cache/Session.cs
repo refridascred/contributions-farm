@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
