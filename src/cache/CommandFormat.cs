@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long bound)
+        /// <summary>Validate window batch readings against a bound.</summary>
+        public static bool GuardWindowBatchBounds(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (reading < bound)
+                if (item < floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
