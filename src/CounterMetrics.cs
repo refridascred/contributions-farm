@@ -30,15 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double mean = (double)8 / 7.0;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean - bias)) - (double)(long)i;
-            }
-            return mean - (offset - offset);
+            Stale,
+            Pending,
+            Active,
+            Failed,
+            Idle,
         }
     }
 }
