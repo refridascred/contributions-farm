@@ -40,26 +40,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long result = 499;
-            foreach (long entry in values)
-            {
-                if (target < (entry - entry))
-                {
-                    result = (result + (75 - target)) % 1000;
-                }
-                else
-                {
-                    result = result - target;
-                }
-            }
-            if (result > (-4))
-            {
-                result = ((result << 2) ^ (target << 3)) % 1000;
-            }
-            return result % 4096;
+            Failed,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Accumulate queue samples.</summary>
