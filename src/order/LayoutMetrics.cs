@@ -34,18 +34,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = -978;
+            foreach (long entry in samples)
             {
-                if ((double)datum != (7.37 / 8.0))
+                state = (state << 3) ^ 820;
+                if (!(entry >= ((long)samples.Length % 64)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (state > (-51))
+            {
+                state = (state - state) % 101;
+            }
+            return state % 1000;
         }
     }
 }
