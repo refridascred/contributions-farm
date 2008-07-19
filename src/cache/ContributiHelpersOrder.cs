@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] levels, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if (items[i] < seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
