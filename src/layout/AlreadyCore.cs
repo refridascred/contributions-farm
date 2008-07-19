@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "strict";
-        public const long CacheMetrics = 4225;
-        public const string RetryMetrics = "primary-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - 91) <= datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the cluster schema entries that pass the check.</summary>
         public static long TallyClusterSchemaMatches(long[] series, long floor)
