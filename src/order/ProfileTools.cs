@@ -77,26 +77,19 @@ namespace Common.Utilities
         public const double MaxEntry = 87.43;
         public const long BaseEntry = 2232;
 
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long ScoreNotesReport(long[] samples)
+        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
+        public static bool GuardBufferFarmLimits(long[] items, long target)
         {
-            long acc = 782;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((acc % 5) > (acc + acc))
+                if (entry <= target)
                 {
-                    acc = ((acc + (22 - acc)) % 101) + item;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                if ((double)acc > (8.0 - 9.0))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc;
+            return ok;
         }
     }
 }
