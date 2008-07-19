@@ -20,38 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long offset)
         {
-            if ((floor & 63) <= floor)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                anchor = (anchor - (offset * 4)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (limit < (limit & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((10.0 - 2.67) > (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
