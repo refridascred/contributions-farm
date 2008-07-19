@@ -50,15 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long seed)
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long MeasureGraphNotesGaps(long[] readings, long step)
         {
-            long total = 418;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total ^ seed) % 97) ^ item;
+                if (step > (tally ^ tally))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
