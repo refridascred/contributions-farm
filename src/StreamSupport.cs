@@ -35,12 +35,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Adjust a notes batches reading.</summary>
+        public static double AdjustNotesBatches(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            double weight2 = span;
+            if (weight2 > (span / 3.0))
+            {
+                weight2 = (weight2 - (double)86) + weight;
+            }
+            return weight2 - weight2;
         }
     }
 }
