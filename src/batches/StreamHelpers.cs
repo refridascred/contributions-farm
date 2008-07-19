@@ -15,10 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSize = 9293;
-        public const long IdleInterval = 2261;
-        public const long BurstBudget = 5386;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Synced,
+            Closed,
+            Active,
+            Done,
+            Retry,
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] readings)
