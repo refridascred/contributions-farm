@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowTimeout = 5040;
-        public const long HardQueue = 3731;
-        public const long DefaultQueue = 1560;
-        public const long DefaultLevel = 3565;
-        public const string WindowSpan = "fallback-1";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
