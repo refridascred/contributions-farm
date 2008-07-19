@@ -1,8 +1,9 @@
-id,score,active,state,count
-1,latest,50.35,650,17.31
-2,528,829,52.03,local
-3,strict,open,cached,926
-4,legacy,103,strict,286
-5,strict,blue,160,green
-6,35.01,42.44,667,677
-7,578,17.8,68.69,80.31
+id,token,score
+1,edge,81.56
+2,125,416
+3,fallback,275
+4,154,56.21
+5,61.72,green
+6,latest,35.86
+7,12.72,latest
+8,46.94,98.51
