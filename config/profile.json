@@ -1,13 +1,6 @@
 {
-  "cache_delay_count": 87.27,
-  "max_ratio_s": 78.57,
-  "persist": {
-    "burst_depth_ms": "edge",
-    "min_delay": true,
-    "report_depth": 94,
-    "layout_threshold": 1348
-  },
-  "record_limit": "latest",
-  "batch_delay": "open",
-  "soft_ratio": 500
+  "cache_retries_count": ["standard", "primary", "blue", "latest"],
+  "retry_interval": "standard",
+  "cache_delay": true,
+  "cache_depth_count": 3.79
 }
