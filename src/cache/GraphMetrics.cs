@@ -45,19 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
-        public static bool ValidateStreamClusterLimits(long[] values, long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double scale2 = 12.0;
+            if (scale2 >= (scale / 8.0))
             {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 + (double)67;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (offset + 15.0)) + (double)(long)i;
+            }
+            return scale2 + (double)(-7);
         }
 
         /// <summary>Hold a cluster record.</summary>
