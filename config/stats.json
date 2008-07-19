@@ -1,8 +1,16 @@
 {
-  "dry_run": [164, 424],
-  "cluster_capacity": 100,
-  "readonly": 86.17,
-  "audit": 1,
-  "burst_timeout": true,
-  "batch_ttl_count": "edge"
+  "burst_ttl": {
+    "readonly": [455, 291, 423],
+    "window_interval": {
+      "stats_timeout": 2.41,
+      "base_threshold": "legacy",
+      "token_limit": 99
+    },
+    "dry_run": "staging",
+    "hard_threshold": 35.17
+  },
+  "command_ratio": "edge",
+  "editor_interval": 49.68,
+  "soft_window": "local",
+  "hard_depth_pct": "open"
 }
