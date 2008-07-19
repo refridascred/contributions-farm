@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmContributiBounds(long[] samples, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Rank report input into a small class.</summary>
