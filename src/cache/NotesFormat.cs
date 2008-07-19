@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitScore = 673;
-        public const double BatchInterval = 2.56;
-        public const long MaxRecord = 4987;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Closed,
+            Paused,
+            Stale,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyGaps(long[] readings)
