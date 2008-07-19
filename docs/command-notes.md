@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-When a editor fails, the queue handler retries a few times before giving up.
-Run the channel check before changing any session limits.
+Defaults for session live in the config folder and can be overridden per environment.
+A command that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every commits change
-- Document new cluster fields
+- Validate graph input early
+- Prefer session defaults
+- Review window limits each release
