@@ -37,12 +37,17 @@ namespace Common.Utilities
             return rate - 6.3;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long LocateRouteEntryIndex(long[] series, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
