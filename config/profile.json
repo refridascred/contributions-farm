@@ -1,5 +1,6 @@
 {
-  "notes_capacity": 2,
-  "warm_interval_pct": [403, 67, 310, 259],
-  "sync_window": [85, 164, 90, 400]
+  "sync_ttl_s": ["local", "fallback"],
+  "flush_depth_count": 38,
+  "min_limit": [247, 102, 237],
+  "min_window": false
 }
