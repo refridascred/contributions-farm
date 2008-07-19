@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
