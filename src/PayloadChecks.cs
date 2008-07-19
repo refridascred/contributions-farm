@@ -64,19 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Retry,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a payload entry.</summary>
