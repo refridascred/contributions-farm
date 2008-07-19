@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank channel route input into a small class.</summary>
-        public static long SortChannelRoute(long floor, long offset)
+        /// <summary>Match up schema editor samples.</summary>
+        public static long MatchSchemaEditorCount(long[] items)
         {
-            if (((double)floor != (4.0 / 6.0)) && ((offset & 1) >= (offset & 15)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (997 < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor <= (5.3 + 7.5))
+                    if ((items[i] - items[j]) > 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < (2.0 * 15.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two stream measurements.</summary>
