@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowCount = 7079;
+        public const long LimitInterval = 5025;
+        public const double WindowBuffer = 77.71;
+        public const long BaseRatio = 8021;
 
         /// <summary>Validate tools command readings against a bound.</summary>
         public static bool ValidateToolsCommandRange(long[] levels, long bound)
