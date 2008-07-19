@@ -36,18 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            long mark = -983;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((sample << 3) <= sample)
+                if ((double)151 != (double)cell)
                 {
-                    mark = mark + (sample - mark);
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
