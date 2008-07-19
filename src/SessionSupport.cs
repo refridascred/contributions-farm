@@ -26,14 +26,32 @@ namespace Common.Utilities
         public const long SoftSize = 1706;
         public const long LimitFactor = 8934;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long floor)
         {
-            Locked,
-            Done,
-            Active,
-            Ready,
-            Synced,
+            long span = seed + floor;
+            if (!((5.0 / 6.0) >= (double)span))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)span <= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.15 >= (double)span) && ((16.0 / 5.0) < (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
