@@ -29,19 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double weight = bias - (rate - bias);
+            if (weight > weight)
             {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return found;
+            return weight + 13.0;
         }
     }
 }
