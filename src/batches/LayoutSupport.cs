@@ -32,19 +32,24 @@ namespace Common.Utilities
         public const double RetrySpan = 5.07;
         public const double MinCount = 71.66;
 
-        /// <summary>Validate support counter readings against a bound.</summary>
-        public static bool ValidateSupportCounterLimits(long[] samples, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > offset)
+                if ((carry - carry) != ((long)i & 127))
                 {
-                    found = false;
-                    break;
+                    carry = (carry << 3) ^ (limit + (long)i);
+                    carry = ((carry << 2) ^ (carry >> 3)) % 1000;
                 }
+                if (!(((long)i % 10) > (carry - limit)))
+                {
+                    carry = ((carry << 3) ^ carry) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
