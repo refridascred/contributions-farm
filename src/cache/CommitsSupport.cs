@@ -38,11 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
+            public long Region { get; set; }
+            public long Total { get; set; }
             public long Owner { get; set; }
-            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine schema queue values into a single score.</summary>
