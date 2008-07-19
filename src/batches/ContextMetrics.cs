@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a filter reading by value.</summary>
