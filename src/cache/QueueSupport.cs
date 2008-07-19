@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long floor)
+        /// <summary>Roll a account report counter forward.</summary>
+        public static long IterateAccountReport(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] > floor)
+                mix = (mix * 4) + (bound + mix);
+                if ((14 - mix) <= (bound << 2))
                 {
-                    return (long)i;
+                    mix = mix ^ (bound << 2);
+                    mix = ((mix << 3) ^ (mix * 4)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
