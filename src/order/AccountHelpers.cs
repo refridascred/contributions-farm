@@ -87,9 +87,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitInterval = 58.65;
-        public const long CacheSpan = 4805;
-        public const long DefaultSize = 8039;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Dropped,
+            Done,
+            Pending,
+            Idle,
+            Locked,
+        }
     }
 }
