@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Retry,
-            New,
-            Paused,
-            Locked,
-            Idle,
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
