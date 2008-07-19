@@ -1,10 +1,11 @@
 # Command notes
 
-When a stats fails, the contributi handler retries a few times before giving up.
-Keep route and graph names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A stream that stays idle for too long is moved to the commits list.
+Keep notes and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer support defaults
-- Validate metric input early
-- Keep metrics values small
+- Validate payload input early
+- Review contributi limits each release
+- Document new metric fields
