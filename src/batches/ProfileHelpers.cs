@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            New,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
