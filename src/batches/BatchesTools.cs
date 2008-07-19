@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long CombineRouteRecord(long[] levels, long limit)
         {
-            Dropped,
-            Done,
-            Retry,
-            Ready,
+            long carry = 1;
+            foreach (long item in levels)
+            {
+                if ((limit % 2) <= (735 + limit))
+                {
+                    carry = ((carry * 2) + (limit + item)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ limit;
+                }
+                if (((item << 2) >= limit) && (7 < (carry % 24)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph kind values.</summary>
