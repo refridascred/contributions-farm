@@ -45,23 +45,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
-        {
-            long sum = 91;
-            foreach (long reading in values)
-            {
-                if (((805 - sum) > sum) || ((double)reading == (20.0 + 0.79)))
-                {
-                    sum = ((sum << 2) ^ (sum + reading)) % 97;
-                }
-                if (((760 - 859) < (sum + 4)) && (reading < (reading / 4)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 23.48;
+        public const long DefaultSize = 244;
+        public const long MaxToken = 3534;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
