@@ -1,6 +1,9 @@
 # entry settings
-idle_retries_pct: primary
-min_limit_pct: 82.19
-soft_delay: edge
-graph_retries: 61.08
-support_ratio: 94.45
+sync_threshold_ms:
+  - 258
+  - 166
+  - 89
+batch_retries_pct: eu-west
+compress: edge
+soft_timeout_pct: false
+poll_retries_ms: 4556
