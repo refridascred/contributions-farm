@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)hits < (4.5 + 12.0))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
