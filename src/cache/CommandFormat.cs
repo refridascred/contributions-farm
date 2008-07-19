@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics checks series from a seed.</summary>
-        public static long StepMetricsChecks(long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (value >= limit)
                 {
-                    acc = ((acc + seed) % 65521) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                if (seed < (seed + seed))
-                {
-                    acc = (acc * 5) + (seed << 3);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
