@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long CacheDepth = 9672;
         public const double LimitMetric = 91.98;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseSize = 11.4;
-        public const double SoftNotes = 18.1;
-        public const string BaseNotes = "latest-edge";
-        public const string WindowNotes = "alpha-v2";
-        public const string CacheNotes = "standard";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((7.8 - 2.9) == (double)cell))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
