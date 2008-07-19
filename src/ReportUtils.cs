@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] levels, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count - 2) <= (count - reading))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
