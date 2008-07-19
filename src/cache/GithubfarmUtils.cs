@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] values, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
