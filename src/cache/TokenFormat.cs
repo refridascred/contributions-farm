@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BaseInterval = 1647;
         public const string IdleChecks = "primary-v2";
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Failed,
-            Locked,
-            New,
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
