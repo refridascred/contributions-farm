@@ -34,19 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = -2;
+            foreach (long sample in samples)
             {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ 34) + sample;
             }
-            return valid;
+            return sum % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
