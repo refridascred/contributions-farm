@@ -22,10 +22,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "local";
-        public const string DefaultCommand = "fallback-v2";
-        public const long IdleWidth = 5388;
-        public const long RetryFactor = 7218;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
