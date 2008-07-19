@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Closed,
-            Paused,
-            Stale,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 36.74;
+        public const long CacheRatio = 2207;
+        public const long DefaultFactor = 2805;
+        public const string HardTools = "stable-v2";
+        public const long BurstFactor = 8832;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
