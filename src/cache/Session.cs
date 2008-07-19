@@ -22,26 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long TotalFarmContext(long[] readings)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long seed)
         {
-            long sum = 634;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample + sum) == (sum >> 1)) && ((8.9 * 8.1) > (double)sample))
+                if (levels[i] >= seed)
                 {
-                    sum = (sum - sample) % 101;
-                }
-                if ((3 + 4) == (sum - 265))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 6)
-            {
-                sum = ((sum << 2) ^ (sum / 3)) % 1000;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
