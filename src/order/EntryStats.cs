@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftCount = "latest-edge";
-        public const string RetryEntry = "alpha-v2";
-        public const long LimitDepth = 665;
-        public const string StepWidth = "local-edge";
-        public const long SoftSize = 6835;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 4) >= hits)
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster session samples are out of range.</summary>
         public static long MeasureClusterSessionMatches(long[] levels)
