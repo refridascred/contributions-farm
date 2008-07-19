@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] samples, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((36 << 3) <= ((long)samples.Length * 5)))
-                {
-                    count = ((count + 3) + entry) + step;
-                }
-            }
-            return count;
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
