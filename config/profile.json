@@ -1,7 +1,19 @@
 {
-  "compress": 26,
-  "enabled": "standard",
-  "poll_window_pct": 37.24,
-  "audit": "primary",
-  "hard_ratio": ["blue", "stable", "strict"]
+  "retry_window": 7433,
+  "verbose": "legacy",
+  "batch_capacity_s": {
+    "poll_ttl_ms": 30.91,
+    "burst_depth": "local",
+    "idle_limit_s": "local",
+    "warm_limit_ms": 69,
+    "soft_capacity_count": ["stable", "edge"]
+  },
+  "command_threshold": {
+    "schema_threshold": "cached",
+    "default_ttl": ["strict", "local", "edge", "local"],
+    "cluster_depth": "eu-west",
+    "compress": "stable",
+    "idle_ratio_s": true,
+    "base_limit": 83.13
+  }
 }
