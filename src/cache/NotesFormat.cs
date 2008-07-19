@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 4928;
-        public const long MaxTimeout = 9831;
-        public const string HardToken = "standard";
-        public const long DefaultToken = 7073;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Idle,
+            Stale,
+            Retry,
+            New,
+            Failed,
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] readings)
