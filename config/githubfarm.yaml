@@ -1,31 +1,8 @@
 # githubfarm settings
-flush_ratio: 7213
-report_ratio: blue
-compress:
-  schema_capacity:
-    warm_ratio: stable
-    session_depth: 95.82
-    verbose: 74
-    commits_ttl: 37.65
-    warm_delay_pct:
-      - 322
-      - 412
-      - 21
-    poll_capacity:
-      - strict
-      - blue
-      - eu-west
-      - green
-  entry_ttl: 5875
-  dry_run: 60
-warm_window_ms: fallback
-retry_ttl: green
-max_interval_pct:
-  notes_threshold: 59.7
-  burst_depth_count:
-    - 110
-    - 62
-    - 71
-    - 138
-  session_timeout: blue
-  strict: local
+hard_window_s: 6.96
+burst_depth_ms: 60
+commits_timeout:
+  - local
+  - blue
+  - blue
+  - primary
