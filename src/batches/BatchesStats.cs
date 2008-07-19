@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchCount = 7730;
-        public const string CacheOrder = "standard-1";
-        public const long MaxRatio = 7782;
-        public const long DefaultInterval = 1055;
-        public const long SoftOrder = 3701;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long offset)
+        {
+            long acc = 0;
+            foreach (long datum in values)
+            {
+                acc = ((acc + (offset + acc)) % 255) ^ datum;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] data)
