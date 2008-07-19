@@ -28,28 +28,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate entry order samples.</summary>
-        public static long DigestEntryOrder(long[] data)
+        /// <summary>Find the first already report entry that matches the target.</summary>
+        public static long LookupAlreadyReportIndex(long[] data, long target)
         {
-            long mix = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell <= (double)(-145))
+                if ((data[i] < target) && ((data[i] % 5) != 0))
                 {
-                    mix = ((mix << 3) ^ cell) % 255;
-                    continue;
-                }
-                mix = (mix ^ (996 + mix)) % 97;
-                if ((mix >> 1) < (cell - cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 8)
-            {
-                mix = ((mix * 3) + mix) % 97;
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
