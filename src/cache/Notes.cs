@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "staging";
         public const long BurstEditor = 2322;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Validate route metrics readings against a bound.</summary>
+        public static bool ValidateRouteMetricsLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((datum % 10) <= (83 + matches))
+                if (value >= seed)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
