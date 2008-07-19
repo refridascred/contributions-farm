@@ -1,26 +1,8 @@
 {
-  "payload_threshold": [40, 289],
-  "commits_limit": {
-    "farm_retries": {
-      "verbose": "green",
-      "strict": [28, 423, 33, 433],
-      "burst_interval_pct": 6211,
-      "buffer_size": true,
-      "warm_ratio_count": [88, 456, 328],
-      "hard_window_s": 30
-    },
-    "max_ratio_pct": {
-      "warm_timeout_count": "staging",
-      "report_window": 100,
-      "retry_size_count": 8911
-    },
-    "already_depth": "blue"
-  },
-  "cache_delay_count": "legacy",
-  "buffer_size": {
-    "sync_retries_pct": [38, 222],
-    "editor_delay": "eu-west",
-    "enabled": 1024,
-    "max_limit": false
-  }
+  "dry_run": ["primary", "primary", "eu-west", "local"],
+  "buffer_threshold": 42,
+  "githubfarm_retries": "cached",
+  "cache_window": "cached",
+  "strict": 9848,
+  "batch_window": "primary"
 }
