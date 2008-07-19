@@ -41,39 +41,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long bound, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long step = bound ^ target;
-            if ((bound < (5 << 2)) && (bound <= (step >> 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((528 * 5) >= (target & 127)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound <= (3 + step)) || ((1.8 * 15.0) > 4.19))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)target < 6.5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            New,
+            Failed,
+            Pending,
+            Retry,
         }
     }
 }
