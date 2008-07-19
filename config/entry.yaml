@@ -1,5 +1,13 @@
 # entry settings
-sync_window_ms: fallback
-dry_run: 74.53
-entry_delay: staging
-min_timeout: true
+window_window: true
+default_retries_ms:
+  base_interval_count:
+    - 102
+    - 474
+  default_depth_s: 77.06
+  hard_size_count: 3.01
+  queue_window: green
+  command_timeout: 52.29
+  poll_delay: 5153
+soft_retries_count: edge
+verbose: 17.27
