@@ -51,12 +51,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
             Done,
-            Closed,
-            Draft,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
