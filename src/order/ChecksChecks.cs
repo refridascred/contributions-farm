@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (result <= step)
                 {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ 630) % 65521;
                 }
+                result = (result * 3) + (result * 5);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
