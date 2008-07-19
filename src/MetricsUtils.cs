@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            long cur = bound + origin;
-            if (!((cur * 4) < origin))
+            long acc = 75;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)cur >= 2.0) && ((bound ^ 902) >= (bound + 281)))
+                if (!((8.9 - 7.9) != (double)datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur ^ 51) > (bound * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(cur > bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = acc - (acc << 3);
                 }
             }
+            if (acc < 9)
+            {
+                acc = (acc - (345 / 4)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Project the next session value.</summary>
