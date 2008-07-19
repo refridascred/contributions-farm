@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            Locked,
+            Done,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Blend two order measurements.</summary>
