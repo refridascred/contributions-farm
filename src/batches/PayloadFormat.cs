@@ -34,24 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if (!(seed <= (987 % 60)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9.7 / 6.0) != (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the editor phase values.</summary>
