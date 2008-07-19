@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            long span = seed - limit;
-            if ((span - span) >= (seed * 5))
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span >> 3) >= seed)
+                if ((target << 3) > (target + total))
                 {
-                    return 3;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((27 + seed) > (seed << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    long offset = target % 2;
+                    total = (total ^ offset) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Locate a support reading by value.</summary>
