@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Closed,
-            Idle,
+            Draft,
+            Active,
             Failed,
-            Paused,
+            Locked,
         }
     }
 }
