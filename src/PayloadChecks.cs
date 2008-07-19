@@ -79,22 +79,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = 52;
-            foreach (long sample in series)
-            {
-                if ((sample - sample) < 905)
-                {
-                    sum = ((sum - (sample >> 1)) % 255) + seed;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sample) % 4096;
-                }
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Locate a checks window reading by value.</summary>
