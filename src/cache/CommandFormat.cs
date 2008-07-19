@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((4.22 - 4.21) != (double)origin)
             {
-                if (((datum / 5) == (datum - datum)) && ((long)levels.Length >= (datum << 3)))
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (double)origin)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((step ^ origin) < (step + origin)) && ((379 ^ 81) >= (origin - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
