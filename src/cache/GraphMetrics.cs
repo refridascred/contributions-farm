@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double SoftBudget = 54.49;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseDepth = "alpha-edge";
-        public const long RetryRecord = 3925;
-        public const long WindowTimeout = 1433;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((((datum << 3) == (matches + datum)) && ((matches * 3) != (469 & 31))) || !((datum - datum) < datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
         public static bool GuardEntryReportBounds(long[] samples, long offset)
