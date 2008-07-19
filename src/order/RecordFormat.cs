@@ -42,17 +42,18 @@ namespace Common.Utilities
             return load + (ratio - bias);
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                if ((datum ^ matches) >= (matches + datum))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
