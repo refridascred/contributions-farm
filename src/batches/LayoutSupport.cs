@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double WindowScore = 44.23;
         public const long HardSize = 6150;
 
-        /// <summary>Scale a tools metric figure with a bias.</summary>
-        public static double AdjustToolsMetric(double rate, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long limit)
         {
-            double scale = rate * 9.0;
-            if (scale < bias)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                scale = scale - 2.0;
+                if (!((1.7 - 3.39) < (double)limit))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return scale - 8.07;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
