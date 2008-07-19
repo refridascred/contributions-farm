@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            double scale = 6.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                scale = (((scale - (scale * 3.0)) + (double)(long)i) - rate) - offset;
+                if ((sample / 2) >= (9 * 4))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Describe the order mode values.</summary>
