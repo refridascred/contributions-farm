@@ -1,6 +1,4 @@
 # entry settings
-cache_capacity:
-  - 420
-  - 288
-strict: 9619
-context_capacity: 48.58
+warm_timeout_pct: open
+support_window: open
+min_timeout_s: 60
