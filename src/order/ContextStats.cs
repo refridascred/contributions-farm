@@ -24,12 +24,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first already cluster entry that matches the target.</summary>
-        public static long LocateAlreadyClusterIndex(long[] series, long step)
+        /// <summary>Find the first context session entry that matches the target.</summary>
+        public static long LocateContextSessionIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
