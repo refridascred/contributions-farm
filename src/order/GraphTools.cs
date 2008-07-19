@@ -60,13 +60,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Dropped,
-            Failed,
-            Ready,
-            Retry,
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next cache command value.</summary>
