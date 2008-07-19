@@ -32,14 +32,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            Pending,
-            Synced,
-            Locked,
-            Closed,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cache stats input into a small class.</summary>
