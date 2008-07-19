@@ -24,21 +24,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of editor commits readings.</summary>
-        public static long PairEditorCommitsCount(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = bound + bound2;
+            if ((bound & 1) >= (next * 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(next > (bound2 - next)))
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
