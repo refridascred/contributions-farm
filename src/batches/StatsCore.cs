@@ -69,22 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long MeasureCommandFormatGaps(long[] series)
         {
-            long anchor = 9;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((value >= (value + value)) || ((value >> 4) > (25 * 3)))
+                if ((count + (-8)) > count)
                 {
-                    anchor = (anchor + (value ^ value)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (value << 3);
+                    count = (count + 3) - entry;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
