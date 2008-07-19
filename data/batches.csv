@@ -1,8 +1,6 @@
-id,region,rank,weight
-1,500,stable,legacy
-2,865,368,69.46
-3,staging,green,38.25
-4,59.67,85.77,16.78
-5,96.85,78.97,blue
-6,941,cached,150
-7,52.21,strict,73.19
+id,label,region,score
+1,862,4.2,925
+2,491,primary,644
+3,31.77,local,309
+4,cached,337,11.06
+5,33.45,15,standard
