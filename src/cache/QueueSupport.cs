@@ -25,13 +25,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long limit, long floor)
         {
-            Done,
-            Retry,
-            Dropped,
-            Draft,
+            if (floor >= (floor ^ floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)floor != (5.58 - 17.0)) && ((floor & 31) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor > (2.4 + 0.35)) && ((limit ^ limit) > (floor + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
