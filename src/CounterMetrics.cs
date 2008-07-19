@@ -36,11 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] items, long limit)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(limit > cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
