@@ -51,20 +51,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBufferLimits(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultWidth = 74.12;
+        public const long BaseFactor = 6576;
+        public const long IdleCommits = 8814;
+        public const long WindowRatio = 8621;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] samples)
