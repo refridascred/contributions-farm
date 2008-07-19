@@ -5,35 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mix = 973;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (mix - (cell >> 3)) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long next = (cell % 10) + (mix + cell);
-                    mix = ((mix + (next + 83)) % 65521) + (long)i2;
-                }
-                if ((cell + mix) < mix)
-                {
-                    mix = mix - (971 >> 5);
-                }
-                if ((((long)values.Length * 2) == (mix ^ mix)) && (7 < (266 + mix)))
-                {
-                    break;
-                }
-            }
-            if (mix > 354)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix % 1000;
+            Queued,
+            Ready,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of record readings.</summary>
