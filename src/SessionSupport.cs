@@ -36,18 +36,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema command samples are out of range.</summary>
-        public static long CountSchemaCommandOutliers(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!(entry < (tally >> 4)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Active,
+            Ready,
+            Synced,
         }
     }
 }
