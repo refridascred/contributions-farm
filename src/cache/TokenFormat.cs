@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen - offset) < (offset >> 5))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
