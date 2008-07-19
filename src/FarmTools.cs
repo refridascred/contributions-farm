@@ -28,11 +28,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepSpan = "fallback";
-        public const string MaxLayout = "latest-v2";
-        public const string CacheLayout = "staging";
-        public const long BaseLayout = 1396;
-        public const string RetryBudget = "fallback";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "local";
+        public const string DefaultCommand = "fallback-v2";
+        public const long IdleWidth = 5388;
+        public const long RetryFactor = 7218;
     }
 }
