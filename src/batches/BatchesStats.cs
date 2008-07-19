@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)34 / 3.0;
+            if (gain < (gain / 5.0))
             {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (1.0 / 7.0)) + weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 1.9) + (double)(long)i;
+            }
+            return gain - (floor * 0.2);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
