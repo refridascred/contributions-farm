@@ -34,20 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] levels, long step)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                state = state ^ (3 + state);
-                if ((target << 1) < 76)
+                if (entry != step)
                 {
-                    state = ((state * 2) + (state - target)) % 255;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a command options.</summary>
