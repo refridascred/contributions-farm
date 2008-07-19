@@ -23,12 +23,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Paused,
+            Dropped,
+            Stale,
             Idle,
-            Synced,
         }
     }
 }
