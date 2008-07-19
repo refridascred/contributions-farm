@@ -17,39 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long prev = offset - limit;
-            if (((offset ^ 377) >= (748 - limit)) || ((offset / 8) < prev))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7 / 4) <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset / 4) > (prev - prev)) || ((5.02 - 0.1) == (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((523 & 15) <= prev)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
