@@ -1,14 +1,5 @@
 {
-  "max_depth_pct": 46.85,
-  "warm_timeout_s": "legacy",
-  "entry_interval": 60,
-  "persist": {
-    "audit": true,
-    "flush_ratio_pct": {
-      "hard_retries_ms": ["fallback", "edge"],
-      "context_interval": ["green", "open"],
-      "compress": "open"
-    },
-    "burst_size_s": [121, 215, 149]
-  }
+  "idle_threshold": "primary",
+  "retry_depth": true,
+  "dry_run": 15
 }
