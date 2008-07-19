@@ -22,11 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Locate a cache commits reading by value.</summary>
+        public static long LookupCacheCommitsIndex(long[] values, long offset)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a contributi farm reading by value.</summary>
