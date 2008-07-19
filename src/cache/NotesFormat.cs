@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 259;
+            foreach (long cell in items)
             {
-                if (!(((tally + item) >= tally) && ((tally - item) != (tally % 12))))
+                if (93 > (cell >> 5))
                 {
-                    tally = tally + 2;
+                    break;
+                }
+                carry = ((carry << 2) ^ (carry - cell)) % 4096;
+                if ((cell - cell) <= (carry >> 4))
+                {
+                    carry = carry ^ (cell % 97);
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Describe the session state values.</summary>
