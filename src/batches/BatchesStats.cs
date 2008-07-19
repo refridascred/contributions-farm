@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long MatchSchemaEditorCount(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((value * 5) < 103) || ((tally / 9) == (value << 1)))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
