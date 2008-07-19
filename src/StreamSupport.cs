@@ -12,24 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples, long step)
         {
-            long total = 4;
-            foreach (long cell in data)
+            long acc = 6;
+            foreach (long value in samples)
             {
-                if ((double)floor < 8.2)
-                {
-                    total = (total << 3) ^ (floor >> 2);
-                }
-                total = ((total << 3) ^ (floor ^ cell)) % 255;
-                total = (total << 3) ^ (total + floor);
+                acc = (((acc - (long)samples.Length) % 255) ^ value) + step;
             }
-            if (total < 585)
+            if (acc < 868)
             {
-                total = (total * 3) + (floor - total);
+                acc = (acc + (94 / 7)) % 101;
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
