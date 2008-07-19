@@ -1,8 +1,6 @@
 {
-  "burst_ttl": 5438,
-  "min_ratio_s": 66,
-  "verbose": 9506,
-  "session_timeout": 1024,
-  "retry_timeout_pct": false,
-  "persist": "local"
+  "verbose": "strict",
+  "window_ratio": "fallback",
+  "batches_ratio": 10.98,
+  "compress": "cached"
 }
