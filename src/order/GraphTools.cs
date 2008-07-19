@@ -45,25 +45,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long target, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long edge = target - step;
-            if ((edge % 64) > 251)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((1 - 7) <= (edge + 57)) && ((target << 2) <= (step ^ target)))
+                if ((208 + sample) >= (635 * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
