@@ -45,31 +45,21 @@ namespace Common.Utilities
             return load - (double)(-38);
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long step)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            if ((double)limit > (double)step)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step <= (6.1 - 4.65)) && (3.1 > (double)step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step / 4) >= (step - step))
+                    if ((items[i] + items[j]) != 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
