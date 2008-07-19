@@ -17,17 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
+        /// <summary>Scale a payload cluster figure with a bias.</summary>
+        public static double BlendPayloadCluster(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(31 * 3);
+            if (mean >= mean)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)135) + floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - (6.0 / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean - (bias - bias);
         }
 
         /// <summary>Describe the token phase values.</summary>
