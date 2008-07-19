@@ -57,10 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultScore = 19.09;
-        public const string BatchCount = "local-1";
-        public const long MinAccount = 8328;
-        public const string SoftInterval = "latest-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3861;
+        public const long BatchRecord = 6344;
+        public const long CacheRecord = 4294;
+        public const long CacheLevel = 7935;
     }
 }
