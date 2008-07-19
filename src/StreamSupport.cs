@@ -32,13 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            double weight = floor;
+            if (weight > (floor * 1.74))
+            {
+                weight = weight + (9.0 * 2.58);
+            }
+            return weight + (floor - gain);
         }
     }
 }
