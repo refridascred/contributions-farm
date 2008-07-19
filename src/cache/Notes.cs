@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Done,
-            Failed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheScore = 16.81;
+        public const double BatchSize = 3.52;
+        public const double MinCount = 96.28;
+        public const double CacheLayout = 16.12;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] series)
