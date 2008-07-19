@@ -68,11 +68,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next cache command value.</summary>
-        public static double AdjustCacheCommand(double scale, double floor)
-        {
-            double scale2 = (floor * 9.4) + (4.0 - scale);
-            return scale2 - (2.9 / 6.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3957;
+        public const long RetryPayload = 2473;
+        public const long MinPayload = 7686;
+        public const long WindowPayload = 8054;
+        public const double BurstScore = 31.02;
     }
 }
