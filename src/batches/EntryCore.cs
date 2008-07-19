@@ -49,15 +49,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double offset)
+        /// <summary>Look up the position of a cache order sample.</summary>
+        public static long LocateCacheOrderIndex(long[] samples, long step)
         {
-            double ratio = offset;
-            if (ratio <= 3.9)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - ratio) + scale;
+                if ((samples[i] == step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (offset - offset);
+            return -1;
         }
     }
 }
