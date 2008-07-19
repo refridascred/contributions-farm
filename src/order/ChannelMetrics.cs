@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item & 1) != (target * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every route order entry stays within the limit.</summary>
