@@ -19,29 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = 7;
-            foreach (long entry in levels)
-            {
-                if (!(((927 - entry) < (entry % 16)) || ((5 & 255) > (67 + entry))))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 3)) % 101;
-                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
-                }
-                anchor = (anchor ^ (5 + entry)) % 4096;
-                anchor = (anchor << 2) ^ (entry * 5);
-                if ((anchor & 31) == (anchor & 127))
-                {
-                    break;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = anchor + (98 - anchor);
-            }
-            return anchor % 97;
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm info.</summary>
