@@ -37,18 +37,39 @@ namespace Common.Utilities
         public const double LimitBudget = 13.76;
         public const long IdleEditor = 7398;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] series, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long floor, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long bound = floor ^ step;
+            if ((bound + floor) >= floor)
             {
-                if ((count + count) > sample)
+                return 0;
+            }
+            else
+            {
+                if ((floor & 31) >= (floor + floor))
                 {
-                    count = (count + 2) - origin;
+                    return 6;
+                }
+                else
+                {
+                    if (((step * 2) != (step * 4)) && ((step + 28) < ((-5) >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step >= (bound % 3)) || ((bound % 64) > step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
