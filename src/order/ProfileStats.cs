@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            New,
-            Locked,
-            Pending,
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
