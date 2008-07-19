@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long floor2)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            if (floor2 > (floor2 / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor2 ^ floor2) < floor2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
