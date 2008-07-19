@@ -20,19 +20,17 @@ namespace Common.Utilities
             return gain + (8.39 + bias);
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score * 3) + limit) % 65521) - sample;
-                if (6.6 < (double)score)
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
                 {
-                    score = (score * 2) + ((long)readings.Length + score);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
