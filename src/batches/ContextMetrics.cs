@@ -45,10 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultWidth = 9094;
-        public const string LimitInterval = "staging";
-        public const long CacheBatch = 1592;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long floor)
