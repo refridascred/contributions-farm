@@ -41,17 +41,22 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const long SoftSize = 6835;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long target)
+        /// <summary>Measure how many cluster session samples are out of range.</summary>
+        public static long MeasureClusterSessionMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] > target) && ((items[i] % 2) != 0))
+                if (((-451) ^ sample) > (395 + matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
