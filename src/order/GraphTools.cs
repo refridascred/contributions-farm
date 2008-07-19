@@ -25,11 +25,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "standard-edge";
-        public const long BurstInterval = 7747;
-        public const long BaseGraph = 3358;
-        public const string CacheRatio = "cached-1";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long floor)
+        {
+            long mix = 1;
+            foreach (long datum in readings)
+            {
+                if (((double)datum == (12.0 * 5.47)) && ((floor + mix) <= (datum >> 2)))
+                {
+                    mix = (mix ^ (floor + 21)) % 4096;
+                }
+                if (datum < floor)
+                {
+                    mix = ((mix * 3) + (mix - (long)readings.Length)) % 1000;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = ((mix * 5) + (mix << 1)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] samples)
