@@ -1,8 +1,7 @@
 {
-  "default_depth_count": "edge",
-  "batch_timeout": 60,
-  "cache_capacity_count": 88.45,
-  "flush_threshold_count": true,
-  "poll_window": 8816,
-  "already_timeout": 1024
+  "burst_interval_pct": "blue",
+  "soft_retries_pct": true,
+  "command_ratio": "blue",
+  "base_ratio_s": "standard",
+  "retry_window_ms": 618
 }
