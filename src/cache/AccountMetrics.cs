@@ -39,19 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((acc - (long)i) != (acc + seed))
+                if (matches < (623 >> 5))
                 {
-                    break;
+                    matches = (matches + 3) + datum;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
