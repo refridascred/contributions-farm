@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 6811;
-        public const long LimitRatio = 9661;
-        public const double BaseLevel = 74.66;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)seed > (7.9 - 7.3))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] samples, long offset)
