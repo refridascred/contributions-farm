@@ -25,17 +25,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long origin)
+        /// <summary>Roll a stats session counter forward.</summary>
+        public static long DeriveStatsSession(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                carry = carry + (17 << 3);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Match up command samples.</summary>
