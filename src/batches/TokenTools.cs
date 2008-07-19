@@ -21,11 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long CountProfileCounterOutliers(long[] data, long bound)
         {
-            double ratio = bias;
-            return ratio - floor;
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!(((9.6 / 3.0) >= (double)bound) || (value >= ((-18) + bound))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
