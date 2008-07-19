@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset + offset) < anchor)
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (anchor >> 3)) % 101;
+                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Match up window samples.</summary>
