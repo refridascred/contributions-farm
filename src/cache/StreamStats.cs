@@ -32,11 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepRatio = 8778;
-        public const long SoftSession = 1536;
-        public const long StepSpan = 187;
-        public const long DefaultScore = 9051;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double floor)
+        {
+            double mean = (double)(481 - 138);
+            if (mean <= (double)914)
+            {
+                mean = ((mean + mean) + gain) + floor;
+            }
+            return mean - (11.0 / 2.0);
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long offset, long offset2)
