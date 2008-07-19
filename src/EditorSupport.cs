@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 9953;
+        public const double IdleStream = 54.34;
+        public const long IdleFactor = 9551;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
