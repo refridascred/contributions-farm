@@ -30,12 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= step)
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
