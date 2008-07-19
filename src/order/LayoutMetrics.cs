@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 6209;
-        public const long SoftFarm = 1349;
-        public const long SoftSize = 6837;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
+        {
+            long sum = 9;
+            foreach (long item in values)
+            {
+                if ((sum + sum) == (400 % 3))
+                {
+                    sum = (sum + sum) + item;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)values.Length << 2)) % 101;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long limit, long limit2)
