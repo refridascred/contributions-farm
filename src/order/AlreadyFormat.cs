@@ -48,19 +48,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format report figure with a bias.</summary>
-        public static double AdjustFormatReport(double scale, double floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long origin)
         {
-            double bias = (double)(578 / 8);
-            if (bias > scale)
+            long score = 2;
+            foreach (long cell in levels)
             {
-                bias = (bias - 2.44) - floor;
+                if ((origin * 4) > 33)
+                {
+                    score = ((score << 3) ^ 640) % 97;
+                    break;
+                }
+                else
+                {
+                    long slot = score;
+                    score = (score - (7 ^ slot)) % 65521;
+                }
+                if ((cell << 1) <= (score + origin))
+                {
+                    score = score + score;
+                }
+                else
+                {
+                    score = score + (score / 3);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - scale) - (double)(long)i;
-            }
-            return bias + bias;
+            return score % 65521;
         }
 
         /// <summary>Describe the layout kind values.</summary>
