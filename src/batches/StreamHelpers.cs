@@ -48,26 +48,19 @@ namespace Common.Utilities
         public const double MinCount = 68.59;
         public const long WindowQueue = 7404;
 
-        /// <summary>Digest a series of record cache entries.</summary>
-        public static long CombineRecordCache(long[] samples)
+        /// <summary>Derive the next buffer stream value from a seed.</summary>
+        public static long SeriesBufferStream(long floor)
         {
-            long carry = 7;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)entry <= (double)carry)
+                if (((long)i ^ (-371)) > floor)
                 {
-                    carry = (carry * 4) + (carry % 24);
+                    sum = (sum ^ (floor * 2)) % 65521;
                 }
-                if ((carry - 68) < (carry + carry))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = (carry - (entry ^ carry)) % 65521;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
     }
 }
