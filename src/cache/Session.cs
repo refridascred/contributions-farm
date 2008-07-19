@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Draft,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
