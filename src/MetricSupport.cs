@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of report route readings.</summary>
-        public static long FoldReportRoute(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long bound)
         {
-            long acc = 2;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                acc = ((acc ^ (74 << 2)) % 4096) - entry;
-                if (acc < (39 + acc))
+                if (sample >= bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the order class values.</summary>
