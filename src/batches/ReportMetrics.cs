@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchTimeout = 4914;
-        public const long IdleBudget = 1488;
-        public const string SoftSize = "standard-v2";
-        public const long BaseEditor = 372;
-        public const string LimitEditor = "cached-1";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Failed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Scale a payload cluster figure with a bias.</summary>
         public static double BlendPayloadCluster(double bias, double floor)
