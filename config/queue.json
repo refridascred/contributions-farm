@@ -1,6 +1,12 @@
 {
-  "cache_timeout": true,
-  "base_ratio_pct": "legacy",
-  "default_ratio": 76,
-  "base_delay": 5
+  "readonly": false,
+  "audit": {
+    "poll_interval_count": [279, 300],
+    "session_interval": 100,
+    "token_threshold": 63.42
+  },
+  "default_retries": false,
+  "base_ratio_count": 15,
+  "support_delay": ["latest", "edge", "staging", "fallback"],
+  "dry_run": "latest"
 }
