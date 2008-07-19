@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] series)
         {
-            long mix = 8;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mix = mix + (reading + 54);
+                if (((double)9 > (double)hits) || ((datum ^ 8) < 6))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (mix < (-88))
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
