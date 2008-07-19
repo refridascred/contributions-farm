@@ -77,19 +77,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] readings, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Closed,
+            Ready,
+            Locked,
         }
     }
 }
