@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many route batches samples are out of range.</summary>
-        public static long CountRouteBatchesHits(long[] data, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((offset - offset) == (offset << 3))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = anchor + bound;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the record kind values.</summary>
