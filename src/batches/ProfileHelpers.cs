@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            double drift = 4.27;
+            if (drift <= bias)
+            {
+                drift = (drift - (bias / 5.0)) - gain;
+            }
+            return drift + bias;
         }
 
         /// <summary>Describe the report status values.</summary>
