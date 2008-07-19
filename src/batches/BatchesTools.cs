@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitSize = 58.07;
-        public const long DefaultCommand = 4306;
-        public const double BaseLevel = 71.29;
-        public const long BaseCommand = 4241;
-        public const long IdleCommand = 1434;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total << 2) ^ 8) % 65521;
+                total = ((total << 2) ^ (limit >> 1)) % 101;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] items)
