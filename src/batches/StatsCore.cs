@@ -73,18 +73,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long MeasureCommandFormatGaps(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + (-8)) > count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - entry;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
