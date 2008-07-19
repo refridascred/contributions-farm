@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Level { get; set; }
             public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count order entry pairs that satisfy a relation.</summary>
