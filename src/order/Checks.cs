@@ -33,16 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = (mark * 5) + mark;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of order entries.</summary>
