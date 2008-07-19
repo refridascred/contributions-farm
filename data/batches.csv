@@ -1,9 +1,8 @@
-id,region,score,active
-1,57,983,136
-2,16.68,72.3,639
-3,primary,957,694
-4,424,244,362
-5,201,5,cached
-6,31.02,16.66,71.9
-7,92.85,green,local
-8,71.61,stable,primary
+id,rank
+1,89.98
+2,blue
+3,22.69
+4,open
+5,latest
+6,strict
+7,standard
