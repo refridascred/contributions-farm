@@ -25,13 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7063;
+        public const double CacheContext = 41.16;
+        public const long MaxTimeout = 9304;
+        public const long WindowSpan = 5657;
+        public const long StepDepth = 7002;
 
         /// <summary>Adjust a notes counter reading.</summary>
         public static double ProjectNotesCounter(double bias, double span)
