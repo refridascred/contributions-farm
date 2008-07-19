@@ -23,16 +23,19 @@ namespace Common.Utilities
         public const long CacheReport = 9774;
         public const double BurstFactor = 0.66;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                mark = (mark * 3) + (mark + (long)i);
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
     }
 }
