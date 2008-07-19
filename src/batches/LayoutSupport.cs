@@ -27,19 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] series, long bound)
         {
-            long sum = 4;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum << 3) ^ (step << 2)) + sample;
+                if (bound <= 47)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            if (sum < 127)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
