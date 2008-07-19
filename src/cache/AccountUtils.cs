@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
