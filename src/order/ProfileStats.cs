@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache commits reading by value.</summary>
-        public static long LookupCacheCommitsIndex(long[] values, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
