@@ -20,18 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = 9;
+            foreach (long entry in samples)
             {
-                if (((matches << 3) < matches) && !(cell >= (1 / 5)))
+                acc = acc + (entry ^ acc);
+                acc = (acc ^ entry) % 255;
+                if ((floor + floor) != (floor - entry))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            if (acc < 904)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
