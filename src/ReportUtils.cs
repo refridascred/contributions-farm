@@ -69,13 +69,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long origin)
         {
-            Paused,
-            Pending,
-            Retry,
-            Synced,
+            long prev = seed ^ origin;
+            if ((14.0 * 0.6) <= (double)prev)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((869 % 60) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin <= (8.7 / 3.0)) || ((prev + seed) != (origin << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
