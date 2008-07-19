@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const string WindowNotes = "alpha-v2";
         public const string CacheNotes = "standard";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 85.12;
-        public const string IdleBatches = "primary-1";
-        public const long LimitBatches = 1167;
-        public const long MaxCount = 9339;
-        public const double SoftSize = 45.83;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Failed,
+            Idle,
+            Done,
+            Queued,
+        }
     }
 }
