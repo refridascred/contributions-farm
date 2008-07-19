@@ -18,27 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster buffer entries.</summary>
-        public static long TallyClusterBuffer(long[] readings, long limit)
-        {
-            long carry = 7;
-            foreach (long datum in readings)
-            {
-                if ((carry - carry) < (limit + datum))
-                {
-                    carry = (carry + (carry + limit)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (carry / 9)) % 255;
-                }
-            }
-            if (carry > 79)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxScore = "strict-edge";
+        public const double CacheRatio = 68.18;
+        public const long HardFormat = 5618;
+        public const long BatchDepth = 7864;
+        public const string StepFormat = "open-edge";
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
