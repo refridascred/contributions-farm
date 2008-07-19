@@ -28,22 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long bound)
         {
-            long carry = 164;
-            foreach (long item in items)
+            if ((double)bound > (8.41 / 5.0))
             {
-                if (44 > carry)
+                return 6;
+            }
+            else
+            {
+                if ((bound - origin) > (origin % 7))
                 {
-                    carry = (carry - (item >> 3)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    carry = carry ^ (carry % 2);
+                    return 3;
                 }
             }
-            return carry % 4096;
         }
     }
 }
