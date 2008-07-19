@@ -32,21 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches contributi value from a seed.</summary>
-        public static long SeriesBatchesContributi(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((mark + origin) <= ((long)i - (long)i)))
-                {
-                    mark = (mark ^ mark) % 65521;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "staging-v2";
+        public const string BaseChecks = "standard";
+        public const string SoftTimeout = "primary-edge";
+        public const long BaseDepth = 1174;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
