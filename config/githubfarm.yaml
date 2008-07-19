@@ -1,25 +1,31 @@
 # githubfarm settings
-sync_limit_pct: legacy
-flush_retries_ms:
-  flush_ratio_ms: 30
-  readonly:
-    batch_ratio_s: stable
-    warm_ttl_s: blue
-    metrics_ttl:
-      - edge
-      - cached
-      - open
-    route_capacity:
-      - edge
-      - staging
+flush_ratio: 7213
+report_ratio: blue
+compress:
+  schema_capacity:
+    warm_ratio: stable
+    session_depth: 95.82
+    verbose: 74
+    commits_ttl: 37.65
+    warm_delay_pct:
+      - 322
+      - 412
+      - 21
+    poll_capacity:
+      - strict
       - blue
-  burst_threshold_s: 32.94
-  command_delay: 100
-  cache_depth_count:
-    verbose: 21.09
-    schema_delay: 89
-    audit: 6865
-    context_size: 24.34
-  strict: 5826
-graph_retries: primary
-warm_timeout: 14.44
+      - eu-west
+      - green
+  entry_ttl: 5875
+  dry_run: 60
+warm_window_ms: fallback
+retry_ttl: green
+max_interval_pct:
+  notes_threshold: 59.7
+  burst_depth_count:
+    - 110
+    - 62
+    - 71
+    - 138
+  session_timeout: blue
+  strict: local
