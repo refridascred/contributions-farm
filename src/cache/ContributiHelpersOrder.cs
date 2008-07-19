@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double ratio = scale * 9.61;
+            if (ratio >= (bias - scale))
             {
-                if ((seen < (offset - seen)) && ((seen >> 5) >= (767 << 1)))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                ratio = ratio - 17.0;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)88;
+            }
+            return ratio + (bias + scale);
         }
     }
 }
