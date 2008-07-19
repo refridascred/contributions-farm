@@ -13,39 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a notes farm pair into a bucket.</summary>
-        public static long SortNotesFarm(long origin, long limit)
+        /// <summary>Validate tools command readings against a bound.</summary>
+        public static bool ValidateToolsCommandRange(long[] levels, long bound)
         {
-            long step = origin + limit;
-            if (!(step < 58))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (96 >> 1))
+                if (item < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + 13) != (origin + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step % 24) < limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many context report samples are out of range.</summary>
