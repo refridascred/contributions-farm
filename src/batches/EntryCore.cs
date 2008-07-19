@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSize = 5744;
-        public const string WindowMetrics = "latest-v2";
-        public const long IdleMetrics = 1027;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double scale, double offset)
+        {
+            double gain = (double)(99 - 2);
+            if (gain > gain)
+            {
+                gain = (gain + (double)0) - scale;
+            }
+            else
+            {
+                gain = gain + (gain * 8.3);
+            }
+            return gain + offset;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 6845;
