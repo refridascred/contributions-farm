@@ -25,25 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long step, long floor)
-        {
-            if ((double)step > (double)76)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (7.59 / 6.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "standard-edge";
+        public const long BurstInterval = 7747;
+        public const long BaseGraph = 3358;
+        public const string CacheRatio = "cached-1";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] samples)
