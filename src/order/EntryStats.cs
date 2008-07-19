@@ -59,13 +59,22 @@ namespace Common.Utilities
         public const long DefaultQueue = 261;
         public const string BatchQueue = "strict-1";
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long origin)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Done,
+            long anchor = -339;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - origin) <= datum)
+                {
+                    anchor = (anchor << 2) ^ origin;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor * 4) + (1 << 1)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
