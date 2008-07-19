@@ -1,25 +1,7 @@
 # githubfarm settings
-soft_limit_s: standard
-queue_retries:
-  burst_ratio_ms: open
-  idle_retries:
-    entry_limit: 1024
-    min_depth_pct: strict
-    max_interval_count: legacy
-  burst_window: strict
-  burst_capacity: latest
-  readonly: false
-  strict: 6.73
-base_window_count: false
-verbose: 60
-readonly:
-  retry_capacity_pct:
-    - primary
-    - legacy
-  flush_size_count: 45
-  command_threshold: 250
-  burst_size_pct: 1879
-  persist:
-    - edge
-    - standard
-compress: fallback
+queue_threshold: false
+verbose: 100
+min_ratio: cached
+soft_threshold: fallback
+tools_limit: 45.49
+queue_delay: blue
