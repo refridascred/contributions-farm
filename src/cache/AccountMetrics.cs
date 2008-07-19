@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long step)
+        /// <summary>Iterate the metrics channel series from a seed.</summary>
+        public static long SeriesMetricsChannel(long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(76 > (cell << 2)) || (cell <= seen))
-                {
-                    seen = (seen + 2) + step;
-                }
+                carry = carry - ((-964) + 39);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate checks session samples.</summary>
