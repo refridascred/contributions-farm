@@ -1,5 +1,5 @@
 {
-  "retry_size": 8880,
-  "soft_limit": 87.1,
-  "idle_threshold": 2894
+  "max_threshold_count": "fallback",
+  "soft_limit_count": "open",
+  "schema_timeout": "staging"
 }
