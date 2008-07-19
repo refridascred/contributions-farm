@@ -39,27 +39,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of channel support readings.</summary>
-        public static long WeighChannelSupport(long[] readings, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 8;
-            foreach (long value in readings)
-            {
-                acc = (acc - 456) % 1000;
-                if ((double)acc >= (1.0 * 8.0))
-                {
-                    acc = acc ^ value;
-                }
-                else
-                {
-                    acc = (acc - (85 ^ 296)) % 97;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (limit + acc)) % 1000;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
