@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools report entry stays within the limit.</summary>
-        public static bool CheckToolsReportBounds(long[] series, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (sample != limit)
+                if ((double)hits < (4.5 + 12.0))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
