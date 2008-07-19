@@ -25,12 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            Paused,
-            Pending,
-            Locked,
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum << 3) ^ target;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum + ((long)i + 820)) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Classify a githubfarm command pair into a bucket.</summary>
