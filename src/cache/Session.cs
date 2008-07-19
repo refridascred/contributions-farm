@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result + (origin % 97);
-                if ((double)(long)i >= (8.0 - 4.4))
-                {
-                    result = result ^ (8 - result);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 9288;
+        public const string IdleSize = "local";
+        public const string RetryFactor = "primary-edge";
+        public const string IdleCommits = "local-v2";
+        public const string StepCommits = "cached-1";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileHits(long[] levels, long seed)
