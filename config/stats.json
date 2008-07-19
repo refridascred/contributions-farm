@@ -1,17 +1,15 @@
 {
-  "schema_window": ["staging", "eu-west"],
-  "layout_size": 81.75,
-  "default_window": {
-    "cache_capacity": [50, 291, 67],
-    "default_threshold_pct": {
-      "burst_delay_s": "strict",
-      "min_ratio": ["edge", "staging", "legacy", "legacy"],
-      "max_retries": 15.13,
-      "idle_window_pct": "stable",
-      "base_threshold_count": true,
-      "burst_depth_s": "primary"
+  "filter_retries": ["cached", "standard", "local"],
+  "hard_ratio_pct": {
+    "stream_delay": {
+      "idle_window": false,
+      "burst_size_ms": 78.72,
+      "idle_ratio_count": true,
+      "buffer_ratio": 57.13
     },
-    "command_delay": true
+    "default_capacity_count": "legacy",
+    "audit": 84
   },
-  "hard_delay": 7598
+  "idle_limit_pct": 4.12,
+  "sync_window_count": 100
 }
