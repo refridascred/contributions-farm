@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool ValidateToolsLayoutBounds(long[] levels, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first metrics batch entry that matches the target.</summary>
