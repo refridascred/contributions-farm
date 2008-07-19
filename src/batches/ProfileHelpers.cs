@@ -64,19 +64,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long bound)
-        {
-            long acc = 9;
-            foreach (long cell in readings)
-            {
-                if (!((cell + bound) < (cell & 1)))
-                {
-                    acc = acc - (cell << 1);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "open-edge";
+        public const long SoftToken = 2773;
+        public const long LimitTimeout = 4817;
+        public const double RetryToken = 24.23;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double ratio, double span)
