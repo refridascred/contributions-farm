@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long bound)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
