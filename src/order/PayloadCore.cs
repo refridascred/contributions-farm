@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((((long)levels.Length ^ hits) != (hits + hits)) || ((double)hits <= (2.0 - 3.8)))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3057;
+        public const long CacheChannel = 410;
+        public const string HardSize = "alpha-v2";
+        public const long WindowScore = 6583;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowSize = 1766;
