@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long score = 990;
+            foreach (long reading in series)
+            {
+                if (4.0 >= (double)seed)
+                {
+                    score = (score + (reading + reading)) % 1000;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
