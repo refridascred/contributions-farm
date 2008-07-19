@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 9421;
-        public const string SoftSize = "staging";
-        public const double SoftBudget = 54.49;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 309;
+        public const long DefaultWindow = 2490;
+        public const double HardSpan = 12.46;
+        public const double RetryFactor = 49.67;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
