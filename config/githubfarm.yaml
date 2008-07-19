@@ -1,5 +1,5 @@
 # githubfarm settings
-base_size: false
-channel_window: green
-base_ratio: open
-retry_retries_pct: 30
+hard_depth: true
+min_size: local
+poll_size_count: 62.64
+session_limit: open
