@@ -13,22 +13,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long bound)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            if ((-82) >= origin)
             {
-                if ((sum - seed) >= sample)
+                return 7;
+            }
+            else
+            {
+                if (!((double)origin < (double)4))
                 {
-                    sum = (sum << 3) ^ (seed << 3);
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (sum < 65)
-            {
-                sum = (sum + (sum + sum)) % 1000;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
