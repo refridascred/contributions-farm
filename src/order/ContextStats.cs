@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] items, long step)
         {
-            double ratio2 = floor;
-            if (ratio2 < ratio)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                ratio2 = ratio2 + ratio;
+                if (((-920) << 3) < (sample % 8))
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 3.0)) + (double)(long)i;
-            }
-            return ratio2 + (floor - ratio2);
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
