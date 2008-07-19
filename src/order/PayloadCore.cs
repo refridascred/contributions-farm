@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every metric tools entry stays within the limit.</summary>
-        public static bool GuardMetricToolsLimits(long[] values, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (reading >= target)
+                if ((((long)levels.Length ^ hits) != (hits + hits)) || ((double)hits <= (2.0 - 3.8)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
