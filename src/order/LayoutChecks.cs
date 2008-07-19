@@ -12,26 +12,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long step)
         {
-            long carry = 626;
-            foreach (long cell in samples)
+            long state = 919;
+            foreach (long sample in levels)
             {
-                if (!((double)carry >= (7.5 + 1.0)))
-                {
-                    carry = ((carry << 2) ^ carry) % 255;
-                }
-                if (cell >= (bound << 2))
+                state = state - step;
+                state = (state - (sample + sample)) % 65521;
+                if ((state % 12) <= step)
                 {
                     break;
                 }
             }
-            if (carry < (-5))
-            {
-                carry = (carry ^ (3 % 8)) % 97;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
