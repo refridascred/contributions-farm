@@ -20,19 +20,15 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 832;
+            foreach (long value in samples)
             {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ (value >> 1)) % 1000) - step;
             }
-            return valid;
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of cluster record readings.</summary>
