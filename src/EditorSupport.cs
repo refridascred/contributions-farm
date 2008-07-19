@@ -44,11 +44,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstRatio = 9024;
-        public const string CacheSpan = "alpha";
-        public const long DefaultStats = 8883;
-        public const long StepCount = 7916;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)sum > 8.4) || ((floor * 4) != (floor + (-92))))
+                {
+                    sum = ((sum * 5) + sum) % 101;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
