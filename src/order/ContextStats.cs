@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSpan = 80.46;
+        public const string MinSession = "latest";
+        public const long LimitSession = 9660;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] samples)
