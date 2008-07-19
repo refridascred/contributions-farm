@@ -44,17 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token queue sample.</summary>
-        public static long SeekTokenQueueIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 3855;
+        public const double IdleProfile = 89.03;
+        public const long RetryLevel = 857;
+        public const long RetryProfile = 1716;
     }
 }
