@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long AuditAccountFarmOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((matches < 0) || ((matches << 2) != (4 >> 5))) || !((2.5 + 3.17) == (double)matches))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
