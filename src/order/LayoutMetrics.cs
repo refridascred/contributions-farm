@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            double load = offset;
-            if (load <= rate)
+            double gain = (double)8 / 9.0;
+            if (gain >= (double)593)
             {
-                load = load - (double)955;
+                gain = gain - rate;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load + (rate + rate)) + (double)(long)i;
+                gain = gain - rate;
             }
-            return load - (double)0;
+            return gain + (8.39 + bias);
         }
 
         /// <summary>Combine window values into a single score.</summary>
