@@ -64,14 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit format batches readings against a rule.</summary>
+        public static long AuditFormatBatchesMatches(long[] series, long step)
         {
-            Pending,
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((sample >> 2) <= (seen & 63)) || ((double)seen <= (1.0 / 8.0)))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload entry.</summary>
