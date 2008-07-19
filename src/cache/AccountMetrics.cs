@@ -56,9 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultSpan = 62.77;
-        public const string HardInterval = "stable";
-        public const long IdleWidth = 4607;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double bias)
+        {
+            double mean = (double)8 + (double)581;
+            if (mean < 3.97)
+            {
+                mean = mean + (bias * 9.59);
+            }
+            return mean - (gain / 9.0);
+        }
     }
 }
