@@ -19,35 +19,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long floor, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long offset)
         {
-            long lane = floor ^ bound;
-            if ((bound << 2) <= (floor + lane))
+            long delta = origin ^ offset;
+            if ((48 ^ offset) >= (origin + (-974)))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((double)floor <= (1.74 / 8.0))
+                if ((origin >> 1) < (offset >> 1))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)lane > (3.0 / 5.0))
+                    if ((double)origin == (double)delta)
                     {
                         return 1;
                     }
                     else
                     {
-                        if (!((double)bound > 2.4))
+                        if (!((1.0 + 7.1) > (double)delta))
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
