@@ -1,11 +1,6 @@
-id,owner,score,rank
-1,558,latest,19.31
-2,648,277,primary
-3,304,latest,standard
-4,979,903,open
-5,blue,483,fallback
-6,8.47,open,10.97
-7,39.05,27.97,local
-8,6,64.13,259
-9,green,green,94.53
-10,924,46.77,56.32
+id,state,active
+1,22.21,standard
+2,eu-west,276
+3,3.45,50.53
+4,local,609
+5,local,legacy
