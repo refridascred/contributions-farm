@@ -44,21 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(74 >> 1);
+            if (load > (offset / 5.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - 3.4;
             }
-            return tally;
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load + (weight - weight);
         }
 
         /// <summary>Match up layout commits samples.</summary>
