@@ -1,18 +1,7 @@
 {
-  "warm_timeout": 2.03,
-  "profile_size": {
-    "batches_limit": 30,
-    "sync_threshold_s": ["legacy", "local", "fallback"],
-    "retry_size_ms": 7.55,
-    "enabled": 7005,
-    "strict": 500,
-    "compress": 5258
-  },
-  "metrics_size": {
-    "persist": 3.83,
-    "contributi_capacity": "edge",
-    "burst_capacity": 100
-  },
-  "base_ttl_ms": [391, 13],
-  "audit": 1
+  "batch_interval_ms": 64.42,
+  "soft_delay_ms": 8888,
+  "retry_interval_count": 38.42,
+  "verbose": true,
+  "stream_depth": "blue"
 }
