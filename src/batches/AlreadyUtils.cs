@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] readings, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < 15.0)
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of session entries.</summary>
