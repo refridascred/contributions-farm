@@ -1,5 +1,7 @@
 {
-  "batch_window_count": 4,
-  "commits_capacity": 48.78,
-  "flush_interval_pct": 89.4
+  "filter_interval": 250,
+  "burst_delay": true,
+  "poll_size": 52,
+  "max_limit_s": "fallback",
+  "command_delay": "green"
 }
