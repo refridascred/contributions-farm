@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Measure how many session format samples are out of range.</summary>
+        public static long TallySessionFormatOutliers(long[] items, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                total = (total - (total + 7)) % 101;
-                total = ((total * 2) + (long)i) % 97;
+                if (origin <= (origin + seen))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
