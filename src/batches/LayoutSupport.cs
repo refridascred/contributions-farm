@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] items, long offset)
-        {
-            long mix = -66;
-            foreach (long datum in items)
-            {
-                if ((offset % 5) > offset)
-                {
-                    mix = ((mix + (mix - 337)) % 97) - datum;
-                }
-            }
-            if (mix > 367)
-            {
-                mix = ((mix * 2) + ((-67) / 2)) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "latest";
+        public const double BaseInterval = 96.74;
+        public const string CacheTimeout = "standard-edge";
+        public const long BatchBudget = 8207;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
