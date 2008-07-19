@@ -40,22 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] data, long origin)
+        /// <summary>Iterate the support route series from a seed.</summary>
+        public static long StepSupportRoute(long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item > matches) && ((71 - 0) < origin))
+                if ((step * 3) < step)
                 {
-                    matches = matches + 2;
+                    acc = (acc - (478 & 1)) % 65521;
+                    acc = acc ^ (acc - acc);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a cluster stats.</summary>
