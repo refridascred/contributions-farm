@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long result = 4;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)items.Length << 1) >= sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 3) + (2 / 9)) % 65521;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
