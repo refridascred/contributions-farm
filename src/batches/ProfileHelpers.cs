@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
