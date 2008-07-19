@@ -20,10 +20,19 @@ namespace Common.Utilities
             return weight + (scale * 1.61);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxLevel = "strict-1";
-        public const long DefaultSupport = 3248;
-        public const long BaseSupport = 3209;
+        /// <summary>Measure how many queue batches samples are out of range.</summary>
+        public static long CountQueueBatchesHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((-194) ^ hits) != (4 % 7))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] samples, long target)
