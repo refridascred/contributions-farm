@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] data)
-        {
-            long mix = 99;
-            foreach (long entry in data)
-            {
-                mix = mix ^ entry;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftScore = 9.19;
+        public const long CacheDepth = 9672;
+        public const double LimitMetric = 91.98;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long GradeAccount(long bound, long target)
