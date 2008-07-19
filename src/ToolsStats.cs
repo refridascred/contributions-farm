@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((double)9 > (double)hits) || ((datum ^ 8) < 6))
+                if (count >= (sample & 255))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
