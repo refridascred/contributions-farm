@@ -53,13 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the metric schema entries that pass the check.</summary>
+        public static long MeasureMetricSchemaMatches(long[] samples, long limit)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((limit / 8) <= 18)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
