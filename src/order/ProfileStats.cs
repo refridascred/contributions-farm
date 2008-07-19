@@ -35,17 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long FindContributiFarmIndex(long[] series, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
