@@ -1,7 +1,14 @@
 # entry settings
-base_depth_ms: 4311
-metrics_delay: 45.38
-default_retries_pct: primary
-flush_retries: primary
-warm_size: 48
-metrics_ttl: legacy
+retry_limit:
+  - staging
+  - stable
+warm_timeout_ms: 79.82
+cache_retries:
+  strict:
+    - 87
+    - 228
+  editor_window: 88.66
+  batch_ttl_ms: legacy
+support_ttl: 66.75
+default_interval_ms: 250
+warm_ratio_pct: edge
