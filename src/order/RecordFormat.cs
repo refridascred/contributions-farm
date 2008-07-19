@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = ratio;
+            if (weight >= weight)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight + ratio) + bias;
             }
-            return -1;
+            return weight + (ratio + 3.0);
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
