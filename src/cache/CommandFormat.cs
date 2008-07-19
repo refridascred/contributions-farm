@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long origin2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            if ((origin2 >> 5) == (origin2 ^ origin))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 + origin) > (origin % 7))
+                if ((1.1 * 3.9) == (double)datum)
                 {
-                    return 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((193 << 2) <= origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
