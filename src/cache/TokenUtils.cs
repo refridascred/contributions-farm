@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long CacheWidth = 9243;
         public const long IdleSpan = 9668;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSize = 3775;
-        public const string SoftMetric = "open-v2";
-        public const long DefaultMetric = 1718;
-        public const long SoftInterval = 9286;
-        public const long StepMetric = 6113;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((18.0 * 2.78) <= (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
