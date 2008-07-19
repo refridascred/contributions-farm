@@ -40,12 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            Queued,
-            Stale,
-            Closed,
+            long state = 56;
+            foreach (long entry in readings)
+            {
+                state = (state - (entry + entry)) % 65521;
+            }
+            if (state < 68)
+            {
+                state = state + (state - state);
+            }
+            return state;
         }
     }
 }
