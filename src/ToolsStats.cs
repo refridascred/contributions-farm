@@ -76,10 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowDepth = "standard";
-        public const long LimitSpan = 7281;
-        public const string BatchRatio = "cached-v2";
-        public const long IdleInterval = 3291;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
