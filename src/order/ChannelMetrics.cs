@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long origin)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Paused,
-            Closed,
+            if ((target >> 1) < (target + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(origin > (origin / 6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) > (origin >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin > (5.0 + 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
