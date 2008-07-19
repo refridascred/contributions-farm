@@ -38,10 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 1497;
-        public const string StepPayload = "latest-v2";
-        public const long RetryPayload = 444;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count channel stats pairs that satisfy a relation.</summary>
         public static long PairChannelStatsCount(long[] levels)
