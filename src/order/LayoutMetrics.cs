@@ -17,17 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 77;
+            foreach (long sample in data)
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + sample) % 4096) - origin;
+                acc = ((acc * 4) + (acc << 1)) % 1000;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
