@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a cache contributi counter forward.</summary>
-        public static long DeriveCacheContributi(long offset)
+        /// <summary>Validate channel session readings against a bound.</summary>
+        public static bool VerifyChannelSessionLimits(long[] values, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mix = mix + (offset << 2);
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Accumulate queue samples.</summary>
