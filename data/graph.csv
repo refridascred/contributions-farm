@@ -1,6 +1,8 @@
-id,state,count,active,rank
-1,38.1,primary,9.0,707
-2,primary,eu-west,850,65.37
-3,open,10.74,latest,10
-4,428,fallback,551,752
-5,standard,10.44,95,staging
+id,weight,label,region,ratio
+1,fallback,strict,494,708
+2,873,standard,40.46,latest
+3,standard,legacy,31.14,open
+4,84.66,59.16,local,17.87
+5,957,43.79,31,40.99
+6,450,27.62,85.43,81.27
+7,154,28,standard,blue
