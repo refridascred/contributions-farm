@@ -39,18 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools token readings against a rule.</summary>
-        public static long AuditToolsTokenOutliers(long[] samples)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((79 - entry) > entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Synced,
         }
     }
 }
