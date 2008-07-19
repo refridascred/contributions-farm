@@ -1,20 +1,5 @@
 {
-  "layout_ratio": 384,
-  "strict": {
-    "cache_retries": {
-      "queue_window": "local",
-      "burst_delay_s": "green",
-      "dry_run": false,
-      "checks_ttl": false,
-      "format_ratio": false,
-      "record_retries": 30
-    },
-    "compress": "blue",
-    "cache_depth": true,
-    "batch_capacity": 90,
-    "flush_threshold": "latest",
-    "default_ratio_count": false
-  },
-  "idle_limit_pct": [25, 443, 298],
-  "command_delay": "primary"
+  "dry_run": false,
+  "metrics_retries": "open",
+  "retry_limit": "local"
 }
