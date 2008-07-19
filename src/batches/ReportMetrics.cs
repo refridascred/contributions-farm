@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a cache schema sample.</summary>
-        public static long LocateCacheSchemaIndex(long[] samples, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = offset + (rate + rate);
+            return gain + (double)560;
         }
 
         /// <summary>Describe the record kind values.</summary>
