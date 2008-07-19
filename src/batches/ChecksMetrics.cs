@@ -54,21 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                mark = (mark - (5 + target)) % 4096;
-                mark = (mark * 2) + ((long)i >> 3);
-                if ((target - 465) >= mark)
+                if (item < bound)
                 {
-                    mark = ((mark * 3) + (target * 2)) % 255;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
