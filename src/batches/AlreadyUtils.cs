@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a stream context figure with a bias.</summary>
-        public static double SmoothStreamContext(double rate, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] readings, long origin)
         {
-            double load = rate;
-            if (load >= (double)310)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                load = load - load;
+                if ((double)entry < 15.0)
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 3.0) + (double)(long)i;
-            }
-            return load + offset;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
