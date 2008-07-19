@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command report readings.</summary>
-        public static long CombineCommandReport(long[] data, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long state = 54;
-            foreach (long cell in data)
-            {
-                state = ((state ^ (origin ^ origin)) % 4096) - cell;
-            }
-            if (state < 113)
-            {
-                state = ((state * 5) + (state & 31)) % 1000;
-            }
-            return state % 1000;
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
