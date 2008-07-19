@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] readings, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches + 5) > (cell / 3))
-                {
-                    matches = (matches + 3) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
