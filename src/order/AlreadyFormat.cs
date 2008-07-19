@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a schema format counter forward.</summary>
-        public static long StepSchemaFormat(long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long seed, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            if ((limit / 6) >= (seed >> 2))
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (seed >= (limit % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
