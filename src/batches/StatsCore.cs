@@ -44,18 +44,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics channel samples.</summary>
-        public static long TotalMetricsChannel(long[] readings, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long seed2)
         {
-            long sum = 28;
-            foreach (long reading in readings)
+            long bound = seed + seed2;
+            if ((126 * 5) >= seed2)
             {
-                if ((sum + (-545)) <= (seed + 4))
+                return 1;
+            }
+            else
+            {
+                if ((seed2 < (994 >> 1)) && ((seed * 2) < (20 + seed)))
                 {
-                    sum = ((sum << 2) ^ (seed & 127)) - reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((((-354) / 3) <= seed) || ((bound << 3) <= (seed - seed2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
