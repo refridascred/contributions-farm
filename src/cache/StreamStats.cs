@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const string MinBudget = "fallback-edge";
         public const long LimitBudget = 7690;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
