@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Pending,
             Queued,
-            Closed,
+            Dropped,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
