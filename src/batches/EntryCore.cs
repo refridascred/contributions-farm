@@ -27,19 +27,30 @@ namespace Common.Utilities
         public const double MinFactor = 41.52;
         public const long DefaultLevel = 9452;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] values, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long state = 9;
+            foreach (long value in readings)
             {
-                if (value >= floor)
+                if ((double)state <= 6.03)
                 {
-                    ready = false;
+                    state = ((state ^ (562 % 5)) % 4096) + value;
+                }
+                else
+                {
+                    state = (state + state) % 255;
+                }
+                if ((8.9 + 16.0) < (6.4 / 9.0))
+                {
                     break;
                 }
             }
-            return ready;
+            if (state < 3)
+            {
+                state = (state ^ (state >> 3)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the checks mode values.</summary>
