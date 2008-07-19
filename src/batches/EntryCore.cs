@@ -42,14 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Paused,
-            Draft,
-            Locked,
-            Idle,
-            New,
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
