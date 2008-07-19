@@ -36,25 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi payload value against two limits.</summary>
-        public static long GradeContributiPayload(long origin, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long seed)
         {
-            long span = origin - seed;
-            if (4 > span)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(2.0 >= (double)seed))
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
