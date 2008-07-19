@@ -68,11 +68,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3957;
-        public const long RetryPayload = 2473;
-        public const long MinPayload = 7686;
-        public const long WindowPayload = 8054;
-        public const double BurstScore = 31.02;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            New,
+            Draft,
+            Retry,
+        }
     }
 }
