@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
