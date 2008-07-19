@@ -1,6 +1,6 @@
-id,weight,active
-1,425,eu-west
-2,173,885
-3,cached,94.44
-4,663,155
-5,959,11.16
+id,label,level
+1,open,28.45
+2,597,993
+3,local,421
+4,local,1.77
+5,356,eu-west
