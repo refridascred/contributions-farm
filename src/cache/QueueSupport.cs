@@ -22,18 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long total = 1;
+            foreach (long cell in readings)
             {
-                if ((hits / 3) >= (27 ^ hits))
+                total = ((total << 2) ^ (total & 127)) % 1000;
+                if ((total & 127) < (total / 6))
                 {
-                    hits = (hits + 2) + value;
+                    total = (total << 2) ^ total;
+                }
+                if ((cell - cell) > total)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
