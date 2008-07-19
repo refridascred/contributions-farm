@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((seen - offset) < (offset >> 5))
+                if (value < step)
                 {
-                    seen = (seen + 3) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
