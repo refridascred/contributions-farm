@@ -51,19 +51,21 @@ namespace Common.Utilities
         public const double MinCount = 68.59;
         public const long WindowQueue = 7404;
 
-        /// <summary>Derive the next buffer stream value from a seed.</summary>
-        public static long SeriesBufferStream(long floor)
+        /// <summary>Match up layout commits samples.</summary>
+        public static long OverlapLayoutCommitsCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i ^ (-371)) > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (floor * 2)) % 65521;
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
     }
 }
