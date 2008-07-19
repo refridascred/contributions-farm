@@ -41,18 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            long score = 775;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score <= (value * 2)) || (62 <= (score ^ score)))
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
-                    score = (score << 3) ^ (score - value);
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
