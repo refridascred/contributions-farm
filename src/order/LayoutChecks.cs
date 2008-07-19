@@ -50,12 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Closed,
-            Pending,
-            Draft,
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
