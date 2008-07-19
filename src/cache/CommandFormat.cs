@@ -50,10 +50,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 51.91;
-        public const double StepContributi = 5.65;
-        public const string DefaultContributi = "legacy-1";
-        public const long CacheSize = 4750;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
