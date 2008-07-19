@@ -1,5 +1,13 @@
 # githubfarm settings
-max_window_ms: 0.54
-soft_size: 3.13
-queue_delay: 36.03
-poll_retries_ms: 7979
+idle_delay_pct:
+  poll_timeout_pct: false
+  batch_retries_pct: false
+  tools_retries: false
+queue_delay: standard
+buffer_threshold: 50
+poll_interval: 26.96
+enabled:
+  - 346
+  - 242
+  - 200
+cache_ratio: 49.08
