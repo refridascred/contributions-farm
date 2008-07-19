@@ -50,17 +50,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first order cache entry that matches the target.</summary>
-        public static long LookupOrderCacheIndex(long[] data, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 590;
+            foreach (long entry in series)
             {
-                if (data[i] > seed)
+                if (sum > (sum + 6))
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (sum / 8);
                 }
+                sum = (sum - entry) % 65521;
+                sum = ((sum * 3) + (sum % 2)) % 4096;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Match up layout cluster samples.</summary>
