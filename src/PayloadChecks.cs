@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8821;
-        public const long IdleTimeout = 2875;
-        public const double MinTools = 21.07;
-        public const long HardTools = 1710;
-        public const double DefaultCount = 77.18;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark + mark;
+                mark = (mark - (mark + mark)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Audit format batches readings against a rule.</summary>
         public static long AuditFormatBatchesMatches(long[] series, long step)
