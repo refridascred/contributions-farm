@@ -62,15 +62,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Iterate the queue schema series from a seed.</summary>
-        public static long DeriveQueueSchema(long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
