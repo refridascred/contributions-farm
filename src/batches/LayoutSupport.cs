@@ -54,17 +54,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = step - origin;
+            if ((step + next) < (step ^ step))
             {
-                if (series[i] < target)
+                return 6;
+            }
+            else
+            {
+                if ((227 & 1) >= next)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (origin < next)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
