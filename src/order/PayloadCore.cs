@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3057;
-        public const long CacheChannel = 410;
-        public const string HardSize = "alpha-v2";
-        public const long WindowScore = 6583;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (floor > (floor ^ (-324)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowSize = 1766;
