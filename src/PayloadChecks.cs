@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            double ratio = (double)374 + (double)115;
-            if (ratio < (double)701)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + offset;
+            return tally;
         }
 
         /// <summary>Audit batches buffer readings against a rule.</summary>
