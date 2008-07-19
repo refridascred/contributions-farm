@@ -60,11 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8626;
-        public const long DefaultInterval = 9824;
-        public const long BaseMetrics = 8847;
-        public const long LimitMetrics = 9410;
-        public const long CacheRatio = 8569;
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double bias, double bias2)
+        {
+            double weight = 2.1;
+            if (weight <= (8.4 + bias))
+            {
+                weight = weight - (double)9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 14.0) + (double)(long)i;
+            }
+            return weight - (1.1 - bias2);
+        }
     }
 }
