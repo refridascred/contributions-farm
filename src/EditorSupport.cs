@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double weight = ratio;
-            if (weight >= (weight - weight))
-            {
-                weight = weight + 8.8;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - span;
+            Ready,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
