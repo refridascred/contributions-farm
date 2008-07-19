@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryScore = 8658;
-        public const long IdleSize = 4381;
-        public const string IdleGraph = "open-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepInterval = 3895;
+        public const long RetryChecks = 5490;
+        public const double MinWidth = 48.62;
+        public const long HardSize = 9116;
+        public const long CacheDepth = 2439;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long ScoreQueue(long[] samples, long origin)
