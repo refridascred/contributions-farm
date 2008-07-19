@@ -57,30 +57,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long state = 35;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell + state) == (state << 1)) && ((state & 31) != (state + state)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (265 >> 3)) % 97;
-                }
-                else
-                {
-                    state = state ^ (state + 689);
-                }
-                if ((state / 5) <= state)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 717)
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
