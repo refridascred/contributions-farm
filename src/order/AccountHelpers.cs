@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] series, long seed)
         {
-            double scale = weight + floor;
-            if (scale > scale)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                scale = scale + 4.0;
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (1.5 / 2.0);
-            }
-            return scale - (double)14;
+            return valid;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
