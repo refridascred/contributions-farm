@@ -54,21 +54,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 35;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((cell + state) == (state << 1)) && ((state & 31) != (state + state)))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (265 >> 3)) % 97;
+                }
+                else
+                {
+                    state = state ^ (state + 689);
+                }
+                if ((state / 5) <= state)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state > 717)
+            {
+                state = state + state;
+            }
+            return state % 97;
         }
     }
 }
