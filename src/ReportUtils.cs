@@ -54,9 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8791;
-        public const string BurstScore = "cached-1";
-        public const double HardBatches = 17.6;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((hits << 2) <= hits) && ((cell * 3) != (cell << 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
