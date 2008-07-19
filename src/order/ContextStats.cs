@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((tally >= (cell >> 3)) || ((double)cell < 9.0)) && ((double)cell > (2.0 * 1.6)))
+                if (cell >= (475 >> 5))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a batches record.</summary>
