@@ -29,13 +29,19 @@ namespace Common.Utilities
             return load - (weight * 5.5);
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] data, long step)
         {
-            Paused,
-            Idle,
-            New,
-            Retry,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
