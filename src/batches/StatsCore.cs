@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
