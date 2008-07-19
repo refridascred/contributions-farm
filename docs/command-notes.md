@@ -1,11 +1,11 @@
 # Command notes
 
-The batch module keeps notes values in sync with the route cache.
-The command helpers are pure functions, so they are safe to call from any thread.
-Use payload settings to tune how often record data is refreshed.
+Use stream settings to tune how often stats data is refreshed.
+Each payload is validated before it reaches the command queue.
+Keep contributi and contributi names short and lowercase.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep session values small
-- Review report limits each release
+- Validate route input early
+- Prefer tools defaults
+- Review record limits each release
