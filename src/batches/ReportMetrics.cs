@@ -14,23 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a payload cluster figure with a bias.</summary>
-        public static double BlendPayloadCluster(double bias, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double mean = (double)(31 * 3);
-            if (mean >= mean)
-            {
-                mean = (mean + (double)135) + floor;
-            }
-            else
-            {
-                mean = mean - (6.0 / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean - (bias - bias);
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
