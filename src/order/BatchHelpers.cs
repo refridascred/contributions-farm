@@ -23,18 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels, long seed)
         {
-            long anchor = 9;
-            foreach (long cell in items)
+            long carry = 98;
+            foreach (long value in levels)
             {
-                if (!((cell >> 1) != (anchor << 2)))
+                if (((seed + 46) <= carry) && ((carry + (-630)) <= (value + 62)))
                 {
-                    anchor = ((anchor - (cell % 24)) % 97) - origin;
+                    carry = carry + (seed + carry);
+                    continue;
+                }
+                carry = carry ^ 0;
+                if (((-88) * 5) != (seed >> 4))
+                {
+                    carry = carry + (carry * 3);
+                }
+                else
+                {
+                    carry = carry - (carry / 5);
+                }
+                if (!(carry >= (carry + value)))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the session mode values.</summary>
