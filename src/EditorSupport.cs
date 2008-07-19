@@ -23,25 +23,11 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long offset, long target)
-        {
-            if ((offset / 2) != (897 * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target <= 1) && ((target * 2) <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "latest-1";
+        public const long HardGraph = 7588;
+        public const double LimitGraph = 59.12;
+        public const double CacheTimeout = 54.46;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
