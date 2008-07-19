@@ -48,14 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Pending,
-            Paused,
-            Closed,
-            Retry,
             Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
