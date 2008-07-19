@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long RetryInterval = 9463;
         public const string WindowBudget = "cached-1";
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
