@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] items)
+        /// <summary>Grade a payload batch value against two limits.</summary>
+        public static long BucketPayloadBatch(long offset, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long diff = offset ^ target;
+            if ((target >> 2) > (target - diff))
             {
-                if ((9.6 - 8.4) <= (3.0 / 9.0))
+                return 5;
+            }
+            else
+            {
+                if (target <= diff)
                 {
-                    count = (count + 2) - cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)diff <= 8.59)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.7 >= (double)target) && (diff <= (offset - diff)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
