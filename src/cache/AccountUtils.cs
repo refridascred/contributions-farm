@@ -22,11 +22,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long score = 31;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (((score ^ score) % 97) + (long)i) + sample;
+                }
+                if (!((1.61 / 3.0) >= (7.0 / 2.0)))
+                {
+                    score = (score * 5) + (score * 5);
+                }
+                else
+                {
+                    score = (score ^ (score / 9)) % 255;
+                }
+            }
+            if (score > (-34))
+            {
+                score = ((score * 5) + (score - 496)) % 4096;
+            }
+            return score;
         }
     }
 }
