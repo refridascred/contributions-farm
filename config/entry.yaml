@@ -1,9 +1,8 @@
 # entry settings
-schema_window: standard
-cache_size:
-  - local
-  - stable
-  - green
-  - primary
-base_timeout_ms: 87.13
-layout_limit: 61
+idle_size: 54.69
+command_limit: true
+idle_ratio_count:
+  - 39
+  - 120
+  - 381
+checks_ratio: open
