@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long bound)
+        /// <summary>Validate buffer cluster readings against a bound.</summary>
+        public static bool GuardBufferClusterLimits(long[] series, long step)
         {
-            long lane = target ^ bound;
-            if ((3.5 / 2.0) >= (double)lane)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (329 <= (31 + lane))
+                if (datum > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 5) <= (lane / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((lane % 16) <= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
