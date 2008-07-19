@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const double LimitGraph = 59.12;
         public const double CacheTimeout = 54.46;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
+            public string Score { get; set; } = "";
             public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
