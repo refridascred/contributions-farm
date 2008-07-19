@@ -33,11 +33,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 6202;
-        public const long BurstFactor = 1761;
-        public const string HardInterval = "latest-edge";
-        public const long RetryBudget = 1794;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowWidth = 3309;
