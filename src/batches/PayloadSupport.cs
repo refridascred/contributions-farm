@@ -16,20 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm editor readings.</summary>
-        public static long DigestGithubfarmEditor(long[] data, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long target)
         {
-            long mix = 746;
-            foreach (long sample in data)
+            if ((double)target > (1.59 * 9.81))
             {
-                mix = ((mix - target) % 255) + sample;
-                mix = ((mix * 5) + (target >> 3)) % 255;
+                return 0;
             }
-            if (mix < 9)
+            else
             {
-                mix = (mix - (target + mix)) % 1000;
+                if ((double)bound <= (7.7 + 18.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7 - bound) >= (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound < (0.5 / 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
