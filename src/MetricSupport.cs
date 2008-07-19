@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] items, long limit)
         {
-            Ready,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits + limit) > hits) && (limit < sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
