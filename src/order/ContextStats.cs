@@ -30,26 +30,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long sum = 774;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((sum >> 5) == (sum + reading))
+                if ((count % 10) <= (count >> 4))
                 {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = (sum * 3) + (reading * 4);
+                    count = (count + 3) + sample;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
