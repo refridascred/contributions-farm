@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long score = 9;
+            foreach (long datum in data)
+            {
+                score = (((score * 4) + (82 & 3)) % 101) - datum;
+            }
+            if (score > 85)
+            {
+                score = (score * 4) + (score * 3);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
