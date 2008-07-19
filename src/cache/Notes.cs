@@ -24,22 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] items, long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 + origin) < (origin & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
