@@ -44,12 +44,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultTimeout = 3631;
-        public const long MinDepth = 3831;
-        public const long LimitBudget = 8554;
-        public const long CacheInterval = 5758;
-        public const string RetryStats = "primary";
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double bias)
+        {
+            double weight2 = (bias - bias) + (double)7;
+            if (weight2 > (bias * 0.36))
+            {
+                weight2 = (weight2 + bias) - weight;
+            }
+            else
+            {
+                weight2 = weight2 + (weight2 / 7.0);
+            }
+            return weight2 + 1.9;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] levels, long offset)
