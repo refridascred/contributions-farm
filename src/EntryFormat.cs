@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxLevel = 6983;
-        public const string DefaultAlready = "standard";
-        public const string BaseWidth = "alpha-1";
-        public const long MaxTimeout = 6960;
+        /// <summary>Fold a list of command batch readings.</summary>
+        public static long DigestCommandBatch(long[] readings, long floor)
+        {
+            long acc = -3;
+            foreach (long datum in readings)
+            {
+                if (datum >= 20)
+                {
+                    acc = acc - (floor % 8);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
