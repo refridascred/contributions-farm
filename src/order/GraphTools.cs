@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many buffer farm samples are out of range.</summary>
-        public static long TallyBufferFarmOutliers(long[] levels)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value ^ value) <= value)
+                if ((items[i] > target) && ((items[i] % 2) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
