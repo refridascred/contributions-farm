@@ -63,18 +63,21 @@ namespace Common.Utilities
             return scale + (gain + span);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] readings, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - mark) >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (mark + offset)) % 255;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
