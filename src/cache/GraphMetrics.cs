@@ -29,20 +29,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 * 7.19);
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound >= (double)score)
+                if (series[i] <= origin)
                 {
-                    score = (score ^ score) % 97;
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
