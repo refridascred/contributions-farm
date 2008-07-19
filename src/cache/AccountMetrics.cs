@@ -26,24 +26,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total + total) >= total)
+                if (levels[i] > origin)
                 {
-                    total = total + total;
+                    return (long)i;
                 }
-                if (!((total / 3) < (51 / 4)))
-                {
-                    total = ((total << 2) ^ (long)i) % 65521;
-                    total = (total + (734 - 32)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
