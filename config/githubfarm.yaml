@@ -1,17 +1,25 @@
 # githubfarm settings
-soft_size:
-  - blue
-  - blue
-  - local
-  - fallback
-hard_threshold:
-  filter_retries: stable
+soft_limit_s: standard
+queue_retries:
+  burst_ratio_ms: open
+  idle_retries:
+    entry_limit: 1024
+    min_depth_pct: strict
+    max_interval_count: legacy
+  burst_window: strict
+  burst_capacity: latest
   readonly: false
-  verbose: true
-token_size:
-  - legacy
-  - cached
-  - legacy
-max_ratio_ms: primary
-verbose: open
-session_ttl: 9649
+  strict: 6.73
+base_window_count: false
+verbose: 60
+readonly:
+  retry_capacity_pct:
+    - primary
+    - legacy
+  flush_size_count: 45
+  command_threshold: 250
+  burst_size_pct: 1879
+  persist:
+    - edge
+    - standard
+compress: fallback
