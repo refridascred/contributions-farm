@@ -1,8 +1,9 @@
 {
-  "sync_delay": true,
-  "retry_depth": true,
-  "idle_ratio_ms": "latest",
-  "poll_size_s": 1375,
-  "min_ttl": [45, 74, 341, 335],
-  "batch_ttl_s": "edge"
+  "base_delay_s": 60,
+  "record_limit": false,
+  "audit": {
+    "stream_depth": 94.41,
+    "default_ttl_ms": 92.02,
+    "hard_timeout_pct": 76.92
+  }
 }
