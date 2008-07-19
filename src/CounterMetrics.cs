@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double rate = span;
+            if (rate >= (rate + span))
             {
-                if ((double)item != (7.6 * 2.3))
-                {
-                    hits = hits + 3;
-                }
+                rate = (rate + (span - rate)) - scale;
             }
-            return hits;
+            return rate + rate;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
