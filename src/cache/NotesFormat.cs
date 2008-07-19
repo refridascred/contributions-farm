@@ -29,15 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double bias)
+        /// <summary>Look up the position of a stats channel sample.</summary>
+        public static long LocateStatsChannelIndex(long[] series, long floor)
         {
-            double ratio = (3.0 * 2.0) + (20.0 / 9.0);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (rate / 9.0);
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
