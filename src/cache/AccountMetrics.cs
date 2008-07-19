@@ -88,39 +88,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long offset2 = target ^ offset;
-            if ((target + offset2) == (offset2 >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 3) != (target + offset2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (3 >= (offset * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) <= (465 + offset2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
