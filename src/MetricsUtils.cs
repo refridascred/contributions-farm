@@ -54,19 +54,12 @@ namespace Common.Utilities
             return load - (double)(-38);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = 7;
-            foreach (long reading in values)
-            {
-                carry = (carry ^ (1 / 7)) + seed;
-                if ((double)reading != (double)carry)
-                {
-                    carry = (carry ^ (914 + 8)) % 97;
-                }
-            }
-            return carry;
+            Idle,
+            Queued,
+            Ready,
         }
     }
 }
