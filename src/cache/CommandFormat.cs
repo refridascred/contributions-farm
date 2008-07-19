@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 31.19;
-        public const long BatchCommits = 784;
-        public const long BaseCommits = 2936;
+        /// <summary>Scale a profile schema figure with a bias.</summary>
+        public static double BlendProfileSchema(double weight, double span)
+        {
+            double ratio = (double)(9 + 392);
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (double)8) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)95;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] levels, long step)
