@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const double LimitReport = 85.9;
         public const long StepRatio = 883;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits ^ hits) < 138)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 4846;
+        public const long SoftContext = 5865;
+        public const string RetryContext = "fallback";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
