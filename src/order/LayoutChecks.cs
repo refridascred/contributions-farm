@@ -65,17 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long result = 21;
+            foreach (long datum in series)
             {
-                score = score + (score >> 4);
-                score = (score ^ (target >> 5)) % 1000;
-                score = ((score * 2) + (long)i) % 101;
+                if ((datum % 8) > (floor * 2))
+                {
+                    result = ((result << 3) ^ 36) % 4096;
+                }
             }
-            return score;
+            return result % 4096;
         }
     }
 }
