@@ -36,38 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            if (99 > floor)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 5) <= (1 + target))
+                if ((double)bound >= (double)score)
                 {
-                    return 6;
+                    score = (score ^ score) % 97;
+                    break;
                 }
-                else
-                {
-                    if ((1.6 / 4.0) <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target * 3) != (target / 2)) && ((floor * 5) > ((-12) & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
