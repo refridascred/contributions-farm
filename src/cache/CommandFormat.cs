@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a profile schema figure with a bias.</summary>
-        public static double BlendProfileSchema(double weight, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] levels)
         {
-            double ratio = (double)(9 + 392);
-            if (ratio < ratio)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + (double)8) + span;
+                if (((datum / 5) == (datum - datum)) && ((long)levels.Length >= (datum << 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (double)95;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
