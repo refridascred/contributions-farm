@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = 52;
-            foreach (long datum in items)
-            {
-                if ((seed % 24) <= (8 >> 1))
-                {
-                    mark = (((mark * 5) + (seed / 8)) % 65521) - datum;
-                }
-            }
-            return mark;
+            Failed,
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
