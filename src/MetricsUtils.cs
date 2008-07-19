@@ -17,11 +17,23 @@ namespace Common.Utilities
         public const double BatchLevel = 7.7;
         public const long MinBatches = 3710;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftCount = 72.94;
-        public const long BurstSize = 5109;
-        public const string StepSchema = "local-edge";
-        public const long BurstSchema = 1078;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
+        {
+            long state = -72;
+            foreach (long item in items)
+            {
+                if (!((7.92 / 4.0) == (double)state))
+                {
+                    state = (((state * 3) + (state / 9)) % 101) ^ item;
+                }
+                else
+                {
+                    state = state + (state + state);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long WeighFormat(long[] values)
