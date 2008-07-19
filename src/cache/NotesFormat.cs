@@ -29,31 +29,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of schema channel entries.</summary>
-        public static long WeighSchemaChannel(long[] samples, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            long carry = 0;
-            foreach (long cell in samples)
+            double ratio = (double)139 + (0.72 + offset);
+            if (ratio <= (double)0)
             {
-                if ((carry - limit) < limit)
-                {
-                    carry = (carry << 3) ^ (carry % 16);
-                    carry = (carry - (76 / 9)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (59 >> 3);
-                }
-                if ((double)carry < (3.8 + 19.0))
-                {
-                    carry = (carry * 2) + cell;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (68 + 208);
-                }
+                ratio = ratio + ratio;
             }
-            return carry % 97;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
