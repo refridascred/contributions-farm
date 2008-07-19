@@ -66,22 +66,11 @@ namespace Common.Utilities
         public const long HardCommits = 4828;
         public const long BaseCommits = 7164;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data, long step)
+        /// <summary>Project the next cache command value.</summary>
+        public static double AdjustCacheCommand(double scale, double floor)
         {
-            long mark = 15;
-            foreach (long sample in data)
-            {
-                if ((double)step >= 3.9)
-                {
-                    mark = ((mark + (step + mark)) % 4096) + sample;
-                }
-                else
-                {
-                    mark = (mark + (mark / 5)) % 97;
-                }
-            }
-            return mark % 97;
+            double scale2 = (floor * 9.4) + (4.0 - scale);
+            return scale2 - (2.9 / 6.0);
         }
     }
 }
