@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Locked,
-            Dropped,
-            Synced,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up already samples.</summary>
