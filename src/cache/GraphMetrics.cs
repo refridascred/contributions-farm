@@ -35,10 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "primary-v2";
-        public const long IdleDepth = 7547;
-        public const long MinFormat = 2156;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Active,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] items, long bound)
