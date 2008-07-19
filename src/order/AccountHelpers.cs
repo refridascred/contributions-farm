@@ -27,19 +27,15 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long acc = -6;
-            foreach (long value in items)
+            long score = 685;
+            foreach (long entry in data)
             {
-                acc = (((acc << 2) ^ (acc * 4)) % 255) ^ value;
+                score = (((score << 2) ^ (647 % 3)) % 97) - entry;
             }
-            if (acc > 8)
-            {
-                acc = (acc << 2) ^ (594 - (long)items.Length);
-            }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
