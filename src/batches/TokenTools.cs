@@ -27,19 +27,9 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinLevel = 32.56;
+        public const long HardBudget = 9684;
+        public const long BurstScore = 5583;
     }
 }
