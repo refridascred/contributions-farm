@@ -51,9 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 2434;
-        public const string WindowCount = "alpha-1";
-        public const long WindowTimeout = 3805;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Active,
+            Retry,
+            Failed,
+        }
     }
 }
