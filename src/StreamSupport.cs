@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 53.9;
+        public const long LimitSize = 7619;
+        public const long BatchSession = 7070;
+        public const long LimitSpan = 2882;
+        public const long MinFactor = 1087;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstGithubfarm = 8133;
