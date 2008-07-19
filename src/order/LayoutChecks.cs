@@ -62,27 +62,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = 427;
-            foreach (long reading in items)
-            {
-                if (!((target * 4) > (9 ^ target)))
-                {
-                    anchor = ((anchor * 5) + (anchor ^ reading)) % 1000;
-                }
-                if ((double)anchor <= (double)reading)
-                {
-                    anchor = (anchor * 4) + (reading & 7);
-                    anchor = anchor ^ (long)items.Length;
-                }
-                if ((anchor >> 2) != ((-82) + target))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
+            New,
+            Retry,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
