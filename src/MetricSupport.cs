@@ -30,13 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            Draft,
-            Active,
-            Failed,
-            Locked,
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = (result - target) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
