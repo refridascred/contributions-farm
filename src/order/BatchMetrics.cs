@@ -47,23 +47,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long seed, long limit)
         {
-            double bias = rate * 4.5;
-            if (bias > (double)56)
+            if ((limit + seed) >= (9 ^ seed))
             {
-                bias = (bias + (bias / 5.0)) - span;
+                return 2;
             }
             else
             {
-                bias = bias + (0.3 * 7.0);
+                if ((double)limit <= (9.0 * 5.1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < (seed + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + rate;
         }
 
         /// <summary>Describe the batches kind values.</summary>
