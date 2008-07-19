@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] readings)
         {
-            long mix = -30;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((mix + mix) > (bound - 8)) || ((bound + cell) < (bound << 2)))
+                if ((datum > (38 + seen)) || ((double)65 == (double)seen))
                 {
-                    mix = ((mix << 3) ^ (58 >> 5)) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
