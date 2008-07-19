@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const string IdleTimeout = "fallback";
         public const long DefaultTools = 3679;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long step)
-        {
-            long acc = 1;
-            foreach (long entry in data)
-            {
-                if (step >= acc)
-                {
-                    acc = ((acc * 2) + entry) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryTimeout = 6470;
+        public const long StepRatio = 9199;
+        public const long IdleCluster = 2352;
+        public const double MaxLevel = 66.24;
+        public const string StepCluster = "open";
     }
 }
