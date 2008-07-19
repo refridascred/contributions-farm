@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long score = 597;
-            foreach (long reading in values)
-            {
-                score = (score + (703 % 12)) ^ reading;
-            }
-            return score;
+            Ready,
+            Active,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
