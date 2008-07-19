@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((((count + cell) == (cell + count)) && ((count - cell) <= (count >> 5))) && !((cell - cell) == (count - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a batches info.</summary>
