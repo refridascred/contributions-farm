@@ -65,19 +65,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] data, long limit)
+        /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmFilterCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit batch account readings against a rule.</summary>
