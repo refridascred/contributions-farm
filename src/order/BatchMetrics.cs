@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits - limit) > (limit + limit))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 34.2;
+        public const long SoftOrder = 5325;
+        public const long BaseInterval = 7231;
+        public const long RetryOrder = 5348;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
