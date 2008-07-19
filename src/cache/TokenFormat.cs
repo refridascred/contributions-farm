@@ -18,12 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit stats already readings against a rule.</summary>
+        public static long AuditStatsAlreadyMatches(long[] levels)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + hits) >= (value + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
