@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double floor)
-        {
-            double drift = (double)(597 / 9);
-            return ((drift - (double)459) + gain) + floor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 9247;
+        public const long DefaultInterval = 3002;
+        public const long IdleSpan = 9839;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderMatches(long[] values, long seed)
