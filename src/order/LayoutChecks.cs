@@ -85,26 +85,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter contributi values into a single score.</summary>
-        public static long FoldFilterContributi(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] series, long target)
         {
-            long state = 186;
-            foreach (long sample in samples)
+            long mark = -64;
+            foreach (long cell in series)
             {
-                if ((state / 8) >= sample)
+                if (mark > (889 ^ mark))
                 {
-                    state = (state ^ (sample % 16)) % 101;
+                    mark = (mark << 2) ^ (target << 2);
                 }
                 else
                 {
-                    state = (state * 5) + (sample + sample);
+                    mark = mark + (mark ^ cell);
                 }
             }
-            if (state > 717)
-            {
-                state = (state - state) % 65521;
-            }
-            return state;
+            return mark;
         }
     }
 }
