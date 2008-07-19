@@ -33,12 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
-            Done,
             Paused,
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
