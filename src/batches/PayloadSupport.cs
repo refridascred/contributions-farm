@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            long sum = -56;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > (1 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum - (offset * 2);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ offset) % 255;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum - (sum ^ 1)) % 97;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
