@@ -1,7 +1,17 @@
 {
-  "session_ttl": "blue",
-  "order_interval": "blue",
-  "hard_timeout": true,
-  "batch_delay_ms": "local",
-  "cache_retries_pct": 68.43
+  "poll_limit_s": false,
+  "burst_depth": 6,
+  "cache_timeout": {
+    "max_retries": true,
+    "min_delay_s": [86, 48],
+    "batches_ttl": 2388,
+    "cluster_window": true
+  },
+  "sync_capacity": {
+    "flush_delay_count": 70.28,
+    "profile_interval": 93,
+    "persist": 96
+  },
+  "dry_run": false,
+  "retry_ttl_ms": 8010
 }
