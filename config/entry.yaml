@@ -1,9 +1,5 @@
 # entry settings
-filter_capacity: fallback
-payload_ttl: local
-retry_limit_pct:
-  - legacy
-  - latest
-  - primary
-  - cached
-verbose: 39.6
+audit: cached
+retry_threshold_pct: standard
+default_ttl_pct: 62
+default_timeout_pct: false
