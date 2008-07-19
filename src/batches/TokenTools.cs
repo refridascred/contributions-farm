@@ -21,17 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] series, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
