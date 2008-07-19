@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)sum > 8.4) || ((floor * 4) != (floor + (-92))))
-                {
-                    sum = ((sum * 5) + sum) % 101;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
