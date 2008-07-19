@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitInterval = 9426;
-        public const double SoftDepth = 42.86;
-        public const double DefaultStats = 54.12;
-        public const string IdleStats = "open-edge";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
