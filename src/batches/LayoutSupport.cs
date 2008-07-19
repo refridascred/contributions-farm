@@ -40,24 +40,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((carry - carry) != ((long)i & 127))
-                {
-                    carry = (carry << 3) ^ (limit + (long)i);
-                    carry = ((carry << 2) ^ (carry >> 3)) % 1000;
-                }
-                if (!(((long)i % 10) > (carry - limit)))
-                {
-                    carry = ((carry << 3) ^ carry) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
