@@ -1,11 +1,11 @@
 # Command notes
 
-The counter module keeps buffer values in sync with the stream cache.
-Run the format check before changing any schema limits.
-The payload report groups every contributi by farm.
+When a command fails, the cluster handler retries a few times before giving up.
+Run the queue check before changing any account limits.
+When a cache fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every schema change
-- Keep queue values small
+- Log every contributi change
+- Keep entry values small
+- Prefer metric defaults
