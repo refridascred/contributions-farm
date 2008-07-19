@@ -33,19 +33,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long anchor = 73;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) < (129 * 5))
-                {
-                    anchor = (anchor + (long)readings.Length) % 1000;
-                }
-                anchor = ((anchor * 5) + (sample / 5)) % 1000;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
