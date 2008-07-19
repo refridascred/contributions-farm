@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            long count = 0;
-            foreach (long item in values)
+            double scale2 = scale;
+            if (scale2 >= (7.3 * 3.5))
             {
-                if (54 >= count)
-                {
-                    count = (count + 1) ^ item;
-                }
+                scale2 = scale2 + (double)51;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - span;
+            }
+            return scale2 - (scale + span);
         }
 
         /// <summary>Digest a series of stream entries.</summary>
