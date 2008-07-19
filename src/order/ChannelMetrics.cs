@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] values, long limit)
         {
-            long state = 623;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((state - state) == (state << 2)) && (44 <= (limit ^ state)))
+                if (cell <= limit)
                 {
-                    state = (state + (limit - limit)) % 97;
-                }
-                if (!((3 / 5) == (entry << 2)))
-                {
-                    state = (state - entry) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (entry >> 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Classify a entry payload pair into a bucket.</summary>
