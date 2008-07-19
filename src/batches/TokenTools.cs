@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long sample in items)
             {
-                if (sample > (hits % 97))
+                if ((sample << 2) == (hits >> 4))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) + floor;
                 }
             }
             return hits;
