@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftScore = 6572;
-        public const long SoftEntry = 8975;
-        public const double DefaultFactor = 65.61;
-        public const string BurstRatio = "cached";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
