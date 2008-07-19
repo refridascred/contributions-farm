@@ -88,9 +88,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 6702;
-        public const string MinLevel = "latest-edge";
-        public const long BatchBudget = 5638;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Failed,
+            Draft,
+            Closed,
+            Active,
+        }
     }
 }
