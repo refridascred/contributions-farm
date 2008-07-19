@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long acc = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - acc) % 101) - value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
