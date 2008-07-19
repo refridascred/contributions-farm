@@ -26,19 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] series, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (datum >= limit)
+                if ((seen << 1) <= (seen + seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
