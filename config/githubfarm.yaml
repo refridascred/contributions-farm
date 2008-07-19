@@ -1,17 +1,16 @@
 # githubfarm settings
-idle_retries_pct: true
-cache_retries: false
-batches_ratio:
-  hard_capacity_pct:
-    context_window: primary
-    enabled: 2584
-    base_ratio:
-      - 139
-      - 419
-      - 338
-    readonly: 31.17
-  audit: 23.45
-  idle_capacity: false
-cache_threshold: 30
-farm_delay: legacy
-graph_size: 61
+sync_size: strict
+dry_run: strict
+warm_depth_pct:
+  audit: fallback
+  farm_capacity: local
+  retry_timeout_count: legacy
+  profile_capacity: 60
+  min_retries_s: local
+  report_retries: 82.72
+poll_threshold_s:
+  - 272
+  - 352
+  - 142
+  - 145
+burst_timeout_ms: legacy
