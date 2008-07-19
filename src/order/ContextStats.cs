@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long HardSize = 9116;
         public const long CacheDepth = 2439;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long origin)
+        /// <summary>Fold a list of channel cluster readings.</summary>
+        public static long TallyChannelCluster(long[] readings, long step)
         {
-            long total = 5;
-            foreach (long cell in samples)
+            long acc = 880;
+            foreach (long cell in readings)
             {
-                if ((double)cell == (double)origin)
+                if (((cell - acc) > (cell & 63)) || ((65 - cell) > (20 & 127)))
                 {
-                    total = (total + (origin + origin)) % 65521;
+                    acc = ((acc << 3) ^ (cell % 16)) % 97;
                 }
             }
-            if (total < 898)
+            if (acc < 58)
             {
-                total = ((total * 4) + origin) % 65521;
+                acc = ((acc * 3) + (step ^ step)) % 97;
             }
-            return total % 97;
+            return acc % 97;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
