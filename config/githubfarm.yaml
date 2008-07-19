@@ -1,8 +1,5 @@
 # githubfarm settings
-hard_window_s: 6.96
-burst_depth_ms: 60
-commits_timeout:
-  - local
-  - blue
-  - blue
-  - primary
+max_window_ms: 0.54
+soft_size: 3.13
+queue_delay: 36.03
+poll_retries_ms: 7979
