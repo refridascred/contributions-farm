@@ -17,12 +17,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 8036;
-        public const long IdleEntry = 895;
-        public const long CacheEntry = 6794;
-        public const string MinBudget = "fallback-edge";
-        public const long LimitBudget = 7690;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long origin2)
+        {
+            long next = origin - origin2;
+            if ((next << 1) >= 5)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((351 ^ origin2) == (origin2 - origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
