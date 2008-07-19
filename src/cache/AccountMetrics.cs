@@ -19,13 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate checks session samples.</summary>
+        public static long WeighChecksSession(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                sum = (sum + datum) % 1000;
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
