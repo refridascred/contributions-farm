@@ -23,18 +23,18 @@ namespace Common.Utilities
             return drift - (bias / 9.0);
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] readings, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] readings, long step)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long item in readings)
             {
-                if (item < 9)
+                if (!((count & 127) <= 3))
                 {
-                    hits = (hits + 3) + limit;
+                    count = ((count + 2) + item) - step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
