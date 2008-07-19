@@ -1,12 +1,13 @@
 {
-  "sync_interval": 48.48,
-  "soft_limit_pct": "latest",
-  "verbose": {
-    "default_ratio_ms": 60,
-    "record_interval": "standard",
-    "hard_interval_count": 83,
-    "dry_run": "stable"
+  "persist": 3861,
+  "farm_limit": {
+    "profile_capacity": "legacy",
+    "poll_size": 80,
+    "poll_threshold_count": [187, 482],
+    "retry_retries_pct": 83.0,
+    "sync_interval_pct": [373, 174]
   },
-  "default_timeout_ms": "cached",
-  "warm_capacity_ms": 0.97
+  "token_interval": 1.43,
+  "metric_capacity": 94.14,
+  "account_capacity": false
 }
