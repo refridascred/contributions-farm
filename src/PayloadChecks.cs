@@ -81,10 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchInterval = 8066;
-        public const long BurstOrder = 3242;
-        public const string CacheOrder = "standard";
-        public const long DefaultOrder = 4892;
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool GuardSupportProfileLimits(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
