@@ -61,35 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record farm samples.</summary>
-        public static long TallyRecordFarm(long[] values, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long score = 9;
-            foreach (long value in values)
-            {
-                score = score - (origin * 5);
-                if (!!((20.0 - 5.2) <= (double)value))
-                {
-                    score = score - score;
-                }
-                if ((64 / 2) < value)
-                {
-                    score = score ^ (7 + value);
-                }
-                else
-                {
-                    score = score + (value + origin);
-                }
-                if (value > origin)
-                {
-                    break;
-                }
-            }
-            if (score > 4)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            Locked,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
