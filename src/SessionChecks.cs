@@ -32,21 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Project the next metrics githubfarm value.</summary>
+        public static double BlendMetricsGithubfarm(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (3.9 * 7.18) * 2.11;
+            if (bias2 > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 + bias;
             }
-            return count;
+            return bias2 + bias;
         }
 
         /// <summary>Derive the next graph notes value from a seed.</summary>
