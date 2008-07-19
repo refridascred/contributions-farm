@@ -65,15 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            double scale = 17.0;
+            if (scale <= 2.0)
             {
-                result = ((result * 5) + (long)i) % 101;
+                scale = scale + (double)276;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Count the notes commits entries that pass the check.</summary>
