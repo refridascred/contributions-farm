@@ -101,21 +101,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 221;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ (5 + (long)readings.Length)) + value;
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
