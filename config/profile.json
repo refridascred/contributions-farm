@@ -1,5 +1,12 @@
 {
-  "idle_threshold_count": "edge",
-  "report_interval": "standard",
-  "cache_ratio": true
+  "retry_delay": {
+    "notes_interval": 51.75,
+    "base_retries_count": 52.87,
+    "format_interval": 100,
+    "idle_threshold": "eu-west",
+    "compress": true
+  },
+  "burst_interval_pct": ["legacy", "edge", "cached"],
+  "account_limit": 58.41,
+  "default_threshold_count": 60
 }
