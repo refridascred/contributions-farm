@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double bias)
-        {
-            double ratio = gain;
-            if (ratio < (double)40)
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (double)1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleRatio = "open-1";
+        public const long StepCount = 349;
+        public const long RetryPayload = 4866;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] readings)
