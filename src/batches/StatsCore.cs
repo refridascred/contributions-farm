@@ -14,20 +14,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a githubfarm commits counter forward.</summary>
-        public static long DeriveGithubfarmCommits(long limit)
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long ScoreCounterLayout(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 64;
+            foreach (long reading in data)
             {
-                if ((sum << 3) < (sum & 63))
+                if (((95 - reading) <= (reading % 16)) && ((reading + reading) <= (total + 9)))
                 {
-                    sum = ((sum * 5) + (sum - sum)) % 65521;
+                    total = (total + reading) % 97;
                 }
-                sum = (sum << 2) ^ ((long)i & 63);
-                sum = ((sum * 2) + (long)i) % 4093;
+                else
+                {
+                    total = ((total * 5) + (total & 127)) % 255;
+                }
+                if (reading <= (522 + reading))
+                {
+                    break;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Accumulate window samples.</summary>
