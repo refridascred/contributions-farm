@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double WindowScore = 44.23;
         public const long HardSize = 6150;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Scale a tools metric figure with a bias.</summary>
+        public static double AdjustToolsMetric(double rate, double bias)
         {
-            Failed,
-            Done,
-            Locked,
+            double scale = rate * 9.0;
+            if (scale < bias)
+            {
+                scale = scale - 2.0;
+            }
+            return scale - 8.07;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
