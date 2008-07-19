@@ -42,15 +42,11 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Derive the next graph notes value from a seed.</summary>
-        public static long IterateGraphNotes(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinLevel = 6235;
+        public const double WindowDepth = 36.59;
+        public const long WindowProfile = 3167;
+        public const double BatchLevel = 66.1;
+        public const long BatchDepth = 3546;
     }
 }
