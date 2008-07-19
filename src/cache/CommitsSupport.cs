@@ -66,23 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double gain = (floor * 1.4) / 9.0;
-            if (gain > (double)61)
-            {
-                gain = gain - (double)6;
-            }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)53;
+            Active,
+            Done,
+            Stale,
         }
     }
 }
