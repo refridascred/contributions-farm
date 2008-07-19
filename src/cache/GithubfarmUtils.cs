@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine filter tools values into a single score.</summary>
-        public static long WeighFilterTools(long[] samples)
+        /// <summary>Adjust a metrics buffer reading.</summary>
+        public static double SmoothMetricsBuffer(double ratio, double bias)
         {
-            long state = 1;
-            foreach (long entry in samples)
+            double ratio2 = bias;
+            if (ratio2 < (double)268)
             {
-                if (!((15 + entry) <= state))
-                {
-                    state = state + (entry + state);
-                }
+                ratio2 = (ratio2 - bias) + ratio;
             }
-            if (state > 41)
+            for (int i = 0; i < 6; i++)
             {
-                state = state ^ (state << 1);
+                ratio2 = (ratio2 + (bias + ratio2)) + (double)(long)i;
             }
-            return state;
+            return ratio2 - (double)17;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
