@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSize = 5744;
+        public const string WindowMetrics = "latest-v2";
+        public const long IdleMetrics = 1027;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 6845;
