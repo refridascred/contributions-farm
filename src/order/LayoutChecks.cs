@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long prev = target - seed;
-            if ((target % 2) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((prev & 7) >= (seed / 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
