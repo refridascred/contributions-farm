@@ -28,9 +28,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSpan = 6754;
-        public const long MaxChecks = 5457;
-        public const long StepChecks = 5636;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepSpan = "fallback";
+        public const string MaxLayout = "latest-v2";
+        public const string CacheLayout = "staging";
+        public const long BaseLayout = 1396;
+        public const string RetryBudget = "fallback";
     }
 }
