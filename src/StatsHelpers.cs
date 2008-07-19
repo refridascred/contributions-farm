@@ -89,10 +89,18 @@ namespace Common.Utilities
         public const string BatchChannel = "stable-v2";
         public const long MaxDepth = 4038;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 8741;
-        public const long HardBatches = 2929;
-        public const long LimitCount = 1324;
-        public const string MinDepth = "fallback-edge";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value << 1) != (matches + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
