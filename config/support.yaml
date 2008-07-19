@@ -1,10 +1,10 @@
 # support settings
-base_window_s: staging
-retry_delay_s: 66
-record_limit: 41.76
-flush_depth_pct: 95.04
-min_depth_pct:
-  - 350
-  - 189
-  - 232
-  - 143
+readonly: cached
+metrics_ttl: 250
+idle_limit:
+  - open
+  - legacy
+  - primary
+contributi_interval: 100
+soft_limit_s: 100
+enabled: primary
