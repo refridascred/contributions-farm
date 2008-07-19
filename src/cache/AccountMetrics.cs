@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches < (double)sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
