@@ -1,13 +1,13 @@
 {
-  "support_delay": 7317,
-  "warm_limit_ms": "stable",
-  "default_retries_pct": {
-    "soft_ratio": false,
-    "batch_timeout_ms": 11,
-    "payload_threshold": 90,
-    "burst_limit_pct": 4,
-    "min_threshold_s": false,
-    "retry_retries_count": "stable"
+  "audit": {
+    "sync_timeout": "local",
+    "poll_size_count": ["open", "stable", "fallback"],
+    "queue_ratio": [7, 210, 364],
+    "poll_threshold_pct": [47, 222, 355, 420],
+    "retry_interval_s": ["edge", "fallback", "strict"],
+    "cluster_limit": 523
   },
-  "audit": [326, 402, 138, 166]
+  "payload_delay": ["cached", "strict", "latest"],
+  "warm_limit_s": 30,
+  "batches_retries": "local"
 }
