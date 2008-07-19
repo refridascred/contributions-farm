@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= limit)
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
