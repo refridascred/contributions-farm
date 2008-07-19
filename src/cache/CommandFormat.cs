@@ -41,12 +41,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleDepth = 63.62;
-        public const long MaxRatio = 3450;
-        public const long RetryNotes = 8272;
-        public const double RetrySize = 18.16;
-        public const double LimitNotes = 92.79;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterLimits(long[] samples, long offset)
