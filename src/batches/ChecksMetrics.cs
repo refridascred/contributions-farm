@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Ready,
             Synced,
-            Draft,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
