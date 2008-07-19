@@ -1,6 +1,8 @@
-id,state,active
-1,22.21,standard
-2,eu-west,276
-3,3.45,50.53
-4,local,609
-5,local,legacy
+id,label,token
+1,358,556
+2,edge,167
+3,373,249
+4,229,809
+5,eu-west,legacy
+6,747,51.23
+7,28.93,fallback
