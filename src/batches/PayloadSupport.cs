@@ -17,13 +17,14 @@ namespace Common.Utilities
         public const string WindowNotes = "alpha-v2";
         public const string CacheNotes = "standard";
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Idle,
-            Done,
+            Synced,
+            Ready,
             Queued,
+            Dropped,
+            Done,
         }
     }
 }
