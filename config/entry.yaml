@@ -1,10 +1,4 @@
 # entry settings
-warm_timeout_ms: 63
-warm_ttl: true
-default_delay_count: 72.98
-hard_delay: 250
-batch_timeout: 62.77
-readonly:
-  - 448
-  - 316
-  - 2
+default_retries_pct: 1.35
+cache_limit: 35
+min_threshold_s: false
