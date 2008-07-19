@@ -85,22 +85,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (3 >= (631 - step))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
