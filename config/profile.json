@@ -1,9 +1,5 @@
 {
-  "base_delay_s": 60,
-  "record_limit": false,
-  "audit": {
-    "stream_depth": 94.41,
-    "default_ttl_ms": 92.02,
-    "hard_timeout_pct": 76.92
-  }
+  "idle_threshold_count": "edge",
+  "report_interval": "standard",
+  "cache_ratio": true
 }
