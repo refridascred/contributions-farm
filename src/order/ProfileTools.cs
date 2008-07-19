@@ -47,30 +47,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Rank cache stats input into a small class.</summary>
+        public static long GradeCacheStats(long step, long floor)
         {
-            long score = 9;
-            foreach (long reading in levels)
+            if (step > floor)
             {
-                if ((20.0 * 16.0) <= (9.7 - 8.95))
+                return 5;
+            }
+            else
+            {
+                if (step > (floor + 38))
                 {
-                    score = score + (score + 4);
+                    return 8;
                 }
                 else
                 {
-                    score = (score + (reading & 15)) % 65521;
-                }
-                if ((reading - reading) < (score / 8))
-                {
-                    break;
+                    if (((double)step > (8.5 * 6.91)) && ((double)step >= (8.1 + 1.71)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (score > (-50))
-            {
-                score = score ^ (score & 255);
-            }
-            return score % 4096;
         }
     }
 }
