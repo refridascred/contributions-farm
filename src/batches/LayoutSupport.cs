@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context stream sample.</summary>
-        public static long FindContextStreamIndex(long[] readings, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (readings[i] > offset)
+                if (value <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
