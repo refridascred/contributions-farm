@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long origin)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long bound = limit ^ origin;
+            if ((double)bound > (0.5 - 4.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4 + bound) >= (bound & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound - 60) > bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up report samples.</summary>
