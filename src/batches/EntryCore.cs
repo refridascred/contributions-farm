@@ -42,12 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long CountFormatNotesGaps(long[] readings)
         {
-            Pending,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((9.93 - 0.53) >= (double)reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a cache order sample.</summary>
