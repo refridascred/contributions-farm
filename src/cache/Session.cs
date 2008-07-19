@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const double LimitBudget = 13.76;
         public const long IdleEditor = 7398;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + count) > sample)
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
     }
 }
