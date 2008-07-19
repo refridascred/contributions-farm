@@ -56,10 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 1995;
-        public const long LimitPayload = 5313;
-        public const long CacheCount = 7113;
-        public const double MaxPayload = 24.79;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
