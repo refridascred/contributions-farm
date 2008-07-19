@@ -33,28 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of queue batch entries.</summary>
-        public static long DigestQueueBatch(long[] levels)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long seed)
         {
-            long carry = 7;
-            foreach (long datum in levels)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    carry = ((carry + (carry << 1)) % 97) - (long)i;
+                    result = ((result + (seed - seed)) % 97) ^ (long)i2;
                 }
-                if ((carry - datum) == (9 / 5))
-                {
-                    carry = (carry + (carry << 3)) % 65521;
-                    carry = (carry + (datum & 7)) % 97;
-                }
-                carry = (carry - (datum * 5)) % 101;
-                if ((datum << 1) > (carry - carry))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return carry % 1000;
+            return result;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
