@@ -1,12 +1,5 @@
 {
-  "buffer_retries": {
-    "schema_ttl": "fallback",
-    "min_window": [451, 55],
-    "soft_threshold_pct": false,
-    "strict": 73,
-    "counter_interval": "fallback"
-  },
-  "strict": "cached",
-  "enabled": ["standard", "legacy"],
-  "idle_timeout_count": "fallback"
+  "checks_threshold": 17.68,
+  "batches_capacity": true,
+  "persist": 1024
 }
