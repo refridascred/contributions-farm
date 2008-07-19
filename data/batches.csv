@@ -1,7 +1,6 @@
-id,token,level,region
-1,primary,564,edge
-2,141,109,stable
-3,92.87,49.92,9.45
-4,389,69.91,771
-5,0.82,green,65.01
-6,372,strict,83.94
+id,region,owner
+1,52.49,11.89
+2,open,401
+3,28.17,740
+4,strict,11.72
+5,29.02,blue
