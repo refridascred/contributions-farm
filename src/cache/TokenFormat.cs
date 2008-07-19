@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support info.</summary>
