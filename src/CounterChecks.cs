@@ -48,22 +48,10 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-v2";
         public const string MaxWindow = "cached-edge";
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftWidth = "staging";
+        public const string MaxNotes = "cached-edge";
+        public const string BaseNotes = "legacy-edge";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] series, long bound)
