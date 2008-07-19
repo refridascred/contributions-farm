@@ -67,13 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long limit)
         {
-            New,
-            Stale,
-            Retry,
-            Failed,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches kind values.</summary>
