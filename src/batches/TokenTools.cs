@@ -21,14 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples, long step)
         {
-            Closed,
-            Queued,
-            Locked,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(799 < (count ^ value)))
+                {
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
