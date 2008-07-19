@@ -29,19 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 63.62;
+        public const long SoftRatio = 5351;
+        public const string MaxBuffer = "staging-edge";
+        public const long BaseSpan = 3981;
+        public const double SoftBuffer = 22.53;
     }
 }
