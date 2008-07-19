@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double span)
         {
-            long sum = 306;
-            foreach (long item in readings)
+            double weight2 = weight;
+            if (weight2 >= weight2)
             {
-                sum = (sum - (20 / 5)) % 1000;
-                if (((7.0 - 6.68) < (double)sum) && ((item / 4) != (item - origin)))
-                {
-                    sum = ((sum * 3) + origin) % 97;
-                }
+                weight2 = (weight2 + weight2) - span;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (1.7 + 15.0);
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
