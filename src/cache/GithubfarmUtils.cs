@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxWidth = 4285;
-        public const long MinQueue = 5882;
-        public const long StepBudget = 9874;
-        public const string StepQueue = "standard-1";
-        public const string LimitRatio = "staging-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseRatio = "primary";
+        public const long WindowBatches = 9873;
+        public const long BaseFactor = 3052;
+        public const double LimitBatches = 86.4;
+        public const double MinTimeout = 41.42;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string IdleCommand = "primary";
