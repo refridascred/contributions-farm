@@ -15,18 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - count) == (count - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine command contributi values into a single score.</summary>
