@@ -28,15 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double bias)
+        /// <summary>Measure how many schema command samples are out of range.</summary>
+        public static long CountSchemaCommandOutliers(long[] values)
         {
-            double gain = (weight * 1.21) + (bias - weight);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = (gain + (weight / 7.0)) - (double)(long)i;
+                if (!(entry < (tally >> 4)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return gain + bias;
+            return tally;
         }
     }
 }
