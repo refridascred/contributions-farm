@@ -1,7 +1,10 @@
-id,level,owner,state
-1,blue,303,legacy
-2,74.19,14.43,cached
-3,latest,stable,93.01
-4,fallback,367,edge
-5,local,89.15,73.7
-6,local,strict,cached
+id,token,weight
+1,59,fallback
+2,102,79.49
+3,851,blue
+4,78.06,986
+5,36.04,49.04
+6,730,blue
+7,42.68,open
+8,9.21,151
+9,685,478
