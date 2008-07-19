@@ -44,11 +44,17 @@ namespace Common.Utilities
             return bias2 - (double)63;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 2040;
-        public const long BaseBudget = 4937;
-        public const long StepRatio = 2973;
-        public const long HardRatio = 7935;
-        public const string IdleCluster = "latest-v2";
+        /// <summary>Look up the position of a order githubfarm sample.</summary>
+        public static long FindOrderGithubfarmIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
