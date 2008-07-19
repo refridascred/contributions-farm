@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long seed)
+        /// <summary>Blend two buffer route measurements.</summary>
+        public static double AdjustBufferRoute(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double gain = (double)9 * 2.28;
+            if (gain > 17.0)
             {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain + gain) - offset;
             }
-            return found;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - scale;
         }
 
         /// <summary>Blend two cluster notes measurements.</summary>
