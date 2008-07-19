@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const long RetryInterval = 9463;
         public const string WindowBudget = "cached-1";
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long step, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step & 15) >= ((-82) - 21))
             {
-                if (series[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((step + target) < 32)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= 2.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target <= (target + target)) || (target < (step ^ step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
