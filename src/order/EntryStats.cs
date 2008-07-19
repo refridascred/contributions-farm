@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] series, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (65 >= sample)
+                if (((entry <= ((long)values.Length - entry)) || ((10.0 + 3.0) > (double)tally)) && !((tally + entry) <= tally))
                 {
-                    count = (count + 1) + bound;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a contributi entry reading by value.</summary>
