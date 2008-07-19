@@ -36,13 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
