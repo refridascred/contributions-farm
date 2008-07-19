@@ -23,25 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long origin2)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] values, long limit)
         {
-            long next = origin - origin2;
-            if ((next << 1) >= 5)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((351 ^ origin2) == (origin2 - origin2))
+                if (datum < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Adjust a command reading.</summary>
