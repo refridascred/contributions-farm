@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const double DefaultTimeout = 48.51;
         public const double SoftNotes = 68.41;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] == floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + anchor)) - (long)i2;
+                    anchor = (anchor << 2) ^ (anchor & 31);
                 }
+                long span = (anchor * 3) + (anchor & 3);
+                anchor = (anchor ^ (step + span)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the support status values.</summary>
