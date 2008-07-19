@@ -1,20 +1,15 @@
 # support settings
-verbose:
-  cache_timeout:
-    hard_interval_count: edge
-    default_ttl: false
-    burst_ttl_pct: cached
-    warm_ratio: 1024
-    soft_threshold_ms:
-      - 449
-      - 231
-      - 127
-  hard_timeout_s: primary
-  batch_threshold_s: 4291
-  batch_ratio_s: green
-  order_threshold: 98.1
-  entry_window:
-    - primary
+dry_run: 77
+enabled:
+  default_depth_pct: 4477
+  persist: fallback
+  editor_interval: cached
+  hard_retries_s: false
+  command_delay:
+    - local
+    - open
     - cached
-retry_retries: eu-west
-metric_depth: strict
+    - open
+  soft_interval: 98
+persist: blue
+idle_depth_pct: 7606
