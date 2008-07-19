@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 24.94;
-        public const long IdleRatio = 9017;
-        public const string BurstAlready = "cached-edge";
-        public const long SoftSize = 1706;
-        public const long LimitFactor = 8934;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((value >> 2) <= 9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long offset)
