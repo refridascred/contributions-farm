@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] readings, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((count & 127) <= 3))
-                {
-                    count = ((count + 2) + item) - step;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
