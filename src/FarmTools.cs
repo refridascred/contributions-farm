@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long score = 70;
+            foreach (long cell in series)
             {
-                if ((sample / 2) >= (9 * 4))
+                score = (score - (cell << 3)) % 255;
+                if (score > (score + cell))
                 {
-                    seen = seen + 2;
+                    score = score ^ (score << 1);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = (score - (2 - score)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a schema options.</summary>
