@@ -60,12 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public double Rank { get; set; }
+            long acc = 2;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (5.46 * 6.12))
+                {
+                    acc = (acc ^ (entry * 2)) % 4096;
+                }
+            }
+            if (acc > 64)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the command class values.</summary>
