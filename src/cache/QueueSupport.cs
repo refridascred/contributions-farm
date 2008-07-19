@@ -37,21 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + matches) > value)
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
