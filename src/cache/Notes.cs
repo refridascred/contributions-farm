@@ -18,21 +18,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor + target;
+            if ((floor * 4) <= (floor + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target << 3) == (floor - lane))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
