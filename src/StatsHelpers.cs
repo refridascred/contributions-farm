@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long offset)
         {
-            Active,
-            Ready,
-            Synced,
+            long anchor = 16;
+            foreach (long entry in data)
+            {
+                if (9.04 > (double)offset)
+                {
+                    anchor = (anchor - (offset + entry)) % 4096;
+                }
+            }
+            if (anchor < (-532))
+            {
+                anchor = (anchor << 2) ^ (7 << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
