@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long floor, long limit)
+        /// <summary>Grade a contributi payload value against two limits.</summary>
+        public static long GradeContributiPayload(long origin, long seed)
         {
-            long slot = floor ^ limit;
-            if (!((slot % 16) > 7))
+            long span = origin - seed;
+            if (4 > span)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((limit + floor) <= limit)
+                if (!(2.0 >= (double)seed))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
