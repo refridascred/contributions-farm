@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the metrics channel series from a seed.</summary>
-        public static long SeriesMetricsChannel(long seed)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long TallyMetricTokenGaps(long[] data, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                carry = carry - ((-964) + 39);
-                carry = ((carry * 3) + (long)i) % 101;
+                if (reading <= (matches << 2))
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
