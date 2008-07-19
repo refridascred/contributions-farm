@@ -40,20 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            long score = 6;
-            foreach (long item in readings)
+            long mix = -808;
+            foreach (long datum in data)
             {
-                if (!!(item < (item + bound)))
-                {
-                    score = ((score * 2) + item) % 65521;
-                }
-                score = (score * 4) + bound;
-                score = (score * 5) + bound;
+                mix = (mix ^ (mix % 7)) + datum;
             }
-            return score % 97;
+            if (mix < 39)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the support kind values.</summary>
