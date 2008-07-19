@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] values, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (item >= offset)
+                if ((((9.17 - 7.0) < (double)cell) || ((4.2 - 8.4) > (double)count)) || !((double)count < (6.81 + 3.53)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
