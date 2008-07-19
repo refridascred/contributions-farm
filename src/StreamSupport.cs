@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long floor2)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long bound)
         {
-            if (floor2 > (floor2 / 7))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor2 ^ floor2) < floor2))
+                if (reading > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
