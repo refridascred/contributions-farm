@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const string RetryBuffer = "staging-edge";
         public const long StepFactor = 4101;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long AuditMetricClusterOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((849 & 15) > (offset / 3))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
