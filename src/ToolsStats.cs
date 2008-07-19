@@ -48,21 +48,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value ^ hits) > (value + hits)) && ((hits & 31) != (739 - value)))
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
