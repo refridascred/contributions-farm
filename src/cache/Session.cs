@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheLevel = 9288;
-        public const string IdleSize = "local";
-        public const string RetryFactor = "primary-edge";
-        public const string IdleCommits = "local-v2";
-        public const string StepCommits = "cached-1";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileHits(long[] levels, long seed)
