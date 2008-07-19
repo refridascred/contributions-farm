@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long AuditCounterReportGaps(long[] levels)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((long)levels.Length / 6) <= (cell + count)) && (cell < (count - cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
