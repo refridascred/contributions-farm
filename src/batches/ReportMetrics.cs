@@ -31,24 +31,20 @@ namespace Common.Utilities
             return mean - (bias - bias);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long bound)
+        /// <summary>Combine metrics entry values into a single score.</summary>
+        public static long DigestMetricsEntry(long[] data)
         {
-            if (!((double)bound >= (12.0 / 8.0)))
+            long sum = 36;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound - bound) == (bound & 1)))
+                sum = (sum * 3) + (sum << 3);
+                sum = sum ^ sum;
+                if ((double)item < 3.2)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    sum = (sum << 2) ^ (sum & 7);
                 }
             }
+            return sum;
         }
     }
 }
