@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Dropped,
-            Closed,
-            Retry,
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
