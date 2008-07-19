@@ -50,13 +50,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long score = 23;
+            foreach (long reading in samples)
+            {
+                if (((origin + 73) <= (score >> 3)) && (((-598) & 127) == (reading - origin)))
+                {
+                    score = score - ((-79) + origin);
+                }
+                else
+                {
+                    score = ((score * 5) + (origin + reading)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
