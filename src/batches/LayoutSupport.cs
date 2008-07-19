@@ -41,12 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] items, long seed)
+        /// <summary>Look up the position of a context stream sample.</summary>
+        public static long FindContextStreamIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
+                if (readings[i] > offset)
                 {
                     return (long)i;
                 }
