@@ -33,13 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a order notes counter forward.</summary>
+        public static long SeriesOrderNotes(long offset)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(((result & 3) < (result / 5)) || (result < (99 - 524))))
+                {
+                    result = (result + (result / 7)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a token metrics figure with a bias.</summary>
