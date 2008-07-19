@@ -1,8 +1,7 @@
 {
-  "enabled": 25,
-  "max_ratio_s": 8195,
-  "burst_depth_s": "local",
-  "poll_delay": "stable",
-  "hard_threshold_pct": "fallback",
-  "strict": "cached"
+  "persist": 74,
+  "base_delay_s": 1122,
+  "cache_capacity_s": "local",
+  "hard_delay_s": "cached",
+  "retry_size": "latest"
 }
