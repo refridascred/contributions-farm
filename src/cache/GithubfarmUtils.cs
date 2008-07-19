@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const string WindowFormat = "standard-v2";
         public const double SoftScore = 56.99;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long bound)
         {
-            double scale = weight;
-            return (scale + weight) + bias;
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
