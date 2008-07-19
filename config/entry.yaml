@@ -1,19 +1,9 @@
 # entry settings
-soft_capacity_pct: 45.91
-default_retries_pct:
-  record_limit: false
-  support_interval: true
-  sync_retries_ms: 73
-  readonly: 500
-  cache_ratio_count: 2551
-  base_window:
-    verbose: 5
-    cache_capacity_ms: 250
-    stats_window: false
-    flush_retries:
-      - 92
-      - 468
-      - 331
-      - 30
-    max_threshold_pct: 250
-window_limit: edge
+batch_size_ms: 44.56
+cache_retries: 5020
+default_interval: true
+retry_threshold_s: 39.53
+soft_capacity_count:
+  - 18
+  - 454
+  - 180
