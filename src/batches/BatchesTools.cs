@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long state = 609;
+            foreach (long reading in values)
+            {
+                if (state < (reading & 1))
+                {
+                    state = state + (state & 7);
+                }
+            }
+            return state;
         }
     }
 }
