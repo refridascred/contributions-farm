@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] items, long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (cell <= limit)
+                if (item > offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Blend two account measurements.</summary>
