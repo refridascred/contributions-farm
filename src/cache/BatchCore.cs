@@ -51,15 +51,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long SeriesTokenGithubfarm(long seed)
+        /// <summary>Classify a graph already pair into a bucket.</summary>
+        public static long GradeGraphAlready(long offset, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long bound = offset - step;
+            if ((9.5 - 8.6) < (double)bound)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((-1) >= (step / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
