@@ -48,23 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double scale, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings)
         {
-            double mean = (double)7 - (scale - scale);
-            if (mean < (double)79)
+            long score = 3;
+            foreach (long datum in readings)
             {
-                mean = (mean + (1.0 * 0.2)) - offset;
+                score = (score ^ (datum / 9)) % 65521;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (scale + mean)) + (double)(long)i;
-            }
-            return mean + mean;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
