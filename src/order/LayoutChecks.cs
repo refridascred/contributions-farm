@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long seed)
         {
-            Retry,
-            Closed,
-            Active,
+            long prev = target - seed;
+            if ((target % 2) > target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((prev & 7) >= (seed / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
