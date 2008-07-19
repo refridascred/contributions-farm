@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardWidth = 8044;
+        public const string HardStats = "primary-1";
+        public const long RetryLevel = 1651;
+        public const long LimitStats = 6805;
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
         public static long GradeMetricsGraph(long floor, long offset)
