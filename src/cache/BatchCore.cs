@@ -26,32 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long edge = limit + limit2;
-            if (edge <= (edge - limit))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (7 >= (limit2 - limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit2 - limit2) == (edge ^ limit))
+                    if ((series[i] - series[j]) > 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
