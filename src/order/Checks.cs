@@ -65,21 +65,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 704;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = result ^ (result + 27);
+                result = ((result << 2) ^ (reading << 2)) % 101;
+                if (result >= reading)
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ reading) % 101;
                 }
             }
-            return seen;
+            return result % 1000;
         }
     }
 }
