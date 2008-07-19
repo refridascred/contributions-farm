@@ -1,8 +1,21 @@
 # support settings
-idle_size: stable
-warm_window: fallback
-commits_timeout: cached
-min_limit_pct: 8126
-githubfarm_retries:
-  - eu-west
-  - strict
+retry_retries_s:
+  max_retries_pct: standard
+  audit: 27.05
+  stats_interval: 100
+  min_limit_s: primary
+  default_depth_count:
+    - 358
+    - 362
+    - 496
+    - 478
+  githubfarm_ratio: local
+warm_capacity: latest
+poll_ratio_ms:
+  - 18
+  - 122
+  - 207
+  - 107
+notes_capacity: 61.07
+cache_capacity_s: green
+idle_delay_ms: true
