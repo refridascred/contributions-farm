@@ -16,32 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long target, long target2)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long step)
         {
-            long span = target ^ target2;
-            if ((double)span != (0.5 + 16.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target2 + 759) < target) && (34 > (target2 * 3)))
+                if (items[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target + (-123)) == (span - target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first session checks entry that matches the target.</summary>
