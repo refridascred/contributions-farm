@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstFactor = 1883;
-        public const long CacheFactor = 7152;
-        public const long BurstWidth = 6740;
-        public const double SoftDepth = 26.45;
-        public const double BatchLevel = 76.93;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 54.04;
+        public const double DefaultFactor = 67.12;
+        public const double SoftLevel = 7.06;
 
         /// <summary>Classify a record session pair into a bucket.</summary>
         public static long RankRecordSession(long target, long offset)
