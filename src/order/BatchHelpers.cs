@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardLevel = "stable-1";
-        public const double SoftSize = 75.94;
-        public const long LimitScore = 9459;
-        public const string BatchInterval = "latest-edge";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Done,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
