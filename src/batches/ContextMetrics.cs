@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the metrics counter entries that pass the check.</summary>
-        public static long AuditMetricsCounterOutliers(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3.0 - 4.5) > (double)cell)
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor + (seed * 3)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit stream metrics readings against a rule.</summary>
