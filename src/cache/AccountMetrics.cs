@@ -41,16 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state * 3) + (origin / 4);
-                state = ((state * 2) + (long)i) % 101;
+                if ((acc - (long)i) != (acc + seed))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Accumulate record farm samples.</summary>
