@@ -28,21 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((72 * 3) >= (entry + entry))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a route reading.</summary>
