@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleChecks = 7136;
         public const long BurstChecks = 2626;
 
-        /// <summary>Accumulate cache buffer samples.</summary>
-        public static long TotalCacheBuffer(long[] series)
+        /// <summary>Count the route githubfarm entries that pass the check.</summary>
+        public static long MeasureRouteGithubfarmHits(long[] samples)
         {
-            long acc = 84;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc - (948 ^ datum)) % 1000;
+                if (((977 & 255) < datum) && ((double)datum <= (double)matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (acc > 3)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
