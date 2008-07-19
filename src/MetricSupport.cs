@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((datum + datum) <= 65)
+                if (cell < offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
