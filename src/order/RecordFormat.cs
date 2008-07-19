@@ -44,26 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data, long step)
         {
-            long anchor = 228;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((bound + 80) >= (239 << 2))
+                if ((7.0 / 3.0) <= (double)count)
                 {
-                    anchor = (((anchor << 2) ^ (long)samples.Length) % 255) ^ datum;
-                }
-                if ((anchor >> 1) == (35 + anchor))
-                {
-                    break;
+                    count = ((count + 2) + cell) + step;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = anchor + (bound - bound);
-            }
-            return anchor % 65521;
+            return count;
         }
     }
 }
