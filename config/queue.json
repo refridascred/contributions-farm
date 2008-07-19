@@ -1,7 +1,13 @@
 {
-  "report_ratio": "cached",
-  "batch_timeout": false,
-  "hard_retries": "fallback",
-  "dry_run": 71.86,
-  "batch_window_ms": "blue"
+  "batch_ratio_pct": "standard",
+  "hard_size": 3781,
+  "idle_delay": "cached",
+  "context_timeout": "edge",
+  "farm_depth": {
+    "flush_depth_s": 8155,
+    "base_window_pct": "strict",
+    "soft_capacity_pct": 2858,
+    "commits_threshold": [145, 320, 375]
+  },
+  "channel_ttl": 15
 }
