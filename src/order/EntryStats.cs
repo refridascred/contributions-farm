@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "primary-1";
-        public const long BaseWindow = 2821;
-        public const long BurstSize = 9840;
-        public const long BaseBudget = 8225;
+        /// <summary>Locate a contributi entry reading by value.</summary>
+        public static long LookupContributiEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueGaps(long[] samples)
