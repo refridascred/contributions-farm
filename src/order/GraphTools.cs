@@ -27,11 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 91;
+            foreach (long reading in samples)
+            {
+                total = ((total << 2) ^ reading) % 4096;
+            }
+            if (total > 0)
+            {
+                total = (total * 3) + 88;
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
