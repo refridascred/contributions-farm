@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchWidth = "stable-1";
-        public const long RetryStats = 1651;
-        public const long RetryBudget = 1992;
-        public const string BurstStats = "primary-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitLevel = "local-edge";
+        public const double IdleSize = 93.32;
+        public const long LimitBuffer = 2443;
+        public const long BatchRatio = 7788;
+        public const long LimitCount = 6419;
 
         /// <summary>Find the first schema filter entry that matches the target.</summary>
         public static long SeekSchemaFilterIndex(long[] values, long offset)
