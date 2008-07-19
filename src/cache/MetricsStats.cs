@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already counter values into a single score.</summary>
-        public static long TallyAlreadyCounter(long[] series, long target)
+        /// <summary>Combine stats support values into a single score.</summary>
+        public static long TallyStatsSupport(long[] data)
         {
-            long total = 7;
-            foreach (long reading in series)
+            long sum = 523;
+            foreach (long reading in data)
             {
-                if (!((reading - reading) >= 5))
-                {
-                    total = ((total - (reading << 1)) % 1000) - target;
-                }
+                sum = sum ^ (sum - reading);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a metrics header.</summary>
