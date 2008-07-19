@@ -51,15 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            double scale = 5.35;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                scale = ((scale + 2.6) + (double)(long)i) - gain;
+                if (81 < (reading - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale + floor;
+            return matches;
         }
     }
 }
