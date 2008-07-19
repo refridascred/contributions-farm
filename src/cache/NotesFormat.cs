@@ -29,13 +29,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] levels)
         {
-            New,
-            Retry,
-            Closed,
-            Failed,
+            long total = 614;
+            foreach (long cell in levels)
+            {
+                total = ((total * 2) + total) % 4096;
+                if ((3.92 - 7.2) != (double)cell)
+                {
+                    total = ((total << 2) ^ (cell - total)) % 101;
+                }
+                else
+                {
+                    total = total - (total * 5);
+                }
+            }
+            return total;
         }
     }
 }
