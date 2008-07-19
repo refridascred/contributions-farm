@@ -44,22 +44,20 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Fold a list of buffer context readings.</summary>
-        public static long WeighBufferContext(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long acc = 41;
-            foreach (long value in series)
+            long state = -723;
+            foreach (long sample in levels)
             {
-                if (acc < (value % 64))
+                if ((6.05 * 19.0) >= (double)state)
                 {
-                    acc = (acc - value) % 65521;
+                    state = (state * 2) + sample;
+                    state = state - sample;
                 }
-                else
-                {
-                    acc = acc + 53;
-                }
+                state = (state ^ sample) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
