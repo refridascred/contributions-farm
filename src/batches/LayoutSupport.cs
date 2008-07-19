@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next metric queue value.</summary>
-        public static double SmoothMetricQueue(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio > (rate / 7.0))
-            {
-                ratio = (ratio - (double)76) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + 5.5;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 88.95;
+        public const long LimitBatch = 3244;
+        public const long BaseLevel = 8386;
+        public const double WindowScore = 44.23;
+        public const long HardSize = 6150;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
