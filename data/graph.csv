@@ -1,6 +1,11 @@
-id,weight,count,level
-1,868,edge,latest
-2,green,cached,1.05
-3,346,49.5,589
-4,514,26.08,389
-5,778,3.41,504
+id,score,owner,region,count
+1,standard,64.49,132,99
+2,strict,open,strict,strict
+3,primary,41.45,18.88,latest
+4,edge,cached,780,37.39
+5,11.59,staging,670,open
+6,96.26,44.44,123,51.71
+7,212,primary,717,93.45
+8,green,92.83,373,51.28
+9,eu-west,primary,95.93,590
+10,781,396,611,996
