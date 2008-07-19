@@ -89,18 +89,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch account readings against a rule.</summary>
-        public static long TallyBatchAccountOutliers(long[] readings)
+        /// <summary>Derive the next farm already value from a seed.</summary>
+        public static long IterateFarmAlready(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches > (7.8 - 8.3))
+                if ((7.48 * 5.8) > 2.0)
                 {
-                    matches = (matches + 1) ^ reading;
+                    acc = acc + (1 - acc);
                 }
+                acc = acc - (acc / 9);
+                if ((double)(long)i > (13.0 + 2.52))
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+                else
+                {
+                    acc = acc - (offset >> 4);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
