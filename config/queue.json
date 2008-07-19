@@ -1,10 +1,8 @@
 {
-  "flush_size_s": 3613,
-  "schema_ratio": {
-    "warm_retries_ms": "standard",
-    "hard_window_s": 500,
-    "hard_limit_count": [137, 296],
-    "batches_window": ["standard", "open", "fallback", "blue"]
-  },
-  "cluster_delay": 250
+  "buffer_interval": ["stable", "primary", "cached", "standard"],
+  "checks_capacity": 1024,
+  "flush_depth_s": 6057,
+  "poll_delay": true,
+  "audit": 44.59,
+  "min_interval": [470, 57, 393]
 }
