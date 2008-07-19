@@ -20,11 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8133;
-        public const long HardScore = 3410;
-        public const long LimitWidth = 632;
-        public const long BaseDepth = 9122;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxLevel = "strict-1";
+        public const long DefaultSupport = 3248;
+        public const long BaseSupport = 3209;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double gain, double floor)
