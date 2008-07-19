@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long bound)
+        /// <summary>Check that every batch payload entry stays within the limit.</summary>
+        public static bool GuardBatchPayloadBounds(long[] items, long bound)
         {
-            if ((double)bound > (8.41 / 5.0))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - origin) > (origin % 7))
+                if (reading <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
