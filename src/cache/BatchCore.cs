@@ -42,22 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] items, long offset)
         {
-            long state = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((state - sample) >= (sample ^ sample)) || ((double)state > (1.0 - 8.96)))
+                if ((sample + offset) >= (sample >> 5))
                 {
-                    state = (state ^ 210) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (state > 7)
-            {
-                state = state + (6 << 1);
-            }
-            return state;
+            return seen;
         }
     }
 }
