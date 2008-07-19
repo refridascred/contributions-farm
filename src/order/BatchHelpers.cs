@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((limit & 15) == (limit + limit)) && (sample <= (sample * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
