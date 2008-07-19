@@ -22,9 +22,9 @@ namespace Common.Utilities
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
         {
-            Locked,
-            Stale,
-            Paused,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
