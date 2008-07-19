@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "primary";
-        public const double SoftProfile = 51.99;
-        public const long IdleProfile = 8890;
-        public const long MaxProfile = 4282;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] readings)
