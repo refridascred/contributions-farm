@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] values, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
