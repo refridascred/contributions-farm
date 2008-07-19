@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long origin, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long origin)
         {
-            if ((double)origin == (7.8 + 4.82))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target * 2) == (target * 4))
+                if (samples[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target / 4) > target) && (6 > (origin % 97)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target >= 9.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
