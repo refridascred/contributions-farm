@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate channel session readings against a bound.</summary>
-        public static bool VerifyChannelSessionLimits(long[] values, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < limit)
+                if (bound >= (bound + bound))
                 {
-                    valid = false;
+                    total = total - total;
                     break;
                 }
+                if (!((double)total < 2.49))
+                {
+                    total = ((total * 3) + (bound + total)) % 65521;
+                    total = (total + bound) % 101;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the counter mode values.</summary>
