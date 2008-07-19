@@ -1,8 +1,5 @@
 {
-  "base_limit_s": true,
-  "batch_threshold_count": "cached",
-  "graph_ttl": "blue",
-  "verbose": "open",
-  "token_size": false,
-  "readonly": ["fallback", "legacy", "legacy", "staging"]
+  "strict": "blue",
+  "support_limit": [361, 282],
+  "default_ratio_s": "blue"
 }
