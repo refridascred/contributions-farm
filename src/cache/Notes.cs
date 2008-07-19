@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "open-1";
-        public const string BaseTimeout = "staging";
-        public const long BurstEditor = 2322;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result + (45 ^ 19);
+                result = (result - (target % 97)) % 101;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] samples)
