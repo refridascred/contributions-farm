@@ -37,17 +37,14 @@ namespace Common.Utilities
             return rate - 6.3;
         }
 
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long LocateRouteEntryIndex(long[] series, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
