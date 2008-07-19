@@ -1,11 +1,5 @@
 {
-  "default_window_ms": "blue",
-  "enabled": "open",
-  "dry_run": {
-    "poll_timeout_ms": 32.75,
-    "flush_delay": "edge",
-    "token_depth": ["eu-west", "strict", "open"]
-  },
-  "min_retries_count": [320, 390, 408],
-  "commits_retries": 818
+  "audit": 83,
+  "poll_size_pct": 6251,
+  "soft_ttl_count": [385, 204, 446, 456]
 }
