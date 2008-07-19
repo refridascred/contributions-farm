@@ -41,14 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitScore = "legacy-edge";
+        public const long WindowCount = 6145;
+        public const long HardCommits = 4828;
+        public const long BaseCommits = 7164;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
