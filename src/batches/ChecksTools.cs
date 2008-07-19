@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] data, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double gain = (double)(4 * 3);
+            if (gain < (double)6)
             {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + gain) + bias;
             }
-            return stale;
+            else
+            {
+                gain = gain + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)6) + (double)(long)i;
+            }
+            return gain + (weight - 7.05);
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
