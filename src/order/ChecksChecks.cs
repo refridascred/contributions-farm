@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long target)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long MeasureRecordFilterHits(long[] levels)
         {
-            long sum = 1;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((reading << 1) > reading))
+                if (((item + item) >= ((-67) & 255)) || ((double)count != (6.47 + 4.6)))
                 {
-                    sum = (((sum << 2) ^ sum) % 255) - target;
-                    break;
+                    count = count + 2;
                 }
-                sum = ((sum * 2) + sum) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
