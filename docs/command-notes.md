@@ -1,14 +1,11 @@
 # Command notes
 
-Each graph is validated before it reaches the metric queue.
-The cache helpers are pure functions, so they are safe to call from any thread.
-
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the metric check before changing any channel limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Each record is validated before it reaches the filter queue.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Review contributi limits each release
-- Log every already change
-- Validate command input early
+- Validate cache input early
+- Keep command values small
+- Prefer layout defaults
