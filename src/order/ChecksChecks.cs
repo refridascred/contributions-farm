@@ -24,25 +24,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long bound, long bound2)
-        {
-            long next = bound + bound2;
-            if ((bound & 1) >= (next * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(next > (bound2 - next)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseFactor = 87.04;
+        public const long MinLayout = 9211;
+        public const string DefaultScore = "cached";
     }
 }
