@@ -1,7 +1,7 @@
 {
-  "compress": true,
-  "warm_depth_count": 88,
-  "default_limit_ms": 2781,
-  "sync_ttl_s": "legacy",
-  "checks_delay": "edge"
+  "report_ratio": "cached",
+  "batch_timeout": false,
+  "hard_retries": "fallback",
+  "dry_run": 71.86,
+  "batch_window_ms": "blue"
 }
