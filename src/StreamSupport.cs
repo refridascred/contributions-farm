@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double scale, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            double weight = (double)(3 + 34);
-            if (weight >= (bias + scale))
+            long anchor = 64;
+            foreach (long entry in levels)
             {
-                weight = weight - (bias / 5.0);
+                if (anchor < (anchor >> 5))
+                {
+                    anchor = ((anchor - (anchor - (-175))) % 101) ^ entry;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + (scale * 1.61);
+            return anchor;
         }
 
         /// <summary>Measure how many queue batches samples are out of range.</summary>
