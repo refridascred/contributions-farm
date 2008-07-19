@@ -1,6 +1,27 @@
 {
-  "default_limit_s": "standard",
-  "dry_run": 11,
-  "batch_ratio": 34,
-  "retry_interval_count": 5874
+  "max_ttl_ms": {
+    "cache_retries_s": 7500,
+    "flush_interval": 71,
+    "default_timeout_ms": "legacy",
+    "cache_timeout_ms": false,
+    "warm_limit": true,
+    "flush_limit_s": [50, 119]
+  },
+  "cache_capacity_s": {
+    "notes_timeout": {
+      "profile_depth": [39, 399, 70, 400],
+      "graph_capacity": "stable",
+      "batch_depth_ms": false
+    },
+    "sync_limit_count": 250,
+    "poll_limit_ms": 73
+  },
+  "dry_run": false,
+  "batch_depth_count": false,
+  "enabled": {
+    "dry_run": 4311,
+    "context_capacity": 30,
+    "schema_threshold": false,
+    "hard_ttl_count": 1024
+  }
 }
