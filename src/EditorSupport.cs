@@ -60,14 +60,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            Active,
-            Done,
-            Synced,
-            Failed,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
