@@ -18,10 +18,18 @@ namespace Common.Utilities
         public const long IdleInterval = 2261;
         public const long BurstBudget = 5386;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 5385;
-        public const long StepCommand = 240;
-        public const long LimitDepth = 8625;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] items, long origin)
