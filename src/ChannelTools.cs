@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long limit, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples, long step)
         {
-            long next = limit - bound;
-            if ((4 ^ 9) >= (limit + limit))
+            long carry = 9;
+            foreach (long cell in samples)
             {
-                return 0;
+                carry = ((carry - (cell + 93)) % 255) - step;
             }
-            else
+            if (carry < 0)
             {
-                if ((limit + next) < (next + 855))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.4 / 7.0) == (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = (carry + (carry % 24)) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
