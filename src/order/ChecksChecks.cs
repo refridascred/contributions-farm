@@ -24,9 +24,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseFactor = 87.04;
-        public const long MinLayout = 9211;
-        public const string DefaultScore = "cached";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long offset, long target)
+        {
+            if (offset <= (target << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((29 * 2) == (offset % 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset <= (double)(-37))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
