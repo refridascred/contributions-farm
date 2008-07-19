@@ -44,23 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Blend two order editor measurements.</summary>
+        public static double BlendOrderEditor(double ratio, double floor)
         {
-            long carry = 20;
-            foreach (long item in levels)
+            double drift = 6.3;
+            if (drift < 5.1)
             {
-                carry = (carry + (item - carry)) % 1000;
-                if ((carry - item) < (6 ^ item))
-                {
-                    carry = carry - (item - carry);
-                }
+                drift = drift - ratio;
             }
-            if (carry < 2)
+            else
             {
-                carry = (carry ^ carry) % 4096;
+                drift = drift + ratio;
             }
-            return carry;
+            return drift + floor;
         }
     }
 }
