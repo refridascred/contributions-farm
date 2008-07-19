@@ -33,23 +33,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Adjust a notes counter reading.</summary>
-        public static double ProjectNotesCounter(double bias, double span)
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool GuardWindowRecordLimits(long[] readings, long limit)
         {
-            double mean = bias;
-            if (mean <= span)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mean = mean + mean;
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 5.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (bias / 7.0)) - (double)(long)i;
-            }
-            return mean - (span - mean);
+            return flag;
         }
 
         /// <summary>Digest a series of already entries.</summary>
