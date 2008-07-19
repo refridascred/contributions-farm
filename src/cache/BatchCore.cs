@@ -26,22 +26,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = -4;
+            foreach (long sample in series)
             {
-                if ((seen << 1) <= (seen + seen))
+                if (!((floor ^ sample) == (37 - mark)))
                 {
-                    seen = (seen + 1) ^ item;
+                    mark = mark + (mark & 15);
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark * 5) + (mark - mark);
                 }
+                mark = ((mark * 5) + (sample ^ floor)) % 255;
             }
-            return seen;
+            if (mark > 1)
+            {
+                mark = ((mark * 5) + (mark << 3)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
