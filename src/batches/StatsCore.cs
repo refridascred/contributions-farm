@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "primary";
+        public const double SoftProfile = 51.99;
+        public const long IdleProfile = 8890;
+        public const long MaxProfile = 4282;
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] readings)
