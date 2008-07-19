@@ -23,22 +23,18 @@ namespace Common.Utilities
             return drift - (bias / 9.0);
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] readings, long limit)
         {
-            long score = 527;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((item + score) >= (969 >> 1))
+                if (item < 9)
                 {
-                    score = (score - (seed % 97)) % 1000;
+                    hits = (hits + 3) + limit;
                 }
             }
-            if (score > (-7))
-            {
-                score = score + (seed % 7);
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
