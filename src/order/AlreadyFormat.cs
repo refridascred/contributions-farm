@@ -20,20 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] values, long step)
         {
-            long carry = -7;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                carry = ((carry ^ carry) % 255) - entry;
-                carry = ((carry * 4) + (carry & 3)) % 65521;
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 8)
-            {
-                carry = ((carry * 4) + (carry - carry)) % 65521;
-            }
-            return carry % 97;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
