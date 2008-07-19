@@ -51,11 +51,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultWidth = 74.12;
-        public const long BaseFactor = 6576;
-        public const long IdleCommits = 8814;
-        public const long WindowRatio = 8621;
+        /// <summary>Digest a series of payload cache entries.</summary>
+        public static long DigestPayloadCache(long[] values)
+        {
+            long state = 446;
+            foreach (long datum in values)
+            {
+                state = state - datum;
+                if ((datum + 7) == (state ^ state))
+                {
+                    break;
+                }
+            }
+            if (state > 851)
+            {
+                state = (state * 2) + (91 * 2);
+            }
+            return state;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] samples)
