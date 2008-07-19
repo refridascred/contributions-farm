@@ -36,10 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9366;
-        public const long BaseBudget = 1201;
-        public const string StepCount = "cached";
-        public const long StepChannel = 5331;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long floor, long limit)
+        {
+            long slot = floor ^ limit;
+            if (!((slot % 16) > 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + floor) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
