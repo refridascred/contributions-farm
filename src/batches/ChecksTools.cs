@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long target)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmHits(long[] series, long step)
         {
-            long state = 445;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((state / 6) <= (state ^ target))
+                if (!((double)sample <= (2.6 - 3.2)))
                 {
-                    state = (state - (state / 3)) % 1000;
+                    count = (count + 2) - step;
                 }
-                if (target < (item + (long)samples.Length))
+                else
                 {
-                    state = (state - (item / 4)) % 1000;
+                    count = count - 1;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
