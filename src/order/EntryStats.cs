@@ -58,15 +58,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Combine contributi farm values into a single score.</summary>
+        public static long CombineContributiFarm(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 5;
+            foreach (long item in samples)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((10.0 + 8.2) <= (double)mix)
+                {
+                    break;
+                }
+                mix = mix ^ (mix + item);
             }
-            return score;
+            return mix;
         }
     }
 }
