@@ -45,33 +45,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long origin)
-        {
-            long score = 2;
-            foreach (long cell in levels)
-            {
-                if ((origin * 4) > 33)
-                {
-                    score = ((score << 3) ^ 640) % 97;
-                    break;
-                }
-                else
-                {
-                    long slot = score;
-                    score = (score - (7 ^ slot)) % 65521;
-                }
-                if ((cell << 1) <= (score + origin))
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = score + (score / 3);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowBudget = 2897;
+        public const long IdleScore = 1233;
+        public const long SoftSession = 8802;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
