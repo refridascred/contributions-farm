@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardWidth = 8044;
-        public const string HardStats = "primary-1";
-        public const long RetryLevel = 1651;
-        public const long LimitStats = 6805;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
         public static long GradeMetricsGraph(long floor, long offset)
