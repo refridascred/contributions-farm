@@ -78,9 +78,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 2370;
-        public const long CacheDepth = 8788;
-        public const long MaxWidth = 9541;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double span)
+        {
+            double bias = (double)(81 / 2);
+            if (bias >= bias)
+            {
+                bias = bias + 4.51;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (span + ratio)) + (double)(long)i;
+            }
+            return bias + bias;
+        }
     }
 }
