@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const double MaxSize = 49.97;
         public const long HardDepth = 6074;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Find the first metrics queue entry that matches the target.</summary>
+        public static long LookupMetricsQueueIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry + entry) >= entry))
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
