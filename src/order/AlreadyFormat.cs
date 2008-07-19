@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long origin)
+        /// <summary>Roll a schema format counter forward.</summary>
+        public static long StepSchemaFormat(long bound)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
