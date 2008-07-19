@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels, long offset)
         {
-            Ready,
-            New,
-            Synced,
-            Dropped,
+            long state = 61;
+            foreach (long value in levels)
+            {
+                state = ((state + (offset - 711)) % 255) + value;
+                if (((long)levels.Length & 127) != (offset + state))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
