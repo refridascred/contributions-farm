@@ -35,13 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long target)
         {
-            Queued,
-            Idle,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
