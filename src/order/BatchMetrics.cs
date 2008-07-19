@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            New,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((6 >> 5) <= (matches >> 5))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
