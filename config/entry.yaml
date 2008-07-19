@@ -1,8 +1,12 @@
 # entry settings
-warm_limit:
-  sync_delay_ms: 100
-  retry_threshold: 60.88
-  warm_threshold_pct: 100
-min_retries_s: false
-retry_depth_count: 1024
-route_ratio: 89.63
+cache_limit:
+  - 129
+  - 133
+  - 77
+  - 167
+cache_timeout:
+  - 302
+  - 266
+commits_depth: 100
+soft_retries_ms: 41.72
+soft_ratio_count: edge
