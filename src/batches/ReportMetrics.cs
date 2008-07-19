@@ -14,12 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Match up channel tools samples.</summary>
+        public static long OverlapChannelToolsCount(long[] items)
         {
-            Stale,
-            Queued,
-            New,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
