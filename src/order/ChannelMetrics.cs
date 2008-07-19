@@ -53,14 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Paused,
-            Synced,
+            Pending,
+            Closed,
             Locked,
+            New,
             Done,
-            Stale,
         }
     }
 }
