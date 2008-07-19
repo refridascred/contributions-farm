@@ -45,15 +45,17 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] data, long floor)
         {
-            long score = 3;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (datum / 9)) % 65521;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
