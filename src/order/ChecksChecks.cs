@@ -24,29 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long step, long target)
         {
-            if (offset <= (target << 3))
+            if ((620 + step) < (step & 63))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((29 * 2) == (offset % 3))
+                if ((target & 127) != (664 >> 4))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)offset <= (double)(-37))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 8;
                 }
             }
         }
