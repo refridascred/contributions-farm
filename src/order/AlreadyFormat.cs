@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] levels, long floor)
         {
-            Idle,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
