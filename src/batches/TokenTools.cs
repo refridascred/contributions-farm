@@ -21,18 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long CountProfileCounterOutliers(long[] data, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(((9.6 / 3.0) >= (double)bound) || (value >= ((-18) + bound))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
