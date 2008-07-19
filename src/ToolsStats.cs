@@ -46,22 +46,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((value ^ hits) > (value + hits)) && ((hits & 31) != (739 - value)))
+                if ((tally + value) < value)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
