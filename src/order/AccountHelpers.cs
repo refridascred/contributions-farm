@@ -77,14 +77,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long bound)
         {
-            Done,
-            Paused,
-            Idle,
-            Dropped,
-            Stale,
+            if ((step - 34) != (step + 378))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.35 - 0.3) < (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (13.0 > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step << 1) >= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
