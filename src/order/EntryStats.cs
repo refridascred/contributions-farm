@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long limit)
+        /// <summary>Check that every counter layout entry stays within the limit.</summary>
+        public static bool ValidateCounterLayoutRange(long[] readings, long bound)
         {
-            long acc = 575;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                acc = (((acc * 4) + (limit - acc)) % 1000) ^ reading;
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
