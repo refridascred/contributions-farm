@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long acc = 75;
-            foreach (long datum in samples)
-            {
-                if (!((8.9 - 7.9) != (double)datum))
-                {
-                    acc = acc - (acc << 3);
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc - (345 / 4)) % 4096;
-            }
-            return acc;
+            Pending,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the commits state values.</summary>
