@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((cell - tally) > (394 ^ tally)) && (((double)cell == (8.3 / 5.0)) || ((16.0 + 4.6) <= (double)tally)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = tally + 1;
+                    total = ((total + (6 / 9)) % 101) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    total = ((total * 5) + bound) - (long)i3;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
