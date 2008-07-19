@@ -60,39 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long bound = offset + step;
-            if (!((double)step > (10.0 / 8.0)))
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)step < (15.0 - 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound << 2) <= (6 + 55)) && ((4.71 * 5.0) > (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((992 + bound) < offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
