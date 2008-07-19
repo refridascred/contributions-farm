@@ -43,19 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double scale2 = 12.0;
-            if (scale2 >= (scale / 8.0))
-            {
-                scale2 = scale2 + (double)67;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (offset + 15.0)) + (double)(long)i;
-            }
-            return scale2 + (double)(-7);
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
