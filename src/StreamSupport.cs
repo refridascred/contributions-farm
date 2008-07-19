@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue batches samples are out of range.</summary>
-        public static long CountQueueBatchesHits(long[] data)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((-194) ^ hits) != (4 % 7))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Locate a session reading by value.</summary>
