@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
