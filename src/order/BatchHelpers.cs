@@ -20,10 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "fallback-v2";
-        public const double RetryRoute = 71.26;
-        public const long RetrySize = 2923;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] values, long bound)
+        {
+            long sum = 96;
+            foreach (long datum in values)
+            {
+                if ((double)bound <= (9.29 + 9.9))
+                {
+                    sum = (sum + (datum << 1)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (bound % 64);
+                }
+            }
+            if (sum > 75)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long target, long seed)
