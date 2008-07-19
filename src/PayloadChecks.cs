@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            double mean = gain;
-            if (mean <= (gain + gain))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mean = (mean + mean) - floor;
+                if ((2.7 * 4.0) >= (double)(long)readings.Length)
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean + gain;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
