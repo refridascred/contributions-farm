@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long AuditTokenCommitsHits(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double drift = floor;
+            if (drift > (drift - ratio))
             {
-                if ((double)26 <= (double)cell)
-                {
-                    count = count + 3;
-                }
+                drift = drift + (6.0 + 2.6);
             }
-            return count;
+            return drift + (double)417;
         }
 
         /// <summary>Describe the commits level values.</summary>
