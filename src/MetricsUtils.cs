@@ -38,11 +38,14 @@ namespace Common.Utilities
             return gain + (gain - 12.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheRatio = 7746;
-        public const long BatchScore = 2410;
-        public const double BurstMetrics = 77.0;
-        public const long RetrySpan = 7620;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double gain, double bias)
