@@ -33,39 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long floor, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] values)
         {
-            long bound = floor ^ step;
-            if ((bound + floor) >= floor)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 31) >= (floor + floor))
+                if ((542 % 64) > (sample - matches))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step * 2) != (step * 4)) && ((step + 28) < ((-5) >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step >= (bound % 3)) || ((bound % 64) > step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
