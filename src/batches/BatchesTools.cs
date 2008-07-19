@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache payload counter forward.</summary>
-        public static long StepCachePayload(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor - origin;
-                anchor = ((anchor * 2) + origin) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitSize = 58.07;
+        public const long DefaultCommand = 4306;
+        public const double BaseLevel = 71.29;
+        public const long BaseCommand = 4241;
+        public const long IdleCommand = 1434;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] values)
