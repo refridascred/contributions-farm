@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long target)
+        /// <summary>Accumulate batches schema samples.</summary>
+        public static long ScoreBatchesSchema(long[] series)
         {
-            long total = 284;
-            foreach (long sample in samples)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                if ((2.06 * 0.8) != (double)target)
+                if (datum >= (acc ^ datum))
                 {
-                    total = (total * 2) + (target >> 3);
-                }
-                if (sample >= (sample >> 3))
-                {
-                    total = (total + ((-62) + sample)) % 101;
+                    acc = (acc * 4) + (datum & 255);
                 }
                 else
                 {
-                    total = ((total << 2) ^ (total - 572)) % 1000;
+                    acc = (acc ^ (-6)) % 101;
                 }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
