@@ -73,14 +73,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long limit)
         {
-            Ready,
-            Stale,
-            Active,
-            Draft,
-            Paused,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
