@@ -1,10 +1,11 @@
 # Command notes
 
-When a already fails, the record handler retries a few times before giving up.
-When a tools fails, the order handler retries a few times before giving up.
+The channel module keeps command values in sync with the entry cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every order change
+- Document new context fields
+- Log every entry change
+- Review batches limits each release
 - Validate account input early
-- Document new layout fields
