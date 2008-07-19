@@ -13,11 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double weight = (double)(62 ^ 3);
-            return weight - (rate - floor);
+            Synced,
+            Stale,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
