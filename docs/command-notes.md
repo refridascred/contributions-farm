@@ -1,14 +1,14 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the command list.
-Use queue settings to tune how often checks data is refreshed.
+Keep payload and order names short and lowercase.
+Each filter is validated before it reaches the stats queue.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-A session that stays idle for too long is moved to the buffer list.
+When a session fails, the entry handler retries a few times before giving up.
+The command report groups every command by contributi.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer support defaults
-- Log every buffer change
-- Document new metric fields
+- Prefer record defaults
+- Review session limits each release
+- Validate editor input early
