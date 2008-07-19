@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two editor context measurements.</summary>
-        public static double SmoothEditorContext(double ratio, double span)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            double load = (8.0 - 1.0) - span;
-            if (load < (double)(-925))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (1.4 + span)) - ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 3.8) + (double)(long)i;
-            }
-            return load + span;
+            return tally;
         }
 
         /// <summary>Find the first metrics batch entry that matches the target.</summary>
