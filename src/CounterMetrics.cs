@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            Locked,
-            Stale,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((17.0 * 15.0) <= (4.0 / 7.0))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
