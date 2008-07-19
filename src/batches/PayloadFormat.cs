@@ -31,18 +31,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long TallyCacheRouteGaps(long[] values)
+        /// <summary>Locate a metrics queue reading by value.</summary>
+        public static long FindMetricsQueueIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + sample) <= seen)
+                if (items[i] > origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
