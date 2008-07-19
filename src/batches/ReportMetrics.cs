@@ -28,9 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleBudget = "strict-1";
-        public const long BurstCache = 8696;
-        public const double IdleCache = 10.0;
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift <= (gain + drift))
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)0) + (double)(long)i;
+            }
+            return drift - (double)(-69);
+        }
     }
 }
