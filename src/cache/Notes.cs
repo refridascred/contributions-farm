@@ -18,25 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long lane = floor + target;
-            if ((floor * 4) <= (floor + floor))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target << 3) == (floor - lane))
+                if (sample >= 429)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
