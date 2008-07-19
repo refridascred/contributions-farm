@@ -44,10 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 3855;
-        public const double IdleProfile = 89.03;
-        public const long RetryLevel = 857;
-        public const long RetryProfile = 1716;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Draft,
+            Active,
+            Synced,
+            Retry,
+        }
     }
 }
