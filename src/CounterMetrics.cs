@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit entry tools readings against a rule.</summary>
-        public static long MeasureEntryToolsHits(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 306;
+            foreach (long item in readings)
             {
-                if ((matches << 2) >= ((-1) + 5))
+                sum = (sum - (20 / 5)) % 1000;
+                if (((7.0 - 6.68) < (double)sum) && ((item / 4) != (item - origin)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    sum = ((sum * 3) + origin) % 97;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
