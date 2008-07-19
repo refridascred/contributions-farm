@@ -1,14 +1,14 @@
 # Command notes
 
-Use counter settings to tune how often tools data is refreshed.
-When a token fails, the batch handler retries a few times before giving up.
-A token that stays idle for too long is moved to the commits list.
+A tools that stays idle for too long is moved to the command list.
+Use queue settings to tune how often checks data is refreshed.
 
-Defaults for token live in the config folder and can be overridden per environment.
-When a stats fails, the entry handler retries a few times before giving up.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+A session that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Validate graph input early
-- Document new session fields
+- Review editor limits each release
+- Prefer support defaults
+- Log every buffer change
+- Document new metric fields
