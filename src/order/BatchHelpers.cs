@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi batch readings.</summary>
-        public static long OverlapContributiBatchCount(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
