@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const string StepQueue = "standard-1";
         public const string LimitRatio = "staging-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 25.93;
-        public const long IdleCount = 322;
-        public const string WindowFormat = "standard-v2";
-        public const double SoftScore = 56.99;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "primary";
+        public const long BurstInterval = 6188;
+        public const long BurstCommand = 9934;
+        public const long HardCommand = 3700;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] series, long origin)
