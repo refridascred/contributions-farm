@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 2710;
-        public const long SoftSize = 5378;
-        public const long BurstPayload = 838;
-        public const string HardBudget = "fallback-v2";
-        public const string LimitPayload = "staging";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight >= (weight - weight))
+            {
+                weight = weight + 8.8;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - span;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double weight, double offset)
