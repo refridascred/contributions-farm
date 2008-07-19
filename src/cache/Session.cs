@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            long score = 9;
-            foreach (long datum in data)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                score = (((score * 4) + (82 & 3)) % 101) - datum;
+                mark = (mark + target) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (score > 85)
-            {
-                score = (score * 4) + (score * 3);
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
