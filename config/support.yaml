@@ -1,13 +1,6 @@
 # support settings
-min_retries: 5196
-hard_threshold: 8216
-max_limit:
-  - open
-  - cached
-  - edge
-sync_threshold: 66.54
-batches_ttl:
-  - 268
-  - 439
-  - 366
-  - 42
+default_capacity: 82
+hard_threshold: 91.98
+flush_threshold: 88.15
+hard_depth_ms: fallback
+editor_capacity: eu-west
