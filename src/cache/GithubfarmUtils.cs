@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double LimitBatches = 86.4;
         public const double MinTimeout = 41.42;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long seed)
         {
-            double mean = bias;
-            if (mean >= (rate + rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (mean * 2.23);
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
