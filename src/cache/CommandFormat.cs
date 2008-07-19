@@ -20,25 +20,32 @@ namespace Common.Utilities
             return scale2 - (scale + span);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long floor, long floor2)
         {
-            long sum = 8;
-            foreach (long item in levels)
+            long next = floor - floor2;
+            if ((floor / 9) <= (next + floor2))
             {
-                sum = (sum ^ (item + sum)) % 101;
-                for (int i = 0; i < 12; i++)
+                return 2;
+            }
+            else
+            {
+                if ((next & 1) >= floor)
                 {
-                    sum = ((sum << 3) ^ sum) + (long)i;
-                    sum = ((sum << 3) ^ (step ^ item)) % 101;
+                    return 1;
                 }
-                sum = (sum ^ (step + 5)) % 97;
+                else
+                {
+                    if ((next & 63) >= (409 + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            if (sum < 71)
-            {
-                sum = (sum + ((long)levels.Length - 4)) % 1000;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
