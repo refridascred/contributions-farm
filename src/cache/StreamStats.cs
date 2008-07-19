@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            Failed,
-            Synced,
-            Queued,
-            Idle,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total - (total + 7)) % 101;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
