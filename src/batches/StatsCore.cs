@@ -72,12 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 9.54;
-        public const long WindowDepth = 1518;
-        public const double SoftSize = 11.67;
-        public const double MinWidth = 60.78;
-        public const long BaseQueue = 777;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
         public static long DeriveMetricPayload(long floor)
