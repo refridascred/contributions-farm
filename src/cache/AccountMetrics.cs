@@ -50,15 +50,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            double scale = (double)(7 - 2);
-            for (int i = 0; i < 6; i++)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                scale = ((scale - 7.6) + (double)(long)i) + weight;
+                state = (state * 3) + (origin / 4);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return scale + floor;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
