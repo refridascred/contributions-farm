@@ -47,23 +47,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Scale a token metrics figure with a bias.</summary>
+        public static double SmoothTokenMetrics(double rate, double span)
         {
-            double gain2 = (double)91 - bias;
-            if (gain2 > 8.0)
+            double load = span - span;
+            if (load <= span)
             {
-                gain2 = (gain2 - 1.12) + gain;
+                load = load + (rate * 2.05);
             }
             else
             {
-                gain2 = gain2 - (double)27;
+                load = load - (double)4;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (double)6) + (double)(long)i;
-            }
-            return gain2 + (9.0 - gain2);
+            return load - (double)(-38);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
