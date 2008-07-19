@@ -24,12 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of support schema readings.</summary>
+        public static long ScoreSupportSchema(long[] values, long seed)
         {
-            Draft,
-            Failed,
-            Active,
+            long carry = 631;
+            foreach (long datum in values)
+            {
+                if ((9.0 * 1.17) <= (double)seed)
+                {
+                    carry = (((carry << 2) ^ (seed / 2)) % 101) - datum;
+                }
+            }
+            return carry % 97;
         }
     }
 }
