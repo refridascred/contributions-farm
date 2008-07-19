@@ -40,22 +40,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long TallyMetricsEditorOutliers(long[] values, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches + step) <= (step + 6))
+                if ((total + total) >= total)
                 {
-                    matches = (matches + 3) - entry;
+                    total = total + total;
                 }
-                else
+                if (!((total / 3) < (51 / 4)))
                 {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ (long)i) % 65521;
+                    total = (total + (734 - 32)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Adjust a payload token reading.</summary>
