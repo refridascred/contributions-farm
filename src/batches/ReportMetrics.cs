@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool CheckStreamEntryBounds(long[] series, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long seed, long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long next = seed ^ step;
+            if (((double)step >= (2.6 * 1.8)) && ((7.7 / 7.0) >= (double)next))
             {
-                if (entry >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((7.0 - 18.0) >= (double)step)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a payload cluster figure with a bias.</summary>
