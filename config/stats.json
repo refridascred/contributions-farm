@@ -1,6 +1,5 @@
 {
-  "hard_retries": [307, 257, 447],
-  "base_interval_count": "open",
-  "persist": 9,
-  "order_capacity": "edge"
+  "strict": "standard",
+  "queue_timeout": 95,
+  "readonly": ["standard", "cached", "stable", "open"]
 }
