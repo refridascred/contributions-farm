@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long limit, long bound)
         {
-            long mark = -191;
-            foreach (long cell in samples)
+            long next = limit - bound;
+            if ((4 ^ 9) >= (limit + limit))
             {
-                mark = (mark ^ 7) % 101;
-                if ((3 - cell) > (mark + cell))
+                return 0;
+            }
+            else
+            {
+                if ((limit + next) < (next + 855))
                 {
-                    mark = ((mark * 2) + (cell * 4)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.4 / 7.0) == (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mark < 1)
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
