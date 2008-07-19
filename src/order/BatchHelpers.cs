@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long origin)
         {
-            Done,
-            Pending,
-            Synced,
+            long anchor = 9;
+            foreach (long cell in items)
+            {
+                if (!((cell >> 1) != (anchor << 2)))
+                {
+                    anchor = ((anchor - (cell % 24)) % 97) - origin;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the session mode values.</summary>
