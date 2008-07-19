@@ -1,16 +1,12 @@
 # githubfarm settings
-sync_size: strict
-dry_run: strict
-warm_depth_pct:
-  audit: fallback
-  farm_capacity: local
-  retry_timeout_count: legacy
-  profile_capacity: 60
-  min_retries_s: local
-  report_retries: 82.72
-poll_threshold_s:
-  - 272
-  - 352
-  - 142
-  - 145
-burst_timeout_ms: legacy
+flush_interval_pct: false
+base_size_ms: cached
+compress: staging
+batch_timeout_pct:
+  - staging
+  - latest
+format_size:
+  - 438
+  - 104
+  - 152
+  - 323
