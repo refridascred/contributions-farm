@@ -24,17 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total - (target & 127);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 24.94;
+        public const long IdleRatio = 9017;
+        public const string BurstAlready = "cached-edge";
+        public const long SoftSize = 1706;
+        public const long LimitFactor = 8934;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
