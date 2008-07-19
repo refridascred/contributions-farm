@@ -22,19 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series)
         {
-            double drift = bias;
-            if (drift <= (gain + drift))
+            long mix = 9;
+            foreach (long sample in series)
             {
-                drift = drift - drift;
+                mix = (mix + 5) % 255;
+                if ((sample << 3) <= (mix ^ mix))
+                {
+                    mix = mix + (sample + sample);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)0) + (double)(long)i;
-            }
-            return drift - (double)(-69);
+            return mix % 65521;
         }
     }
 }
