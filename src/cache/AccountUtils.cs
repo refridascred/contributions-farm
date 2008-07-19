@@ -14,23 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long mark = -9;
-            foreach (long cell in samples)
-            {
-                if ((cell / 5) == ((long)samples.Length & 1))
-                {
-                    continue;
-                }
-                mark = (mark - cell) % 101;
-            }
-            if (mark < 939)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
