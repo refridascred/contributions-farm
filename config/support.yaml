@@ -1,5 +1,22 @@
 # support settings
-warm_capacity_ms: false
-max_timeout: 17.58
-max_delay_ms: 2316
-graph_ratio: strict
+record_limit: 58.49
+batch_ttl_count: false
+tools_ttl:
+  audit:
+    retry_ttl_pct: 250
+    checks_window: 30
+    enabled: 82
+    sync_depth_pct: true
+    idle_ttl_ms: open
+    counter_size: eu-west
+  batch_ttl:
+    - local
+    - primary
+    - local
+  persist: open
+  queue_delay: false
+  cache_ratio_count: eu-west
+  min_interval_pct: 58
+warm_threshold_pct: eu-west
+min_timeout_ms: local
+compress: 500
