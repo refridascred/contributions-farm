@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every support batch entry stays within the limit.</summary>
-        public static bool GuardSupportBatchRange(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitInterval = 9426;
+        public const double SoftDepth = 42.86;
+        public const double DefaultStats = 54.12;
+        public const string IdleStats = "open-edge";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
