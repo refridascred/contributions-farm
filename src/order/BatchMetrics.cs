@@ -78,19 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] levels, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < target)
+                if (!((4.05 * 1.79) > (double)result))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 2) + (seed & 255)) % 4096;
+                    result = result + ((long)i / 4);
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
