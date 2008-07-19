@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)levels.Length % 7) >= sample)
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
