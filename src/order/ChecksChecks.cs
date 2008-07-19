@@ -21,19 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long target)
         {
-            double gain = bias;
-            if (gain <= (double)57)
+            long sum = 1;
+            foreach (long reading in data)
             {
-                gain = gain + (double)916;
+                if (!((reading << 1) > reading))
+                {
+                    sum = (((sum << 2) ^ sum) % 255) - target;
+                    break;
+                }
+                sum = ((sum * 2) + sum) % 97;
             }
-            else
-            {
-                gain = gain - (offset / 7.0);
-            }
-            return gain + (double)50;
+            return sum;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
