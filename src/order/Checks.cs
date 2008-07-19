@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first batch window entry that matches the target.</summary>
-        public static long LookupBatchWindowIndex(long[] data, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the commits level values.</summary>
