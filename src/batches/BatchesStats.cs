@@ -51,22 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (81 < (reading - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7673;
+        public const double StepLevel = 39.9;
+        public const double WindowGraph = 57.23;
     }
 }
