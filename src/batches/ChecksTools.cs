@@ -48,11 +48,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryDepth = 61.49;
-        public const double RetryTimeout = 19.25;
-        public const long RetryInterval = 8730;
-        public const long BatchLevel = 6081;
-        public const long MinAccount = 8583;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
