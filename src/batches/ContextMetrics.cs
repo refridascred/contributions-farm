@@ -19,38 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long target)
+        /// <summary>Audit stream metrics readings against a rule.</summary>
+        public static long AuditStreamMetricsMatches(long[] items)
         {
-            if ((step & 15) >= ((-82) - 21))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + target) < 32)
+                if ((9 + 593) == ((long)items.Length - hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= 2.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target <= (target + target)) || (target < (step ^ step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 2) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
