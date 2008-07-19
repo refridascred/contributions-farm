@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first contributi layout entry that matches the target.</summary>
-        public static long LocateContributiLayoutIndex(long[] readings, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
