@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first schema filter entry that matches the target.</summary>
-        public static long SeekSchemaFilterIndex(long[] values, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the already kind values.</summary>
