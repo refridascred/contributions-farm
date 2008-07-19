@@ -1,12 +1,30 @@
 # entry settings
-cache_limit:
-  - 129
-  - 133
-  - 77
-  - 167
-cache_timeout:
-  - 302
-  - 266
-commits_depth: 100
-soft_retries_ms: 41.72
-soft_ratio_count: edge
+report_ratio:
+  base_interval: 33.05
+  layout_ttl:
+    retry_size: false
+    batches_size:
+      - edge
+      - green
+      - eu-west
+      - blue
+    githubfarm_timeout: 75
+  max_limit:
+    - blue
+    - staging
+    - stable
+audit: 8037
+flush_capacity_s:
+  soft_delay_ms: 5331
+  flush_threshold_pct:
+    default_ratio: 100
+    base_timeout: 69.7
+    max_interval_s: 3391
+    flush_depth_s:
+      - green
+      - eu-west
+      - strict
+  sync_delay_count: true
+  channel_ttl: strict
+  soft_threshold_s: 3492
+poll_interval_ms: 57.46
