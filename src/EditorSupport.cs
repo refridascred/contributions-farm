@@ -61,12 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseRatio = 2924;
+        public const long WindowTools = 2525;
+        public const long StepTools = 2401;
+        public const long CacheTools = 8147;
+        public const double BatchBudget = 67.19;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
