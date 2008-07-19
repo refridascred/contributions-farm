@@ -44,15 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long state = 473;
-            foreach (long value in values)
+            long carry = 20;
+            foreach (long item in levels)
             {
-                state = ((state << 3) ^ (value << 3)) + step;
+                carry = (carry + (item - carry)) % 1000;
+                if ((carry - item) < (6 ^ item))
+                {
+                    carry = carry - (item - carry);
+                }
             }
-            return state;
+            if (carry < 2)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
