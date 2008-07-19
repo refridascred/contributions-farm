@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const string MinSession = "latest";
         public const long LimitSession = 9660;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of channel graph entries.</summary>
+        public static long ScoreChannelGraph(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long mark = 860;
+            foreach (long item in values)
+            {
+                mark = (((mark + mark) % 101) - item) - origin;
+                if ((813 > (811 - mark)) || ((double)mark == (8.8 * 5.8)))
+                {
+                    mark = (mark << 2) ^ (mark % 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the buffer entry entries that pass the check.</summary>
