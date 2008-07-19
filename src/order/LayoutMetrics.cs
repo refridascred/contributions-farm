@@ -35,23 +35,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = -978;
-            foreach (long entry in samples)
-            {
-                state = (state << 3) ^ 820;
-                if (!(entry >= ((long)samples.Length % 64)))
-                {
-                    break;
-                }
-            }
-            if (state > (-51))
-            {
-                state = (state - state) % 101;
-            }
-            return state % 1000;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
