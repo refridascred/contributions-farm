@@ -30,21 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = seed - floor;
+            if ((seed - delta) < (delta + 766))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor - delta) >= (delta - 39))
                 {
-                    if ((levels[i] + levels[j]) != 6)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed <= 1.0)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
