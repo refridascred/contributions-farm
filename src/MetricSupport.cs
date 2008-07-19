@@ -48,20 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long slot = limit;
-                if (!((limit + slot) == (mix + limit)))
-                {
-                    mix = (mix + (slot + mix)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Idle,
+            Failed,
+            Paused,
         }
     }
 }
