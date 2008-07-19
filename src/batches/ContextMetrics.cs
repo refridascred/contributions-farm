@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up cluster checks samples.</summary>
-        public static long PairClusterChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 6792;
+        public const long BatchEntry = 8988;
+        public const long RetryInterval = 9463;
+        public const string WindowBudget = "cached-1";
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
