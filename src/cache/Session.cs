@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 4059;
-        public const double SoftSpan = 10.18;
-        public const string MinSize = "standard-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)matches <= (16.0 / 5.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
