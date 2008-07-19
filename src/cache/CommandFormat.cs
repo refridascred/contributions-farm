@@ -38,25 +38,21 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Roll a session entry counter forward.</summary>
-        public static long IterateSessionEntry(long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target <= (target - target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - target) % 4096;
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score - target) % 4096;
-                    score = score ^ (score + 855);
-                }
-                score = (score << 2) ^ ((long)i << 1);
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
