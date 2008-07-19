@@ -30,24 +30,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long limit2)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            if ((limit & 31) == (limit << 3))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((346 << 3) != (limit + limit2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
