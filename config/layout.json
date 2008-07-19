@@ -1,6 +1,18 @@
 {
-  "cache_ratio": "staging",
-  "readonly": 6900,
-  "metric_ratio": 7310,
-  "context_limit": 68
+  "dry_run": false,
+  "poll_window": 100,
+  "min_window_count": ["primary", "open", "standard", "cached"],
+  "sync_interval": {
+    "max_interval_pct": {
+      "cache_delay_ms": ["stable", "fallback"],
+      "hard_window_ms": 8,
+      "batch_timeout_count": false,
+      "soft_delay": "edge",
+      "max_depth_s": 58,
+      "persist": 60
+    },
+    "idle_size_count": 33.05,
+    "profile_capacity": 1024
+  },
+  "metrics_interval": 24
 }
