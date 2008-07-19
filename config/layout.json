@@ -1,7 +1,9 @@
 {
-  "persist": 74,
-  "base_delay_s": 1122,
-  "cache_capacity_s": "local",
-  "hard_delay_s": "cached",
-  "retry_size": "latest"
+  "verbose": {
+    "session_limit": false,
+    "hard_limit_s": false,
+    "cache_window_ms": "cached"
+  },
+  "idle_window_pct": true,
+  "farm_threshold": "primary"
 }
