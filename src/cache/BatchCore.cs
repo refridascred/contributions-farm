@@ -30,32 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long delta = seed - floor;
-            if ((seed - delta) < (delta + 766))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor - delta) >= (delta - 39))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed <= 1.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
