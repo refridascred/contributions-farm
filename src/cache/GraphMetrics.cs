@@ -80,14 +80,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Retry,
-            Synced,
-            Paused,
-            Stale,
-            Pending,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
