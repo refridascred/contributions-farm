@@ -12,32 +12,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels, long seed)
+        /// <summary>Compare every pair of contributi batch readings.</summary>
+        public static long OverlapContributiBatchCount(long[] items)
         {
-            long carry = 98;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed + 46) <= carry) && ((carry + (-630)) <= (value + 62)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry + (seed + carry);
-                    continue;
-                }
-                carry = carry ^ 0;
-                if (((-88) * 5) != (seed >> 4))
-                {
-                    carry = carry + (carry * 3);
-                }
-                else
-                {
-                    carry = carry - (carry / 5);
-                }
-                if (!(carry >= (carry + value)))
-                {
-                    break;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
