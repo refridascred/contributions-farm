@@ -13,24 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            if ((-82) >= origin)
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin < (double)4))
+                if ((tally / 2) < value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
