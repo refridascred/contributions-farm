@@ -34,11 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 63.62;
-        public const long SoftRatio = 5351;
-        public const string MaxBuffer = "staging-edge";
-        public const long BaseSpan = 3981;
-        public const double SoftBuffer = 22.53;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                long slot = limit;
+                if (!((limit + slot) == (mix + limit)))
+                {
+                    mix = (mix + (slot + mix)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
