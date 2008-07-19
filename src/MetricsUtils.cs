@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8975;
-        public const long MinLayout = 2987;
-        public const string RetryLayout = "staging-v2";
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 7526;
