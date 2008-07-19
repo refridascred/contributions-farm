@@ -1,5 +1,6 @@
 {
-  "burst_size": "strict",
-  "batch_delay_count": false,
-  "cache_delay_ms": ["primary", "cached"]
+  "burst_capacity_s": "cached",
+  "stream_interval": "strict",
+  "schema_ttl": "fallback",
+  "hard_retries_ms": "green"
 }
