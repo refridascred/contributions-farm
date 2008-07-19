@@ -42,19 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            long result = 86;
-            foreach (long value in samples)
+            double gain = floor * 8.39;
+            if (gain <= gain)
             {
-                result = ((result << 3) ^ (result >> 3)) % 97;
-                if ((result >> 1) > 29)
-                {
-                    result = (result * 2) + value;
-                }
+                gain = (gain + 4.8) - scale;
             }
-            return result % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + floor;
         }
     }
 }
