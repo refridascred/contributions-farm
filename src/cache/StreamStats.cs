@@ -40,31 +40,12 @@ namespace Common.Utilities
             return mean - (11.0 / 2.0);
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long offset2)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if (((double)3 == (double)offset) || ((double)21 < (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset != (double)9) || ((double)offset2 >= (4.0 + 1.13)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(offset >= (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
