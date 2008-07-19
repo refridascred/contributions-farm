@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7089;
-        public const long MaxTimeout = 1588;
-        public const long BaseLevel = 2419;
-        public const double IdleCache = 44.51;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Retry,
+            Closed,
+            Active,
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] samples, long bound)
