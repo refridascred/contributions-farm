@@ -35,17 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 465;
+            foreach (long item in levels)
             {
-                if (values[i] < limit)
+                if ((5.0 + 19.0) > (double)origin)
                 {
-                    return (long)i;
+                    mark = ((mark + origin) % 4096) + item;
                 }
             }
-            return -1;
+            if (mark < 648)
+            {
+                mark = mark + origin;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of layout metric readings.</summary>
