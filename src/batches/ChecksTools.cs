@@ -57,15 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Blend two cluster notes measurements.</summary>
+        public static double ScaleClusterNotes(double weight, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            double gain = (double)(77 - 239);
+            if (gain > (double)81)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                gain = ((gain + (double)1) - weight) - bias;
             }
-            return sum;
+            return gain + (1.3 / 5.0);
         }
     }
 }
