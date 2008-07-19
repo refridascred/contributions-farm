@@ -21,14 +21,15 @@ namespace Common.Utilities
         public const double LimitEditor = 70.02;
         public const long CacheCount = 4761;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double bias)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Queued,
-            Failed,
+            double gain = (weight * 1.21) + (bias - weight);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (weight / 7.0)) - (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
