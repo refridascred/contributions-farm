@@ -32,11 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            double load = weight - weight;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 1.2) + (double)(long)i;
+            }
+            return load - (16.0 + bias);
         }
 
         /// <summary>Match up layout samples.</summary>
