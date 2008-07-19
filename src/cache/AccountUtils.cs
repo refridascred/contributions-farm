@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = 18.0;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + (double)94) + (double)(long)i) - bias;
+            }
+            return drift - gain;
         }
 
         /// <summary>Describe the stream level values.</summary>
