@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            double rate = (double)493 * 9.9;
-            if (rate >= (17.0 / 5.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + bias) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + (double)1;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
