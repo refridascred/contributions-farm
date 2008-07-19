@@ -20,26 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] values, long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = 96;
-            foreach (long datum in values)
-            {
-                if ((double)bound <= (9.29 + 9.9))
-                {
-                    sum = (sum + (datum << 1)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (bound % 64);
-                }
-            }
-            if (sum > 75)
-            {
-                sum = (sum + (sum + sum)) % 65521;
-            }
-            return sum;
+            New,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
