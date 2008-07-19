@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - tally) >= (579 ^ floor))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
