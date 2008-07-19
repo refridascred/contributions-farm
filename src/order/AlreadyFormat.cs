@@ -39,22 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels, long origin)
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long MeasureProfileFilterOutliers(long[] readings, long floor)
         {
-            long mark = 465;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((5.0 + 19.0) > (double)origin)
+                if ((tally % 16) == (tally - tally))
                 {
-                    mark = ((mark + origin) % 4096) + item;
+                    tally = ((tally + 3) - reading) + floor;
                 }
             }
-            if (mark < 648)
-            {
-                mark = mark + origin;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
