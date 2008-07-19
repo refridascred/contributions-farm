@@ -23,12 +23,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the channel tools series from a seed.</summary>
+        public static long SeriesChannelTools(long seed)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
