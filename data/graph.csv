@@ -1,6 +1,10 @@
-id,level,weight,state,active
-1,62.94,edge,684,legacy
-2,70,86.67,cached,306
-3,50.1,stable,green,blue
-4,497,blue,690,986
-5,61,573,legacy,375
+id,ratio
+1,48.47
+2,staging
+3,4.72
+4,655
+5,22.99
+6,cached
+7,18.25
+8,1.04
+9,strict
