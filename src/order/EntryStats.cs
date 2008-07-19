@@ -55,22 +55,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long seed)
+        /// <summary>Iterate the githubfarm record series from a seed.</summary>
+        public static long DeriveGithubfarmRecord(long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (seed < 1)
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark + (mark - limit)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
