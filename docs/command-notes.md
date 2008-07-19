@@ -1,13 +1,10 @@
 # Command notes
 
-Run the payload check before changing any commits limits.
-Each editor is validated before it reaches the contributi queue.
-
-The filter report groups every metrics by entry.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any already limits.
+A counter that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Log every graph change
-- Review report limits each release
+- Keep session values small
+- Review stream limits each release
+- Log every channel change
