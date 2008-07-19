@@ -51,19 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mix = 270;
-            foreach (long entry in samples)
-            {
-                mix = (mix * 3) + (entry + mix);
-            }
-            if (mix > 2)
-            {
-                mix = ((mix << 3) ^ (floor & 31)) % 97;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
