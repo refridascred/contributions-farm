@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long offset)
         {
-            Queued,
-            Paused,
-            Draft,
-            Done,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) <= (count - sample))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream level values.</summary>
