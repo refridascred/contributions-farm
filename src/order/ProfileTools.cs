@@ -77,19 +77,13 @@ namespace Common.Utilities
         public const double MaxEntry = 87.43;
         public const long BaseEntry = 2232;
 
-        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
-        public static bool GuardBufferFarmLimits(long[] items, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
