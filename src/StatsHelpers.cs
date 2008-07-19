@@ -36,18 +36,13 @@ namespace Common.Utilities
         public const string BatchChannel = "stable-v2";
         public const long MaxDepth = 4038;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (value > (value >> 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
