@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next queue metrics value from a seed.</summary>
-        public static long DeriveQueueMetrics(long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((total << 2) == (long)i)
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate entry samples.</summary>
