@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long origin)
         {
-            Queued,
-            Failed,
-            Draft,
-            Pending,
-            Synced,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
