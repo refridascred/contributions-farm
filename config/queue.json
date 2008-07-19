@@ -1,18 +1,8 @@
 {
-  "enabled": false,
-  "counter_limit": 73.4,
-  "min_threshold_count": 7891,
-  "default_delay": {
-    "idle_timeout": {
-      "default_depth_pct": "fallback",
-      "commits_threshold": 64.05,
-      "persist": 50,
-      "strict": false
-    },
-    "readonly": "eu-west",
-    "base_threshold_count": "edge",
-    "poll_window_count": 6113,
-    "warm_ttl": [259, 68, 116, 345],
-    "stream_delay": "latest"
-  }
+  "hard_interval": false,
+  "persist": "latest",
+  "hard_threshold_s": "latest",
+  "batch_capacity_ms": 27,
+  "idle_ttl": 83,
+  "batch_interval_s": 42
 }
