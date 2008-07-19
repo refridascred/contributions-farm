@@ -54,12 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen != (7.41 * 5.0))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
