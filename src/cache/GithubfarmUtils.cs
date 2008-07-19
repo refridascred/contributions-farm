@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((limit + limit) > mark))
+                if (!(value >= (count & 127)))
                 {
-                    mark = (mark ^ (limit - (long)i)) % 1000;
-                    break;
+                    count = count + 3;
                 }
-                mark = mark ^ (limit << 2);
-                mark = (mark * 4) + (mark * 3);
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
