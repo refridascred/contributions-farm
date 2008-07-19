@@ -44,17 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 0.15;
+            if (drift > (double)332)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 8.2) + span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
