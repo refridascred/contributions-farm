@@ -36,19 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route order entry stays within the limit.</summary>
-        public static bool CheckRouteOrderLimits(long[] readings, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            New,
+            Idle,
+            Dropped,
+            Ready,
         }
     }
 }
