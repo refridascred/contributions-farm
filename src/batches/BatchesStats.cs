@@ -31,21 +31,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((target * 4) >= target) || ((seed % 64) > (5 << 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed > 0) || ((seed << 1) <= (seed ^ target)))
                 {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
