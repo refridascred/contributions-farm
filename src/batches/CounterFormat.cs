@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long anchor = 77;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor % 10) <= (anchor - anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor ^ cell;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
