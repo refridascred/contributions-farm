@@ -50,14 +50,16 @@ namespace Common.Utilities
         public const long HardCommits = 4828;
         public const long BaseCommits = 7164;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a graph queue counter forward.</summary>
+        public static long IterateGraphQueue(long limit)
         {
-            Idle,
-            Failed,
-            Stale,
-            Ready,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc - ((long)i % 64)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
