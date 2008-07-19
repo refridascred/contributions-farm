@@ -37,19 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            double weight2 = (double)(35 + (-5));
-            if (weight2 <= (double)277)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = (weight2 - weight) + offset;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + weight;
+            return -1;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
