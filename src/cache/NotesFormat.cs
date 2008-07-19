@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank context farm input into a small class.</summary>
-        public static long GradeContextFarm(long floor, long bound)
+        /// <summary>Rank layout stats input into a small class.</summary>
+        public static long GradeLayoutStats(long offset, long step)
         {
-            if ((double)floor < (2.6 + 6.0))
+            if ((step >= (step / 5)) && ((double)offset == (9.9 * 9.3)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (floor >= (bound + bound))
+                if ((4.6 - 7.15) <= (double)step)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor != (20.0 - 4.0))
+                    if ((step * 2) < (offset * 3))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if (!((double)bound > (5.12 / 6.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 0;
                     }
                 }
             }
