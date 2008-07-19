@@ -56,19 +56,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double ratio = offset;
+            if (ratio <= 3.9)
             {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - ratio) + scale;
             }
-            return valid;
+            return ratio + (offset - offset);
         }
     }
 }
