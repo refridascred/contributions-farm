@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long IdleCount = 9211;
         public const long BatchSize = 8806;
 
-        /// <summary>Grade a payload queue value against two limits.</summary>
-        public static long BucketPayloadQueue(long limit, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] series, long limit)
         {
-            if ((double)5 >= (12.0 - 5.5))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 8) > 33)
+                if ((series[i] <= limit) && ((series[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.2 < (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
