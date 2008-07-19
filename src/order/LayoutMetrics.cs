@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const double CacheTools = 86.4;
         public const string WindowScore = "standard-v2";
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long step, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long limit2)
         {
-            long prev = step - bound;
-            if (((step - bound) >= bound) && ((double)bound < 5.4))
+            long prev = limit ^ limit2;
+            if ((double)prev >= (14.0 / 3.0))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((prev & 63) > prev)
+                if (((limit % 100) < (-63)) || ((double)limit2 >= (6.2 / 9.0)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
