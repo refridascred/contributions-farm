@@ -1,6 +1,22 @@
 {
-  "cache_limit_s": "latest",
-  "persist": 5640,
-  "filter_threshold": "edge",
-  "sync_capacity_s": 16
+  "session_window": {
+    "default_threshold_s": [258, 462, 232, 466],
+    "support_capacity": false,
+    "flush_threshold_count": [432, 159, 350, 102],
+    "editor_size": false,
+    "soft_depth_count": {
+      "verbose": false,
+      "persist": 18.62,
+      "cache_limit_s": "standard",
+      "default_timeout": true,
+      "min_retries_count": true,
+      "record_limit": false
+    },
+    "cache_retries": 28.89
+  },
+  "compress": "open",
+  "default_capacity_s": "local",
+  "soft_interval_s": true,
+  "poll_depth": "latest",
+  "metric_limit": [467, 105, 342, 417]
 }
