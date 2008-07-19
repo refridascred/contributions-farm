@@ -34,20 +34,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long CombineReportChecks(long[] samples, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] values, long seed)
         {
-            long mix = -803;
-            foreach (long datum in samples)
+            long total = 0;
+            foreach (long value in values)
             {
-                mix = ((mix * 2) + (2 + 0)) ^ datum;
-                mix = mix ^ (102 + bound);
+                if ((value + total) <= (seed * 4))
+                {
+                    total = total + value;
+                }
             }
-            if (mix > 705)
-            {
-                mix = ((mix * 3) + (bound >> 5)) % 97;
-            }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
