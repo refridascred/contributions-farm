@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many checks editor samples are out of range.</summary>
+        public static long MeasureChecksEditorHits(long[] samples)
         {
-            Pending,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + item) < (3 + 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
