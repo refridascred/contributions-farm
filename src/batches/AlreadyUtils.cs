@@ -32,15 +32,26 @@ namespace Common.Utilities
         public const string SoftContext = "alpha-edge";
         public const double StepRatio = 66.55;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long carry = 781;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((carry - (long)readings.Length) > carry)
+                {
+                    carry = carry - datum;
+                }
+                else
+                {
+                    carry = (carry ^ (datum + carry)) % 101;
+                }
             }
-            return acc;
+            if (carry > 51)
+            {
+                carry = (carry ^ (72 - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
