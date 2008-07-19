@@ -27,19 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = 9;
-            foreach (long sample in series)
-            {
-                mix = (mix + 5) % 255;
-                if ((sample << 3) <= (mix ^ mix))
-                {
-                    mix = mix + (sample + sample);
-                }
-            }
-            return mix % 65521;
+            Synced,
+            Failed,
+            Stale,
+            Paused,
         }
     }
 }
