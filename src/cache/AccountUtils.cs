@@ -31,12 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Stale,
-            Idle,
-            Dropped,
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
