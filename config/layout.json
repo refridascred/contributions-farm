@@ -1,7 +1,15 @@
 {
-  "readonly": "fallback",
-  "poll_ratio": 8137,
-  "hard_window_pct": "local",
-  "audit": 8574,
-  "max_retries_pct": 73
+  "soft_size_s": "strict",
+  "cache_ratio": {
+    "sync_delay": {
+      "layout_timeout": 4176,
+      "cache_limit_ms": "standard",
+      "compress": 19.72
+    },
+    "warm_interval_pct": "blue",
+    "soft_ratio_count": true
+  },
+  "verbose": "edge",
+  "soft_limit": "edge",
+  "flush_depth": 250
 }
