@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double floor)
-        {
-            double gain = (double)51 - ratio;
-            if (gain <= gain)
-            {
-                gain = (gain - (double)8) - floor;
-            }
-            else
-            {
-                gain = gain + (double)64;
-            }
-            return gain + (double)32;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardLevel = "stable-1";
+        public const double SoftSize = 75.94;
+        public const long LimitScore = 9459;
+        public const string BatchInterval = "latest-edge";
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
