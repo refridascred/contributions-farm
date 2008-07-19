@@ -42,21 +42,11 @@ namespace Common.Utilities
             return load - (double)(-38);
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 8297;
+        public const long BurstSpan = 6611;
+        public const long BatchFactor = 1707;
+        public const string SoftBatch = "latest-v2";
+        public const long DefaultFactor = 5164;
     }
 }
