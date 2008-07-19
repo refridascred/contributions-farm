@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue latest; do
-    log "checking ${item}"
-done
-
 mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+FARM_LIMIT=327
+log "limit is ${FARM_LIMIT}"
