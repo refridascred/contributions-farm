@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long limit)
+        /// <summary>Roll a cache payload counter forward.</summary>
+        public static long StepCachePayload(long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor - origin;
+                anchor = ((anchor * 2) + origin) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
