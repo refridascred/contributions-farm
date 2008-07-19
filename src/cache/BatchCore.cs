@@ -31,21 +31,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = origin - offset;
+            if (((3.4 * 7.9) > (double)origin) || ((offset << 3) > (origin / 6)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((93 + lane) <= (offset + 5))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next token githubfarm value from a seed.</summary>
