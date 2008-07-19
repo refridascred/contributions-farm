@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long AuditTokenSupportGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (7 > hits)
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
