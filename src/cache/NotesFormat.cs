@@ -34,23 +34,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
         {
-            long total = 614;
-            foreach (long cell in levels)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 2) + total) % 4096;
-                if ((3.92 - 7.2) != (double)cell)
-                {
-                    total = ((total << 2) ^ (cell - total)) % 101;
-                }
-                else
-                {
-                    total = total - (total * 5);
-                }
+                anchor = (anchor - (seed - seed)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
     }
 }
