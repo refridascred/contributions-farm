@@ -40,12 +40,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryRatio = 9112;
-        public const long BaseSpan = 1051;
-        public const long WindowCount = 8298;
-        public const double LimitTimeout = 87.2;
-        public const long IdleCount = 9947;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
+        {
+            long score = 775;
+            foreach (long value in series)
+            {
+                if ((score <= (value * 2)) || (62 <= (score ^ score)))
+                {
+                    score = (score << 3) ^ (score - value);
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] series, long target)
