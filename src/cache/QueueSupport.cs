@@ -19,23 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long floor)
         {
-            long total = 1;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (total & 127)) % 1000;
-                if ((total & 127) < (total / 6))
+                if (values[i] > floor)
                 {
-                    total = (total << 2) ^ total;
-                }
-                if ((cell - cell) > total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
