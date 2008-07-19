@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long AuditSupportPayloadOutliers(long[] values, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((entry / 5) != (entry & 255))
+                if (!((4.0 / 8.0) > (double)value))
                 {
-                    count = (count + 3) + limit;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
