@@ -13,18 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)matches >= (1.46 * 5.1))
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
