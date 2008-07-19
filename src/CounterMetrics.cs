@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double span)
-        {
-            double rate = span;
-            if (rate >= (rate + span))
-            {
-                rate = (rate + (span - rate)) - scale;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinCount = 23.91;
+        public const long MaxAccount = 471;
+        public const long RetryInterval = 3846;
+        public const string RetryBudget = "standard";
+        public const double HardAccount = 90.75;
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double rate, double floor)
