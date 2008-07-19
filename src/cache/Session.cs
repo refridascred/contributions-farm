@@ -33,20 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] samples, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum << 3) ^ target;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (origin > 522)
                 {
-                    sum = (sum + ((long)i + 820)) ^ (long)i2;
+                    tally = (tally + 2) ^ sample;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm command pair into a bucket.</summary>
