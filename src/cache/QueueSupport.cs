@@ -25,19 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9366;
+        public const long BaseBudget = 1201;
+        public const string StepCount = "cached";
+        public const long StepChannel = 5331;
     }
 }
