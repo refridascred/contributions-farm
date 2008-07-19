@@ -35,13 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Look up the position of a payload cache sample.</summary>
+        public static long LocatePayloadCacheIndex(long[] data, long step)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
