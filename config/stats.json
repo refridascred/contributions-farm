@@ -1,7 +1,7 @@
 {
-  "batch_size": 7.67,
-  "default_timeout_count": 2286,
-  "dry_run": 56.94,
-  "burst_retries_count": 1024,
-  "layout_delay": "standard"
+  "verbose": ["local", "fallback"],
+  "githubfarm_limit": false,
+  "hard_depth_s": "strict",
+  "token_capacity": 59,
+  "batch_ttl": 2746
 }
