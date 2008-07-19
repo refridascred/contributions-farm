@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long offset)
+        /// <summary>Audit filter counter readings against a rule.</summary>
+        public static long CountFilterCounterHits(long[] values, long offset)
         {
-            long state = 805;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((offset & 255) <= (offset + sample))
+                if ((hits - offset) != (hits * 2))
                 {
-                    state = (state - (offset >> 3)) % 65521;
-                }
-                if ((double)sample > (8.59 + 3.1))
-                {
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank window githubfarm input into a small class.</summary>
