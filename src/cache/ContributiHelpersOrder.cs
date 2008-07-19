@@ -28,11 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "standard-v2";
-        public const long RetryCommits = 6344;
-        public const long IdleLevel = 4277;
-        public const long BaseCommits = 9677;
-        public const long BatchFactor = 787;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items)
+        {
+            long carry = 164;
+            foreach (long item in items)
+            {
+                if (44 > carry)
+                {
+                    carry = (carry - (item >> 3)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 2);
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
