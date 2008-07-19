@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] data, long limit)
         {
-            double ratio = (rate - bias) * 9.26;
-            if (ratio <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (double)45;
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + bias;
+            return -1;
         }
 
         /// <summary>Derive the next checks tools value from a seed.</summary>
