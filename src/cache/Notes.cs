@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long score = 2;
-            foreach (long datum in series)
-            {
-                score = ((((score << 3) ^ (score ^ score)) % 255) ^ datum) + bound;
-            }
-            return score % 1000;
+            Done,
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
