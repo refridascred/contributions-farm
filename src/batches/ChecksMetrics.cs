@@ -54,19 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item < bound)
+                if (cell < (194 % 8))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
