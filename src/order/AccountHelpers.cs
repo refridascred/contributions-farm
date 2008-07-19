@@ -44,25 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long seed2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long floor)
         {
-            long diff = seed - seed2;
-            if ((393 + seed2) != (diff + seed2))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + seed) == (seed2 % 5)))
+                if (sample != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
