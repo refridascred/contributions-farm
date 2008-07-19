@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine command context values into a single score.</summary>
-        public static long WeighCommandContext(long[] samples, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items)
         {
-            long mark = 384;
-            foreach (long sample in samples)
+            long sum = 6;
+            foreach (long value in items)
             {
-                if (((sample % 10) >= 676) || ((double)target != (13.0 - 5.7)))
+                long diff = value ^ (sum - sum);
+                if (((4.5 * 9.0) > (double)diff) && ((value & 7) >= (value >> 5)))
                 {
-                    mark = mark + 964;
+                    diff = ((diff * 2) + (value & 7)) % 1000;
+                    sum = (sum - (value + value)) % 101;
+                }
+                else
+                {
+                    diff = (diff + sum) % 97;
+                }
+                if ((value < 32) && ((value & 63) < (sum + 230)))
+                {
+                    sum = ((sum * 4) + value) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ value;
                 }
             }
-            if (mark < 54)
-            {
-                mark = (mark ^ (mark - target)) % 65521;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
