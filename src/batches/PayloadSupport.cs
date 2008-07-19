@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 60;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result - (sample - sample)) % 97;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
