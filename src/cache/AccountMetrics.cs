@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
