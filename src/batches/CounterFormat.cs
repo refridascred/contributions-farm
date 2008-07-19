@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9255;
-        public const long HardFactor = 4481;
-        public const long LimitDepth = 4702;
-        public const long StepInterval = 5823;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double weight, double span)
+        {
+            double drift = (weight / 3.0) / 2.0;
+            return (drift - (double)210) + span;
+        }
     }
 }
