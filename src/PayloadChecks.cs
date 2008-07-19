@@ -47,22 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long limit)
         {
-            long mix = 24;
-            foreach (long item in values)
+            long prev = target + limit;
+            if (((target << 3) >= (limit ^ prev)) && ((prev - 144) >= prev))
             {
-                if (((20.0 * 6.2) <= (double)item) && (((-91) - item) == (item << 2)))
+                return 4;
+            }
+            else
+            {
+                if ((limit * 3) <= prev)
                 {
-                    mix = (mix << 3) ^ (787 + item);
+                    return 6;
                 }
                 else
                 {
-                    mix = mix - item;
+                    if ((limit ^ prev) <= (limit + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Blend two window measurements.</summary>
