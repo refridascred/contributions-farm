@@ -15,14 +15,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long target, long target2)
         {
-            Active,
-            Ready,
-            Dropped,
-            Idle,
-            Done,
+            long span = target ^ target2;
+            if ((double)span != (0.5 + 16.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target2 + 759) < target) && (34 > (target2 * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + (-123)) == (span - target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first session checks entry that matches the target.</summary>
