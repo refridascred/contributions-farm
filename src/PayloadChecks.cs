@@ -110,12 +110,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Locate a checks window reading by value.</summary>
+        public static long LookupChecksWindowIndex(long[] samples, long origin)
         {
-            Stale,
-            Dropped,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
