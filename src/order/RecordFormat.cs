@@ -23,15 +23,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two githubfarm schema measurements.</summary>
-        public static double BlendGithubfarmSchema(double ratio, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            double weight = 5.9;
-            if (weight > (offset - 2.63))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + (2.0 * 1.41)) - ratio;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
