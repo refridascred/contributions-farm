@@ -23,20 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4634;
+        public const long MaxScore = 9396;
+        public const long LimitRecord = 537;
+        public const long StepSize = 5451;
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double weight, double bias)
