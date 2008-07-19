@@ -32,11 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "staging-v2";
-        public const string BaseChecks = "standard";
-        public const string SoftTimeout = "primary-edge";
-        public const long BaseDepth = 1174;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleFormat = 2176;
