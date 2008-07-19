@@ -20,23 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (matches > (249 / 9))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "fallback-v2";
+        public const double RetryRoute = 71.26;
+        public const long RetrySize = 2923;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long target, long seed)
