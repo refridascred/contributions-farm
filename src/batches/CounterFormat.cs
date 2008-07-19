@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleChecks = 7136;
         public const long BurstChecks = 2626;
 
-        /// <summary>Count the route githubfarm entries that pass the check.</summary>
-        public static long MeasureRouteGithubfarmHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((977 & 255) < datum) && ((double)datum <= (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchBudget = "latest-v2";
+        public const long BatchWidth = 6965;
+        public const long WindowSpan = 6065;
+        public const long MaxChannel = 7585;
+        public const long IdleChannel = 210;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaGaps(long[] readings)
