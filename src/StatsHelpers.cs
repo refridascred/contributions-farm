@@ -23,19 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((tally >> 1) != (300 & 7)) || ((tally + floor) != (998 & 15))) && ((item % 5) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8447;
+        public const double HardRecord = 22.25;
+        public const double RetryRecord = 68.38;
+        public const double HardSize = 18.02;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 24.39;
