@@ -35,13 +35,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            double mean = gain + (gain - gain);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - 8.0) + (double)(long)i) + floor;
+            }
+            return mean - (double)405;
         }
     }
 }
