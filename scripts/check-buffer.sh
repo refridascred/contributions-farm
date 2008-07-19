@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary legacy latest; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=27
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
