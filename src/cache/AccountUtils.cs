@@ -25,22 +25,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] series, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count % 64) >= 18)
-                {
-                    count = ((count + 3) + datum) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Synced,
         }
     }
 }
