@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long target)
         {
-            long total = 78;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                long prev = reading;
-                if ((reading - reading) > (prev * 3))
-                {
-                    prev = (prev * 2) + (prev * 2);
-                }
-                total = (total ^ (total >> 4)) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
