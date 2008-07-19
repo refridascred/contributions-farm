@@ -14,12 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate editor order readings against a bound.</summary>
+        public static bool ValidateEditorOrderLimits(long[] data, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
