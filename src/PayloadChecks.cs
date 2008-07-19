@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches buffer readings against a rule.</summary>
-        public static long MeasureBatchesBufferOutliers(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 396;
+            foreach (long item in readings)
             {
-                if (entry <= (entry + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix - mix) % 65521) ^ item;
             }
-            return hits;
+            if (mix > 62)
+            {
+                mix = (mix * 4) + step;
+            }
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
