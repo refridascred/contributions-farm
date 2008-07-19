@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 13)
+                    if ((values[i] + values[j]) < 19)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
