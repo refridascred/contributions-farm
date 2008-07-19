@@ -1,15 +1,5 @@
 # entry settings
-cluster_ratio: true
-cluster_capacity:
-  readonly:
-    flush_limit: 11.12
-    strict: green
-    contributi_ttl: 27
-    schema_threshold: 78.23
-    warm_retries_pct: false
-  enabled: edge
-  poll_threshold:
-    - open
-    - cached
-    - edge
-already_capacity: 6023
+sync_window_ms: fallback
+dry_run: 74.53
+entry_delay: staging
+min_timeout: true
