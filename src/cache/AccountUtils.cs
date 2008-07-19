@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long step)
+        /// <summary>Fold a list of window payload readings.</summary>
+        public static long FoldWindowPayload(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 1;
+            foreach (long cell in levels)
             {
-                if (series[i] < step)
+                if ((state / 2) >= (cell ^ (-77)))
                 {
-                    return (long)i;
+                    state = (state + (state - cell)) % 65521;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a stream stats.</summary>
