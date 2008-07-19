@@ -67,11 +67,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long result = 30;
+            foreach (long value in levels)
+            {
+                if ((value < (value << 2)) || ((result - value) == (value >> 1)))
+                {
+                    result = result ^ (3 + result);
+                }
+                else
+                {
+                    result = (result - (result * 4)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
