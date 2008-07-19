@@ -1,6 +1,6 @@
 {
-  "audit": 250,
-  "batch_depth": 1024,
-  "tools_retries": 1024,
-  "base_size_count": "standard"
+  "hard_retries": [307, 257, 447],
+  "base_interval_count": "open",
+  "persist": 9,
+  "order_capacity": "edge"
 }
