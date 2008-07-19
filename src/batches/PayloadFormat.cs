@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 2963;
-        public const double HardTimeout = 61.05;
-        public const long MaxLayout = 4895;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
