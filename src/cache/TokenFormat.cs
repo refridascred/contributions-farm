@@ -23,11 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
