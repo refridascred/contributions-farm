@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 8)
+                    if ((data[i] ^ data[j]) == 13)
                     {
                         hits = hits + 1;
                     }
