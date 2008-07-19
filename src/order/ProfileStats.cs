@@ -39,11 +39,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
