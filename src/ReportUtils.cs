@@ -39,19 +39,13 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] series, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
