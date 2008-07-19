@@ -31,12 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the command counter entries that pass the check.</summary>
+        public static long TallyCommandCounterGaps(long[] samples)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + matches) == (cell * 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
