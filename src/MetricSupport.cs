@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long prev = limit + bound;
-            if (((double)limit != (double)540) || ((limit >> 1) >= 858))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit <= (limit / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 + bound) == (bound / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (prev - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many checks editor samples are out of range.</summary>
