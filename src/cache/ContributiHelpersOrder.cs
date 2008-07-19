@@ -31,25 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                total = total + bound;
-                if ((total >> 2) <= total)
-                {
-                    total = ((total << 3) ^ (total << 1)) % 1000;
-                }
-                else
-                {
-                    total = (total - (bound & 63)) % 1000;
-                    total = total + bound;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
