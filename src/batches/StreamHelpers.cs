@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long IdleInterval = 2261;
         public const long BurstBudget = 5386;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] readings, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((datum / 8) > 8) && ((datum - limit) <= (seen * 3))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
