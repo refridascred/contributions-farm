@@ -23,22 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long TallyOrderBatches(long[] levels, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values, long seed)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            long score = 96;
+            foreach (long sample in values)
             {
-                if ((entry >> 4) < (34 / 2))
-                {
-                    result = ((result ^ result) % 1000) - origin;
-                }
-                if ((result + entry) < (83 * 4))
-                {
-                    break;
-                }
+                score = ((score - (score >> 1)) ^ sample) - seed;
             }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Match up context samples.</summary>
