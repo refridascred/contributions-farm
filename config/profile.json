@@ -1,5 +1,16 @@
 {
-  "persist": "edge",
-  "min_limit_ms": 56,
-  "strict": false
+  "retry_depth_pct": {
+    "contributi_limit": 81,
+    "retry_ttl_count": "fallback",
+    "min_limit": "edge",
+    "verbose": [457, 493]
+  },
+  "persist": {
+    "max_retries_pct": 31,
+    "retry_depth_pct": 38,
+    "flush_ttl_s": 89
+  },
+  "compress": 250,
+  "min_ttl_count": "legacy",
+  "readonly": "cached"
 }
