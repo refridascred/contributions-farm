@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long seed, long offset)
         {
-            long result = 4;
-            foreach (long sample in values)
+            if ((offset << 1) >= offset)
             {
-                if ((double)result < (16.0 / 7.0))
+                return 5;
+            }
+            else
+            {
+                if ((19.0 - 5.8) < (double)offset)
                 {
-                    result = ((result * 4) + (result - sample)) - offset;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result * 3) + (sample * 4)) % 101;
+                    if ((double)offset > (4.63 - 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - (-86)) == (offset & 63))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Describe the commits status values.</summary>
