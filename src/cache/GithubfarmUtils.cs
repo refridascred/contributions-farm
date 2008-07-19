@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a metrics buffer reading.</summary>
-        public static double SmoothMetricsBuffer(double ratio, double bias)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long bound)
         {
-            double ratio2 = bias;
-            if (ratio2 < (double)268)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = (ratio2 - bias) + ratio;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (bias + ratio2)) + (double)(long)i;
-            }
-            return ratio2 - (double)17;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
