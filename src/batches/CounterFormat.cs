@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long offset)
         {
-            double load = (bias - offset) - (bias + bias);
-            if (load >= (load - load))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - bias;
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - 9.3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 14.0) - (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
