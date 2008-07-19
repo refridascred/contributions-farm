@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 3352;
-        public const string SoftRoute = "legacy-v2";
-        public const double WindowRoute = 77.95;
-        public const double HardLevel = 39.64;
-        public const long WindowSize = 943;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long offset)
+        {
+            long state = 805;
+            foreach (long sample in data)
+            {
+                if ((offset & 255) <= (offset + sample))
+                {
+                    state = (state - (offset >> 3)) % 65521;
+                }
+                if ((double)sample > (8.59 + 3.1))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank window githubfarm input into a small class.</summary>
         public static long BucketWindowGithubfarm(long target, long bound)
