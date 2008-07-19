@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((0 + 570) >= tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
