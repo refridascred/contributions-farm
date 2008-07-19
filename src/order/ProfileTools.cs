@@ -14,23 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series, long bound)
         {
-            double gain = (bias - bias) * 9.8;
-            if (gain >= (gain / 8.0))
+            long seen = 0;
+            foreach (long item in series)
             {
-                gain = gain - (double)59;
+                if (!((14.0 / 9.0) == (double)bound))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            else
-            {
-                gain = gain - (double)8;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - span;
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
