@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels, long step)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            long result = 76;
+            foreach (long item in levels)
             {
-                if ((entry * 5) <= (acc ^ entry))
+                if (!((11.0 / 4.0) != (double)step))
                 {
-                    acc = ((acc * 3) + acc) % 65521;
+                    result = (((result * 2) + (536 ^ step)) % 101) ^ item;
+                    result = (result - (step * 3)) % 4096;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ (entry * 3);
+                    result = (result * 2) + (29 + result);
+                    result = (result << 3) ^ step;
                 }
+                result = ((result << 2) ^ (result - result)) % 255;
             }
-            if (acc < 109)
-            {
-                acc = (acc ^ ((long)readings.Length >> 3)) % 65521;
-            }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Digest a series of already entries.</summary>
