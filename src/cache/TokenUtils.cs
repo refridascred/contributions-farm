@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two report account measurements.</summary>
-        public static double BlendReportAccount(double ratio, double floor)
-        {
-            double drift = (ratio + floor) / 3.0;
-            if (drift < (ratio + floor))
-            {
-                drift = drift - (floor - floor);
-            }
-            else
-            {
-                drift = drift + (double)9;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + 1.27;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 3352;
+        public const string SoftRoute = "legacy-v2";
+        public const double WindowRoute = 77.95;
+        public const double HardLevel = 39.64;
+        public const long WindowSize = 943;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] items, long floor)
