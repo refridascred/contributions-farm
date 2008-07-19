@@ -37,18 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values, long bound)
-        {
-            long total = -28;
-            foreach (long reading in values)
-            {
-                if (bound <= (reading / 9))
-                {
-                    total = (total ^ (total - total)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 98.67;
+        public const long DefaultLevel = 6501;
+        public const long HardFactor = 9101;
+        public const long LimitStats = 8343;
     }
 }
