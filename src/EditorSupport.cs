@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string HardBudget = "fallback-v2";
         public const string LimitPayload = "staging";
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            double ratio = weight;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
