@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a token graph reading.</summary>
-        public static double AdjustTokenGraph(double scale, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long origin)
         {
-            double load = scale;
-            if (load < scale)
+            long state = 6;
+            foreach (long entry in items)
             {
-                load = (load + scale) + bias;
+                state = state + (entry / 5);
+                if ((950 <= state) || ((origin % 2) >= (entry * 2)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load * 8.0);
-            }
-            return load + load;
+            return state;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
