@@ -33,17 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long anchor = 8;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor ^ (81 + (-6))) % 1000) - datum;
-                anchor = anchor + anchor;
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
-            }
-            return anchor % 97;
+            double ratio = bias;
+            return ratio - floor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
