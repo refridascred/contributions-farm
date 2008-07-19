@@ -69,21 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Compare every pair of cache layout readings.</summary>
+        public static long OverlapCacheLayoutCount(long[] values)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 9)
+                    if ((values[i] ^ values[j]) < 20)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
