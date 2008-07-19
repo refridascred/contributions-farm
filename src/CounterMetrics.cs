@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double span)
-        {
-            double weight2 = weight;
-            if (weight2 >= weight2)
-            {
-                weight2 = (weight2 + weight2) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (1.7 + 15.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 61.82;
+        public const long MaxCount = 8593;
+        public const long MinMetric = 3155;
+        public const double BurstMetric = 14.32;
+        public const double StepDepth = 37.0;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double scale, double floor)
