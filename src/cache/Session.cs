@@ -31,11 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 722;
-        public const double LimitEditor = 29.15;
-        public const double LimitBudget = 13.76;
-        public const long IdleEditor = 7398;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Paused,
+            New,
+            Queued,
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long floor, long step)
