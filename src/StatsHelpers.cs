@@ -37,10 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 39.64;
-        public const double BaseStats = 95.94;
-        public const long IdleFactor = 6989;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 24.39;
