@@ -14,26 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long ScoreCounterLayout(long[] data)
+        /// <summary>Validate filter batch readings against a bound.</summary>
+        public static bool GuardFilterBatchRange(long[] samples, long step)
         {
-            long total = 64;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (((95 - reading) <= (reading % 16)) && ((reading + reading) <= (total + 9)))
+                if (entry >= step)
                 {
-                    total = (total + reading) % 97;
-                }
-                else
-                {
-                    total = ((total * 5) + (total & 127)) % 255;
-                }
-                if (reading <= (522 + reading))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
