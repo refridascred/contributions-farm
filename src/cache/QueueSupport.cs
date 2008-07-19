@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((long)levels.Length % 7) >= sample)
+                if (entry < origin)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Roll a account report counter forward.</summary>
