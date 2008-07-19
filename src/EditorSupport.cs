@@ -50,12 +50,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseRatio = 2924;
-        public const long WindowTools = 2525;
-        public const long StepTools = 2401;
-        public const long CacheTools = 8147;
-        public const double BatchBudget = 67.19;
+        /// <summary>Find the first order cache entry that matches the target.</summary>
+        public static long LookupOrderCacheIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up layout cluster samples.</summary>
         public static long PairLayoutClusterCount(long[] data)
