@@ -1,5 +1,7 @@
 # entry settings
-audit: cached
-retry_threshold_pct: standard
-default_ttl_pct: 62
-default_timeout_pct: false
+base_depth_ms: 4311
+metrics_delay: 45.38
+default_retries_pct: primary
+flush_retries: primary
+warm_size: 48
+metrics_ttl: legacy
