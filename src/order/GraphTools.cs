@@ -27,21 +27,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up buffer format samples.</summary>
-        public static long MatchBufferFormatCount(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -48;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ sample) % 65521;
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
