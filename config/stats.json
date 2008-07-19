@@ -1,7 +1,7 @@
 {
-  "retry_threshold_ms": 2501,
-  "window_window": [234, 72, 105, 39],
-  "max_delay_ms": "staging",
-  "verbose": false,
-  "hard_delay": [90, 23]
+  "batch_size": 7.67,
+  "default_timeout_count": 2286,
+  "dry_run": 56.94,
+  "burst_retries_count": 1024,
+  "layout_delay": "standard"
 }
