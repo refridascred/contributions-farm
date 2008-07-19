@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Locked,
-            New,
-            Ready,
-            Draft,
-            Idle,
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
