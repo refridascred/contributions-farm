@@ -48,12 +48,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCount = 7046;
-        public const string IdleLevel = "local-1";
-        public const long BatchWidth = 9038;
-        public const double BaseInterval = 28.09;
-        public const long RetryCache = 4765;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state ^ (3 + state);
+                if ((target << 1) < 76)
+                {
+                    state = ((state * 2) + (state - target)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
