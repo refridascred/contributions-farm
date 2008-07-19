@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((((seen + 580) > (item - seen)) || ((390 - 610) != (seen % 10))) || ((0.9 - 6.93) == (double)seen))
+                if (matches > (249 / 9))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
