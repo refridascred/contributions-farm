@@ -23,19 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record tools figure with a bias.</summary>
-        public static double BlendRecordTools(double gain, double offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double drift = (double)(-74);
-            if (drift <= (gain / 9.0))
-            {
-                drift = (drift + (drift + drift)) + offset;
-            }
-            else
-            {
-                drift = drift - 15.0;
-            }
-            return drift - (drift + gain);
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
