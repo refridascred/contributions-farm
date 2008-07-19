@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 92;
+            foreach (long value in levels)
             {
-                if ((seen < (item << 2)) || ((9.22 <= (double)item) && ((seen >> 1) <= (85 << 2))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state - (target / 8)) % 97) - value;
             }
-            return seen;
+            if (state < 8)
+            {
+                state = (state << 2) ^ target;
+            }
+            return state % 97;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
