@@ -52,11 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 67.38;
-        public const string DefaultProfile = "strict-v2";
-        public const long HardProfile = 893;
-        public const string BatchProfile = "standard-edge";
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double span)
+        {
+            double load = span / 3.0;
+            if (load < span)
+            {
+                load = (load - load) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load * 8.9)) + (double)(long)i;
+            }
+            return load + (load - load);
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] items)
