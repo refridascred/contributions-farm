@@ -51,18 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] items, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long total = 16;
-            foreach (long sample in items)
-            {
-                if (9.4 < (double)total)
-                {
-                    total = ((total + (floor & 127)) % 1000) ^ sample;
-                }
-            }
-            return total % 1000;
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
