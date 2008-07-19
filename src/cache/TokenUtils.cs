@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long CacheWidth = 9243;
         public const long IdleSpan = 9668;
 
-        /// <summary>Rank window githubfarm input into a small class.</summary>
-        public static long BucketWindowGithubfarm(long target, long bound)
-        {
-            if (748 <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (2.02 <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 6) >= (target << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target > 28)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSize = 3775;
+        public const string SoftMetric = "open-v2";
+        public const long DefaultMetric = 1718;
+        public const long SoftInterval = 9286;
+        public const long StepMetric = 6113;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
