@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 4873;
-        public const double RetryOrder = 46.24;
-        public const long BaseOrder = 6034;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] series)
