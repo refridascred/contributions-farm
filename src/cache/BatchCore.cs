@@ -41,19 +41,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double bias)
         {
-            double gain = floor * 8.39;
-            if (gain <= gain)
+            double scale = (double)(0 & 7);
+            if (scale <= (bias + 6.0))
             {
-                gain = (gain + 4.8) - scale;
+                scale = scale - (bias * 9.0);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + floor;
+            return scale - weight;
         }
     }
 }
