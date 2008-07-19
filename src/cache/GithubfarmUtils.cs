@@ -33,15 +33,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long DigestToolsEditor(long[] levels)
+        /// <summary>Audit tools token readings against a rule.</summary>
+        public static long AuditToolsTokenOutliers(long[] samples)
         {
-            long mark = 47;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mark = (((mark * 4) + (mark + 76)) % 255) + entry;
+                if ((79 - entry) > entry)
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
