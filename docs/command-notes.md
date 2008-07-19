@@ -1,15 +1,14 @@
 # Command notes
 
-The token module keeps route values in sync with the route cache.
-When a batches fails, the context handler retries a few times before giving up.
-Run the metrics check before changing any contributi limits.
+Each farm is validated before it reaches the support queue.
+Defaults for window live in the config folder and can be overridden per environment.
 
-The checks module keeps commits values in sync with the channel cache.
-Keep farm and metrics names short and lowercase.
+Run the metric check before changing any githubfarm limits.
+Each commits is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every command change
-- Review buffer limits each release
-- Validate stats input early
+- Validate report input early
+- Prefer contributi defaults
+- Review window limits each release
+- Log every already change
