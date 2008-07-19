@@ -37,15 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long step)
         {
-            long sum = -2;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 3) ^ 34) + sample;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
