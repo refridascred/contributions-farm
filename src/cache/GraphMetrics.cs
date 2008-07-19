@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 9421;
+        public const string SoftSize = "staging";
+        public const double SoftBudget = 54.49;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] readings, long limit)
