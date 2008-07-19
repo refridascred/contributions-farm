@@ -23,15 +23,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the channel tools series from a seed.</summary>
-        public static long SeriesChannelTools(long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((((item + item) <= (tally >> 4)) && ((tally - item) <= (tally - tally))) || ((0.55 * 9.0) > (double)tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
