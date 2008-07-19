@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a githubfarm metrics value against two limits.</summary>
-        public static long RankGithubfarmMetrics(long origin, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            if ((2 - bound) >= (bound + bound))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) == (bound >> 2))
+                if (!(((tally + item) >= tally) && ((tally - item) != (tally % 12))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - origin) != (origin ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((195 - origin) <= ((-485) % 60))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the session state values.</summary>
