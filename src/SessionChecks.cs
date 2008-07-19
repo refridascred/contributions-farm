@@ -27,15 +27,13 @@ namespace Common.Utilities
         public const string StepWindow = "legacy-v2";
         public const long DefaultWindow = 8011;
 
-        /// <summary>Project the next metrics githubfarm value.</summary>
-        public static double BlendMetricsGithubfarm(double rate, double bias)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double bias2 = (3.9 * 7.18) * 2.11;
-            if (bias2 > rate)
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 + bias;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
