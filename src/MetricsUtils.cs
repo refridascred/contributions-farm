@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double gain = bias;
-            if (gain >= offset)
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (gain - 12.0);
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
