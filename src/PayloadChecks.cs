@@ -87,23 +87,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long step)
-        {
-            long acc = 55;
-            foreach (long value in items)
-            {
-                acc = (((acc << 2) ^ acc) % 65521) - step;
-                if (((double)value <= (5.92 / 8.0)) || ((double)(long)items.Length >= (double)acc))
-                {
-                    acc = (acc << 2) ^ (value - acc);
-                }
-            }
-            if (acc < 36)
-            {
-                acc = acc - (7 >> 1);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 6546;
+        public const string RetryLevel = "alpha-v2";
+        public const long StepWidth = 6895;
+        public const long RetryQueue = 9735;
     }
 }
