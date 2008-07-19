@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BatchCommits = 784;
         public const long BaseCommits = 2936;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples, long origin)
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length >> 3) < item)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
