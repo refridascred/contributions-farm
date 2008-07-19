@@ -20,19 +20,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values, long limit)
+        /// <summary>Rank report batches input into a small class.</summary>
+        public static long ClassifyReportBatches(long step, long origin)
         {
-            long result = 84;
-            foreach (long reading in values)
+            long bound = step - origin;
+            if (((double)origin < (3.19 + 13.0)) && ((step << 1) < 31))
             {
-                result = (result ^ reading) - limit;
+                return 0;
             }
-            if (result > (-32))
+            else
             {
-                result = (result + (65 % 3)) % 97;
+                if ((bound + 0) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + 81) > (bound % 60)) || ((step >> 4) == (step / 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
