@@ -85,18 +85,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 7;
+            foreach (long reading in values)
             {
-                if ((310 + cell) > (bound + cell))
+                carry = (carry ^ (1 / 7)) + seed;
+                if ((double)reading != (double)carry)
                 {
-                    count = count + 3;
+                    carry = (carry ^ (914 + 8)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
