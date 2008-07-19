@@ -42,21 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long CompareCacheBatchesCount(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
