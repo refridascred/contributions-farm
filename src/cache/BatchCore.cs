@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 8302;
-        public const long SoftDepth = 4598;
-        public const double BaseBudget = 89.67;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] series)
