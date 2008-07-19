@@ -26,19 +26,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context report samples are out of range.</summary>
-        public static long TallyContextReportGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally >> 4) < tally)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 39.64;
+        public const double BaseStats = 95.94;
+        public const long IdleFactor = 6989;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 24.39;
