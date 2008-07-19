@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] readings, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 127) == (tally / 6))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
