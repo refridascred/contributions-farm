@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long step)
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long AuditCounterReportGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (reading > step)
+                if ((((long)levels.Length / 6) <= (cell + count)) && (cell < (count - cell)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
