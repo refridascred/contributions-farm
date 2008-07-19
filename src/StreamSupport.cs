@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 9662;
-        public const long IdleEntry = 9606;
-        public const long DefaultEntry = 5944;
-        public const double MaxSize = 49.97;
-        public const long HardDepth = 6074;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
