@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((long)items.Length << 1) >= sample))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 3) + (2 / 9)) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
