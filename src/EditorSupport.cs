@@ -27,12 +27,24 @@ namespace Common.Utilities
         public const double BaseSchema = 38.73;
         public const double CacheSchema = 25.16;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long offset, long target)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            if ((offset / 2) != (897 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target <= 1) && ((target * 2) <= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
