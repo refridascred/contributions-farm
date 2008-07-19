@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the window stats entries that pass the check.</summary>
-        public static long AuditWindowStatsGaps(long[] samples, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((datum - count) < (757 - target))
+                if ((seen + sample) <= (0 + floor))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
