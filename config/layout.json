@@ -1,6 +1,6 @@
 {
-  "hard_size_ms": true,
-  "enabled": 6854,
-  "retry_window": [314, 333, 253],
-  "audit": 88.95
+  "default_limit_s": "standard",
+  "dry_run": 11,
+  "batch_ratio": 34,
+  "retry_interval_count": 5874
 }
