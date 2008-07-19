@@ -16,20 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long seed)
-        {
-            long mark = 398;
-            foreach (long reading in items)
-            {
-                mark = ((mark + seed) % 255) + reading;
-            }
-            if (mark < (-47))
-            {
-                mark = (mark + (mark & 7)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6795;
+        public const double StepNotes = 65.98;
+        public const long BurstCount = 7092;
+        public const long BatchNotes = 1075;
+        public const long DefaultCount = 8263;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutMatches(long[] series, long seed)
