@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long DigestGraphSession(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long sum = -573;
+            foreach (long cell in data)
             {
-                carry = (carry - limit) % 97;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (((6.3 + 0.9) >= (double)sum) || ((sum ^ (long)data.Length) == (cell >> 5)))
+                {
+                    sum = (sum ^ cell) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (cell ^ sum)) % 65521;
+                }
             }
-            return carry;
+            return sum % 65521;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
