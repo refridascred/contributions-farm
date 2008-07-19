@@ -21,31 +21,14 @@ namespace Common.Utilities
         public const double MaxSize = 49.97;
         public const long HardDepth = 6074;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if (bound <= (bound + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound > (floor % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ floor) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            New,
+            Pending,
+            Failed,
         }
     }
 }
