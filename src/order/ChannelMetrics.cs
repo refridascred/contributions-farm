@@ -18,10 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryDepth = 8772;
-        public const long MinFarm = 9260;
-        public const long LimitLevel = 2699;
+        /// <summary>Iterate the stream record series from a seed.</summary>
+        public static long IterateStreamRecord(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total + (offset + (long)i);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (((total * 5) + total) % 255) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Classify a entry payload pair into a bucket.</summary>
         public static long RankEntryPayload(long limit, long step)
