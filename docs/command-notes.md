@@ -1,11 +1,12 @@
 # Command notes
 
-Use stream settings to tune how often stats data is refreshed.
-Each payload is validated before it reaches the command queue.
-Keep contributi and contributi names short and lowercase.
+Use cluster settings to tune how often buffer data is refreshed.
+The cluster report groups every checks by route.
+A entry that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Validate route input early
-- Prefer tools defaults
-- Review record limits each release
+- Review session limits each release
+- Validate checks input early
+- Document new order fields
+- Prefer context defaults
