@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long MaxBudget = 6306;
         public const long SoftInterval = 3989;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] readings, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
