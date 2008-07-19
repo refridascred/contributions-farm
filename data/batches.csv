@@ -1,9 +1,6 @@
-id,count,ratio
-1,standard,420
-2,547,54.06
-3,60.99,82.74
-4,34,848
-5,fallback,open
-6,4.02,623
-7,892,941
-8,802,legacy
+id,state,level,label,region
+1,staging,508,459,legacy
+2,60.46,fallback,fallback,16.35
+3,68.72,cached,391,open
+4,53.93,807,edge,latest
+5,872,836,85.9,336
