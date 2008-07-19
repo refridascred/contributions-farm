@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit farm command readings against a rule.</summary>
-        public static long CountFarmCommandOutliers(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long total = 78;
+            foreach (long reading in data)
             {
-                if ((double)hits != (0.7 * 4.0))
+                long prev = reading;
+                if ((reading - reading) > (prev * 3))
                 {
-                    hits = (hits + 3) + reading;
+                    prev = (prev * 2) + (prev * 2);
                 }
+                total = (total ^ (total >> 4)) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
