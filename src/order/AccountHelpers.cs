@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first stats record entry that matches the target.</summary>
-        public static long SeekStatsRecordIndex(long[] series, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = weight + floor;
+            if (scale > scale)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale = scale + 4.0;
             }
-            return -1;
+            else
+            {
+                scale = scale + (1.5 / 2.0);
+            }
+            return scale - (double)14;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
