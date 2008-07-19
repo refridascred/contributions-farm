@@ -26,28 +26,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long limit2)
         {
-            long mark = -4;
-            foreach (long sample in series)
+            long edge = limit + limit2;
+            if (edge <= (edge - limit))
             {
-                if (!((floor ^ sample) == (37 - mark)))
+                return 7;
+            }
+            else
+            {
+                if (7 >= (limit2 - limit))
                 {
-                    mark = mark + (mark & 15);
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark * 5) + (mark - mark);
+                    if ((limit2 - limit2) == (edge ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                mark = ((mark * 5) + (sample ^ floor)) % 255;
             }
-            if (mark > 1)
-            {
-                mark = ((mark * 5) + (mark << 3)) % 1000;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
