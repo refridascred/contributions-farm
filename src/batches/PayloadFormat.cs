@@ -41,13 +41,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Draft,
-            Active,
-            Synced,
-            Retry,
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
