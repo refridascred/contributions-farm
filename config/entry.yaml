@@ -1,9 +1,19 @@
 # entry settings
-sync_threshold_ms:
-  - 258
-  - 166
-  - 89
-batch_retries_pct: eu-west
-compress: edge
-soft_timeout_pct: false
-poll_retries_ms: 4556
+soft_capacity_pct: 45.91
+default_retries_pct:
+  record_limit: false
+  support_interval: true
+  sync_retries_ms: 73
+  readonly: 500
+  cache_ratio_count: 2551
+  base_window:
+    verbose: 5
+    cache_capacity_ms: 250
+    stats_window: false
+    flush_retries:
+      - 92
+      - 468
+      - 331
+      - 30
+    max_threshold_pct: 250
+window_limit: edge
