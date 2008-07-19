@@ -1,7 +1,10 @@
 # support settings
-dry_run: staging
-stats_window: false
-burst_depth: 15.56
-order_ratio: 23
-hard_delay_ms: 6564
-warm_ratio_pct: strict
+base_window_s: staging
+retry_delay_s: 66
+record_limit: 41.76
+flush_depth_pct: 95.04
+min_depth_pct:
+  - 350
+  - 189
+  - 232
+  - 143
