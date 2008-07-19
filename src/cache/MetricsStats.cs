@@ -23,22 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((66 % 7) <= (count / 7))
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a metrics header.</summary>
