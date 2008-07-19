@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Done,
-            Ready,
-            Dropped,
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
