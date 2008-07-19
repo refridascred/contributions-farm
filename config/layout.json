@@ -1,5 +1,8 @@
 {
-  "metric_threshold": 9887,
-  "max_limit": true,
-  "account_capacity": 88.21
+  "default_depth_count": "edge",
+  "batch_timeout": 60,
+  "cache_capacity_count": 88.45,
+  "flush_threshold_count": true,
+  "poll_window": 8816,
+  "already_timeout": 1024
 }
