@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long seed)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long total = 809;
+            foreach (long value in readings)
+            {
+                if (((total & 7) != (26 / 3)) && (value >= seed))
+                {
+                    total = ((total << 3) ^ (total & 15)) % 65521;
+                }
+                if ((120 + 27) > (value - value))
+                {
+                    break;
+                }
+            }
+            if (total > 7)
+            {
+                total = total - (seed + total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of format entries.</summary>
