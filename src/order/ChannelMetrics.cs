@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 8772;
+        public const long MinFarm = 9260;
+        public const long LimitLevel = 2699;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] series, long bound)
