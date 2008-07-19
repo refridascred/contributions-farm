@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Validate farm graph readings against a bound.</summary>
-        public static bool GuardFarmGraphRange(long[] items, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
