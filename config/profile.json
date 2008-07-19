@@ -1,5 +1,5 @@
 {
-  "flush_depth": ["latest", "local"],
-  "audit": 6511,
-  "readonly": "edge"
+  "notes_capacity": 2,
+  "warm_interval_pct": [403, 67, 310, 259],
+  "sync_window": [85, 164, 90, 400]
 }
