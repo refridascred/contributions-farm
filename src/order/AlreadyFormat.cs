@@ -49,22 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout metric readings.</summary>
-        public static long DigestLayoutMetric(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 23;
-            foreach (long datum in series)
-            {
-                if ((250 < (total + (long)series.Length)) || ((datum + total) > datum))
-                {
-                    total = (total + datum) % 1000;
-                }
-                else
-                {
-                    total = total + (datum & 255);
-                }
-            }
-            return total;
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
