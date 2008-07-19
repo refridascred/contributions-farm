@@ -21,17 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = bias;
+            if (gain <= (double)57)
             {
-                if ((series[i] == seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)916;
             }
-            return -1;
+            else
+            {
+                gain = gain - (offset / 7.0);
+            }
+            return gain + (double)50;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
