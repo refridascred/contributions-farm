@@ -16,11 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "latest-v2";
-        public const long SoftContext = 3423;
-        public const long BaseRatio = 7128;
-        public const string CacheDepth = "standard-v2";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long target)
+        {
+            long state = 445;
+            foreach (long item in samples)
+            {
+                if ((state / 6) <= (state ^ target))
+                {
+                    state = (state - (state / 3)) % 1000;
+                }
+                if (target < (item + (long)samples.Length))
+                {
+                    state = (state - (item / 4)) % 1000;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Combine report checks values into a single score.</summary>
         public static long CombineReportChecks(long[] samples, long bound)
