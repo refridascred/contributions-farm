@@ -36,22 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch command samples are out of range.</summary>
-        public static long TallyBatchCommandHits(long[] samples, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double load = scale;
+            if (load > (load + span))
             {
-                if (origin <= (428 - origin))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load - (double)814;
             }
-            return tally;
+            return load - (2.84 / 5.0);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
