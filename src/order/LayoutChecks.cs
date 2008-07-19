@@ -66,22 +66,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] series, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            long mark = -64;
-            foreach (long cell in series)
+            double weight = (double)(6 / 9);
+            if (weight < (9.1 + span))
             {
-                if (mark > (889 ^ mark))
-                {
-                    mark = (mark << 2) ^ (target << 2);
-                }
-                else
-                {
-                    mark = mark + (mark ^ cell);
-                }
+                weight = weight + 2.2;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight + 4.0)) + (double)(long)i;
+            }
+            return weight + (weight - scale);
         }
     }
 }
