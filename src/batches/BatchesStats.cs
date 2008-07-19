@@ -52,20 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            double scale = 5.35;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((offset % 64) < offset))
-                {
-                    total = (total ^ offset) % 97;
-                    total = total + (total - offset);
-                }
-                total = ((total * 2) + (long)i) % 101;
+                scale = ((scale + 2.6) + (double)(long)i) - gain;
             }
-            return total;
+            return scale + floor;
         }
     }
 }
