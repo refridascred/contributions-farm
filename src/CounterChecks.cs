@@ -19,39 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long delta = origin ^ offset;
-            if ((48 ^ offset) >= (origin + (-974)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 1) < (offset >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin == (double)delta)
+                    if ((values[i] ^ values[j]) > 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((1.0 + 7.1) > (double)delta))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
