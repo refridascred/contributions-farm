@@ -45,20 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 9094;
+        public const string LimitInterval = "staging";
+        public const long CacheBatch = 1592;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
