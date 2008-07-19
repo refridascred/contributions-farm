@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] series, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry > bound)
                 {
-                    total = ((total + (6 / 9)) % 101) + (long)i2;
+                    found = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    total = ((total * 5) + bound) - (long)i3;
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
