@@ -37,13 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
