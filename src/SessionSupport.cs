@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = 77;
+            foreach (long entry in items)
             {
-                if ((8.31 <= (double)cell) && ((cell ^ tally) < tally))
-                {
-                    tally = tally + 1;
-                }
+                acc = (acc + entry) + offset;
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
