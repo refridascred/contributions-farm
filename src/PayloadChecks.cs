@@ -80,19 +80,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool GuardSupportProfileLimits(long[] items, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > step)
+                if (offset > (mark ^ mark))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark + offset) % 65521;
+                    mark = (mark ^ ((long)i + offset)) % 65521;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
     }
 }
