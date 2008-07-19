@@ -1,12 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often buffer data is refreshed.
-The cluster report groups every checks by route.
-A entry that stays idle for too long is moved to the entry list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The commits report groups every stats by stream.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate checks input early
-- Document new order fields
-- Prefer context defaults
+- Log every schema change
+- Keep batches values small
+- Document new record fields
+- Review order limits each release
