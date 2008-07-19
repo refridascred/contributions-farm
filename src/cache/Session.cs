@@ -35,17 +35,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
+        public static long GradeGithubfarmCommand(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (offset > (bound & 7))
             {
-                if (items[i] < floor)
+                return 8;
+            }
+            else
+            {
+                if (!((bound - offset) <= bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
