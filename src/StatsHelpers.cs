@@ -48,38 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long target2)
+        /// <summary>Measure how many context report samples are out of range.</summary>
+        public static long TallyContextReportGaps(long[] series)
         {
-            if (target >= (target2 - target2))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target2 < (20.0 / 9.0))
+                if ((tally >> 4) < tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target * 5) >= 7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target >= (3.1 + 8.88))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
