@@ -78,18 +78,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (hits < (61 * 3))
-                {
-                    hits = ((hits + 2) ^ cell) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultSpan = 62.77;
+        public const string HardInterval = "stable";
+        public const long IdleWidth = 4607;
     }
 }
