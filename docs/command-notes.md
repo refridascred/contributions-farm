@@ -1,11 +1,14 @@
 # Command notes
 
-The channel module keeps command values in sync with the entry cache.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Keep contributi and graph names short and lowercase.
+
+The session module keeps payload values in sync with the batch cache.
+The stream report groups every channel by entry.
+A batch that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Document new context fields
-- Log every entry change
-- Review batches limits each release
-- Validate account input early
+- Document new queue fields
+- Keep channel values small
+- Log every editor change
