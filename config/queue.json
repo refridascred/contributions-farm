@@ -1,6 +1,7 @@
 {
-  "metric_interval": ["stable", "open"],
-  "stats_retries": 60,
-  "metrics_size": 96.59,
-  "metric_limit": false
+  "enabled": "stable",
+  "retry_limit": "legacy",
+  "sync_limit_ms": [18, 419, 225, 153],
+  "max_threshold_ms": "primary",
+  "batches_size": 4107
 }
