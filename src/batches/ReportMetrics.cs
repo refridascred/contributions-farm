@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool CheckStreamEntryBounds(long[] series, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                anchor = anchor + bound;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a payload cluster figure with a bias.</summary>
