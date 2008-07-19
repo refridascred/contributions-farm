@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepInterval = 3895;
-        public const long RetryChecks = 5490;
-        public const double MinWidth = 48.62;
-        public const long HardSize = 9116;
-        public const long CacheDepth = 2439;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            if (ratio2 < ratio)
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 / 3.0)) + (double)(long)i;
+            }
+            return ratio2 + (floor - ratio2);
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
