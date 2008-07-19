@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank format schema input into a small class.</summary>
-        public static long BucketFormatSchema(long target, long bound)
-        {
-            if (!(target <= (target + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (4.0 + 4.27))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((19.0 * 18.0) <= (double)bound) && ((9.5 - 12.0) <= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + target) != ((-911) + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 66.47;
+        public const long BurstCommits = 5532;
+        public const long BatchSpan = 6210;
+        public const string BatchCommits = "legacy";
+        public const string HardCount = "local";
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
