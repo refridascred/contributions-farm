@@ -52,25 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache support readings.</summary>
-        public static long TotalCacheSupport(long[] readings)
-        {
-            long total = 6;
-            foreach (long datum in readings)
-            {
-                total = (total ^ (total ^ datum)) % 101;
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total ^ (datum / 8)) + (long)i;
-                    total = ((total << 2) ^ 2) % 4096;
-                }
-                if (((long)readings.Length - (long)readings.Length) >= (datum * 5))
-                {
-                    total = (total - (total * 2)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 6572;
+        public const long CacheLevel = 6691;
+        public const long DefaultLayout = 5556;
+        public const long MaxLayout = 5656;
+        public const string BatchLayout = "local-v2";
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] values, long seed)
