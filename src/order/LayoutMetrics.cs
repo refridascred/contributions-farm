@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long MeasureContributiSessionMatches(long[] readings, long seed)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double load = offset;
+            if (load <= rate)
             {
-                if (seed <= seen)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                load = load - (double)955;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (rate + rate)) + (double)(long)i;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Combine window values into a single score.</summary>
