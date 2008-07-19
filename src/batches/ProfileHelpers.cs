@@ -66,23 +66,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 4817;
         public const double RetryToken = 24.23;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            double bias = (double)(81 / 2);
-            if (bias >= bias)
+            long count = 0;
+            foreach (long reading in items)
             {
-                bias = bias + 4.51;
+                if ((reading + reading) > reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (span + ratio)) + (double)(long)i;
-            }
-            return bias + bias;
+            return count;
         }
     }
 }
