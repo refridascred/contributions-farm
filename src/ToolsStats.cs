@@ -79,17 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (data[i] >= step)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
