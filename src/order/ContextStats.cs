@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches report samples are out of range.</summary>
-        public static long TallyBatchesReportHits(long[] data, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)hits != (2.09 / 2.0))
-                {
-                    hits = ((hits + 1) - entry) + seed;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Queued,
         }
     }
 }
