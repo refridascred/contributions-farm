@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count >= (sample & 255))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
