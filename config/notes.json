@@ -1,5 +1,7 @@
 {
-  "cache_delay_count": "open",
-  "buffer_ratio": "latest",
-  "idle_window_count": "green"
+  "sync_limit": "cached",
+  "format_timeout": "blue",
+  "entry_window": "latest",
+  "hard_interval_ms": 3,
+  "format_interval": "stable"
 }
