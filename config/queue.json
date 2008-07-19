@@ -1,6 +1,19 @@
 {
-  "burst_capacity_s": "cached",
-  "stream_interval": "strict",
-  "schema_ttl": "fallback",
-  "hard_retries_ms": "green"
+  "idle_capacity_count": {
+    "githubfarm_interval": false,
+    "hard_timeout": true,
+    "persist": "eu-west",
+    "default_size": "eu-west",
+    "readonly": "edge"
+  },
+  "cluster_timeout": 7068,
+  "tools_depth": {
+    "dry_run": "fallback",
+    "stream_timeout": 1024,
+    "default_depth_count": 69.36,
+    "strict": "fallback",
+    "audit": false,
+    "channel_delay": ["local", "strict", "stable", "green"]
+  },
+  "audit": "primary"
 }
