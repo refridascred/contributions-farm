@@ -1,6 +1,8 @@
 {
-  "session_ttl": 48,
-  "commits_timeout": 30,
-  "retry_ratio_pct": [109, 375, 419],
-  "soft_timeout_s": 91
+  "burst_ttl": 5438,
+  "min_ratio_s": 66,
+  "verbose": 9506,
+  "session_timeout": 1024,
+  "retry_timeout_pct": false,
+  "persist": "local"
 }
