@@ -1,6 +1,7 @@
-id,active,state,label
-1,94.12,14.04,legacy
-2,575,816,latest
-3,66.62,37,257
-4,97.22,6.25,38.37
-5,601,103,staging
+id,token,active,score,label
+1,301,69.55,420,460
+2,primary,476,latest,16.93
+3,61.59,latest,861,338
+4,50.89,547,52.59,stable
+5,63.62,edge,blue,50.06
+6,fallback,17.22,92.93,672
