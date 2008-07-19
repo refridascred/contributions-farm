@@ -38,22 +38,18 @@ namespace Common.Utilities
             return gain - (floor * 0.2);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long anchor = -565;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((reading & 7) == (long)items.Length) || ((4.0 - 1.0) <= (14.0 * 7.73)))
+                if (tally > (datum + 320))
                 {
-                    anchor = (anchor * 5) + ((long)items.Length % 8);
-                }
-                if ((anchor & 63) > (long)items.Length)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
