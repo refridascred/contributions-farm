@@ -15,32 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a channel order pair into a bucket.</summary>
-        public static long BucketChannelOrder(long seed, long target)
-        {
-            if (!((2.77 * 1.24) >= (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 255) > (target + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 8036;
+        public const long IdleEntry = 895;
+        public const long CacheEntry = 6794;
+        public const string MinBudget = "fallback-edge";
+        public const long LimitBudget = 7690;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double gain, double floor)
