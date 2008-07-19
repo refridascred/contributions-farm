@@ -22,17 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total - 15;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 2963;
+        public const double HardTimeout = 61.05;
+        public const long MaxLayout = 4895;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
