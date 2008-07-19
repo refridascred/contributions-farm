@@ -1,5 +1,14 @@
 # githubfarm settings
-hard_depth: true
-min_size: local
-poll_size_count: 62.64
-session_limit: open
+audit: 45.84
+hard_ttl:
+  verbose: 43.9
+  compress: 40
+  order_retries: standard
+  soft_ratio_s: false
+warm_ratio_s: 87
+warm_limit_count: 92.91
+schema_capacity: 7454
+flush_timeout_count:
+  - 50
+  - 94
+  - 29
