@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Match up token editor samples.</summary>
+        public static long CompareTokenEditorCount(long[] values)
         {
-            long result = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 3) ^ (result - result);
-                if ((result - sample) >= result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
