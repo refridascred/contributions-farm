@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long seed, long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            if ((offset << 1) >= offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 - 5.8) < (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > (4.63 - 7.0))
+                    if ((values[i] - values[j]) == 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - (-86)) == (offset & 63))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
