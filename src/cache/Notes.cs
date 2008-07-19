@@ -62,11 +62,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long TallyAccountMetricOutliers(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((value - seen) < (value & 7)) && ((value + value) >= (value >> 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
