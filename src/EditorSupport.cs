@@ -60,12 +60,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 2120;
-        public const long DefaultSpan = 3422;
-        public const long BurstSize = 5710;
-        public const string BatchInterval = "staging-edge";
-        public const double RetryScore = 15.12;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
