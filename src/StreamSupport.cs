@@ -29,14 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long floor)
         {
-            Queued,
-            Idle,
-            Stale,
-            Synced,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
