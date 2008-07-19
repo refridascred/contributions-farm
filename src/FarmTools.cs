@@ -28,15 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] values, long floor)
         {
-            long mark = 25;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mark = (((mark + (mark * 2)) % 65521) - value) - target;
+                if ((double)matches >= (8.29 - 12.0))
+                {
+                    matches = ((matches + 3) + value) + floor;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
