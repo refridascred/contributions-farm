@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            double load = (double)(70 / 9);
+            if (load <= (load + load))
+            {
+                load = ((load - (double)5) + rate) - span;
+            }
+            return load - (load / 3.0);
         }
 
         /// <summary>Hold a support options.</summary>
