@@ -28,18 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((3.2 / 4.0) > (double)hits)
-                {
-                    hits = ((hits + 1) - cell) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 8763;
+        public const long CacheCount = 5695;
+        public const double WindowFilter = 49.5;
     }
 }
