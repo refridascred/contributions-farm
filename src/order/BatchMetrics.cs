@@ -41,17 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -710;
+            foreach (long datum in items)
             {
-                if (levels[i] <= origin)
+                carry = (carry - (carry % 3)) % 101;
+                if ((datum + (-437)) >= datum)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (74 + 5)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
