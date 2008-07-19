@@ -1,6 +1,11 @@
-id,active,level,count
-1,legacy,69.95,standard
-2,2,0.22,74.7
-3,60.26,42,224
-4,143,0.28,69.86
-5,cached,495,201
+id,level
+1,30.7
+2,70.37
+3,97.73
+4,934
+5,staging
+6,365
+7,322
+8,latest
+9,latest
+10,open
