@@ -72,19 +72,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items, long bound)
         {
-            bool ready = true;
+            long acc = 147;
             foreach (long reading in items)
             {
-                if (reading >= limit)
+                if ((bound + reading) > (acc & 255))
                 {
-                    ready = false;
-                    break;
+                    acc = acc + (reading ^ (-367));
+                }
+                if ((acc & 15) == (reading + (-61)))
+                {
+                    acc = (acc + bound) % 101;
                 }
             }
-            return ready;
+            if (acc < 15)
+            {
+                acc = acc + (acc + bound);
+            }
+            return acc;
         }
     }
 }
