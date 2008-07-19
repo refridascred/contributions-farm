@@ -38,17 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account batches entry that matches the target.</summary>
-        public static long LocateAccountBatchesIndex(long[] readings, long offset)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
