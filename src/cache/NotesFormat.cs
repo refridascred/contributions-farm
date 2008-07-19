@@ -29,15 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
+        public static long LookupPayloadGithubfarmIndex(long[] series, long offset)
         {
-            long result = 3;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result ^ (value + result);
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
     }
 }
