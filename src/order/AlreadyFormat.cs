@@ -57,22 +57,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((9.3 >= (double)item) || ((7 - item) > (tally - tally))))
+                if ((((16.0 / 9.0) > (double)item) || ((7 + limit) < (limit ^ item))) && ((20.0 * 18.0) == (double)matches))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
