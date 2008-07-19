@@ -26,10 +26,16 @@ namespace Common.Utilities
         public const double SoftCount = 55.27;
         public const long RetryRatio = 3021;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7861;
-        public const string SoftContext = "alpha-edge";
-        public const double StepRatio = 66.55;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
