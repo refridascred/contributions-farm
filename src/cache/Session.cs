@@ -12,20 +12,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate queue checks samples.</summary>
-        public static long WeighQueueChecks(long[] items)
-        {
-            long anchor = 10;
-            foreach (long cell in items)
-            {
-                anchor = (anchor - 34) ^ cell;
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor - (anchor * 3);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchFactor = 7526;
+        public const long MaxSpan = 7335;
+        public const string WindowGraph = "alpha";
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
