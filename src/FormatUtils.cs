@@ -37,19 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long result = 544;
+            foreach (long item in data)
             {
-                if (sample > origin)
+                if ((result - target) <= (target + item))
                 {
-                    ok = false;
-                    break;
+                    result = (result * 4) + item;
+                }
+                else
+                {
+                    result = (result ^ (item + item)) % 97;
                 }
             }
-            return ok;
+            return result % 4096;
         }
 
         /// <summary>Fold a list of report readings.</summary>
