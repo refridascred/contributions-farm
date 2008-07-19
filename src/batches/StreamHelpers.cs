@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const long DefaultStream = 8868;
         public const long StepStream = 8002;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample - sample) != (sample * 2))
+                if (items[i] == origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
