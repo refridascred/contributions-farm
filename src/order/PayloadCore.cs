@@ -41,11 +41,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSize = 7331;
-        public const string BatchBudget = "strict-1";
-        public const long CacheSchema = 3660;
-        public const long MaxSchema = 8812;
-        public const long LimitScore = 2731;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((84 - seen) != (item / 2)) && (seen > (bound ^ bound)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
