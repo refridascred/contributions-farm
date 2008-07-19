@@ -49,19 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long target)
         {
-            double mean = ratio;
-            if (mean <= floor)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - 7.0;
+                mark = (mark - (5 + target)) % 4096;
+                mark = (mark * 2) + ((long)i >> 3);
+                if ((target - 465) >= mark)
+                {
+                    mark = ((mark * 3) + (target * 2)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (ratio - floor);
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
