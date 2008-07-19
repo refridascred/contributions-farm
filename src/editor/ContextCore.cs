@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels)
-        {
-            long acc = 504;
-            foreach (long item in levels)
-            {
-                if ((item ^ acc) == (item - acc))
-                {
-                    acc = (acc + (acc + acc)) % 101;
-                }
-                acc = (acc + (item % 3)) % 4096;
-                if ((acc << 1) != (acc & 3))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFactor = 7164;
+        public const long StepInterval = 2400;
+        public const long BaseDepth = 8890;
+        public const long SoftScore = 5159;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftInterval = 6138;
