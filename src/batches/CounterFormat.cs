@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxSize = "primary";
-        public const double MinReport = 5.35;
-        public const long BurstRatio = 1490;
-        public const string StepReport = "cached-edge";
-        public const long StepWidth = 8529;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Queued,
+            Ready,
+            Active,
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] samples, long target)
