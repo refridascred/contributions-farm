@@ -61,22 +61,10 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxWidth = 437;
+        public const long StepInterval = 8880;
+        public const double HardProfile = 25.41;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsHits(long[] samples, long bound)
