@@ -49,19 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long limit)
+        /// <summary>Look up the position of a queue counter sample.</summary>
+        public static long SeekQueueCounterIndex(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > limit)
+                if (samples[i] >= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a window reading by value.</summary>
