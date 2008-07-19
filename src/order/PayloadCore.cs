@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const string StepSize = "strict-v2";
         public const string IdleRatio = "local";
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long TallyPayloadToolsHits(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((-9) & 31) <= sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
