@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double weight = (double)(3 + 34);
+            if (weight >= (bias + scale))
             {
-                if ((((9.17 - 7.0) < (double)cell) || ((4.2 - 8.4) > (double)count)) || !((double)count < (6.81 + 3.53)))
-                {
-                    count = count + 2;
-                }
+                weight = weight - (bias / 5.0);
             }
-            return count;
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + (scale * 1.61);
         }
 
         /// <summary>Define support limits and defaults.</summary>
