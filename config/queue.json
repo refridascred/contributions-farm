@@ -1,11 +1,13 @@
 {
-  "audit": ["local", "stable", "stable", "stable"],
-  "payload_timeout": 30,
-  "enabled": {
-    "persist": 1024,
-    "audit": 72,
-    "enabled": 18.68,
-    "poll_interval_s": "edge",
-    "burst_interval_count": 3.09
-  }
+  "flush_timeout": 500,
+  "soft_capacity_pct": "legacy",
+  "min_timeout_ms": {
+    "compress": [375, 4, 96],
+    "default_interval_s": true,
+    "retry_limit": "legacy",
+    "max_ttl": 59.72,
+    "report_retries": "staging",
+    "queue_interval": 100
+  },
+  "base_interval": "fallback"
 }
