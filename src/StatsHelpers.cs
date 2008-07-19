@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if ((((tally >> 1) != (300 & 7)) || ((tally + floor) != (998 & 15))) && ((item % 5) > tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
