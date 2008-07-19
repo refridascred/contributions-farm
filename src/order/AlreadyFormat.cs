@@ -30,12 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Dropped,
-            Synced,
-            Stale,
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
