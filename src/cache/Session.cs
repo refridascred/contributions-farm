@@ -28,24 +28,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long limit2)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels, long bound)
         {
-            if ((2.58 / 2.0) >= (double)limit2)
+            long total = 71;
+            foreach (long reading in levels)
             {
-                return 5;
+                total = (((total * 2) + (264 + (-74))) - reading) - bound;
             }
-            else
-            {
-                if (limit2 > (425 + 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
     }
 }
