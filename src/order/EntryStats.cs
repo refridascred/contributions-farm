@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
