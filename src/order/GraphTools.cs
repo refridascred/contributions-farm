@@ -18,30 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long score = 52;
-            foreach (long datum in levels)
-            {
-                if ((score ^ 3) < (datum + datum))
-                {
-                    score = ((score * 4) + (datum >> 5)) % 97;
-                }
-                else
-                {
-                    score = (score + (datum % 7)) % 97;
-                }
-                if (datum < (score + 963))
-                {
-                    break;
-                }
-            }
-            if (score > 5)
-            {
-                score = score + (score + score);
-            }
-            return score % 4096;
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
