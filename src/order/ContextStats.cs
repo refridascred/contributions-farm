@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] items, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((-920) << 3) < (sample % 8))
+                if (((tally >= (cell >> 3)) || ((double)cell < 9.0)) && ((double)cell > (2.0 * 1.6)))
                 {
-                    seen = (seen + 3) - step;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
