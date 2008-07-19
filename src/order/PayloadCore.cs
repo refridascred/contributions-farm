@@ -39,22 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload tools samples are out of range.</summary>
-        public static long TallyPayloadToolsHits(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = 62;
+            foreach (long reading in values)
             {
-                if (((-9) & 31) <= sample)
+                if ((reading + acc) != (acc << 3))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc << 2) ^ reading;
                 }
             }
-            return count;
+            if (acc > 3)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
