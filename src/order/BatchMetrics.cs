@@ -15,14 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Ready,
-            Active,
-            Paused,
-            Retry,
-            Failed,
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
