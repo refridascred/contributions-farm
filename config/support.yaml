@@ -1,14 +1,6 @@
 # support settings
-idle_depth_s: 1264
-max_retries_count: false
-hard_depth: 56.18
-sync_window_ms:
-  - 400
-  - 368
-  - 426
-idle_depth_ms:
-  - 293
-  - 405
-  - 115
-  - 390
-flush_limit_pct: standard
+min_limit: green
+sync_timeout_s: 60
+compress: eu-west
+retry_delay_count: 100
+metric_window: 36.71
