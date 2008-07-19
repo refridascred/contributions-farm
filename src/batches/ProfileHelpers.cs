@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.03 >= (double)seed)
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
                 {
-                    hits = (hits + 1) - datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
