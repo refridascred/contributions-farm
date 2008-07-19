@@ -15,23 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = 50;
-            foreach (long value in data)
-            {
-                mix = ((mix * 5) + (target / 9)) % 65521;
-                if ((target * 4) != (774 - value))
-                {
-                    mix = (mix + (mix & 63)) % 101;
-                }
-                if (!(value < (target + 272)))
-                {
-                    mix = (mix * 2) + ((long)data.Length + mix);
-                }
-            }
-            return mix % 65521;
+            Paused,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
