@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) <= (count - sample))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of support schema readings.</summary>
