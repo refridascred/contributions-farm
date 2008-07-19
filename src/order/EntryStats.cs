@@ -23,23 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache already readings.</summary>
-        public static long FoldCacheAlready(long[] series, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long limit)
         {
-            long mark = 7;
-            foreach (long item in series)
+            long acc = 575;
+            foreach (long reading in levels)
             {
-                mark = (mark - (884 + item)) % 101;
-                if (!((double)101 >= (double)item))
-                {
-                    mark = mark ^ (767 + item);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ step) % 1000;
-                }
+                acc = (((acc * 4) + (limit - acc)) % 1000) ^ reading;
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
