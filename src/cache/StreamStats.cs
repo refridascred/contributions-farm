@@ -23,11 +23,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4634;
-        public const long MaxScore = 9396;
-        public const long LimitRecord = 537;
-        public const long StepSize = 5451;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double weight, double bias)
