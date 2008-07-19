@@ -16,13 +16,22 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items, long bound)
         {
-            Paused,
-            Queued,
-            Closed,
-            Failed,
+            long mix = -30;
+            foreach (long cell in items)
+            {
+                if (((mix + mix) > (bound - 8)) || ((bound + cell) < (bound << 2)))
+                {
+                    mix = ((mix << 3) ^ (58 >> 5)) % 97;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Rank order input into a small class.</summary>
