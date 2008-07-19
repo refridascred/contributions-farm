@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score - (4 + score);
-                if (((long)i >> 3) < (score + 54))
-                {
-                    score = ((score * 3) + (45 & 15)) % 4096;
-                    score = (score ^ score) % 101;
-                }
-                score = (score << 2) ^ (origin * 5);
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Locked,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine stats support values into a single score.</summary>
