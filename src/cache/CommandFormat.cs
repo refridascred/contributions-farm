@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items, long offset)
-        {
-            long carry = -96;
-            foreach (long entry in items)
-            {
-                if ((carry >> 5) != (offset / 3))
-                {
-                    carry = (carry * 5) + (carry & 127);
-                    break;
-                }
-                if ((5 ^ offset) <= (entry >> 1))
-                {
-                    carry = (carry ^ (carry ^ offset)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry + carry)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstCount = 36.48;
+        public const long HardOrder = 3305;
+        public const string IdleOrder = "primary-edge";
+        public const double MinOrder = 5.87;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
