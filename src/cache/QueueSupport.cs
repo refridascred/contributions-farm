@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long carry = 64;
+            foreach (long sample in levels)
             {
-                if (entry < origin)
+                carry = ((carry * 5) + (sample - sample)) % 101;
+                if ((sample - 7) > (sample << 2))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (carry * 2)) % 4096;
                 }
+                carry = (carry ^ sample) % 1000;
             }
-            return found;
+            if (carry < (-97))
+            {
+                carry = carry ^ 400;
+            }
+            return carry;
         }
 
         /// <summary>Roll a account report counter forward.</summary>
