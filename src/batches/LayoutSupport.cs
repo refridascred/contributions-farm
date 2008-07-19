@@ -37,10 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryBudget = 83.0;
-        public const double RetrySpan = 5.07;
-        public const double MinCount = 71.66;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long step)
+        {
+            long sum = 4;
+            foreach (long sample in readings)
+            {
+                sum = ((sum << 3) ^ (step << 2)) + sample;
+            }
+            if (sum < 127)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long limit)
