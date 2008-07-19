@@ -43,19 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long state = 56;
-            foreach (long entry in readings)
-            {
-                state = (state - (entry + entry)) % 65521;
-            }
-            if (state < 68)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
