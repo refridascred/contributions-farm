@@ -24,21 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
