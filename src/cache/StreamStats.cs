@@ -40,19 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            double weight2 = (bias - bias) + (double)7;
-            if (weight2 > (bias * 0.36))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 + bias) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight2 / 7.0);
-            }
-            return weight2 + 1.9;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
