@@ -47,20 +47,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long score = 9;
+            foreach (long reading in levels)
             {
-                acc = (acc ^ ((long)i ^ acc)) % 65521;
-                if ((double)step > (double)acc)
+                if ((20.0 * 16.0) <= (9.7 - 8.95))
                 {
-                    acc = (acc + acc) % 1000;
+                    score = score + (score + 4);
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                else
+                {
+                    score = (score + (reading & 15)) % 65521;
+                }
+                if ((reading - reading) < (score / 8))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (score > (-50))
+            {
+                score = score ^ (score & 255);
+            }
+            return score % 4096;
         }
     }
 }
