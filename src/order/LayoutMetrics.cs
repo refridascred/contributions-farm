@@ -35,17 +35,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long cell in series)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (mix - target)) % 97) + cell;
             }
-            return -1;
+            return mix;
         }
     }
 }
