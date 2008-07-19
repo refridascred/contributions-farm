@@ -1,7 +1,6 @@
 {
-  "sync_ttl_pct": 3363,
-  "retry_ratio_pct": "staging",
-  "hard_ratio_ms": 8079,
-  "default_size_ms": "staging",
-  "flush_retries_s": [16, 97]
+  "max_capacity_count": 3475,
+  "idle_window_ms": "green",
+  "hard_delay_s": 48,
+  "strict": "staging"
 }
