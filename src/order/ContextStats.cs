@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long HardSize = 9116;
         public const long CacheDepth = 2439;
 
-        /// <summary>Fold a list of channel cluster readings.</summary>
-        public static long TallyChannelCluster(long[] readings, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 880;
-            foreach (long cell in readings)
-            {
-                if (((cell - acc) > (cell & 63)) || ((65 - cell) > (20 & 127)))
-                {
-                    acc = ((acc << 3) ^ (cell % 16)) % 97;
-                }
-            }
-            if (acc < 58)
-            {
-                acc = ((acc * 3) + (step ^ step)) % 97;
-            }
-            return acc % 97;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
