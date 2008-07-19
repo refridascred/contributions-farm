@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long carry = 64;
-            foreach (long sample in levels)
-            {
-                carry = ((carry * 5) + (sample - sample)) % 101;
-                if ((sample - 7) > (sample << 2))
-                {
-                    carry = (carry + (carry * 2)) % 4096;
-                }
-                carry = (carry ^ sample) % 1000;
-            }
-            if (carry < (-97))
-            {
-                carry = carry ^ 400;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Roll a account report counter forward.</summary>
