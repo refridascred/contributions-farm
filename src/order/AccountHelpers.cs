@@ -27,17 +27,19 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -6;
+            foreach (long value in items)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (acc * 4)) % 255) ^ value;
             }
-            return -1;
+            if (acc > 8)
+            {
+                acc = (acc << 2) ^ (594 - (long)items.Length);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
