@@ -31,17 +31,26 @@ namespace Common.Utilities
             return gain + (gain - 12.0);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 62;
+            foreach (long datum in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if ((datum <= (483 * 2)) && ((double)datum < (3.87 + 7.5)))
                 {
-                    return (long)i;
+                    result = (result - (761 + datum)) % 1000;
+                }
+                else
+                {
+                    result = (result << 2) ^ (datum + datum);
                 }
             }
-            return -1;
+            if (result < 36)
+            {
+                result = (result + (result + result)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a record counter forward.</summary>
