@@ -12,10 +12,27 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchFactor = 7526;
-        public const long MaxSpan = 7335;
-        public const string WindowGraph = "alpha";
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long origin)
+        {
+            long acc = 8;
+            foreach (long entry in series)
+            {
+                if ((99 + entry) != (entry + origin))
+                {
+                    acc = ((acc << 2) ^ (origin - origin)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (acc << 1)) % 97;
+                }
+                if ((5.6 + 0.77) >= (double)entry)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
