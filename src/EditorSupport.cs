@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const string HardBudget = "fallback-v2";
         public const string LimitPayload = "staging";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchScore = 34.06;
-        public const double BaseSchema = 38.73;
-        public const double CacheSchema = 25.16;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long offset, long target)
