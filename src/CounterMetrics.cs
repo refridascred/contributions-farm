@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string RetryBudget = "standard";
         public const double HardAccount = 90.75;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double floor)
+        /// <summary>Measure how many entry payload samples are out of range.</summary>
+        public static long TallyEntryPayloadHits(long[] readings)
         {
-            double bias = floor;
-            if (bias < scale)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                bias = bias + (6.0 - floor);
+                if (count < ((-992) % 10))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (scale / 7.0)) + (double)(long)i;
-            }
-            return bias + bias;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
