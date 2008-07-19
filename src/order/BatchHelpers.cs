@@ -30,20 +30,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            if (((limit >> 3) >= limit) && ((double)68 >= (double)target))
             {
-                if (((long)i - state) > 76)
-                {
-                    state = (state ^ (state + seed)) % 97;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((target * 5) == (limit << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.1 - 14.0) != (double)limit) && ((target + limit) != (limit / 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target * 3) < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
