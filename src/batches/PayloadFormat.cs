@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            Queued,
-            Ready,
-            Locked,
-            New,
-            Paused,
+            double ratio = gain;
+            if (ratio < (double)40)
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
