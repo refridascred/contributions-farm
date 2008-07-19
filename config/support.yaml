@@ -1,9 +1,4 @@
 # support settings
-poll_timeout_s: 44.61
-max_window: false
-cache_window_pct: green
-enabled: 96
-verbose:
-  - 60
-  - 108
-  - 437
+githubfarm_depth: green
+retry_capacity_ms: stable
+route_depth: stable
