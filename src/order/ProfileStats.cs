@@ -29,15 +29,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Locate a contributi farm reading by value.</summary>
+        public static long FindContributiFarmIndex(long[] series, long target)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((series[i] == target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
