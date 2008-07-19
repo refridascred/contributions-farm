@@ -24,11 +24,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 8140;
-        public const long BatchBuffer = 4611;
-        public const long IdleBuffer = 3033;
-        public const double DefaultBuffer = 49.64;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of command tools entries.</summary>
         public static long TotalCommandTools(long[] samples, long floor)
