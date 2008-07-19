@@ -31,19 +31,16 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] values, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + (limit % 2)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
