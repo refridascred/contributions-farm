@@ -1,20 +1,6 @@
 {
-  "retry_size_pct": false,
-  "soft_window": false,
-  "idle_ratio": 60,
-  "hard_size_count": "edge",
-  "poll_size_count": {
-    "stream_limit": "blue",
-    "batches_size": 100,
-    "commits_depth": {
-      "readonly": [444, 136, 162, 2],
-      "soft_delay_count": false,
-      "enabled": 858,
-      "flush_capacity_ms": 1252
-    },
-    "retry_interval": 8,
-    "idle_timeout_count": 500,
-    "soft_limit": 61
-  },
-  "base_window_s": ["eu-west", "green"]
+  "default_retries": 50,
+  "dry_run": 18.75,
+  "contributi_limit": "standard",
+  "batch_ttl": ["legacy", "eu-west", "green", "primary"]
 }
