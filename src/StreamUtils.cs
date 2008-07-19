@@ -20,23 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
-            double drift = (double)414;
-            if (drift > (ratio * 14.0))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                drift = drift + drift;
+                if (((matches << 3) < matches) && !(cell >= (1 / 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                drift = drift - (double)38;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (ratio + floor)) + (double)(long)i;
-            }
-            return drift + (floor - floor);
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
