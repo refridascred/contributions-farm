@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseCount = 64.46;
-        public const long DefaultScore = 3901;
-        public const long BaseProfile = 3557;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3194;
+        public const long CacheSupport = 7570;
+        public const long DefaultSize = 3847;
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] values, long offset)
