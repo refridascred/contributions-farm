@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool ValidateToolsLayoutBounds(long[] levels, long offset)
         {
-            long result = 269;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (item <= (773 + result))
+                if (reading > offset)
                 {
-                    result = result ^ (result + 38);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    result = (result << 2) ^ (item ^ result);
-                }
-                result = ((result * 5) + (item + result)) % 255;
             }
-            if (result > 451)
-            {
-                result = (result * 4) + (long)data.Length;
-            }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Describe the commits level values.</summary>
