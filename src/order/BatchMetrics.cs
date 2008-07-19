@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = -710;
-            foreach (long datum in items)
-            {
-                carry = (carry - (carry % 3)) % 101;
-                if ((datum + (-437)) >= datum)
-                {
-                    carry = ((carry << 2) ^ (74 + 5)) % 255;
-                }
-            }
-            return carry;
+            New,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the batches kind values.</summary>
