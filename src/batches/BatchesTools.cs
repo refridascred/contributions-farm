@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitLevel = "local-edge";
-        public const double IdleSize = 93.32;
-        public const long LimitBuffer = 2443;
-        public const long BatchRatio = 7788;
-        public const long LimitCount = 6419;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first schema filter entry that matches the target.</summary>
         public static long SeekSchemaFilterIndex(long[] values, long offset)
