@@ -54,39 +54,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a entry payload pair into a bucket.</summary>
-        public static long RankEntryPayload(long limit, long step)
+        /// <summary>Adjust a record payload reading.</summary>
+        public static double ScaleRecordPayload(double rate, double bias)
         {
-            long lane = limit - step;
-            if ((double)step >= 3.1)
+            double drift = bias;
+            if (drift <= (double)853)
             {
-                return 4;
+                drift = (drift + (2.2 / 6.0)) + rate;
             }
             else
             {
-                if ((step ^ lane) >= (125 >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step % 64) < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit == (2.95 * 1.43))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = drift + drift;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (5.1 + drift)) + (double)(long)i;
+            }
+            return drift + (drift * 7.5);
         }
     }
 }
