@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 54.04;
-        public const double DefaultFactor = 67.12;
-        public const double SoftLevel = 7.06;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen <= 0.22)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long origin)
