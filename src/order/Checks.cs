@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] samples, long limit)
+        /// <summary>Find the first metrics batch entry that matches the target.</summary>
+        public static long SeekMetricsBatchIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != limit)
+                if (values[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
