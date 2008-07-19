@@ -85,11 +85,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine filter contributi values into a single score.</summary>
+        public static long FoldFilterContributi(long[] samples)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 186;
+            foreach (long sample in samples)
+            {
+                if ((state / 8) >= sample)
+                {
+                    state = (state ^ (sample % 16)) % 101;
+                }
+                else
+                {
+                    state = (state * 5) + (sample + sample);
+                }
+            }
+            if (state > 717)
+            {
+                state = (state - state) % 65521;
+            }
+            return state;
         }
     }
 }
