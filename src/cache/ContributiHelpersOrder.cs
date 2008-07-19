@@ -32,14 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long offset)
         {
-            Ready,
-            Queued,
-            Paused,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen < (offset - seen)) && ((seen >> 5) >= (767 << 1)))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
