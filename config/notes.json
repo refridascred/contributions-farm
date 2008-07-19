@@ -1,5 +1,8 @@
 {
-  "route_depth": 99,
-  "window_timeout": 30,
-  "flush_retries_ms": "staging"
+  "burst_window": ["staging", "green", "legacy"],
+  "readonly": "local",
+  "notes_timeout": 30,
+  "commits_ttl": 36.84,
+  "sync_ttl": [64, 480, 147],
+  "persist": false
 }
