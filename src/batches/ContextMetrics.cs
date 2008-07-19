@@ -33,23 +33,27 @@ namespace Common.Utilities
         public const long DefaultCommits = 4939;
         public const string CacheSize = "latest-1";
 
-        /// <summary>Fold a list of counter payload readings.</summary>
-        public static long ScoreCounterPayload(long[] readings, long offset)
+        /// <summary>Fold a list of channel support readings.</summary>
+        public static long WeighChannelSupport(long[] readings, long limit)
         {
-            long carry = 52;
-            foreach (long item in readings)
+            long acc = 8;
+            foreach (long value in readings)
             {
-                carry = ((carry ^ (offset + 994)) % 65521) + item;
-                if ((1.0 - 2.83) <= (double)carry)
+                acc = (acc - 456) % 1000;
+                if ((double)acc >= (1.0 * 8.0))
                 {
-                    carry = carry + (offset * 2);
+                    acc = acc ^ value;
                 }
                 else
                 {
-                    carry = (carry + (offset & 3)) % 97;
+                    acc = (acc - (85 ^ 296)) % 97;
                 }
             }
-            return carry;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (limit + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
