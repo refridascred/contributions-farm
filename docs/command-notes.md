@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-A command that stays idle for too long is moved to the buffer list.
+Use payload settings to tune how often route data is refreshed.
+Each batch is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate graph input early
-- Prefer session defaults
-- Review window limits each release
+- Log every report change
+- Keep checks values small
+- Review layout limits each release
