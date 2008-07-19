@@ -36,18 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double scale2 = (scale - offset) * 2.0;
+            if (scale2 > (12.0 / 5.0))
             {
-                if ((hits - hits) >= (715 + 92))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                scale2 = scale2 - (offset * 8.96);
             }
-            return hits;
+            return scale2 - scale;
         }
 
         /// <summary>Locate a already reading by value.</summary>
