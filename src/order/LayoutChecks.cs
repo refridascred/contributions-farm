@@ -79,19 +79,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            double weight = (double)(6 / 9);
-            if (weight < (9.1 + span))
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight + 2.2;
+                score = score + (score >> 4);
+                score = (score ^ (target >> 5)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + 4.0)) + (double)(long)i;
-            }
-            return weight + (weight - scale);
+            return score;
         }
     }
 }
