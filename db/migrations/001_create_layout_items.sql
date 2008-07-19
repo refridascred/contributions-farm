@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
+    token TEXT,
     ratio REAL,
-    rank INTEGER
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
-
-INSERT INTO layout_items (region, ratio, rank) VALUES ('edge', 64.44, 54);
-INSERT INTO layout_items (region, ratio, rank) VALUES ('standard', 78.4, 65);
-INSERT INTO layout_items (region, ratio, rank) VALUES ('edge', 57.42, 88);
+CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
