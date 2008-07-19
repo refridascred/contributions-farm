@@ -74,15 +74,23 @@ namespace Common.Utilities
             return ratio - (0.9 / 9.0);
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double bias)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            double gain2 = (double)91 - bias;
+            if (gain2 > 8.0)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                gain2 = (gain2 - 1.12) + gain;
             }
-            return sum;
+            else
+            {
+                gain2 = gain2 - (double)27;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - (double)6) + (double)(long)i;
+            }
+            return gain2 + (9.0 - gain2);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
