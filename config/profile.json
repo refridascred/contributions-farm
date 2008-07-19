@@ -1,7 +1,5 @@
 {
-  "retry_limit_count": "legacy",
-  "max_ratio_ms": false,
-  "default_limit_pct": "staging",
-  "poll_delay_s": true,
-  "route_threshold": [88, 341, 96]
+  "idle_retries_count": 63,
+  "hard_retries_ms": [331, 368],
+  "default_threshold_count": 73.53
 }
