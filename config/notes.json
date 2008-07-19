@@ -1,5 +1,6 @@
 {
-  "commits_retries": "legacy",
-  "metrics_size": 3588,
-  "readonly": "blue"
+  "base_ttl": false,
+  "order_depth": true,
+  "poll_limit_s": ["fallback", "local", "latest"],
+  "min_depth_s": 2850
 }
