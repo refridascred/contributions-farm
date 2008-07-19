@@ -41,15 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double scale = (double)(0 & 7);
-            if (scale <= (bias + 6.0))
-            {
-                scale = scale - (bias * 9.0);
-            }
-            return scale - weight;
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
