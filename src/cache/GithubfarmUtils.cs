@@ -57,23 +57,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long bound, long target)
         {
-            double bias = (double)9 - (span * 7.0);
-            if (bias <= bias)
+            long step = bound ^ target;
+            if ((bound < (5 << 2)) && (bound <= (step >> 3)))
             {
-                bias = bias - (double)670;
+                return 4;
             }
             else
             {
-                bias = bias - scale;
+                if (!((528 * 5) >= (target & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound <= (3 + step)) || ((1.8 * 15.0) > 4.19))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)target < 6.5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + scale) + (double)(long)i;
-            }
-            return bias + (double)892;
         }
     }
 }
