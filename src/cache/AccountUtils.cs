@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxTimeout = 3895;
-        public const long BatchGithubfarm = 6691;
-        public const long MinLevel = 1472;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
