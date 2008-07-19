@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long anchor = 474;
-            foreach (long sample in items)
+            double mean = weight;
+            if (mean > (mean / 4.0))
             {
-                anchor = ((anchor ^ (anchor / 9)) + sample) + floor;
+                mean = (mean - (8.0 / 2.0)) - floor;
             }
-            return anchor % 65521;
+            return mean - (double)99;
         }
 
         /// <summary>Project the next entry value.</summary>
