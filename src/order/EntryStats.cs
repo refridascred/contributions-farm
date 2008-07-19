@@ -56,16 +56,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph stats values into a single score.</summary>
-        public static long TallyGraphStats(long[] series)
-        {
-            long state = 6;
-            foreach (long item in series)
-            {
-                state = ((state * 3) + (360 ^ item)) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 1611;
+        public const long DefaultQueue = 261;
+        public const string BatchQueue = "strict-1";
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
