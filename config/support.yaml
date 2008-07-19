@@ -1,4 +1,9 @@
 # support settings
-default_interval_s: 23
-flush_depth_pct: primary
-stats_window: stable
+poll_timeout_s: 44.61
+max_window: false
+cache_window_pct: green
+enabled: 96
+verbose:
+  - 60
+  - 108
+  - 437
