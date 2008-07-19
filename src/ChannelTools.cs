@@ -50,11 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double bias)
         {
-            double rate2 = rate;
-            return (rate2 - (double)7) + floor;
+            double bias2 = ratio;
+            if (bias2 < (double)271)
+            {
+                bias2 = bias2 - (3.9 * 1.92);
+            }
+            else
+            {
+                bias2 = bias2 - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (bias / 3.0);
         }
     }
 }
