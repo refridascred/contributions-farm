@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long TotalFarmContext(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = 634;
+            foreach (long sample in readings)
             {
-                if ((double)matches <= (16.0 / 5.0))
+                if (((sample + sum) == (sum >> 1)) && ((8.9 * 8.1) > (double)sample))
                 {
-                    matches = (matches + 2) + value;
+                    sum = (sum - sample) % 101;
+                }
+                if ((3 + 4) == (sum - 265))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = ((sum << 2) ^ (sum / 3)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
