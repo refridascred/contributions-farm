@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowCount = 7079;
-        public const long LimitInterval = 5025;
-        public const double WindowBuffer = 77.71;
-        public const long BaseRatio = 8021;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstCount = 17.47;
+        public const long IdleCount = 9211;
+        public const long BatchSize = 8806;
 
         /// <summary>Grade a payload queue value against two limits.</summary>
         public static long BucketPayloadQueue(long limit, long offset)
