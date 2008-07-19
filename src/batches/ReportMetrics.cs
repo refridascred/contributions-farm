@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels, long bound)
+        /// <summary>Look up the position of a cache schema sample.</summary>
+        public static long LocateCacheSchemaIndex(long[] samples, long target)
         {
-            long state = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state >= (entry - bound))
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
                 {
-                    state = (state - entry) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ (entry + 98);
+                    return (long)i;
                 }
             }
-            if (state < 37)
-            {
-                state = (state + bound) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
