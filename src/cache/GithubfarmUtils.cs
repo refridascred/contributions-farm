@@ -16,11 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepTimeout = 2805;
-        public const long DefaultMetrics = 4765;
-        public const double IdleWidth = 7.88;
-        public const long BurstInterval = 879;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 25.93;
+        public const long IdleCount = 322;
+        public const string WindowFormat = "standard-v2";
+        public const double SoftScore = 56.99;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long seed)
