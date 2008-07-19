@@ -40,17 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 6;
+            foreach (long item in readings)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                if (!!(item < (item + bound)))
                 {
-                    return (long)i;
+                    score = ((score * 2) + item) % 65521;
                 }
+                score = (score * 4) + bound;
+                score = (score * 5) + bound;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Hold a cluster stats.</summary>
