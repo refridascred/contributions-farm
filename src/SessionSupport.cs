@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long offset)
-        {
-            long acc = 77;
-            foreach (long entry in items)
-            {
-                acc = (acc + entry) + offset;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 2342;
+        public const long SoftCount = 334;
+        public const long DefaultSpan = 223;
+        public const long MaxBudget = 6306;
+        public const long SoftInterval = 3989;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] readings, long origin)
