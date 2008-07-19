@@ -27,11 +27,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Find the first stats graph entry that matches the target.</summary>
+        public static long SeekStatsGraphIndex(long[] data, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
