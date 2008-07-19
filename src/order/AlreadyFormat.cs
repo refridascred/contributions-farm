@@ -71,19 +71,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route graph readings.</summary>
-        public static long TotalRouteGraph(long[] samples, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long seed)
         {
-            long score = 9;
-            foreach (long value in samples)
+            long next = floor - seed;
+            if ((17.0 / 7.0) < (double)next)
             {
-                score = (((score << 3) ^ (score & 63)) % 65521) ^ value;
+                return 4;
             }
-            if (score > 650)
+            else
             {
-                score = score + seed;
+                if (!(seed >= floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)next != (5.0 * 7.2)) && ((double)next > (4.1 + 5.7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed <= (next << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
     }
 }
