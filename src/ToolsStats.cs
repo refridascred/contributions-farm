@@ -83,28 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm already value from a seed.</summary>
-        public static long IterateFarmAlready(long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((7.48 * 5.8) > 2.0)
-                {
-                    acc = acc + (1 - acc);
-                }
-                acc = acc - (acc / 9);
-                if ((double)(long)i > (13.0 + 2.52))
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-                else
-                {
-                    acc = acc - (offset >> 4);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
