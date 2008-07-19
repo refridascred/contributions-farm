@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] series, long step)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((step >> 1) != (tally - tally))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
