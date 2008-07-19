@@ -66,28 +66,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long offset2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long bound2)
         {
-            if ((offset2 + offset2) != (offset2 - offset2))
+            long gap = bound + bound2;
+            if ((bound2 <= (gap - bound)) && ((bound + 6) < bound2))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (!((offset2 & 255) < offset2))
+                if ((4.2 - 1.0) < (double)gap)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)offset != (8.47 + 4.47))
+                    if ((bound2 + gap) >= (gap << 3))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 1;
                     }
                 }
             }
