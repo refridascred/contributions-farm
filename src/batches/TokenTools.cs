@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((result - seed) >= (77 * 5))
+                {
+                    result = result ^ (18 & 31);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream options.</summary>
