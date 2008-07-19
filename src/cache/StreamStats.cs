@@ -15,18 +15,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples, long step)
+        /// <summary>Classify a channel order pair into a bucket.</summary>
+        public static long BucketChannelOrder(long seed, long target)
         {
-            long mix = 5;
-            foreach (long cell in samples)
+            if (!((2.77 * 1.24) >= (double)seed))
             {
-                if ((step % 3) < ((long)samples.Length - mix))
+                return 7;
+            }
+            else
+            {
+                if (seed >= (seed + target))
                 {
-                    mix = ((mix + (mix & 15)) % 97) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 255) > (target + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Project the next report value.</summary>
