@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] values, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (values[i] >= floor)
+                if (value >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up counter contributi samples.</summary>
