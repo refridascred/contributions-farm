@@ -28,14 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Stale,
-            Ready,
-            New,
-            Failed,
-            Queued,
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
