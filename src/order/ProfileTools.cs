@@ -14,17 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] values, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (bias - bias) * 9.8;
+            if (gain >= (gain / 8.0))
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)59;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)8;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Describe the counter level values.</summary>
