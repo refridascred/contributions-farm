@@ -36,18 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] items, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((offset - 137) >= (seen - seen))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
