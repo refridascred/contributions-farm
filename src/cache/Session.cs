@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "primary";
-        public const string MinBatch = "primary";
-        public const long IdleBatch = 4460;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long limit)
