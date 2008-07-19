@@ -29,17 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stats channel sample.</summary>
-        public static long LocateStatsChannelIndex(long[] series, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if (!(((199 - sample) != (hits + sample)) && (hits >= sample)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
