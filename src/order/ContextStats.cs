@@ -24,14 +24,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Find the first already cluster entry that matches the target.</summary>
+        public static long LocateAlreadyClusterIndex(long[] series, long step)
         {
-            Synced,
-            Ready,
-            Queued,
-            Pending,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batches report samples are out of range.</summary>
