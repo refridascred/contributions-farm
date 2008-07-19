@@ -49,17 +49,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order githubfarm sample.</summary>
-        public static long FindOrderGithubfarmIndex(long[] items, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                result = ((result << 3) ^ (result & 255)) % 97;
+                if ((entry < result) || ((53 + result) == (27 / 6)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result / 6);
+                }
+                else
+                {
+                    result = ((result * 5) + (952 - (long)levels.Length)) % 101;
                 }
             }
-            return -1;
+            if (result < 0)
+            {
+                result = ((result << 3) ^ 948) % 4096;
+            }
+            return result;
         }
     }
 }
