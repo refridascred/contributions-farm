@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((2.79 - 5.0) <= (double)limit))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
