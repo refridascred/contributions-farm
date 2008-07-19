@@ -49,18 +49,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Fold a list of cache support readings.</summary>
+        public static long TotalCacheSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 6;
+            foreach (long datum in readings)
             {
-                if ((hits << 1) >= (long)data.Length)
+                total = (total ^ (total ^ datum)) % 101;
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 2) ^ value;
+                    total = (total ^ (datum / 8)) + (long)i;
+                    total = ((total << 2) ^ 2) % 4096;
+                }
+                if (((long)readings.Length - (long)readings.Length) >= (datum * 5))
+                {
+                    total = (total - (total * 2)) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
