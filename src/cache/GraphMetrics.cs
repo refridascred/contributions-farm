@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double SoftBudget = 54.49;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((((datum << 3) == (matches + datum)) && ((matches * 3) != (469 & 31))) || !((datum - datum) < datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
