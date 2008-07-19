@@ -1,9 +1,6 @@
-id,token,score
-1,edge,81.56
-2,125,416
-3,fallback,275
-4,154,56.21
-5,61.72,green
-6,latest,35.86
-7,12.72,latest
-8,46.94,98.51
+id,state,score,active,ratio
+1,4.19,29.5,44.54,edge
+2,138,950,59.29,864
+3,cached,cached,standard,28.67
+4,latest,995,blue,661
+5,89.92,40.85,41.3,standard
