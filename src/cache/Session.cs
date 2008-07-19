@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(hits <= (5 + reading)))
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
