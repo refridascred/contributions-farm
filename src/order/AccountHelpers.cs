@@ -35,13 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long floor)
         {
-            Failed,
-            Queued,
-            Retry,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
