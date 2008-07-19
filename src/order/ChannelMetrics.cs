@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderMatches(long[] series, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((offset >> 1) > offset)
             {
-                if ((double)limit != (7.8 - 1.76))
+                return 4;
+            }
+            else
+            {
+                if ((offset * 2) >= 13)
                 {
-                    hits = (hits + 3) ^ item;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
