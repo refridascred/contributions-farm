@@ -28,39 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long floor)
-        {
-            long lane = origin - floor;
-            if ((double)floor < 8.8)
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor > (floor - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + 9) <= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((635 << 2) >= (origin / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "standard-v2";
+        public const long RetryCommits = 6344;
+        public const long IdleLevel = 4277;
+        public const long BaseCommits = 9677;
+        public const long BatchFactor = 787;
     }
 }
