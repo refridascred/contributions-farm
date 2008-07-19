@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "open-1";
-        public const string DefaultNotes = "fallback-v2";
-        public const long WindowInterval = 3486;
-        public const double DefaultTimeout = 48.51;
-        public const double SoftNotes = 68.41;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long step)
