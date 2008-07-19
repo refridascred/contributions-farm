@@ -44,16 +44,17 @@ namespace Common.Utilities
         public const long HardCommits = 4828;
         public const long BaseCommits = 7164;
 
-        /// <summary>Roll a graph queue counter forward.</summary>
-        public static long IterateGraphQueue(long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - ((long)i % 64)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
