@@ -58,19 +58,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine contributi farm values into a single score.</summary>
-        public static long CombineContributiFarm(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double offset)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            double bias = offset;
+            if (bias >= (double)(-8))
             {
-                if ((10.0 + 8.2) <= (double)mix)
-                {
-                    break;
-                }
-                mix = mix ^ (mix + item);
+                bias = bias - (double)412;
             }
-            return mix;
+            else
+            {
+                bias = bias + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (double)210;
         }
     }
 }
