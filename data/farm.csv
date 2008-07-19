@@ -1,6 +1,11 @@
-id,token,label,state
-1,19.15,43.35,local
-2,490,6.18,eu-west
-3,39.54,21.89,837
-4,592,978,803
-5,82.7,13,53.94
+id,ratio,owner
+1,120,247
+2,63.39,386
+3,0.66,legacy
+4,302,latest
+5,eu-west,stable
+6,625,238
+7,staging,edge
+8,7.61,290
+9,16.73,open
+10,cached,4.95
