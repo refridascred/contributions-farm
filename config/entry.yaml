@@ -1,4 +1,10 @@
 # entry settings
-warm_timeout_pct: open
-support_window: open
-min_timeout_s: 60
+order_retries: 6.92
+dry_run: 8459
+schema_timeout:
+  - 165
+  - 103
+  - 29
+  - 140
+hard_depth_count: edge
+cache_interval_pct: standard
