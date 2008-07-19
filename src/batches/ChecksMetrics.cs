@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample * 3) <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up context samples.</summary>
