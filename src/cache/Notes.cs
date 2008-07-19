@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheScore = 16.81;
-        public const double BatchSize = 3.52;
-        public const double MinCount = 96.28;
-        public const double CacheLayout = 16.12;
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long ScoreCacheFarm(long[] readings)
+        {
+            long mark = 27;
+            foreach (long reading in readings)
+            {
+                mark = (((mark << 2) ^ (mark * 2)) % 101) ^ reading;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] samples, long origin)
