@@ -1,5 +1,17 @@
 {
-  "idle_threshold": "primary",
-  "retry_depth": true,
-  "dry_run": 15
+  "min_window_s": "open",
+  "entry_delay": 87.49,
+  "strict": "primary",
+  "batch_window": 49,
+  "batch_depth_ms": {
+    "session_ttl": "open",
+    "layout_threshold": "green",
+    "flush_limit_pct": 23.54,
+    "enabled": "strict",
+    "support_window": {
+      "poll_timeout_pct": "strict",
+      "hard_timeout_count": false,
+      "filter_ttl": 36
+    }
+  }
 }
