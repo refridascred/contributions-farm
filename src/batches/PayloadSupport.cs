@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const double WindowTimeout = 7.86;
         public const long MinFactor = 3413;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long total = 2;
-            foreach (long entry in values)
+            long sum = 75;
+            foreach (long sample in samples)
             {
-                if ((double)entry <= (3.2 + 16.0))
+                if ((sample ^ sum) > sample)
                 {
-                    total = (total ^ offset) % 4096;
+                    sum = sum - (sum * 5);
+                }
+                if ((sum + sample) < (907 + sum))
+                {
+                    break;
                 }
             }
-            return total;
+            if (sum > 21)
+            {
+                sum = (sum << 2) ^ (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
