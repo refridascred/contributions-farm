@@ -37,17 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 162;
+            foreach (long sample in series)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix << 3) ^ sample;
+                mix = (mix + (mix + step)) % 1000;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Audit format batches readings against a rule.</summary>
