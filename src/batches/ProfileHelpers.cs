@@ -33,20 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache contributi samples.</summary>
-        public static long ScoreCacheContributi(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long sum = 82;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum - (sum + sum)) % 1000;
-                sum = sum - (entry << 2);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (sum < 63)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 65521;
-            }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
