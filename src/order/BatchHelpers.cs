@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            New,
-            Idle,
-            Pending,
-            Active,
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
