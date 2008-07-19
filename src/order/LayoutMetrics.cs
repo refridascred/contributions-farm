@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Dropped,
-            Synced,
             Locked,
+            Failed,
+            Synced,
             Idle,
+            Queued,
         }
 
         /// <summary>Describe the queue mode values.</summary>
