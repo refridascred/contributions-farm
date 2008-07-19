@@ -23,21 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
-        public static long OverlapEditorBatchCount(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
