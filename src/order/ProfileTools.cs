@@ -52,19 +52,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading > seed)
+                acc = (acc ^ ((long)i ^ acc)) % 65521;
+                if ((double)step > (double)acc)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc + acc) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
     }
 }
