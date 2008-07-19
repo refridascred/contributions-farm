@@ -34,17 +34,9 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Locate a payload queue reading by value.</summary>
-        public static long FindPayloadQueueIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 9345;
+        public const long RetryCount = 3109;
+        public const long IdleDepth = 9299;
     }
 }
