@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long MeasureProfilePayloadOutliers(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally ^ tally) == (entry % 97))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
