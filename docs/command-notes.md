@@ -1,11 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-A stream that stays idle for too long is moved to the commits list.
-Keep notes and stats names short and lowercase.
+Use checks settings to tune how often graph data is refreshed.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate payload input early
-- Review contributi limits each release
-- Document new metric fields
+- Log every stats change
+- Keep editor values small
+- Prefer cluster defaults
+- Document new batches fields
