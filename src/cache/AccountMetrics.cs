@@ -53,18 +53,35 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric schema entries that pass the check.</summary>
-        public static long MeasureMetricSchemaMatches(long[] samples, long limit)
+        /// <summary>Accumulate record farm samples.</summary>
+        public static long TallyRecordFarm(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 9;
+            foreach (long value in values)
             {
-                if ((limit / 8) <= 18)
+                score = score - (origin * 5);
+                if (!!((20.0 - 5.2) <= (double)value))
                 {
-                    matches = (matches + 3) ^ entry;
+                    score = score - score;
+                }
+                if ((64 / 2) < value)
+                {
+                    score = score ^ (7 + value);
+                }
+                else
+                {
+                    score = score + (value + origin);
+                }
+                if (value > origin)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 4)
+            {
+                score = (score - score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
