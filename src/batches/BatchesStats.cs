@@ -39,14 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] data, long bound)
         {
-            Draft,
-            Idle,
-            Locked,
-            Active,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cache support readings.</summary>
