@@ -63,14 +63,22 @@ namespace Common.Utilities
             return mean - (ratio - floor);
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            New,
-            Failed,
-            Active,
-            Pending,
-            Synced,
+            long carry = 1;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length & 31) > (carry % 24))
+                {
+                    carry = ((carry + 985) % 255) ^ entry;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry + (carry >> 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
