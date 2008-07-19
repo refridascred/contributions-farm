@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the commits status values.</summary>
