@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long AuditSupportPayloadOutliers(long[] values, long limit)
         {
-            Closed,
-            Draft,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 5) != (entry & 255))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
