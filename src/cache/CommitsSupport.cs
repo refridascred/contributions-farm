@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Find the first report session entry that matches the target.</summary>
+        public static long SeekReportSessionIndex(long[] samples, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 4) + (long)i;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
