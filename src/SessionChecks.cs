@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            Locked,
-            Failed,
-            Pending,
-            Closed,
-            Dropped,
+            double rate = (double)493 * 9.9;
+            if (rate >= (17.0 / 5.0))
+            {
+                rate = (rate + bias) - scale;
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
