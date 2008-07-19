@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Active,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 8302;
+        public const long SoftDepth = 4598;
+        public const double BaseBudget = 89.67;
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] series)
