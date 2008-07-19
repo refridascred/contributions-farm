@@ -1,15 +1,13 @@
 # Command notes
 
-Keep token and account names short and lowercase.
-Use command settings to tune how often cluster data is refreshed.
-A editor that stays idle for too long is moved to the command list.
+Run the payload check before changing any commits limits.
+Each editor is validated before it reaches the contributi queue.
 
-When a entry fails, the metrics handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and schema names short and lowercase.
+The filter report groups every metrics by entry.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep route values small
-- Review schema limits each release
+- Prefer metric defaults
+- Log every graph change
+- Review report limits each release
