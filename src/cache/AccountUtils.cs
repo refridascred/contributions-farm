@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window payload readings.</summary>
-        public static long FoldWindowPayload(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long state = 1;
-            foreach (long cell in levels)
+            long state = 8;
+            foreach (long entry in data)
             {
-                if ((state / 2) >= (cell ^ (-77)))
-                {
-                    state = (state + (state - cell)) % 65521;
-                }
+                state = (state ^ (state + state)) ^ entry;
             }
-            return state % 97;
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
