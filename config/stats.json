@@ -1,6 +1,8 @@
 {
-  "default_threshold": true,
-  "flush_size_pct": "blue",
-  "cache_retries": [132, 15, 328, 132],
-  "hard_capacity_pct": false
+  "dry_run": [164, 424],
+  "cluster_capacity": 100,
+  "readonly": 86.17,
+  "audit": 1,
+  "burst_timeout": true,
+  "batch_ttl_count": "edge"
 }
