@@ -1,4 +1,16 @@
 # support settings
-burst_depth_ms: 78.61
-default_threshold_count: strict
-audit: staging
+batch_retries_s:
+  default_interval: true
+  format_size: 66
+  compress:
+    - standard
+    - eu-west
+  cache_interval_s:
+    - standard
+    - local
+    - green
+    - fallback
+  readonly: open
+  entry_capacity: staging
+profile_delay: 70.04
+poll_threshold: 63.0
