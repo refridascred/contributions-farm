@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8609;
-        public const long StepTimeout = 98;
-        public const long IdleWindow = 5532;
-        public const string StepWindow = "legacy-v2";
-        public const long DefaultWindow = 8011;
+        /// <summary>Iterate the payload layout series from a seed.</summary>
+        public static long SeriesPayloadLayout(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)sum >= (4.1 + 15.0)) && ((long)i >= 13))
+                {
+                    sum = (sum + (seed ^ seed)) % 1000;
+                }
+                sum = ((sum << 2) ^ (sum + seed)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] samples, long offset)
