@@ -51,12 +51,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Synced,
-            New,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 2434;
+        public const string WindowCount = "alpha-1";
+        public const long WindowTimeout = 3805;
     }
 }
