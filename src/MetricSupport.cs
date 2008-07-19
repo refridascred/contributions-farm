@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!(item > (matches + item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
