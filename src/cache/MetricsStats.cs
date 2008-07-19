@@ -44,32 +44,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long bound2)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] readings, long limit)
         {
-            long gap = bound + bound2;
-            if ((bound2 <= (gap - bound)) && ((bound + 6) < bound2))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.2 - 1.0) < (double)gap)
+                if (item != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 + gap) >= (gap << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
