@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] values, long origin)
         {
-            long state = 919;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                state = state - step;
-                state = (state - (sample + sample)) % 65521;
-                if ((state % 12) <= step)
+                if (datum >= origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
