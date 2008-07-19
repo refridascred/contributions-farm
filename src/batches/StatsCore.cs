@@ -51,32 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long seed2)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            long bound = seed + seed2;
-            if ((126 * 5) >= seed2)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 < (994 >> 1)) && ((seed * 2) < (20 + seed)))
+                if ((0.83 - 13.0) > (double)tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-354) / 3) <= seed) || ((bound << 3) <= (seed - seed2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 1) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
