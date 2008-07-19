@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long total = 4;
+            foreach (long cell in data)
+            {
+                if ((double)floor < 8.2)
+                {
+                    total = (total << 3) ^ (floor >> 2);
+                }
+                total = ((total << 3) ^ (floor ^ cell)) % 255;
+                total = (total << 3) ^ (total + floor);
+            }
+            if (total < 585)
+            {
+                total = (total * 3) + (floor - total);
+            }
+            return total;
         }
 
         /// <summary>Project the next account value.</summary>
