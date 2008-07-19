@@ -53,9 +53,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowScore = 8496;
-        public const long WindowFilter = 2459;
-        public const string DefaultFilter = "strict-v2";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (seed < 1)
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
