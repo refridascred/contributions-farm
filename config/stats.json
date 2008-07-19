@@ -1,7 +1,7 @@
 {
-  "verbose": ["local", "fallback"],
-  "githubfarm_limit": false,
-  "hard_depth_s": "strict",
-  "token_capacity": 59,
-  "batch_ttl": 2746
+  "sync_ttl_pct": 3363,
+  "retry_ratio_pct": "staging",
+  "hard_ratio_ms": 8079,
+  "default_size_ms": "staging",
+  "flush_retries_s": [16, 97]
 }
