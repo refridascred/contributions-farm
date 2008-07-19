@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count >> 5) != (count ^ reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 6716;
+        public const long BaseSupport = 5008;
+        public const string BaseSize = "local-1";
+        public const long WindowLevel = 8755;
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
         public static long SortNotesFarm(long origin, long limit)
