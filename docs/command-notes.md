@@ -1,10 +1,11 @@
 # Command notes
 
-Keep report and contributi names short and lowercase.
-When a already fails, the support handler retries a few times before giving up.
+The counter module keeps buffer values in sync with the stream cache.
+Run the format check before changing any schema limits.
+The payload report groups every contributi by farm.
 
 ## Guidelines
 
-- Document new already fields
-- Keep token values small
-- Validate metrics input early
+- Prefer format defaults
+- Log every schema change
+- Keep queue values small
