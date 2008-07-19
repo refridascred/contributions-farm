@@ -31,18 +31,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of support schema readings.</summary>
-        public static long ScoreSupportSchema(long[] values, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            long carry = 631;
-            foreach (long datum in values)
-            {
-                if ((9.0 * 1.17) <= (double)seed)
-                {
-                    carry = (((carry << 2) ^ (seed / 2)) % 101) - datum;
-                }
-            }
-            return carry % 97;
+            double rate2 = rate;
+            return (rate2 - (double)7) + floor;
         }
     }
 }
