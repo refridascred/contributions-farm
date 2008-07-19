@@ -44,23 +44,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of payload cache entries.</summary>
-        public static long DigestPayloadCache(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            long state = 446;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                state = state - datum;
-                if ((datum + 7) == (state ^ state))
+                if ((tally - 8) != (value & 255))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (state > 851)
-            {
-                state = (state * 2) + (91 * 2);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
