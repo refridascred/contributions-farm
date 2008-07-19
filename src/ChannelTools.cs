@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Dropped,
+            Queued,
+            Paused,
             Draft,
-            Idle,
+            Done,
         }
 
         /// <summary>Find the first already report entry that matches the target.</summary>
