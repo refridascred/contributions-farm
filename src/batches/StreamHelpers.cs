@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const long IdleInterval = 2261;
         public const long BurstBudget = 5386;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] levels, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] <= origin)
+                if (!(((datum / 8) > 8) && ((datum - limit) <= (seen * 3))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
