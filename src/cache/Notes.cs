@@ -38,14 +38,11 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary-edge";
         public const long BaseDepth = 1174;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Paused,
-            Idle,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2176;
+        public const double SoftDepth = 6.52;
+        public const long RetryFactor = 1672;
+        public const long BatchFormat = 5334;
 
         /// <summary>Count the account metric entries that pass the check.</summary>
         public static long TallyAccountMetricOutliers(long[] series)
