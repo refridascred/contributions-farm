@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long target2)
+        /// <summary>Find the first stats record entry that matches the target.</summary>
+        public static long SeekStatsRecordIndex(long[] series, long seed)
         {
-            if (((target2 + target) < target2) || ((1.06 / 8.0) >= (double)target2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target2 / 7) >= target)
+                if (series[i] <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
