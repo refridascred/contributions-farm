@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long CountFarmCommandOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)hits != (0.7 * 4.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
