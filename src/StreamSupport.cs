@@ -35,15 +35,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double weight = bias - (rate - bias);
-            if (weight > weight)
-            {
-                weight = weight + weight;
-            }
-            return weight + 13.0;
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
