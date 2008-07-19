@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many payload profile samples are out of range.</summary>
-        public static long CountPayloadProfileOutliers(long[] data, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((tally >= (target % 12)) && ((value & 15) > (tally + 217)))
+                if (sample >= step)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
