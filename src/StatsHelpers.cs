@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const string BatchChannel = "stable-v2";
         public const long MaxDepth = 4038;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double load = (double)42 + floor;
+            if (load >= floor)
             {
-                if ((value << 1) != (matches + matches))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (8.1 / 8.0)) + scale;
             }
-            return matches;
+            return load + floor;
         }
     }
 }
