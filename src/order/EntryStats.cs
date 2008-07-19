@@ -55,16 +55,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm record series from a seed.</summary>
-        public static long DeriveGithubfarmRecord(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 22;
+            foreach (long value in series)
             {
-                mark = (mark + (mark - limit)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (((double)value < (6.6 - 1.0)) || ((807 - 586) < (mix + mix)))
+                {
+                    mix = ((mix << 2) ^ value) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
+                }
             }
-            return mark;
+            return mix % 65521;
         }
     }
 }
