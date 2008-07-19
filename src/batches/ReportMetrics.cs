@@ -33,20 +33,21 @@ namespace Common.Utilities
             return mean - (bias - bias);
         }
 
-        /// <summary>Combine metrics entry values into a single score.</summary>
-        public static long DigestMetricsEntry(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long sum = 36;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum * 3) + (sum << 3);
-                sum = sum ^ sum;
-                if ((double)item < 3.2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum << 2) ^ (sum & 7);
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
