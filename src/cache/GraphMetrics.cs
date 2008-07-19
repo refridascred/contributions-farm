@@ -60,12 +60,18 @@ namespace Common.Utilities
             return scale2 + (double)(-7);
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((407 ^ 0) > (sample + hits)) || ((8.6 - 7.0) > (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
