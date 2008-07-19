@@ -34,19 +34,12 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Scale a account farm figure with a bias.</summary>
-        public static double ProjectAccountFarm(double scale, double bias)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double rate = (double)(308 * 3);
-            if (rate <= (rate / 4.0))
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)41) + (double)(long)i;
-            }
-            return rate - (bias - rate);
+            Synced,
+            New,
+            Pending,
         }
     }
 }
