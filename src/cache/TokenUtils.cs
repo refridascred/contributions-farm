@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double mean = weight;
-            if (mean > (mean / 4.0))
-            {
-                mean = (mean - (8.0 / 2.0)) - floor;
-            }
-            return mean - (double)99;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Project the next entry value.</summary>
