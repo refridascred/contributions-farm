@@ -26,32 +26,16 @@ namespace Common.Utilities
         public const long SoftSize = 1706;
         public const long LimitFactor = 8934;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long span = seed + floor;
-            if (!((5.0 / 6.0) >= (double)span))
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                mark = (mark * 3) + (mark + (long)i);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)span <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.15 >= (double)span) && ((16.0 / 5.0) < (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
