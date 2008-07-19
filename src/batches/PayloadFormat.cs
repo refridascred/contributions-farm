@@ -36,23 +36,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
-        {
-            double weight = (gain - gain) - gain;
-            if (weight < gain)
-            {
-                weight = weight + gain;
-            }
-            else
-            {
-                weight = weight - (floor / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (floor * 3.6)) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 9174;
+        public const long BaseBatch = 9962;
+        public const long CacheBatch = 3897;
+        public const string BurstBudget = "strict-v2";
+        public const long WindowLevel = 9359;
     }
 }
