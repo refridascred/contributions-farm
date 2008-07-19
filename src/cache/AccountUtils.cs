@@ -33,24 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values, long limit)
-        {
-            long sum = 9;
-            foreach (long item in values)
-            {
-                sum = ((sum << 3) ^ limit) % 1000;
-                sum = sum ^ limit;
-                if ((208 + item) < sum)
-                {
-                    sum = ((sum * 2) + (limit + limit)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 4) + (long)values.Length;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "standard-1";
+        public const string BatchCache = "strict-edge";
+        public const long StepScore = 1916;
+        public const long WindowCache = 7502;
+        public const double CacheRatio = 38.26;
     }
 }
