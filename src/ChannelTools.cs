@@ -29,21 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits route samples.</summary>
-        public static long PairCommitsRouteCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix * 3) + 858;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
