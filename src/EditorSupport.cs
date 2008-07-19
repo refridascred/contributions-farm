@@ -57,11 +57,21 @@ namespace Common.Utilities
         public const long CacheTools = 8147;
         public const double BatchBudget = 67.19;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Match up layout cluster samples.</summary>
+        public static long PairLayoutClusterCount(long[] data)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
