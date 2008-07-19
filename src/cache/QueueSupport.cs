@@ -33,16 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account session samples.</summary>
-        public static long TotalAccountSession(long[] samples, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long origin)
         {
-            long sum = 46;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum << 2) ^ (datum & 31)) % 4096) + seed;
-                sum = ((sum << 2) ^ (sum + sum)) % 97;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
