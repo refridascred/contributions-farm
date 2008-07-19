@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stats profile value from a seed.</summary>
-        public static long RollStatsProfile(long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
