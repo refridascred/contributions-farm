@@ -48,20 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCount = 7046;
+        public const string IdleLevel = "local-1";
+        public const long BatchWidth = 9038;
+        public const double BaseInterval = 28.09;
+        public const long RetryCache = 4765;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
