@@ -30,18 +30,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] values, long floor)
+        /// <summary>Locate a payload token reading by value.</summary>
+        public static long FindPayloadTokenIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((527 & 63) >= cell)
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 1) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
