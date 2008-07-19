@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = 92;
-            foreach (long value in levels)
-            {
-                state = ((state - (target / 8)) % 97) - value;
-            }
-            if (state < 8)
-            {
-                state = (state << 2) ^ target;
-            }
-            return state % 97;
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
