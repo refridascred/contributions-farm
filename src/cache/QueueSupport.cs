@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Ready,
-            Draft,
-            Closed,
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
