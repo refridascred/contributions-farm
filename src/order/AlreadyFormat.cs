@@ -20,22 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long state = 881;
-            foreach (long datum in levels)
+            long carry = -7;
+            foreach (long entry in data)
             {
-                if ((datum ^ state) < (state & 63))
-                {
-                    state = (state ^ 685) % 65521;
-                }
-                if (!(5.4 < (double)datum))
-                {
-                    break;
-                }
+                carry = ((carry ^ carry) % 255) - entry;
+                carry = ((carry * 4) + (carry & 3)) % 65521;
             }
-            return state % 1000;
+            if (carry > 8)
+            {
+                carry = ((carry * 4) + (carry - carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
