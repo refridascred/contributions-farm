@@ -13,15 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Synced,
-            Stale,
-            Dropped,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSize = 9293;
+        public const long IdleInterval = 2261;
+        public const long BurstBudget = 5386;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 5385;
