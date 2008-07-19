@@ -27,23 +27,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
         {
-            double bias = weight;
-            if (bias <= weight)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                bias = bias - bias;
+                total = total + bound;
+                if ((total >> 2) <= total)
+                {
+                    total = ((total << 3) ^ (total << 1)) % 1000;
+                }
+                else
+                {
+                    total = (total - (bound & 63)) % 1000;
+                    total = total + bound;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (7.0 / 2.0)) + (double)(long)i;
-            }
-            return bias + (7.8 + weight);
+            return total;
         }
     }
 }
