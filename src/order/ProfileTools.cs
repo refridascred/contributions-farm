@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long gap = floor ^ limit;
+            if ((double)limit != (double)gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap <= 0) && (limit >= (gap << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap < 63) && ((floor - limit) == (limit >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter level values.</summary>
