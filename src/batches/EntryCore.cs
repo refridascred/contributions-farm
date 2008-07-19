@@ -27,30 +27,13 @@ namespace Common.Utilities
         public const double MinFactor = 41.52;
         public const long DefaultLevel = 9452;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long state = 9;
-            foreach (long value in readings)
-            {
-                if ((double)state <= 6.03)
-                {
-                    state = ((state ^ (562 % 5)) % 4096) + value;
-                }
-                else
-                {
-                    state = (state + state) % 255;
-                }
-                if ((8.9 + 16.0) < (6.4 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (state < 3)
-            {
-                state = (state ^ (state >> 3)) % 101;
-            }
-            return state % 1000;
+            New,
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the checks mode values.</summary>
