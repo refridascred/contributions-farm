@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long limit)
         {
-            New,
-            Failed,
-            Idle,
+            long result = 47;
+            foreach (long value in levels)
+            {
+                result = (result ^ (value << 3)) % 4096;
+            }
+            if (result > 7)
+            {
+                result = ((result << 3) ^ (limit ^ 819)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
