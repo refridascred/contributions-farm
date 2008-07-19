@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache layout readings.</summary>
-        public static long OverlapCacheLayoutCount(long[] values)
+        /// <summary>Count channel stats pairs that satisfy a relation.</summary>
+        public static long PairChannelStatsCount(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 20)
+                    if ((levels[i] - levels[j]) < 14)
                     {
                         hits = hits + 1;
                     }
