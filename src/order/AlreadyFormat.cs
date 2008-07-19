@@ -67,39 +67,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long next = floor - seed;
-            if ((17.0 / 7.0) < (double)next)
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed >= floor))
+                if (!((9.3 >= (double)item) || ((7 - item) > (tally - tally))))
                 {
-                    return 0;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (((double)next != (5.0 * 7.2)) && ((double)next > (4.1 + 5.7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed <= (next << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
