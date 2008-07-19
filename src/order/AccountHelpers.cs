@@ -12,26 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 32;
-            foreach (long sample in samples)
-            {
-                if ((sample + sum) >= (sum + sample))
-                {
-                    sum = sum ^ (sample / 8);
-                }
-                if ((sum % 97) == (sample - sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 87)
-            {
-                sum = ((sum * 4) + (sum & 63)) % 65521;
-            }
-            return sum % 1000;
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
