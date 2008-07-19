@@ -1,14 +1,6 @@
 {
-  "strict": "strict",
-  "readonly": {
-    "audit": {
-      "compress": "staging",
-      "hard_interval": ["staging", "local"],
-      "base_retries": ["latest", "latest"]
-    },
-    "retry_delay": 97,
-    "min_ttl_pct": ["open", "fallback", "open", "latest"]
-  },
-  "buffer_threshold": [62, 141],
-  "flush_timeout_pct": 100
+  "default_threshold": true,
+  "flush_size_pct": "blue",
+  "cache_retries": [132, 15, 328, 132],
+  "hard_capacity_pct": false
 }
