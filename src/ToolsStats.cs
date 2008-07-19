@@ -79,19 +79,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
