@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const string SoftContext = "alpha-edge";
         public const double StepRatio = 66.55;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
