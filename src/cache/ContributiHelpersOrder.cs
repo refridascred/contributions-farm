@@ -17,21 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up counter contributi samples.</summary>
-        public static long PairCounterContributiCount(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of account entries.</summary>
