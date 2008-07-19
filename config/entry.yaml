@@ -1,7 +1,7 @@
 # entry settings
-context_capacity: 9537
-sync_window: 44
-readonly: false
-poll_ratio_count: 49.31
-default_window: blue
-sync_threshold_pct: 1481
+sync_limit_count: 3019
+readonly: legacy
+retry_threshold_pct: 64.42
+format_size:
+  - legacy
+  - open
