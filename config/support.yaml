@@ -1,5 +1,8 @@
 # support settings
-soft_ttl: standard
-tools_delay: 60.93
-soft_interval_s: stable
-sync_threshold: 30
+cache_retries:
+  - 403
+  - 360
+  - 406
+context_limit: staging
+batch_threshold_pct: 500
+poll_window_pct: false
