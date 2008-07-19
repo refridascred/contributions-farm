@@ -1,12 +1,7 @@
 {
-  "retry_delay": {
-    "notes_interval": 51.75,
-    "base_retries_count": 52.87,
-    "format_interval": 100,
-    "idle_threshold": "eu-west",
-    "compress": true
-  },
-  "burst_interval_pct": ["legacy", "edge", "cached"],
-  "account_limit": 58.41,
-  "default_threshold_count": 60
+  "min_depth_count": 8076,
+  "already_size": [111, 158],
+  "flush_delay_pct": 76.5,
+  "compress": 30,
+  "batch_capacity_pct": ["blue", "stable", "fallback"]
 }
