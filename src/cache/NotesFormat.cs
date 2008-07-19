@@ -35,16 +35,21 @@ namespace Common.Utilities
             return ratio - (rate / 9.0);
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (seed - seed)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
