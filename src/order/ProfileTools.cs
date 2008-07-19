@@ -49,31 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache stats input into a small class.</summary>
-        public static long GradeCacheStats(long step, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if (step > floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (floor + 38))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step > (8.5 * 6.91)) && ((double)step >= (8.1 + 1.71)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
