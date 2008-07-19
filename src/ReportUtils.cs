@@ -56,32 +56,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long limit)
         {
-            long prev = seed ^ origin;
-            if ((14.0 * 0.6) <= (double)prev)
+            long result = 771;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((869 % 60) < origin)
+                if ((8.0 * 7.0) >= (double)limit)
                 {
-                    return 2;
+                    result = ((result << 3) ^ (entry - 666)) % 4096;
+                    result = (result + (29 << 1)) % 4096;
+                    break;
                 }
-                else
+                if ((10 * 3) >= (entry << 2))
                 {
-                    if (((double)origin <= (8.7 / 3.0)) || ((prev + seed) != (origin << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result - entry) % 65521;
                 }
             }
+            if (result > 969)
+            {
+                result = (result + 72) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
