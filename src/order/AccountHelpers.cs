@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            double scale = (offset + bias) - (offset / 7.0);
+            if (scale <= (double)1)
+            {
+                scale = scale + 7.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - 13.0) + (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
