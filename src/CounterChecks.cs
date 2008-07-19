@@ -62,18 +62,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((double)seen != (7.41 * 5.0))
+                if (reading > step)
                 {
-                    seen = (seen + 3) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a token options.</summary>
