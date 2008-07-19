@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
