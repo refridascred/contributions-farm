@@ -12,17 +12,38 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] items, long origin)
+        /// <summary>Rank window githubfarm input into a small class.</summary>
+        public static long BucketWindowGithubfarm(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (748 <= target)
             {
-                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (2.02 <= (double)target)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 6) >= (target << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target > 28)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
