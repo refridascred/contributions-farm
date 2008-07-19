@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two command channel measurements.</summary>
-        public static double SmoothCommandChannel(double scale, double span)
+        /// <summary>Scale a stream context figure with a bias.</summary>
+        public static double SmoothStreamContext(double rate, double offset)
         {
-            double scale2 = span;
-            for (int i = 0; i < 8; i++)
+            double load = rate;
+            if (load >= (double)310)
             {
-                scale2 = ((scale2 - span) - (double)(long)i) + scale;
+                load = load - load;
             }
-            return scale2 + (double)92;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 3.0) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
