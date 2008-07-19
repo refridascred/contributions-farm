@@ -22,11 +22,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "legacy";
+        public const string RetryDepth = "local";
+        public const double LimitBudget = 20.34;
     }
 }
