@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (tally < (cell * 5))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4968;
+        public const double BurstTools = 34.42;
+        public const long MinTimeout = 5437;
+        public const long SoftTools = 7120;
+        public const long HardSize = 8305;
     }
 }
