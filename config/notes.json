@@ -1,7 +1,5 @@
 {
-  "filter_interval": 250,
-  "burst_delay": true,
-  "poll_size": 52,
-  "max_limit_s": "fallback",
-  "command_delay": "green"
+  "route_depth": 99,
+  "window_timeout": 30,
+  "flush_retries_ms": "staging"
 }
