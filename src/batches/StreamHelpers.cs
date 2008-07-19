@@ -51,24 +51,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double offset)
-        {
-            double load = (double)(74 >> 1);
-            if (load > (offset / 5.0))
-            {
-                load = load - 3.4;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + (weight - weight);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 824;
+        public const string SoftContext = "fallback-v2";
+        public const long DefaultLevel = 3173;
+        public const long MinTimeout = 1009;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
