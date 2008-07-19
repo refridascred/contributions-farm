@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command commits entry that matches the target.</summary>
-        public static long LookupCommandCommitsIndex(long[] samples, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (items[i] <= step)
                 {
                     return (long)i;
                 }
