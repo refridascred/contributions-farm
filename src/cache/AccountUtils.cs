@@ -17,16 +17,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] series, long floor)
         {
-            long result = 1;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = (result + floor) + value;
-                result = result ^ floor;
+                if ((count % 64) >= 18)
+                {
+                    count = ((count + 3) + datum) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
