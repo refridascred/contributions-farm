@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 34.2;
-        public const long SoftOrder = 5325;
-        public const long BaseInterval = 7231;
-        public const long RetryOrder = 5348;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Pending,
+            New,
+            Failed,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
