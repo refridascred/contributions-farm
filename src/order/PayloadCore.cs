@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4839;
-        public const string SoftProfile = "latest-1";
-        public const string BaseTimeout = "open";
-        public const long StepProfile = 2813;
+        /// <summary>Check that every metric tools entry stays within the limit.</summary>
+        public static bool GuardMetricToolsLimits(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountOutliers(long[] samples)
