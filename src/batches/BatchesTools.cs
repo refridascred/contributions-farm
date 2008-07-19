@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Dropped,
+            Done,
             Retry,
-            Queued,
-            Failed,
-            Active,
+            Ready,
         }
 
         /// <summary>Describe the graph kind values.</summary>
