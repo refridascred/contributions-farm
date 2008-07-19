@@ -39,18 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches < (623 >> 5))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
