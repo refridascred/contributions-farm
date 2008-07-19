@@ -45,13 +45,22 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of buffer context readings.</summary>
+        public static long WeighBufferContext(long[] series)
         {
-            Done,
-            Paused,
-            Stale,
-            Locked,
+            long acc = 41;
+            foreach (long value in series)
+            {
+                if (acc < (value % 64))
+                {
+                    acc = (acc - value) % 65521;
+                }
+                else
+                {
+                    acc = acc + 53;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
