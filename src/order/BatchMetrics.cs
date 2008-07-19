@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] values, long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((reading ^ 557) >= (-432)) || !(bound >= (bound + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
