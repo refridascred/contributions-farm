@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mark = -31;
-            foreach (long value in items)
-            {
-                mark = ((mark * 3) + (floor - 9)) - value;
-            }
-            return mark % 1000;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate entry order samples.</summary>
