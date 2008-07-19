@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 2103;
+        public const long BurstMetric = 3957;
+        public const long SoftMetric = 5088;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheNotes = 6795;
