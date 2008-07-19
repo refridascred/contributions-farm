@@ -42,15 +42,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double scale = (ratio - ratio) / 4.0;
-            if (scale < (scale / 6.0))
-            {
-                scale = scale - 12.0;
-            }
-            return scale + (floor / 5.0);
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
