@@ -38,22 +38,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long offset2 = offset - limit;
+            if ((offset % 12) >= (limit ^ offset2))
             {
-                if (!(((tally + limit) != (tally / 2)) || ((item + item) > 790)))
+                return 0;
+            }
+            else
+            {
+                if (offset >= (limit * 4))
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((offset2 * 2) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
