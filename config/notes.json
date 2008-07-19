@@ -1,5 +1,5 @@
 {
-  "record_size": 45.01,
-  "readonly": ["stable", "latest", "blue"],
-  "checks_capacity": 5459
+  "cache_delay_count": "open",
+  "buffer_ratio": "latest",
+  "idle_window_count": "green"
 }
