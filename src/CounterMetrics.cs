@@ -39,16 +39,12 @@ namespace Common.Utilities
             return rate + (scale - floor);
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc - ((long)i - (long)i)) % 4096;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
