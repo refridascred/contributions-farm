@@ -1,15 +1,10 @@
 # support settings
-flush_ratio_ms:
-  metric_limit:
-    - 464
-    - 213
-    - 108
-  enabled: 4809
-  retry_capacity: 52
-  flush_delay: legacy
-schema_limit: green
-profile_limit:
-  - stable
-  - cached
-  - latest
-  - strict
+audit: latest
+min_limit_pct: cached
+entry_threshold:
+  min_timeout_count: 100
+  filter_ratio: 250
+  base_timeout_ms: 100
+  base_interval_pct: fallback
+  batch_size_ms: 1024
+record_window: cached
