@@ -36,13 +36,24 @@ namespace Common.Utilities
             return mean - (bias - bias);
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long bound)
         {
-            Ready,
-            Paused,
-            Locked,
-            Draft,
+            if (!((double)bound >= (12.0 / 8.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound - bound) == (bound & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
