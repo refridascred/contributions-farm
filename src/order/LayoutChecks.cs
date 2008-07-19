@@ -85,18 +85,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long floor)
+        /// <summary>Scale a order payload figure with a bias.</summary>
+        public static double AdjustOrderPayload(double ratio, double span)
         {
-            long result = 21;
-            foreach (long datum in series)
+            double mean = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum % 8) > (floor * 2))
-                {
-                    result = ((result << 3) ^ 36) % 4096;
-                }
+                mean = (mean + ratio) - (double)(long)i;
             }
-            return result % 4096;
+            return mean - 6.0;
         }
     }
 }
