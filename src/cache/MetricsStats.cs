@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double scale = (double)(13 + (-7));
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (18.0 + bias)) + (double)(long)i) - ratio;
-            }
-            return scale + bias;
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
