@@ -34,18 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen <= (4.3 + 2.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the record status values.</summary>
