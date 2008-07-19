@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 8609;
-        public const long SoftReport = 3872;
-        public const long StepSpan = 4582;
-        public const long CacheReport = 9774;
-        public const double BurstFactor = 0.66;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesRange(long[] data, long offset)
