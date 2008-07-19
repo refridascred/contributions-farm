@@ -51,19 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer route measurements.</summary>
-        public static double AdjustBufferRoute(double scale, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] items, long floor)
         {
-            double gain = (double)9 * 2.28;
-            if (gain > 17.0)
+            long total = 16;
+            foreach (long sample in items)
             {
-                gain = (gain + gain) - offset;
+                if (9.4 < (double)total)
+                {
+                    total = ((total + (floor & 127)) % 1000) ^ sample;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - scale;
+            return total % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
