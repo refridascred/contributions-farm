@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm stats.</summary>
