@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardSize = 942;
+        public const long BatchBudget = 811;
+        public const long LimitQueue = 3400;
+        public const long MinInterval = 9902;
+        public const long SoftQueue = 6580;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long bound)
