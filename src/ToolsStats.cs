@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long target, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long cur = target - offset;
-            if ((cur << 1) == (311 & 3))
+            long mix = 8;
+            foreach (long reading in items)
             {
-                return 5;
+                mix = mix + (reading + 54);
             }
-            else
+            if (mix < (-88))
             {
-                if ((double)offset == (4.2 * 20.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = (mix + mix) % 97;
             }
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
