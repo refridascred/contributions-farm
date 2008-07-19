@@ -27,18 +27,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Match up buffer format samples.</summary>
+        public static long MatchBufferFormatCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((208 + sample) >= (635 * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
