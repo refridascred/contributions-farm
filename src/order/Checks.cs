@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long limit)
         {
-            Done,
-            Synced,
-            Draft,
-            Stale,
-            Paused,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
