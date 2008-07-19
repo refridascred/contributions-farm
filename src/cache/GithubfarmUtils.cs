@@ -32,14 +32,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Active,
-            New,
-            Failed,
-            Pending,
+            Ready,
             Retry,
+            Failed,
         }
     }
 }
