@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Pending,
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8975;
+        public const long MinLayout = 2987;
+        public const string RetryLayout = "staging-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 7526;
