@@ -44,13 +44,16 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 5) + (total - floor)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
