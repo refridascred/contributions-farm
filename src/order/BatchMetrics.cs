@@ -69,23 +69,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next contributi order value.</summary>
-        public static double AdjustContributiOrder(double ratio, double floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double weight = floor;
-            if (weight < ratio)
-            {
-                weight = weight + 4.0;
-            }
-            else
-            {
-                weight = weight - (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - weight;
+            Retry,
+            Closed,
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
