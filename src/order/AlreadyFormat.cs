@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Ready,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
