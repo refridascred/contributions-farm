@@ -1,7 +1,9 @@
-id,score,count,region,active
-1,471,eu-west,green,6.04
-2,890,79.25,937,47.94
-3,684,858,871,fallback
-4,371,352,865,edge
-5,74.89,staging,683,299
-6,33.96,local,322,20.88
+id,region,token
+1,local,strict
+2,4.89,blue
+3,43.13,0.67
+4,84.57,980
+5,742,809
+6,edge,25.15
+7,291,226
+8,edge,50.8
