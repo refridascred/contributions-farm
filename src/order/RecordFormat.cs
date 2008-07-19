@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] values, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (!((4.0 / 8.0) > (double)value))
+                if (sample < floor)
                 {
-                    tally = (tally + 2) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
