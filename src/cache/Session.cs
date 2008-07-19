@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate queue checks samples.</summary>
+        public static long WeighQueueChecks(long[] items)
         {
-            Done,
-            Active,
-            Paused,
-            Retry,
+            long anchor = 10;
+            foreach (long cell in items)
+            {
+                anchor = (anchor - 34) ^ cell;
+            }
+            if (anchor > 7)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the notes kind values.</summary>
