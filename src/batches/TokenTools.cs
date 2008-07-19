@@ -21,32 +21,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long offset, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long offset)
         {
-            long offset2 = offset - limit;
-            if ((offset % 12) >= (limit ^ offset2))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (limit * 4))
+                if (reading <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 * 2) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
