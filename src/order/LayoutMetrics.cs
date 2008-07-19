@@ -35,13 +35,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long limit)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long score = 609;
+            foreach (long reading in samples)
+            {
+                score = ((score * 3) + ((long)samples.Length - reading)) + limit;
+            }
+            return score;
         }
     }
 }
