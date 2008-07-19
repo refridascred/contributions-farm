@@ -1,5 +1,8 @@
 {
-  "tools_window": "green",
-  "burst_interval_ms": [172, 229, 140, 399],
-  "notes_timeout": ["strict", "standard", "latest", "cached"]
+  "min_limit_pct": false,
+  "default_capacity_count": "legacy",
+  "retry_interval_ms": true,
+  "audit": 8,
+  "cache_ttl_s": 250,
+  "max_threshold_s": 9933
 }
