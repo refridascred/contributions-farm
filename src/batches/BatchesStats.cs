@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchCount = 7730;
+        public const string CacheOrder = "standard-1";
+        public const long MaxRatio = 7782;
+        public const long DefaultInterval = 1055;
+        public const long SoftOrder = 3701;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] data)
