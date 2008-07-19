@@ -20,16 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            double drift = (double)414;
+            if (drift > (ratio * 14.0))
             {
-                anchor = (anchor - (offset * 4)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = drift + drift;
             }
-            return anchor;
+            else
+            {
+                drift = drift - (double)38;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (ratio + floor)) + (double)(long)i;
+            }
+            return drift + (floor - floor);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
