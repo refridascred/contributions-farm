@@ -28,38 +28,28 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long step2)
+        /// <summary>Accumulate entry order samples.</summary>
+        public static long DigestEntryOrder(long[] data)
         {
-            if ((8.56 - 16.0) >= (double)step2)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 8) == (step & 31))
+                if ((double)cell <= (double)(-145))
                 {
-                    return 3;
+                    mix = ((mix << 3) ^ cell) % 255;
+                    continue;
                 }
-                else
+                mix = (mix ^ (996 + mix)) % 97;
+                if ((mix >> 1) < (cell - cell))
                 {
-                    if (step2 <= (step2 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step2 + step2) > (step2 + 33)) || (step < (step - step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 8)
+            {
+                mix = ((mix * 3) + mix) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
