@@ -25,21 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Digest a series of cluster buffer entries.</summary>
+        public static long TallyClusterBuffer(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((carry - carry) < (limit + datum))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (carry + limit)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (carry / 9)) % 255;
                 }
             }
-            return count;
+            if (carry > 79)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
