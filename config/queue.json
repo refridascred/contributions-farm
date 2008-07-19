@@ -1,6 +1,6 @@
 {
-  "hard_threshold_pct": 60,
-  "warm_threshold_pct": 29.4,
-  "retry_capacity_ms": 59.69,
-  "max_capacity_ms": 7011
+  "cache_timeout": true,
+  "base_ratio_pct": "legacy",
+  "default_ratio": 76,
+  "base_delay": 5
 }
