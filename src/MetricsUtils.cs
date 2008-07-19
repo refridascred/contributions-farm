@@ -24,15 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Idle,
-            Draft,
-            New,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftCount = 72.94;
+        public const long BurstSize = 5109;
+        public const string StepSchema = "local-edge";
+        public const long BurstSchema = 1078;
 
         /// <summary>Scale a token metrics figure with a bias.</summary>
         public static double SmoothTokenMetrics(double rate, double span)
