@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 269;
+            foreach (long item in data)
+            {
+                if (item <= (773 + result))
+                {
+                    result = result ^ (result + 38);
+                }
+                else
+                {
+                    result = (result << 2) ^ (item ^ result);
+                }
+                result = ((result * 5) + (item + result)) % 255;
+            }
+            if (result > 451)
+            {
+                result = (result * 4) + (long)data.Length;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
