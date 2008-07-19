@@ -27,9 +27,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinLevel = 32.56;
-        public const long HardBudget = 9684;
-        public const long BurstScore = 5583;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
