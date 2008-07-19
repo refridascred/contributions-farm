@@ -1,7 +1,12 @@
 {
-  "burst_delay": "standard",
-  "default_depth_count": 1021,
-  "command_threshold": ["open", "stable", "edge"],
-  "soft_ttl_count": ["eu-west", "blue"],
-  "max_timeout_ms": "legacy"
+  "dry_run": "standard",
+  "retry_window_s": {
+    "stats_interval": 9703,
+    "warm_window_s": 8125,
+    "cache_retries_pct": true,
+    "audit": "latest"
+  },
+  "hard_capacity_s": "primary",
+  "compress": true,
+  "retry_interval": "stable"
 }
