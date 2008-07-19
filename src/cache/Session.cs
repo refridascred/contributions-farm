@@ -21,10 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 4846;
-        public const long SoftContext = 5865;
-        public const string RetryContext = "fallback";
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Paused,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
