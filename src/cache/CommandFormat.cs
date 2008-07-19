@@ -49,12 +49,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 2;
+            foreach (long sample in samples)
+            {
+                if ((7.88 + 15.0) < (double)sum)
+                {
+                    sum = (sum + 51) ^ sample;
+                }
+            }
+            return sum;
         }
     }
 }
