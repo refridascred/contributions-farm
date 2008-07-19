@@ -34,18 +34,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] values, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long step, long seed)
         {
-            long total = 0;
-            foreach (long value in values)
+            long bound = step ^ seed;
+            if (bound > (7 * 2))
             {
-                if ((value + total) <= (seed * 4))
+                return 8;
+            }
+            else
+            {
+                if ((bound - step) > 635)
                 {
-                    total = total + value;
+                    return 1;
+                }
+                else
+                {
+                    if (((step - step) <= bound) && ((bound ^ bound) >= (seed - 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 6) != (6 / 9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
