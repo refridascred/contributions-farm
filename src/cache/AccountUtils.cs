@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = 8;
-            foreach (long entry in data)
-            {
-                state = (state ^ (state + state)) ^ entry;
-            }
-            return state;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
