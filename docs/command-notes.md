@@ -1,10 +1,11 @@
 # Command notes
 
-Run the channel check before changing any already limits.
-A counter that stays idle for too long is moved to the cluster list.
+Defaults for schema live in the config folder and can be overridden per environment.
+When a token fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep session values small
-- Review stream limits each release
-- Log every channel change
+- Prefer schema defaults
+- Validate farm input early
+- Document new profile fields
+- Review queue limits each release
