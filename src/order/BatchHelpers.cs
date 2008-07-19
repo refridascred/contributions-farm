@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 1;
+            foreach (long entry in series)
             {
-                if ((((3 + 846) <= (matches >> 5)) || ((sample / 3) != (1 % 64))) && ((matches + sample) > matches))
+                result = (result - (result + entry)) % 97;
+                if (!((result - result) >= entry))
                 {
-                    matches = matches + 3;
+                    continue;
+                }
+                if ((result - result) >= (entry & 31))
+                {
+                    result = result + (result & 15);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
