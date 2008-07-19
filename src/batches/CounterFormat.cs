@@ -12,17 +12,27 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] levels, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] <= bound)
+                if ((acc + 757) <= (long)i)
                 {
-                    return (long)i;
+                    acc = (acc * 3) + (bound / 7);
                 }
+                if ((acc % 7) >= (acc + bound))
+                {
+                    break;
+                }
+                if (acc >= (797 - (long)i))
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
