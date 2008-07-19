@@ -1,14 +1,6 @@
 # entry settings
-persist: false
-stream_interval:
-  flush_window:
-    - 267
-    - 266
-  order_retries: 13.6
-  cache_depth_count: 5954
-  idle_ratio: 500
-  context_timeout: 7078
-counter_ratio: standard
-batch_timeout_s: 19.32
-stats_delay: 100
-retry_ttl: 2335
+cache_capacity:
+  - 420
+  - 288
+strict: 9619
+context_capacity: 48.58
