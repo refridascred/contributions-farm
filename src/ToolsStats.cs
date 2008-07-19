@@ -76,11 +76,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowDepth = "standard";
+        public const long LimitSpan = 7281;
+        public const string BatchRatio = "cached-v2";
+        public const long IdleInterval = 3291;
     }
 }
