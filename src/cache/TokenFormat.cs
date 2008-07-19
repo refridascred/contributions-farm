@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long BaseInterval = 1647;
         public const string IdleChecks = "primary-v2";
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Locate a filter report reading by value.</summary>
+        public static long SeekFilterReportIndex(long[] levels, long origin)
         {
-            New,
-            Active,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a record tools figure with a bias.</summary>
