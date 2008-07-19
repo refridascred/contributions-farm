@@ -1,7 +1,7 @@
 # support settings
-warm_threshold: 91.45
-retry_size: 81.14
-flush_depth:
-  soft_limit: 100
-  burst_retries_ms: 1459
-  enabled: fallback
+warm_threshold: strict
+retry_delay: eu-west
+verbose: true
+format_retries: 33.15
+poll_capacity_ms: 250
+filter_window: 500
