@@ -31,24 +31,19 @@ namespace Common.Utilities
         public const double RetrySpan = 5.07;
         public const double MinCount = 71.66;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long step)
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool ValidateSupportCounterLimits(long[] samples, long offset)
         {
-            if (((720 + step) == (bound - step)) && ((0.6 - 13.0) <= (double)bound))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((3.0 / 5.0) <= (double)step) || ((bound % 8) < (step ^ step)))
+                if (entry > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
