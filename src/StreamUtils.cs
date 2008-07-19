@@ -20,21 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of editor filter readings.</summary>
-        public static long PairEditorFilterCount(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor & 63) <= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (limit < (limit & 3))
                 {
-                    if ((samples[i] + samples[j]) > 18)
+                    return 8;
+                }
+                else
+                {
+                    if (!((10.0 - 2.67) > (double)floor))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
