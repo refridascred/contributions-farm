@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long origin)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item % 24) == (item & 3))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
