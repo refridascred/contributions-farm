@@ -24,18 +24,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first context session entry that matches the target.</summary>
-        public static long LocateContextSessionIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 8140;
+        public const long BatchBuffer = 4611;
+        public const long IdleBuffer = 3033;
+        public const double DefaultBuffer = 49.64;
 
         /// <summary>Digest a series of command tools entries.</summary>
         public static long TotalCommandTools(long[] samples, long floor)
