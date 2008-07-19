@@ -48,13 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Iterate the metrics checks series from a seed.</summary>
+        public static long StepMetricsChecks(long seed)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + seed) % 65521) + (long)i2;
+                }
+                if (seed < (seed + seed))
+                {
+                    acc = (acc * 5) + (seed << 3);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
