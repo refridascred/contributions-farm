@@ -1,20 +1,5 @@
 # support settings
-editor_retries: 3.9
-default_size_ms:
-  compress:
-    verbose: 56
-    base_ratio_count: staging
-    cache_threshold_ms: staging
-    notes_interval: 30
-    min_interval_pct: 23.8
-    session_ratio: 3
-  cache_size: 36
-  base_ratio:
-    - staging
-    - stable
-    - edge
-    - primary
-audit:
-  record_interval: 30.88
-  warm_delay_s: 51
-  cache_retries_pct: false
+soft_ttl: standard
+tools_delay: 60.93
+soft_interval_s: stable
+sync_threshold: 30
