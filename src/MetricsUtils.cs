@@ -63,11 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 8297;
-        public const long BurstSpan = 6611;
-        public const long BatchFactor = 1707;
-        public const string SoftBatch = "latest-v2";
-        public const long DefaultFactor = 5164;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+        }
     }
 }
