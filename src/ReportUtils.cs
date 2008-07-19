@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 2;
+            foreach (long entry in items)
             {
-                if ((item % 24) == (item & 3))
+                mark = mark ^ 3;
+                if ((double)entry < 3.3)
                 {
-                    tally = (tally + 3) - origin;
+                    mark = ((mark * 4) + mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (step << 1)) % 1000;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
