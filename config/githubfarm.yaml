@@ -1,5 +1,9 @@
 # githubfarm settings
-metrics_limit: primary
-soft_ttl_count: staging
-max_limit_s: 74.67
-profile_ttl: 6922
+strict: local
+verbose: 24.33
+persist: latest
+retry_capacity_s: 3902
+soft_delay:
+  - local
+  - latest
+channel_timeout: 250
