@@ -33,19 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = -808;
-            foreach (long datum in data)
-            {
-                mix = (mix ^ (mix % 7)) + datum;
-            }
-            if (mix < 39)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 97;
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
