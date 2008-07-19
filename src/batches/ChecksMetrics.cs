@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph channel samples are out of range.</summary>
-        public static long AuditGraphChannelGaps(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading % 5) >= 6)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
