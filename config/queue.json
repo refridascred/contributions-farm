@@ -1,13 +1,6 @@
 {
-  "flush_timeout": 500,
-  "soft_capacity_pct": "legacy",
-  "min_timeout_ms": {
-    "compress": [375, 4, 96],
-    "default_interval_s": true,
-    "retry_limit": "legacy",
-    "max_ttl": 59.72,
-    "report_retries": "staging",
-    "queue_interval": 100
-  },
-  "base_interval": "fallback"
+  "metric_interval": ["stable", "open"],
+  "stats_retries": 60,
+  "metrics_size": 96.59,
+  "metric_limit": false
 }
