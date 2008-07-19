@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate session graph readings against a bound.</summary>
+        public static bool CheckSessionGraphLimits(long[] items, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
