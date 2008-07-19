@@ -25,14 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Locked,
+            Queued,
+            Idle,
+            Stale,
+            Synced,
             Draft,
-            New,
-            Pending,
-            Failed,
         }
     }
 }
