@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate entry order samples.</summary>
