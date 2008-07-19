@@ -41,25 +41,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long diff = offset - limit;
-            if ((5.85 * 2.0) >= (double)offset)
+            long result = 90;
+            foreach (long datum in values)
             {
-                return 3;
+                result = ((result * 3) + datum) % 97;
             }
-            else
-            {
-                if ((diff + 70) > (offset * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
     }
 }
