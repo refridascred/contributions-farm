@@ -31,10 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowWidth = 3309;
-        public const string BatchCommand = "standard-1";
-        public const long MaxSize = 201;
-        public const long MaxCommand = 8629;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value << 1) <= (hits * 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
