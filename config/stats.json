@@ -1,10 +1,7 @@
 {
-  "layout_ttl": "open",
-  "verbose": "cached",
-  "batch_interval_pct": false,
-  "idle_threshold_count": {
-    "max_threshold": 250,
-    "flush_retries": 100,
-    "stats_interval": 71.24
-  }
+  "retry_threshold_ms": 2501,
+  "window_window": [234, 72, 105, 39],
+  "max_delay_ms": "staging",
+  "verbose": false,
+  "hard_delay": [90, 23]
 }
