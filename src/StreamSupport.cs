@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            public double Size { get; set; }
             public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
