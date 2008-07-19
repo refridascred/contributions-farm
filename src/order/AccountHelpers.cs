@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (tally < (tally - tally))
+                if (reading != origin)
                 {
-                    tally = (tally + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the payload kind values.</summary>
