@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a format contributi reading.</summary>
-        public static double BlendFormatContributi(double rate, double offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long bound, long origin)
         {
-            double drift = (double)(28 + 354);
-            for (int i = 0; i < 9; i++)
+            long cur = bound + origin;
+            if (!((cur * 4) < origin))
             {
-                drift = ((drift - (offset * 15.0)) - (double)(long)i) - rate;
+                return 1;
             }
-            return drift + drift;
+            else
+            {
+                if (((double)cur >= 2.0) && ((bound ^ 902) >= (bound + 281)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur ^ 51) > (bound * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(cur > bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next session value.</summary>
