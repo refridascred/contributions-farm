@@ -29,12 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first already report entry that matches the target.</summary>
-        public static long LookupAlreadyReportIndex(long[] data, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
+                if (series[i] == origin)
                 {
                     return (long)i;
                 }
