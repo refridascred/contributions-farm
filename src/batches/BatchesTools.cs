@@ -27,13 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Stale,
-            New,
-            Synced,
             Closed,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the already kind values.</summary>
