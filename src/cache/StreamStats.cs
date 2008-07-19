@@ -34,13 +34,31 @@ namespace Common.Utilities
         public const long StepSpan = 187;
         public const long DefaultScore = 9051;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long offset2)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            if (((double)3 == (double)offset) || ((double)21 < (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset != (double)9) || ((double)offset2 >= (4.0 + 1.13)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(offset >= (offset - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
