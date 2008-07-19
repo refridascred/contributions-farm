@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] series, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = -191;
+            foreach (long cell in samples)
             {
-                if ((double)seed > (7.9 - 7.3))
+                mark = (mark ^ 7) % 101;
+                if ((3 - cell) > (mark + cell))
                 {
-                    tally = (tally + 2) + entry;
+                    mark = ((mark * 2) + (cell * 4)) % 255;
                 }
             }
-            return tally;
+            if (mark < 1)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a command stats.</summary>
