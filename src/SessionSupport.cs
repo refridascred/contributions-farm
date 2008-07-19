@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
