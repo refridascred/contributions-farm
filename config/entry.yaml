@@ -1,9 +1,13 @@
 # entry settings
-batch_size_ms: 44.56
-cache_retries: 5020
-default_interval: true
-retry_threshold_s: 39.53
-soft_capacity_count:
-  - 18
-  - 454
-  - 180
+buffer_window: 96.58
+persist: 60
+max_retries_pct: 70.78
+profile_retries: false
+audit: 2223
+enabled:
+  batches_timeout:
+    - 260
+    - 423
+    - 346
+  flush_threshold_count: primary
+  persist: eu-west
