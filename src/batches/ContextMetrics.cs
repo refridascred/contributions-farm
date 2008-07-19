@@ -49,17 +49,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue counter sample.</summary>
-        public static long SeekQueueCounterIndex(long[] samples, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 139;
+            foreach (long datum in readings)
             {
-                if (samples[i] >= seed)
+                if ((double)limit == (8.4 - 9.75))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (datum << 2)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state << 2)) % 97;
+                }
+                if (!((double)state >= (double)datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Locate a window reading by value.</summary>
