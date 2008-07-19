@@ -34,18 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long MeasureProfileFilterOutliers(long[] readings, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally % 16) == (tally - tally))
-                {
-                    tally = ((tally + 3) - reading) + floor;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate record samples.</summary>
