@@ -1,7 +1,7 @@
 # support settings
-warm_threshold: strict
-retry_delay: eu-west
-verbose: true
-format_retries: 33.15
-poll_capacity_ms: 250
-filter_window: 500
+dry_run: staging
+stats_window: false
+burst_depth: 15.56
+order_ratio: 23
+hard_delay_ms: 6564
+warm_ratio_pct: strict
