@@ -16,23 +16,23 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double scale, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            double rate = (2.7 + floor) + (double)95;
-            if (rate < rate)
+            double drift = floor;
+            if (drift > floor)
             {
-                rate = rate - (scale * 2.82);
+                drift = (drift - (floor * 5.49)) - rate;
             }
             else
             {
-                rate = rate - (floor + floor);
+                drift = drift + (floor / 8.0);
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate + scale) + (double)(long)i;
+                drift = (drift - (floor - drift)) + (double)(long)i;
             }
-            return rate + (scale - floor);
+            return drift + 7.22;
         }
 
         /// <summary>Describe the metrics status values.</summary>
