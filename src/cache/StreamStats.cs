@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings, long seed)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (double)40)
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
