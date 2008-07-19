@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long bound)
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long SeriesChecksSupport(long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark * 4) + (target % 8);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the batch state values.</summary>
