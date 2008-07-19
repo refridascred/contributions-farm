@@ -40,12 +40,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            long lane = origin - floor;
+            if ((double)floor < 8.8)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor > (floor - lane))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin + 9) <= floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((635 << 2) >= (origin / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
