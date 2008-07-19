@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
