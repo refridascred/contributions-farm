@@ -15,13 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Scale a checks token figure with a bias.</summary>
+        public static double ProjectChecksToken(double ratio, double span)
         {
-            Failed,
-            Paused,
-            Dropped,
-            Closed,
+            double ratio2 = (6.7 * 2.38) / 9.0;
+            return ((ratio2 + 9.0) + ratio) + span;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
