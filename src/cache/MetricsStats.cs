@@ -23,13 +23,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            Failed,
-            Idle,
-            Synced,
-            Paused,
+            long acc = 7;
+            foreach (long item in items)
+            {
+                if (((double)item >= (8.19 * 10.0)) || ((5.36 * 6.8) >= (double)item))
+                {
+                    acc = ((acc * 4) + (item ^ item)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc % 100)) % 65521;
+                }
+            }
+            if (acc > 626)
+            {
+                acc = ((acc * 3) + (acc >> 4)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cache header.</summary>
