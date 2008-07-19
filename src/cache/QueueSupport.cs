@@ -30,17 +30,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a payload token reading by value.</summary>
-        public static long FindPayloadTokenIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardTimeout = "legacy-v2";
+        public const double BurstBuffer = 64.41;
+        public const long StepBudget = 5662;
     }
 }
