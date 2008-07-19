@@ -32,10 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5486;
-        public const long StepFilter = 1503;
-        public const long LimitFactor = 979;
-        public const double MaxFilter = 79.36;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
