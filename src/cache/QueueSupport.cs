@@ -25,38 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            if (floor >= (floor ^ floor))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor != (5.58 - 17.0)) && ((floor & 31) > limit))
+                if ((hits / 3) >= (27 ^ hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor > (2.4 + 0.35)) && ((limit ^ limit) > (floor + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
