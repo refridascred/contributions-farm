@@ -55,26 +55,23 @@ namespace Common.Utilities
             return gain + (gain - 12.0);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            long result = 62;
-            foreach (long datum in levels)
+            double ratio = weight;
+            if (ratio <= (ratio + span))
             {
-                if ((datum <= (483 * 2)) && ((double)datum < (3.87 + 7.5)))
-                {
-                    result = (result - (761 + datum)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ (datum + datum);
-                }
+                ratio = ratio + (span * 3.6);
             }
-            if (result < 36)
+            else
             {
-                result = (result + (result + result)) % 97;
+                ratio = ratio + (weight / 2.0);
             }
-            return result % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (0.9 / 9.0);
         }
 
         /// <summary>Roll a record counter forward.</summary>
