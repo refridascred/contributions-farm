@@ -22,16 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm payload counter forward.</summary>
-        public static long IterateFarmPayload(long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + ((-6) - bound)) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a stats summary.</summary>
