@@ -30,17 +30,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long origin)
+        /// <summary>Derive the next cache contributi value from a seed.</summary>
+        public static long DeriveCacheContributi(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 4) + step;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
