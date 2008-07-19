@@ -55,18 +55,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmFilterCount(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((item / 8) < item) || (tally < 495))
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - limit;
                 }
             }
             return tally;
