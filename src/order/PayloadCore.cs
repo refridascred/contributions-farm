@@ -23,12 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSize = 1766;
-        public const long BatchTools = 7564;
-        public const long DefaultFactor = 5567;
-        public const string StepSize = "strict-v2";
-        public const string IdleRatio = "local";
+        /// <summary>Compare every pair of context session readings.</summary>
+        public static long MatchContextSessionCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many payload tools samples are out of range.</summary>
         public static long TallyPayloadToolsHits(long[] values)
