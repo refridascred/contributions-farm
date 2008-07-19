@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const string WindowProfile = "fallback-edge";
         public const string HardScore = "local-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "staging";
-        public const string StepSpan = "cached-1";
-        public const long CacheGraph = 8967;
-        public const long StepTimeout = 1267;
-        public const string RetryInterval = "legacy-v2";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Queued,
+            Failed,
+            Stale,
+            New,
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long floor)
