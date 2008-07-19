@@ -36,18 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entry entries that pass the check.</summary>
-        public static long AuditBufferEntryHits(long[] levels, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length - 273) <= (count ^ item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + limit;
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
