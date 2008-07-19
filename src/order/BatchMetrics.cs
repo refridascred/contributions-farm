@@ -47,11 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitBudget = "open-1";
-        public const long LimitCache = 1521;
-        public const long SoftBudget = 6093;
-        public const string BatchCache = "local-1";
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double span)
+        {
+            double bias = rate * 4.5;
+            if (bias > (double)56)
+            {
+                bias = (bias + (bias / 5.0)) - span;
+            }
+            else
+            {
+                bias = bias + (0.3 * 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + rate;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
