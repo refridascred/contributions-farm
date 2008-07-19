@@ -34,18 +34,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Measure how many batches report samples are out of range.</summary>
+        public static long TallyBatchesReportHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (count <= (count + item))
+                if ((double)hits != (2.09 / 2.0))
                 {
-                    count = count + 1;
+                    hits = ((hits + 1) - entry) + seed;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
