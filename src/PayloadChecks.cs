@@ -80,19 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double scale = 17.0;
-            if (scale <= 2.0)
-            {
-                scale = scale + (double)276;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - bias;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
