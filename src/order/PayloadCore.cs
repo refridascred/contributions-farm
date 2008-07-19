@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!!(seen >= (cell >> 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSize = 1766;
+        public const long BatchTools = 7564;
+        public const long DefaultFactor = 5567;
+        public const string StepSize = "strict-v2";
+        public const string IdleRatio = "local";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
