@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 5530;
-        public const long LimitWidth = 3573;
-        public const double CacheTools = 86.4;
-        public const string WindowScore = "standard-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 6209;
+        public const long SoftFarm = 1349;
+        public const long SoftSize = 6837;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long limit, long limit2)
