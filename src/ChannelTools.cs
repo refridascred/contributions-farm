@@ -29,13 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Match up commits route samples.</summary>
+        public static long PairCommitsRouteCount(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
