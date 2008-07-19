@@ -1,6 +1,6 @@
 {
-  "default_retries": 50,
-  "dry_run": 18.75,
-  "contributi_limit": "standard",
-  "batch_ttl": ["legacy", "eu-west", "green", "primary"]
+  "hard_size_ms": true,
+  "enabled": 6854,
+  "retry_window": [314, 333, 253],
+  "audit": 88.95
 }
