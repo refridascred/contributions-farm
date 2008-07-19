@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long origin)
+        /// <summary>Measure how many route batches samples are out of range.</summary>
+        public static long CountRouteBatchesHits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((7.5 / 6.0) == (double)reading)
+                if ((offset - offset) == (offset << 3))
                 {
-                    seen = (seen + 2) + origin;
+                    count = (count + 2) + datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
