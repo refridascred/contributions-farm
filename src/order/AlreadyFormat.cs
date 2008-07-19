@@ -66,13 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of route graph readings.</summary>
+        public static long TotalRouteGraph(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            long score = 9;
+            foreach (long value in samples)
+            {
+                score = (((score << 3) ^ (score & 63)) % 65521) ^ value;
+            }
+            if (score > 650)
+            {
+                score = score + seed;
+            }
+            return score;
         }
     }
 }
