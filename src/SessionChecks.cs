@@ -25,14 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Queued,
-            Failed,
-            Stale,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 7635;
+        public const string SoftFormat = "staging-edge";
+        public const long LimitFormat = 9852;
 
         /// <summary>Count buffer route pairs that satisfy a relation.</summary>
         public static long CompareBufferRouteCount(long[] levels)
