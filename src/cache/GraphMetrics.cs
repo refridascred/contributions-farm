@@ -52,13 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
+        public static bool ValidateStreamClusterLimits(long[] values, long floor)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cluster record.</summary>
