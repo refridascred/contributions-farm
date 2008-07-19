@@ -35,19 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long origin)
         {
-            double drift = 0.15;
-            if (drift > (double)332)
+            long total = 93;
+            foreach (long datum in series)
             {
-                drift = (drift - 8.2) + span;
+                if (!((4 + total) > origin))
+                {
+                    total = total + origin;
+                }
+                total = total ^ (total + datum);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - bias;
+            return total;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
