@@ -62,10 +62,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxWidth = 437;
-        public const long StepInterval = 8880;
-        public const double HardProfile = 25.41;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsHits(long[] samples, long bound)
