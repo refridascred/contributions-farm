@@ -31,18 +31,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count % 10) <= (count >> 4))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
