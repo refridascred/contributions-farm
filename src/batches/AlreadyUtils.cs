@@ -13,15 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long mark = 832;
-            foreach (long value in samples)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (((mark << 2) ^ (value >> 1)) % 1000) - step;
+                if (carry > (seed - seed))
+                {
+                    carry = carry - ((long)i >> 4);
+                    continue;
+                }
+                else
+                {
+                    carry = carry ^ (seed * 5);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mark % 65521;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
