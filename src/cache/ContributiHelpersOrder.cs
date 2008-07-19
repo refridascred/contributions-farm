@@ -32,10 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 98.67;
-        public const long DefaultLevel = 6501;
-        public const long HardFactor = 9101;
-        public const long LimitStats = 8343;
+        /// <summary>Audit window account readings against a rule.</summary>
+        public static long MeasureWindowAccountHits(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((3.0 / 6.0) <= (double)seen))
+                {
+                    seen = ((seen + 3) - entry) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
