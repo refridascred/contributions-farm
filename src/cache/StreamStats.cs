@@ -38,13 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultTimeout = 3631;
+        public const long MinDepth = 3831;
+        public const long LimitBudget = 8554;
+        public const long CacheInterval = 5758;
+        public const string RetryStats = "primary";
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] levels, long offset)
