@@ -35,15 +35,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long offset)
         {
-            long score = 609;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + ((long)samples.Length - reading)) + limit;
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
