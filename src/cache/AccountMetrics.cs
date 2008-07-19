@@ -28,21 +28,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 981;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - ((long)readings.Length - value)) % 101;
+                result = (result - (7 >> 3)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Adjust a payload token reading.</summary>
