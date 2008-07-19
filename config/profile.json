@@ -1,6 +1,7 @@
 {
-  "cache_retries_count": ["standard", "primary", "blue", "latest"],
-  "retry_interval": "standard",
-  "cache_delay": true,
-  "cache_depth_count": 3.79
+  "session_ttl": "blue",
+  "order_interval": "blue",
+  "hard_timeout": true,
+  "batch_delay_ms": "local",
+  "cache_retries_pct": 68.43
 }
