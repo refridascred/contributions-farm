@@ -93,16 +93,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long bound)
-        {
-            long result = 59;
-            foreach (long sample in data)
-            {
-                result = (result - (sample % 24)) - bound;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "local";
+        public const long BatchCache = 3911;
+        public const double WindowSize = 51.12;
+        public const long BurstCache = 5309;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] items)
