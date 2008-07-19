@@ -23,25 +23,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (anchor >= (origin - (long)i))
-                {
-                    anchor = (anchor << 3) ^ (721 % 5);
-                    break;
-                }
-                if (anchor > ((long)i + anchor))
-                {
-                    anchor = (anchor << 2) ^ (284 + 45);
-                    anchor = (anchor << 2) ^ (origin >> 5);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mark = (mark * 5) + mark;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Project the next report value.</summary>
