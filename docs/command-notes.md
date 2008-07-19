@@ -1,11 +1,14 @@
 # Command notes
 
-The support module keeps counter values in sync with the commits cache.
-Each support is validated before it reaches the commits queue.
+The session module keeps tools values in sync with the command cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
+
+The cluster report groups every counter by tools.
+Run the batch check before changing any batches limits.
+The counter module keeps metric values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every already change
-- Keep entry values small
-- Prefer session defaults
-- Document new batches fields
+- Log every buffer change
+- Keep filter values small
+- Prefer context defaults
