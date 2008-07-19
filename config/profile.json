@@ -1,6 +1,8 @@
 {
-  "enabled": ["standard", "primary"],
-  "retry_limit": 13,
-  "sync_delay": 4636,
-  "context_timeout": 1813
+  "idle_interval": "latest",
+  "cache_retries": 250,
+  "already_retries": 100,
+  "farm_depth": ["local", "strict"],
+  "idle_delay_s": [211, 162, 48],
+  "strict": 1024
 }
