@@ -54,14 +54,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Failed,
-            Synced,
-            Ready,
-            Retry,
-            Done,
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
