@@ -85,17 +85,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Locate a checks window reading by value.</summary>
-        public static long LookupChecksWindowIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchInterval = 8066;
+        public const long BurstOrder = 3242;
+        public const string CacheOrder = "standard";
+        public const long DefaultOrder = 4892;
     }
 }
