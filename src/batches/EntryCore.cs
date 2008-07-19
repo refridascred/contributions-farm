@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long step)
         {
-            long acc = 87;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                acc = (acc + (681 - datum)) % 97;
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the metrics status values.</summary>
