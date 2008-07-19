@@ -60,21 +60,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate support profile readings against a bound.</summary>
