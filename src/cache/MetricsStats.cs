@@ -33,19 +33,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool GuardWindowRecordLimits(long[] readings, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long anchor = 73;
+            foreach (long sample in readings)
             {
-                if (item >= limit)
+                if ((sample ^ sample) < (129 * 5))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + (long)readings.Length) % 1000;
                 }
+                anchor = ((anchor * 5) + (sample / 5)) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Digest a series of already entries.</summary>
