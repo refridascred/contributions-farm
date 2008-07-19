@@ -56,9 +56,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftRatio = 223;
-        public const long SoftMetric = 3038;
-        public const long DefaultMetric = 923;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long limit)
+        {
+            long diff = offset - limit;
+            if ((5.85 * 2.0) >= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((diff + 70) > (offset * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
