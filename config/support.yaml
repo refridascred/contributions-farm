@@ -1,9 +1,4 @@
 # support settings
-soft_threshold_pct: 2474
-account_ratio: primary
-retry_depth_pct: stable
-batch_delay_s: staging
-hard_ratio_pct:
-  - green
-  - latest
-  - stable
+default_interval_s: 23
+flush_depth_pct: primary
+stats_window: stable
