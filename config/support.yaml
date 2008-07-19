@@ -1,16 +1,5 @@
 # support settings
-batch_retries_s:
-  default_interval: true
-  format_size: 66
-  compress:
-    - standard
-    - eu-west
-  cache_interval_s:
-    - standard
-    - local
-    - green
-    - fallback
-  readonly: open
-  entry_capacity: staging
-profile_delay: 70.04
-poll_threshold: 63.0
+warm_capacity_ms: false
+max_timeout: 17.58
+max_delay_ms: 2316
+graph_ratio: strict
