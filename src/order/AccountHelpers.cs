@@ -67,22 +67,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value < hits)
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the counter level values.</summary>
