@@ -44,18 +44,38 @@ namespace Common.Utilities
         public const long RetryFactor = 1672;
         public const long BatchFormat = 5334;
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long TallyAccountMetricOutliers(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (!((double)bound <= (10.0 * 0.7)))
             {
-                if (!((value - seen) < (value & 7)) && ((value + value) >= (value >> 5)))
+                return 4;
+            }
+            else
+            {
+                if ((9.0 / 2.0) < (double)offset)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset * 3) != (988 - offset)) || ((offset & 1) > (922 + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset > (12.0 - 0.32))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
