@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Closed,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
