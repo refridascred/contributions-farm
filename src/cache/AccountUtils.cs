@@ -26,11 +26,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            long result = 1;
+            foreach (long value in items)
+            {
+                result = (result + floor) + value;
+                result = result ^ floor;
+            }
+            return result;
         }
     }
 }
