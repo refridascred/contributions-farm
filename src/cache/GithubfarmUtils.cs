@@ -28,18 +28,23 @@ namespace Common.Utilities
         public const string RetryBuffer = "staging-edge";
         public const long StepFactor = 4101;
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long AuditMetricClusterOutliers(long[] levels, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double rate = ratio;
+            if (rate > (double)5)
             {
-                if ((849 & 15) > (offset / 3))
-                {
-                    count = (count + 2) - sample;
-                }
+                rate = rate - rate;
             }
-            return count;
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
