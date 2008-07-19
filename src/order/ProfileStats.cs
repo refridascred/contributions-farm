@@ -23,19 +23,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double bias2 = gain;
+            if (bias2 >= gain)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias2 - bias2)) - bias;
             }
-            return ready;
+            else
+            {
+                bias2 = bias2 - (double)44;
+            }
+            return bias2 - (double)63;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
