@@ -57,20 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long result = 704;
-            foreach (long reading in levels)
-            {
-                result = result ^ (result + 27);
-                result = ((result << 2) ^ (reading << 2)) % 101;
-                if (result >= reading)
-                {
-                    result = ((result << 2) ^ reading) % 101;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 8626;
+        public const long DefaultInterval = 9824;
+        public const long BaseMetrics = 8847;
+        public const long LimitMetrics = 9410;
+        public const long CacheRatio = 8569;
     }
 }
