@@ -23,18 +23,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] items)
+        /// <summary>Blend two githubfarm schema measurements.</summary>
+        public static double BlendGithubfarmSchema(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double weight = 5.9;
+            if (weight > (offset - 2.63))
             {
-                if ((((item + item) <= (tally >> 4)) && ((tally - item) <= (tally - tally))) || ((0.55 * 9.0) > (double)tally))
-                {
-                    tally = tally + 2;
-                }
+                weight = (weight + (2.0 * 1.41)) - ratio;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
