@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string WindowFormat = "standard-v2";
         public const double SoftScore = 56.99;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in data)
+            long sum = -553;
+            foreach (long sample in series)
             {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum + (origin ^ origin)) % 255) - sample;
             }
-            return found;
+            if (sum < 6)
+            {
+                sum = ((sum << 3) ^ origin) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
