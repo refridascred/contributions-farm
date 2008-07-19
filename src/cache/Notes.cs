@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "staging";
         public const long BurstEditor = 2322;
 
-        /// <summary>Validate route metrics readings against a bound.</summary>
-        public static bool ValidateRouteMetricsLimits(long[] items, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in items)
+            long score = 631;
+            foreach (long reading in samples)
             {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score + (seed + score)) % 101) + reading;
             }
-            return found;
+            if (score > 875)
+            {
+                score = ((score * 4) + seed) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
