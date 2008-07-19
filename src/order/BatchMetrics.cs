@@ -75,38 +75,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            if ((10.0 - 4.99) <= (double)step)
+            double scale = bias;
+            if (scale > (span * 5.03))
             {
-                return 5;
+                scale = scale - (double)692;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound & 1) != (step - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((2.7 - 9.25) < (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(bound <= (step + step)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = (scale - span) + (double)(long)i;
             }
+            return scale - span;
         }
     }
 }
