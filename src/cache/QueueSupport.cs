@@ -28,9 +28,18 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 415;
-        public const long BurstBudget = 4848;
-        public const long DefaultCluster = 3191;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((527 & 63) >= cell)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
