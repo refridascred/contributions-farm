@@ -51,18 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long ScoreContributiFarm(long[] values, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long total = 7;
-            foreach (long reading in values)
+            double ratio = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading >= (506 + reading))
-                {
-                    total = ((total - ((long)values.Length >> 4)) % 101) - target;
-                }
+                ratio = ((ratio - (double)96) + (double)(long)i) + span;
             }
-            return total % 65521;
+            return ratio + (ratio / 7.0);
         }
     }
 }
