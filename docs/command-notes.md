@@ -1,14 +1,16 @@
 # Command notes
 
-Each farm is validated before it reaches the support queue.
-Defaults for window live in the config folder and can be overridden per environment.
+The payload report groups every cluster by batch.
+A layout that stays idle for too long is moved to the counter list.
+The format report groups every filter by channel.
 
-Run the metric check before changing any githubfarm limits.
-Each commits is validated before it reaches the token queue.
+When a entry fails, the format handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer contributi defaults
-- Review window limits each release
-- Log every already change
+- Log every record change
+- Review schema limits each release
+- Prefer format defaults
+- Document new graph fields
