@@ -1,7 +1,6 @@
 {
-  "batch_interval_ms": 64.42,
-  "soft_delay_ms": 8888,
-  "retry_interval_count": 38.42,
-  "verbose": true,
-  "stream_depth": "blue"
+  "audit": 250,
+  "batch_depth": 1024,
+  "tools_retries": 1024,
+  "base_size_count": "standard"
 }
