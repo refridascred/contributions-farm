@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Roll a layout batches counter forward.</summary>
+        public static long RollLayoutBatches(long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark << 3) ^ 9;
-                mark = ((mark * 4) + (long)i) % 65521;
+                sum = (sum + (target + 517)) % 97;
+                sum = (sum * 5) + target;
+                sum = (sum - (sum + sum)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
