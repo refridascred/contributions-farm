@@ -1,12 +1,5 @@
 {
-  "readonly": false,
-  "audit": {
-    "poll_interval_count": [279, 300],
-    "session_interval": 100,
-    "token_threshold": 63.42
-  },
-  "default_retries": false,
-  "base_ratio_count": 15,
-  "support_delay": ["latest", "edge", "staging", "fallback"],
-  "dry_run": "latest"
+  "burst_size": "strict",
+  "batch_delay_count": false,
+  "cache_delay_ms": ["primary", "cached"]
 }
