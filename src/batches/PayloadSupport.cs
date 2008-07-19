@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long offset)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long sum = -56;
+            foreach (long value in items)
+            {
+                if (value > (1 >> 2))
+                {
+                    sum = sum - (offset * 2);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ offset) % 255;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum - (sum ^ 1)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
