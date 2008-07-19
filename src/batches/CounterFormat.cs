@@ -22,39 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long delta = limit - seed;
-            if (((double)limit > 6.4) && ((double)limit <= (3.0 - 13.0)))
+            long anchor = 77;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)delta < (3.0 - 8.6))
+                if ((anchor % 10) <= (anchor - anchor))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit < (double)delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed - seed) != (seed % 10)) || ((4 / 2) <= (limit - seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = anchor ^ cell;
                 }
             }
+            return anchor;
         }
     }
 }
