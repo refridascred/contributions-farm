@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many counter report samples are out of range.</summary>
