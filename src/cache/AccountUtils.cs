@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "staging-edge";
+        public const double RetrySupport = 33.33;
+        public const string BatchSpan = "staging-1";
+        public const string BurstSupport = "primary-edge";
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
