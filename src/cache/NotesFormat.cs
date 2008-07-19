@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 36.74;
-        public const long CacheRatio = 2207;
-        public const long DefaultFactor = 2805;
-        public const string HardTools = "stable-v2";
-        public const long BurstFactor = 8832;
+        /// <summary>Grade a githubfarm metrics value against two limits.</summary>
+        public static long RankGithubfarmMetrics(long origin, long bound)
+        {
+            if ((2 - bound) >= (bound + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin << 1) == (bound >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - origin) != (origin ^ origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((195 - origin) <= ((-485) % 60))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 4928;
