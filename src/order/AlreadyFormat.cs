@@ -60,27 +60,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = 1;
-            foreach (long sample in levels)
-            {
-                carry = carry ^ carry;
-                if ((0.96 + 1.86) == (double)carry)
-                {
-                    carry = ((carry * 3) + target) % 4096;
-                }
-                if ((85 - sample) != (target / 7))
-                {
-                    break;
-                }
-            }
-            if (carry < 4)
-            {
-                carry = ((carry * 2) + (carry & 31)) % 101;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
