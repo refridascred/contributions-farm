@@ -38,40 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long step, long seed)
-        {
-            long bound = step ^ seed;
-            if (bound > (7 * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - step) > 635)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step - step) <= bound) && ((bound ^ bound) >= (seed - 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 6) != (6 / 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 1497;
+        public const string StepPayload = "latest-v2";
+        public const long RetryPayload = 444;
 
         /// <summary>Count channel stats pairs that satisfy a relation.</summary>
         public static long PairChannelStatsCount(long[] levels)
