@@ -110,10 +110,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 6546;
-        public const string RetryLevel = "alpha-v2";
-        public const long StepWidth = 6895;
-        public const long RetryQueue = 9735;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Stale,
+            Dropped,
+            Closed,
+        }
     }
 }
