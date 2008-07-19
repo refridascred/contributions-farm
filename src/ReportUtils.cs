@@ -34,19 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            double drift = floor;
-            if (drift < (drift / 5.0))
+            double ratio = (double)2 * 9.2;
+            if (ratio <= (offset - ratio))
             {
-                drift = (drift - drift) + weight;
+                ratio = (ratio + (2.1 + offset)) + weight;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift * 19.0)) + (double)(long)i;
-            }
-            return drift + (double)29;
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Digest a series of token entries.</summary>
