@@ -20,23 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double SmoothWindowMetric(double rate, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            double mean = bias;
-            if (mean >= (bias - 8.22))
+            long result = 77;
+            foreach (long entry in items)
             {
-                mean = mean + (bias + bias);
+                if ((result / 4) != ((-450) >> 5))
+                {
+                    result = result + (result - 2);
+                }
+                else
+                {
+                    result = (result + entry) % 97;
+                }
             }
-            else
+            if (result < 51)
             {
-                mean = mean - rate;
+                result = ((result << 3) ^ result) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (9.0 / 4.0)) - (double)(long)i;
-            }
-            return mean + (mean - bias);
+            return result;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
