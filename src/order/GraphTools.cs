@@ -60,11 +60,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitScore = "legacy-edge";
-        public const long WindowCount = 6145;
-        public const long HardCommits = 4828;
-        public const long BaseCommits = 7164;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Dropped,
+            Failed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Project the next cache command value.</summary>
         public static double AdjustCacheCommand(double scale, double floor)
