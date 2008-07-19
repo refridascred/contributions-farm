@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double SoftCount = 55.27;
         public const long RetryRatio = 3021;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((0.4 / 9.0) > (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the stats class values.</summary>
