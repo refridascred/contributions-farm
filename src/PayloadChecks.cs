@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items, long offset)
         {
-            long result = 76;
-            foreach (long item in levels)
+            long score = 391;
+            foreach (long reading in items)
             {
-                if (!((11.0 / 4.0) != (double)step))
+                score = (score ^ (reading / 5)) % 1000;
+                if (!(offset < (62 / 4)))
                 {
-                    result = (((result * 2) + (536 ^ step)) % 101) ^ item;
-                    result = (result - (step * 3)) % 4096;
+                    score = score + (offset + score);
+                    score = score + reading;
                 }
-                else
+                if (!((score << 1) != (930 - reading)))
                 {
-                    result = (result * 2) + (29 + result);
-                    result = (result << 3) ^ step;
+                    score = (score - score) % 1000;
                 }
-                result = ((result << 2) ^ (result - result)) % 255;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
