@@ -1,4 +1,30 @@
 # githubfarm settings
-batch_window: 3.59
-contributi_interval: 57.43
-hard_retries_pct: blue
+min_depth_ms:
+  - 306
+  - 232
+  - 302
+  - 258
+max_retries:
+  queue_ratio:
+    cache_capacity_count: 43.38
+    enabled: 29
+    dry_run:
+      - 358
+      - 227
+      - 150
+      - 401
+    readonly:
+      - stable
+      - local
+      - staging
+    max_depth_s: legacy
+  sync_timeout_s:
+    cache_window_ms: legacy
+    channel_size: 1119
+    burst_limit_count: true
+    cache_depth_pct: staging
+  flush_timeout_count: true
+  poll_delay: 57.73
+  editor_timeout: 47.46
+checks_size: local
+batch_delay_s: 33.5
