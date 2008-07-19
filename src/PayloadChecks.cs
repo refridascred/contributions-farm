@@ -80,11 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = 52;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) < 905)
+                {
+                    sum = ((sum - (sample >> 1)) % 255) + seed;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sample) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
