@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const double RetryRecord = 68.38;
         public const double HardSize = 18.02;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 24.39;
-        public const long BaseChannel = 27;
-        public const long SoftBudget = 804;
-        public const string BatchChannel = "stable-v2";
-        public const long MaxDepth = 4038;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
