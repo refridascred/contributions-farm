@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long seed)
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
+            if (((double)seed > 5.0) && ((504 << 1) > (bound << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.1 <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
