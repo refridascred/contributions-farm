@@ -30,15 +30,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items)
+        /// <summary>Count the buffer entry entries that pass the check.</summary>
+        public static long AuditBufferEntryHits(long[] levels, long limit)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long item in levels)
             {
-                if ((count < datum) && ((datum ^ count) <= (datum >> 2)))
+                if (((long)levels.Length - 273) <= (count ^ item))
                 {
-                    count = count + 3;
+                    count = (count + 3) + limit;
                 }
             }
             return count;
