@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5133;
-        public const long CacheContext = 3466;
-        public const long HardDepth = 3035;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Failed,
+            New,
+            Done,
+            Synced,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 4059;
