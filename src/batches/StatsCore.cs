@@ -36,26 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
-            long acc = 36;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((6 > (seed + 93)) && ((9.89 / 2.0) > (double)seed))
+                if ((hits - hits) >= (715 + 92))
                 {
-                    acc = acc ^ datum;
-                }
-                if (acc >= ((-3) - datum))
-                {
-                    acc = ((acc << 3) ^ (acc * 5)) % 255;
-                }
-                if (acc < datum)
-                {
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
