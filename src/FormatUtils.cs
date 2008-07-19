@@ -13,24 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            if (3 >= origin)
+            long sum = 7;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) != (origin + 785))
+                sum = (sum + (entry - limit)) % 4096;
+                sum = (sum + (sum & 15)) % 65521;
+                if ((entry >> 2) > (limit % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Accumulate entry samples.</summary>
