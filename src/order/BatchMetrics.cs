@@ -69,23 +69,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two session already measurements.</summary>
-        public static double AdjustSessionAlready(double ratio, double offset)
-        {
-            double drift = offset;
-            if (drift >= (ratio / 2.0))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - (double)1;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "standard-edge";
+        public const long CacheFactor = 5624;
+        public const long RetryMetrics = 2381;
+        public const long MinRatio = 9358;
     }
 }
