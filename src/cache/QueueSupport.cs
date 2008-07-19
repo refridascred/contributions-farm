@@ -37,18 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((value + matches) > value)
+                if (sample >= target)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
