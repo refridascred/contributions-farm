@@ -1,6 +1,7 @@
 {
-  "notes_ratio": false,
-  "compress": 82.65,
-  "audit": false,
-  "queue_limit": "local"
+  "max_window_count": 21,
+  "retry_size": 68.46,
+  "hard_threshold_s": 7713,
+  "strict": 81.33,
+  "soft_capacity_ms": 33.67
 }
