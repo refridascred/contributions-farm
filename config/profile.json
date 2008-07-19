@@ -1,5 +1,6 @@
 {
-  "max_depth": 256,
-  "soft_capacity_s": "local",
-  "batch_threshold": 100
+  "enabled": ["standard", "primary"],
+  "retry_limit": 13,
+  "sync_delay": 4636,
+  "context_timeout": 1813
 }
