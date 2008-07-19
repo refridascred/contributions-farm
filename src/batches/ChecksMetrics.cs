@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit tools commits readings against a rule.</summary>
+        public static long CountToolsCommitsGaps(long[] values)
         {
-            Synced,
-            Pending,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + 3) >= (5 - hits))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of order batches entries.</summary>
