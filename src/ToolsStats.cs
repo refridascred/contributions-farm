@@ -44,18 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally + value) < value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
