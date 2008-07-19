@@ -23,14 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the contributi farm series from a seed.</summary>
+        public static long IterateContributiFarm(long floor)
         {
-            New,
-            Ready,
-            Queued,
-            Idle,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix + (mix * 3)) % 65521) ^ (long)i2;
+                    mix = mix ^ floor;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many payload tools samples are out of range.</summary>
