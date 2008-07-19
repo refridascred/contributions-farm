@@ -13,21 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a account report counter forward.</summary>
-        public static long IterateAccountReport(long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix * 4) + (bound + mix);
-                if ((14 - mix) <= (bound << 2))
-                {
-                    mix = mix ^ (bound << 2);
-                    mix = ((mix << 3) ^ (mix * 4)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Synced,
+            New,
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
