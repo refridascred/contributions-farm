@@ -62,18 +62,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((16.0 / 9.0) > (double)item) || ((7 + limit) < (limit ^ item))) && ((20.0 * 18.0) == (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
