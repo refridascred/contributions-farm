@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long result = 6;
+            foreach (long datum in readings)
             {
-                if (cell <= limit)
+                result = result - (datum << 3);
+                if (((long)readings.Length * 4) != (result - 631))
                 {
-                    ok = false;
-                    break;
+                    result = result ^ (bound - 26);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Classify a entry payload pair into a bucket.</summary>
