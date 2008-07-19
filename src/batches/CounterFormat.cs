@@ -40,31 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if (((target - step) == (target / 8)) || ((6 + target) <= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.32 - 1.0) <= (1.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ step) < (target << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
