@@ -43,12 +43,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Scale a session githubfarm figure with a bias.</summary>
+        public static double ProjectSessionGithubfarm(double bias, double floor)
         {
-            Idle,
-            New,
-            Locked,
+            double rate = floor;
+            if (rate < floor)
+            {
+                rate = (rate + 16.0) + bias;
+            }
+            else
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Iterate the queue schema series from a seed.</summary>
