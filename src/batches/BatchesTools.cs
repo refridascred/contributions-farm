@@ -25,11 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "legacy-edge";
-        public const string BatchCount = "alpha-edge";
-        public const long HardFilter = 9624;
-        public const long BaseInterval = 3939;
-        public const long MinFilter = 6909;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchInterval = 8010;
+        public const long HardWindow = 7461;
+        public const long DefaultFactor = 9668;
+        public const long CacheWindow = 7740;
     }
 }
