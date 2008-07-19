@@ -32,18 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window account readings against a rule.</summary>
-        public static long MeasureWindowAccountHits(long[] levels, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((3.0 / 6.0) <= (double)seen))
-                {
-                    seen = ((seen + 3) - entry) - origin;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
