@@ -39,15 +39,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels, long floor)
         {
-            long result = 90;
-            foreach (long datum in values)
+            long result = 7;
+            foreach (long item in levels)
             {
-                result = ((result * 3) + datum) % 97;
+                result = (((result << 2) ^ item) % 65521) - floor;
             }
-            return result;
+            return result % 1000;
         }
     }
 }
