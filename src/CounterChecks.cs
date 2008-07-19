@@ -62,20 +62,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepSpan = 59.2;
+        public const string IdleSpan = "fallback-v2";
+        public const string MaxWindow = "cached-edge";
 
         /// <summary>Locate a report githubfarm reading by value.</summary>
         public static long LocateReportGithubfarmIndex(long[] samples, long bound)
