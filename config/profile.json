@@ -1,7 +1,6 @@
 {
-  "min_depth_count": 8076,
-  "already_size": [111, 158],
-  "flush_delay_pct": 76.5,
-  "compress": 30,
-  "batch_capacity_pct": ["blue", "stable", "fallback"]
+  "session_ttl": 48,
+  "commits_timeout": 30,
+  "retry_ratio_pct": [109, 375, 419],
+  "soft_timeout_s": 91
 }
