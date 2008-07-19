@@ -52,22 +52,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Measure how many contributi record samples are out of range.</summary>
+        public static long MeasureContributiRecordGaps(long[] series)
         {
-            long mix = 22;
+            long seen = 0;
             foreach (long value in series)
             {
-                if (((double)value < (6.6 - 1.0)) || ((807 - 586) < (mix + mix)))
+                if ((value % 12) >= (value + value))
                 {
-                    mix = ((mix << 2) ^ value) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + mix)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
