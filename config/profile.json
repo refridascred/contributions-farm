@@ -1,5 +1,7 @@
 {
-  "idle_retries_count": 63,
-  "hard_retries_ms": [331, 368],
-  "default_threshold_count": 73.53
+  "soft_interval": "open",
+  "cache_size": "eu-west",
+  "default_threshold": 56.75,
+  "soft_delay_pct": "green",
+  "max_capacity_s": "eu-west"
 }
