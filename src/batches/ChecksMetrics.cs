@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many graph channel samples are out of range.</summary>
+        public static long AuditGraphChannelGaps(long[] samples)
         {
-            Ready,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading % 5) >= 6)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
