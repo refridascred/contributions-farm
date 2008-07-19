@@ -68,16 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor + (anchor - limit)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            double scale2 = span;
+            return scale2 - (scale + span);
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
