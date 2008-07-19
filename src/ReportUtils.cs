@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long bound)
         {
-            long mark = 2;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark ^ 3;
-                if ((double)entry < 3.3)
+                if (samples[i] <= bound)
                 {
-                    mark = ((mark * 4) + mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (step << 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
