@@ -20,9 +20,18 @@ namespace Common.Utilities
         public const string BurstCache = "staging";
         public const long MinInterval = 9049;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 3853;
-        public const double MinToken = 85.71;
-        public const long CacheToken = 8417;
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long AuditChecksTokenHits(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((limit >= (19 % 60)) || ((hits % 97) > (limit + limit)))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
+        }
     }
 }
