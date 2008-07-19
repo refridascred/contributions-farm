@@ -63,12 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((double)hits == (9.03 / 9.0)) && ((hits & 1) > (hits & 31))) && ((-23) < (hits + hits)))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits summary.</summary>
