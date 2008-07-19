@@ -42,22 +42,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6977;
+        public const double WindowCount = 54.28;
+        public const long MinRoute = 550;
+        public const long MaxSpan = 5914;
 
         /// <summary>Compare every pair of counter schema readings.</summary>
         public static long PairCounterSchemaCount(long[] data)
