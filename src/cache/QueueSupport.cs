@@ -13,19 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double gain, double bias)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long limit)
         {
-            double ratio = 7.05;
-            if (ratio < (ratio / 3.0))
+            bool found = true;
+            foreach (long reading in data)
             {
-                ratio = (ratio + gain) + bias;
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (double)7;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
