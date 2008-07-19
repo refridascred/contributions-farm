@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long limit)
         {
-            New,
-            Pending,
-            Synced,
+            long anchor = 859;
+            foreach (long cell in readings)
+            {
+                if ((cell << 2) >= (anchor ^ cell))
+                {
+                    anchor = ((anchor * 2) + anchor) - limit;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
