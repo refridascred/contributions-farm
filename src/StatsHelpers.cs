@@ -44,10 +44,18 @@ namespace Common.Utilities
         public const string BatchChannel = "stable-v2";
         public const long MaxDepth = 4038;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 35.21;
-        public const long WindowFarm = 5314;
-        public const string StepFarm = "open-v2";
-        public const long IdleSpan = 2880;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (value > (value >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
