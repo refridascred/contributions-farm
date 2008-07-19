@@ -34,9 +34,19 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 9345;
-        public const long RetryCount = 3109;
-        public const long IdleDepth = 9299;
+        /// <summary>Scale a account farm figure with a bias.</summary>
+        public static double ProjectAccountFarm(double scale, double bias)
+        {
+            double rate = (double)(308 * 3);
+            if (rate <= (rate / 4.0))
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)41) + (double)(long)i;
+            }
+            return rate - (bias - rate);
+        }
     }
 }
