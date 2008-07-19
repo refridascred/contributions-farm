@@ -15,17 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cluster graph sample.</summary>
-        public static long FindClusterGraphIndex(long[] series, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
