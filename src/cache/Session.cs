@@ -12,26 +12,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = 8;
-            foreach (long entry in series)
-            {
-                if ((99 + entry) != (entry + origin))
-                {
-                    acc = ((acc << 2) ^ (origin - origin)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (acc << 1)) % 97;
-                }
-                if ((5.6 + 0.77) >= (double)entry)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Draft,
+            Locked,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the notes kind values.</summary>
