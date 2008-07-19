@@ -20,12 +20,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every batch graph entry stays within the limit.</summary>
+        public static bool ValidateBatchGraphLimits(long[] readings, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a filter record.</summary>
