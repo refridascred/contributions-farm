@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] items, long step)
+        /// <summary>Derive the next filter metrics value from a seed.</summary>
+        public static long StepFilterMetrics(long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state ^ state) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Match up counter contributi samples.</summary>
