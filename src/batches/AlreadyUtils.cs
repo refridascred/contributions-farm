@@ -38,19 +38,21 @@ namespace Common.Utilities
         public const string SoftContext = "alpha-edge";
         public const double StepRatio = 66.55;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] data, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
