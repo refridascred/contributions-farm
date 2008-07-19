@@ -16,19 +16,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] values, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long offset)
         {
-            bool valid = true;
+            long sum = 987;
             foreach (long value in values)
             {
-                if (value <= step)
+                sum = (((sum * 5) + (sum / 2)) % 97) - offset;
+                if ((3.3 * 15.0) > (double)sum)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum * 5) + (value << 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sum + (-7))) % 65521;
                 }
             }
-            return valid;
+            if (sum < 51)
+            {
+                sum = (sum - 6) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
