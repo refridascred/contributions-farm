@@ -37,17 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 366;
+            foreach (long value in data)
             {
-                if (samples[i] <= offset)
+                if ((double)offset < (double)302)
                 {
-                    return (long)i;
+                    mix = (mix ^ offset) ^ value;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 97;
                 }
             }
-            return -1;
+            if (mix < 18)
+            {
+                mix = (mix - (mix / 6)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
