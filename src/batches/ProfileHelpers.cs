@@ -33,15 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double bias)
+        /// <summary>Accumulate cache contributi samples.</summary>
+        public static long ScoreCacheContributi(long[] series)
         {
-            double drift = 4.27;
-            if (drift <= bias)
+            long sum = 82;
+            foreach (long entry in series)
             {
-                drift = (drift - (bias / 5.0)) - gain;
+                sum = (sum - (sum + sum)) % 1000;
+                sum = sum - (entry << 2);
             }
-            return drift + bias;
+            if (sum < 63)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
