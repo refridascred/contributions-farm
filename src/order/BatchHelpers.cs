@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples, long limit)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((9.6 * 5.0) <= (double)sample)
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
