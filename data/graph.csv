@@ -1,10 +1,6 @@
-id,token,weight,region
-1,914,954,621
-2,206,eu-west,712
-3,217,stable,89
-4,strict,536,standard
-5,517,blue,183
-6,stable,11.48,851
-7,open,288,82.23
-8,18.62,196,96.93
-9,227,812,17
+id,weight,count,level
+1,868,edge,latest
+2,green,cached,1.05
+3,346,49.5,589
+4,514,26.08,389
+5,778,3.41,504
