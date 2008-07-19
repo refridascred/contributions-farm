@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((step >> 1) != (tally - tally))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowTimeout = 5040;
+        public const long HardQueue = 3731;
+        public const long DefaultQueue = 1560;
+        public const long DefaultLevel = 3565;
+        public const string WindowSpan = "fallback-1";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
