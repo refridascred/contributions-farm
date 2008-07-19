@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((4.7 * 2.0) < (double)seen)
+                if (value != limit)
                 {
-                    seen = (seen + 3) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
