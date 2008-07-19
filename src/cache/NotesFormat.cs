@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BatchInterval = 2.56;
         public const long MaxRecord = 4987;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] readings)
         {
-            Done,
-            New,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count - count) == (count - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record options.</summary>
