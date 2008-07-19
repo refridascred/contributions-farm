@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two editor context measurements.</summary>
+        public static double SmoothEditorContext(double ratio, double span)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            double load = (8.0 - 1.0) - span;
+            if (load < (double)(-925))
+            {
+                load = (load - (1.4 + span)) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 3.8) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Find the first metrics batch entry that matches the target.</summary>
