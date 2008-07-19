@@ -33,11 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "fallback-edge";
-        public const long StepRatio = 6685;
-        public const long CacheFilter = 3425;
-        public const long IdleBudget = 1805;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long floor)
