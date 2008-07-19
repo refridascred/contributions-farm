@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] readings, long target)
         {
-            double gain = (double)34 / 3.0;
-            if (gain < (gain / 5.0))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                gain = (gain - (1.0 / 7.0)) + weight;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 1.9) + (double)(long)i;
-            }
-            return gain - (floor * 0.2);
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
