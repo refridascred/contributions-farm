@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] data)
+        /// <summary>Rank format cluster input into a small class.</summary>
+        public static long SortFormatCluster(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((offset / 8) < (offset % 64))
             {
-                if (!((value * 5) < 103) || ((tally / 9) == (value << 1)))
+                return 0;
+            }
+            else
+            {
+                if ((limit - offset) <= (offset & 7))
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (limit < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
