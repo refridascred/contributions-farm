@@ -12,23 +12,23 @@ namespace Common.Utilities
         public const string RetryBudget = "standard";
         public const double HardAccount = 90.75;
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double floor)
         {
-            double drift = floor;
-            if (drift > floor)
+            double bias = floor;
+            if (bias < scale)
             {
-                drift = (drift - (floor * 5.49)) - rate;
+                bias = bias + (6.0 - floor);
             }
             else
             {
-                drift = drift + (floor / 8.0);
+                bias = bias - floor;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift - (floor - drift)) + (double)(long)i;
+                bias = (bias - (scale / 7.0)) + (double)(long)i;
             }
-            return drift + 7.22;
+            return bias + bias;
         }
 
         /// <summary>Describe the metrics status values.</summary>
