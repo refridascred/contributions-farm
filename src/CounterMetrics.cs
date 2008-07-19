@@ -45,14 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Paused,
-            Done,
-            Stale,
-            Locked,
-            New,
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
