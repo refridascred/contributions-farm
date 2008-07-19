@@ -64,32 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long target, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] series, long limit)
         {
-            long prev = target + limit;
-            if (((target << 3) >= (limit ^ prev)) && ((prev - 144) >= prev))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 3) <= prev)
+                if (entry < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ prev) <= (limit + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of format entries.</summary>
