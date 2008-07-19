@@ -72,18 +72,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] values, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((offset2 + offset2) != (offset2 - offset2))
             {
-                if ((double)(long)values.Length >= (1.3 + 13.0))
+                return 4;
+            }
+            else
+            {
+                if (!((offset2 & 255) < offset2))
                 {
-                    seen = ((seen + 1) + item) - limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset != (8.47 + 4.47))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
