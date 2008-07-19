@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3194;
-        public const long CacheSupport = 7570;
-        public const long DefaultSize = 3847;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 57.35;
+        public const double WindowTimeout = 7.86;
+        public const long MinFactor = 3413;
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] values, long offset)
