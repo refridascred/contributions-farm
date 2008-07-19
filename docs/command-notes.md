@@ -1,15 +1,16 @@
 # Command notes
 
-The commits module keeps metric values in sync with the filter cache.
-When a already fails, the metric handler retries a few times before giving up.
-When a already fails, the session handler retries a few times before giving up.
+Each notes is validated before it reaches the channel queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep checks and contributi names short and lowercase.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often filter data is refreshed.
+Use cache settings to tune how often contributi data is refreshed.
+Keep context and stream names short and lowercase.
 
 ## Guidelines
 
+- Keep record values small
+- Validate layout input early
 - Document new window fields
-- Validate window input early
-- Log every editor change
-- Keep filter values small
+- Log every farm change
