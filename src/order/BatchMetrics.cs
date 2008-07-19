@@ -85,10 +85,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "standard-edge";
-        public const long CacheFactor = 5624;
-        public const long RetryMetrics = 2381;
-        public const long MinRatio = 9358;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long step)
+        {
+            if ((10.0 - 4.99) <= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound & 1) != (step - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((2.7 - 9.25) < (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(bound <= (step + step)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
