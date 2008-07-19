@@ -67,18 +67,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many contributi record samples are out of range.</summary>
-        public static long MeasureContributiRecordGaps(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double gain2 = floor;
+            if (gain2 <= gain2)
             {
-                if ((value % 12) >= (value + value))
-                {
-                    seen = seen + 3;
-                }
+                gain2 = gain2 + 1.4;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - gain) + (double)(long)i;
+            }
+            return gain2 + (floor + floor);
         }
     }
 }
