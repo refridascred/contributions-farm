@@ -27,17 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = 2.7;
+            if (load < (bias - 8.0))
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                load = load - (ratio - load);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 3.87) + (double)(long)i;
+            }
+            return load + (ratio - bias);
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
