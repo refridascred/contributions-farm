@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long seed)
         {
-            double scale2 = scale;
-            if (scale2 >= (7.3 * 3.5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 + (double)51;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - span;
-            }
-            return scale2 - (scale + span);
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
