@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long seed, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            if ((limit / 6) >= (seed >> 2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (limit % 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (double)seed)
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
