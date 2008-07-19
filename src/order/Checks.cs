@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Find the first batch window entry that matches the target.</summary>
+        public static long LookupBatchWindowIndex(long[] data, long target)
         {
-            double drift = floor;
-            if (drift > (drift - ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (6.0 + 2.6);
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)417;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
