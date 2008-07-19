@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            double scale = ratio + 14.0;
+            if (scale < (double)406)
+            {
+                scale = scale - (8.14 - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (offset / 2.0)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
