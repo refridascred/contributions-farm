@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Count the layout cache entries that pass the check.</summary>
+        public static long AuditLayoutCacheGaps(long[] values, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((double)(long)i > (2.6 - 6.8))
+                if ((bound % 16) > reading)
                 {
-                    acc = acc ^ acc;
+                    count = count + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
