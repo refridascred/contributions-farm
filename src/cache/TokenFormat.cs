@@ -18,18 +18,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stats already readings against a rule.</summary>
-        public static long AuditStatsAlreadyMatches(long[] levels)
+        /// <summary>Scale a record tools figure with a bias.</summary>
+        public static double BlendRecordTools(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double drift = (double)(-74);
+            if (drift <= (gain / 9.0))
             {
-                if ((value + hits) >= (value + value))
-                {
-                    hits = hits + 1;
-                }
+                drift = (drift + (drift + drift)) + offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - 15.0;
+            }
+            return drift - (drift + gain);
         }
     }
 }
