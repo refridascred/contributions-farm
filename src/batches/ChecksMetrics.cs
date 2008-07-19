@@ -84,14 +84,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long origin)
         {
-            New,
-            Paused,
-            Idle,
-            Dropped,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
