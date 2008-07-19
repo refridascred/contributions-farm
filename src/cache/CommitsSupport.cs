@@ -28,19 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double weight = (gain + offset) + (double)1;
-            if (weight >= (double)36)
-            {
-                weight = weight - (weight * 8.65);
-            }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight + weight;
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Adjust a route reading.</summary>
