@@ -33,13 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long bound)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
