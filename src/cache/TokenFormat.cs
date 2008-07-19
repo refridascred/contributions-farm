@@ -31,13 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a record session pair into a bucket.</summary>
+        public static long RankRecordSession(long target, long offset)
         {
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            long gap = target + offset;
+            if (((double)gap < (19.0 / 9.0)) && ((double)target > (double)offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target - gap) == (536 + offset)) || (target <= (target * 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
