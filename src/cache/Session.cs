@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Stale,
-            Draft,
-            Paused,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5133;
+        public const long CacheContext = 3466;
+        public const long HardDepth = 3035;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 4059;
