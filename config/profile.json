@@ -1,17 +1,11 @@
 {
-  "poll_limit_s": false,
-  "burst_depth": 6,
-  "cache_timeout": {
-    "max_retries": true,
-    "min_delay_s": [86, 48],
-    "batches_ttl": 2388,
-    "cluster_window": true
+  "layout_ratio": {
+    "hard_capacity": 7338,
+    "idle_capacity": 30,
+    "retry_ratio": false,
+    "audit": 9051,
+    "compress": 7
   },
-  "sync_capacity": {
-    "flush_delay_count": 70.28,
-    "profile_interval": 93,
-    "persist": 96
-  },
-  "dry_run": false,
-  "retry_ttl_ms": 8010
+  "readonly": 82.87,
+  "retry_ratio_count": false
 }
