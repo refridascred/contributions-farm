@@ -32,19 +32,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate cache commits readings against a bound.</summary>
-        public static bool CheckCacheCommitsLimits(long[] items, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (value <= seed)
+                if (!(((tally + limit) != (tally / 2)) || ((item + item) > 790)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
