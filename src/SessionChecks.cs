@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8609;
+        public const long StepTimeout = 98;
+        public const long IdleWindow = 5532;
+        public const string StepWindow = "legacy-v2";
+        public const long DefaultWindow = 8011;
 
         /// <summary>Project the next metrics githubfarm value.</summary>
         public static double BlendMetricsGithubfarm(double rate, double bias)
