@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((9.6 - 8.4) <= (3.0 / 9.0))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
