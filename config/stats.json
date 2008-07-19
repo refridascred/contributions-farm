@@ -1,15 +1,20 @@
 {
-  "filter_retries": ["cached", "standard", "local"],
-  "hard_ratio_pct": {
-    "stream_delay": {
-      "idle_window": false,
-      "burst_size_ms": 78.72,
-      "idle_ratio_count": true,
-      "buffer_ratio": 57.13
+  "layout_ratio": 384,
+  "strict": {
+    "cache_retries": {
+      "queue_window": "local",
+      "burst_delay_s": "green",
+      "dry_run": false,
+      "checks_ttl": false,
+      "format_ratio": false,
+      "record_retries": 30
     },
-    "default_capacity_count": "legacy",
-    "audit": 84
+    "compress": "blue",
+    "cache_depth": true,
+    "batch_capacity": 90,
+    "flush_threshold": "latest",
+    "default_ratio_count": false
   },
-  "idle_limit_pct": 4.12,
-  "sync_window_count": 100
+  "idle_limit_pct": [25, 443, 298],
+  "command_delay": "primary"
 }
