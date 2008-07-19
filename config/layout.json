@@ -1,5 +1,5 @@
 {
-  "support_timeout": false,
-  "persist": "cached",
-  "cluster_capacity": "edge"
+  "tools_window": "green",
+  "burst_interval_ms": [172, 229, 140, 399],
+  "notes_timeout": ["strict", "standard", "latest", "cached"]
 }
