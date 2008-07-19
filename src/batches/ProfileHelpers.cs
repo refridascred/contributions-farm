@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (5.03 >= (double)seed)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
