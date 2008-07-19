@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long seed)
+        /// <summary>Grade a batch checks value against two limits.</summary>
+        public static long GradeBatchChecks(long offset, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((8.7 / 9.0) <= (double)seed)
             {
-                if (series[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if ((0 + seed) < (seed % 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (1.0 > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset << 3) <= 717)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
