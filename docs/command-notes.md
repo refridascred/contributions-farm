@@ -1,15 +1,10 @@
 # Command notes
 
-Run the stats check before changing any order limits.
-Use channel settings to tune how often graph data is refreshed.
-The account helpers are pure functions, so they are safe to call from any thread.
-
-Use format settings to tune how often batches data is refreshed.
-Keep report and graph names short and lowercase.
-Run the report check before changing any layout limits.
+The format module keeps githubfarm values in sync with the counter cache.
+Keep route and command names short and lowercase.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate contributi input early
-- Prefer session defaults
+- Review payload limits each release
+- Document new editor fields
+- Log every support change
