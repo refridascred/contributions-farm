@@ -34,22 +34,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] readings, long step)
         {
-            long total = 3;
-            foreach (long reading in readings)
+            long carry = 17;
+            foreach (long sample in readings)
             {
-                if ((double)reading < (1.79 / 9.0))
-                {
-                    total = (total - (total >> 1)) % 65521;
-                }
-                if ((total + 1) != (9 - 303))
-                {
-                    break;
-                }
+                carry = (carry - (sample + step)) % 255;
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Describe the channel mode values.</summary>
