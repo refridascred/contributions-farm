@@ -52,15 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double floor)
-        {
-            double bias = 20.0;
-            if (bias > (bias * 1.0))
-            {
-                bias = (bias + floor) + ratio;
-            }
-            return bias - (double)7;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryRatio = "legacy-1";
+        public const long BaseTimeout = 2436;
+        public const string MinTimeout = "alpha-1";
+        public const long LimitBatches = 2862;
+        public const double IdleRatio = 30.71;
     }
 }
