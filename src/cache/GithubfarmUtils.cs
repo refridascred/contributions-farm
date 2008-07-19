@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - (-4)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
