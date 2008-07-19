@@ -50,11 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
