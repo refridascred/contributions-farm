@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] readings, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= (sample >> 3))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
