@@ -51,23 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long origin)
-        {
-            long score = 23;
-            foreach (long reading in samples)
-            {
-                if (((origin + 73) <= (score >> 3)) && (((-598) & 127) == (reading - origin)))
-                {
-                    score = score - ((-79) + origin);
-                }
-                else
-                {
-                    score = ((score * 5) + (origin + reading)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 91.59;
+        public const long BurstRatio = 168;
+        public const long HardRatio = 2395;
+        public const long BaseSpan = 2910;
 
         /// <summary>Project the next schema value.</summary>
         public static double SmoothSchema(double scale, double span)
