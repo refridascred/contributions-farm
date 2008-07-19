@@ -52,17 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 5) + ((-996) >> 5)) % 101;
-                mark = mark + (mark / 4);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Paused,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a metric header.</summary>
