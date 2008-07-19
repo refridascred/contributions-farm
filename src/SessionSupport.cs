@@ -16,10 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleBudget = 1800;
-        public const double LimitEditor = 70.02;
-        public const long CacheCount = 4761;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total - (target & 127);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double ScaleContext(double weight, double bias)
