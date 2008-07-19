@@ -1,8 +1,6 @@
 {
-  "dry_run": ["primary", "primary", "eu-west", "local"],
-  "buffer_threshold": 42,
-  "githubfarm_retries": "cached",
-  "cache_window": "cached",
-  "strict": 9848,
-  "batch_window": "primary"
+  "burst_ratio_s": 30.43,
+  "flush_interval_pct": "stable",
+  "idle_size": 99,
+  "dry_run": 92.18
 }
