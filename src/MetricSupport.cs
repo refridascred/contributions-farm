@@ -33,11 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 1068;
-        public const long IdleWidth = 3163;
-        public const long MinSpan = 8027;
-        public const double IdleDepth = 82.49;
-        public const double WindowInterval = 59.05;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) <= 65)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
