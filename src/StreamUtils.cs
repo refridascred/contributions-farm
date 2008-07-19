@@ -72,25 +72,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long edge = origin ^ seed;
-            if ((double)seed < (8.4 + 8.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin + seed) < (edge & 127)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
