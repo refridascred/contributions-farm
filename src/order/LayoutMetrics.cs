@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long MeasureContributiSessionMatches(long[] readings, long seed)
         {
-            Locked,
-            Failed,
-            Synced,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seed <= seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
