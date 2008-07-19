@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen << 3) < (820 + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchScore = 34.06;
+        public const double BaseSchema = 38.73;
+        public const double CacheSchema = 25.16;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
