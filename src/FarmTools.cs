@@ -28,18 +28,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)matches >= (8.29 - 12.0))
-                {
-                    matches = ((matches + 3) + value) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSpan = 6754;
+        public const long MaxChecks = 5457;
+        public const long StepChecks = 5636;
     }
 }
