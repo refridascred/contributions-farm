@@ -1,16 +1,7 @@
 {
-  "soft_ttl": 57.72,
-  "record_delay": {
-    "flush_interval": 15,
-    "enabled": "blue",
-    "channel_depth": 57,
-    "sync_timeout": "cached"
-  },
-  "stream_delay": "primary",
-  "retry_limit": {
-    "strict": false,
-    "enabled": "open",
-    "profile_depth": "edge",
-    "verbose": "local"
-  }
+  "idle_depth_count": ["latest", "open", "green", "legacy"],
+  "dry_run": 31,
+  "readonly": 5,
+  "hard_interval_count": true,
+  "flush_window_ms": 88
 }
