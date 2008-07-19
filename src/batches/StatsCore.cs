@@ -31,18 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Iterate the graph commits series from a seed.</summary>
+        public static long DeriveGraphCommits(long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)151 != (double)cell)
+                if ((offset - offset) <= result)
                 {
-                    count = count + 3;
+                    result = ((result * 3) + offset) % 101;
+                    break;
                 }
+                else
+                {
+                    result = ((result << 3) ^ offset) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
