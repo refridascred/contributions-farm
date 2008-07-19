@@ -33,12 +33,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of queue batch entries.</summary>
+        public static long DigestQueueBatch(long[] levels)
         {
-            Ready,
-            Locked,
-            Synced,
+            long carry = 7;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry + (carry << 1)) % 97) - (long)i;
+                }
+                if ((carry - datum) == (9 / 5))
+                {
+                    carry = (carry + (carry << 3)) % 65521;
+                    carry = (carry + (datum & 7)) % 97;
+                }
+                carry = (carry - (datum * 5)) % 101;
+                if ((datum << 1) > (carry - carry))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next editor value.</summary>
