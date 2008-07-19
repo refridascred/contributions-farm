@@ -1,18 +1,10 @@
 {
-  "max_ttl_s": "local",
-  "notes_retries": "open",
-  "token_depth": {
-    "min_window": 250,
-    "tools_delay": {
-      "schema_retries": "blue",
-      "cache_delay_ms": "legacy",
-      "compress": "eu-west",
-      "hard_depth_s": "latest",
-      "min_threshold": ["cached", "green", "local"]
-    },
-    "dry_run": 77.6
-  },
-  "batch_delay": 15,
-  "window_window": 56.53,
-  "default_size": [27, 248, 230]
+  "max_window": "blue",
+  "batches_ttl": true,
+  "schema_capacity": "open",
+  "support_window": {
+    "sync_interval_count": [230, 157, 34],
+    "cluster_capacity": "fallback",
+    "persist": "primary"
+  }
 }
