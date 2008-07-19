@@ -20,14 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values, long limit)
         {
-            Active,
-            New,
-            Retry,
-            Done,
-            Ready,
+            long result = 84;
+            foreach (long reading in values)
+            {
+                result = (result ^ reading) - limit;
+            }
+            if (result > (-32))
+            {
+                result = (result + (65 % 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
