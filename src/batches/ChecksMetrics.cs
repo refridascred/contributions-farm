@@ -76,17 +76,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Active,
+            Draft,
+            Paused,
         }
     }
 }
