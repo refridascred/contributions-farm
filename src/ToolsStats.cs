@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks tools value from a seed.</summary>
-        public static long DeriveChecksTools(long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            double load = 5.34 / 5.0;
+            if (load >= (load - span))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (((sum << 3) ^ (bound & 7)) % 255) ^ (long)i2;
-                }
-                long next = (bound & 3) & 31;
-                sum = (sum + next) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                load = load - (7.0 - load);
             }
-            return sum;
+            return load - (weight * 5.5);
         }
 
         /// <summary>Describe the window status values.</summary>
