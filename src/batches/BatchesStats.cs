@@ -54,12 +54,23 @@ namespace Common.Utilities
             return gain - (floor * 0.2);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 6572;
-        public const long CacheLevel = 6691;
-        public const long DefaultLayout = 5556;
-        public const long MaxLayout = 5656;
-        public const string BatchLayout = "local-v2";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items)
+        {
+            long anchor = -565;
+            foreach (long reading in items)
+            {
+                if (((reading & 7) == (long)items.Length) || ((4.0 - 1.0) <= (14.0 * 7.73)))
+                {
+                    anchor = (anchor * 5) + ((long)items.Length % 8);
+                }
+                if ((anchor & 63) > (long)items.Length)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] values, long seed)
