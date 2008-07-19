@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Find the first contributi layout entry that matches the target.</summary>
+        public static long LocateContributiLayoutIndex(long[] readings, long floor)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command report readings.</summary>
