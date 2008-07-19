@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinCount = 23.91;
-        public const long MaxAccount = 471;
-        public const long RetryInterval = 3846;
-        public const string RetryBudget = "standard";
-        public const double HardAccount = 90.75;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] levels, long bound)
