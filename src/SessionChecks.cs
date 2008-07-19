@@ -32,12 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 396;
-        public const long HardOrder = 5126;
-        public const string MinSize = "fallback-edge";
-        public const string WindowScore = "standard-1";
-        public const long LimitWidth = 5248;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next graph notes value from a seed.</summary>
         public static long IterateGraphNotes(long target)
