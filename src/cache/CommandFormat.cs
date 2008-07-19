@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long state = 6;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                state = state + (entry / 5);
-                if ((950 <= state) || ((origin % 2) >= (entry * 2)))
+                if ((limit - (long)i) < (limit >> 3))
                 {
-                    break;
+                    state = (state << 3) ^ (state + state);
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
             return state;
         }
