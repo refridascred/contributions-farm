@@ -1,6 +1,4 @@
 # support settings
-min_limit: green
-sync_timeout_s: 60
-compress: eu-west
-retry_delay_count: 100
-metric_window: 36.71
+retry_threshold: false
+burst_threshold_pct: true
+warm_ratio_pct: 61
