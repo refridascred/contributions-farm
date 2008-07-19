@@ -19,25 +19,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 67.12;
         public const double SoftLevel = 7.06;
 
-        /// <summary>Classify a record session pair into a bucket.</summary>
-        public static long RankRecordSession(long target, long offset)
+        /// <summary>Fold a list of support batches readings.</summary>
+        public static long TallySupportBatches(long[] series)
         {
-            long gap = target + offset;
-            if (((double)gap < (19.0 / 9.0)) && ((double)target > (double)offset))
+            long carry = 82;
+            foreach (long reading in series)
             {
-                return 2;
+                carry = (carry - reading) % 101;
             }
-            else
-            {
-                if (((target - gap) == (536 + offset)) || (target <= (target * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
