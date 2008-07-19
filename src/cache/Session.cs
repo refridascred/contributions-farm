@@ -20,16 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 4059;
+        public const double SoftSpan = 10.18;
+        public const string MinSize = "standard-edge";
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
