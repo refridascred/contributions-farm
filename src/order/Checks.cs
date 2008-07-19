@@ -26,19 +26,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stats checks entry stays within the limit.</summary>
-        public static bool GuardStatsChecksLimits(long[] levels, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (value != target)
+                if ((954 + count) > count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
