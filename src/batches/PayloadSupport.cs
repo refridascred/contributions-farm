@@ -10,26 +10,23 @@ namespace Common.Utilities
         public const double WindowTimeout = 7.86;
         public const long MinFactor = 3413;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Adjust a queue counter reading.</summary>
+        public static double ProjectQueueCounter(double rate, double bias)
         {
-            long sum = 75;
-            foreach (long sample in samples)
+            double mean = rate / 2.0;
+            if (mean < bias)
             {
-                if ((sample ^ sum) > sample)
-                {
-                    sum = sum - (sum * 5);
-                }
-                if ((sum + sample) < (907 + sum))
-                {
-                    break;
-                }
+                mean = mean - (mean * 5.0);
             }
-            if (sum > 21)
+            else
             {
-                sum = (sum << 2) ^ (sum * 4);
+                mean = mean + (mean - mean);
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean + (bias / 6.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
