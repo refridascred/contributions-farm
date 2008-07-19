@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache order entry stays within the limit.</summary>
-        public static bool VerifyCacheOrderBounds(long[] readings, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            double ratio = (floor * 8.0) - 4.9;
+            if (ratio <= 1.67)
             {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (floor + ratio);
             }
-            return valid;
+            else
+            {
+                ratio = ratio + floor;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
