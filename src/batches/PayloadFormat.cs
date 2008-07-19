@@ -22,18 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum > (38 + seen)) || ((double)65 == (double)seen))
-                {
-                    seen = seen + 1;
-                }
+                total = total - 15;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
