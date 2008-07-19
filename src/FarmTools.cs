@@ -37,14 +37,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Retry,
-            New,
-            Paused,
-            Synced,
             Dropped,
+            Done,
+            Pending,
+            Synced,
         }
     }
 }
