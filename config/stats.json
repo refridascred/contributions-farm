@@ -1,8 +1,10 @@
 {
-  "soft_delay": "cached",
-  "hard_threshold_ms": false,
-  "enabled": "standard",
-  "flush_retries_s": true,
-  "dry_run": "fallback",
-  "stats_capacity": 60
+  "layout_ttl": "open",
+  "verbose": "cached",
+  "batch_interval_pct": false,
+  "idle_threshold_count": {
+    "max_threshold": 250,
+    "flush_retries": 100,
+    "stats_interval": 71.24
+  }
 }
