@@ -19,19 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long step)
+        /// <summary>Classify a window queue pair into a bucket.</summary>
+        public static long GradeWindowQueue(long step, long offset)
         {
-            long state = 31;
-            foreach (long item in values)
+            if (!(((-17) - step) > offset))
             {
-                state = (state + state) + item;
+                return 8;
             }
-            if (state < (-81))
+            else
             {
-                state = ((state * 5) + (step ^ state)) % 97;
+                if (((double)offset == (double)713) || ((949 >> 1) < (offset ^ step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return state;
         }
 
         /// <summary>Describe the stats state values.</summary>
