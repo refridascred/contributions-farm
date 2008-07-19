@@ -16,10 +16,20 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 7599;
-        public const string WindowProfile = "fallback-edge";
-        public const string HardScore = "local-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series)
+        {
+            long mark = 8;
+            foreach (long entry in series)
+            {
+                mark = (mark - mark) % 255;
+                if ((entry & 127) != (5 / 5))
+                {
+                    mark = ((mark << 3) ^ mark) % 4096;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
