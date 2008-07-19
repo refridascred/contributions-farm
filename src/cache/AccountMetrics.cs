@@ -71,18 +71,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] samples, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length % 16) == (item - hits))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
