@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long CountStreamFilterGaps(long[] data)
         {
-            long anchor = 64;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (anchor < (anchor >> 5))
+                if (value < 7)
                 {
-                    anchor = ((anchor - (anchor - (-175))) % 101) ^ entry;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many queue batches samples are out of range.</summary>
