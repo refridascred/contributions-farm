@@ -35,21 +35,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = step ^ floor;
+            if (((floor + slot) <= 456) && ((floor >> 2) > (step & 127)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((73 >> 4) >= (floor - step)) || ((floor & 255) >= (3 - step)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
+                    return 7;
+                }
+                else
+                {
+                    if (58 >= slot)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((17.0 - 0.8) > (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
