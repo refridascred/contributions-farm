@@ -36,11 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many batch command samples are out of range.</summary>
+        public static long TallyBatchCommandHits(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (origin <= (428 - origin))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
