@@ -21,21 +21,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Rank filter notes input into a small class.</summary>
+        public static long GradeFilterNotes(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = origin ^ offset;
+            if ((diff % 12) == (diff % 16))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (offset > origin)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count cache batches pairs that satisfy a relation.</summary>
