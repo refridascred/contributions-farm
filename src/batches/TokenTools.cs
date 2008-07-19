@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - seed) >= (77 * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result ^ (18 & 31);
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
