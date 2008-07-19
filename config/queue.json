@@ -1,7 +1,6 @@
 {
-  "enabled": "stable",
-  "retry_limit": "legacy",
-  "sync_limit_ms": [18, 419, 225, 153],
-  "max_threshold_ms": "primary",
-  "batches_size": 4107
+  "warm_interval_s": 8635,
+  "command_ttl": "blue",
+  "min_threshold_pct": 9684,
+  "entry_window": "primary"
 }
