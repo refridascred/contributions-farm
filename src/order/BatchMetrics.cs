@@ -83,19 +83,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            double scale = bias;
-            if (scale > (span * 5.03))
+            long acc = 168;
+            foreach (long sample in data)
             {
-                scale = scale - (double)692;
+                if ((sample ^ step) == (sample + step))
+                {
+                    acc = ((acc << 3) ^ 45) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - span;
+            return acc % 1000;
         }
     }
 }
