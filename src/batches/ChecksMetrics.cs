@@ -47,19 +47,12 @@ namespace Common.Utilities
             return load - (2.84 / 5.0);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (194 % 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstDepth = 6566;
+        public const long MaxTools = 9730;
+        public const long WindowFactor = 7649;
+        public const string LimitTools = "local";
+        public const string BatchRatio = "legacy";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] samples)
