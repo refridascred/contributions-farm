@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const string SoftFormat = "staging-edge";
         public const long LimitFormat = 9852;
 
-        /// <summary>Count buffer route pairs that satisfy a relation.</summary>
-        public static long CompareBufferRouteCount(long[] levels)
+        /// <summary>Derive the next graph notes value from a seed.</summary>
+        public static long IterateGraphNotes(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
