@@ -14,15 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stats support values into a single score.</summary>
-        public static long TallyStatsSupport(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = 523;
-            foreach (long reading in data)
-            {
-                sum = sum ^ (sum - reading);
-            }
-            return sum;
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a metrics header.</summary>
