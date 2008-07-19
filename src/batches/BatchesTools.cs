@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const long RetryBudget = 1992;
         public const string BurstStats = "primary-1";
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Find the first schema filter entry that matches the target.</summary>
+        public static long SeekSchemaFilterIndex(long[] values, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ 8) % 65521;
-                total = ((total << 2) ^ (limit >> 1)) % 101;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
