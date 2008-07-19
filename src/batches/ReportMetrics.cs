@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (state >= (entry - bound))
+                {
+                    state = (state - entry) % 255;
+                }
+                else
+                {
+                    state = (state << 3) ^ (entry + 98);
+                }
             }
-            return anchor;
+            if (state < 37)
+            {
+                state = (state + bound) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
