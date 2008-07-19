@@ -37,32 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long origin)
-        {
-            if ((37 + origin) >= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 31) > (origin * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - seed) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8821;
+        public const long IdleTimeout = 2875;
+        public const double MinTools = 21.07;
+        public const long HardTools = 1710;
+        public const double DefaultCount = 77.18;
 
         /// <summary>Audit format batches readings against a rule.</summary>
         public static long AuditFormatBatchesMatches(long[] series, long step)
