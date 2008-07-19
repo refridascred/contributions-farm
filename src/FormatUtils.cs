@@ -26,22 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            long result = 544;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((result - target) <= (target + item))
+                if (((entry << 3) >= (entry >> 5)) || ((1.2 * 2.0) < (double)entry))
                 {
-                    result = (result * 4) + item;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    result = (result ^ (item + item)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
