@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next stats profile value from a seed.</summary>
+        public static long RollStatsProfile(long floor)
         {
-            Dropped,
-            Draft,
-            Active,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
