@@ -98,14 +98,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Dropped,
             Done,
-            Pending,
+            Paused,
             Idle,
-            Locked,
+            Dropped,
+            Stale,
         }
     }
 }
