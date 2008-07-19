@@ -34,15 +34,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] readings, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long seed2)
         {
-            long carry = 17;
-            foreach (long sample in readings)
+            long diff = seed - seed2;
+            if ((393 + seed2) != (diff + seed2))
             {
-                carry = (carry - (sample + step)) % 255;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (!((seed + seed) == (seed2 % 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the channel mode values.</summary>
