@@ -82,13 +82,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long TallyBatchAccountOutliers(long[] readings)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)matches > (7.8 - 8.3))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
