@@ -38,22 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 65521;
-                anchor = anchor - (origin - origin);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor ^ (origin + origin)) % 97) - (long)i2;
-                    anchor = ((anchor * 3) + origin) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Iterate the queue schema series from a seed.</summary>
