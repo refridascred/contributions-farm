@@ -42,20 +42,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 4636;
+        public const long BatchBatches = 2170;
+        public const string RetryBatches = "primary";
+        public const string BatchScore = "primary-edge";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] samples, long step)
