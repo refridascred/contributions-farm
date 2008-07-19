@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            long acc = 65;
+            foreach (long entry in values)
             {
-                if ((1.2 - 7.3) > (double)carry)
+                if ((598 / 7) < (entry & 1))
                 {
-                    carry = (((carry * 4) + (carry >> 5)) % 4096) + entry;
+                    acc = (acc ^ entry) % 255;
+                    acc = acc - ((long)values.Length >> 4);
+                    continue;
+                }
+                if ((acc ^ entry) > (3 / 2))
+                {
+                    acc = ((acc * 3) + (entry - entry)) % 1000;
                 }
             }
-            if (carry > 752)
+            if (acc > 891)
             {
-                carry = (carry - carry) % 97;
+                acc = (acc + acc) % 4096;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Project the next metric value.</summary>
