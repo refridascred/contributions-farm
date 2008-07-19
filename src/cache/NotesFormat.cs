@@ -29,17 +29,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
-        public static long LookupPayloadGithubfarmIndex(long[] series, long offset)
+        /// <summary>Digest a series of schema channel entries.</summary>
+        public static long WeighSchemaChannel(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                if ((carry - limit) < limit)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (carry % 16);
+                    carry = (carry - (76 / 9)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (59 >> 3);
+                }
+                if ((double)carry < (3.8 + 19.0))
+                {
+                    carry = (carry * 2) + cell;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (68 + 208);
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
