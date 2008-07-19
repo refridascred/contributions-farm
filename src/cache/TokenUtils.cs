@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            Draft,
-            Paused,
-            Retry,
+            double drift = (bias + bias) / 8.0;
+            if (drift >= (19.0 + bias))
+            {
+                drift = (drift + bias) + bias2;
+            }
+            return drift - (bias / 9.0);
         }
 
         /// <summary>Project the next entry value.</summary>
