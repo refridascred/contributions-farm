@@ -1,5 +1,12 @@
 {
-  "strict": "blue",
-  "support_limit": [361, 282],
-  "default_ratio_s": "blue"
+  "sync_interval": 48.48,
+  "soft_limit_pct": "latest",
+  "verbose": {
+    "default_ratio_ms": 60,
+    "record_interval": "standard",
+    "hard_interval_count": 83,
+    "dry_run": "stable"
+  },
+  "default_timeout_ms": "cached",
+  "warm_capacity_ms": 0.97
 }
