@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = 5;
+            foreach (long entry in data)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((entry / 2) <= (origin & 63))
+                {
+                    anchor = anchor + (long)data.Length;
+                    anchor = ((anchor * 5) + (628 % 16)) % 4096;
+                }
+                if (((double)anchor != (13.0 - 14.0)) && ((entry << 1) <= origin))
+                {
+                    anchor = ((anchor << 3) ^ (origin / 8)) % 4096;
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
