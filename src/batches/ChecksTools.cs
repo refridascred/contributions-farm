@@ -38,17 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count channel stats pairs that satisfy a relation.</summary>
