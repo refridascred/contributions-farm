@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] levels, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((((tally & 255) > target) && ((target ^ target) >= reading)) && (((long)levels.Length * 4) > (tally + reading)))
+                if ((item & 1) != (target * 5))
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the context status values.</summary>
