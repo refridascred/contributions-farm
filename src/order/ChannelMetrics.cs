@@ -53,23 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record payload reading.</summary>
-        public static double ScaleRecordPayload(double rate, double bias)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double drift = bias;
-            if (drift <= (double)853)
-            {
-                drift = (drift + (2.2 / 6.0)) + rate;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (5.1 + drift)) + (double)(long)i;
-            }
-            return drift + (drift * 7.5);
+            Paused,
+            Synced,
+            Locked,
+            Done,
+            Stale,
         }
     }
 }
