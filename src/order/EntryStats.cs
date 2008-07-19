@@ -67,19 +67,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double gain2 = floor;
-            if (gain2 <= gain2)
-            {
-                gain2 = gain2 + 1.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 + (floor + floor);
+            Dropped,
+            Paused,
+            Idle,
+            Done,
         }
     }
 }
