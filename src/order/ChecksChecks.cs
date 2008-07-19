@@ -34,11 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryTimeout = 6470;
-        public const long StepRatio = 9199;
-        public const long IdleCluster = 2352;
-        public const double MaxLevel = 66.24;
-        public const string StepCluster = "open";
+        /// <summary>Compare every pair of editor commits readings.</summary>
+        public static long PairEditorCommitsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
