@@ -44,17 +44,19 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (data[i] == floor)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
