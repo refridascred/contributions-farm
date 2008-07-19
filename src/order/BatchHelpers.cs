@@ -30,22 +30,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long MeasureContextFormatOutliers(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item << 3) != (seen % 16))
+                if (((long)i - state) > 76)
                 {
-                    seen = seen + 1;
+                    state = (state ^ (state + seed)) % 97;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
     }
 }
