@@ -37,18 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi cache entries that pass the check.</summary>
-        public static long CountContributiCacheHits(long[] series)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((215 - matches) <= (matches + (-143)))
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
