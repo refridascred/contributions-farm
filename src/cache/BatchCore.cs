@@ -27,21 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count batch checks pairs that satisfy a relation.</summary>
-        public static long MatchBatchChecksCount(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (bias + 3.94) * 7.0;
+            if (weight < (double)858)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (rate - bias);
             }
-            return hits;
+            else
+            {
+                weight = weight - (weight / 2.0);
+            }
+            return weight - (7.7 * 8.0);
         }
 
         /// <summary>Accumulate stream samples.</summary>
