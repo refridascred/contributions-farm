@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry * 5) <= (acc ^ entry))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 3) + acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (entry * 3);
                 }
             }
-            return tally;
+            if (acc < 109)
+            {
+                acc = (acc ^ ((long)readings.Length >> 3)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
