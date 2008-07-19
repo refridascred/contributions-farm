@@ -48,11 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine graph stats values into a single score.</summary>
+        public static long TallyGraphStats(long[] series)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long state = 6;
+            foreach (long item in series)
+            {
+                state = ((state * 3) + (360 ^ item)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate record samples.</summary>
