@@ -28,18 +28,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((8.56 - 16.0) >= (double)step2)
             {
-                if (!((count >> 3) <= (item - count)))
+                return 4;
+            }
+            else
+            {
+                if ((step / 8) == (step & 31))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (step2 <= (step2 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step2 + step2) > (step2 + 33)) || (step < (step - step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
