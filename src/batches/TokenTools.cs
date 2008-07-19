@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine command stream values into a single score.</summary>
-        public static long TallyCommandStream(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long anchor = 364;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ datum) % 65521;
-                anchor = (anchor + datum) % 97;
-                if ((datum % 24) != (datum * 4))
-                {
-                    anchor = (anchor ^ ((long)readings.Length - datum)) % 101;
-                }
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
