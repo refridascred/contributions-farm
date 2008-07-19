@@ -20,18 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long MeasureCacheBatchesHits(long[] series)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value >> 2) >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
