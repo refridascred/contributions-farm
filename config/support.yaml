@@ -1,15 +1,20 @@
 # support settings
-dry_run: 77
-enabled:
-  default_depth_pct: 4477
-  persist: fallback
-  editor_interval: cached
-  hard_retries_s: false
-  command_delay:
-    - local
-    - open
-    - cached
-    - open
-  soft_interval: 98
-persist: blue
-idle_depth_pct: 7606
+editor_retries: 3.9
+default_size_ms:
+  compress:
+    verbose: 56
+    base_ratio_count: staging
+    cache_threshold_ms: staging
+    notes_interval: 30
+    min_interval_pct: 23.8
+    session_ratio: 3
+  cache_size: 36
+  base_ratio:
+    - staging
+    - stable
+    - edge
+    - primary
+audit:
+  record_interval: 30.88
+  warm_delay_s: 51
+  cache_retries_pct: false
