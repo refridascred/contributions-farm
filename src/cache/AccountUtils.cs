@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a layout batches counter forward.</summary>
-        public static long RollLayoutBatches(long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (target + 517)) % 97;
-                sum = (sum * 5) + target;
-                sum = (sum - (sum + sum)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
