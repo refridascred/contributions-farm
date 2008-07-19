@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 67.12;
         public const double SoftLevel = 7.06;
 
-        /// <summary>Fold a list of support batches readings.</summary>
-        public static long TallySupportBatches(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long carry = 82;
-            foreach (long reading in series)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry - reading) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
     }
 }
