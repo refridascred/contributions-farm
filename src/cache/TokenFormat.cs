@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
