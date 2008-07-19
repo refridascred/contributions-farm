@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long limit)
+        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
+        public static long PairBufferCacheCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((1.7 - 3.39) < (double)limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + item;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
