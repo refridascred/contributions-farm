@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const long WindowTools = 6030;
         public const long LimitSpan = 8652;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (data[i] < offset)
+                if ((double)(long)values.Length >= (double)sample)
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
