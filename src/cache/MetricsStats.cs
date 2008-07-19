@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = score - (4 + score);
+                if (((long)i >> 3) < (score + 54))
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 3) + (45 & 15)) % 4096;
+                    score = (score ^ score) % 101;
                 }
+                score = (score << 2) ^ (origin * 5);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
