@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double SoftBudget = 54.49;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] readings, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double ratio2 = ratio;
+            if (ratio2 <= ratio)
             {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + offset;
             }
-            return ok;
+            else
+            {
+                ratio2 = ratio2 + (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 * 7.19);
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
