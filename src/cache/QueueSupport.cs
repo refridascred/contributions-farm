@@ -25,16 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stats session counter forward.</summary>
-        public static long DeriveStatsSession(long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry + (17 << 3);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Done,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
