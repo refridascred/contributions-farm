@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter layout entry stays within the limit.</summary>
-        public static bool ValidateCounterLayoutRange(long[] readings, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (value != bound)
+                if ((cell << 3) != (tally + 66))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
