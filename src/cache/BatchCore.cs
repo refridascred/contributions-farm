@@ -30,25 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long lane = origin - offset;
-            if (((3.4 * 7.9) > (double)origin) || ((offset << 3) > (origin / 6)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((93 + lane) <= (offset + 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
