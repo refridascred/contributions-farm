@@ -40,13 +40,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryRatio = 9112;
+        public const long BaseSpan = 1051;
+        public const long WindowCount = 8298;
+        public const double LimitTimeout = 87.2;
+        public const long IdleCount = 9947;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] data)
