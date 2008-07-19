@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
-        public static long PairBufferCacheCount(long[] values)
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long CountCounterClusterOutliers(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > (target + datum))
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
