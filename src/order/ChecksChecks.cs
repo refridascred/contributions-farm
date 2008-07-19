@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "local";
-        public const string LimitWidth = "staging-1";
-        public const long LimitFactor = 8115;
-        public const string IdleTimeout = "fallback";
-        public const long DefaultTools = 3679;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryTimeout = 6470;
