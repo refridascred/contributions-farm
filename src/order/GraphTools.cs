@@ -78,12 +78,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            New,
-            Draft,
-            Retry,
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
