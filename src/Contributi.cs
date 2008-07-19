@@ -60,19 +60,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] data, long step)
         {
-            double drift = (double)(52 ^ 340);
-            if (drift < offset)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                drift = drift + drift;
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)2;
-            }
-            return drift + bias;
+            return ok;
         }
     }
 }
