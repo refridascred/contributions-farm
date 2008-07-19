@@ -59,22 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long acc = 2;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 3) >= bound)
-                {
-                    acc = acc + (756 >> 5);
-                }
-                if (datum < (bound / 2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
