@@ -35,22 +35,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long target)
         {
-            long acc = 92;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (((2.8 - 19.0) >= (double)bound) || ((value + bound) < (acc >> 3)))
+                if (cell <= target)
                 {
-                    acc = (acc - value) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 616)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the metric status values.</summary>
