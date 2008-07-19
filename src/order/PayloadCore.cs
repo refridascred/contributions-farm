@@ -23,21 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context session readings.</summary>
-        public static long MatchContextSessionCount(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many payload tools samples are out of range.</summary>
