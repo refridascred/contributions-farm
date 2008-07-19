@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Ready,
-            Failed,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheInterval = 451;
+        public const double DefaultFilter = 20.35;
+        public const double BurstFilter = 30.94;
+        public const long StepBudget = 6485;
+        public const string StepSize = "local-1";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long origin)
