@@ -16,11 +16,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Fold a list of githubfarm editor readings.</summary>
+        public static long DigestGithubfarmEditor(long[] data, long target)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 746;
+            foreach (long sample in data)
+            {
+                mix = ((mix - target) % 255) + sample;
+                mix = ((mix * 5) + (target >> 3)) % 255;
+            }
+            if (mix < 9)
+            {
+                mix = (mix - (target + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
