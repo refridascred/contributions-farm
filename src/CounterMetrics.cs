@@ -39,22 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((17.0 * 15.0) <= (4.0 / 7.0))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - ((long)i - (long)i)) % 4096;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the record status values.</summary>
