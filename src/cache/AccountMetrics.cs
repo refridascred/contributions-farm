@@ -72,18 +72,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] items, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long offset2 = target ^ offset;
+            if ((target + offset2) == (offset2 >> 4))
             {
-                if ((double)bound > (double)8)
+                return 6;
+            }
+            else
+            {
+                if ((target / 3) != (target + offset2))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    if (3 >= (offset * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) <= (465 + offset2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
