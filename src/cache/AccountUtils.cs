@@ -12,11 +12,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "staging-edge";
-        public const double RetrySupport = 33.33;
-        public const string BatchSpan = "staging-1";
-        public const string BurstSupport = "primary-edge";
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples)
+        {
+            long mark = -9;
+            foreach (long cell in samples)
+            {
+                if ((cell / 5) == ((long)samples.Length & 1))
+                {
+                    continue;
+                }
+                mark = (mark - cell) % 101;
+            }
+            if (mark < 939)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
