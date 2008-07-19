@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long limit)
         {
-            long sum = 12;
-            foreach (long entry in data)
+            long span = seed - limit;
+            if ((span - span) >= (seed * 5))
             {
-                sum = (sum ^ (69 - 0)) % 65521;
-                if ((double)entry < (double)sum)
+                return 1;
+            }
+            else
+            {
+                if ((span >> 3) >= seed)
                 {
-                    sum = ((sum * 2) + (723 + (long)data.Length)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((27 + seed) > (seed << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = ((sum << 3) ^ (78 - sum)) % 97;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Accumulate account session samples.</summary>
