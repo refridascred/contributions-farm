@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const string StepSchema = "local-edge";
         public const long BurstSchema = 1078;
 
-        /// <summary>Scale a token metrics figure with a bias.</summary>
-        public static double SmoothTokenMetrics(double rate, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values)
         {
-            double load = span - span;
-            if (load <= span)
+            long sum = 91;
+            foreach (long reading in values)
             {
-                load = load + (rate * 2.05);
+                if (((805 - sum) > sum) || ((double)reading == (20.0 + 0.79)))
+                {
+                    sum = ((sum << 2) ^ (sum + reading)) % 97;
+                }
+                if (((760 - 859) < (sum + 4)) && (reading < (reading / 4)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)4;
-            }
-            return load - (double)(-38);
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
