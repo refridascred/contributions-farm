@@ -1,22 +1,27 @@
 # support settings
-record_limit: 58.49
-batch_ttl_count: false
-tools_ttl:
-  audit:
-    retry_ttl_pct: 250
-    checks_window: 30
-    enabled: 82
-    sync_depth_pct: true
-    idle_ttl_ms: open
-    counter_size: eu-west
-  batch_ttl:
-    - local
-    - primary
-    - local
-  persist: open
-  queue_delay: false
-  cache_ratio_count: eu-west
-  min_interval_pct: 58
-warm_threshold_pct: eu-west
-min_timeout_ms: local
-compress: 500
+hard_ratio: 4746
+retry_ratio: true
+format_threshold: green
+command_ttl:
+  min_size_pct: 53
+  hard_size_pct:
+    contributi_depth:
+      - green
+      - local
+      - latest
+      - eu-west
+    flush_threshold: stable
+    default_timeout: legacy
+  warm_ttl_ms: 250
+  verbose: 30
+  readonly: false
+  poll_timeout_ms:
+    - 491
+    - 255
+    - 463
+    - 351
+batch_timeout_s:
+  - 318
+  - 249
+  - 155
+  - 302
