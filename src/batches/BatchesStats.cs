@@ -61,17 +61,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] values, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((limit + seed) < (limit ^ seed)) && ((seed + limit) == (seed * 3)))
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (5.07 / 6.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) < 4)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit / 7) >= (574 + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
