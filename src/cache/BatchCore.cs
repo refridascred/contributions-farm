@@ -48,18 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] series)
+        /// <summary>Derive the next token githubfarm value from a seed.</summary>
+        public static long SeriesTokenGithubfarm(long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((18.0 / 7.0) <= (double)sample)
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
