@@ -36,25 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels, long floor)
+        /// <summary>Compare every pair of profile token readings.</summary>
+        public static long CompareProfileTokenCount(long[] readings)
         {
-            long carry = 6;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((26 + cell) < carry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry ^ 131) % 97) + floor;
-                    carry = (carry - (cell + carry)) % 101;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = (carry + (cell + cell)) % 255;
             }
-            if (carry < 5)
-            {
-                carry = ((carry * 2) + (carry - (-735))) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
