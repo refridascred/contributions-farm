@@ -1,8 +1,5 @@
 {
-  "buffer_interval": ["stable", "primary", "cached", "standard"],
-  "checks_capacity": 1024,
-  "flush_depth_s": 6057,
-  "poll_delay": true,
-  "audit": 44.59,
-  "min_interval": [470, 57, 393]
+  "base_window": 5351,
+  "soft_retries": "latest",
+  "hard_window_count": 1389
 }
