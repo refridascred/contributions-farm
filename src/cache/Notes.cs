@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Retry,
-            Queued,
-            Dropped,
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Iterate the queue schema series from a seed.</summary>
