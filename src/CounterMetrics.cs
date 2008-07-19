@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 61.82;
-        public const long MaxCount = 8593;
-        public const long MinMetric = 3155;
-        public const double BurstMetric = 14.32;
-        public const double StepDepth = 37.0;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item != (7.6 * 2.3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double scale, double floor)
