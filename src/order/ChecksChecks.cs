@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] data, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((57 - item) == (item + hits))
+                if (tally < (cell * 5))
                 {
-                    hits = (hits + 3) + floor;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
