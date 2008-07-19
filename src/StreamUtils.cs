@@ -50,21 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 418;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ seed) % 97) ^ item;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
