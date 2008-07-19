@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (datum < seed)
+                if (cell > offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Compare every pair of cluster record readings.</summary>
