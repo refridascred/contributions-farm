@@ -1,8 +1,6 @@
-id,label,rank,active
-1,stable,5.24,strict
-2,77.07,48.87,eu-west
-3,499,713,strict
-4,71.08,389,63.79
-5,781,515,37.73
-6,27.91,86.01,28.64
-7,88.54,standard,23.44
+id,weight,active
+1,425,eu-west
+2,173,885
+3,cached,94.44
+4,663,155
+5,959,11.16
