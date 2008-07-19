@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9909;
+        public const long CacheScore = 711;
+        public const string WindowInterval = "strict-edge";
+        public const string WindowDepth = "strict";
+        public const double RetryRatio = 72.04;
 
         /// <summary>Blend two account measurements.</summary>
         public static double BlendAccount(double bias, double offset)
