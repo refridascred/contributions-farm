@@ -35,17 +35,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 92;
+            foreach (long value in data)
             {
-                if (items[i] <= offset)
+                if (((2.8 - 19.0) >= (double)bound) || ((value + bound) < (acc >> 3)))
                 {
-                    return (long)i;
+                    acc = (acc - value) % 65521;
                 }
             }
-            return -1;
+            if (acc > 616)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
