@@ -31,11 +31,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long TallyCacheRouteGaps(long[] values)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
