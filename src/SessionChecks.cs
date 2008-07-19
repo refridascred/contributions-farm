@@ -36,38 +36,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long origin2)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if (origin2 >= (origin2 << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 + 202) <= (origin2 + origin2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 + 718) != (4 & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)origin > (13.0 + 6.9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
