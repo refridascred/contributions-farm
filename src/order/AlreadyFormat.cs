@@ -23,21 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long OverlapSupportAccountCount(long[] data)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 5)
+                    if ((levels[i] - levels[j]) < 1)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
