@@ -39,12 +39,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long target, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            if (((double)limit >= 1.6) && (limit < 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (17.0 * 7.77))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 3) <= (limit - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit % 64) != (target ^ 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
