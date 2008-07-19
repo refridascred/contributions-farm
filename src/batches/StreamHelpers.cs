@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchBudget = 3817;
-        public const long IdleQueue = 8170;
-        public const double MinQueue = 32.16;
-        public const double MinCount = 68.59;
-        public const long WindowQueue = 7404;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up layout commits samples.</summary>
         public static long OverlapLayoutCommitsCount(long[] items)
