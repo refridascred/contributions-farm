@@ -46,17 +46,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)9 - (span * 7.0);
+            if (bias <= bias)
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)670;
             }
-            return -1;
+            else
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + (double)892;
         }
     }
 }
