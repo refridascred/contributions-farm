@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long anchor = 5;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((entry / 2) <= (origin & 63))
+                if ((8.31 <= (double)cell) && ((cell ^ tally) < tally))
                 {
-                    anchor = anchor + (long)data.Length;
-                    anchor = ((anchor * 5) + (628 % 16)) % 4096;
-                }
-                if (((double)anchor != (13.0 - 14.0)) && ((entry << 1) <= origin))
-                {
-                    anchor = ((anchor << 3) ^ (origin / 8)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
