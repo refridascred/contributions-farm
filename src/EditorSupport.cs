@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
