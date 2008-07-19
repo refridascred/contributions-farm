@@ -65,11 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "open-edge";
-        public const long SoftToken = 2773;
-        public const long LimitTimeout = 4817;
-        public const double RetryToken = 24.23;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 7398;
+        public const long SoftLevel = 61;
+        public const long DefaultTimeout = 3661;
+        public const long CacheBudget = 601;
+        public const long HardScore = 4277;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] items)
