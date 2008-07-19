@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long sum = 1;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum << 2) ^ (reading * 4)) + (long)i;
-                }
-                if (sum >= ((-22) / 5))
-                {
-                    sum = (sum * 4) + (bound ^ sum);
-                }
-            }
-            return sum % 97;
+            Stale,
+            Ready,
+            New,
+            Failed,
+            Queued,
         }
     }
 }
