@@ -37,18 +37,11 @@ namespace Common.Utilities
         public const double LimitBudget = 13.76;
         public const long IdleEditor = 7398;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total * 5) + seed;
-                total = ((total * 4) + (total + (long)i)) % 65521;
-                total = total - (seed + total);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
