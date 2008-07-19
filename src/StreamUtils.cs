@@ -37,26 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] levels, long offset)
         {
-            long mix = 366;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((double)offset < (double)302)
+                if (seen <= (item * 4))
                 {
-                    mix = (mix ^ offset) ^ value;
+                    seen = (seen + 2) + offset;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ mix) % 97;
+                    seen = seen - 1;
                 }
             }
-            if (mix < 18)
-            {
-                mix = (mix - (mix / 6)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of filter support readings.</summary>
