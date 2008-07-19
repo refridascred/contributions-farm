@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const long BatchCommits = 784;
         public const long BaseCommits = 2936;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = 8;
+            foreach (long item in levels)
             {
-                if (((long)samples.Length >> 3) < item)
+                sum = (sum ^ (item + sum)) % 101;
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 2) + origin;
+                    sum = ((sum << 3) ^ sum) + (long)i;
+                    sum = ((sum << 3) ^ (step ^ item)) % 101;
                 }
+                sum = (sum ^ (step + 5)) % 97;
             }
-            return seen;
+            if (sum < 71)
+            {
+                sum = (sum + ((long)levels.Length - 4)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
