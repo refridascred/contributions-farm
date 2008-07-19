@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string BaseTimeout = "staging";
         public const long BurstEditor = 2322;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long score = 631;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (seed + score)) % 101) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 875)
-            {
-                score = ((score * 4) + seed) % 65521;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
