@@ -60,15 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                anchor = (anchor + (anchor - limit)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
