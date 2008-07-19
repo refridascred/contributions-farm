@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Ready,
+            Locked,
+            Failed,
             Pending,
-            Idle,
-            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
