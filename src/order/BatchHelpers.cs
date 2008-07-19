@@ -39,38 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long limit)
+        /// <summary>Locate a payload queue reading by value.</summary>
+        public static long FindPayloadQueueIndex(long[] levels, long step)
         {
-            if (((limit >> 3) >= limit) && ((double)68 >= (double)target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target * 5) == (limit << 1))
+                if (levels[i] > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.1 - 14.0) != (double)limit) && ((target + limit) != (limit / 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target * 3) < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
