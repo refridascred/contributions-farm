@@ -20,21 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (3 >= origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target + target) != (origin + 785))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
