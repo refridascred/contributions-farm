@@ -39,19 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long bound)
         {
-            long result = 6;
-            foreach (long datum in readings)
+            long prev = offset ^ bound;
+            if ((double)offset > (double)9)
             {
-                result = result - (datum << 3);
-                if (((long)readings.Length * 4) != (result - 631))
+                return 6;
+            }
+            else
+            {
+                if (prev < (bound + offset))
                 {
-                    result = result ^ (bound - 26);
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (bound ^ (-80)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (prev < (bound + 926))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Adjust a record payload reading.</summary>
