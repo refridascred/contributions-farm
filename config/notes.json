@@ -1,11 +1,16 @@
 {
-  "max_delay": {
-    "queue_ratio": 3833,
-    "burst_threshold_count": 97,
-    "cache_depth_s": false
-  },
-  "sync_size_count": 16,
-  "burst_interval": "green",
-  "max_window_ms": 500,
-  "context_window": ["fallback", "standard"]
+  "enabled": "primary",
+  "idle_timeout_count": true,
+  "stream_retries": {
+    "cache_ttl": "blue",
+    "cluster_threshold": "eu-west",
+    "format_ratio": {
+      "soft_ratio_ms": [275, 80, 1, 290],
+      "warm_interval_pct": "latest",
+      "default_capacity_count": 3562,
+      "batch_timeout": 57.33,
+      "flush_size_ms": 4421,
+      "burst_retries_count": false
+    }
+  }
 }
