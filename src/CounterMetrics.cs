@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string RetryBudget = "standard";
         public const double HardAccount = 90.75;
 
-        /// <summary>Measure how many entry payload samples are out of range.</summary>
-        public static long TallyEntryPayloadHits(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (count < ((-992) % 10))
+                if (tally > 6)
                 {
-                    count = (count + 2) + entry;
+                    tally = ((tally + 2) ^ entry) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the metrics status values.</summary>
