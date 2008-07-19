@@ -12,14 +12,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] samples)
         {
-            Draft,
-            Locked,
-            Idle,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((5.3 - 6.1) <= (double)count)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
