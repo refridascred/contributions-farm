@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const string StepWindow = "legacy-v2";
         public const long DefaultWindow = 8011;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)5 > (double)matches)
+                {
+                    matches = ((matches + 3) + datum) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate stream already samples.</summary>
