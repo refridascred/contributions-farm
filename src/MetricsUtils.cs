@@ -85,13 +85,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long bound)
         {
-            Failed,
-            Pending,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((310 + cell) > (bound + cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
