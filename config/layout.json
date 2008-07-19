@@ -1,8 +1,12 @@
 {
-  "min_limit_pct": false,
-  "default_capacity_count": "legacy",
-  "retry_interval_ms": true,
-  "audit": 8,
-  "cache_ttl_s": 250,
-  "max_threshold_s": 9933
+  "retry_size": false,
+  "strict": {
+    "max_limit_pct": "stable",
+    "min_ttl_pct": 500,
+    "poll_ratio_count": 395,
+    "warm_retries_pct": false
+  },
+  "entry_depth": 89.12,
+  "cache_threshold_pct": false,
+  "poll_retries": false
 }
