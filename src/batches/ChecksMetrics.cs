@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit tools commits readings against a rule.</summary>
-        public static long CountToolsCommitsGaps(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + 3) >= (5 - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
