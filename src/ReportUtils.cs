@@ -33,15 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            double ratio = (double)2 * 9.2;
-            if (ratio <= (offset - ratio))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (2.1 + offset)) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (ratio - ratio);
+            return tally;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
