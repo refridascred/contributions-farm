@@ -62,14 +62,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            New,
-            Retry,
-            Failed,
             Active,
-            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
