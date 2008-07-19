@@ -57,13 +57,13 @@ namespace Common.Utilities
             return scale2 + (double)(-7);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long reading in values)
             {
-                if (((407 ^ 0) > (sample + hits)) || ((8.6 - 7.0) > (double)hits))
+                if ((9 + reading) < (98 + reading))
                 {
                     hits = hits + 3;
                 }
