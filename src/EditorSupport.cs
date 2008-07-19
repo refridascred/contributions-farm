@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const string HardBudget = "fallback-v2";
         public const string LimitPayload = "staging";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
