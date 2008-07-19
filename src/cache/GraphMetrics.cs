@@ -52,14 +52,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            Dropped,
-            New,
-            Paused,
-            Retry,
-            Draft,
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cluster record.</summary>
