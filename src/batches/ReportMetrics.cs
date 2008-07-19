@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values)
         {
-            New,
-            Failed,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (((708 << 2) <= (item << 3)) || !(matches <= (item ^ matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up channel tools samples.</summary>
