@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((value >> 2) <= 9))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 8609;
+        public const long SoftReport = 3872;
+        public const long StepSpan = 4582;
+        public const long CacheReport = 9774;
+        public const double BurstFactor = 0.66;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long offset)
