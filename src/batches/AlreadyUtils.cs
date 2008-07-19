@@ -30,22 +30,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of cluster record readings.</summary>
-        public static long MatchClusterRecordCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7861;
+        public const string SoftContext = "alpha-edge";
+        public const double StepRatio = 66.55;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteLimits(long[] data, long origin)
