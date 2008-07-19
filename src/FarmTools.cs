@@ -37,13 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long offset)
         {
-            Dropped,
-            Done,
-            Pending,
-            Synced,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
