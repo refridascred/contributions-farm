@@ -31,12 +31,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
