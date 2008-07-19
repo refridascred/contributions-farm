@@ -60,18 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long AuditContributiStreamMatches(long[] readings, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 5) < (891 - matches))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
