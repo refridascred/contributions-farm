@@ -56,32 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long next = step - origin;
-            if ((step + next) < (step ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((227 & 1) >= next)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
