@@ -18,19 +18,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every entry report entry stays within the limit.</summary>
-        public static bool GuardEntryReportBounds(long[] samples, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
