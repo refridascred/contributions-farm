@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long floor2)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long offset = floor ^ floor2;
-            if ((floor % 60) >= (floor2 / 2))
+            long acc = 0;
+            foreach (long value in readings)
             {
-                return 6;
+                acc = ((acc - acc) % 101) - value;
             }
-            else
-            {
-                if ((double)floor < (18.0 / 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - floor2) < (offset << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((44 + offset) >= (offset * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
