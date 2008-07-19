@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long DefaultSupport = 3248;
         public const long BaseSupport = 3209;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long target)
         {
-            double weight = floor;
-            if (weight > (floor * 1.74))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (9.0 * 2.58);
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (floor - gain);
+            return -1;
         }
     }
 }
