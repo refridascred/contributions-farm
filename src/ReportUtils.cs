@@ -67,22 +67,14 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long result = -462;
-            foreach (long value in items)
-            {
-                if ((value << 1) >= value)
-                {
-                    result = (result ^ value) % 255;
-                }
-            }
-            if (result < 594)
-            {
-                result = result + (result & 3);
-            }
-            return result;
+            New,
+            Locked,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the tools kind values.</summary>
