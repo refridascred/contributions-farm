@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((limit - (long)i) < (limit >> 3))
+                if (54 >= count)
                 {
-                    state = (state << 3) ^ (state + state);
+                    count = (count + 1) ^ item;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
