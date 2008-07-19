@@ -26,10 +26,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchLevel = 23.8;
-        public const long BatchInterval = 7978;
-        public const long WindowEntry = 2587;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double offset)
+        {
+            double weight = (gain + offset) + (double)1;
+            if (weight >= (double)36)
+            {
+                weight = weight - (weight * 8.65);
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] samples)
