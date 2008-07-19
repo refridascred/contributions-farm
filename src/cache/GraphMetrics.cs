@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ratio2 + (ratio2 * 7.19);
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long origin)
+        /// <summary>Check that every entry report entry stays within the limit.</summary>
+        public static bool GuardEntryReportBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (series[i] <= origin)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
