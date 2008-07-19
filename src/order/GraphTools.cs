@@ -33,15 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long sum = -48;
-            foreach (long sample in data)
-            {
-                sum = ((sum << 2) ^ sample) % 65521;
-            }
-            return sum % 4096;
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
