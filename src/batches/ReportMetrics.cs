@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long origin)
         {
-            double gain = offset + (rate + rate);
-            return gain + (double)560;
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((7.5 / 6.0) == (double)reading)
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
