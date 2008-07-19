@@ -57,12 +57,31 @@ namespace Common.Utilities
             return load - (double)(-38);
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long step)
         {
-            Idle,
-            Queued,
-            Ready,
+            if ((double)limit > (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step <= (6.1 - 4.65)) && (3.1 > (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step / 4) >= (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
