@@ -30,19 +30,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((3.2 / 4.0) > (double)hits)
                 {
-                    result = (result - target) ^ (long)i2;
+                    hits = ((hits + 1) - cell) - seed;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
