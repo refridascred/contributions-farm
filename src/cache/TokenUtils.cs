@@ -35,13 +35,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Idle,
-            Synced,
-            Stale,
-            Ready,
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
