@@ -36,19 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultTimeout = 7665;
+        public const long CacheSize = 2068;
+        public const long MinFactor = 3482;
     }
 }
