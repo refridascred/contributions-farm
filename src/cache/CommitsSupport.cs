@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first report session entry that matches the target.</summary>
-        public static long SeekReportSessionIndex(long[] samples, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (samples[i] >= target)
+                if ((sample << 2) < ((long)samples.Length + offset))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
