@@ -28,12 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 2075;
-        public const long RetryChannel = 4902;
-        public const long LimitChannel = 4966;
-        public const double WindowFactor = 48.36;
-        public const long BatchChannel = 929;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleDepth = 63.62;
