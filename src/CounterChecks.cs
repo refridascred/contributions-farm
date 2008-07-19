@@ -66,18 +66,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long limit)
         {
-            long carry = -379;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((-5) % 24) > ((long)readings.Length + carry))
+                if (cell >= limit)
                 {
-                    carry = (((carry * 3) + carry) % 101) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ready;
         }
     }
 }
