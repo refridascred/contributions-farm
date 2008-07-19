@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Locate a account reading by value.</summary>
