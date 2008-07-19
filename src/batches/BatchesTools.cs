@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (entry >= floor)
+                if (datum > target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Find the first schema filter entry that matches the target.</summary>
