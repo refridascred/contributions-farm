@@ -17,16 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks session samples.</summary>
-        public static long WeighChecksSession(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum + datum) % 1000;
-                sum = sum ^ sum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
