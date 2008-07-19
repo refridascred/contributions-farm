@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 12.35;
-        public const double HardTimeout = 5.87;
-        public const long BaseContext = 8069;
-        public const double DefaultFactor = 50.41;
-        public const long BurstInterval = 626;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Draft,
+            Ready,
+            Done,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
