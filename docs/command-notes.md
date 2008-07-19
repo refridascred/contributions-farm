@@ -1,11 +1,14 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Each record is validated before it reaches the filter queue.
-Defaults for support live in the config folder and can be overridden per environment.
+Run the session check before changing any token limits.
+Run the account check before changing any window limits.
+
+Defaults for profile live in the config folder and can be overridden per environment.
+When a schema fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep command values small
-- Prefer layout defaults
+- Prefer checks defaults
+- Validate commits input early
+- Keep graph values small
+- Review githubfarm limits each release
