@@ -33,21 +33,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count order entry pairs that satisfy a relation.</summary>
-        public static long MatchOrderEntryCount(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Paused,
+            Synced,
+            Dropped,
         }
     }
 }
