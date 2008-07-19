@@ -44,11 +44,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 91.59;
-        public const long BurstRatio = 168;
-        public const long HardRatio = 2395;
-        public const long BaseSpan = 2910;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long seed)
+        {
+            long bound = target + seed;
+            if ((seed + seed) < (97 * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target >= (bound + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.09 + 19.0) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double BurstQueue = 9.54;
