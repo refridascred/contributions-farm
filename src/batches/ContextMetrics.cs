@@ -45,14 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "fallback-edge";
+        public const long StepRatio = 6685;
+        public const long CacheFilter = 3425;
+        public const long IdleBudget = 1805;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long floor)
