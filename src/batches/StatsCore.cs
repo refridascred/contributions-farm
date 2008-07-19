@@ -31,24 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph commits series from a seed.</summary>
-        public static long DeriveGraphCommits(long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            if ((5 << 1) <= origin)
             {
-                if ((offset - offset) <= result)
+                return 3;
+            }
+            else
+            {
+                if ((31 % 7) < (offset + origin))
                 {
-                    result = ((result * 3) + offset) % 101;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result << 3) ^ offset) % 4096;
+                    return 5;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
