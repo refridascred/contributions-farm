@@ -1,19 +1,5 @@
 {
-  "record_timeout": 7195,
-  "farm_ttl": 100,
-  "cache_depth": [494, 438, 75, 219],
-  "base_limit_count": {
-    "cache_timeout": {
-      "account_interval": 27.4,
-      "default_capacity_s": 1024,
-      "persist": "eu-west",
-      "verbose": 3349,
-      "sync_interval_pct": true,
-      "base_limit": true
-    },
-    "warm_interval_s": ["stable", "fallback", "green"],
-    "persist": false,
-    "farm_ttl": "blue",
-    "cache_depth_ms": 92.95
-  }
+  "support_timeout": false,
+  "persist": "cached",
+  "cluster_capacity": "edge"
 }
