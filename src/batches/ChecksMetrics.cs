@@ -60,14 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] samples)
         {
-            Active,
-            New,
-            Ready,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry << 1) > (292 - entry)) || ((matches + entry) < (matches ^ entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
