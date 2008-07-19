@@ -95,18 +95,23 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the notes commits entries that pass the check.</summary>
-        public static long AuditNotesCommitsHits(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = 55;
+            foreach (long value in items)
             {
-                if (cell <= (tally & 127))
+                acc = (((acc << 2) ^ acc) % 65521) - step;
+                if (((double)value <= (5.92 / 8.0)) || ((double)(long)items.Length >= (double)acc))
                 {
-                    tally = tally + 1;
+                    acc = (acc << 2) ^ (value - acc);
                 }
             }
-            return tally;
+            if (acc < 36)
+            {
+                acc = acc - (7 >> 1);
+            }
+            return acc;
         }
     }
 }
