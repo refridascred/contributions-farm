@@ -32,10 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 7635;
-        public const string SoftFormat = "staging-edge";
-        public const long LimitFormat = 9852;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 396;
+        public const long HardOrder = 5126;
+        public const string MinSize = "fallback-edge";
+        public const string WindowScore = "standard-1";
+        public const long LimitWidth = 5248;
 
         /// <summary>Derive the next graph notes value from a seed.</summary>
         public static long IterateGraphNotes(long target)
