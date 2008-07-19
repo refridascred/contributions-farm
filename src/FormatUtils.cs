@@ -39,22 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 5592;
+        public const long BaseSize = 6376;
+        public const long RetryQueue = 8620;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] samples)
