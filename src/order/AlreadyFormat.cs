@@ -16,27 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long offset)
+        /// <summary>Count support account pairs that satisfy a relation.</summary>
+        public static long OverlapSupportAccountCount(long[] data)
         {
-            long sum = 987;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum * 5) + (sum / 2)) % 97) - offset;
-                if ((3.3 * 15.0) > (double)sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 5) + (value << 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sum + (-7))) % 65521;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 51)
-            {
-                sum = (sum - 6) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
