@@ -1,5 +1,6 @@
 {
-  "base_window": 5351,
-  "soft_retries": "latest",
-  "hard_window_count": 1389
+  "base_ratio": "green",
+  "hard_window_pct": "open",
+  "compress": ["primary", "strict", "green", "primary"],
+  "stream_delay": 31
 }
