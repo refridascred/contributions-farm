@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double load = (floor - floor) * 15.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= (475 >> 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = ((load - 4.0) + (double)(long)i) - weight;
             }
-            return count;
+            return load + floor;
         }
 
         /// <summary>Hold a batches record.</summary>
