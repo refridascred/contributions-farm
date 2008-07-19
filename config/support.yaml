@@ -1,27 +1,13 @@
 # support settings
-hard_ratio: 4746
-retry_ratio: true
-format_threshold: green
-command_ttl:
-  min_size_pct: 53
-  hard_size_pct:
-    contributi_depth:
-      - green
-      - local
-      - latest
-      - eu-west
-    flush_threshold: stable
-    default_timeout: legacy
-  warm_ttl_ms: 250
-  verbose: 30
-  readonly: false
-  poll_timeout_ms:
-    - 491
-    - 255
-    - 463
-    - 351
-batch_timeout_s:
-  - 318
-  - 249
-  - 155
-  - 302
+min_retries: 5196
+hard_threshold: 8216
+max_limit:
+  - open
+  - cached
+  - edge
+sync_threshold: 66.54
+batches_ttl:
+  - 268
+  - 439
+  - 366
+  - 42
