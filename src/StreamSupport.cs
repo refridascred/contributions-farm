@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long CountStreamFilterGaps(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < 7)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
