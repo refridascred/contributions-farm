@@ -50,14 +50,12 @@ namespace Common.Utilities
         public const long DefaultStats = 8883;
         public const long StepCount = 7916;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Queued,
-            Synced,
-            Failed,
-            Stale,
-            New,
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
