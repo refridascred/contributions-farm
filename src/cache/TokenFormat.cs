@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a support header.</summary>
