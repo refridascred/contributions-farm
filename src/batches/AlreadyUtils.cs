@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
