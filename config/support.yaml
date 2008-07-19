@@ -1,10 +1,18 @@
 # support settings
-readonly: cached
-metrics_ttl: 250
-idle_limit:
-  - open
-  - legacy
-  - primary
-contributi_interval: 100
-soft_limit_s: 100
-enabled: primary
+flush_timeout_s: cached
+default_ttl: 250
+default_depth_ms:
+  - 431
+  - 310
+  - 144
+githubfarm_depth:
+  - blue
+  - edge
+  - stable
+  - staging
+audit:
+  retry_interval_ms: 9
+  default_interval_count: 100
+  flush_timeout_count:
+    - standard
+    - legacy
