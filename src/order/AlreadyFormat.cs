@@ -72,14 +72,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values, long seed)
         {
-            Pending,
-            Stale,
-            Failed,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!((937 * 3) < (reading - reading)))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
