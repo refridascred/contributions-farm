@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Check that every layout window entry stays within the limit.</summary>
+        public static bool CheckLayoutWindowRange(long[] data, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
