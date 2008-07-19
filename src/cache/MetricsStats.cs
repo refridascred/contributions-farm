@@ -25,12 +25,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7063;
-        public const double CacheContext = 41.16;
-        public const long MaxTimeout = 9304;
-        public const long WindowSpan = 5657;
-        public const long StepDepth = 7002;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double bias)
+        {
+            double scale = (double)(13 + (-7));
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - (18.0 + bias)) + (double)(long)i) - ratio;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Adjust a notes counter reading.</summary>
         public static double ProjectNotesCounter(double bias, double span)
