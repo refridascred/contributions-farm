@@ -1,5 +1,5 @@
 # githubfarm settings
-idle_timeout_ms: true
-warm_ratio_ms: 1.81
-editor_size: 83.54
-account_window: 7040
+metrics_limit: primary
+soft_ttl_count: staging
+max_limit_s: 74.67
+profile_ttl: 6922
