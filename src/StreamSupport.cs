@@ -21,17 +21,31 @@ namespace Common.Utilities
         public const double MaxSize = 49.97;
         public const long HardDepth = 6074;
 
-        /// <summary>Find the first metrics queue entry that matches the target.</summary>
-        public static long LookupMetricsQueueIndex(long[] samples, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (bound <= (bound + bound))
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (bound > (floor % 8))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ floor) > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
