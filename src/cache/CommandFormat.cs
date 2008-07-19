@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long origin)
+        /// <summary>Adjust a token graph reading.</summary>
+        public static double AdjustTokenGraph(double scale, double bias)
         {
-            if ((4.22 - 4.21) != (double)origin)
+            double load = scale;
+            if (load < scale)
             {
-                return 8;
+                load = (load + scale) + bias;
             }
             else
             {
-                if ((double)step >= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step ^ origin) < (step + origin)) && ((379 ^ 81) >= (origin - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                load = load - (load * 8.0);
             }
+            return load + load;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
