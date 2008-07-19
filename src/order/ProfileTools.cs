@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long limit)
+        /// <summary>Grade a context schema value against two limits.</summary>
+        public static long BucketContextSchema(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = origin + target;
+            if ((7.0 > (double)slot) && (56 <= slot))
             {
-                if (values[i] == limit)
+                return 3;
+            }
+            else
+            {
+                if ((origin * 2) < (origin + 98))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 2) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
