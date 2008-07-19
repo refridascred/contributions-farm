@@ -1,5 +1,13 @@
 {
-  "graph_ttl": 9116,
-  "burst_ttl": 16,
-  "enabled": 83.94
+  "verbose": ["standard", "strict", "staging", "green"],
+  "already_size": "edge",
+  "warm_limit": 21,
+  "metric_delay": {
+    "hard_depth": 78,
+    "stream_capacity": false,
+    "base_size_pct": 3291,
+    "idle_depth": 100,
+    "commits_size": "fallback",
+    "poll_ratio_s": ["eu-west", "strict", "cached", "blue"]
+  }
 }
