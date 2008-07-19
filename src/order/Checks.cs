@@ -23,22 +23,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((954 + count) > count)
+                if (anchor >= (origin - (long)i))
                 {
-                    count = (count + 3) + datum;
+                    anchor = (anchor << 3) ^ (721 % 5);
+                    break;
                 }
-                else
+                if (anchor > ((long)i + anchor))
                 {
-                    count = count - 1;
+                    anchor = (anchor << 2) ^ (284 + 45);
+                    anchor = (anchor << 2) ^ (origin >> 5);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Project the next report value.</summary>
