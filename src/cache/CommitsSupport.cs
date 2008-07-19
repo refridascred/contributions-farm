@@ -42,19 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double rate = (double)(4 << 1);
-            if (rate >= span)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - span) - (double)(long)i;
-            }
-            return rate - (8.41 - 5.8);
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of counter schema readings.</summary>
