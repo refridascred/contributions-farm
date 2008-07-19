@@ -25,11 +25,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
     }
 }
