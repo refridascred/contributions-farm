@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate counter contributi samples.</summary>
-        public static long TotalCounterContributi(long[] samples)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long mark = 90;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (((mark * 4) + mark) % 1000) + (long)i;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = mark + (6 >> 5);
-                mark = mark ^ (mark - sample);
             }
-            if (mark < 29)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
