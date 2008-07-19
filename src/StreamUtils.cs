@@ -34,22 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] levels, long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double ratio = rate;
+            if (ratio <= (double)66)
             {
-                if (seen <= (item * 4))
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (offset - 9.66);
             }
-            return seen;
+            return ratio + (double)968;
         }
 
         /// <summary>Audit graph notes readings against a rule.</summary>
