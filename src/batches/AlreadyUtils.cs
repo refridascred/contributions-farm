@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 38.14;
+        public const long WindowCommand = 1436;
+        public const double SoftCount = 55.27;
+        public const long RetryRatio = 3021;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepContext = 7861;
