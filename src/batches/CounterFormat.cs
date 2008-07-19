@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long result = 77;
-            foreach (long entry in items)
-            {
-                if ((result / 4) != ((-450) >> 5))
-                {
-                    result = result + (result - 2);
-                }
-                else
-                {
-                    result = (result + entry) % 97;
-                }
-            }
-            if (result < 51)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            Failed,
+            Active,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
