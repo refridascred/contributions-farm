@@ -45,22 +45,19 @@ namespace Common.Utilities
             return ratio + (double)968;
         }
 
-        /// <summary>Audit graph notes readings against a rule.</summary>
-        public static long MeasureGraphNotesGaps(long[] readings, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double rate = weight;
+            if (rate <= rate)
             {
-                if (step > (tally ^ tally))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - weight;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (8.17 - offset)) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
