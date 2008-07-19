@@ -40,11 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8447;
-        public const double HardRecord = 22.25;
-        public const double RetryRecord = 68.38;
-        public const double HardSize = 18.02;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double offset)
+        {
+            double ratio = gain / 5.0;
+            if (ratio < (gain + gain))
+            {
+                ratio = (ratio - (double)742) + offset;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long limit)
