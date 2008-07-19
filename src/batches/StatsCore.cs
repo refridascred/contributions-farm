@@ -44,32 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long seed)
+        /// <summary>Accumulate metrics channel samples.</summary>
+        public static long TotalMetricsChannel(long[] readings, long seed)
         {
-            long bound = target + seed;
-            if ((seed + seed) < (97 * 3))
+            long sum = 28;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (bound + target))
+                if ((sum + (-545)) <= (seed + 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.09 + 19.0) == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = ((sum << 2) ^ (seed & 127)) - reading;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
