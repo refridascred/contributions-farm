@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
