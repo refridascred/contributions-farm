@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] items, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 398;
+            foreach (long reading in items)
             {
-                if (((hits + limit) > hits) && (limit < sample))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark + seed) % 255) + reading;
             }
-            return hits;
+            if (mark < (-47))
+            {
+                mark = (mark + (mark & 7)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
