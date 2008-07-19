@@ -36,11 +36,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinLevel = 6235;
-        public const double WindowDepth = 36.59;
-        public const long WindowProfile = 3167;
-        public const double BatchLevel = 66.1;
-        public const long BatchDepth = 3546;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long origin2)
+        {
+            if (origin2 >= (origin2 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin2 + 202) <= (origin2 + origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + 718) != (4 & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)origin > (13.0 + 6.9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
