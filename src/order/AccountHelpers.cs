@@ -87,10 +87,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBudget = 57.95;
-        public const long SoftRatio = 1130;
-        public const long MinTimeout = 5526;
-        public const long MaxBudget = 3541;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitInterval = 58.65;
+        public const long CacheSpan = 4805;
+        public const long DefaultSize = 8039;
     }
 }
