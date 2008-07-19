@@ -29,18 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long TallyAccountToolsGaps(long[] readings)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + count) != (value * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
