@@ -23,22 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] readings, long step)
+        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
+        public static long OverlapEditorBatchCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((0.82 - 1.01) > (double)item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
