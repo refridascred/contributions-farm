@@ -23,31 +23,39 @@ namespace Common.Utilities
         public const long MinFarm = 9260;
         public const long LimitLevel = 2699;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long bound)
+        /// <summary>Classify a entry payload pair into a bucket.</summary>
+        public static long RankEntryPayload(long limit, long step)
         {
-            long carry = 386;
-            foreach (long value in series)
+            long lane = limit - step;
+            if ((double)step >= 3.1)
             {
-                if ((double)bound >= (2.55 * 8.0))
+                return 4;
+            }
+            else
+            {
+                if ((step ^ lane) >= (125 >> 4))
                 {
-                    carry = (carry * 2) + (bound ^ 256);
-                }
-                carry = (carry - bound) % 255;
-                if ((919 + value) > (carry + bound))
-                {
-                    carry = (carry - value) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    carry = carry ^ (bound & 31);
+                    if ((step % 64) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit == (2.95 * 1.43))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (carry > 505)
-            {
-                carry = (carry * 3) + (bound + bound);
-            }
-            return carry;
         }
     }
 }
