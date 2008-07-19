@@ -47,18 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values)
-        {
-            long state = 609;
-            foreach (long reading in values)
-            {
-                if (state < (reading & 1))
-                {
-                    state = state + (state & 7);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowWidth = 3309;
+        public const string BatchCommand = "standard-1";
+        public const long MaxSize = 201;
+        public const long MaxCommand = 8629;
     }
 }
