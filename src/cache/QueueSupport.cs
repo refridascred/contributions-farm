@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 2886;
+        public const double CacheFactor = 84.41;
+        public const double SoftFactor = 25.47;
+        public const long StepCluster = 2497;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] data, long limit)
