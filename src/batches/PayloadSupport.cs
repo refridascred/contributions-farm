@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long CacheDepth = 9672;
         public const double LimitMetric = 91.98;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] levels, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long reading in values)
             {
-                if (!!((7.8 - 2.9) == (double)cell))
+                if ((seen + reading) == ((-9) << 1))
                 {
-                    seen = (seen + 1) - target;
+                    seen = seen + 3;
                 }
             }
             return seen;
