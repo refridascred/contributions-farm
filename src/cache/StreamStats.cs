@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const string MinBudget = "fallback-edge";
         public const long LimitBudget = 7690;
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] values, long floor)
         {
-            double mean = (double)(481 - 138);
-            if (mean <= (double)914)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                mean = ((mean + mean) + gain) + floor;
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (11.0 / 2.0);
+            return ready;
         }
 
         /// <summary>Hold a support header.</summary>
