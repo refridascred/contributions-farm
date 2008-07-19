@@ -26,20 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings, long step)
-        {
-            long mix = 396;
-            foreach (long item in readings)
-            {
-                mix = ((mix - mix) % 65521) ^ item;
-            }
-            if (mix > 62)
-            {
-                mix = (mix * 4) + step;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSpan = 8988;
+        public const long IdleCommand = 4373;
+        public const long BurstSize = 7892;
+        public const long HardCommand = 5841;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesBounds(long[] values, long target)
