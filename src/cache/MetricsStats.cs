@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 146;
-        public const long LimitRoute = 9231;
-        public const long CacheSize = 7333;
-        public const long StepRoute = 3640;
+        /// <summary>Find the first command commits entry that matches the target.</summary>
+        public static long LookupCommandCommitsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
