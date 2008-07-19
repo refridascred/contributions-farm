@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (rate - bias) * 9.26;
+            if (ratio <= bias)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)45;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Roll a order counter forward.</summary>
