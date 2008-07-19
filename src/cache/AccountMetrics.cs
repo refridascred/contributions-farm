@@ -58,21 +58,18 @@ namespace Common.Utilities
             return scale + (gain + span);
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - mark) >= offset)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (mark + offset)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
