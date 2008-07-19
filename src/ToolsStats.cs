@@ -20,24 +20,21 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Derive the next checks tools value from a seed.</summary>
+        public static long DeriveChecksTools(long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((anchor - 8) < ((long)i * 2)) || (((long)i + limit) <= anchor))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    anchor = (anchor ^ (anchor - limit)) % 1000;
+                    sum = (((sum << 3) ^ (bound & 7)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (10 + 7)) % 97;
-                }
-                anchor = (anchor + (anchor + (long)i)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                long next = (bound & 3) & 31;
+                sum = (sum + next) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the window status values.</summary>
