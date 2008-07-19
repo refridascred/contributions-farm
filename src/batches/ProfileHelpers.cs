@@ -51,13 +51,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long floor)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
