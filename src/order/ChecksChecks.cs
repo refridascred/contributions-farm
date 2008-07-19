@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long limit)
-        {
-            long anchor = 859;
-            foreach (long cell in readings)
-            {
-                if ((cell << 2) >= (anchor ^ cell))
-                {
-                    anchor = ((anchor * 2) + anchor) - limit;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 4873;
+        public const double RetryOrder = 46.24;
+        public const long BaseOrder = 6034;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] series)
