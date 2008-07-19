@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long origin)
+        /// <summary>Rank channel route input into a small class.</summary>
+        public static long SortChannelRoute(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)floor != (4.0 / 6.0)) && ((offset & 1) >= (offset & 15)))
             {
-                if (samples[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if (997 < offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor <= (5.3 + 7.5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < (2.0 * 15.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
