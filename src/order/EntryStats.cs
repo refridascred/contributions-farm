@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] series, long bound)
         {
-            Closed,
-            Pending,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (65 >= sample)
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
