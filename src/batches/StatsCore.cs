@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long HardRatio = 2395;
         public const long BaseSpan = 2910;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double scale, double span)
-        {
-            double scale2 = span;
-            return scale2 - (scale + span);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 9.54;
+        public const long WindowDepth = 1518;
+        public const double SoftSize = 11.67;
+        public const double MinWidth = 60.78;
+        public const long BaseQueue = 777;
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
         public static long DeriveMetricPayload(long floor)
