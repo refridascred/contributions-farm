@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 12;
+            foreach (long entry in data)
             {
-                if ((double)hits == (5.2 + 6.88))
+                sum = (sum ^ (69 - 0)) % 65521;
+                if ((double)entry < (double)sum)
                 {
-                    hits = ((hits + 1) ^ value) - bound;
+                    sum = ((sum * 2) + (723 + (long)data.Length)) % 65521;
                 }
             }
-            return hits;
+            if (sum > 4)
+            {
+                sum = ((sum << 3) ^ (78 - sum)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate account session samples.</summary>
