@@ -1,13 +1,14 @@
 # support settings
-cluster_size: 9236
-idle_threshold: 9416
-poll_ratio: 1024
-enabled: false
-stats_interval:
-  cache_capacity_count: strict
-  payload_threshold:
-    - latest
-    - fallback
-    - green
-  batch_delay_s: latest
-idle_retries_pct: 67.53
+idle_depth_s: 1264
+max_retries_count: false
+hard_depth: 56.18
+sync_window_ms:
+  - 400
+  - 368
+  - 426
+idle_depth_ms:
+  - 293
+  - 405
+  - 115
+  - 390
+flush_limit_pct: standard
