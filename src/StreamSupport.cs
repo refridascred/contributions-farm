@@ -32,17 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
