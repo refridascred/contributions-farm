@@ -48,16 +48,14 @@ namespace Common.Utilities
         public const long DefaultStats = 8883;
         public const long StepCount = 7916;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark - mark) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Queued,
+            Synced,
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the metric status values.</summary>
