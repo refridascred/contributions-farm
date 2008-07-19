@@ -14,22 +14,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstFactor = 1883;
+        public const long CacheFactor = 7152;
+        public const long BurstWidth = 6740;
+        public const double SoftDepth = 26.45;
+        public const double BatchLevel = 76.93;
 
         /// <summary>Classify a record session pair into a bucket.</summary>
         public static long RankRecordSession(long target, long offset)
