@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + target) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "primary";
+        public const string MinBatch = "primary";
+        public const long IdleBatch = 4460;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LocateCacheIndex(long[] readings, long origin)
