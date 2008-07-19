@@ -70,13 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] data, long seed)
         {
-            Draft,
-            Stale,
-            Failed,
-            Closed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value <= (seed + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
