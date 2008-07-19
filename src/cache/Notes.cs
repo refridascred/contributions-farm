@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double MinCount = 96.28;
         public const double CacheLayout = 16.12;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.0 / 4.0) >= (double)matches)
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    matches = (matches + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
