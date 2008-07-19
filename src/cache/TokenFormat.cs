@@ -41,11 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitTimeout = 7047;
-        public const long DefaultSize = 3730;
-        public const long StepFilter = 3166;
-        public const long DefaultFilter = 9022;
-        public const double CacheFilter = 81.43;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
