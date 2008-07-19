@@ -13,15 +13,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (((anchor - 8) < ((long)i * 2)) || (((long)i + limit) <= anchor))
+                {
+                    anchor = (anchor ^ (anchor - limit)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (10 + 7)) % 97;
+                }
+                anchor = (anchor + (anchor + (long)i)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
