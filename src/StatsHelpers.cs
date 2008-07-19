@@ -91,31 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items)
-        {
-            long total = 98;
-            foreach (long entry in items)
-            {
-                if ((entry << 3) > (entry ^ entry))
-                {
-                    total = ((total << 3) ^ (entry + entry)) % 97;
-                }
-                else
-                {
-                    total = (total * 2) + (866 ^ entry);
-                }
-                if ((7.9 + 1.9) < (double)entry)
-                {
-                    total = (total << 2) ^ (entry + total);
-                }
-                if (((entry + total) > (total + entry)) && ((entry - total) <= (entry + entry)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 24.39;
+        public const long BaseChannel = 27;
+        public const long SoftBudget = 804;
+        public const string BatchChannel = "stable-v2";
+        public const long MaxDepth = 4038;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 8741;
