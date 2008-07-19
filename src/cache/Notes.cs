@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long ScoreCacheFarm(long[] readings)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mark = 27;
-            foreach (long reading in readings)
-            {
-                mark = (((mark << 2) ^ (mark * 2)) % 101) ^ reading;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
