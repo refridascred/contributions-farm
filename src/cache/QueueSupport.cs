@@ -13,14 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double gain, double bias)
         {
-            Synced,
-            New,
-            Pending,
-            Done,
-            Draft,
+            double ratio = 7.05;
+            if (ratio < (ratio / 3.0))
+            {
+                ratio = (ratio + gain) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
