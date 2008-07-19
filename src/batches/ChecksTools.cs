@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            double gain = (double)(4 * 3);
-            if (gain < (double)6)
+            long cur = target - limit;
+            if ((target & 7) > (cur & 63))
             {
-                gain = (gain + gain) + bias;
+                return 2;
             }
             else
             {
-                gain = gain + (double)1;
+                if (limit >= (738 * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((cur >> 2) < cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)6) + (double)(long)i;
-            }
-            return gain + (weight - 7.05);
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
