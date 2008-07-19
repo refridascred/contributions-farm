@@ -71,25 +71,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] values, long limit)
         {
-            long offset = origin + limit;
-            if ((limit <= (offset + limit)) && ((double)offset < (double)origin))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (double)offset)
+                if ((double)(long)values.Length >= (1.3 + 13.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = ((seen + 1) + item) - limit;
                 }
             }
+            return seen;
         }
     }
 }
