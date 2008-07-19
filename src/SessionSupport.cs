@@ -16,20 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double floor)
-        {
-            double rate = floor;
-            if (rate < (bias / 3.0))
-            {
-                rate = rate - (double)33;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate / 6.0)) - (double)(long)i;
-            }
-            return rate - 6.3;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleBudget = 1800;
+        public const double LimitEditor = 70.02;
+        public const long CacheCount = 4761;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
