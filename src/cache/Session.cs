@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.3 - 6.1) <= (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + reading;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
