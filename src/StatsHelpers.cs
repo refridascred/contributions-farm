@@ -54,13 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long target2)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            if (target >= (target2 - target2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target2 < (20.0 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target * 5) >= 7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target >= (3.1 + 8.88))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
