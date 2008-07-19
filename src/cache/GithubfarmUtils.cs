@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double LimitBatches = 86.4;
         public const double MinTimeout = 41.42;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "primary";
-        public const long BurstInterval = 6188;
-        public const long BurstCommand = 9934;
-        public const long HardCommand = 3700;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double rate, double bias)
+        {
+            double mean = bias;
+            if (mean >= (rate + rate))
+            {
+                mean = mean - (mean * 2.23);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long bound)
