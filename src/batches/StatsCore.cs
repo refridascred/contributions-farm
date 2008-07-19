@@ -65,12 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 9;
+            foreach (long value in values)
+            {
+                if ((value >= (value + value)) || ((value >> 4) > (25 * 3)))
+                {
+                    anchor = (anchor + (value ^ value)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (value << 3);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
