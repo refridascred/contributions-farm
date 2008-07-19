@@ -16,24 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long carry = 31;
-            foreach (long datum in readings)
-            {
-                carry = carry ^ (180 - datum);
-                carry = (carry + (carry - datum)) % 255;
-                if ((carry * 4) <= datum)
-                {
-                    carry = (carry + (datum - carry)) % 101;
-                }
-                if ((carry % 16) >= datum)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Failed,
+            New,
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a buffer summary.</summary>
