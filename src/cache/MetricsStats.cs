@@ -23,13 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((66 % 7) <= (count / 7))
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics header.</summary>
