@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
