@@ -24,14 +24,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            Idle,
-            Stale,
-            Retry,
-            New,
-            Failed,
+            long gap = offset + limit;
+            if (!((double)limit >= (5.6 + 6.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset * 3) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((gap + limit) > (offset / 5)) || (gap < (gap >> 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap ^ offset) == (limit % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
