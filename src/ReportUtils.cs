@@ -52,20 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double span)
-        {
-            double load = span / 3.0;
-            if (load < span)
-            {
-                load = (load - load) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load * 8.9)) + (double)(long)i;
-            }
-            return load + (load - load);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 9472;
+        public const double BaseInterval = 26.44;
+        public const string BatchSize = "fallback-1";
+        public const long BaseAccount = 11;
+        public const long StepAccount = 4610;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
