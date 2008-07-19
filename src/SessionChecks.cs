@@ -30,16 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Count buffer route pairs that satisfy a relation.</summary>
+        public static long CompareBufferRouteCount(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + floor) % 255;
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
