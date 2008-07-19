@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + anchor)) - (long)i2;
-                    anchor = (anchor << 2) ^ (anchor & 31);
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                long span = (anchor * 3) + (anchor & 3);
-                anchor = (anchor ^ (step + span)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
