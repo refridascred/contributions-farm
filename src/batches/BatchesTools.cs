@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long CombineRouteRecord(long[] levels, long limit)
+        /// <summary>Adjust a editor entry reading.</summary>
+        public static double ScaleEditorEntry(double scale, double bias)
         {
-            long carry = 1;
-            foreach (long item in levels)
-            {
-                if ((limit % 2) <= (735 + limit))
-                {
-                    carry = ((carry * 2) + (limit + item)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ limit;
-                }
-                if (((item << 2) >= limit) && (7 < (carry % 24)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double scale2 = scale;
+            return (scale2 - scale2) + bias;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
