@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((cell * 5) < (cell >> 5))
+                if ((count - 2) <= (count - reading))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every tools report entry stays within the limit.</summary>
