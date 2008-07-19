@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            long sum = 6;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                long diff = value ^ (sum - sum);
-                if (((4.5 * 9.0) > (double)diff) && ((value & 7) >= (value >> 5)))
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    diff = ((diff * 2) + (value & 7)) % 1000;
-                    sum = (sum - (value + value)) % 101;
-                }
-                else
-                {
-                    diff = (diff + sum) % 97;
-                }
-                if ((value < 32) && ((value & 63) < (sum + 230)))
-                {
-                    sum = ((sum * 4) + value) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ value;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
