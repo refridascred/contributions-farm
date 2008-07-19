@@ -24,24 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long step, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] data, long floor)
         {
-            if ((620 + step) < (step & 63))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target & 127) != (664 >> 4))
+                if ((57 - item) == (item + hits))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
     }
 }
