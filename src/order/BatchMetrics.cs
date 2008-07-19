@@ -60,14 +60,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two session already measurements.</summary>
+        public static double AdjustSessionAlready(double ratio, double offset)
         {
-            Retry,
-            Closed,
-            Queued,
-            Paused,
-            Failed,
+            double drift = offset;
+            if (drift >= (ratio / 2.0))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - (double)1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
