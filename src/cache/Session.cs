@@ -23,18 +23,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((2.58 / 2.0) >= (double)limit2)
             {
-                if ((542 % 64) > (sample - matches))
+                return 5;
+            }
+            else
+            {
+                if (limit2 > (425 + 63))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
