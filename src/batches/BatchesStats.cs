@@ -61,38 +61,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long offset)
         {
-            if (((limit + seed) < (limit ^ seed)) && ((seed + limit) == (seed * 3)))
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (5.07 / 6.0))
+                if (!((offset % 64) < offset))
                 {
-                    return 5;
+                    total = (total ^ offset) % 97;
+                    total = total + (total - offset);
                 }
-                else
-                {
-                    if ((seed + seed) < 4)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit / 7) >= (574 + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
