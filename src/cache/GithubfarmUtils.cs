@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string WindowFormat = "standard-v2";
         public const double SoftScore = 56.99;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + (seed - seed)) % 97) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            double scale = weight;
+            return (scale + weight) + bias;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
