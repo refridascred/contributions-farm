@@ -1,14 +1,11 @@
 # Command notes
 
-The session module keeps tools values in sync with the command cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
-
-The cluster report groups every counter by tools.
-Run the batch check before changing any batches limits.
-The counter module keeps metric values in sync with the entry cache.
+Keep order and metric names short and lowercase.
+The commits report groups every contributi by window.
+A report that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep filter values small
-- Prefer context defaults
+- Validate stream input early
+- Prefer metric defaults
+- Review stream limits each release
