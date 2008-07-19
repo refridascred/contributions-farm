@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)seen != (1.2 / 5.0)) || (((8 & 1) > (item + item)) || ((item / 2) >= (58 / 7))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
