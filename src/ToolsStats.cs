@@ -38,13 +38,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Iterate the filter buffer series from a seed.</summary>
+        public static long DeriveFilterBuffer(long offset)
         {
-            Retry,
-            Stale,
-            Paused,
-            New,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
