@@ -31,22 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long bound)
         {
-            if ((5 << 1) <= origin)
+            if ((bound ^ bound) >= (offset + bound))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((31 % 7) < (offset + origin))
+                if (!((offset << 3) < bound))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    return 0;
                 }
             }
         }
