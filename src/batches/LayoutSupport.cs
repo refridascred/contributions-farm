@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 12.35;
+        public const double HardTimeout = 5.87;
+        public const long BaseContext = 8069;
+        public const double DefaultFactor = 50.41;
+        public const long BurstInterval = 626;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
