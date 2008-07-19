@@ -1,10 +1,15 @@
 # entry settings
-order_retries: 6.92
-dry_run: 8459
-schema_timeout:
-  - 165
-  - 103
-  - 29
-  - 140
-hard_depth_count: edge
-cache_interval_pct: standard
+cluster_ratio: true
+cluster_capacity:
+  readonly:
+    flush_limit: 11.12
+    strict: green
+    contributi_ttl: 27
+    schema_threshold: 78.23
+    warm_retries_pct: false
+  enabled: edge
+  poll_threshold:
+    - open
+    - cached
+    - edge
+already_capacity: 6023
