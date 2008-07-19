@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long offset)
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long TallyFarmOrder(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = 6;
+            foreach (long reading in data)
             {
-                if (((sample ^ offset) <= (hits - (-57))) || !(9 >= (sample - offset)))
+                total = (total ^ (reading >> 4)) % 97;
+                if ((4 - origin) <= origin)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total << 2) ^ origin) % 97;
                 }
             }
-            return hits;
+            if (total < 7)
+            {
+                total = (total * 3) + (origin + origin);
+            }
+            return total;
         }
 
         /// <summary>Iterate the contributi farm series from a seed.</summary>
