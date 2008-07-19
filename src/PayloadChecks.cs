@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 9650;
-        public const double BatchWindow = 60.52;
-        public const long CacheDepth = 2607;
+        /// <summary>Audit batches buffer readings against a rule.</summary>
+        public static long MeasureBatchesBufferOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long seed, long origin)
