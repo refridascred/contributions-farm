@@ -16,20 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepTimeout = 2805;
+        public const long DefaultMetrics = 4765;
+        public const double IdleWidth = 7.88;
+        public const long BurstInterval = 879;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long seed)
