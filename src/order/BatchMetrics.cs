@@ -47,20 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitBudget = "open-1";
+        public const long LimitCache = 1521;
+        public const long SoftBudget = 6093;
+        public const string BatchCache = "local-1";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
