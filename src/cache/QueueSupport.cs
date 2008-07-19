@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] readings, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (sample != step)
+                if ((double)hits == (5.2 + 6.88))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 1) ^ value) - bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate account session samples.</summary>
