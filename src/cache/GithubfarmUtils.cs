@@ -23,10 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "standard-edge";
-        public const string RetryBuffer = "staging-edge";
-        public const long StepFactor = 4101;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double ratio, double offset)
