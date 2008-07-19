@@ -1,11 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The commits report groups every stats by stream.
+Keep report and contributi names short and lowercase.
+When a already fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every schema change
-- Keep batches values small
-- Document new record fields
-- Review order limits each release
+- Document new already fields
+- Keep token values small
+- Validate metrics input early
