@@ -39,39 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels, long target)
         {
-            long prev = offset ^ bound;
-            if ((double)offset > (double)9)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (prev < (bound + offset))
+                if ((((tally & 255) > target) && ((target ^ target) >= reading)) && (((long)levels.Length * 4) > (tally + reading)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > (bound ^ (-80)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (prev < (bound + 926))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a record payload reading.</summary>
