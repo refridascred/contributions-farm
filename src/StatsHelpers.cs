@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 6716;
-        public const long BaseSupport = 5008;
-        public const string BaseSize = "local-1";
-        public const long WindowLevel = 8755;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
         public static long SortNotesFarm(long origin, long limit)
