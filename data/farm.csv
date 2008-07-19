@@ -1,7 +1,8 @@
-id,level,ratio,owner,active
-1,28.94,blue,951,11.13
-2,green,green,183,17.87
-3,open,212,238,697
-4,414,96.33,staging,738
-5,45.47,797,562,primary
-6,75.79,573,79.17,955
+id,active,token,ratio,owner
+1,72.61,71.56,672,669
+2,standard,314,551,340
+3,legacy,fallback,88.55,green
+4,207,959,49.34,51.79
+5,69,green,267,173
+6,strict,local,694,667
+7,389,672,eu-west,665
