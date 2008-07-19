@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (item < offset)
+                if ((seen & 31) <= (seen * 3))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ value) + offset;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
