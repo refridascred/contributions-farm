@@ -16,21 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor << 3) ^ offset) % 1000;
-                if (((long)i & 15) != (offset - anchor))
-                {
-                    anchor = anchor ^ 97;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the cache state values.</summary>
