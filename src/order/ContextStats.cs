@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] readings, long limit)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
