@@ -36,15 +36,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels, long floor)
         {
-            double scale2 = (scale - offset) * 2.0;
-            if (scale2 > (12.0 / 5.0))
+            long carry = 6;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - (offset * 8.96);
+                if (!((26 + cell) < carry))
+                {
+                    carry = ((carry ^ 131) % 97) + floor;
+                    carry = (carry - (cell + carry)) % 101;
+                    break;
+                }
+                carry = (carry + (cell + cell)) % 255;
             }
-            return scale2 - scale;
+            if (carry < 5)
+            {
+                carry = ((carry * 2) + (carry - (-735))) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a already reading by value.</summary>
