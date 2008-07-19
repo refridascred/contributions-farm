@@ -51,13 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long step)
         {
-            New,
-            Ready,
-            Retry,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
