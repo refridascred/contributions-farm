@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 2886;
-        public const double CacheFactor = 84.41;
-        public const double SoftFactor = 25.47;
-        public const long StepCluster = 2497;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            New,
+            Failed,
+            Closed,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] data, long limit)
