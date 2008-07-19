@@ -52,15 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
