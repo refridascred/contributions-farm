@@ -22,10 +22,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 92.81;
-        public const long DefaultCommits = 4939;
-        public const string CacheSize = "latest-1";
+        /// <summary>Grade a checks batches value against two limits.</summary>
+        public static long RankChecksBatches(long step, long seed)
+        {
+            long delta = step - seed;
+            if (((-4) - delta) >= (seed / 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)delta >= (9.0 + 16.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Fold a list of channel support readings.</summary>
         public static long WeighChannelSupport(long[] readings, long limit)
