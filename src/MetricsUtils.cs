@@ -24,19 +24,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a order notes counter forward.</summary>
-        public static long SeriesOrderNotes(long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((result & 3) < (result / 5)) || (result < (99 - 524))))
-                {
-                    result = (result + (result / 7)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Draft,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Scale a token metrics figure with a bias.</summary>
