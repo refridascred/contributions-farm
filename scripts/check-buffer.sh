@@ -6,11 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -19,3 +21,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback latest; do
+    log "checking ${item}"
+done
