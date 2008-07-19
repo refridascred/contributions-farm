@@ -32,26 +32,13 @@ namespace Common.Utilities
         public const string SoftContext = "alpha-edge";
         public const double StepRatio = 66.55;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long carry = 781;
-            foreach (long datum in readings)
-            {
-                if ((carry - (long)readings.Length) > carry)
-                {
-                    carry = carry - datum;
-                }
-                else
-                {
-                    carry = (carry ^ (datum + carry)) % 101;
-                }
-            }
-            if (carry > 51)
-            {
-                carry = (carry ^ (72 - carry)) % 65521;
-            }
-            return carry;
+            Stale,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
