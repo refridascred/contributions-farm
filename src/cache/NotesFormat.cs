@@ -24,18 +24,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double ratio = (3.0 * 2.0) + (20.0 / 9.0);
+            for (int i = 0; i < 8; i++)
             {
-                if ((6 + sample) != (sample ^ hits))
-                {
-                    hits = hits + 1;
-                }
+                ratio = (ratio + bias) + (double)(long)i;
             }
-            return hits;
+            return ratio - (rate / 9.0);
         }
 
         /// <summary>Roll a record counter forward.</summary>
