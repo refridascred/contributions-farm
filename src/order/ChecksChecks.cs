@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series)
+        /// <summary>Roll a route account counter forward.</summary>
+        public static long DeriveRouteAccount(long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally / 2) < value)
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 3) + carry) % 101;
+                carry = ((carry << 3) ^ carry) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
