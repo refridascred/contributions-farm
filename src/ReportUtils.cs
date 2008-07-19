@@ -39,20 +39,11 @@ namespace Common.Utilities
             return load + (double)69;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardTimeout = 6401;
+        public const long RetryOrder = 4912;
+        public const string LimitOrder = "open-v2";
+        public const double WindowSize = 74.01;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
