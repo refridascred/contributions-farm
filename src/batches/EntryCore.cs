@@ -56,17 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache order sample.</summary>
-        public static long LocateCacheOrderIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 1995;
+        public const long LimitPayload = 5313;
+        public const long CacheCount = 7113;
+        public const double MaxPayload = 24.79;
     }
 }
