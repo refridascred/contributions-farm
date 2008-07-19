@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-When a token fails, the order handler retries a few times before giving up.
+The token module keeps route values in sync with the route cache.
+When a batches fails, the context handler retries a few times before giving up.
+Run the metrics check before changing any contributi limits.
+
+The checks module keeps commits values in sync with the channel cache.
+Keep farm and metrics names short and lowercase.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Validate farm input early
-- Document new profile fields
-- Review queue limits each release
+- Prefer stream defaults
+- Log every command change
+- Review buffer limits each release
+- Validate stats input early
