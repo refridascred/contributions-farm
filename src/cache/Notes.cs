@@ -32,18 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long AuditTokenSupportGaps(long[] levels)
+        /// <summary>Derive the next batches contributi value from a seed.</summary>
+        public static long SeriesBatchesContributi(long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (7 > hits)
+                if (!((mark + origin) <= ((long)i - (long)i)))
                 {
-                    hits = (hits + 3) ^ value;
+                    mark = (mark ^ mark) % 65521;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the already status values.</summary>
