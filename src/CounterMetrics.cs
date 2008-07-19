@@ -36,14 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] items, long target)
         {
-            Queued,
-            Active,
-            Done,
-            Paused,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
