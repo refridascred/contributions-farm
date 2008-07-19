@@ -1,5 +1,6 @@
 {
-  "enabled": [67, 62],
-  "burst_timeout": [436, 224, 269, 202],
-  "layout_delay": "edge"
+  "sync_retries_count": "latest",
+  "warm_interval": true,
+  "context_ratio": false,
+  "verbose": 2098
 }
