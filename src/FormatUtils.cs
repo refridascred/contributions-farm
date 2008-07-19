@@ -58,21 +58,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series, long target)
+        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBufferLimits(long[] series, long target)
         {
-            long result = 545;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (!((754 + datum) != (target + result)))
+                if (item != target)
                 {
-                    result = (result - result) % 101;
-                    result = result ^ (datum / 5);
+                    flag = false;
+                    break;
                 }
-                result = (result + 149) % 101;
-                result = (result * 3) + 9;
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
