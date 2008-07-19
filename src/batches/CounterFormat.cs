@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] values, long target)
+        /// <summary>Project the next window metric value.</summary>
+        public static double SmoothWindowMetric(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean >= (bias - 8.22))
             {
-                if ((values[i] < target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (bias + bias);
             }
-            return -1;
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (9.0 / 4.0)) - (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
