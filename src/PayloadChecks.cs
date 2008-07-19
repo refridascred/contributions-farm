@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double mean = gain;
+            if (mean <= (gain + gain))
             {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + mean) - floor;
             }
-            return stale;
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
