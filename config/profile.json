@@ -1,6 +1,5 @@
 {
-  "verbose": "strict",
-  "window_ratio": "fallback",
-  "batches_ratio": 10.98,
-  "compress": "cached"
+  "cache_capacity": 27,
+  "soft_threshold_s": true,
+  "idle_window": 6708
 }
