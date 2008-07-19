@@ -22,12 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long floor, long bound)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long lane = floor ^ bound;
+            if ((bound << 2) <= (floor + lane))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor <= (1.74 / 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane > (3.0 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)bound > 2.4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout cache entries that pass the check.</summary>
