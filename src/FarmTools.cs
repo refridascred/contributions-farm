@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double ratio = (floor * 8.0) - 4.9;
-            if (ratio <= 1.67)
-            {
-                ratio = ratio + (floor + ratio);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio - gain;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
