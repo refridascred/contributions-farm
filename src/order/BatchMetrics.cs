@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate session graph readings against a bound.</summary>
-        public static bool CheckSessionGraphLimits(long[] items, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (item != target)
+                if ((hits - limit) > (limit + limit))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
