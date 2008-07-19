@@ -50,18 +50,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples)
-        {
-            long sum = 2;
-            foreach (long sample in samples)
-            {
-                if ((7.88 + 15.0) < (double)sum)
-                {
-                    sum = (sum + 51) ^ sample;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 51.91;
+        public const double StepContributi = 5.65;
+        public const string DefaultContributi = "legacy-1";
+        public const long CacheSize = 4750;
     }
 }
