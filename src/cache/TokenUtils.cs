@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "open-1";
+        public const double WindowInterval = 55.44;
+        public const string WindowAlready = "primary";
+        public const string BurstAlready = "open-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatOutliers(long[] values)
