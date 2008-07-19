@@ -58,15 +58,10 @@ namespace Common.Utilities
         public const string BatchChannel = "stable-v2";
         public const long MaxDepth = 4038;
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double floor)
-        {
-            double load = (double)42 + floor;
-            if (load >= floor)
-            {
-                load = (load - (8.1 / 8.0)) + scale;
-            }
-            return load + floor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 35.21;
+        public const long WindowFarm = 5314;
+        public const string StepFarm = "open-v2";
+        public const long IdleSpan = 2880;
     }
 }
