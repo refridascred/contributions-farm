@@ -78,21 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Look up the position of a metric profile sample.</summary>
+        public static long LocateMetricProfileIndex(long[] data, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((4.05 * 1.79) > (double)result))
+                if (data[i] <= floor)
                 {
-                    result = ((result * 2) + (seed & 255)) % 4096;
-                    result = result + ((long)i / 4);
-                    continue;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
