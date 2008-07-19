@@ -27,13 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            if ((limit % 97) < origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 3) <= (limit - 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin & 127) > ((-28) + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
