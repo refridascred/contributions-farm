@@ -20,22 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8579;
+        public const long WindowTools = 6030;
+        public const long LimitSpan = 8652;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] data, long offset)
