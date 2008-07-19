@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
             Dropped,
-            Idle,
-            New,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate context samples.</summary>
