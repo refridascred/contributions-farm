@@ -60,10 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinDepth = "staging-v2";
-        public const double LimitSchema = 0.14;
-        public const string MaxSchema = "stable-v2";
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long AuditContributiStreamMatches(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 5) < (891 - matches))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] items)
