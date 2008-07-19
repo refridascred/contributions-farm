@@ -67,12 +67,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
+            Active,
+            New,
+            Ready,
+            Failed,
             Done,
-            Closed,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
