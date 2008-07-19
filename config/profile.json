@@ -1,5 +1,5 @@
 {
-  "checks_threshold": 17.68,
-  "batches_capacity": true,
-  "persist": 1024
+  "counter_interval": "open",
+  "default_delay_s": "strict",
+  "cluster_limit": 40
 }
