@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((708 << 2) <= (item << 3)) || !(matches <= (item ^ matches)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up channel tools samples.</summary>
