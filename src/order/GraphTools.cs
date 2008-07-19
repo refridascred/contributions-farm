@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] values, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of already entries.</summary>
