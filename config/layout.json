@@ -1,12 +1,8 @@
 {
-  "dry_run": "standard",
-  "retry_window_s": {
-    "stats_interval": 9703,
-    "warm_window_s": 8125,
-    "cache_retries_pct": true,
-    "audit": "latest"
-  },
-  "hard_capacity_s": "primary",
-  "compress": true,
-  "retry_interval": "stable"
+  "readonly": "blue",
+  "cache_retries_s": "fallback",
+  "enabled": 500,
+  "default_threshold": 100,
+  "min_capacity_ms": "cached",
+  "base_threshold_s": 789
 }
