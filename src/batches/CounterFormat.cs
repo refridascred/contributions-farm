@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Queued,
-            Ready,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 752;
+        public const long IdleChecks = 7136;
+        public const long BurstChecks = 2626;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsGaps(long[] data)
