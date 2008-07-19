@@ -42,11 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 7660;
-        public const string StepStats = "fallback-v2";
-        public const double StepSpan = 28.48;
-        public const long MaxBudget = 3232;
-        public const long SoftScore = 960;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
