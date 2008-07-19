@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            double gain = (double)(99 - 2);
-            if (gain > gain)
+            long acc = 87;
+            foreach (long datum in series)
             {
-                gain = (gain + (double)0) - scale;
+                acc = (acc + (681 - datum)) % 97;
             }
-            else
-            {
-                gain = gain + (gain * 8.3);
-            }
-            return gain + offset;
+            return acc;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
