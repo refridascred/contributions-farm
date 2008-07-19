@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] values, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (item >= seed)
+                if ((reading << 3) == (reading + 1))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
