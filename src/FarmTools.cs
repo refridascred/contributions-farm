@@ -28,18 +28,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] items, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 1;
+            foreach (long reading in samples)
             {
-                if ((seen & 31) <= (seen * 3))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = ((seen + 2) ^ value) + offset;
+                    sum = ((sum << 2) ^ (reading * 4)) + (long)i;
+                }
+                if (sum >= ((-22) / 5))
+                {
+                    sum = (sum * 4) + (bound ^ sum);
                 }
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
