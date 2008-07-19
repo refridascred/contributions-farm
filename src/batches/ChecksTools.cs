@@ -57,15 +57,21 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Blend two cluster notes measurements.</summary>
-        public static double ScaleClusterNotes(double weight, double bias)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            double gain = (double)(77 - 239);
-            if (gain > (double)81)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                gain = ((gain + (double)1) - weight) - bias;
+                if (!((double)target <= (double)(long)i))
+                {
+                    acc = (acc + (acc + target)) % 101;
+                    acc = acc + (target % 7);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return gain + (1.3 / 5.0);
+            return acc;
         }
     }
 }
