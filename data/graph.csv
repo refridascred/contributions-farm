@@ -1,6 +1,9 @@
-id,active,state,score,rank
-1,45.0,378,standard,933
-2,primary,394,local,820
-3,480,primary,blue,staging
-4,798,7.65,61.48,edge
-5,68.96,685,74.59,green
+id,count,state,weight
+1,48.16,337,348
+2,295,68.61,88.47
+3,246,559,662
+4,71,99,124
+5,87,71.59,48.39
+6,92.69,599,standard
+7,571,89.1,862
+8,primary,70.75,15
