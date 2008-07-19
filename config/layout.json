@@ -1,15 +1,5 @@
 {
-  "soft_size_s": "strict",
-  "cache_ratio": {
-    "sync_delay": {
-      "layout_timeout": 4176,
-      "cache_limit_ms": "standard",
-      "compress": 19.72
-    },
-    "warm_interval_pct": "blue",
-    "soft_ratio_count": true
-  },
-  "verbose": "edge",
-  "soft_limit": "edge",
-  "flush_depth": 250
+  "metric_threshold": 9887,
+  "max_limit": true,
+  "account_capacity": 88.21
 }
