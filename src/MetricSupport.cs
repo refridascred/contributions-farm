@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 2103;
-        public const long BurstMetric = 3957;
-        public const long SoftMetric = 5088;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long bound)
+        {
+            long prev = limit + bound;
+            if (((double)limit != (double)540) || ((limit >> 1) >= 858))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit <= (limit / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7 + bound) == (bound / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (prev - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
