@@ -64,16 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long result = -462;
+            foreach (long value in items)
             {
-                total = ((total * 5) + (total - floor)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
+                if ((value << 1) >= value)
+                {
+                    result = (result ^ value) % 255;
+                }
             }
-            return total;
+            if (result < 594)
+            {
+                result = result + (result & 3);
+            }
+            return result;
         }
 
         /// <summary>Describe the tools kind values.</summary>
