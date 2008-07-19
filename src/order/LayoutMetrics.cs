@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits + reading) <= (reading % 8))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepRatio = 1876;
+        public const double BatchWidth = 87.98;
+        public const double CacheSize = 41.24;
+        public const long DefaultSpan = 6558;
+        public const long BurstEditor = 8484;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
