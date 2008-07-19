@@ -27,13 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Synced,
-            Failed,
-            Stale,
+            Ready,
             Paused,
+            Locked,
+            Draft,
         }
     }
 }
