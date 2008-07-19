@@ -1,18 +1,6 @@
 {
-  "dry_run": {
-    "queue_size": "cached",
-    "retry_depth_count": 1666,
-    "compress": 4579,
-    "audit": 86.51,
-    "persist": {
-      "min_delay": [158, 145, 469],
-      "layout_threshold": ["primary", "edge", "standard"],
-      "idle_retries": 7671,
-      "flush_ttl_count": 60,
-      "buffer_size": false,
-      "already_window": "staging"
-    }
-  },
-  "strict": true,
-  "audit": ["blue", "eu-west", "cached"]
+  "notes_ratio": false,
+  "compress": 82.65,
+  "audit": false,
+  "queue_limit": "local"
 }
