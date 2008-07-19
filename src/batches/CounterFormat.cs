@@ -33,11 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long seed)
         {
-            double drift = (weight / 3.0) / 2.0;
-            return (drift - (double)210) + span;
+            long delta = limit - seed;
+            if (((double)limit > 6.4) && ((double)limit <= (3.0 - 13.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)delta < (3.0 - 8.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit < (double)delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed - seed) != (seed % 10)) || ((4 / 2) <= (limit - seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
