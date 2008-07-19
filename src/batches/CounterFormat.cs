@@ -67,18 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((51 & 63) <= tally) && ((0.1 / 5.0) <= (double)reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
