@@ -67,17 +67,22 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-v2";
         public const string MaxWindow = "cached-edge";
 
-        /// <summary>Locate a report githubfarm reading by value.</summary>
-        public static long LocateReportGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -18;
+            foreach (long reading in levels)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((24 >> 3) <= (state & 127))
                 {
-                    return (long)i;
+                    state = (((state - (12 >> 5)) % 65521) + reading) + origin;
+                }
+                else
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
