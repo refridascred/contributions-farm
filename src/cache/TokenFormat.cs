@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long BaseInterval = 1647;
         public const string IdleChecks = "primary-v2";
 
-        /// <summary>Locate a filter report reading by value.</summary>
-        public static long SeekFilterReportIndex(long[] levels, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a token stats.</summary>
