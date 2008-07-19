@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "open-1";
+        public const string BaseTimeout = "staging";
+        public const long BurstEditor = 2322;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] items)
