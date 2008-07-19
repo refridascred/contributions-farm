@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 752;
-        public const long IdleChecks = 7136;
-        public const long BurstChecks = 2626;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long bound)
+        {
+            long lane = target ^ bound;
+            if ((3.5 / 2.0) >= (double)lane)
+            {
+                return 3;
+            }
+            else
+            {
+                if (329 <= (31 + lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 5) <= (lane / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((lane % 16) <= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long step, long target)
