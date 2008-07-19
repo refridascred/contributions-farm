@@ -13,24 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (carry > (seed - seed))
+                if ((double)matches >= (1.46 * 5.1))
                 {
-                    carry = carry - ((long)i >> 4);
-                    continue;
+                    matches = (matches + 2) ^ item;
                 }
-                else
-                {
-                    carry = carry ^ (seed * 5);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
