@@ -1,4 +1,17 @@
 # entry settings
-default_retries_pct: 1.35
-cache_limit: 35
-min_threshold_s: false
+batch_interval: false
+sync_ttl_count: eu-west
+schema_ttl: false
+burst_threshold_count: true
+counter_depth:
+  burst_retries_count: 89.44
+  metrics_capacity: 6
+  support_threshold: 83
+  retry_limit_pct: 5512
+  max_window_s: false
+  notes_size:
+    - 311
+    - 243
+    - 40
+    - 283
+compress: 47
