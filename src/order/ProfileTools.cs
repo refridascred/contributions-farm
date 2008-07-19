@@ -77,11 +77,26 @@ namespace Common.Utilities
         public const double MaxEntry = 87.43;
         public const long BaseEntry = 2232;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long ScoreNotesReport(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long acc = 782;
+            foreach (long item in samples)
+            {
+                if ((acc % 5) > (acc + acc))
+                {
+                    acc = ((acc + (22 - acc)) % 101) + item;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if ((double)acc > (8.0 - 9.0))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
