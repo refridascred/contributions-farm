@@ -44,12 +44,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values, long limit)
         {
-            Dropped,
-            Stale,
-            Idle,
+            long sum = 9;
+            foreach (long item in values)
+            {
+                sum = ((sum << 3) ^ limit) % 1000;
+                sum = sum ^ limit;
+                if ((208 + item) < sum)
+                {
+                    sum = ((sum * 2) + (limit + limit)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 4) + (long)values.Length;
+                }
+            }
+            return sum;
         }
     }
 }
