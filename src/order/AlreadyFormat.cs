@@ -51,12 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a format report figure with a bias.</summary>
+        public static double AdjustFormatReport(double scale, double floor)
         {
-            Ready,
-            Closed,
-            Done,
+            double bias = (double)(578 / 8);
+            if (bias > scale)
+            {
+                bias = (bias - 2.44) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - scale) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the layout kind values.</summary>
