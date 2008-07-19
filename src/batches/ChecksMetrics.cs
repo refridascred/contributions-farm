@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long score = 96;
-            foreach (long sample in values)
-            {
-                score = ((score - (score >> 1)) ^ sample) - seed;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
