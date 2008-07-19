@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (-4)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
