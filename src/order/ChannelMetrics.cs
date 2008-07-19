@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseInterval = 41.25;
-        public const long HardCluster = 6783;
-        public const long CacheWidth = 3696;
-        public const string StepDepth = "local-v2";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Closed,
+            Ready,
+            Done,
+            Synced,
+            Active,
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
