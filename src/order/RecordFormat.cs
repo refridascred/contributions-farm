@@ -45,26 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout channel samples.</summary>
-        public static long TallyLayoutChannel(long[] values, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings, long bound)
         {
-            long state = -9;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((datum * 5) >= (state - 0)) && ((double)datum < (5.5 - 13.0)))
+                if ((((item % 3) < (item >> 4)) && (tally <= (tally & 31))) && ((2.5 / 6.0) >= (double)item))
                 {
-                    state = ((state ^ (datum * 3)) % 1000) - origin;
-                }
-                else
-                {
-                    state = (state - (35 & 127)) % 255;
+                    tally = (tally + 2) + bound;
                 }
             }
-            if (state < 910)
-            {
-                state = (state ^ (state + 73)) % 101;
-            }
-            return state % 97;
+            return tally;
         }
     }
 }
