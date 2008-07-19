@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const string HardTools = "stable-v2";
         public const long BurstFactor = 8832;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Active,
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 4928;
+        public const long MaxTimeout = 9831;
+        public const string HardToken = "standard";
+        public const long DefaultToken = 7073;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] readings)
