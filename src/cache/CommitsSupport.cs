@@ -29,18 +29,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Find the first session checks entry that matches the target.</summary>
+        public static long SeekSessionChecksIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((72 * 3) >= (entry + entry))
+                if (levels[i] == floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
