@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseBudget = 1271;
-        public const long IdleDepth = 1643;
-        public const string WindowOrder = "cached";
-        public const long DefaultFactor = 945;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Queued,
+            Failed,
+            Draft,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
