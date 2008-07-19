@@ -38,23 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double rate = ratio;
-            if (rate > (double)5)
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (rate / 5.0);
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
