@@ -57,21 +57,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Count the channel counter entries that pass the check.</summary>
+        public static long TallyChannelCounterHits(long[] items, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (!((double)target <= (double)(long)i))
+                if ((seed + matches) > (5 - matches))
                 {
-                    acc = (acc + (acc + target)) % 101;
-                    acc = acc + (target % 7);
-                    continue;
+                    matches = (matches + 1) + datum;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
     }
 }
