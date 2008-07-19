@@ -77,11 +77,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Locate a report githubfarm reading by value.</summary>
+        public static long LocateReportGithubfarmIndex(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
