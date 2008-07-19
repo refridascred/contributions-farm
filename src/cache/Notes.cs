@@ -62,19 +62,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] levels, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
