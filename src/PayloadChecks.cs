@@ -19,10 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultSize = 17.18;
-        public const double SoftInterval = 53.96;
-        public const long CacheBuffer = 622;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 9650;
+        public const double BatchWindow = 60.52;
+        public const long CacheDepth = 2607;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long seed, long origin)
