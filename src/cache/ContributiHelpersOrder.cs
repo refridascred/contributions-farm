@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next filter metrics value from a seed.</summary>
-        public static long StepFilterMetrics(long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] levels, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                state = (state ^ state) % 255;
-                state = ((state * 2) + (long)i) % 1000;
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
