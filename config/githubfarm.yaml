@@ -1,37 +1,4 @@
 # githubfarm settings
-support_threshold:
-  burst_interval_s: false
-  strict: legacy
-  max_limit: primary
-graph_ratio: stable
-persist:
-  default_ttl: staging
-  idle_interval_pct:
-    - 144
-    - 112
-    - 91
-    - 397
-  max_retries_pct: 99
-  enabled: 83.78
-  batch_threshold_s: 88.68
-max_timeout_count:
-  already_retries: true
-  persist: false
-  sync_threshold_count:
-    min_ttl_pct: green
-    default_capacity: 10
-    account_size: fallback
-    default_retries_count: primary
-    format_capacity: 88.11
-    max_ttl_ms:
-      - 184
-      - 143
-      - 140
-      - 461
-  idle_size: stable
-  batch_interval: 28
-  audit:
-    - 290
-    - 400
-    - 235
-max_interval_ms: 6809
+batch_window: 3.59
+contributi_interval: 57.43
+hard_retries_pct: blue
