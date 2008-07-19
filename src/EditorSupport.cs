@@ -53,18 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] readings)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)hits == (9.03 / 9.0)) && ((hits & 1) > (hits & 31))) && ((-23) < (hits + hits)))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
