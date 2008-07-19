@@ -33,12 +33,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of tools editor entries.</summary>
+        public static long DigestToolsEditor(long[] levels)
         {
-            Ready,
-            Retry,
-            Failed,
+            long mark = 47;
+            foreach (long entry in levels)
+            {
+                mark = (((mark * 4) + (mark + 76)) % 255) + entry;
+            }
+            return mark;
         }
     }
 }
