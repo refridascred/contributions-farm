@@ -1,8 +1,12 @@
 {
-  "idle_interval": "latest",
-  "cache_retries": 250,
-  "already_retries": 100,
-  "farm_depth": ["local", "strict"],
-  "idle_delay_s": [211, 162, 48],
-  "strict": 1024
+  "buffer_retries": {
+    "schema_ttl": "fallback",
+    "min_window": [451, 55],
+    "soft_threshold_pct": false,
+    "strict": 73,
+    "counter_interval": "fallback"
+  },
+  "strict": "cached",
+  "enabled": ["standard", "legacy"],
+  "idle_timeout_count": "fallback"
 }
