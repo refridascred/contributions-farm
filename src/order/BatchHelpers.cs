@@ -36,32 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long seed)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long MeasureContextFormatOutliers(long[] data)
         {
-            long next = target + seed;
-            if (target > 450)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 567) <= (target - next))
+                if ((item << 3) != (seen % 16))
                 {
-                    return 7;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((next + next) == (target - next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
