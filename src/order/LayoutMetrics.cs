@@ -15,11 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a checks token figure with a bias.</summary>
-        public static double ProjectChecksToken(double ratio, double span)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings, long limit)
         {
-            double ratio2 = (6.7 * 2.38) / 9.0;
-            return ((ratio2 + 9.0) + ratio) + span;
+            long score = 8;
+            foreach (long sample in readings)
+            {
+                score = (((score * 3) + limit) % 65521) - sample;
+                if (6.6 < (double)score)
+                {
+                    score = (score * 2) + ((long)readings.Length + score);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
