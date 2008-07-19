@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging blue strict; do
+mode="${1:-cached}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy edge standard; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=277
-log "limit is ${COMMAND_LIMIT}"
+log "total ${total}"
