@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long total = 284;
+            foreach (long sample in samples)
             {
-                if (entry >= step)
+                if ((2.06 * 0.8) != (double)target)
                 {
-                    flag = false;
-                    break;
+                    total = (total * 2) + (target >> 3);
+                }
+                if (sample >= (sample >> 3))
+                {
+                    total = (total + ((-62) + sample)) % 101;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total - 572)) % 1000;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
