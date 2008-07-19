@@ -1,5 +1,27 @@
 {
-  "burst_retries_ms": "strict",
-  "idle_retries_count": 4280,
-  "default_capacity_pct": [115, 129, 70, 66]
+  "entry_ratio": {
+    "hard_size": 38.44,
+    "report_delay": 34.49,
+    "default_retries_s": {
+      "channel_limit": 58,
+      "flush_ttl_count": 46.9,
+      "max_interval": false,
+      "enabled": 68,
+      "retry_retries": "staging",
+      "max_depth": 855
+    },
+    "verbose": [223, 351]
+  },
+  "idle_window_s": 6.78,
+  "soft_capacity": {
+    "persist": {
+      "soft_limit_ms": true,
+      "account_size": false,
+      "dry_run": 53.2
+    },
+    "commits_depth": 60,
+    "audit": "fallback",
+    "enabled": false,
+    "sync_retries_s": 250
+  }
 }
