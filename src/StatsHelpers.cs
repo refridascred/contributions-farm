@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long target, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long floor)
         {
-            long cur = target ^ offset;
-            if ((offset % 3) <= (offset + offset))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (cur > (target + (-51)))
+                if ((sample - tally) >= (579 ^ floor))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target - cur) >= cur) || ((double)86 == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
