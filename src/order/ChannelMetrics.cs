@@ -18,20 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream record series from a seed.</summary>
-        public static long IterateStreamRecord(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] data, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long state = 623;
+            foreach (long entry in data)
             {
-                total = total + (offset + (long)i);
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((state - state) == (state << 2)) && (44 <= (limit ^ state)))
                 {
-                    total = (((total * 5) + total) % 255) ^ (long)i2;
+                    state = (state + (limit - limit)) % 97;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                if (!((3 / 5) == (entry << 2)))
+                {
+                    state = (state - entry) % 97;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (entry >> 2)) % 255;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Classify a entry payload pair into a bucket.</summary>
