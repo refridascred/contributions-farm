@@ -81,19 +81,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long result = 59;
+            foreach (long sample in data)
             {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result - (sample % 24)) - bound;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
