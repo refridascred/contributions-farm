@@ -29,16 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long TallyMetricsEditorOutliers(long[] values, long step)
         {
-            long result = 981;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                result = (result - ((long)readings.Length - value)) % 101;
-                result = (result - (7 >> 3)) % 255;
+                if ((matches + step) <= (step + 6))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Adjust a payload token reading.</summary>
