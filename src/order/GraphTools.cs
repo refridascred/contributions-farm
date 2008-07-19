@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next contributi layout value from a seed.</summary>
-        public static long RollContributiLayout(long limit)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + limit) % 4096;
-                if ((double)(long)i >= (double)7)
-                {
-                    state = (state ^ (limit + state)) % 101;
-                }
-                else
-                {
-                    state = (state * 3) + (state & 255);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
