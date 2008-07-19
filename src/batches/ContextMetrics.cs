@@ -31,25 +31,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a checks batches value against two limits.</summary>
-        public static long RankChecksBatches(long step, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] series, long limit)
         {
-            long delta = step - seed;
-            if (((-4) - delta) >= (seed / 7))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta >= (9.0 + 16.0))
+                if (reading < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of channel support readings.</summary>
