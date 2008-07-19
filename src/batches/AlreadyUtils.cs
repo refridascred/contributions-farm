@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
