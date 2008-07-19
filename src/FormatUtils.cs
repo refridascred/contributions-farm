@@ -44,18 +44,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally - 8) != (value & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
