@@ -33,19 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits < (8.3 * 3.0))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6202;
+        public const long BurstFactor = 1761;
+        public const string HardInterval = "latest-edge";
+        public const long RetryBudget = 1794;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowWidth = 3309;
