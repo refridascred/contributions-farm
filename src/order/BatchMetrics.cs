@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long offset)
         {
-            Pending,
-            New,
-            Failed,
-            Queued,
-            Ready,
+            long result = 4;
+            foreach (long sample in values)
+            {
+                if ((double)result < (16.0 / 7.0))
+                {
+                    result = ((result * 4) + (result - sample)) - offset;
+                }
+                else
+                {
+                    result = ((result * 3) + (sample * 4)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi header.</summary>
