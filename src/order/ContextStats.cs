@@ -48,22 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command tools entries.</summary>
-        public static long TotalCommandTools(long[] samples, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] items)
         {
-            long carry = 5;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((carry & 1) >= (carry + value))
+                if ((count < datum) && ((datum ^ count) <= (datum >> 2)))
                 {
-                    carry = (carry - (floor % 60)) % 255;
+                    count = count + 3;
                 }
             }
-            if (carry < 7)
-            {
-                carry = (carry ^ (carry + floor)) % 4096;
-            }
-            return carry;
+            return count;
         }
     }
 }
