@@ -28,12 +28,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleBudget = "strict-1";
+        public const long BurstCache = 8696;
+        public const double IdleCache = 10.0;
     }
 }
