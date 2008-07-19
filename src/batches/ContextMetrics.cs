@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const string LimitInterval = "staging";
         public const long CacheBatch = 1592;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
