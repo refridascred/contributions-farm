@@ -47,12 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] data, long origin)
         {
-            Stale,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
