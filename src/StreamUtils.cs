@@ -34,15 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            double ratio = rate;
-            if (ratio <= (double)66)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (offset - 9.66);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + (double)968;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
