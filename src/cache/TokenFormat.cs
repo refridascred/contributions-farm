@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseInterval = 1647;
         public const string IdleChecks = "primary-v2";
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Active,
-            Synced,
-            Closed,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a token stats.</summary>
