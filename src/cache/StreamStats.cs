@@ -15,21 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long MatchGithubfarmWindowCount(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 5;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step % 3) < ((long)samples.Length - mix))
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix + (mix & 15)) % 97) + cell;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Project the next report value.</summary>
