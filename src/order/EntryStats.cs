@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many layout profile samples are out of range.</summary>
-        public static long TallyLayoutProfileGaps(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((((-2) + tally) > sample) && ((double)sample <= (14.0 - 7.1))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
