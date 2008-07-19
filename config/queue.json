@@ -1,15 +1,18 @@
 {
-  "min_ratio_s": {
-    "max_limit_count": {
-      "context_capacity": ["eu-west", "latest"],
-      "warm_timeout_pct": "staging",
-      "flush_limit_ms": "standard",
-      "strict": [125, 45],
-      "schema_threshold": false
+  "enabled": false,
+  "counter_limit": 73.4,
+  "min_threshold_count": 7891,
+  "default_delay": {
+    "idle_timeout": {
+      "default_depth_pct": "fallback",
+      "commits_threshold": 64.05,
+      "persist": 50,
+      "strict": false
     },
-    "sync_ratio_ms": 9408,
-    "burst_retries_s": 92
-  },
-  "token_ttl": true,
-  "stats_delay": 5860
+    "readonly": "eu-west",
+    "base_threshold_count": "edge",
+    "poll_window_count": 6113,
+    "warm_ttl": [259, 68, 116, 345],
+    "stream_delay": "latest"
+  }
 }
