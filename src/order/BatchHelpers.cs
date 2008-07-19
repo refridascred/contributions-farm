@@ -51,12 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long ScoreContributiFarm(long[] values, long target)
         {
-            Active,
-            Retry,
-            Failed,
+            long total = 7;
+            foreach (long reading in values)
+            {
+                if (reading >= (506 + reading))
+                {
+                    total = ((total - ((long)values.Length >> 4)) % 101) - target;
+                }
+            }
+            return total % 65521;
         }
     }
 }
