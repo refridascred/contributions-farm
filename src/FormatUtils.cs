@@ -13,17 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first command report entry that matches the target.</summary>
-        public static long LookupCommandReportIndex(long[] series, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
