@@ -27,16 +27,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                score = score + ((long)i & 15);
-                score = ((score * 3) + (long)i) % 4093;
+                if (!((limit + limit) > mark))
+                {
+                    mark = (mark ^ (limit - (long)i)) % 1000;
+                    break;
+                }
+                mark = mark ^ (limit << 2);
+                mark = (mark * 4) + (mark * 3);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the context class values.</summary>
