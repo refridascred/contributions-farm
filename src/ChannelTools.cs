@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
-        public static long CountEditorGithubfarmMatches(long[] samples, long step)
+        /// <summary>Grade a report batch value against two limits.</summary>
+        public static long GradeReportBatch(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((seed >> 2) < seed)
             {
-                if (!(((double)hits != (8.9 + 1.97)) && ((double)hits >= (9.62 / 9.0))))
+                return 0;
+            }
+            else
+            {
+                if (seed <= (seed << 3))
                 {
-                    hits = ((hits + 1) + cell) + step;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 2) > (seed2 ^ seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed2 << 1) == (seed >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
