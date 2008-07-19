@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate filter batch readings against a bound.</summary>
-        public static bool GuardFilterBatchRange(long[] samples, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
