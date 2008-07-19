@@ -38,23 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session githubfarm figure with a bias.</summary>
-        public static double ProjectSessionGithubfarm(double bias, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double rate = floor;
-            if (rate < floor)
-            {
-                rate = (rate + 16.0) + bias;
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - rate;
+            Paused,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
