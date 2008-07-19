@@ -46,13 +46,22 @@ namespace Common.Utilities
         public const double RetryRecord = 68.38;
         public const double HardSize = 18.02;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels, long limit)
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long state = 1;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state + (long)levels.Length) % 1000) ^ (long)i;
+                }
+                if ((limit * 4) <= 70)
+                {
+                    state = (state ^ (entry & 127)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
