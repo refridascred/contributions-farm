@@ -56,18 +56,17 @@ namespace Common.Utilities
         public const double LimitTimeout = 87.2;
         public const long IdleCount = 9947;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long target)
         {
-            long score = -77;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((16.0 + 8.0) <= (double)score))
+                if (series[i] < target)
                 {
-                    score = (score << 3) ^ item;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
