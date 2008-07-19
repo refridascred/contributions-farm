@@ -29,19 +29,38 @@ namespace Common.Utilities
             return load - (weight * 5.5);
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long step)
+        /// <summary>Classify a metric contributi pair into a bucket.</summary>
+        public static long ClassifyMetricContributi(long bound, long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            if (!((3.36 / 7.0) < (double)seed))
             {
-                if (item != step)
+                return 4;
+            }
+            else
+            {
+                if (((-36) + bound) >= bound)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 5) < (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound % 97) > (63 ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
