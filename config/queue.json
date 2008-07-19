@@ -1,6 +1,7 @@
 {
-  "base_ratio": "green",
-  "hard_window_pct": "open",
-  "compress": ["primary", "strict", "green", "primary"],
-  "stream_delay": 31
+  "compress": true,
+  "warm_depth_count": 88,
+  "default_limit_ms": 2781,
+  "sync_ttl_s": "legacy",
+  "checks_delay": "edge"
 }
