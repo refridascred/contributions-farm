@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            double gain = (double)8 / 9.0;
-            if (gain >= (double)593)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain - rate;
+                carry = (carry - limit) % 97;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + (8.39 + bias);
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
