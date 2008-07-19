@@ -25,10 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchInterval = 8010;
-        public const long HardWindow = 7461;
-        public const long DefaultFactor = 9668;
-        public const long CacheWindow = 7740;
+        /// <summary>Match up layout payload samples.</summary>
+        public static long OverlapLayoutPayloadCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
