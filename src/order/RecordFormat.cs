@@ -50,9 +50,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8955;
-        public const long SoftWindow = 2727;
-        public const long LimitWindow = 3060;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long bound)
+        {
+            long anchor = 228;
+            foreach (long datum in samples)
+            {
+                if ((bound + 80) >= (239 << 2))
+                {
+                    anchor = (((anchor << 2) ^ (long)samples.Length) % 255) ^ datum;
+                }
+                if ((anchor >> 1) == (35 + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 78)
+            {
+                anchor = anchor + (bound - bound);
+            }
+            return anchor % 65521;
+        }
     }
 }
