@@ -24,32 +24,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            long bound = limit ^ origin;
-            if ((double)bound > (0.5 - 4.0))
+            double load = floor;
+            if (load >= (load * 8.0))
             {
-                return 0;
+                load = (load - (double)21) + weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((4 + bound) >= (bound & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound - 60) > bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = (load - load) + (double)(long)i;
             }
+            return load + (double)69;
         }
 
         /// <summary>Define account limits and defaults.</summary>
