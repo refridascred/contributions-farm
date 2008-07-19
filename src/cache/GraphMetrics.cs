@@ -27,13 +27,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "primary-v2";
+        public const long IdleDepth = 7547;
+        public const long MinFormat = 2156;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] items, long bound)
