@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] readings, long origin)
         {
-            Ready,
-            Pending,
-            Idle,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 127) == (tally / 6))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
