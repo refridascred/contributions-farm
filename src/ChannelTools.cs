@@ -17,11 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "primary";
-        public const long MaxAccount = 1361;
-        public const long IdleAccount = 910;
-        public const long HardAccount = 1540;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items, long floor)
+        {
+            long mark = -31;
+            foreach (long value in items)
+            {
+                mark = ((mark * 3) + (floor - 9)) - value;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] series)
