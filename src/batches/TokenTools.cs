@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long next = bound + bound2;
+            if (!((bound2 % 5) <= (next + 200)))
             {
-                if ((sample << 2) == (hits >> 4))
+                return 6;
+            }
+            else
+            {
+                if (((bound2 + 42) == (bound + bound2)) || ((1 + bound2) >= (next - 0)))
                 {
-                    hits = (hits + 1) + floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((1 + 62) == (next - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
