@@ -1,6 +1,20 @@
 {
-  "burst_ratio_s": 30.43,
-  "flush_interval_pct": "stable",
-  "idle_size": 99,
-  "dry_run": 92.18
+  "batch_depth_s": 15,
+  "verbose": {
+    "idle_size": "local",
+    "idle_interval_ms": "staging",
+    "poll_window": false,
+    "profile_retries": {
+      "readonly": 65,
+      "flush_size_pct": true,
+      "idle_retries": ["latest", "edge", "primary"],
+      "enabled": ["staging", "eu-west"],
+      "batch_retries_count": true
+    },
+    "batch_ttl": false,
+    "cache_capacity_count": "eu-west"
+  },
+  "sync_size": 48,
+  "hard_size_pct": 5673,
+  "support_delay": 26.85
 }
