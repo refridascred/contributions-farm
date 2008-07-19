@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a format info.</summary>
