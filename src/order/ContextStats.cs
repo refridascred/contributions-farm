@@ -37,12 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of command tools entries.</summary>
+        public static long TotalCommandTools(long[] samples, long floor)
         {
-            Pending,
-            Failed,
-            Queued,
+            long carry = 5;
+            foreach (long value in samples)
+            {
+                if ((carry & 1) >= (carry + value))
+                {
+                    carry = (carry - (floor % 60)) % 255;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ (carry + floor)) % 4096;
+            }
+            return carry;
         }
     }
 }
