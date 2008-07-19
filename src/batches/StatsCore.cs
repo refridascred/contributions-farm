@@ -65,14 +65,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            Pending,
-            Synced,
-            Draft,
-            Ready,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ limit) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
