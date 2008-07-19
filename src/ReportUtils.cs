@@ -76,18 +76,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((hits << 2) <= hits) && ((cell * 3) != (cell << 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Retry,
+            Synced,
         }
     }
 }
