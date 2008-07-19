@@ -42,17 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 86;
+            foreach (long value in samples)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                result = ((result << 3) ^ (result >> 3)) % 97;
+                if ((result >> 1) > 29)
                 {
-                    return (long)i;
+                    result = (result * 2) + value;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
