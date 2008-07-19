@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] readings, long bound)
         {
-            if ((target >> 1) < (target + origin))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin > (origin / 6)))
+                if (!(9.22 >= (double)bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) > (origin >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin > (5.0 + 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
