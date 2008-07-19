@@ -62,12 +62,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 5986;
-        public const long BatchMetric = 8198;
-        public const long BatchFactor = 56;
-        public const long BaseMetric = 8558;
-        public const long BurstFactor = 3033;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
+        {
+            long total = 3;
+            foreach (long reading in readings)
+            {
+                if ((double)reading < (1.79 / 9.0))
+                {
+                    total = (total - (total >> 1)) % 65521;
+                }
+                if ((total + 1) != (9 - 303))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorGaps(long[] levels, long seed)
