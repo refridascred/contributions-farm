@@ -64,13 +64,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate cluster checks readings against a bound.</summary>
+        public static bool CheckClusterChecksLimits(long[] data, long step)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
