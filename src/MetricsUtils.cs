@@ -23,11 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Done,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a cache entry.</summary>
