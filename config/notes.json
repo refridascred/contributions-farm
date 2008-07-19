@@ -1,13 +1,5 @@
 {
-  "persist": 3861,
-  "farm_limit": {
-    "profile_capacity": "legacy",
-    "poll_size": 80,
-    "poll_threshold_count": [187, 482],
-    "retry_retries_pct": 83.0,
-    "sync_interval_pct": [373, 174]
-  },
-  "token_interval": 1.43,
-  "metric_capacity": 94.14,
-  "account_capacity": false
+  "retry_size": 8880,
+  "soft_limit": 87.1,
+  "idle_threshold": 2894
 }
