@@ -20,32 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank report batches input into a small class.</summary>
-        public static long ClassifyReportBatches(long step, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long bound = step - origin;
-            if (((double)origin < (3.19 + 13.0)) && ((step << 1) < 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 0) > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + 81) > (bound % 60)) || ((step >> 4) == (step / 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the batch level values.</summary>
