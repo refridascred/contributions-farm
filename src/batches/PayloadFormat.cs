@@ -34,11 +34,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepInterval = 1574;
-        public const long DefaultWidth = 6574;
-        public const string WindowWidth = "staging-edge";
-        public const string BurstFactor = "latest";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long seed)
+        {
+            if (!(seed <= (987 % 60)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.7 / 6.0) != (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] values, long step)
