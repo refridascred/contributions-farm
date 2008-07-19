@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout cache entries that pass the check.</summary>
-        public static long AuditLayoutCacheGaps(long[] values, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((bound % 16) > reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
