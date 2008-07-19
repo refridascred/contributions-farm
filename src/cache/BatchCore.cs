@@ -27,19 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] series, long limit)
         {
-            double weight = (bias + 3.94) * 7.0;
-            if (weight < (double)858)
+            bool found = true;
+            foreach (long datum in series)
             {
-                weight = weight + (rate - bias);
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (weight / 2.0);
-            }
-            return weight - (7.7 * 8.0);
+            return found;
         }
 
         /// <summary>Accumulate stream samples.</summary>
