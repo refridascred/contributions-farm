@@ -43,11 +43,20 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6977;
-        public const double WindowCount = 54.28;
-        public const long MinRoute = 550;
-        public const long MaxSpan = 5914;
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double span)
+        {
+            double rate = (double)(4 << 1);
+            if (rate >= span)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - span) - (double)(long)i;
+            }
+            return rate - (8.41 - 5.8);
+        }
 
         /// <summary>Compare every pair of counter schema readings.</summary>
         public static long PairCounterSchemaCount(long[] data)
