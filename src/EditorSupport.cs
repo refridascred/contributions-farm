@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 3472;
-        public const long IdleBatch = 1494;
-        public const long MinDepth = 7527;
-        public const long MinBatch = 1297;
-        public const long WindowTimeout = 1602;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftScore = 6572;
+        public const long SoftEntry = 8975;
+        public const double DefaultFactor = 65.61;
+        public const string BurstRatio = "cached";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
