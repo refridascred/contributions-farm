@@ -1,5 +1,5 @@
 {
-  "batch_retries": 30,
-  "min_depth_s": ["cached", "fallback"],
-  "warm_timeout_s": 3313
+  "hard_ratio": 98,
+  "max_ttl_pct": 12,
+  "base_limit_count": 51
 }
