@@ -46,13 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchBudget = 3817;
+        public const long IdleQueue = 8170;
+        public const double MinQueue = 32.16;
+        public const double MinCount = 68.59;
+        public const long WindowQueue = 7404;
 
         /// <summary>Digest a series of record cache entries.</summary>
         public static long CombineRecordCache(long[] samples)
