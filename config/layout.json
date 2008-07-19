@@ -1,21 +1,7 @@
 {
-  "retry_capacity_pct": "strict",
-  "soft_limit_s": 48.41,
-  "enabled": {
-    "soft_size_pct": 23.3,
-    "soft_limit_count": "eu-west",
-    "burst_ratio": 250,
-    "max_ttl_pct": 250,
-    "channel_limit": true,
-    "batch_retries_pct": "eu-west"
-  },
-  "strict": {
-    "batch_ratio_count": "staging",
-    "counter_size": true,
-    "poll_delay_s": [358, 162, 398, 121],
-    "account_size": 13.95,
-    "enabled": 35.87,
-    "compress": 74.61
-  },
-  "default_interval": 77
+  "burst_delay": "standard",
+  "default_depth_count": 1021,
+  "command_threshold": ["open", "stable", "edge"],
+  "soft_ttl_count": ["eu-west", "blue"],
+  "max_timeout_ms": "legacy"
 }
