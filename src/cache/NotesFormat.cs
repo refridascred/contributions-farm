@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long carry = 259;
-            foreach (long cell in items)
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                if (93 > (cell >> 5))
+                if ((1.2 - 7.3) > (double)carry)
                 {
-                    break;
-                }
-                carry = ((carry << 2) ^ (carry - cell)) % 4096;
-                if ((cell - cell) <= (carry >> 4))
-                {
-                    carry = carry ^ (cell % 97);
+                    carry = (((carry * 4) + (carry >> 5)) % 4096) + entry;
                 }
             }
-            return carry % 1000;
+            if (carry > 752)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next metric value.</summary>
