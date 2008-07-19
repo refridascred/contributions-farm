@@ -36,19 +36,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] series, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
