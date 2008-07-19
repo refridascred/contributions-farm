@@ -1,18 +1,8 @@
 # support settings
-flush_timeout_s: cached
-default_ttl: 250
-default_depth_ms:
-  - 431
-  - 310
-  - 144
-githubfarm_depth:
-  - blue
-  - edge
-  - stable
-  - staging
-audit:
-  retry_interval_ms: 9
-  default_interval_count: 100
-  flush_timeout_count:
-    - standard
-    - legacy
+idle_size: stable
+warm_window: fallback
+commits_timeout: cached
+min_limit_pct: 8126
+githubfarm_retries:
+  - eu-west
+  - strict
