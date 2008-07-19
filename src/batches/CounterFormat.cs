@@ -12,27 +12,22 @@ namespace Common.Utilities
         public const long MinInterval = 9902;
         public const long SoftQueue = 6580;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] values, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((acc + 757) <= (long)i)
+                if (((value + 0) != (36 ^ value)) || !(4.71 < (double)matches))
                 {
-                    acc = (acc * 3) + (bound / 7);
+                    matches = (matches + 2) + seed;
                 }
-                if ((acc % 7) >= (acc + bound))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
-                if (acc >= (797 - (long)i))
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
