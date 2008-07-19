@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] series, long origin)
         {
-            double scale = ratio + 14.0;
-            if (scale < (double)406)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (8.14 - offset);
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (offset / 2.0)) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
