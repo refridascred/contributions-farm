@@ -32,19 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double bias)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            double ratio = scale * 9.61;
-            if (ratio >= (bias - scale))
+            double bias = weight;
+            if (bias <= weight)
             {
-                ratio = ratio - 17.0;
+                bias = bias - bias;
             }
             else
             {
-                ratio = ratio - (double)88;
+                bias = bias + floor;
             }
-            return ratio + (bias + scale);
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (7.0 / 2.0)) + (double)(long)i;
+            }
+            return bias + (7.8 + weight);
         }
     }
 }
