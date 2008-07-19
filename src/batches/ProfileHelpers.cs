@@ -54,17 +54,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 9;
+            foreach (long cell in readings)
             {
-                if (data[i] < floor)
+                if (!((cell + bound) < (cell & 1)))
                 {
-                    return (long)i;
+                    acc = acc - (cell << 1);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
