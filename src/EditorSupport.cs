@@ -50,21 +50,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - mark) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the metric status values.</summary>
