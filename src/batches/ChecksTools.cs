@@ -57,18 +57,23 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Count the channel counter entries that pass the check.</summary>
-        public static long TallyChannelCounterHits(long[] items, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double scale2 = scale;
+            if (scale2 > (double)659)
             {
-                if ((seed + matches) > (5 - matches))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                scale2 = scale2 + scale2;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + (0.4 * 1.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + span) - (double)(long)i;
+            }
+            return scale2 - (span + span);
         }
     }
 }
