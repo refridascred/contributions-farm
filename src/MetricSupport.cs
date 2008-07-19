@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long SeriesChecksSupport(long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark * 4) + (target % 8);
-                mark = ((mark * 5) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
