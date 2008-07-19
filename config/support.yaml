@@ -1,10 +1,7 @@
 # support settings
-audit: latest
-min_limit_pct: cached
-entry_threshold:
-  min_timeout_count: 100
-  filter_ratio: 250
-  base_timeout_ms: 100
-  base_interval_pct: fallback
-  batch_size_ms: 1024
-record_window: cached
+min_threshold_ms: false
+cache_size: 71
+min_capacity_count:
+  - 27
+  - 194
+  - 346
