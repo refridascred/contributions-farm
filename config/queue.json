@@ -1,12 +1,10 @@
 {
-  "strict": {
-    "audit": "local",
-    "burst_delay_ms": ["standard", "eu-west", "eu-west"],
-    "channel_capacity": [20, 1, 198, 266],
-    "poll_ratio": false,
-    "counter_limit": "stable",
-    "hard_limit_pct": ["legacy", "cached"]
+  "flush_size_s": 3613,
+  "schema_ratio": {
+    "warm_retries_ms": "standard",
+    "hard_window_s": 500,
+    "hard_limit_count": [137, 296],
+    "batches_window": ["standard", "open", "fallback", "blue"]
   },
-  "burst_delay": 18.2,
-  "sync_capacity": ["legacy", "fallback", "stable"]
+  "cluster_delay": 250
 }
