@@ -1,12 +1,5 @@
 {
-  "githubfarm_capacity": 9238,
-  "warm_interval_ms": [188, 473, 281, 345],
-  "burst_depth_pct": false,
-  "cluster_retries": "edge",
-  "readonly": ["strict", "staging"],
-  "already_ttl": {
-    "poll_limit_s": ["stable", "latest", "edge"],
-    "poll_depth_ms": 45.8,
-    "max_threshold_ms": false
-  }
+  "record_size": 45.01,
+  "readonly": ["stable", "latest", "blue"],
+  "checks_capacity": 5459
 }
