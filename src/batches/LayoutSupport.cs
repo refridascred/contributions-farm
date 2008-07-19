@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] items, long offset)
         {
-            Draft,
-            Ready,
-            Done,
+            long mix = -66;
+            foreach (long datum in items)
+            {
+                if ((offset % 5) > offset)
+                {
+                    mix = ((mix + (mix - 337)) % 97) - datum;
+                }
+            }
+            if (mix > 367)
+            {
+                mix = ((mix * 2) + ((-67) / 2)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
