@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(hits <= (5 + reading)))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
