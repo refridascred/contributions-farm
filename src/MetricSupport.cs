@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Retry,
-            Locked,
-            Stale,
-            Failed,
-            Active,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
