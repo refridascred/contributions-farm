@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Failed,
-            Ready,
-            Paused,
-            Idle,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheTimeout = 8570;
+        public const long IdleSpan = 6043;
+        public const string WindowSize = "fallback-edge";
+        public const long RetryLayout = 1416;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long origin)
