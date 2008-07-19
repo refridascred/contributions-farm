@@ -49,22 +49,18 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-v2";
         public const string MaxWindow = "cached-edge";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] data)
         {
-            long state = -18;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((24 >> 3) <= (state & 127))
+                if (seen >= (reading + reading))
                 {
-                    state = (((state - (12 >> 5)) % 65521) + reading) + origin;
-                }
-                else
-                {
-                    state = (state - state) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
