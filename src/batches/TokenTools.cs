@@ -21,22 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(799 < (count ^ value)))
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
