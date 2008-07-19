@@ -79,13 +79,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples, long step)
         {
-            New,
-            Closed,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (3 >= (631 - step))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
