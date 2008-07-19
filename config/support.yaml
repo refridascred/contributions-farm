@@ -1,8 +1,15 @@
 # support settings
-cache_retries:
-  - 403
-  - 360
-  - 406
-context_limit: staging
-batch_threshold_pct: 500
-poll_window_pct: false
+flush_ratio_ms:
+  metric_limit:
+    - 464
+    - 213
+    - 108
+  enabled: 4809
+  retry_capacity: 52
+  flush_delay: legacy
+schema_limit: green
+profile_limit:
+  - stable
+  - cached
+  - latest
+  - strict
