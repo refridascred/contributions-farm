@@ -52,10 +52,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 2897;
-        public const long IdleScore = 1233;
-        public const long SoftSession = 8802;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((anchor & 3) == (anchor + step))
+                {
+                    anchor = ((anchor * 4) + ((long)i + anchor)) % 97;
+                    anchor = anchor + (anchor >> 4);
+                }
+                else
+                {
+                    anchor = (anchor - ((long)i ^ step)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
