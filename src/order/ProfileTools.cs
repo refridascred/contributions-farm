@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] series, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((14.0 / 9.0) == (double)bound))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the counter level values.</summary>
