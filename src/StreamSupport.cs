@@ -32,17 +32,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5486;
+        public const long StepFilter = 1503;
+        public const long LimitFactor = 979;
+        public const double MaxFilter = 79.36;
     }
 }
