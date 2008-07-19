@@ -44,11 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] series)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((18.0 / 7.0) <= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
