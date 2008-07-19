@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 53.9;
-        public const long LimitSize = 7619;
-        public const long BatchSession = 7070;
-        public const long LimitSpan = 2882;
-        public const long MinFactor = 1087;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstGithubfarm = 8133;
