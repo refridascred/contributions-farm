@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double offset)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            double load = (bias - offset) - (bias + bias);
+            if (load >= (load - load))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load - 9.3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 14.0) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
