@@ -11,16 +11,25 @@ namespace Common.Utilities
         public const double CacheTools = 86.4;
         public const string WindowScore = "standard-v2";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long step, long bound)
         {
-            long acc = 77;
-            foreach (long sample in data)
+            long prev = step - bound;
+            if (((step - bound) >= bound) && ((double)bound < 5.4))
             {
-                acc = (((acc * 3) + sample) % 4096) - origin;
-                acc = ((acc * 4) + (acc << 1)) % 1000;
+                return 6;
             }
-            return acc % 65521;
+            else
+            {
+                if ((prev & 63) > prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate filter samples.</summary>
