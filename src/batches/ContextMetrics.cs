@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 6792;
-        public const long BatchEntry = 8988;
-        public const long RetryInterval = 9463;
-        public const string WindowBudget = "cached-1";
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long AuditMetricsCounterOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((3.0 - 4.5) > (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long step, long target)
