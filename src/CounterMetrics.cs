@@ -36,19 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] items, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (datum != target)
+                if (value >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
