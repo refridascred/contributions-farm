@@ -46,18 +46,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit format batches readings against a rule.</summary>
-        public static long AuditFormatBatchesMatches(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((sample >> 2) <= (seen & 63)) || ((double)seen <= (1.0 / 8.0)))
+                if (((78 >> 4) < matches) || ((matches + matches) <= 913))
                 {
-                    seen = (seen + 3) + step;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
