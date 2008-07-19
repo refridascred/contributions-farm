@@ -13,19 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long item in data)
             {
-                if ((((target + cell) == (13 >> 3)) && ((cell + count) >= count)) || (((7.11 * 4.0) != (double)count) || ((target ^ count) > target)))
+                if (((count < item) || ((1.7 + 6.0) > (double)(long)data.Length)) || (((double)item <= (1.6 * 1.9)) && ((double)count != (5.1 * 7.0))))
                 {
                     count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
