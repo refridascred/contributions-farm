@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] values, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((944 ^ item) > (matches - step)))
+                if ((double)count == (8.53 - 14.0))
                 {
-                    matches = matches + 3;
+                    count = ((count + 1) + reading) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
