@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of report route readings.</summary>
+        public static long FoldReportRoute(long[] values)
         {
-            Closed,
-            Paused,
-            New,
-            Queued,
-            Retry,
+            long acc = 2;
+            foreach (long entry in values)
+            {
+                acc = ((acc ^ (74 << 2)) % 4096) - entry;
+                if (acc < (39 + acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
