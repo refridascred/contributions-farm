@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const double MaxSize = 49.97;
         public const long HardDepth = 6074;
 
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long CountCacheQueueMatches(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((reading + reading) > (tally - reading)) || ((reading >= (tally / 8)) || (82 <= reading)))
+                if (!((entry + entry) >= entry))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
