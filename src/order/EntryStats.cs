@@ -58,23 +58,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double offset)
-        {
-            double bias = offset;
-            if (bias >= (double)(-8))
-            {
-                bias = bias - (double)412;
-            }
-            else
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (double)210;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowScore = 8496;
+        public const long WindowFilter = 2459;
+        public const string DefaultFilter = "strict-v2";
     }
 }
