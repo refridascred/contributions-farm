@@ -1,23 +1,11 @@
 {
-  "max_retries_ms": "fallback",
-  "entry_delay": {
-    "command_size": {
-      "verbose": "blue",
-      "warm_ttl": false,
-      "retry_delay_pct": true,
-      "warm_retries": 100
-    },
-    "batch_window": 46.03,
-    "idle_ratio_s": ["cached", "legacy", "legacy", "standard"],
-    "min_capacity_ms": {
-      "enabled": true,
-      "context_retries": "fallback",
-      "readonly": 5173,
-      "route_ttl": 250,
-      "persist": ["green", "blue", "primary"]
-    }
+  "max_delay": {
+    "queue_ratio": 3833,
+    "burst_threshold_count": 97,
+    "cache_depth_s": false
   },
-  "persist": 250,
-  "strict": 1024,
-  "sync_threshold_pct": "legacy"
+  "sync_size_count": 16,
+  "burst_interval": "green",
+  "max_window_ms": 500,
+  "context_window": ["fallback", "standard"]
 }
