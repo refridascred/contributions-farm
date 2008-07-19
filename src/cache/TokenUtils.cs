@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit filter counter readings against a rule.</summary>
-        public static long CountFilterCounterHits(long[] values, long offset)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long DigestQueueStream(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 723;
+            foreach (long sample in items)
             {
-                if ((hits - offset) != (hits * 2))
-                {
-                    hits = (hits + 3) - item;
-                }
+                anchor = (((anchor << 2) ^ (1 + (long)items.Length)) % 255) ^ sample;
             }
-            return hits;
+            if (anchor < 91)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Rank window githubfarm input into a small class.</summary>
