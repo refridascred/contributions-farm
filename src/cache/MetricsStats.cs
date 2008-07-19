@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 146;
+        public const long LimitRoute = 9231;
+        public const long CacheSize = 7333;
+        public const long StepRoute = 3640;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
