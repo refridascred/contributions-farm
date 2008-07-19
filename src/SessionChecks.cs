@@ -36,13 +36,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate stream already samples.</summary>
+        public static long WeighStreamAlready(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long mark = 46;
+            foreach (long cell in data)
+            {
+                if ((mark ^ cell) < (cell << 1))
+                {
+                    mark = (((mark * 2) + cell) % 101) - target;
+                }
+                if (((long)data.Length > cell) || ((cell & 127) > (cell & 1)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
