@@ -1,4 +1,9 @@
 # support settings
-retry_threshold: false
-burst_threshold_pct: true
-warm_ratio_pct: 61
+retry_size: 61.93
+record_retries: latest
+cache_depth_ms: 3818
+stream_retries:
+  - 423
+  - 481
+  - 330
+  - 21
