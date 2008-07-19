@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long MeasureAlreadyRouteOutliers(long[] readings, long offset)
+        /// <summary>Validate counter token readings against a bound.</summary>
+        public static bool GuardCounterTokenBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (((17 * 5) != (offset + offset)) && ((entry >> 5) != ((-2) - hits)))
+                if (datum >= step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up order samples.</summary>
