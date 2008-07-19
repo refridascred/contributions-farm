@@ -79,12 +79,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Active,
-            Done,
-            Stale,
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
