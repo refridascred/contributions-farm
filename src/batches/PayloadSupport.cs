@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const string BurstCache = "staging";
         public const long MinInterval = 9049;
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long AuditChecksTokenHits(long[] samples, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit >= (19 % 60)) || ((hits % 97) > (limit + limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) - entry;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
