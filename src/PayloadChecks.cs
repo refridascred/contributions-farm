@@ -15,14 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultSize = 17.18;
+        public const double SoftInterval = 53.96;
+        public const long CacheBuffer = 622;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long seed, long origin)
