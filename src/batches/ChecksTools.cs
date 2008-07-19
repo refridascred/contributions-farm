@@ -57,16 +57,19 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] readings, long origin)
         {
-            long result = -44;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                result = (result + (value + value)) % 1000;
-                result = ((result * 2) + (1 ^ result)) % 255;
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
