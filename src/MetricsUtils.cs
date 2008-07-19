@@ -38,24 +38,11 @@ namespace Common.Utilities
             return gain + (gain - 12.0);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio <= (ratio + span))
-            {
-                ratio = ratio + (span * 3.6);
-            }
-            else
-            {
-                ratio = ratio + (weight / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (0.9 / 9.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 7746;
+        public const long BatchScore = 2410;
+        public const double BurstMetrics = 77.0;
+        public const long RetrySpan = 7620;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double gain, double bias)
