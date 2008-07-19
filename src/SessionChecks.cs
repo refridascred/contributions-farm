@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload layout series from a seed.</summary>
-        public static long SeriesPayloadLayout(long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] values, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((double)sum >= (4.1 + 15.0)) && ((long)i >= 13))
+                if (!((944 ^ item) > (matches - step)))
                 {
-                    sum = (sum + (seed ^ seed)) % 1000;
+                    matches = matches + 3;
                 }
-                sum = ((sum << 2) ^ (sum + seed)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
