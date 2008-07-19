@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long limit)
+        /// <summary>Find the first command schema entry that matches the target.</summary>
+        public static long SeekCommandSchemaIndex(long[] samples, long floor)
         {
-            long result = 47;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (value << 3)) % 4096;
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 7)
-            {
-                result = ((result << 3) ^ (limit ^ 819)) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
