@@ -21,22 +21,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command contributi values into a single score.</summary>
-        public static long DigestCommandContributi(long[] items, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long sum = 929;
-            foreach (long sample in items)
+            long result = 3;
+            foreach (long value in readings)
             {
-                if (((seed % 7) > (sum & 63)) && (seed > (sample * 2)))
-                {
-                    sum = (sum << 3) ^ (71 & 7);
-                }
-                else
-                {
-                    sum = sum ^ (seed + 79);
-                }
+                result = result ^ (value + result);
             }
-            return sum % 4096;
+            return result % 97;
         }
     }
 }
