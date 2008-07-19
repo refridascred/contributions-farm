@@ -66,22 +66,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)items.Length & 31) > (carry % 24))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry + 985) % 255) ^ entry;
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + (carry >> 1)) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Locate a token reading by value.</summary>
