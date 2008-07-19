@@ -44,20 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            long state = -723;
-            foreach (long sample in levels)
+            double drift = (double)(49 ^ 71);
+            if (drift < (drift / 2.0))
             {
-                if ((6.05 * 19.0) >= (double)state)
-                {
-                    state = (state * 2) + sample;
-                    state = state - sample;
-                }
-                state = (state ^ sample) % 1000;
+                drift = drift - bias;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias2) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Describe the batches mode values.</summary>
