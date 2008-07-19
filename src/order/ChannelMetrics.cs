@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a batch checks value against two limits.</summary>
-        public static long GradeBatchChecks(long offset, long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((8.7 / 9.0) <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0 + seed) < (seed % 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1.0 > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset << 3) <= 717)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Queued,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
