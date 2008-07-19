@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double offset)
-        {
-            double rate = offset;
-            if (rate > offset)
-            {
-                rate = (rate + rate) - ratio;
-            }
-            else
-            {
-                rate = rate + (rate * 14.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)35;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "primary-1";
+        public const long BaseWindow = 2821;
+        public const long BurstSize = 9840;
+        public const long BaseBudget = 8225;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueGaps(long[] samples)
