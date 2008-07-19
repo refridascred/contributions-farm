@@ -13,20 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Find the first command report entry that matches the target.</summary>
+        public static long LookupCommandReportIndex(long[] series, long floor)
         {
-            long sum = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + (entry - limit)) % 4096;
-                sum = (sum + (sum & 15)) % 65521;
-                if ((entry >> 2) > (limit % 100))
+                if (series[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
