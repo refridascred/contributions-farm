@@ -45,12 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
