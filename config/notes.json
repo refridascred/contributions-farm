@@ -1,6 +1,8 @@
 {
-  "base_ttl": false,
-  "order_depth": true,
-  "poll_limit_s": ["fallback", "local", "latest"],
-  "min_depth_s": 2850
+  "base_limit_s": true,
+  "batch_threshold_count": "cached",
+  "graph_ttl": "blue",
+  "verbose": "open",
+  "token_size": false,
+  "readonly": ["fallback", "legacy", "legacy", "staging"]
 }
