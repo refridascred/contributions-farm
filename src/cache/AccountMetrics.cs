@@ -67,22 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items, long seed)
         {
-            long result = 30;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((value < (value << 2)) || ((result - value) == (value >> 1)))
+                if (hits < (61 * 3))
                 {
-                    result = result ^ (3 + result);
-                }
-                else
-                {
-                    result = (result - (result * 4)) % 97;
+                    hits = ((hits + 2) ^ cell) + seed;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
