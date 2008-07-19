@@ -52,22 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster session samples are out of range.</summary>
-        public static long MeasureClusterSessionMatches(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 270;
+            foreach (long entry in samples)
             {
-                if (((-451) ^ sample) > (395 + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix * 3) + (entry + mix);
             }
-            return matches;
+            if (mix > 2)
+            {
+                mix = ((mix << 3) ^ (floor & 31)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
