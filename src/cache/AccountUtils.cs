@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long floor)
+        /// <summary>Locate a format cluster reading by value.</summary>
+        public static long FindFormatClusterIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < floor)
+                if (values[i] <= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
