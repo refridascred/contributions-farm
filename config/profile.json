@@ -1,6 +1,7 @@
 {
-  "sync_ttl_s": ["local", "fallback"],
-  "flush_depth_count": 38,
-  "min_limit": [247, 102, 237],
-  "min_window": false
+  "persist": 82,
+  "flush_window": "legacy",
+  "batch_interval_s": 64.38,
+  "base_window": "stable",
+  "sync_interval_s": "fallback"
 }
