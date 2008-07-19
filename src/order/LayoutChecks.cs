@@ -50,16 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state - ((long)i ^ target)) % 97;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the queue state values.</summary>
