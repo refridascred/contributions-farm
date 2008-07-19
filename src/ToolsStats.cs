@@ -40,20 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support route series from a seed.</summary>
-        public static long StepSupportRoute(long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] series, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step * 3) < step)
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    acc = (acc - (478 & 1)) % 65521;
-                    acc = acc ^ (acc - acc);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a cluster stats.</summary>
