@@ -58,13 +58,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftRatio = 223;
+        public const long SoftMetric = 3038;
+        public const long DefaultMetric = 923;
     }
 }
