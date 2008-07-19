@@ -34,18 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double drift = floor;
+            if (drift < (drift / 5.0))
             {
-                if ((2 / 4) < (hits ^ value))
-                {
-                    hits = hits + 1;
-                }
+                drift = (drift - drift) + weight;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift * 19.0)) + (double)(long)i;
+            }
+            return drift + (double)29;
         }
 
         /// <summary>Digest a series of token entries.</summary>
