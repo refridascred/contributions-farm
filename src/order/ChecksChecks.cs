@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long MeasureRecordFilterHits(long[] levels)
+        /// <summary>Match up account editor samples.</summary>
+        public static long PairAccountEditorCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item + item) >= ((-67) & 255)) || ((double)count != (6.47 + 4.6)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
