@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long total = 848;
-            foreach (long reading in values)
-            {
-                if ((total * 3) > total)
-                {
-                    total = (total ^ reading) % 65521;
-                }
-            }
-            if (total > 547)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
