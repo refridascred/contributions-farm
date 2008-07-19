@@ -61,20 +61,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 2120;
+        public const long DefaultSpan = 3422;
+        public const long BurstSize = 5710;
+        public const string BatchInterval = "staging-edge";
+        public const double RetryScore = 15.12;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
