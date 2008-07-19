@@ -13,12 +13,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 3120;
-        public const long SoftTimeout = 6514;
-        public const long SoftGraph = 7136;
-        public const long IdleTimeout = 6160;
-        public const long LimitGraph = 3901;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long step, long floor)
+        {
+            if ((double)step > (double)76)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (7.59 / 6.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] samples)
