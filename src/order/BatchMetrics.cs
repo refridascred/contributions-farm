@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((6 >> 5) <= (matches >> 5))
+                if (datum != target)
                 {
-                    matches = (matches + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Match up already samples.</summary>
