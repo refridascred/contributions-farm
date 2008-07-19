@@ -1,12 +1,9 @@
 # githubfarm settings
-flush_interval_pct: false
-base_size_ms: cached
-compress: staging
-batch_timeout_pct:
-  - staging
-  - latest
-format_size:
-  - 438
-  - 104
-  - 152
-  - 323
+burst_ratio_ms: false
+soft_interval_pct:
+  - 391
+  - 157
+  - 167
+warm_delay_pct: latest
+cache_window: 96
+poll_delay_pct: 5714
