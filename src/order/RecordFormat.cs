@@ -22,18 +22,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many token buffer samples are out of range.</summary>
-        public static long MeasureTokenBufferOutliers(long[] series, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((15.0 / 6.0) < (7.1 - 4.1))
-                {
-                    tally = ((tally + 1) - datum) - seed;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many support payload samples are out of range.</summary>
