@@ -41,12 +41,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            Queued,
+            Active,
+            Done,
+            Paused,
+            Dropped,
         }
     }
 }
