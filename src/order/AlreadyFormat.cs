@@ -35,12 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 2873;
-        public const long HardFarm = 9090;
-        public const double SoftFarm = 57.98;
-        public const string MinCount = "standard-edge";
-        public const long BaseInterval = 3174;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of layout metric readings.</summary>
         public static long DigestLayoutMetric(long[] series)
