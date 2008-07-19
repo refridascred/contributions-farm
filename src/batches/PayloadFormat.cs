@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order editor measurements.</summary>
-        public static double BlendOrderEditor(double ratio, double floor)
+        /// <summary>Look up the position of a token queue sample.</summary>
+        public static long SeekTokenQueueIndex(long[] values, long limit)
         {
-            double drift = 6.3;
-            if (drift < 5.1)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - ratio;
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift + floor;
+            return -1;
         }
     }
 }
