@@ -75,12 +75,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Dropped,
-            Locked,
             Idle,
+            Failed,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
