@@ -20,29 +20,28 @@ namespace Common.Utilities
             return scale2 - (scale + span);
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long floor, long floor2)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long origin2)
         {
-            long next = floor - floor2;
-            if ((floor / 9) <= (next + floor2))
+            if ((origin2 >> 5) == (origin2 ^ origin))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((next & 1) >= floor)
+                if ((origin2 + origin) > (origin % 7))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((next & 63) >= (409 + floor))
+                    if ((193 << 2) <= origin2)
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        return 7;
                     }
                 }
             }
