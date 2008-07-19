@@ -57,23 +57,16 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            double scale2 = scale;
-            if (scale2 > (double)659)
+            long result = -44;
+            foreach (long value in readings)
             {
-                scale2 = scale2 + scale2;
+                result = (result + (value + value)) % 1000;
+                result = ((result * 2) + (1 ^ result)) % 255;
             }
-            else
-            {
-                scale2 = scale2 + (0.4 * 1.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + span) - (double)(long)i;
-            }
-            return scale2 - (span + span);
+            return result;
         }
     }
 }
