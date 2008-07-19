@@ -29,19 +29,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            double bias2 = gain;
-            if (bias2 >= gain)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = (bias2 - (bias2 - bias2)) - bias;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                bias2 = bias2 - (double)44;
-            }
-            return bias2 - (double)63;
+            return score;
         }
 
         /// <summary>Look up the position of a order githubfarm sample.</summary>
