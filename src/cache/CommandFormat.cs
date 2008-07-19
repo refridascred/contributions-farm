@@ -48,21 +48,19 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= offset)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
