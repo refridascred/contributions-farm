@@ -71,18 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] data, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (value <= (seed + value))
+                if (entry < target)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Accumulate commits samples.</summary>
