@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)seed < 1.0))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 5406;
+        public const double BurstRatio = 53.42;
+        public const double LimitReport = 85.9;
+        public const long StepRatio = 883;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountMatches(long[] readings)
