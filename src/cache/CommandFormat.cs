@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstCount = 36.48;
-        public const long HardOrder = 3305;
-        public const string IdleOrder = "primary-edge";
-        public const double MinOrder = 5.87;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 31.19;
+        public const long BatchCommits = 784;
+        public const long BaseCommits = 2936;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
