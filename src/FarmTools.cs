@@ -24,13 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Check that every cache order entry stays within the limit.</summary>
+        public static bool VerifyCacheOrderBounds(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the layout kind values.</summary>
