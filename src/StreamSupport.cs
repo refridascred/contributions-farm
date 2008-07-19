@@ -13,14 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8133;
+        public const long HardScore = 3410;
+        public const long LimitWidth = 632;
+        public const long BaseDepth = 9122;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double gain, double floor)
