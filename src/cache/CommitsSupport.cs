@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long floor)
         {
-            New,
-            Locked,
-            Done,
-            Paused,
-            Queued,
+            long sum = 0;
+            foreach (long value in values)
+            {
+                sum = ((sum ^ (value / 9)) % 255) + floor;
+            }
+            return sum;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
