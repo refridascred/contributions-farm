@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank format schema input into a small class.</summary>
+        public static long BucketFormatSchema(long target, long bound)
         {
-            Locked,
-            Retry,
-            Closed,
-            Queued,
+            if (!(target <= (target + bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target >= (4.0 + 4.27))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((19.0 * 18.0) <= (double)bound) && ((9.5 - 12.0) <= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + target) != ((-911) + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
