@@ -31,9 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultTimeout = 7665;
-        public const long CacheSize = 2068;
-        public const long MinFactor = 3482;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
