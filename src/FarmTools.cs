@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Done,
-            Pending,
-            Queued,
-            Synced,
-            Paused,
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count order entry pairs that satisfy a relation.</summary>
