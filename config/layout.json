@@ -1,20 +1,8 @@
 {
-  "dry_run": false,
-  "session_capacity": 42,
-  "cache_retries_count": {
-    "metrics_retries": false,
-    "contributi_limit": 92.78,
-    "report_capacity": "primary",
-    "compress": 6007,
-    "strict": 4651,
-    "idle_limit_ms": 92
-  },
-  "hard_size_count": {
-    "poll_ratio": 30,
-    "min_limit_ms": "eu-west",
-    "idle_interval": "primary",
-    "max_ratio_ms": false,
-    "flush_capacity": 54.39,
-    "hard_threshold_pct": ["standard", "legacy", "strict"]
-  }
+  "enabled": 25,
+  "max_ratio_s": 8195,
+  "burst_depth_s": "local",
+  "poll_delay": "stable",
+  "hard_threshold_pct": "fallback",
+  "strict": "cached"
 }
