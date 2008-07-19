@@ -74,15 +74,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long mix = 221;
-            foreach (long value in readings)
+            double gain = (floor * 1.4) / 9.0;
+            if (gain > (double)61)
             {
-                mix = (mix ^ (5 + (long)readings.Length)) + value;
+                gain = gain - (double)6;
             }
-            return mix % 65521;
+            else
+            {
+                gain = gain + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)53;
         }
     }
 }
