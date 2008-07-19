@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            double rate = offset;
+            if (rate > offset)
+            {
+                rate = (rate + rate) - ratio;
+            }
+            else
+            {
+                rate = rate + (rate * 14.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)35;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
