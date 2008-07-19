@@ -22,10 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 9953;
-        public const double IdleStream = 54.34;
-        public const long IdleFactor = 9551;
+        /// <summary>Roll a farm payload counter forward.</summary>
+        public static long IterateFarmPayload(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 3) + ((-6) - bound)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
