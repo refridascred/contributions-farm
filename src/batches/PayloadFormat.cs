@@ -44,14 +44,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            Pending,
-            Failed,
-            Ready,
-            Done,
-            Retry,
+            double weight = (gain - gain) - gain;
+            if (weight < gain)
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight - (floor / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (floor * 3.6)) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
