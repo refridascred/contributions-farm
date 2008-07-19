@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate buffer cluster readings against a bound.</summary>
-        public static bool GuardBufferClusterLimits(long[] series, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
