@@ -29,16 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix * 3) + 858;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Failed,
+            Active,
         }
     }
 }
