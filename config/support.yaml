@@ -1,7 +1,4 @@
 # support settings
-min_threshold_ms: false
-cache_size: 71
-min_capacity_count:
-  - 27
-  - 194
-  - 346
+warm_ttl_ms: true
+retry_window_pct: 1326
+token_window: standard
