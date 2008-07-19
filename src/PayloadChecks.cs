@@ -37,17 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + mark;
-                mark = (mark - (mark + mark)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit format batches readings against a rule.</summary>
