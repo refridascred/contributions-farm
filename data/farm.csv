@@ -1,9 +1,6 @@
-id,region,rank,count
-1,standard,841,stable
-2,24.84,strict,69.95
-3,blue,standard,81.7
-4,95.57,89.33,14
-5,open,874,62.64
-6,66.9,11.58,edge
-7,333,83.48,primary
-8,blue,529,528
+id,label,owner
+1,eu-west,422
+2,823,edge
+3,451,245
+4,42.68,389
+5,30.3,edge
