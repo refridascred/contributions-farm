@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 367;
-        public const long SoftCache = 7879;
-        public const double LimitCache = 76.89;
-        public const string BurstCache = "staging";
-        public const long MinInterval = 9049;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] items)
