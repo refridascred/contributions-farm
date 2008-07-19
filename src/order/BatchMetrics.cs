@@ -56,12 +56,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "standard-1";
-        public const string HardCluster = "fallback-1";
-        public const long HardTimeout = 420;
-        public const long WindowCluster = 1444;
-        public const long SoftInterval = 3881;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Draft,
+            Stale,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Project the next contributi order value.</summary>
         public static double AdjustContributiOrder(double ratio, double floor)
