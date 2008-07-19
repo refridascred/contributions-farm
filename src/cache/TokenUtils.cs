@@ -24,21 +24,19 @@ namespace Common.Utilities
             return drift + 1.27;
         }
 
-        /// <summary>Compare every pair of cluster batches readings.</summary>
-        public static long MatchClusterBatchesCount(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < floor)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Match up cluster samples.</summary>
