@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double HardLevel = 39.64;
         public const long WindowSize = 943;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long limit)
         {
-            double drift = (bias + bias) / 8.0;
-            if (drift >= (19.0 + bias))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                drift = (drift + bias) + bias2;
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (bias / 9.0);
+            return flag;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
