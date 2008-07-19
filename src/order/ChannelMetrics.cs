@@ -19,14 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Compare every pair of farm report readings.</summary>
+        public static long OverlapFarmReportCount(long[] data)
         {
-            Locked,
-            Draft,
-            Paused,
-            Idle,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every route order entry stays within the limit.</summary>
