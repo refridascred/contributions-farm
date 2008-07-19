@@ -56,12 +56,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            Synced,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
