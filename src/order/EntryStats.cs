@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            if ((double)origin <= (2.83 - 5.8))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + limit) != (limit + limit))
+                if (((double)seen != (1.2 / 5.0)) || (((8 & 1) > (item + item)) || ((item / 2) >= (58 / 7))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
