@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long TallyMetricTokenGaps(long[] data, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long sample in data)
             {
-                if (reading <= (matches << 2))
+                if ((double)matches < (double)sample)
                 {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
