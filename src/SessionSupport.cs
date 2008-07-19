@@ -37,15 +37,12 @@ namespace Common.Utilities
             return rate - 6.3;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = 707;
-            foreach (long cell in values)
-            {
-                state = ((state + state) - cell) - bound;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
