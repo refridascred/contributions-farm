@@ -11,19 +11,31 @@ namespace Common.Utilities
         public const double WindowBuffer = 77.71;
         public const long BaseRatio = 8021;
 
-        /// <summary>Validate tools command readings against a bound.</summary>
-        public static bool ValidateToolsCommandRange(long[] levels, long bound)
+        /// <summary>Grade a payload queue value against two limits.</summary>
+        public static long BucketPayloadQueue(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((double)5 >= (12.0 - 5.5))
             {
-                if (item < bound)
+                return 7;
+            }
+            else
+            {
+                if ((limit / 8) > 33)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (6.2 < (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
