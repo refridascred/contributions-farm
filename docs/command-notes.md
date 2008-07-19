@@ -1,12 +1,11 @@
 # Command notes
 
-When a payload fails, the format handler retries a few times before giving up.
-Keep metric and contributi names short and lowercase.
-Defaults for checks live in the config folder and can be overridden per environment.
+The batch module keeps notes values in sync with the route cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep batches values small
-- Document new context fields
-- Log every buffer change
+- Document new layout fields
+- Keep session values small
+- Review report limits each release
