@@ -1,13 +1,9 @@
 # entry settings
-compress: true
-hard_ttl_ms: edge
-readonly: 1024
-hard_limit_s:
-  - green
-  - fallback
-  - fallback
+filter_capacity: fallback
+payload_ttl: local
+retry_limit_pct:
+  - legacy
   - latest
-burst_window_count:
-  burst_ttl: stable
-  sync_capacity_ms: 4736
-  notes_interval: blue
+  - primary
+  - cached
+verbose: 39.6
