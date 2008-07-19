@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
