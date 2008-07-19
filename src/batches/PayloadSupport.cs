@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long DefaultScore = 3901;
         public const long BaseProfile = 3557;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheTimeout = 8570;
-        public const long IdleSpan = 6043;
-        public const string WindowSize = "fallback-edge";
-        public const long RetryLayout = 1416;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values, long offset)
+        {
+            long total = 2;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (3.2 + 16.0))
+                {
+                    total = (total ^ offset) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryToken = 3853;
