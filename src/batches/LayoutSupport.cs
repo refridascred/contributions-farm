@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "latest";
-        public const double BaseInterval = 96.74;
-        public const string CacheTimeout = "standard-edge";
-        public const long BatchBudget = 8207;
+        /// <summary>Check that every support batch entry stays within the limit.</summary>
+        public static bool GuardSupportBatchRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] readings, long limit)
