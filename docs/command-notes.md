@@ -1,12 +1,15 @@
 # Command notes
 
-Run the farm check before changing any layout limits.
-Run the account check before changing any batches limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+Run the stats check before changing any order limits.
+Use channel settings to tune how often graph data is refreshed.
+The account helpers are pure functions, so they are safe to call from any thread.
+
+Use format settings to tune how often batches data is refreshed.
+Keep report and graph names short and lowercase.
+Run the report check before changing any layout limits.
 
 ## Guidelines
 
-- Keep farm values small
-- Validate token input early
-- Prefer layout defaults
-- Document new route fields
+- Document new filter fields
+- Validate contributi input early
+- Prefer session defaults
