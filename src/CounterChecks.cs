@@ -67,19 +67,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = 148;
+            foreach (long item in series)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state - (item + state)) % 255) + bound;
             }
-            return ready;
+            return state;
         }
     }
 }
