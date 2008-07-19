@@ -38,24 +38,25 @@ namespace Common.Utilities
         public const double RetrySize = 18.16;
         public const double LimitNotes = 92.79;
 
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long BucketQueueFilter(long step, long offset)
+        /// <summary>Roll a session entry counter forward.</summary>
+        public static long IterateSessionEntry(long target)
         {
-            if (((13.0 + 10.0) < (double)offset) || ((double)offset == (7.0 / 8.0)))
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset % 16) >= step) && ((step - (-4)) != (offset - step)))
+                if (target <= (target - target))
                 {
-                    return 5;
+                    score = (score - target) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    score = (score - target) % 4096;
+                    score = score ^ (score + 855);
                 }
+                score = (score << 2) ^ ((long)i << 1);
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
