@@ -29,23 +29,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double ratio = (double)139 + (0.72 + offset);
-            if (ratio <= (double)0)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + weight;
+            New,
+            Retry,
+            Closed,
+            Failed,
         }
     }
 }
