@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a metric token reading.</summary>
-        public static double ScaleMetricToken(double bias, double bias2)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long target)
         {
-            double rate = (double)713 - (double)70;
-            return (rate + (bias2 + 8.1)) + bias;
+            if ((double)origin == (7.8 + 4.82))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target * 2) == (target * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target / 4) > target) && (6 > (origin % 97)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target >= 9.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
