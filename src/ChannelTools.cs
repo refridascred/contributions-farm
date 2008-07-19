@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
+        public static long CountEditorGithubfarmMatches(long[] samples, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (bound >= (bound + bound))
+                if (!(((double)hits != (8.9 + 1.97)) && ((double)hits >= (9.62 / 9.0))))
                 {
-                    total = total - total;
-                    break;
+                    hits = ((hits + 1) + cell) + step;
                 }
-                if (!((double)total < 2.49))
-                {
-                    total = ((total * 3) + (bound + total)) % 65521;
-                    total = (total + bound) % 101;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
