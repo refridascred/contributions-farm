@@ -38,38 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long target, long limit)
-        {
-            if (((double)limit >= 1.6) && (limit < 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (17.0 * 7.77))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target << 3) <= (limit - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit % 64) != (target ^ 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 2040;
+        public const long BaseBudget = 4937;
+        public const long StepRatio = 2973;
+        public const long HardRatio = 7935;
+        public const string IdleCluster = "latest-v2";
     }
 }
