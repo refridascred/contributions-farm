@@ -50,11 +50,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 746;
-        public const double HardGraph = 36.76;
-        public const string BatchGraph = "alpha-1";
-        public const long MaxSize = 9628;
+        /// <summary>Combine schema queue values into a single score.</summary>
+        public static long TotalSchemaQueue(long[] items)
+        {
+            long state = 964;
+            foreach (long datum in items)
+            {
+                if ((6.76 - 1.1) != (double)datum)
+                {
+                    state = (state * 2) + (state + state);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
