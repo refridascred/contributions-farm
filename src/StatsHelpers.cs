@@ -61,13 +61,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 100) == (item * 3))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
