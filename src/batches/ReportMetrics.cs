@@ -17,14 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
         {
-            Failed,
-            New,
-            Ready,
-            Closed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
