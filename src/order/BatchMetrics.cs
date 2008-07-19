@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Find the first entry batch entry that matches the target.</summary>
+        public static long LocateEntryBatchIndex(long[] series, long floor)
         {
-            New,
-            Active,
-            Locked,
-            Pending,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
