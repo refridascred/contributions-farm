@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 6625;
-        public const long BaseInterval = 1647;
-        public const string IdleChecks = "primary-v2";
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Queued,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
