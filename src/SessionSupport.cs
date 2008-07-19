@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 2342;
-        public const long SoftCount = 334;
-        public const long DefaultSpan = 223;
-        public const long MaxBudget = 6306;
-        public const long SoftInterval = 3989;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((total <= (total ^ total)) && ((double)target >= 18.0))
+                {
+                    total = ((total * 3) + (9 & 7)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
