@@ -1,7 +1,5 @@
 {
-  "strict": true,
-  "burst_interval_s": 13,
-  "hard_limit": "primary",
-  "base_delay": false,
-  "min_interval": "blue"
+  "flush_depth": ["latest", "local"],
+  "audit": 6511,
+  "readonly": "edge"
 }
