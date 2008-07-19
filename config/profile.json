@@ -1,11 +1,7 @@
 {
-  "layout_ratio": {
-    "hard_capacity": 7338,
-    "idle_capacity": 30,
-    "retry_ratio": false,
-    "audit": 9051,
-    "compress": 7
-  },
-  "readonly": 82.87,
-  "retry_ratio_count": false
+  "compress": 26,
+  "enabled": "standard",
+  "poll_window_pct": 37.24,
+  "audit": "primary",
+  "hard_ratio": ["blue", "stable", "strict"]
 }
