@@ -40,16 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] series, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long target)
         {
-            long mix = 162;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                mix = (mix << 3) ^ sample;
-                mix = (mix + (mix + step)) % 1000;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
