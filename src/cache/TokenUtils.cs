@@ -24,17 +24,15 @@ namespace Common.Utilities
             return drift + 1.27;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 474;
+            foreach (long sample in items)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (anchor / 9)) + sample) + floor;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the schema phase values.</summary>
