@@ -53,23 +53,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] samples, long offset)
         {
-            long result = 1;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 2) ^ (8 + result)) % 97) ^ cell;
-                if (((result << 2) >= 18) || ((8.0 / 2.0) > (double)result))
+                if (samples[i] > offset)
                 {
-                    result = ((result * 2) + (result * 5)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 64)
-            {
-                result = (result + result) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
