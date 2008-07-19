@@ -63,15 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long carry = 2;
-            foreach (long entry in levels)
-            {
-                carry = ((carry + (6 / 9)) % 97) ^ entry;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
