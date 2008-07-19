@@ -20,12 +20,10 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "open-v2";
-        public const long HardRatio = 8133;
-        public const long LimitSpan = 4992;
-        public const long DefaultStream = 8868;
-        public const long StepStream = 8002;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 5385;
+        public const long StepCommand = 240;
+        public const long LimitDepth = 8625;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] items, long origin)
