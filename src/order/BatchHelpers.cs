@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] values, long origin)
         {
-            long result = 1;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                result = (result - (result + entry)) % 97;
-                if (!((result - result) >= entry))
+                if (value <= origin)
                 {
-                    continue;
-                }
-                if ((result - result) >= (entry & 31))
-                {
-                    result = result + (result & 15);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
