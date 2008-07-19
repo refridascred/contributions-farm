@@ -38,17 +38,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 415;
+        public const long BurstBudget = 4848;
+        public const long DefaultCluster = 3191;
     }
 }
