@@ -37,11 +37,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
