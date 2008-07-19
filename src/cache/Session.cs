@@ -37,24 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
-        public static long GradeGithubfarmCommand(long bound, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            if (offset > (bound & 7))
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                total = (total * 5) + seed;
+                total = ((total * 4) + (total + (long)i)) % 65521;
+                total = total - (seed + total);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((bound - offset) <= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
     }
 }
