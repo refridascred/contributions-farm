@@ -14,15 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Failed,
-            Done,
-            Ready,
-            Idle,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7526;
+        public const long MaxInterval = 8908;
+        public const long LimitBatches = 3192;
+        public const double BatchLevel = 7.7;
+        public const long MinBatches = 3710;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double SoftCount = 72.94;
