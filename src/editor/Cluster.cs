@@ -24,10 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "primary-v2";
-        public const double WindowFactor = 52.31;
-        public const string SoftLevel = "fallback";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
