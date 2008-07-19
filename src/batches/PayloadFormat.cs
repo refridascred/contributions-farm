@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleRatio = "open-1";
-        public const long StepCount = 349;
-        public const long RetryPayload = 4866;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] readings)
