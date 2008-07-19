@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long step)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
