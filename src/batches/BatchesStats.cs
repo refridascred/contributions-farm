@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank format cluster input into a small class.</summary>
-        public static long SortFormatCluster(long offset, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            if ((offset / 8) < (offset % 64))
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit - offset) <= (offset & 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
