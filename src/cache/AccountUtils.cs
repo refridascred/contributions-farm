@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "standard-1";
-        public const string BatchCache = "strict-edge";
-        public const long StepScore = 1916;
-        public const long WindowCache = 7502;
-        public const double CacheRatio = 38.26;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Stale,
+            Idle,
+            Dropped,
+        }
     }
 }
