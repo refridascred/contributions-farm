@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window queue pair into a bucket.</summary>
-        public static long GradeWindowQueue(long step, long offset)
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long MeasureProfilePayloadOutliers(long[] series)
         {
-            if (!(((-17) - step) > offset))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset == (double)713) || ((949 >> 1) < (offset ^ step)))
+                if ((tally ^ tally) == (entry % 97))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
