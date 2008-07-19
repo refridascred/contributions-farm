@@ -40,17 +40,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (levels[i] < floor)
+                if (item > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Locate a window reading by value.</summary>
