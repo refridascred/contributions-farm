@@ -63,16 +63,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long bound = offset + step;
+            if (!((double)step > (10.0 / 8.0)))
             {
-                carry = (carry ^ limit) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)step < (15.0 - 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound << 2) <= (6 + 55)) && ((4.71 * 5.0) > (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((992 + bound) < offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
