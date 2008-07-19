@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] samples, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 2) < ((long)samples.Length + offset))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
