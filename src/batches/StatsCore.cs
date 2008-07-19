@@ -31,24 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long bound)
+        /// <summary>Find the first account batches entry that matches the target.</summary>
+        public static long LocateAccountBatchesIndex(long[] readings, long offset)
         {
-            if ((bound ^ bound) >= (offset + bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset << 3) < bound))
+                if (readings[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
