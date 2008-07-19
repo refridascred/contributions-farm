@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings, long target)
         {
-            Pending,
-            Dropped,
-            Done,
+            long mark = 25;
+            foreach (long value in readings)
+            {
+                mark = (((mark + (mark * 2)) % 65521) - value) - target;
+            }
+            return mark;
         }
     }
 }
