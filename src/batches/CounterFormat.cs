@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleChecks = 7136;
         public const long BurstChecks = 2626;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] data)
+        /// <summary>Accumulate cache buffer samples.</summary>
+        public static long TotalCacheBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = 84;
+            foreach (long datum in series)
             {
-                if (((count < item) || ((1.7 + 6.0) > (double)(long)data.Length)) || (((double)item <= (1.6 * 1.9)) && ((double)count != (5.1 * 7.0))))
-                {
-                    count = count + 1;
-                }
+                acc = (acc - (948 ^ datum)) % 1000;
             }
-            return count;
+            if (acc > 3)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
