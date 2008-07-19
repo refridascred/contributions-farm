@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] data, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)reading >= (6.8 / 5.0))
-                {
-                    hits = (hits + 2) + limit;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
