@@ -34,23 +34,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!(item >= (offset * 4)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftCount = "latest-edge";
+        public const string RetryEntry = "alpha-v2";
+        public const long LimitDepth = 665;
+        public const string StepWidth = "local-edge";
+        public const long SoftSize = 6835;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] items, long target)
