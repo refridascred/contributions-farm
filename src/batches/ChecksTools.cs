@@ -69,15 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
