@@ -1,11 +1,15 @@
 # Command notes
 
-Use checks settings to tune how often graph data is refreshed.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Each order is validated before it reaches the schema queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use metrics settings to tune how often contributi data is refreshed.
+
+The metric module keeps entry values in sync with the farm cache.
+Keep batch and batch names short and lowercase.
 
 ## Guidelines
 
-- Log every stats change
-- Keep editor values small
-- Prefer cluster defaults
-- Document new batches fields
+- Prefer session defaults
+- Keep filter values small
+- Review notes limits each release
+- Validate githubfarm input early
