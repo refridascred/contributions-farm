@@ -35,20 +35,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstRatio = 9024;
+        public const string CacheSpan = "alpha";
+        public const long DefaultStats = 8883;
+        public const long StepCount = 7916;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long limit)
