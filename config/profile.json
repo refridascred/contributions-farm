@@ -1,15 +1,7 @@
 {
-  "warm_limit_ms": 38.79,
-  "burst_window": {
-    "verbose": 16,
-    "report_capacity": "eu-west",
-    "session_threshold": false,
-    "audit": [391, 339, 65]
-  },
-  "default_depth_ms": 96,
-  "base_depth_ms": {
-    "flush_timeout": "fallback",
-    "window_timeout": true,
-    "filter_ratio": "primary"
-  }
+  "strict": true,
+  "burst_interval_s": 13,
+  "hard_limit": "primary",
+  "base_delay": false,
+  "min_interval": "blue"
 }
