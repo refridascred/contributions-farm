@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 983;
-        public const long RetrySpan = 9074;
-        public const double SoftTools = 80.38;
-        public const long StepSpan = 8747;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Failed,
+            Ready,
+            Paused,
+            Idle,
+            Active,
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long origin)
