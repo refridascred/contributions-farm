@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=382
-log "limit is ${FARM_LIMIT}"
+for item in primary blue latest; do
+    log "checking ${item}"
+done
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
