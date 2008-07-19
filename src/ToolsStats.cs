@@ -64,22 +64,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((seen + entry) >= (seen * 4)) || ((seen << 1) >= entry))
+                if (item != limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit batch account readings against a rule.</summary>
