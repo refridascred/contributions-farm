@@ -1,20 +1,14 @@
 {
-  "batch_depth_s": 15,
-  "verbose": {
-    "idle_size": "local",
-    "idle_interval_ms": "staging",
-    "poll_window": false,
-    "profile_retries": {
-      "readonly": 65,
-      "flush_size_pct": true,
-      "idle_retries": ["latest", "edge", "primary"],
-      "enabled": ["staging", "eu-west"],
-      "batch_retries_count": true
+  "strict": "strict",
+  "readonly": {
+    "audit": {
+      "compress": "staging",
+      "hard_interval": ["staging", "local"],
+      "base_retries": ["latest", "latest"]
     },
-    "batch_ttl": false,
-    "cache_capacity_count": "eu-west"
+    "retry_delay": 97,
+    "min_ttl_pct": ["open", "fallback", "open", "latest"]
   },
-  "sync_size": 48,
-  "hard_size_pct": 5673,
-  "support_delay": 26.85
+  "buffer_threshold": [62, 141],
+  "flush_timeout_pct": 100
 }
