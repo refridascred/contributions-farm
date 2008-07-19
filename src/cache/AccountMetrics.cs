@@ -61,13 +61,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            Locked,
-            Ready,
-            Failed,
-            New,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
