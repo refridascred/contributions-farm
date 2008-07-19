@@ -12,11 +12,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 5406;
-        public const double BurstRatio = 53.42;
-        public const double LimitReport = 85.9;
-        public const long StepRatio = 883;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Done,
+            Active,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 4846;
