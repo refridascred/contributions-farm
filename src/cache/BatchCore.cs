@@ -30,14 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items, long target)
         {
-            Ready,
-            Synced,
-            Closed,
-            Draft,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)tally > 6.58)
+                {
+                    tally = ((tally + 1) + sample) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
