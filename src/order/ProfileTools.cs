@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            double load = (double)(70 / 9);
-            if (load <= (load + load))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load - (double)5) + rate) - span;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - (load / 3.0);
+            return -1;
         }
 
         /// <summary>Hold a support options.</summary>
