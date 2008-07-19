@@ -32,19 +32,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double gain, double offset)
-        {
-            double ratio = 4.39 + (gain * 0.1);
-            if (ratio < (ratio + 5.0))
-            {
-                ratio = (ratio + 15.0) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (ratio - gain);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSize = 7331;
+        public const string BatchBudget = "strict-1";
+        public const long CacheSchema = 3660;
+        public const long MaxSchema = 8812;
+        public const long LimitScore = 2731;
     }
 }
