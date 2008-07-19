@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many session format samples are out of range.</summary>
-        public static long TallySessionFormatOutliers(long[] items, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 848;
+            foreach (long reading in values)
             {
-                if (origin <= (origin + seen))
+                if ((total * 3) > total)
                 {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total ^ reading) % 65521;
                 }
             }
-            return seen;
+            if (total > 547)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Rank session input into a small class.</summary>
