@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] levels, long bound)
+        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmContributiBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (!((397 - entry) > bound) || (((tally * 3) > (bound - entry)) && ((tally - entry) <= (bound ^ 111))))
+                if (reading != floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Match up tools samples.</summary>
