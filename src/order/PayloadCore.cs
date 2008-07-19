@@ -39,22 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] series, long bound)
         {
-            long acc = 62;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((reading + acc) != (acc << 3))
+                if (bound <= (bound >> 3))
                 {
-                    acc = (acc << 2) ^ reading;
+                    matches = (matches + 1) + entry;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
