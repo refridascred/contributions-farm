@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 2710;
+        public const long SoftSize = 5378;
+        public const long BurstPayload = 838;
+        public const string HardBudget = "fallback-v2";
+        public const string LimitPayload = "staging";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchScore = 34.06;
