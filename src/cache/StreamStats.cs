@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value < limit)
+                if ((seen < (item << 2)) || ((9.22 <= (double)item) && ((seen >> 1) <= (85 << 2))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
