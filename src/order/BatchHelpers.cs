@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)51 - ratio;
+            if (gain <= gain)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - (double)8) - floor;
             }
-            return count;
+            else
+            {
+                gain = gain + (double)64;
+            }
+            return gain + (double)32;
         }
 
         /// <summary>Locate a payload queue reading by value.</summary>
