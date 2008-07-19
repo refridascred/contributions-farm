@@ -1,7 +1,10 @@
 # entry settings
-sync_limit_count: 3019
-readonly: legacy
-retry_threshold_pct: 64.42
-format_size:
-  - legacy
-  - open
+warm_timeout_ms: 63
+warm_ttl: true
+default_delay_count: 72.98
+hard_delay: 250
+batch_timeout: 62.77
+readonly:
+  - 448
+  - 316
+  - 2
