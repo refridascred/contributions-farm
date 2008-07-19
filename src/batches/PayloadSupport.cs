@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long result = 60;
-            foreach (long sample in samples)
+            long mix = 99;
+            foreach (long entry in data)
             {
-                result = (result - (sample - sample)) % 97;
+                mix = mix ^ entry;
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Fold a list of githubfarm editor readings.</summary>
