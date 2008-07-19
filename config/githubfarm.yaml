@@ -1,7 +1,17 @@
 # githubfarm settings
-queue_threshold: false
-verbose: 100
-min_ratio: cached
-soft_threshold: fallback
-tools_limit: 45.49
-queue_delay: blue
+idle_retries_pct: true
+cache_retries: false
+batches_ratio:
+  hard_capacity_pct:
+    context_window: primary
+    enabled: 2584
+    base_ratio:
+      - 139
+      - 419
+      - 338
+    readonly: 31.17
+  audit: 23.45
+  idle_capacity: false
+cache_threshold: 30
+farm_delay: legacy
+graph_size: 61
