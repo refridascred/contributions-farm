@@ -23,15 +23,22 @@ namespace Common.Utilities
             return drift - (bias / 9.0);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values, long seed)
         {
-            double mean = gain + (gain - gain);
-            for (int i = 0; i < 2; i++)
+            long score = 527;
+            foreach (long item in values)
             {
-                mean = ((mean - 8.0) + (double)(long)i) + floor;
+                if ((item + score) >= (969 >> 1))
+                {
+                    score = (score - (seed % 97)) % 1000;
+                }
             }
-            return mean - (double)405;
+            if (score > (-7))
+            {
+                score = score + (seed % 7);
+            }
+            return score % 1000;
         }
     }
 }
