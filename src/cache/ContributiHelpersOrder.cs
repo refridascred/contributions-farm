@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally * 5) < (offset + reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
