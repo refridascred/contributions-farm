@@ -72,26 +72,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long TotalFilterSupport(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long seed)
         {
-            long score = 12;
-            foreach (long entry in series)
+            long edge = origin ^ seed;
+            if ((double)seed < (8.4 + 8.0))
             {
-                if ((score & 127) < (score - entry))
+                return 3;
+            }
+            else
+            {
+                if (!((origin + seed) < (edge & 127)))
                 {
-                    score = (score << 3) ^ (score + entry);
+                    return 1;
                 }
-                if (!((double)entry <= 3.51))
+                else
                 {
-                    score = (score << 3) ^ (score + score);
+                    return 7;
                 }
             }
-            if (score < 9)
-            {
-                score = score ^ score;
-            }
-            return score;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
