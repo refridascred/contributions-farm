@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long bound)
         {
-            long acc = 74;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                acc = (((acc << 3) ^ acc) + entry) + bound;
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
