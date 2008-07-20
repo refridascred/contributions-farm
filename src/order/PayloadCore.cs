@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseScore = "primary-edge";
-        public const long StepSession = 5407;
-        public const long LimitSpan = 764;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Retry,
+            Dropped,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] samples)
