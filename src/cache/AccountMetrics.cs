@@ -66,13 +66,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public string Label { get; set; } = "";
+            public long Rank { get; set; }
             public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
