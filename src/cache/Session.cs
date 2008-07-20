@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first commits checks entry that matches the target.</summary>
-        public static long LookupCommitsChecksIndex(long[] items, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] == step)
+                if ((seen + seen) < (seen + 1))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ datum) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
