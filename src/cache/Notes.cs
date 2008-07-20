@@ -58,13 +58,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((((item / 8) >= (seen << 3)) || ((item ^ 0) == (569 / 4))) || ((21 + 9) <= (seen & 127)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
