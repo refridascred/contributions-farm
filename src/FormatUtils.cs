@@ -52,13 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Accumulate metric samples.</summary>
