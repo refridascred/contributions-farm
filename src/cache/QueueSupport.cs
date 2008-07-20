@@ -17,21 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up context command samples.</summary>
-        public static long OverlapContextCommandCount(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (bias2 - bias) + (double)341;
+            if (weight <= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (double)75;
             }
-            return hits;
+            else
+            {
+                weight = weight + bias2;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a layout info.</summary>
