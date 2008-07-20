@@ -62,12 +62,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
