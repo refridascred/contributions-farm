@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long floor)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
