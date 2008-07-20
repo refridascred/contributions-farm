@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean - (span - span);
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long origin)
         {
-            Retry,
-            Done,
-            Draft,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
