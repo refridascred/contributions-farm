@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up buffer stream samples.</summary>
-        public static long MatchBufferStreamCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)4 >= (2.77 * 16.0)) && (84 <= (limit % 12)))
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
