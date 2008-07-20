@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double gain, double span)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            double ratio = (double)(18 ^ (-1));
+            if (ratio < span)
+            {
+                ratio = ratio + (ratio + gain);
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (gain * 3.31)) + (double)(long)i;
+            }
+            return ratio - 3.1;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
