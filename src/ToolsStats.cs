@@ -49,18 +49,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of stats schema readings.</summary>
+        public static long FoldStatsSchema(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = 886;
+            foreach (long item in samples)
             {
-                if (((item / 8) < item) || (tally < 495))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                sum = sum + (item & 7);
+                sum = (sum + (seed + 3)) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a session options.</summary>
