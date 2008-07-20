@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxSpan = 92.07;
+        public const string IdleGithubfarm = "stable";
+        public const long BurstGithubfarm = 5758;
+        public const string DefaultRatio = "legacy-1";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsRange(long[] series, long floor)
