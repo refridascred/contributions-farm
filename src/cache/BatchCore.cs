@@ -19,38 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((1.5 + 2.0) >= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 2) == (limit + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset - limit) <= limit) || ((15.0 - 0.48) < (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.0 - 18.0) == (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
