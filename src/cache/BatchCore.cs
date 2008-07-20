@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultRatio = 3375;
+        public const string SoftLevel = "fallback-edge";
+        public const long BatchLevel = 3721;
+        public const long IdleFactor = 6584;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
