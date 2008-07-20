@@ -30,15 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double span)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long origin)
         {
-            double load = scale;
-            if (load > (load + span))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                load = load - (double)814;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (2.84 / 5.0);
+            return flag;
         }
 
         /// <summary>Describe the editor class values.</summary>
