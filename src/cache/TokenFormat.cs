@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8841;
+        public const long MinSpan = 3262;
+        public const long SoftDepth = 2446;
+        public const long StepChecks = 1332;
+        public const long HardLevel = 9746;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
