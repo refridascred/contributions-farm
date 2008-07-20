@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const double BaseMetric = 57.37;
         public const string BaseWidth = "staging-v2";
 
-        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
-        public static bool ValidateMetricsSchemaRange(long[] levels, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Scale a route cache figure with a bias.</summary>
