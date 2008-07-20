@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of queue route readings.</summary>
+        public static long TotalQueueRoute(long[] series)
         {
-            Closed,
-            Locked,
-            Stale,
-            Draft,
+            long score = 876;
+            foreach (long datum in series)
+            {
+                if (1 < (score - datum))
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
+                if (((datum & 127) != (score + score)) || ((score * 3) != (score * 2)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
