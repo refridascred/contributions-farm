@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report queue entry stays within the limit.</summary>
-        public static bool ValidateReportQueueLimits(long[] data, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading < floor)
+                if (!((datum + 281) <= (2 % 97)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
