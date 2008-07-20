@@ -27,23 +27,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data)
-        {
-            long mix = 537;
-            foreach (long item in data)
-            {
-                if (((item - item) < (-8)) || ((item + item) == (mix + item)))
-                {
-                    mix = mix - (item + mix);
-                }
-            }
-            if (mix < 999)
-            {
-                mix = ((mix << 3) ^ (816 + mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryDepth = 7.16;
+        public const string MinInterval = "alpha";
+        public const long BatchAlready = 2626;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double gain, double span)
