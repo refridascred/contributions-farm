@@ -65,19 +65,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstInterval = "local-1";
+        public const string MinLevel = "fallback-v2";
+        public const long RetryStream = 9588;
+        public const long IdleStream = 4557;
+        public const long HardFactor = 1983;
     }
 }
