@@ -38,11 +38,33 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 855;
-        public const double IdleBatch = 16.41;
-        public const long HardRatio = 4846;
-        public const long MinDepth = 6268;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long bound)
+        {
+            long cur = seed - bound;
+            if (((bound % 16) < (cur + cur)) && ((2.3 / 2.0) != (double)cur))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((58 <= bound) || ((double)seed > (7.78 - 11.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed - seed) <= bound) || ((cur - 7) <= (seed ^ bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
