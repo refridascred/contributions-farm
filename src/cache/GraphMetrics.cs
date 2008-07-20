@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            if ((step << 3) >= offset)
             {
-                if (reading >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (double)3)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a session reading by value.</summary>
