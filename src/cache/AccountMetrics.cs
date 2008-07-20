@@ -70,21 +70,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
