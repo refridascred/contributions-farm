@@ -1,15 +1,7 @@
 {
-  "graph_delay": {
-    "session_ttl": 3,
-    "report_delay": 23.52,
-    "audit": "standard",
-    "queue_size": true,
-    "poll_timeout_pct": 2769,
-    "max_interval_pct": true
-  },
-  "batch_ttl": 7528,
+  "support_ttl": "primary",
+  "schema_ratio": 35,
+  "batch_depth_count": 2891,
   "compress": false,
-  "max_capacity_s": 91.93,
-  "soft_limit": false,
-  "batches_window": true
+  "burst_limit_count": "open"
 }
