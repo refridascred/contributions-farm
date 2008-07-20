@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+CHANNEL_LIMIT=305
+log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
