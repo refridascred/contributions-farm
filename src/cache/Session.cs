@@ -52,19 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long sum = 6;
-            foreach (long sample in values)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (((sum * 2) + (432 % 24)) % 255) ^ sample;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ (origin & 255)) % 97;
-            }
-            return sum;
+            return acc;
         }
     }
 }
