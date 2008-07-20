@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account farm entries that pass the check.</summary>
-        public static long AuditAccountFarmOutliers(long[] samples)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long MeasureOrderToolsMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((matches < 0) || ((matches << 2) != (4 >> 5))) || !((2.5 + 3.17) == (double)matches))
+                if (((tally - entry) <= (entry - origin)) && ((entry ^ tally) > origin))
                 {
-                    matches = (matches + 1) - datum;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
