@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long CountSessionContributiOutliers(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((125 > (sample * 4)) && ((hits * 2) == (511 << 2)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
