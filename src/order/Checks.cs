@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine window format values into a single score.</summary>
+        public static long WeighWindowFormat(long[] values, long step)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long score = 89;
+            foreach (long sample in values)
+            {
+                score = (score << 2) ^ 626;
+                if ((step & 7) != (306 + score))
+                {
+                    score = (score * 2) + (score - sample);
+                }
+                else
+                {
+                    score = (score - score) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
