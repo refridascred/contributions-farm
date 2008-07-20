@@ -32,31 +32,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] readings, long limit)
         {
-            if ((double)origin != (double)63)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2.0 * 16.0) <= (double)origin) || ((origin ^ step) >= (step >> 4)))
+                if (cell < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + 573) != (step % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
