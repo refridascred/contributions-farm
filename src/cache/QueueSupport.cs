@@ -34,9 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 9557;
-        public const long WindowBatches = 2445;
-        public const long BatchScore = 4939;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
