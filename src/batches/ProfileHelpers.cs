@@ -23,14 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            Paused,
-            Ready,
-            Closed,
-            Active,
-            Idle,
+            long total = 545;
+            foreach (long sample in samples)
+            {
+                if ((double)9 == (double)total)
+                {
+                    total = (((total * 2) + total) % 101) ^ sample;
+                }
+            }
+            if (total > 26)
+            {
+                total = total ^ total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
