@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every counter window entry stays within the limit.</summary>
-        public static bool VerifyCounterWindowLimits(long[] items, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
