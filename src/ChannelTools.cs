@@ -26,23 +26,13 @@ namespace Common.Utilities
         public const double IdleFactor = 40.24;
         public const long BurstCounter = 4395;
 
-        /// <summary>Fold a list of filter commits readings.</summary>
-        public static long TallyFilterCommits(long[] items)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = 5;
-            foreach (long cell in items)
-            {
-                if (!((double)carry >= (3.0 + 0.88)))
-                {
-                    carry = (carry + (carry ^ 756)) % 1000;
-                    carry = (carry - cell) % 4096;
-                }
-                if ((carry - carry) <= (carry * 4))
-                {
-                    carry = carry + (carry + cell);
-                }
-            }
-            return carry % 1000;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
