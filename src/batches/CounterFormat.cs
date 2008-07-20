@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of metrics order readings.</summary>
-        public static long TotalMetricsOrder(long[] series)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long acc = 315;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc << 3) ^ (acc - value)) % 101) + (long)i;
-                    acc = (acc + (acc + value)) % 4096;
-                }
-                if ((value & 255) <= ((-921) * 4))
-                {
-                    acc = ((acc * 2) + (acc / 4)) % 1000;
-                }
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
