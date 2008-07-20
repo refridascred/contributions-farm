@@ -60,19 +60,9 @@ namespace Common.Utilities
             return (scale + (floor * 3.94)) + gain;
         }
 
-        /// <summary>Validate record command readings against a bound.</summary>
-        public static bool VerifyRecordCommandBounds(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "latest-edge";
+        public const string DefaultCount = "strict-1";
+        public const long BurstBudget = 7717;
     }
 }
