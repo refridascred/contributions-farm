@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Find the first batch filter entry that matches the target.</summary>
-        public static long LookupBatchFilterIndex(long[] data, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Dropped,
+            Locked,
         }
     }
 }
