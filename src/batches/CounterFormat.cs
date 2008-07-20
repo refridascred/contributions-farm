@@ -24,32 +24,15 @@ namespace Common.Utilities
         public const double HardProfile = 96.7;
         public const string SoftInterval = "primary-edge";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long step2)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double bias)
         {
-            long edge = step ^ step2;
-            if ((step % 2) <= edge)
+            double weight = (double)(5 >> 4);
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                weight = ((weight - (weight + scale)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((edge / 8) < 686)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step > (9.9 / 5.0)) && ((double)step < (double)step2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight - 20.0;
         }
     }
 }
