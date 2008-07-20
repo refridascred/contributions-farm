@@ -33,31 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long seed, long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if (floor <= (floor & 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + seed) > (floor ^ 982))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.0 / 9.0) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Queued,
         }
     }
 }
