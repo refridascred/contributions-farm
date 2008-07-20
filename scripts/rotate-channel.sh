@@ -6,14 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=389
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached strict fallback primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-green}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -22,3 +15,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
