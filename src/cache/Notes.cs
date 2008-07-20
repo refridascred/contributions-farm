@@ -18,18 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Measure how many batches record samples are out of range.</summary>
+        public static long MeasureBatchesRecordHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (sample >= 429)
+                if (7.8 < (double)(long)readings.Length)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
