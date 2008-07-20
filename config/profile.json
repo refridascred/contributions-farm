@@ -1,6 +1,5 @@
 {
-  "dry_run": 8080,
-  "retry_limit_count": "eu-west",
-  "idle_window_pct": 16.69,
-  "retry_threshold": "stable"
+  "base_threshold": 6.69,
+  "soft_interval_ms": [453, 491, 450],
+  "token_delay": 1.2
 }
