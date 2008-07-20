@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state + ((long)i << 1)) % 65521;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            double load = 3.93;
+            return ((load - 5.9) + scale) + offset;
         }
 
         /// <summary>Describe the context mode values.</summary>
