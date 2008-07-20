@@ -32,31 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long step)
         {
-            if (((-88) % 8) >= target)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 7) != (target + 673))
+                if (cell >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 10) == (floor + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
