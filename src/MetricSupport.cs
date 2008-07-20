@@ -16,21 +16,10 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 29.09;
+        public const long SoftCount = 4191;
+        public const long LimitCache = 9546;
+        public const long DefaultCache = 6499;
     }
 }
