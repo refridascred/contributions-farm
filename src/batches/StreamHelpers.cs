@@ -42,13 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Dropped,
-            Retry,
             Queued,
-            Pending,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define context limits and defaults.</summary>
