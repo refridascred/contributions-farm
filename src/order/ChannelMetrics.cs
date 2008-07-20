@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] items, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)value < (6.6 / 4.0)) || ((tally + value) < (725 / 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + target;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
