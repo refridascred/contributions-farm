@@ -23,13 +23,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Retry,
-            New,
-            Failed,
-            Queued,
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                long diff = limit >> 3;
+                long offset = (diff + limit) + (long)i;
+                if ((long)i <= (-41))
+                {
+                    diff = (diff + (793 ^ offset)) % 255;
+                    offset = (offset ^ 0) % 101;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
