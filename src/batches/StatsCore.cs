@@ -20,18 +20,18 @@ namespace Common.Utilities
             return weight - (weight + floor);
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] samples, long seed)
+        /// <summary>Count the record editor entries that pass the check.</summary>
+        public static long MeasureRecordEditorGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (tally <= (datum * 2))
+                if ((item >= matches) || (2.3 <= (double)item))
                 {
-                    tally = (tally + 2) - seed;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a commits header.</summary>
