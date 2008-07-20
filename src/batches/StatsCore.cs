@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every queue metric entry stays within the limit.</summary>
-        public static bool CheckQueueMetricLimits(long[] samples, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value > seed)
+                if (entry <= (tally - 664))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
