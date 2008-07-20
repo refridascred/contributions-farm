@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count counter githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareCounterGithubfarmCount(long[] readings)
+        /// <summary>Check that every counter window entry stays within the limit.</summary>
+        public static bool VerifyCounterWindowLimits(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the record mode values.</summary>
