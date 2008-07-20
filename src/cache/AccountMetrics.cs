@@ -34,14 +34,18 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long AuditEntryCacheOutliers(long[] data, long seed)
         {
-            Paused,
-            Done,
-            New,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((2 <= (matches - seed)) || ((15.0 / 4.0) > (double)matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
