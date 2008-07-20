@@ -52,15 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double bias)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double weight = (double)(5 >> 4);
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight - (weight + scale)) + (double)(long)i) - bias;
-            }
-            return weight - 20.0;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
