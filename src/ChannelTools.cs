@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] values, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long floor)
         {
-            long sum = -1;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum ^ (bound + sum)) + entry;
-                if (!(((long)values.Length >> 2) < sum))
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
