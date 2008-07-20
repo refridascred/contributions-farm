@@ -54,32 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long floor)
+        /// <summary>Count the checks format entries that pass the check.</summary>
+        public static long AuditChecksFormatHits(long[] levels)
         {
-            long span = target ^ floor;
-            if ((floor % 8) < (target << 1))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (span <= (8 - floor))
+                if ((datum % 100) <= (seen % 8))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)span >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
