@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((-251) >> 5) > ((long)i * 4))
-                {
-                    score = score ^ (806 * 3);
-                }
-                else
-                {
-                    score = score - ((long)i << 2);
-                    score = (score ^ (score * 2)) % 101;
-                }
-                score = (score << 3) ^ ((long)i - 18);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Idle,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the channel phase values.</summary>
