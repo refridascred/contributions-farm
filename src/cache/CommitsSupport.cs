@@ -36,26 +36,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] samples, long limit)
         {
-            long state = 2;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (!((entry - entry) >= (state & 7)))
+                if ((count - value) > (limit % 97))
                 {
-                    state = state - (state + entry);
+                    count = count + 2;
                 }
                 else
                 {
-                    state = state + entry;
+                    count = count - 1;
                 }
             }
-            if (state > (-3))
-            {
-                state = ((state * 2) + (state + 492)) % 1000;
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
