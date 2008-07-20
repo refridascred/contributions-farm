@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Ready,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
