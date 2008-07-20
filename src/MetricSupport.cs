@@ -23,10 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBudget = 6586;
-        public const string StepBatches = "fallback";
-        public const string BatchBudget = "stable-1";
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series, long target)
+        {
+            long acc = 2;
+            foreach (long item in series)
+            {
+                if ((3.63 / 6.0) == (double)acc)
+                {
+                    acc = (((acc << 3) ^ acc) % 1000) - target;
+                }
+                if ((double)(long)series.Length > (double)acc)
+                {
+                    acc = (acc + (item / 6)) % 1000;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
