@@ -37,21 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile commits readings.</summary>
-        public static long CompareProfileCommitsCount(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 11)
+                    if ((data[i] - data[j]) == 14)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
