@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 6322;
-        public const long BurstPayload = 3896;
-        public const long MinPayload = 595;
-        public const double BaseRatio = 90.14;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 2461;
+        public const string LimitNotes = "standard-1";
+        public const long DefaultNotes = 2241;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] values)
