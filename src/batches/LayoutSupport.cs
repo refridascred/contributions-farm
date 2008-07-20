@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
