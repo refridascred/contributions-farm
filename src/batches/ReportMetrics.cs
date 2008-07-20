@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = 789;
+            foreach (long entry in data)
             {
-                if (datum < limit)
+                if (((double)entry < 8.6) && ((double)offset < (4.9 - 5.76)))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + (acc - entry)) % 65521;
                 }
             }
-            return flag;
+            if (acc > 558)
+            {
+                acc = (acc + (acc + acc)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first context filter entry that matches the target.</summary>
