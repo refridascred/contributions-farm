@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 127) != (count - 9))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
