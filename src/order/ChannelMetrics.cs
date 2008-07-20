@@ -22,23 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] readings, long bound)
         {
-            long result = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((7.0 * 19.0) < (double)bound)
+                if (((double)reading != (7.2 * 4.1)) && ((reading ^ bound) != (matches + bound)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    result = ((result ^ (bound >> 5)) % 1000) + cell;
+                    matches = matches - 1;
                 }
-                result = result - 632;
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
