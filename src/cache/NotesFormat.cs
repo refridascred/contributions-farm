@@ -27,23 +27,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record filter value.</summary>
-        public static double AdjustRecordFilter(double bias, double floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long seed)
         {
-            double rate = (double)((-178) << 1);
-            if (rate >= floor)
+            long slot = step ^ seed;
+            if ((slot + slot) <= (step & 127))
             {
-                rate = rate - (7.0 + bias);
+                return 1;
             }
             else
             {
-                rate = rate - floor;
+                if ((step - 9) != (seed << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >= (slot & 15)) && ((step / 8) <= (seed + slot)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (floor - 3.0)) - (double)(long)i;
-            }
-            return rate - 4.0;
         }
     }
 }
