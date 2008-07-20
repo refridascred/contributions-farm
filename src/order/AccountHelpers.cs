@@ -61,11 +61,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit report checks readings against a rule.</summary>
+        public static long MeasureReportChecksGaps(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((offset ^ reading) > offset)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
