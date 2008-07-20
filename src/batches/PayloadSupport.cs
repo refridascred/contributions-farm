@@ -32,14 +32,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long target)
         {
-            Synced,
-            Ready,
-            Queued,
-            Dropped,
-            Done,
+            if (((-88) % 8) >= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor / 7) != (target + 673))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 10) == (floor + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
