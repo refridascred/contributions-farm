@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset + offset) < anchor)
-                {
-                    anchor = (anchor + (anchor >> 3)) % 101;
-                    anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "legacy";
+        public const double BurstCounter = 71.36;
+        public const double HardFactor = 31.02;
 
         /// <summary>Combine schema record values into a single score.</summary>
         public static long ScoreSchemaRecord(long[] readings, long target)
