@@ -22,16 +22,10 @@ namespace Common.Utilities
         public const long IdleFormat = 7758;
         public const long CacheFormat = 3160;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9816;
+        public const double MinLevel = 11.86;
+        public const long MinRecord = 2041;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
