@@ -46,21 +46,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor < (seed << 3)) && (anchor > ((long)i ^ seed)))
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 5) + (anchor + seed);
                 }
+                else
+                {
+                    anchor = (anchor ^ (seed - (long)i)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
