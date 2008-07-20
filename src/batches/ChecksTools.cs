@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
