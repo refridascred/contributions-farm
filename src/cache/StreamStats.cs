@@ -5,11 +5,37 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long DigestCommandChannel(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            long carry = -635;
+            foreach (long value in series)
+            {
+                carry = (carry ^ (value >> 5)) % 65521;
+                if ((carry ^ carry) < (20 + (long)series.Length))
+                {
+                    carry = ((carry * 5) + ((-219) & 7)) % 101;
+                    carry = (carry << 3) ^ (value - value);
+                    continue;
+                }
+                else
+                {
+                    carry = carry - origin;
+                }
+                if ((carry - origin) >= value)
+                {
+                    carry = ((carry << 2) ^ (67 ^ origin)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (origin - 2)) % 255;
+                }
+            }
+            if (carry > 111)
+            {
+                carry = (carry - (carry / 4)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
