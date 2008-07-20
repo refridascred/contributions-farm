@@ -45,12 +45,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 5472;
-        public const string BaseRatio = "legacy-1";
-        public const double WindowCommand = 94.63;
-        public const double CacheTimeout = 46.77;
-        public const long HardCommand = 5565;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long step)
