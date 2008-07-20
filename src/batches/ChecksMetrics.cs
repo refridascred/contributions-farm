@@ -36,19 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
