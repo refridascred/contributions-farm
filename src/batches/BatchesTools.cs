@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double SoftSession = 53.88;
         public const long LimitBudget = 6338;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Locate a route counter reading by value.</summary>
+        public static long FindRouteCounterIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < count)
+                if (data[i] <= origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
