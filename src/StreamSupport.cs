@@ -25,19 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batches format entry stays within the limit.</summary>
-        public static bool GuardBatchesFormatBounds(long[] samples, long limit)
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long SeriesFarmChannel(long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= limit)
+                if ((step < (step << 2)) || ((step / 9) >= (70 - 0)))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor ^ (step - anchor);
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
     }
 }
