@@ -57,19 +57,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (cell < origin)
+                if (entry >= step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
