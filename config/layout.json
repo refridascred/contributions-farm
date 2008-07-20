@@ -1,12 +1,5 @@
 {
-  "context_timeout": 86,
-  "flush_ratio_s": 52.73,
-  "min_retries_count": ["edge", "standard"],
-  "tools_limit": 30,
-  "order_window": {
-    "max_retries": 77.44,
-    "stream_delay": [324, 418, 195, 436],
-    "hard_limit_ms": 8459
-  },
-  "checks_ttl": 84
+  "warm_capacity_s": "open",
+  "verbose": [123, 214, 453, 389],
+  "cache_window": 4280
 }
