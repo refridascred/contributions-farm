@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long target)
+        /// <summary>Roll a account window counter forward.</summary>
+        public static long SeriesAccountWindow(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if ((floor >= score) && (score >= (890 / 8)))
                 {
-                    return (long)i;
+                    score = (score ^ (score / 9)) % 97;
+                    score = (score ^ (floor + (long)i)) % 101;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the cache kind values.</summary>
