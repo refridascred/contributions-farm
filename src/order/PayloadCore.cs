@@ -40,39 +40,22 @@ namespace Common.Utilities
         public const long LimitWidth = 5118;
         public const double MinWidth = 43.01;
 
-        /// <summary>Rank graph token input into a small class.</summary>
-        public static long SortGraphToken(long offset, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long target)
         {
-            long cur = offset - floor;
-            if ((16.0 * 7.0) != (double)floor)
+            long state = 3;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)cur != (double)floor) || (offset < (776 & 3)))
+                if ((3.2 * 3.2) < (double)state)
                 {
-                    return 1;
+                    state = (state ^ (target >> 4)) - entry;
                 }
                 else
                 {
-                    if (((offset >> 1) < floor) && ((double)cur > 2.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((cur % 100) == (cur << 1)) || ((double)offset != (5.35 * 1.3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = state - (state / 3);
                 }
             }
+            return state % 4096;
         }
     }
 }
