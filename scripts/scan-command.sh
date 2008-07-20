@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging strict latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=97
+log "limit is ${COMMAND_LIMIT}"
