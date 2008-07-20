@@ -1,5 +1,16 @@
 {
-  "persist": false,
-  "tools_depth": "strict",
-  "flush_retries": false
+  "flush_limit": {
+    "format_timeout": 60,
+    "dry_run": 500,
+    "editor_ratio": 8773,
+    "window_limit": true,
+    "min_size_s": {
+      "burst_window": 38.14,
+      "filter_capacity": true,
+      "route_retries": 3629
+    }
+  },
+  "min_interval": 100,
+  "hard_size_ms": 1024,
+  "cache_threshold": true
 }
