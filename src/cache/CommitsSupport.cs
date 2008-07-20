@@ -76,18 +76,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings)
+        /// <summary>Grade a token session value against two limits.</summary>
+        public static long ClassifyTokenSession(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((double)origin > 7.0)
             {
-                if ((entry << 3) != (matches + matches))
+                return 8;
+            }
+            else
+            {
+                if ((777 >> 4) != (0 + origin))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
