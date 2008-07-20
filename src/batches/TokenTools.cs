@@ -19,19 +19,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every stream editor entry stays within the limit.</summary>
-        public static bool GuardStreamEditorRange(long[] items, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry - (1 * 4)) % 4096;
+                carry = (carry ^ (seed << 2)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
     }
 }
