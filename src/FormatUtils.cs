@@ -31,19 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = 73;
-            foreach (long entry in data)
-            {
-                score = (score * 4) + (90 - entry);
-            }
-            if (score < 4)
-            {
-                score = (score ^ (score + score)) % 97;
-            }
-            return score;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
