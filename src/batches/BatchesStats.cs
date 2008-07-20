@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinSize = "latest-1";
-        public const string MaxBudget = "latest-1";
-        public const long BatchRatio = 8733;
-        public const double BaseContributi = 69.79;
-        public const double StepBudget = 59.2;
+        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmNotesCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double scale, double floor)
