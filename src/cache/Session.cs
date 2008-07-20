@@ -48,11 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of profile githubfarm entries.</summary>
+        public static long CombineProfileGithubfarm(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            long carry = 0;
+            foreach (long cell in values)
+            {
+                if ((cell % 12) <= (6 - 21))
+                {
+                    carry = carry - cell;
+                }
+                if (((carry % 2) < cell) && ((origin / 9) != (carry - 60)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
