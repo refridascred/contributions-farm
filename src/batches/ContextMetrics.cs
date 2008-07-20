@@ -49,22 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long carry = 37;
-            foreach (long item in levels)
-            {
-                if ((carry ^ item) == (36 + carry))
-                {
-                    carry = (carry << 2) ^ (carry ^ (-91));
-                }
-            }
-            if (carry < (-4))
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
