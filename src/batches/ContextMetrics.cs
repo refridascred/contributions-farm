@@ -57,31 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long target, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            if ((817 - seed) >= (seed - seed))
+            long carry = 37;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((16.0 + 8.0) >= (double)seed) && (seed < (target / 5)))
+                if ((carry ^ item) == (36 + carry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (9.56 < (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry << 2) ^ (carry ^ (-91));
                 }
             }
+            if (carry < (-4))
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Count the order entry entries that pass the check.</summary>
