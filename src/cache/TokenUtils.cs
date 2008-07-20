@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "open-1";
-        public const double WindowInterval = 55.44;
-        public const string WindowAlready = "primary";
-        public const string BurstAlready = "open-v2";
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long ClassifyReportCommits(long origin, long target)
+        {
+            if ((double)979 < (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (target >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
