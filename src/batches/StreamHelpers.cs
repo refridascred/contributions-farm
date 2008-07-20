@@ -57,14 +57,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 3173;
         public const long MinTimeout = 1009;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Stale,
-            Ready,
-            Closed,
             Queued,
-            Dropped,
+            Ready,
+            Pending,
+            Synced,
         }
     }
 }
