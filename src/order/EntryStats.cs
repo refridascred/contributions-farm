@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 7231;
-        public const long MaxContributi = 9807;
-        public const long LimitRatio = 3376;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long seed)
+        {
+            long carry = 0;
+            foreach (long sample in data)
+            {
+                carry = (carry + (sample * 5)) + seed;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Look up the position of a buffer githubfarm sample.</summary>
         public static long LookupBufferGithubfarmIndex(long[] data, long offset)
