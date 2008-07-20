@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 5758;
         public const string DefaultRatio = "legacy-1";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double bias = (9.7 * 6.67) * 0.5;
+            if (bias > (double)(-3))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + weight) + offset;
             }
-            return ready;
+            return bias - weight;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
