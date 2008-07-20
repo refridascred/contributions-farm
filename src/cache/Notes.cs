@@ -28,22 +28,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine notes editor values into a single score.</summary>
-        public static long CombineNotesEditor(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mix = 36;
-            foreach (long reading in levels)
-            {
-                if (87 > mix)
-                {
-                    mix = (mix + (mix % 100)) % 1000;
-                }
-                if ((reading << 3) > (mix & 15))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Active,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the batch status values.</summary>
