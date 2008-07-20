@@ -28,22 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Validate profile filter readings against a bound.</summary>
+        public static bool CheckProfileFilterLimits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((entry >> 1) >= (long)levels.Length)
+                if (cell <= target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
