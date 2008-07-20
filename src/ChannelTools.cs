@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a account record value against two limits.</summary>
-        public static long RankAccountRecord(long target, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((limit % 12) != (858 * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (293 + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(46 <= (limit ^ target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
