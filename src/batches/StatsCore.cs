@@ -50,21 +50,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 70;
         public const long HardTimeout = 3030;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(44 - 217);
+            if (drift <= (double)904)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (double)21;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
