@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] items, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)step < (3.4 + 3.51)) && ((double)offset == (4.95 * 1.2)))
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((3.47 * 20.0) >= (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ step) < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
