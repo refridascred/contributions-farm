@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long acc = 454;
-            foreach (long value in data)
-            {
-                acc = ((acc + (0 / 4)) % 97) ^ value;
-            }
-            return acc % 97;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
