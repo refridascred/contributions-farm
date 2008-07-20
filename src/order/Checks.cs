@@ -24,14 +24,19 @@ namespace Common.Utilities
         public const long SoftBatches = 2207;
         public const double LimitSpan = 12.31;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long target)
         {
-            Idle,
-            Locked,
-            Ready,
-            Done,
-            Retry,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
