@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((long)series.Length + bound) < (1 * 4))
+                if (matches >= (reading % 2))
                 {
-                    seen = (seen + 2) + reading;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
