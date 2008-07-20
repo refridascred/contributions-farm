@@ -13,11 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftTimeout = "standard";
-        public const double DefaultContext = 59.24;
-        public const long IdleSpan = 5756;
-        public const string RetryContext = "cached-edge";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesHits(long[] values, long floor)
