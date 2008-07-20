@@ -17,18 +17,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream metrics readings against a rule.</summary>
-        public static long AuditStreamMetricsMatches(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                if ((9 + 593) == ((long)items.Length - hits))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 2) - item;
+                    mix = mix + (entry * 2);
+                    mix = (mix + ((long)i + mix)) % 65521;
+                }
+                if (!((7.9 + 1.4) > (double)(long)levels.Length))
+                {
+                    mix = ((mix << 3) ^ (long)levels.Length) % 255;
+                }
+                if ((entry > (7 + entry)) || (mix <= (mix + 2)))
+                {
+                    mix = (mix + mix) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the command counter entries that pass the check.</summary>
