@@ -44,12 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Active,
-            Queued,
-            Paused,
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
