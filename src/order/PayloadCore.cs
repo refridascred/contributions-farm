@@ -40,18 +40,39 @@ namespace Common.Utilities
         public const long LimitWidth = 5118;
         public const double MinWidth = 43.01;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] samples, long bound)
+        /// <summary>Rank graph token input into a small class.</summary>
+        public static long SortGraphToken(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long cur = offset - floor;
+            if ((16.0 * 7.0) != (double)floor)
             {
-                if (bound <= (209 - (-3)))
+                return 5;
+            }
+            else
+            {
+                if (((double)cur != (double)floor) || (offset < (776 & 3)))
                 {
-                    tally = (tally + 2) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset >> 1) < floor) && ((double)cur > 2.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((cur % 100) == (cur << 1)) || ((double)offset != (5.35 * 1.3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
