@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Classify a route entry pair into a bucket.</summary>
+        public static long BucketRouteEntry(long step, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            if ((step / 2) <= (43 - step))
             {
-                total = (total - (limit % 97)) % 97;
-                total = ((total * 4) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((11.0 - 1.28) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (301 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)201 != (double)step) || ((origin + origin) <= ((-805) - 754)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
