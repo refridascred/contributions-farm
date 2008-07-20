@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 3713;
-        public const string SoftRatio = "standard-1";
-        public const string CacheTools = "alpha-v2";
-        public const string MaxTools = "open-1";
-        public const double MinTools = 25.57;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
