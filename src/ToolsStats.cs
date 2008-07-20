@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long RankClusterCache(long limit, long seed)
         {
-            long anchor = 7;
-            foreach (long entry in levels)
+            if ((seed + limit) >= (692 >> 3))
             {
-                anchor = (anchor * 3) + (entry & 127);
+                return 8;
             }
-            if (anchor > 954)
+            else
             {
-                anchor = (anchor + (anchor & 3)) % 1000;
+                if ((limit << 1) > limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Hold a entry record.</summary>
