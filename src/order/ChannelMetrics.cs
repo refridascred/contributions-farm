@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] items, long target)
         {
-            long mix = 8;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                mix = ((mix - (floor + floor)) % 101) ^ reading;
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Match up order samples.</summary>
