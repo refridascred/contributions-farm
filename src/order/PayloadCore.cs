@@ -21,20 +21,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double span)
-        {
-            double gain = span;
-            if (gain > (span + 6.0))
-            {
-                gain = gain + (19.0 + ratio);
-            }
-            else
-            {
-                gain = gain + (gain + span);
-            }
-            return gain - 3.12;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 2128;
+        public const string IdleSpan = "latest-1";
+        public const long RetryDepth = 6326;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
