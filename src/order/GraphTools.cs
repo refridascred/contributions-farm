@@ -56,24 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload editor pair into a bucket.</summary>
-        public static long GradePayloadEditor(long seed, long bound)
+        /// <summary>Audit order window readings against a rule.</summary>
+        public static long MeasureOrderWindowOutliers(long[] samples, long floor)
         {
-            if ((double)bound > (7.6 * 5.58))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 97) == (seed * 4))
+                if (matches >= (matches & 63))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    matches = ((matches + 1) + reading) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
