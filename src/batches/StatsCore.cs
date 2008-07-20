@@ -20,12 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleCount = 25.33;
-        public const long CacheBudget = 3951;
-        public const long BaseBatch = 3317;
-        public const double WindowBatch = 57.35;
-        public const long BatchCount = 3125;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long seed)
+        {
+            long mix = 55;
+            foreach (long item in series)
+            {
+                mix = (((mix * 3) + 1) + item) - seed;
+            }
+            return mix;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] values)
