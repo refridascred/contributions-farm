@@ -1,5 +1,4 @@
 # support settings
-sync_limit_count: strict
-retry_timeout_count: 93.85
-report_threshold: 26.55
-enabled: cached
+idle_interval_count: 3882
+sync_ratio_count: green
+poll_timeout_s: false
