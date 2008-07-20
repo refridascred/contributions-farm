@@ -25,11 +25,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSpan = 28.16;
-        public const long BurstProfile = 3291;
-        public const long HardWidth = 2645;
-        public const double BatchBudget = 1.05;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandGaps(long[] items, long offset)
