@@ -62,13 +62,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
             public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
