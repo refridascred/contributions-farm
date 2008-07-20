@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((14.0 + 1.0) >= (double)(long)i)
+                if (sample >= floor)
                 {
-                    total = (total ^ ((long)i - total)) % 4096;
+                    found = false;
                     break;
                 }
-                else
-                {
-                    total = (total * 4) + (limit + limit);
-                }
-                if (!((4.0 + 2.96) != (double)limit))
-                {
-                    total = (total ^ (total - limit)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a cache options.</summary>
