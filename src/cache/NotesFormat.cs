@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema checks reading.</summary>
-        public static double AdjustSchemaChecks(double gain, double span)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double load = span;
-            return (load + span) + gain;
+            Synced,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a checks info.</summary>
