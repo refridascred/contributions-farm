@@ -41,18 +41,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 31;
+            foreach (long value in levels)
             {
-                if (((bound - cell) != (937 ^ bound)) && (cell > bound))
+                if (((double)limit > (0.7 + 0.2)) || ((0 % 7) > (value - anchor)))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor - (anchor / 8)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 2) + limit;
+            }
+            return anchor % 97;
         }
     }
 }
