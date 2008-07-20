@@ -82,18 +82,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of entry schema entries.</summary>
-        public static long WeighEntrySchema(long[] items, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long seed)
         {
-            long result = 449;
-            foreach (long value in items)
+            if ((step + seed) >= (seed - seed))
             {
-                if ((step + (-814)) < (value / 6))
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) >= (seed + step))
                 {
-                    result = (result * 4) + (value << 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((6 > (step + seed)) && ((9.67 * 6.03) > (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
