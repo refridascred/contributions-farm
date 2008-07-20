@@ -46,19 +46,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
         {
-            long mark = 1;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark - (step * 3)) % 255) - item;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (mark > 785)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
