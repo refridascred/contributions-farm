@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            double bias = rate;
-            if (bias > (5.3 * 9.0))
+            long state = 81;
+            foreach (long value in readings)
             {
-                bias = bias - rate;
+                if ((double)value >= 12.0)
+                {
+                    state = (state * 2) + (68 ^ state);
+                }
+                else
+                {
+                    state = (state ^ (value >> 4)) % 101;
+                }
             }
-            return bias + floor;
+            if (state < 81)
+            {
+                state = state ^ (state % 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a cache command sample.</summary>
