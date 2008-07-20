@@ -34,18 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Fold a list of queue channel readings.</summary>
+        public static long CombineQueueChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long acc = 35;
+            foreach (long entry in levels)
             {
-                if ((tally >> 4) < (tally + reading))
-                {
-                    tally = tally + 1;
-                }
+                acc = (acc ^ (entry & 3)) % 4096;
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
