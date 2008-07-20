@@ -60,10 +60,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultTimeout = 4366;
-        public const long BatchLayout = 5871;
-        public const long DefaultLevel = 3351;
-        public const double WindowScore = 45.71;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
