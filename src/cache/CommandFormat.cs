@@ -51,12 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long seed)
+        /// <summary>Look up the position of a account counter sample.</summary>
+        public static long LookupAccountCounterIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= seed)
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
