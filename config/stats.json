@@ -1,22 +1,6 @@
 {
-  "flush_limit": {
-    "base_threshold_ms": {
-      "notes_delay": 95.99,
-      "base_interval_count": 23.64,
-      "max_capacity_pct": "primary",
-      "flush_depth_count": "open"
-    },
-    "cache_depth": "legacy",
-    "tools_interval": true,
-    "batch_delay": {
-      "sync_ratio_count": "standard",
-      "max_threshold": "standard",
-      "idle_limit": ["strict", "local"],
-      "default_timeout": ["green", "local"]
-    }
-  },
-  "profile_depth": false,
-  "batches_ratio": "legacy",
-  "max_timeout_count": 81,
-  "batch_ratio_ms": 19.79
+  "strict": ["green", "cached", "legacy", "local"],
+  "persist": [373, 288, 321, 183],
+  "queue_ttl": 3001,
+  "cache_limit_s": 48
 }
