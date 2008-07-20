@@ -24,21 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
