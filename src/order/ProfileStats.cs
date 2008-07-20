@@ -60,12 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitScore = 6499;
+        public const string BaseCommits = "latest-v2";
+        public const long MaxWidth = 115;
+        public const long WindowCommits = 9892;
+        public const double RetryInterval = 49.53;
     }
 }
