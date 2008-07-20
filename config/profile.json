@@ -1,5 +1,5 @@
 {
-  "base_threshold": 6.69,
-  "soft_interval_ms": [453, 491, 450],
-  "token_delay": 1.2
+  "persist": "green",
+  "poll_timeout_ms": false,
+  "max_ratio_pct": "latest"
 }
