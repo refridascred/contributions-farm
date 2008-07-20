@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] readings, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(34 + 4);
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + mean) + (double)(long)i) - gain;
             }
-            return -1;
+            return mean - bias;
         }
 
         /// <summary>Hold a record header.</summary>
