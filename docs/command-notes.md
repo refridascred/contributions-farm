@@ -1,15 +1,12 @@
 # Command notes
 
-The filter module keeps account values in sync with the counter cache.
-When a stats fails, the entry handler retries a few times before giving up.
-When a metric fails, the graph handler retries a few times before giving up.
-
-The layout report groups every report by account.
-Keep format and filter names short and lowercase.
+A payload that stays idle for too long is moved to the graph list.
+The layout report groups every channel by support.
+Keep payload and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep order values small
-- Log every batches change
-- Validate command input early
+- Prefer editor defaults
+- Log every entry change
+- Document new order fields
+- Keep payload values small
