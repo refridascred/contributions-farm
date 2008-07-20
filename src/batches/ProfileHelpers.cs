@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] levels, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry > target)
+                if (!((offset + offset) <= offset))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank batch command input into a small class.</summary>
