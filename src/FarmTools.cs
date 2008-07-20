@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long BaseRatio = 6395;
         public const string RetryFactor = "alpha-v2";
 
-        /// <summary>Fold a list of stats editor readings.</summary>
-        public static long WeighStatsEditor(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long result = 81;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((value << 1) == (result + result)))
+                if (((tally - sample) <= (sample - sample)) && ((sample + 921) < (tally ^ sample)))
                 {
-                    result = (result - ((-444) >> 2)) % 4096;
+                    tally = tally + 1;
                 }
-                result = (result + value) % 101;
             }
-            if (result > 8)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
