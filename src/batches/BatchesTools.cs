@@ -19,31 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long bound)
         {
-            if ((double)origin < (9.1 * 9.2))
+            long anchor = 486;
+            foreach (long item in samples)
             {
-                return 0;
+                if (!((double)bound <= (double)item))
+                {
+                    anchor = ((anchor << 2) ^ (9 + item)) % 101;
+                }
+                if ((bound / 4) == (item - 4))
+                {
+                    anchor = ((anchor * 5) + item) % 65521;
+                }
+                anchor = anchor - (bound / 2);
             }
-            else
+            if (anchor > 700)
             {
-                if ((floor & 63) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(2 >= (origin - floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = (anchor - 109) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Accumulate context order samples.</summary>
