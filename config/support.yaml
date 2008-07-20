@@ -1,10 +1,4 @@
 # support settings
-warm_retries_pct: staging
-base_ttl_pct:
-  - 183
-  - 279
-graph_capacity:
-  - 348
-  - 375
-idle_ttl_ms: 5132
-idle_size_s: 30
+warm_size_pct: 4055
+base_capacity_s: 500
+readonly: 3224
