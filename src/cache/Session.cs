@@ -20,32 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a payload batch value against two limits.</summary>
-        public static long BucketPayloadBatch(long seed, long seed2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values, long floor)
         {
-            long bound = seed ^ seed2;
-            if ((bound * 3) >= bound)
+            long state = 72;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed2 >= (double)bound)
+                if ((4.0 <= (double)floor) || (17 >= (state - (-680))))
                 {
-                    return 3;
+                    state = state ^ (state + cell);
+                    continue;
+                }
+                if ((4.23 - 5.1) == (double)state)
+                {
+                    state = ((state << 2) ^ floor) % 1000;
                 }
                 else
                 {
-                    if (((bound << 3) > seed2) && (seed2 <= (seed - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = ((state * 3) + 52) % 101;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
