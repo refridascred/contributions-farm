@@ -20,21 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up notes account samples.</summary>
-        public static long OverlapNotesAccountCount(long[] data)
+        /// <summary>Grade a payload batch value against two limits.</summary>
+        public static long BucketPayloadBatch(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = seed ^ seed2;
+            if ((bound * 3) >= bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed2 >= (double)bound)
                 {
-                    if ((data[i] + data[j]) < 18)
+                    return 3;
+                }
+                else
+                {
+                    if (((bound << 3) > seed2) && (seed2 <= (seed - seed)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
