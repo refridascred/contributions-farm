@@ -36,18 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order githubfarm entries that pass the check.</summary>
-        public static long AuditOrderGithubfarmHits(long[] data, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits ^ value) >= (hits * 5))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
