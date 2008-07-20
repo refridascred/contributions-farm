@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] values, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] values, long limit)
         {
             bool valid = true;
-            foreach (long sample in values)
+            foreach (long reading in values)
             {
-                if (sample <= floor)
+                if (reading >= limit)
                 {
                     valid = false;
                     break;
