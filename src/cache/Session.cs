@@ -34,21 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = offset ^ seed;
+            if ((offset + seed) >= (offset * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)offset > (7.16 - 14.0)) || ((span + 7) < (seed / 6)))
                 {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
