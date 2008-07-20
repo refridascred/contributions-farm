@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)4 >= (2.77 * 16.0)) && (84 <= (limit % 12)))
-                {
-                    count = (count + 3) + value;
-                }
+                total = (total - (limit % 97)) % 97;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
