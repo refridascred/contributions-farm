@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)tally > 6.58)
-                {
-                    tally = ((tally + 1) + sample) - target;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
