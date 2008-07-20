@@ -19,19 +19,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long target)
         {
-            double drift = gain;
-            if (drift < (double)607)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + offset;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (1.0 - offset);
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
