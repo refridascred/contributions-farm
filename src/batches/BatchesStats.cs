@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "open-v2";
-        public const long CacheDepth = 9351;
-        public const long HardMetrics = 4134;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
