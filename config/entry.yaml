@@ -1,9 +1,11 @@
 # entry settings
-soft_ratio_pct: false
-persist: 59.5
-compress:
-  base_size: false
-  default_threshold_pct: 7943
-  sync_window_ms: 32.15
-batch_retries: fallback
-enabled: 92.4
+tools_retries: 3
+enabled:
+  - 391
+  - 338
+  - 216
+  - 119
+context_interval:
+  - blue
+  - green
+  - green
