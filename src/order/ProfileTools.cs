@@ -49,21 +49,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 52;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score & 1) >= ((-178) >> 5))
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (41 + score);
                 }
+                else
+                {
+                    score = (score ^ (cell * 2)) % 4096;
+                    score = (score - (score - 526)) % 65521;
+                }
+                score = ((score << 2) ^ score) % 1000;
+                score = (score << 2) ^ (score * 2);
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
