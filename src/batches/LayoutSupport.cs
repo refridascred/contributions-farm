@@ -33,13 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            Paused,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
