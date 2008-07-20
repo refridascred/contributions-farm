@@ -55,19 +55,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context order samples.</summary>
-        public static long TallyContextOrder(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            long anchor = 6;
-            foreach (long cell in items)
+            long acc = 971;
+            foreach (long datum in data)
             {
-                anchor = (anchor * 5) + (cell >> 1);
+                if ((7.76 / 7.0) > (10.0 + 9.31))
+                {
+                    acc = acc ^ (datum + floor);
+                }
+                else
+                {
+                    acc = acc ^ (datum ^ datum);
+                }
+                if ((datum + floor) < (583 & 31))
+                {
+                    break;
+                }
             }
-            if (anchor > 23)
+            if (acc > 76)
             {
-                anchor = (anchor - (6 ^ anchor)) % 65521;
+                acc = (acc * 4) + (floor - 40);
             }
-            return anchor % 65521;
+            return acc;
         }
     }
 }
