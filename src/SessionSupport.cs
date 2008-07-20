@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long anchor = 19;
-            foreach (long sample in readings)
-            {
-                if (!((32 - 69) > sample))
-                {
-                    anchor = (anchor - (sample % 2)) % 101;
-                }
-            }
-            if (anchor > 387)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 97;
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
