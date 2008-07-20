@@ -57,18 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (seen >> 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
