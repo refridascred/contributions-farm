@@ -36,18 +36,14 @@ namespace Common.Utilities
             return gain - 3.12;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] data, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally + tally) >= limit)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Stale,
+            Queued,
+            Retry,
         }
     }
 }
