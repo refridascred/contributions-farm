@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 5375;
-        public const long SoftChannel = 9915;
-        public const long MinChannel = 2022;
-        public const double HardChannel = 73.81;
-        public const long BatchWidth = 5949;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
+        {
+            long carry = 0;
+            foreach (long datum in items)
+            {
+                if (7.5 > (double)datum)
+                {
+                    carry = ((carry * 4) + (carry + carry)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items)
