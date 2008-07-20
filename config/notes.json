@@ -1,21 +1,5 @@
 {
-  "entry_window": 500,
-  "dry_run": "cached",
-  "entry_retries": {
-    "dry_run": "blue",
-    "tools_timeout": 87,
-    "persist": "latest"
-  },
-  "soft_ratio_s": {
-    "context_limit": false,
-    "min_ratio": [458, 8, 255],
-    "sync_interval": 71.85,
-    "base_size": {
-      "compress": [66, 132, 205, 119],
-      "default_capacity_count": 9221,
-      "base_retries_count": "legacy"
-    },
-    "queue_depth": true
-  },
-  "notes_delay": 10
+  "retry_interval_count": true,
+  "max_capacity": true,
+  "min_limit": 250
 }
