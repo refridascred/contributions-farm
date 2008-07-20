@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-legacy}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable primary standard; do
+for item in edge strict latest; do
     log "checking ${item}"
 done
