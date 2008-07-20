@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long LimitScore = 7012;
         public const string CacheSpan = "local";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if (((floor - step) == (floor * 3)) && ((floor + 930) >= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((20.0 * 4.83) > (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of farm order readings.</summary>
