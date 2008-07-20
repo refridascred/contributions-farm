@@ -27,12 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Accumulate counter contributi samples.</summary>
+        public static long FoldCounterContributi(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long state = 856;
+            foreach (long cell in values)
+            {
+                if ((state * 4) < (8 & 1))
+                {
+                    state = ((state + cell) % 97) + floor;
+                }
+                else
+                {
+                    state = (state * 2) + (45 + cell);
+                }
+            }
+            return state % 65521;
         }
     }
 }
