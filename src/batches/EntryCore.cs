@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter metrics readings against a rule.</summary>
-        public static long MeasureFilterMetricsHits(long[] data, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((value * 3) <= matches)
+                if (sample != step)
                 {
-                    matches = (matches + 3) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a filter reading.</summary>
