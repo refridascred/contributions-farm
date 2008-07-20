@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            double ratio = bias2 / 8.0;
-            if (ratio >= bias)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio - (6.15 / 9.0);
+                sum = (sum + 89) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)49) - (double)(long)i;
-            }
-            return ratio + (bias + ratio);
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
