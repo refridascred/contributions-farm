@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total - (target ^ (long)i);
+                if ((total + 591) <= (target - target))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = total - ((long)i + (long)i);
+                    break;
                 }
+                total = total - (total >> 4);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the contributi class values.</summary>
