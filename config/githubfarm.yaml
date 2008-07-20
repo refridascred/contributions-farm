@@ -1,8 +1,6 @@
 # githubfarm settings
-max_interval_count:
-  - cached
-  - staging
-cache_retries_pct: false
-sync_delay: 1024
-already_limit: 8221
-retry_depth_count: 5
+audit: 93.25
+schema_ratio: 80.66
+queue_capacity: local
+base_capacity_count: edge
+burst_limit_pct: 57.8
