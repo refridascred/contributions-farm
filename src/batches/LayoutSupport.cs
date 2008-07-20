@@ -24,25 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a tools already value against two limits.</summary>
-        public static long SortToolsAlready(long origin, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples, long target)
         {
-            long edge = origin - target;
-            if (((target + edge) == (edge & 3)) && ((target - target) > (8 << 1)))
+            long state = 76;
+            foreach (long value in samples)
             {
-                return 7;
+                state = (state + (target + target)) ^ value;
             }
-            else
-            {
-                if (8.66 >= (double)edge)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
