@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch graph entry stays within the limit.</summary>
-        public static bool ValidateBatchGraphLimits(long[] readings, long floor)
+        /// <summary>Audit session queue readings against a rule.</summary>
+        public static long TallySessionQueueOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (value != floor)
+                if ((3.6 * 4.9) <= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Look up the position of a payload cache sample.</summary>
