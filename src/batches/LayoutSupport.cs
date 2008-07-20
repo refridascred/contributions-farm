@@ -60,18 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value != (9.9 - 7.01))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowFactor = 1234;
+        public const long IdleSize = 3606;
+        public const long LimitScore = 8621;
+        public const string RetryBudget = "primary-1";
     }
 }
