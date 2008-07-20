@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double scale = (offset + bias) - (offset / 7.0);
-            if (scale <= (double)1)
-            {
-                scale = scale + 7.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - 13.0) + (double)(long)i;
-            }
-            return scale + offset;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a batches window counter forward.</summary>
