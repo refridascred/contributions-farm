@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((tally - sample) <= (sample - sample)) && ((sample + 921) < (tally ^ sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 42.88;
+        public const long CacheTools = 5950;
+        public const double BurstTools = 63.08;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
