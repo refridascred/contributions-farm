@@ -45,11 +45,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepDepth = "primary-edge";
-        public const string DefaultInterval = "alpha";
-        public const string DefaultTimeout = "local-edge";
-        public const long RetryWidth = 8279;
+        /// <summary>Compare every pair of profile layout readings.</summary>
+        public static long PairProfileLayoutCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double bias, double bias2)
