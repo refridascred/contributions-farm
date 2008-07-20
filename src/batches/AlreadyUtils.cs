@@ -43,16 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Compare every pair of profile commits readings.</summary>
+        public static long CompareProfileCommitsCount(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark + offset)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
