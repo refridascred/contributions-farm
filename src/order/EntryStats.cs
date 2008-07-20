@@ -47,18 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = 1;
+            foreach (long item in levels)
             {
-                if ((entry + entry) >= (hits & 31))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark - (step * 3)) % 255) - item;
             }
-            return hits;
+            if (mark > 785)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
