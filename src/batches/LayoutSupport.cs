@@ -58,19 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (value >= floor)
+                if (reading <= offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
