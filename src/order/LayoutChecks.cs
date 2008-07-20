@@ -70,25 +70,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)step <= (9.6 + 4.29))
+                if (readings[i] >= offset)
                 {
-                    sum = (sum ^ (step % 3)) % 65521;
-                    sum = ((sum << 3) ^ step) % 65521;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum - (step << 1);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
     }
 }
