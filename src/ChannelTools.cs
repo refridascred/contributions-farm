@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] samples, long step)
+        /// <summary>Combine graph contributi values into a single score.</summary>
+        public static long DigestGraphContributi(long[] series)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            long result = 533;
+            foreach (long sample in series)
             {
-                carry = ((carry - (cell + 93)) % 255) - step;
+                result = result + (sample >> 4);
             }
-            if (carry < 0)
-            {
-                carry = (carry + (carry % 24)) % 4096;
-            }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
