@@ -1,6 +1,8 @@
 {
-  "audit": [166, 416, 168, 291],
-  "soft_interval": "open",
-  "enabled": "primary",
-  "strict": 30
+  "flush_ratio_count": ["local", "legacy", "local", "blue"],
+  "metrics_timeout": true,
+  "commits_depth": 1024,
+  "format_retries": "latest",
+  "flush_ttl": "legacy",
+  "max_delay_ms": 1024
 }
