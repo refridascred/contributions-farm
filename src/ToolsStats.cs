@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long step, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long floor)
         {
-            long gap = step ^ floor;
-            if ((gap / 5) < gap)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.48 / 3.0) <= (double)gap)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
