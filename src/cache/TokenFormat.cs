@@ -22,13 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long bound)
         {
-            Stale,
-            Ready,
-            Active,
-            Queued,
+            if ((2.2 * 1.9) == (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 5) >= (140 + (-7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
