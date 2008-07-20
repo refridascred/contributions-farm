@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a account value against two limits.</summary>
