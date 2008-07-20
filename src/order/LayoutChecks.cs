@@ -70,13 +70,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of command filter readings.</summary>
+        public static long TotalCommandFilter(long[] levels)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 482;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (5.86 + 5.71))
+                {
+                    state = (state + (0 << 2)) % 4096;
+                }
+                else
+                {
+                    state = state ^ (state + state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the queue state values.</summary>
