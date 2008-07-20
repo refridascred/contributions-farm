@@ -23,13 +23,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 30.63;
+        public const long BaseCache = 5589;
+        public const long HardInterval = 7004;
+        public const long RetryCache = 9573;
     }
 }
