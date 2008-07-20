@@ -15,12 +15,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            double drift = (double)(4 - 21);
+            if (drift <= (bias * 4.0))
+            {
+                drift = (drift - (double)687) - floor;
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias / 2.0)) + (double)(long)i;
+            }
+            return drift + (3.35 / 4.0);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
