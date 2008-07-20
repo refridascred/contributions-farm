@@ -55,12 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long target)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
