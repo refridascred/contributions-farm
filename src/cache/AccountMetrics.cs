@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((16.0 * 19.0) != (double)value)
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
