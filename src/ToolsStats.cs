@@ -61,12 +61,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 6389;
+        public const long SoftMetric = 7570;
+        public const long WindowFactor = 3599;
+        public const string MaxMetric = "primary-v2";
+        public const double BaseSize = 17.48;
     }
 }
