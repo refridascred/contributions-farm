@@ -34,22 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter format entries that pass the check.</summary>
-        public static long AuditCounterFormatMatches(long[] levels, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= 94)
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Done,
+            Paused,
         }
     }
 }
