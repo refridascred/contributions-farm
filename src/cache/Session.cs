@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = 8;
-            foreach (long cell in items)
-            {
-                total = ((total << 2) ^ (total >> 4)) % 65521;
-                if ((total <= (cell & 7)) || ((7.68 / 3.0) <= (double)total))
-                {
-                    total = (total + (total / 4)) % 101;
-                }
-            }
-            if (total > (-600))
-            {
-                total = total - total;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
