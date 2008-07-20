@@ -1,8 +1,10 @@
 {
-  "flush_ratio_count": ["local", "legacy", "local", "blue"],
-  "metrics_timeout": true,
-  "commits_depth": 1024,
-  "format_retries": "latest",
-  "flush_ttl": "legacy",
-  "max_delay_ms": 1024
+  "commits_depth": 60,
+  "persist": ["strict", "stable", "strict", "strict"],
+  "poll_threshold_s": {
+    "burst_capacity_ms": 70,
+    "retry_ratio_pct": "standard",
+    "poll_window": 1024
+  },
+  "default_threshold_ms": ["open", "latest", "staging"]
 }
