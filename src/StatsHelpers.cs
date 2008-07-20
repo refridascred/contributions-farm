@@ -59,17 +59,15 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Find the first context contributi entry that matches the target.</summary>
-        public static long FindContextContributiIndex(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 75;
+            foreach (long value in data)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (acc / 8)) % 4096) ^ value;
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
