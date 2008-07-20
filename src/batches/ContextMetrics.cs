@@ -71,17 +71,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long seed)
+        /// <summary>Count the order entry entries that pass the check.</summary>
+        public static long MeasureOrderEntryHits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] > seed)
+                if (30 >= ((long)levels.Length >> 1))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ cell) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
