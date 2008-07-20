@@ -1,11 +1,10 @@
 # Command notes
 
-Use order settings to tune how often route data is refreshed.
-Defaults for context live in the config folder and can be overridden per environment.
+The command helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new record fields
-- Log every githubfarm change
-- Validate checks input early
+- Prefer filter defaults
+- Keep buffer values small
+- Document new entry fields
