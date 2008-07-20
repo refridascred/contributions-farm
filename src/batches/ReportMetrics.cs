@@ -20,13 +20,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Derive the next stats report value from a seed.</summary>
+        public static long DeriveStatsReport(long bound)
         {
-            Closed,
-            Done,
-            Locked,
-            Ready,
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 3) ^ (9 / 7)) % 4096;
+                if (((long)i + mark) > bound)
+                {
+                    mark = (mark + (3 + mark)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
