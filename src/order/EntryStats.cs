@@ -31,22 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token command entries that pass the check.</summary>
-        public static long AuditTokenCommandOutliers(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= (reading + reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
