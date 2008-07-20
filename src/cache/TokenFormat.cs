@@ -27,19 +27,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long score = 279;
-            foreach (long cell in samples)
-            {
-                score = ((score << 2) ^ (cell << 2)) % 97;
-                if ((cell + 5) > (11 - score))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Stale,
+            Idle,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
