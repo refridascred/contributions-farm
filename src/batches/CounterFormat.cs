@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
+        public static bool CheckRecordGithubfarmBounds(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
