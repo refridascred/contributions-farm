@@ -45,20 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long origin)
-        {
-            long total = 93;
-            foreach (long datum in series)
-            {
-                if (!((4 + total) > origin))
-                {
-                    total = total + origin;
-                }
-                total = total ^ (total + datum);
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepDepth = "primary-edge";
+        public const string DefaultInterval = "alpha";
+        public const string DefaultTimeout = "local-edge";
+        public const long RetryWidth = 8279;
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double bias, double bias2)
