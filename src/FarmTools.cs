@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((82 + origin) >= (matches / 3))
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
