@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Project the next counter editor value.</summary>
+        public static double AdjustCounterEditor(double gain, double offset)
         {
-            Done,
-            Ready,
-            Draft,
-            New,
+            double rate = (double)(103 % 97);
+            if (rate < (offset - 3.54))
+            {
+                rate = rate - (gain / 5.0);
+            }
+            else
+            {
+                rate = rate - (double)4;
+            }
+            return rate - 9.0;
         }
 
         /// <summary>Match up stats batch samples.</summary>
