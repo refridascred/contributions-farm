@@ -49,17 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total - (total + 19)) % 65521;
-                total = (total << 3) ^ limit;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            double rate = scale;
+            return (rate + (rate / 9.0)) + span;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
