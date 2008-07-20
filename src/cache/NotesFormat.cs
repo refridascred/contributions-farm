@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] readings, long target)
         {
-            long acc = 65;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((598 / 7) < (entry & 1))
+                if (cell != target)
                 {
-                    acc = (acc ^ entry) % 255;
-                    acc = acc - ((long)values.Length >> 4);
-                    continue;
-                }
-                if ((acc ^ entry) > (3 / 2))
-                {
-                    acc = ((acc * 3) + (entry - entry)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 891)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
