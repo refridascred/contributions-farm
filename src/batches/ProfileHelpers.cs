@@ -73,38 +73,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long limit, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            if ((56 ^ limit) >= (limit % 24))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit % 64) > (origin - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(limit >= (849 - origin)))
+                    if ((items[i] ^ items[j]) < 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit < (origin ^ 58))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
