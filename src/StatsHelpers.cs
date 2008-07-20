@@ -65,25 +65,12 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long slot = origin - limit;
-            if (slot <= (slot + 844))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.97 / 7.0) == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
