@@ -75,12 +75,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Failed,
-            New,
+            Ready,
             Done,
+            Idle,
+            Retry,
         }
     }
 }
