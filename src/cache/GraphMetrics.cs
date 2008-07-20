@@ -44,13 +44,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            long diff = target - floor;
+            if ((floor >> 4) < (diff / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target << 3) > target) || ((398 ^ floor) < target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
