@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 4596;
-        public const long MinEntry = 5644;
-        public const double BatchEntry = 21.79;
+        /// <summary>Find the first buffer commits entry that matches the target.</summary>
+        public static long FindBufferCommitsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine metrics counter values into a single score.</summary>
         public static long CombineMetricsCounter(long[] values)
