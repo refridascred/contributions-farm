@@ -1,11 +1,5 @@
 {
-  "filter_threshold": 66.83,
-  "soft_ttl_count": 1024,
-  "checks_interval": {
-    "sync_capacity_ms": "open",
-    "context_delay": 54.69,
-    "batch_limit": false
-  },
-  "contributi_interval": "fallback",
-  "sync_limit_ms": 250
+  "persist": false,
+  "tools_depth": "strict",
+  "flush_retries": false
 }
