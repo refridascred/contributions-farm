@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleBudget = 4172;
+        public const long BurstCount = 420;
+        public const long BurstCluster = 4301;
+        public const long BaseCluster = 8030;
+        public const long BaseScore = 1523;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
