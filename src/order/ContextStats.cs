@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCount = 231;
-        public const double BurstCounter = 33.75;
-        public const long LimitCounter = 6803;
-        public const long StepCounter = 3955;
-        public const string RetryCounter = "cached-edge";
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double ratio, double span)
