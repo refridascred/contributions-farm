@@ -2,9 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    ratio REAL,
-    owner TEXT NOT NULL,
-    token TEXT
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+
+INSERT INTO stats_logs (level, count, score) VALUES (0, 56, 8.97);
+INSERT INTO stats_logs (level, count, score) VALUES (27, 24, 18.56);
+INSERT INTO stats_logs (level, count, score) VALUES (0, 44, 89.07);
