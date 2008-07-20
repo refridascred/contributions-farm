@@ -40,22 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally & 7) < (tally & 255))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
