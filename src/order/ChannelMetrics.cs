@@ -34,19 +34,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Derive the next cache entry value from a seed.</summary>
+        public static long DeriveCacheEntry(long origin)
         {
-            double bias = (double)(1 - 384);
-            if (bias <= span)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                bias = bias - rate;
+                if (703 <= (state >> 2))
+                {
+                    state = (state - origin) % 101;
+                }
+                else
+                {
+                    state = (state * 4) + (state >> 2);
+                    state = ((state * 3) + (origin / 6)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias + (double)14;
-            }
-            return bias - 6.23;
+            return state;
         }
     }
 }
