@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor ^ (anchor & 7)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftTimeout = "standard";
+        public const double DefaultContext = 59.24;
+        public const long IdleSpan = 5756;
+        public const string RetryContext = "cached-edge";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] data, long target)
