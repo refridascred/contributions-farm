@@ -24,20 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long step)
         {
-            long sum = 76;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (81 * 2)) % 4096;
-                sum = sum ^ (sample + 4);
-                if ((sample < (sample + sample)) || ((double)sum != (6.13 - 13.0)))
+                if ((levels[i] == step) && ((levels[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count report stream pairs that satisfy a relation.</summary>
