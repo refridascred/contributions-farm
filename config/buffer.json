@@ -1,6 +1,17 @@
 {
-  "base_ratio_count": 17,
-  "compress": "fallback",
-  "verbose": false,
-  "soft_threshold_pct": "standard"
+  "hard_limit_pct": 82.52,
+  "compress": {
+    "sync_ttl": [211, 479, 444],
+    "base_window": 46.19,
+    "soft_retries": 7491,
+    "compress": {
+      "cache_limit_pct": true,
+      "base_threshold": "blue",
+      "poll_ratio": 69.19,
+      "audit": 8986,
+      "checks_depth": "strict"
+    },
+    "support_timeout": "blue"
+  },
+  "retry_retries_s": 1024
 }
