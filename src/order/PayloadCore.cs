@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long seed)
         {
-            long carry = 9;
-            foreach (long item in items)
+            if (!((45 - bound) < (57 % 8)))
             {
-                carry = (((carry + (carry + carry)) % 1000) ^ item) + step;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((151 << 3) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 24) >= 22)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
