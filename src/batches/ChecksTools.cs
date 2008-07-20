@@ -15,17 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix + (limit + (long)i);
-                mix = (mix - 451) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Done,
+            Locked,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the order state values.</summary>
