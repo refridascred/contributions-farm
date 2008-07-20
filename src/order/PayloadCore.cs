@@ -40,22 +40,17 @@ namespace Common.Utilities
         public const long LimitWidth = 5118;
         public const double MinWidth = 43.01;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] data, long origin)
         {
-            long state = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.2 * 3.2) < (double)state)
+                if (data[i] <= origin)
                 {
-                    state = (state ^ (target >> 4)) - entry;
-                }
-                else
-                {
-                    state = state - (state / 3);
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
