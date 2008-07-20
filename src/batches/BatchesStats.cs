@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long CacheDepth = 9351;
         public const long HardMetrics = 4134;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long floor)
+        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
+        public static long TallyContributiGithubfarmGaps(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                if (tally >= (587 - item))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
