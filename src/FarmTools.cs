@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            Dropped,
-            Pending,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 10) > 0)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next format stats value.</summary>
