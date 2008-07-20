@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const long HardCommand = 8970;
         public const long IdleBudget = 3945;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            double rate = (ratio + span) + (span + ratio);
-            if (rate >= (ratio / 8.0))
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                rate = rate + rate;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + ratio;
+            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
