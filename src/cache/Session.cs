@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long seed)
+        /// <summary>Find the first commits checks entry that matches the target.</summary>
+        public static long LookupCommitsChecksIndex(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= seed)
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
