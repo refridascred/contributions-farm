@@ -96,15 +96,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a order payload figure with a bias.</summary>
-        public static double AdjustOrderPayload(double ratio, double span)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double mean = span;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean - 6.0;
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
