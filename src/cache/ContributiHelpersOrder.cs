@@ -23,28 +23,18 @@ namespace Common.Utilities
         public const double BatchBuffer = 59.73;
         public const string BaseBuffer = "latest";
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            long result = 331;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (offset >= (result & 7))
+                if ((double)54 < (double)(long)readings.Length)
                 {
-                    result = (result * 2) + offset;
-                    continue;
-                }
-                result = ((result << 2) ^ datum) % 4096;
-                if ((offset - offset) < (datum - 55))
-                {
-                    result = result - 15;
+                    matches = (matches + 1) + reading;
                 }
             }
-            if (result < (-2))
-            {
-                result = (result ^ (offset * 4)) % 101;
-            }
-            return result;
+            return matches;
         }
     }
 }
