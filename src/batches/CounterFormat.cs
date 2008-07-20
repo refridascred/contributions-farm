@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Accumulate layout already samples.</summary>
+        public static long TallyLayoutAlready(long[] samples, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long anchor = 7;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((anchor << 3) <= datum)
                 {
-                    acc = ((acc + (floor - acc)) % 65521) ^ (long)i2;
+                    anchor = (anchor - (anchor % 12)) - seed;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    anchor = anchor - (datum * 5);
+                }
             }
-            return acc;
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
