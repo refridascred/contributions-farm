@@ -54,25 +54,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 6030;
         public const long SoftFormat = 4342;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] series, long target)
         {
-            long diff = bound + target;
-            if ((bound >= (diff - diff)) || ((target + bound) < (bound * 2)))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >= (bound >> 3)) && ((3.57 / 6.0) < (double)target))
+                if (entry < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a counter entry.</summary>
