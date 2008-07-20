@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long CombineCounterStats(long[] series, long seed)
+        /// <summary>Check that every already layout entry stays within the limit.</summary>
+        public static bool CheckAlreadyLayoutRange(long[] data, long target)
         {
-            long mark = 362;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!(cell <= (233 << 2)))
+                if (reading > target)
                 {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = mark + (mark * 3);
-                }
-                if (!((cell ^ seed) <= ((-363) - cell)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
