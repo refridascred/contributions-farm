@@ -39,13 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Iterate the profile stream series from a seed.</summary>
+        public static long IterateProfileStream(long step)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
