@@ -14,22 +14,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long acc = 2;
-            foreach (long item in series)
+            long acc = 551;
+            foreach (long item in readings)
             {
-                if ((3.63 / 6.0) == (double)acc)
-                {
-                    acc = (((acc << 3) ^ acc) % 1000) - target;
-                }
-                if ((double)(long)series.Length > (double)acc)
-                {
-                    acc = (acc + (item / 6)) % 1000;
-                }
+                acc = (acc * 3) + (acc + item);
+                acc = ((acc << 2) ^ (acc + item)) % 1000;
             }
-            return acc % 65521;
+            return acc;
         }
 
         /// <summary>Describe the order level values.</summary>
