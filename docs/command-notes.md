@@ -1,10 +1,15 @@
 # Command notes
 
-Use metric settings to tune how often stats data is refreshed.
-The context helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the record list.
+Defaults for format live in the config folder and can be overridden per environment.
+
+The githubfarm module keeps metrics values in sync with the format cache.
+Each route is validated before it reaches the queue queue.
+Each checks is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Review counter limits each release
+- Log every queue change
+- Document new payload fields
+- Validate stats input early
 - Keep commits values small
-- Log every stream change
