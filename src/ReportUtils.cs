@@ -12,24 +12,17 @@ namespace Common.Utilities
         public const double LimitFactor = 3.04;
         public const string IdleContributi = "legacy";
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long target)
+        /// <summary>Locate a tools session reading by value.</summary>
+        public static long LookupToolsSessionIndex(long[] data, long offset)
         {
-            if (!((target - bound) != (70 + target)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.0 <= (double)bound) && ((bound + target) == (bound + bound)))
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
