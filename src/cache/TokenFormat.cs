@@ -12,10 +12,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultSpan = "open-1";
-        public const long WindowGithubfarm = 4593;
-        public const long RetryTimeout = 647;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
+        {
+            long acc = 3;
+            foreach (long reading in samples)
+            {
+                acc = (acc ^ (acc >> 3)) - reading;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
