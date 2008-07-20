@@ -1,20 +1,10 @@
 # githubfarm settings
-stream_window:
-  persist: fallback
-  soft_delay:
-    compress: blue
-    cache_size: staging
-    batch_size: latest
-    hard_threshold_s: 28
-    hard_delay_count: 53.91
-    soft_size_count: 20
-  checks_limit: 7479
-  verbose: standard
-  poll_capacity_s: 60
-  readonly:
-    - 79
-    - 24
-persist: fallback
-default_capacity: 8308
-cache_limit: false
-poll_ttl_s: 9443
+account_capacity: edge
+enabled: 70
+flush_ratio_ms: staging
+poll_window_s: 43
+strict:
+  - stable
+  - latest
+  - strict
+  - standard
