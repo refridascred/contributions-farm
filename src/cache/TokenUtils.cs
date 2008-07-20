@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel editor reading by value.</summary>
-        public static long LookupChannelEditorIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a window header.</summary>
