@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinSize = "latest-1";
+        public const string MaxBudget = "latest-1";
+        public const long BatchRatio = 8733;
+        public const double BaseContributi = 69.79;
+        public const double StepBudget = 59.2;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] readings, long origin)
