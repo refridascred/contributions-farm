@@ -15,15 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long CountSupportRecordHits(long[] levels)
         {
-            double scale = ratio;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = (scale - (offset / 8.0)) + (double)(long)i;
+                if ((824 / 9) > sample)
+                {
+                    matches = matches + 3;
+                }
             }
-            return scale + (scale - ratio);
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
