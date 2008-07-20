@@ -44,13 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long step)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a profile options.</summary>
