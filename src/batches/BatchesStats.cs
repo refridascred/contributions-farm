@@ -37,9 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7673;
-        public const double StepLevel = 39.9;
-        public const double WindowGraph = 57.23;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
