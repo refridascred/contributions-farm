@@ -1,8 +1,13 @@
 {
-  "format_window": 2095,
-  "cache_window_ms": 41.55,
-  "idle_depth": 75,
-  "base_capacity_pct": 3748,
-  "audit": false,
-  "warm_retries": 60
+  "warm_limit": true,
+  "base_interval_ms": false,
+  "counter_size": {
+    "editor_interval": "primary",
+    "dry_run": [6, 40, 118, 193],
+    "filter_interval": "legacy",
+    "cache_window_s": false,
+    "default_window_count": "latest"
+  },
+  "soft_limit": 60,
+  "retry_window_ms": 70.48
 }
