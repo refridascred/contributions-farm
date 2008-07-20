@@ -23,22 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] data)
         {
-            long total = 545;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)9 == (double)total)
+                if ((long)data.Length >= ((long)data.Length * 4))
                 {
-                    total = (((total * 2) + total) % 101) ^ sample;
+                    hits = (hits + 3) + value;
                 }
             }
-            if (total > 26)
-            {
-                total = total ^ total;
-            }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
