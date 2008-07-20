@@ -44,18 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstTimeout = 1863;
+        public const long MinCount = 1260;
+        public const string BurstScore = "open-v2";
+        public const double MinBudget = 85.91;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long DeriveBatch(long limit)
