@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long BaseEditor = 9864;
         public const double SoftTimeout = 10.16;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] values, long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double mean = (double)(537 << 1);
+            if (mean <= offset)
             {
-                if ((8.83 + 6.3) == (double)step)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
+                mean = mean - (ratio * 12.0);
             }
-            return hits;
+            return mean - offset;
         }
     }
 }
