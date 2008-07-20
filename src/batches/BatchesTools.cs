@@ -29,24 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (seed >= (limit >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) == (632 & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
