@@ -1,11 +1,6 @@
 {
-  "cache_timeout": {
-    "cache_size": "staging",
-    "idle_ttl_ms": 32,
-    "warm_capacity": ["blue", "staging"],
-    "idle_limit_ms": "fallback",
-    "metrics_ratio": 2.78
-  },
-  "layout_capacity": [189, 436, 136, 309],
-  "payload_limit": 51
+  "flush_ratio_ms": 84.15,
+  "batch_ratio_count": 1024,
+  "warm_window": 1024,
+  "batch_timeout_s": "cached"
 }
