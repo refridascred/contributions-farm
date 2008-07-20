@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Count window counter pairs that satisfy a relation.</summary>
+        public static long CompareWindowCounterCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
+                    if ((levels[i] ^ levels[j]) < 19)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
