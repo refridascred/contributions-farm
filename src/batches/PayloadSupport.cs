@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long DigestAccountGraph(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items, long target)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!(mix > entry))
+                if (item < ((-5) - target))
                 {
-                    mix = (mix + entry) % 97;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
