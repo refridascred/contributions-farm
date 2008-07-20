@@ -1,8 +1,20 @@
 {
-  "cache_ttl": true,
-  "retry_threshold_count": "standard",
-  "batch_threshold_s": "green",
-  "metrics_depth": "stable",
-  "window_capacity": 95,
-  "record_retries": 30
+  "compress": {
+    "channel_threshold": {
+      "dry_run": 6112,
+      "default_ttl_ms": 66.64,
+      "hard_threshold": false,
+      "session_size": true
+    },
+    "max_size_s": {
+      "warm_limit_pct": false,
+      "context_depth": false,
+      "default_delay_ms": "open",
+      "session_timeout": "eu-west",
+      "readonly": "eu-west"
+    },
+    "sync_size": 22
+  },
+  "verbose": false,
+  "window_limit": "open"
 }
