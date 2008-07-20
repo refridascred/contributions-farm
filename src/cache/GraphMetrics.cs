@@ -62,25 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long target, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series, long offset)
         {
-            long diff = target - floor;
-            if ((floor >> 4) < (diff / 7))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target << 3) > target) || ((398 ^ floor) < target))
+                if ((2.1 / 6.0) == (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) - offset;
                 }
             }
+            return hits;
         }
     }
 }
