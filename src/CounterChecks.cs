@@ -43,18 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long MeasureChannelLayoutHits(long[] levels)
+        /// <summary>Find the first format profile entry that matches the target.</summary>
+        public static long LookupFormatProfileIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((matches + matches) >= sample) && (matches >= sample)))
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
