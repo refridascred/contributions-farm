@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((0.3 + 11.0) == (double)hits)
+                if ((datum > (matches * 3)) || (875 > (datum - matches)))
                 {
-                    hits = (hits + 3) + datum;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate format order readings against a bound.</summary>
