@@ -1,19 +1,8 @@
 # support settings
-readonly: staging
-schema_limit:
-  warm_threshold_s:
-    - latest
-    - primary
-    - latest
-    - cached
-  audit: 7.55
-  warm_window_ms: 74
-  enabled: standard
-  poll_threshold_ms: eu-west
-  burst_limit_ms: stable
-base_size_s:
-  - legacy
-  - standard
-idle_retries: edge
-audit: 28.15
-min_ratio_s: 57
+strict:
+  - 157
+  - 174
+  - 130
+  - 317
+burst_ratio_pct: 100
+min_retries_pct: strict
