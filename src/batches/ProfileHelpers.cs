@@ -68,21 +68,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((56 ^ limit) >= (limit % 24))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit % 64) > (origin - limit))
                 {
-                    if ((readings[i] + readings[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if (!(limit >= (849 - origin)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit < (origin ^ 58))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
