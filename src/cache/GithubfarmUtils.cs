@@ -13,31 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long offset2)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((offset2 >> 3) >= (offset + offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((344 >> 3) <= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 & 63) == (offset2 + offset2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
