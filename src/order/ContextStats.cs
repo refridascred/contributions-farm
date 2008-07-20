@@ -36,10 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 44.55;
-        public const double BurstRatio = 73.51;
-        public const long BatchSize = 9814;
-        public const long IdleBatch = 8629;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
     }
 }
