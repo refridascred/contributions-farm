@@ -71,15 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            double mean = (double)8 + (double)581;
-            if (mean < 3.97)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (bias * 9.59);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - (gain / 9.0);
+            return count;
         }
     }
 }
