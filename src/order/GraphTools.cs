@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item == (double)172)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two tools measurements.</summary>
