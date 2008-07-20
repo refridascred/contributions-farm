@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] readings, long bound)
+        /// <summary>Check that every route commits entry stays within the limit.</summary>
+        public static bool VerifyRouteCommitsLimits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                if (value < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a token order counter forward.</summary>
