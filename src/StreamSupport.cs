@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double ratio = weight * 1.78;
-            if (ratio < (floor + 7.0))
-            {
-                ratio = ratio - (floor * 10.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (weight + 19.0)) + (double)(long)i;
-            }
-            return ratio - (floor / 3.0);
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
