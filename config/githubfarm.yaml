@@ -1,24 +1,16 @@
 # githubfarm settings
-warm_size_pct:
-  min_timeout_ms: legacy
-  soft_ttl_pct: false
-  batch_ratio_ms: cached
-  order_size:
-    session_retries: 73
-    default_retries_ms:
-      - 252
-      - 281
-    layout_ttl: legacy
-    max_interval_count: 34.44
-    idle_delay: strict
-    cache_size_s: true
-  flush_timeout_s: 64.83
-min_ttl_count:
-  audit: 76.68
-  readonly: fallback
-  counter_ttl: 955
-  report_delay:
-    - 134
-    - 136
-  warm_retries_ms: latest
-cache_ratio: false
+max_size_ms:
+  - cached
+  - blue
+  - primary
+min_depth_ms:
+  poll_ttl_count:
+    idle_ttl_s: false
+    cluster_size:
+      - strict
+      - open
+    batch_depth: latest
+  command_ratio: false
+  sync_ttl_s: strict
+  filter_timeout: true
+filter_timeout: 2488
