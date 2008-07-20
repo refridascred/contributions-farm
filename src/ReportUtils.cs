@@ -25,10 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftCount = 3105;
-        public const string SoftBatches = "staging-1";
-        public const long CacheBatches = 3463;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] readings)
