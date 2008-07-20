@@ -23,31 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            if ((double)floor >= (8.67 / 9.0))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) >= (-526))
+                if (5.98 > (double)(long)items.Length)
                 {
-                    return 1;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    if (!(1 >= (1 + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
