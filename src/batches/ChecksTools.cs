@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((14.0 - 7.0) < (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
