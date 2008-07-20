@@ -29,38 +29,22 @@ namespace Common.Utilities
             return load - (weight * 5.5);
         }
 
-        /// <summary>Classify a metric contributi pair into a bucket.</summary>
-        public static long ClassifyMetricContributi(long bound, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items)
         {
-            if (!((3.36 / 7.0) < (double)seed))
+            long score = 311;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-36) + bound) >= bound)
+                if ((score << 1) == (score + score))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 5) < (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound % 97) > (63 ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score - (score >> 3)) % 101) ^ value;
                 }
             }
+            if (score > 201)
+            {
+                score = ((score * 2) + ((-50) + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the route mode values.</summary>
