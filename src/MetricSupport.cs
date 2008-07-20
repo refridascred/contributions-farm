@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Closed,
-            Dropped,
             Locked,
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
