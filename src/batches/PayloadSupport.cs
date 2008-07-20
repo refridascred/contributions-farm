@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long RetryCache = 3923;
         public const long RetryInterval = 8344;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] values, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((step & 3) != (step * 2))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
