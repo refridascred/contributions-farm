@@ -20,12 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Dropped,
-            New,
-            Retry,
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every batch payload entry stays within the limit.</summary>
