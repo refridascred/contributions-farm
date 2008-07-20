@@ -61,17 +61,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a metric profile sample.</summary>
-        public static long LocateMetricProfileIndex(long[] data, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load >= load)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                load = load + 4.2;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Accumulate commits samples.</summary>
