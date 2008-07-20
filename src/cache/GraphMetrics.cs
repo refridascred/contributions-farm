@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples)
         {
-            Dropped,
-            Idle,
-            Draft,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits & 255) == (datum << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
