@@ -1,8 +1,14 @@
 {
-  "max_depth_ms": [87, 493, 130, 136],
-  "max_window_s": ["standard", "cached", "latest", "staging"],
-  "batches_depth": 49.71,
-  "farm_size": 27.76,
-  "queue_limit": true,
-  "default_ttl": 1579
+  "verbose": {
+    "retry_size_s": 100,
+    "default_interval_count": [257, 188, 255, 299],
+    "support_delay": ["legacy", "green"],
+    "poll_ratio_s": "standard",
+    "sync_depth": true,
+    "min_ttl_count": 60
+  },
+  "flush_capacity_ms": false,
+  "retry_capacity": 58.69,
+  "githubfarm_retries": true,
+  "hard_ratio_pct": "local"
 }
