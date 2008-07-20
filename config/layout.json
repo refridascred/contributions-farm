@@ -1,6 +1,22 @@
 {
-  "profile_window": "local",
-  "base_depth": "local",
-  "base_ttl": 68.64,
-  "hard_delay": 36.6
+  "retry_capacity": false,
+  "strict": "eu-west",
+  "idle_delay_s": {
+    "dry_run": {
+      "sync_ratio": 500,
+      "verbose": 250,
+      "sync_threshold_ms": [428, 193, 280],
+      "burst_retries_s": 93
+    },
+    "sync_ttl": 16,
+    "readonly": 3645,
+    "max_threshold_count": "fallback",
+    "metric_depth": {
+      "buffer_capacity": false,
+      "sync_threshold_pct": "latest",
+      "verbose": 113,
+      "order_capacity": 2
+    },
+    "cache_threshold_count": "strict"
+  }
 }
