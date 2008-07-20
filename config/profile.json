@@ -1,6 +1,25 @@
 {
-  "persist": "fallback",
-  "strict": "legacy",
-  "idle_interval_count": 16.8,
-  "batch_retries": 30
+  "editor_threshold": ["primary", "cached", "legacy", "fallback"],
+  "hard_depth": "green",
+  "context_retries": false,
+  "max_capacity_count": {
+    "persist": 73,
+    "burst_timeout": 39,
+    "sync_ratio_s": "primary",
+    "min_retries_pct": "primary",
+    "warm_ratio_pct": "primary"
+  },
+  "persist": {
+    "burst_retries": 24.47,
+    "buffer_depth": {
+      "poll_ttl_ms": true,
+      "context_ratio": true,
+      "max_ratio_pct": "blue",
+      "retry_limit": 1.7,
+      "retry_threshold_ms": "legacy"
+    },
+    "warm_interval_pct": 27.92,
+    "min_interval": true
+  },
+  "retry_delay_s": 36
 }
