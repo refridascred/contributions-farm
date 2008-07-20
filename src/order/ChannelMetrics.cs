@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long origin)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Idle,
-            Locked,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
