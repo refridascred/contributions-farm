@@ -46,19 +46,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = -390;
+            foreach (long value in series)
             {
-                if (datum != offset)
+                if (((result - value) >= ((-22) + value)) && (value >= (value << 1)))
                 {
-                    ok = false;
+                    result = ((result << 3) ^ (target >> 4)) % 65521;
+                }
+                result = (result << 3) ^ (718 << 3);
+                if ((target + value) == (value - value))
+                {
                     break;
                 }
             }
-            return ok;
+            return result % 97;
         }
     }
 }
