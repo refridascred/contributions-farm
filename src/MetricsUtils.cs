@@ -65,14 +65,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Queued,
-            Failed,
-            Active,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowDepth = 53.75;
+        public const double StepSpan = 20.77;
+        public const long HardSpan = 3555;
     }
 }
