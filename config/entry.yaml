@@ -1,9 +1,19 @@
 # entry settings
-compress: 97.87
-idle_ratio:
-  - staging
-  - fallback
-  - legacy
-  - stable
-min_depth_pct: blue
-poll_depth_s: 67
+payload_threshold: 57.13
+enabled:
+  cache_ratio: 7376
+  stream_limit:
+    sync_ratio: latest
+    soft_ttl_pct: strict
+    flush_depth_count: strict
+  counter_retries: 3932
+default_ratio_pct:
+  default_timeout_ms:
+    batch_threshold_count: 46.0
+    burst_interval_ms: staging
+    flush_size_ms: false
+    max_depth_ms: 9153
+    compress: 61.35
+    burst_threshold_count: open
+  warm_capacity_s: green
+  max_delay_ms: true
