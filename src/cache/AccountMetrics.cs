@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "standard-v2";
-        public const double StepSpan = 26.22;
-        public const double BaseInterval = 3.32;
-        public const string MaxDepth = "fallback";
-        public const long SoftCount = 4241;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] levels, long floor)
