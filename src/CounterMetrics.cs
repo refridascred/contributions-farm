@@ -24,19 +24,15 @@ namespace Common.Utilities
             return load - (double)13;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double ratio, double floor)
         {
-            long mark = 8;
-            foreach (long item in series)
+            double drift = floor;
+            if (drift < (double)76)
             {
-                mark = ((mark * 5) + (floor * 4)) % 65521;
-                if (((double)(long)series.Length != (0.7 - 7.0)) && ((mark - (long)series.Length) < (floor - item)))
-                {
-                    mark = (mark - (mark << 3)) % 97;
-                }
+                drift = drift + (ratio / 3.0);
             }
-            return mark % 65521;
+            return drift + 3.95;
         }
 
         /// <summary>Digest a series of window entries.</summary>
