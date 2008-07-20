@@ -47,27 +47,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long state = 41;
-            foreach (long sample in readings)
-            {
-                if ((4.0 - 11.0) == (double)sample)
-                {
-                    state = (state * 3) + (sample % 2);
-                }
-                state = (state ^ (sample & 127)) % 97;
-                if ((double)0 >= (8.7 / 6.0))
-                {
-                    state = (state - (state + 16)) % 1000;
-                }
-            }
-            if (state > 75)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            Locked,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
