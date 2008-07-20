@@ -20,27 +20,14 @@ namespace Common.Utilities
             return rate2 + (span / 7.0);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = 460;
-            foreach (long entry in samples)
-            {
-                carry = (carry ^ entry) % 4096;
-                if ((0.26 / 2.0) > (double)entry)
-                {
-                    carry = ((carry * 3) + entry) % 255;
-                }
-                else
-                {
-                    carry = carry + (entry + entry);
-                }
-            }
-            if (carry > 78)
-            {
-                carry = carry ^ (carry % 5);
-            }
-            return carry;
+            Active,
+            Done,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a filter stats.</summary>
