@@ -20,14 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] levels, long bound)
         {
-            Idle,
-            Ready,
-            Closed,
-            Locked,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
