@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long ClassifyReportCommits(long origin, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((double)979 < (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
