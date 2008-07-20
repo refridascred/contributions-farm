@@ -42,19 +42,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long origin, long origin2)
         {
-            double load = (scale + 4.23) + (bias * 2.17);
-            if (load <= (double)10)
+            long span = origin ^ origin2;
+            if ((span <= (span & 3)) && ((double)3 != (double)origin2))
             {
-                load = load - 3.61;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - (5.92 - bias)) + (double)(long)i;
+                if ((origin2 + span) < origin2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)span < (1.0 * 6.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return load - (double)(-70);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
