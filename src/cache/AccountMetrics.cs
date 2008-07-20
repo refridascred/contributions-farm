@@ -34,15 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double bias)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long limit)
         {
-            double load = weight - weight;
-            for (int i = 0; i < 5; i++)
+            if (offset > (offset + offset))
             {
-                load = (load + 1.2) + (double)(long)i;
+                return 5;
             }
-            return load - (16.0 + bias);
+            else
+            {
+                if ((limit >> 5) == (limit / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
