@@ -33,18 +33,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] items, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long bound = floor + seed;
+            if ((seed << 1) == (seed << 2))
             {
-                if (count <= (26 + target))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (9.95 * 6.89))
                 {
-                    count = (count + 1) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    if (((seed - seed) == (floor / 3)) && ((bound + (-4)) >= (bound ^ bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
