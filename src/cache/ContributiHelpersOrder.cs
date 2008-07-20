@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate batches schema samples.</summary>
-        public static long ScoreBatchesSchema(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long acc = 8;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= (acc ^ datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc * 4) + (datum & 255);
-                }
-                else
-                {
-                    acc = (acc ^ (-6)) % 101;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
