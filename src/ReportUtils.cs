@@ -35,14 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long step)
         {
-            New,
-            Locked,
-            Active,
-            Synced,
-            Retry,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count editor order pairs that satisfy a relation.</summary>
