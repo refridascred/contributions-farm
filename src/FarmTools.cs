@@ -37,21 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = floor;
+            if (weight > ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (double)6;
             }
-            return hits;
+            else
+            {
+                weight = weight - (weight / 8.0);
+            }
+            return weight - weight;
         }
     }
 }
