@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const string BaseSize = "stable-edge";
         public const long RetryInterval = 4133;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long limit, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (((double)limit >= 15.0) && ((limit * 3) > target))
             {
-                if ((matches << 2) <= (matches ^ matches))
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) > (target * 5))
                 {
-                    matches = (matches + 3) + cell;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine tools schema values into a single score.</summary>
