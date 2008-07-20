@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long HardCommand = 8970;
         public const long IdleBudget = 3945;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (ratio + span) + (span + ratio);
+            if (rate >= (ratio / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + rate;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Hold a filter stats.</summary>
