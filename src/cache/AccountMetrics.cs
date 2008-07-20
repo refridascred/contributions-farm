@@ -36,18 +36,18 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long AuditEntryCacheOutliers(long[] data, long seed)
+        /// <summary>Digest a series of tools record entries.</summary>
+        public static long FoldToolsRecord(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 2;
+            foreach (long reading in series)
             {
-                if ((2 <= (matches - seed)) || ((15.0 / 4.0) > (double)matches))
+                if (reading < (seed / 9))
                 {
-                    matches = (matches + 3) ^ reading;
+                    result = (result - 61) % 101;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
