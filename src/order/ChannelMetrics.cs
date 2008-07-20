@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double load = ratio;
-            if (load > bias)
-            {
-                load = load - (ratio / 6.0);
-            }
-            else
-            {
-                load = load - (bias * 9.99);
-            }
-            return load + (load * 4.92);
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many batches notes samples are out of range.</summary>
