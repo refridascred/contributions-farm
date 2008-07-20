@@ -14,18 +14,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many checks editor samples are out of range.</summary>
-        public static long MeasureChecksEditorHits(long[] samples)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally + item) < (3 + 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
