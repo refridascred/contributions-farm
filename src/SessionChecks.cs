@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 79.48;
         public const long SoftSpan = 2893;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3579;
+        public const long IdleToken = 5474;
+        public const string BaseLevel = "strict-1";
+        public const string DefaultToken = "standard-edge";
+        public const long StepToken = 4426;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheInterval = "open-edge";
