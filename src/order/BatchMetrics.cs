@@ -55,19 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue schema readings.</summary>
-        public static long CombineQueueSchema(long[] samples, long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long total = 6;
-            foreach (long item in samples)
-            {
-                if (!((item >> 3) < (72 - bound)))
-                {
-                    total = (total * 4) + item;
-                }
-                total = total + (item * 2);
-            }
-            return total;
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
