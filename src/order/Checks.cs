@@ -29,16 +29,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleCount = "fallback-v2";
+        public const long HardInterval = 2384;
+        public const long WindowToken = 9042;
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double bias, double bias2)
