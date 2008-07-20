@@ -1,11 +1,6 @@
-id,owner,active
-1,697,eu-west
-2,938,73.64
-3,41.74,green
-4,690,817
-5,staging,214
-6,26.54,883
-7,640,87
-8,13.67,32.23
-9,local,fallback
-10,959,80
+id,count,weight,active
+1,550,397,922
+2,110,open,476
+3,40.57,cached,158
+4,531,54.03,442
+5,66.11,187,staging
