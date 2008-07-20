@@ -14,17 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] values, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] <= limit)
+                if (((double)bound > (double)score) || (score >= (score % 97)))
                 {
-                    return (long)i;
+                    score = ((score ^ ((-674) + score)) % 65521) - datum;
+                }
+                if (((bound * 3) > bound) && (5.49 >= (double)bound))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
