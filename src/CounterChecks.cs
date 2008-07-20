@@ -43,17 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format profile entry that matches the target.</summary>
-        public static long LookupFormatProfileIndex(long[] items, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
