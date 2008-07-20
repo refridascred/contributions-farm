@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleBudget = 9793;
-        public const string BaseWidth = "staging-v2";
-        public const double MinNotes = 63.28;
-        public const long SoftNotes = 3336;
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long AuditChecksEntryHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count & 3) < datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long seed, long bound)
