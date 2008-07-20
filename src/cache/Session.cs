@@ -38,19 +38,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many route profile samples are out of range.</summary>
-        public static long CountRouteProfileHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample > (979 << 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitCount = "alpha-edge";
+        public const string StepMetrics = "alpha-1";
+        public const double WindowMetrics = 71.0;
+        public const long HardLevel = 6027;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long bound)
