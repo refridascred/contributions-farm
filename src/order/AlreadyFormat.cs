@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Idle,
-            Retry,
-            Pending,
+            Ready,
             Done,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
