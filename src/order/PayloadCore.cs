@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings, long limit)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading <= (limit * 4)) && (limit >= (20 % 60)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
