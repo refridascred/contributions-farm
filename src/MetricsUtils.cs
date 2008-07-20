@@ -35,13 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] readings, long limit)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
