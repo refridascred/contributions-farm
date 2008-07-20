@@ -21,25 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter notes input into a small class.</summary>
-        public static long GradeFilterNotes(long origin, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] values, long step)
         {
-            long diff = origin ^ offset;
-            if ((diff % 12) == (diff % 16))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset > origin)
+                if ((step + tally) == (long)values.Length)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry mode values.</summary>
