@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Look up the position of a context record sample.</summary>
+        public static long SeekContextRecordIndex(long[] values, long offset)
         {
-            New,
-            Failed,
-            Closed,
-            Dropped,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
