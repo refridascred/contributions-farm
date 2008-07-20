@@ -42,22 +42,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of profile githubfarm entries.</summary>
-        public static long CombineProfileGithubfarm(long[] values, long origin)
+        /// <summary>Blend two buffer stream measurements.</summary>
+        public static double AdjustBufferStream(double weight, double bias)
         {
-            long carry = 0;
-            foreach (long cell in values)
+            double gain = weight;
+            if (gain <= gain)
             {
-                if ((cell % 12) <= (6 - 21))
-                {
-                    carry = carry - cell;
-                }
-                if (((carry % 2) < cell) && ((origin / 9) != (carry - 60)))
-                {
-                    break;
-                }
+                gain = gain + bias;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
