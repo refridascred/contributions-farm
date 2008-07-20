@@ -40,18 +40,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] series, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double gain = span;
+            if (gain > (span + 6.0))
             {
-                if (bound <= (bound >> 3))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                gain = gain + (19.0 + ratio);
             }
-            return matches;
+            else
+            {
+                gain = gain + (gain + span);
+            }
+            return gain - 3.12;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
