@@ -21,13 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseScore = "alpha-edge";
+        public const string WindowFactor = "legacy-v2";
+        public const double CacheSchema = 61.61;
 
         /// <summary>Validate profile filter readings against a bound.</summary>
         public static bool CheckProfileFilterLimits(long[] items, long target)
