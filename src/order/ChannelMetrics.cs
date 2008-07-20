@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches notes samples are out of range.</summary>
-        public static long CountBatchesNotesGaps(long[] data)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double bias = (double)(1 - 384);
+            if (bias <= span)
             {
-                if ((seen - seen) == (item + item))
-                {
-                    seen = seen + 3;
-                }
+                bias = bias - rate;
             }
-            return seen;
+            else
+            {
+                bias = bias + (double)14;
+            }
+            return bias - 6.23;
         }
     }
 }
