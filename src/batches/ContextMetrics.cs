@@ -62,18 +62,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] values, long bound)
+        /// <summary>Roll a editor commits counter forward.</summary>
+        public static long SeriesEditorCommits(long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((tally - datum) > ((long)values.Length + 60)) && ((7.0 - 0.2) == (double)datum)))
-                {
-                    tally = (tally + 3) + bound;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
