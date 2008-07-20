@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 2) == (count * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
