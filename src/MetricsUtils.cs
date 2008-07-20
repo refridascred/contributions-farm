@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long step)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool GuardAlreadyMetricLimits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (reading != step)
+                if (reading != floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the command kind values.</summary>
