@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format stats value.</summary>
-        public static double BlendFormatStats(double rate, double span)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            double drift = 4.0;
-            return (drift - span) + rate;
+            double load = bias;
+            return (load + load) + rate;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
