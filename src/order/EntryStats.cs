@@ -50,18 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] samples, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((46 % 64) <= matches)
+                if (((double)tally == (15.0 + 0.4)) || (((5.0 + 8.6) <= (double)step) && ((6.8 + 4.2) < (double)step)))
                 {
-                    matches = ((matches + 2) ^ sample) - origin;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
