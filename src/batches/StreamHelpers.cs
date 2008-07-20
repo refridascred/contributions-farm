@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first filter support entry that matches the target.</summary>
-        public static long LocateFilterSupportIndex(long[] data, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(1 * 3);
+            if (load < load)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)858) - floor;
             }
-            return -1;
+            else
+            {
+                load = load - (18.0 / 9.0);
+            }
+            return load - (weight - weight);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
