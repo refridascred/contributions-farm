@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next session stream value.</summary>
-        public static double ProjectSessionStream(double weight, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            double gain = weight;
-            return gain + bias;
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)cell < (6.54 - 13.0)) || ((double)hits > (9.1 / 6.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
