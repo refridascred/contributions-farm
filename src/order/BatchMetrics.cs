@@ -38,21 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 5;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((((mark * 5) + 0) % 1000) - item) - step;
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Hold a stream summary.</summary>
