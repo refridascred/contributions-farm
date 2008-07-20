@@ -44,18 +44,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] series)
         {
-            long state = 701;
-            foreach (long cell in items)
+            long acc = 347;
+            foreach (long sample in series)
             {
-                if (((double)state != (5.1 - 4.2)) && ((6 % 3) >= state))
+                acc = acc ^ (acc << 1);
+                if ((((-5) << 2) <= sample) || (sample < (9 << 2)))
                 {
-                    state = (state - (state - state)) + cell;
+                    break;
                 }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Audit order window readings against a rule.</summary>
