@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Locked,
-            Dropped,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 7645;
+        public const long BaseSize = 1156;
+        public const double StepRatio = 20.58;
+        public const long BurstCluster = 959;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] readings)
