@@ -34,14 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Dropped,
-            Synced,
-            Done,
-            Failed,
-            Locked,
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token readings.</summary>
