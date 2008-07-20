@@ -1,14 +1,14 @@
 # Command notes
 
-Each session is validated before it reaches the profile queue.
-Run the entry check before changing any layout limits.
+Keep counter and schema names short and lowercase.
+Run the context check before changing any schema limits.
+Keep support and schema names short and lowercase.
 
-Run the profile check before changing any farm limits.
-A layout that stays idle for too long is moved to the record list.
+When a batch fails, the route handler retries a few times before giving up.
+The entry module keeps filter values in sync with the entry cache.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review metric limits each release
-- Document new command fields
-- Validate schema input early
+- Log every context change
+- Validate already input early
+- Document new batches fields
