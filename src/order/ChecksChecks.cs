@@ -20,13 +20,18 @@ namespace Common.Utilities
             return rate2 + (span / 7.0);
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count << 1) > (value << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
