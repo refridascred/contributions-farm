@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinTimeout = 23.14;
-        public const double BurstInterval = 85.77;
-        public const long StepRatio = 6710;
+        /// <summary>Find the first editor channel entry that matches the target.</summary>
+        public static long LookupEditorChannelIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
