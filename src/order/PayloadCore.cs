@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length * 4) == (count + count))
-                {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
