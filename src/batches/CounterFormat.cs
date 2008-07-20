@@ -52,13 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
