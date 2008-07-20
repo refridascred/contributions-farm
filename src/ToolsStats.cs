@@ -63,15 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter buffer series from a seed.</summary>
-        public static long DeriveFilterBuffer(long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
