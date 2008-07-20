@@ -32,38 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long floor)
         {
-            if ((9.6 / 5.0) >= (double)target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 15) < (target ^ target))
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) != (target + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit <= 5.78)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
