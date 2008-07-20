@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double weight = ratio;
-            if (weight >= weight)
-            {
-                weight = (weight + ratio) + bias;
-            }
-            return weight + (ratio + 3.0);
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
