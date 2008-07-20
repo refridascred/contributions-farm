@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 3927;
-        public const long LimitQueue = 8888;
-        public const long DefaultSpan = 5985;
+        /// <summary>Digest a series of context order entries.</summary>
+        public static long TotalContextOrder(long[] values)
+        {
+            long anchor = -478;
+            foreach (long entry in values)
+            {
+                anchor = (anchor << 3) ^ entry;
+                if (((double)entry < (2.3 / 9.0)) || (((-61) ^ anchor) >= anchor))
+                {
+                    anchor = (anchor - (entry >> 2)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double gain, double offset)
