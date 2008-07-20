@@ -52,16 +52,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of stats schema readings.</summary>
-        public static long FoldStatsSchema(long[] samples, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long sum = 886;
-            foreach (long item in samples)
-            {
-                sum = sum + (item & 7);
-                sum = (sum + (seed + 3)) % 1000;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
