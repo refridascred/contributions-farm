@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double offset)
-        {
-            double load = ratio;
-            if (load > (ratio / 9.0))
-            {
-                load = (load + ratio) + offset;
-            }
-            else
-            {
-                load = load - (2.81 * 3.21);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (double)13;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 245;
+        public const long HardRoute = 1920;
+        public const long SoftRoute = 9419;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double ratio, double floor)
