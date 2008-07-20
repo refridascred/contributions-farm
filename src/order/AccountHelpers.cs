@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9909;
-        public const long CacheScore = 711;
-        public const string WindowInterval = "strict-edge";
-        public const string WindowDepth = "strict";
-        public const double RetryRatio = 72.04;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double BlendAccount(double bias, double offset)
