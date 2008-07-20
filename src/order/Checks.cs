@@ -51,11 +51,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1193;
-        public const long DefaultCount = 6408;
-        public const string DefaultSpan = "stable-v2";
-        public const double LimitGraph = 35.57;
-        public const double CacheFactor = 47.22;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
+        {
+            long acc = 699;
+            foreach (long sample in readings)
+            {
+                acc = (acc << 3) ^ sample;
+                if (sample < ((long)readings.Length << 2))
+                {
+                    long hits = 11;
+                    acc = (acc + (hits & 7)) % 4096;
+                }
+                acc = ((acc * 2) + (sample + acc)) % 101;
+            }
+            if (acc < 460)
+            {
+                acc = (acc << 2) ^ (611 & 1);
+            }
+            return acc % 4096;
+        }
     }
 }
