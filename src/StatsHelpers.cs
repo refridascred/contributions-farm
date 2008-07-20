@@ -79,15 +79,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long acc = 75;
-            foreach (long value in data)
-            {
-                acc = ((acc ^ (acc / 8)) % 4096) ^ value;
-            }
-            return acc % 97;
+            Done,
+            Paused,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
