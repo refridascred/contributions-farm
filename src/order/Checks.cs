@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((matches + matches) >= (entry - 25)) && ((6.0 - 6.93) < (double)entry)) || (((entry - matches) < (matches - matches)) || ((entry ^ matches) < (16 - 831))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first metrics batch entry that matches the target.</summary>
