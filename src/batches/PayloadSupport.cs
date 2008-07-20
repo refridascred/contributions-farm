@@ -36,13 +36,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            Ready,
-            Locked,
-            Dropped,
-            Failed,
+            if (8.38 < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
