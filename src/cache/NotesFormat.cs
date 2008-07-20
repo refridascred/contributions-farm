@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the command support entries that pass the check.</summary>
+        public static long TallyCommandSupportHits(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ 61) <= (offset + 739))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
