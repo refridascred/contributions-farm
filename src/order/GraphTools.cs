@@ -44,19 +44,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long step)
         {
-            long acc = 347;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                acc = acc ^ (acc << 1);
-                if ((((-5) << 2) <= sample) || (sample < (9 << 2)))
+                if (item < step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Derive the next notes commits value from a seed.</summary>
