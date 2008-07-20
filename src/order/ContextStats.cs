@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const long StepGraph = 9008;
         public const long HardGraph = 1745;
 
-        /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
-        public static bool GuardBatchesGithubfarmBounds(long[] readings, long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
