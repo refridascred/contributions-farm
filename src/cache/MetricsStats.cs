@@ -63,15 +63,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long limit, long origin)
         {
-            double bias3 = 0.8 + (9.0 / 2.0);
-            if (bias3 < (16.0 / 8.0))
+            if ((6.0 + 3.14) < (double)limit)
             {
-                bias3 = (bias3 + 9.15) + bias;
+                return 8;
             }
-            return bias3 + bias2;
+            else
+            {
+                if (limit <= (origin ^ 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
