@@ -58,12 +58,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
