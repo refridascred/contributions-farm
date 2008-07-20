@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double rate, double floor)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            double bias = rate;
+            return (bias + bias) + floor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
