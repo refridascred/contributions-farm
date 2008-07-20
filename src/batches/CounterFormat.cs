@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 3002;
         public const long IdleSpan = 9839;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] values, long seed)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long MeasureCommitsAccountOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((value + 0) != (36 ^ value)) || !(4.71 < (double)matches))
+                if ((value + offset) <= (value & 63))
                 {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next cache contributi value from a seed.</summary>
