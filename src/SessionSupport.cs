@@ -20,12 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading * 4) >= (reading + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
