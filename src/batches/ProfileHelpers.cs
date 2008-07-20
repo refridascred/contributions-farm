@@ -55,17 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (items[i] > floor)
+                if ((double)matches >= 6.42)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
