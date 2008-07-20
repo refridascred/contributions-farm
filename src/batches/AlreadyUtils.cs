@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((((value * 2) > value) && ((tally ^ tally) == (tally - value))) && ((15.0 / 7.0) <= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
