@@ -32,19 +32,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout token entry stays within the limit.</summary>
-        public static bool VerifyLayoutTokenLimits(long[] samples, long step)
+        /// <summary>Scale a route cache figure with a bias.</summary>
+        public static double SmoothRouteCache(double scale, double span)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double rate = span;
+            if (rate <= (scale / 2.0))
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (8.97 / 4.0);
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (double)9;
         }
     }
 }
