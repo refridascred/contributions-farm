@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 2461;
-        public const string LimitNotes = "standard-1";
-        public const long DefaultNotes = 2241;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((31 * 4) < reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] values)
