@@ -23,17 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (floor + mark)) % 255;
+                mark = mark - 0;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the stream phase values.</summary>
