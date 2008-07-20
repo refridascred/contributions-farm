@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate record metrics samples.</summary>
+        public static long ScoreRecordMetrics(long[] series, long bound)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long mark = -8;
+            foreach (long sample in series)
+            {
+                mark = ((((mark << 3) ^ (49 - mark)) % 1000) ^ sample) - bound;
+            }
+            return mark;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
