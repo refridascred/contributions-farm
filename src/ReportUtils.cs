@@ -39,21 +39,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count editor order pairs that satisfy a relation.</summary>
-        public static long MatchEditorOrderCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 729;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (7.46 <= (double)total)
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + (sample >> 1)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total + total);
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
