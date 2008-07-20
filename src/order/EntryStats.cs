@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long TallyLayoutWindowGaps(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((841 + sample) > (seen >> 1)) || ((double)seen >= (17.0 / 6.0))))
+                if (readings[i] >= origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer githubfarm sample.</summary>
