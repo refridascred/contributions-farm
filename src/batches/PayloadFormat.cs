@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long acc = 503;
-            foreach (long value in levels)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                acc = acc + (value - (-53));
+                if ((seed + 9) < seed)
+                {
+                    sum = (sum + (seed ^ 963)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 4) + (origin / 2)) % 65521;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a token entry.</summary>
