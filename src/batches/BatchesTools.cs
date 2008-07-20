@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseScore = 8548;
-        public const long HardInterval = 7836;
-        public const double IdlePayload = 21.34;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
