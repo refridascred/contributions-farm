@@ -65,23 +65,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command filter readings.</summary>
-        public static long TotalCommandFilter(long[] levels)
-        {
-            long state = 482;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (5.86 + 5.71))
-                {
-                    state = (state + (0 << 2)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSpan = 6058;
+        public const long IdleTools = 2420;
+        public const double MaxWidth = 4.59;
+        public const long LimitDepth = 6190;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
