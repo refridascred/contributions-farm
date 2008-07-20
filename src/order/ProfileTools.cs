@@ -42,18 +42,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] levels, long seed)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)hits > 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 1) ^ reading) + seed;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
