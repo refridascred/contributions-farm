@@ -58,22 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = 3;
-            foreach (long datum in series)
-            {
-                if ((58 + score) >= (323 + bound))
-                {
-                    score = ((score ^ bound) % 255) ^ datum;
-                }
-                if (8.0 >= (double)bound)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
