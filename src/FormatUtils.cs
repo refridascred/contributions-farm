@@ -28,22 +28,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 73;
+            foreach (long entry in data)
             {
-                if (((entry << 3) >= (entry >> 5)) || ((1.2 * 2.0) < (double)entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score * 4) + (90 - entry);
             }
-            return matches;
+            if (score < 4)
+            {
+                score = (score ^ (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
