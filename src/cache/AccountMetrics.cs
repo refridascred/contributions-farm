@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long origin2)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            if ((origin2 / 7) < (origin2 + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin2 == (0.5 / 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
