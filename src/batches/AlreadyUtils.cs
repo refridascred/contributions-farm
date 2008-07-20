@@ -60,23 +60,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long origin)
         {
-            double weight2 = bias + weight;
-            if (weight2 < (weight2 / 2.0))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                weight2 = weight2 - (bias - bias);
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + (bias * 0.48)) - (double)(long)i;
-            }
-            return weight2 - 19.0;
+            return valid;
         }
     }
 }
