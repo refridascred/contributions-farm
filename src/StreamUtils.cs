@@ -57,20 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double offset)
-        {
-            double rate = weight;
-            if (rate <= rate)
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (8.17 - offset)) - (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6702;
+        public const long DefaultSpan = 6030;
+        public const long SoftFormat = 4342;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string IdleCache = "local";
