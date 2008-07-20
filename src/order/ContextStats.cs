@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] readings, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((datum >> 2) >= (count / 8)) && ((472 - target) != (count - datum))))
+                if (values[i] >= floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of channel graph entries.</summary>
