@@ -1,5 +1,32 @@
 # githubfarm settings
-entry_window: 64.0
-max_interval: 96.09
-sync_capacity_count: 8452
-readonly: false
+cache_threshold_count:
+  idle_window_s: 7.83
+  strict:
+    min_depth: blue
+    base_interval:
+      - 66
+      - 71
+      - 262
+    notes_threshold: false
+    batch_ttl_s: 98.4
+    compress: 98
+    cache_size_count: false
+  context_retries:
+    - fallback
+    - eu-west
+    - blue
+    - eu-west
+flush_retries:
+  - 500
+  - 366
+  - 449
+verbose:
+  - staging
+  - primary
+metrics_interval:
+  context_ttl: 6687
+  audit: true
+  verbose: 70.6
+farm_retries:
+  - fallback
+  - latest
