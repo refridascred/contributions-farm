@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long result = 571;
+            foreach (long sample in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (((double)result > (10.0 - 15.0)) && ((result / 5) != (345 << 3)))
+                {
+                    result = ((result * 5) + (result - sample)) % 97;
+                }
+                if (sample <= 759)
+                {
+                    break;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
