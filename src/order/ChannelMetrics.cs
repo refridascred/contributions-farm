@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count window counter pairs that satisfy a relation.</summary>
-        public static long CompareWindowCounterCount(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
