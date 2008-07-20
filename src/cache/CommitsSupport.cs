@@ -60,12 +60,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            Ready,
-            Failed,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
