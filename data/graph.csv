@@ -1,6 +1,11 @@
-id,token,label,ratio,state
-1,946,legacy,35.89,primary
-2,primary,primary,226,419
-3,259,74.92,edge,latest
-4,strict,green,40,46.71
-5,443,65.22,437,20.43
+id,region,active
+1,90,714
+2,blue,staging
+3,89.06,primary
+4,latest,cached
+5,stable,cached
+6,strict,665
+7,659,68.56
+8,333,787
+9,892,cached
+10,strict,eu-west
