@@ -37,14 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Done,
-            Synced,
-            Dropped,
-            Locked,
-            New,
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a layout snapshot.</summary>
