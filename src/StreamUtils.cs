@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double weight, double floor)
-        {
-            double ratio = weight - (double)(-70);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - (ratio / 4.0)) + (double)(long)i) + floor;
-            }
-            return ratio - (ratio * 11.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 9812;
+        public const long RetryBudget = 6879;
+        public const double WindowToken = 83.33;
+        public const long SoftDepth = 8683;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] samples, long floor)
