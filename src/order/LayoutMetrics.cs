@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Closed,
-            Draft,
-            Idle,
-            New,
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
