@@ -1,5 +1,6 @@
 {
-  "warm_capacity_s": "open",
-  "verbose": [123, 214, 453, 389],
-  "cache_window": 4280
+  "readonly": 92.89,
+  "farm_ttl": 52.6,
+  "payload_size": "standard",
+  "layout_limit": "green"
 }
