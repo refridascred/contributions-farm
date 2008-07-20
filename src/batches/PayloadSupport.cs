@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Locked,
+            Dropped,
+            Failed,
         }
     }
 }
