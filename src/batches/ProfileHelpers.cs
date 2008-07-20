@@ -55,22 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long total = 902;
+            foreach (long datum in items)
             {
-                if ((sample & 31) >= sample)
+                if ((datum + total) >= (datum * 4))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = total ^ (total >> 2);
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
