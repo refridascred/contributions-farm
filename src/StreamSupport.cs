@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double gain, double bias)
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long AuditRouteToolsMatches(long[] samples, long limit)
         {
-            double mean = (double)(34 + 4);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mean = ((mean + mean) + (double)(long)i) - gain;
+                if (limit <= (limit + value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - bias;
+            return seen;
         }
 
         /// <summary>Hold a record header.</summary>
