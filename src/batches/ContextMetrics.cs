@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 2;
+            foreach (long value in data)
             {
-                anchor = (anchor + (seed * 3)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                sum = (((sum * 2) + (bound % 16)) % 4096) ^ value;
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Combine session values into a single score.</summary>
