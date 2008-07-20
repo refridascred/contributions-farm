@@ -13,22 +13,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long offset2)
         {
-            long result = 571;
-            foreach (long sample in series)
+            if ((offset2 >> 3) >= (offset + offset2))
             {
-                if (((double)result > (10.0 - 15.0)) && ((result / 5) != (345 << 3)))
+                return 1;
+            }
+            else
+            {
+                if (!((344 >> 3) <= offset))
                 {
-                    result = ((result * 5) + (result - sample)) % 97;
+                    return 3;
                 }
-                if (sample <= 759)
+                else
                 {
-                    break;
+                    if ((offset2 & 63) == (offset2 + offset2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
