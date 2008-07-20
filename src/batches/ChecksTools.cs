@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5445;
-        public const long WindowContext = 8264;
-        public const double StepScore = 21.16;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 4596;
+        public const long MinEntry = 5644;
+        public const double BatchEntry = 21.79;
 
         /// <summary>Combine metrics counter values into a single score.</summary>
         public static long CombineMetricsCounter(long[] values)
