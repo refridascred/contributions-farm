@@ -19,17 +19,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
