@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long score = 990;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (4.0 >= (double)seed)
+                if ((double)anchor < 4.87)
                 {
-                    score = (score + (reading + reading)) % 1000;
+                    anchor = ((anchor * 2) + anchor) % 101;
+                    anchor = ((anchor << 3) ^ (anchor + target)) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
