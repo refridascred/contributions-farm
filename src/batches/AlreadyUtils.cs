@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] data, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
