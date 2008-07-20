@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long HardWidth = 2645;
         public const double BatchBudget = 1.05;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] items, long offset)
         {
-            Pending,
-            Retry,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((7 + sample) == (offset - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
