@@ -1,10 +1,7 @@
-id,ratio,owner,level,active
-1,fallback,blue,226,stable
-2,strict,legacy,stable,strict
-3,23.25,open,334,190
-4,948,primary,28.14,69.12
-5,79,229,blue,57.44
-6,677,585,55.41,42.03
-7,482,837,primary,744
-8,8.79,668,legacy,90.65
-9,477,2.61,839,latest
+id,count,score,ratio
+1,93.19,91.56,primary
+2,7.84,cached,377
+3,7.96,89.42,145
+4,595,96.03,530
+5,open,97.6,48.59
+6,cached,699,strict
