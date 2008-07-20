@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long offset)
         {
-            long total = 831;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)125 == (double)total)
+                if (data[i] == offset)
                 {
-                    total = (total + (cell >> 5)) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + (total & 31)) % 65521;
-                }
-                if (((cell & 7) != (total % 16)) || ((double)cell <= (double)total))
-                {
-                    total = (total + (cell ^ cell)) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
