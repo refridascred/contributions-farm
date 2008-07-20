@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const string SoftReport = "fallback-edge";
         public const long IdleBudget = 3901;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
