@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double rate, double floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double bias = rate;
-            return (bias + bias) + floor;
+            Closed,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
