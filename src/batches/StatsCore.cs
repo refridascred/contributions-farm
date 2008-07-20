@@ -44,18 +44,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((0.83 - 13.0) > (double)tally)
+                if (item != limit)
                 {
-                    tally = (tally + 1) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Match up channel samples.</summary>
