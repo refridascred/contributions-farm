@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 8;
+            foreach (long cell in items)
             {
-                if ((cell + 83) == (cell & 1))
+                total = ((total << 2) ^ (total >> 4)) % 65521;
+                if ((total <= (cell & 7)) || ((7.68 / 3.0) <= (double)total))
                 {
-                    count = count + 2;
+                    total = (total + (total / 4)) % 101;
                 }
             }
-            return count;
+            if (total > (-600))
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
