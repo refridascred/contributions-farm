@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                long bound = (900 & 31) + (total + limit);
-                if (((8.0 - 14.0) == (double)limit) && (bound > (bound + 8)))
-                {
-                    bound = ((bound * 5) + (total * 4)) % 97;
-                }
-                else
-                {
-                    bound = bound - ((long)i - total);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
