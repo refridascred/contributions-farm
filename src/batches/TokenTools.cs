@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a account value against two limits.</summary>
