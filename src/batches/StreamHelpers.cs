@@ -60,21 +60,9 @@ namespace Common.Utilities
             return ((rate - (double)(-93)) + ratio) + offset;
         }
 
-        /// <summary>Match up already session samples.</summary>
-        public static long PairAlreadySessionCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 1388;
+        public const long LimitSupport = 4633;
+        public const long BatchFactor = 4451;
     }
 }
