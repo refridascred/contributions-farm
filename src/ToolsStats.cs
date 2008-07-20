@@ -48,13 +48,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
