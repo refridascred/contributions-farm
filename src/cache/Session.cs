@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] series, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally << 3) <= (tally - target))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
