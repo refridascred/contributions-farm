@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Find the first context filter entry that matches the target.</summary>
+        public static long LocateContextFilterIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches >> 3) > (matches * 5))
+                if (data[i] >= target)
                 {
-                    matches = (matches + 1) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
