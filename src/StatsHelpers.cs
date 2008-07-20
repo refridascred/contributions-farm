@@ -48,19 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double offset)
         {
-            long mark = 77;
-            foreach (long entry in levels)
+            double drift = (offset / 7.0) - gain;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark * 5) + entry;
+                drift = (drift + offset) + (double)(long)i;
             }
-            if (mark > 0)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 1000;
-            }
-            return mark;
+            return drift + gain;
         }
 
         /// <summary>Find the first context contributi entry that matches the target.</summary>
