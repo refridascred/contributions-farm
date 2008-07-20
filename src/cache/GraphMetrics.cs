@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum + 89) % 97;
-                sum = ((sum * 3) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Describe the command class values.</summary>
