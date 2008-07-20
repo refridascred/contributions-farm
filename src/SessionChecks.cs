@@ -13,11 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
