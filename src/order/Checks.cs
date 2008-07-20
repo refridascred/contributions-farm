@@ -71,22 +71,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((44 ^ 67) >= matches)
-                {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1193;
+        public const long DefaultCount = 6408;
+        public const string DefaultSpan = "stable-v2";
+        public const double LimitGraph = 35.57;
+        public const double CacheFactor = 47.22;
     }
 }
