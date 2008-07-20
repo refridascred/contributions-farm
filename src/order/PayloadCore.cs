@@ -16,13 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length * 4) == (count + count))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
