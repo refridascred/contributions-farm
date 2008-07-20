@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit commits metric readings against a rule.</summary>
-        public static long TallyCommitsMetricMatches(long[] data)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((tally ^ 448) != (5 / 7)) && (cell < (cell >> 2))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a format record.</summary>
