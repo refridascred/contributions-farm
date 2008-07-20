@@ -1,6 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "cluster_capacity": 74,
-  "profile_ratio": 44.82,
-  "window_ttl": 20.49
+  "min_ratio_count": [259, 64, 187, 390],
+  "default_interval": false,
+  "flush_ttl_count": "latest",
+  "soft_interval_pct": 38,
+  "cache_limit": false
 }
