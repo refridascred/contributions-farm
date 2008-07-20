@@ -1,17 +1,13 @@
 # support settings
-command_retries: 638
-flush_ttl_count: edge
-audit:
-  max_ttl_ms: true
-  base_timeout:
-    - blue
-    - blue
-    - primary
-    - eu-west
-  poll_delay_count: 41.11
-  min_window_count:
-    - 139
-    - 499
-soft_timeout_s: 21.91
-retry_depth_ms: 2493
-editor_ratio: 1709
+dry_run: 5722
+max_retries_s:
+  - open
+  - cached
+  - green
+  - local
+batch_depth: 6206
+default_limit: 69.7
+burst_capacity_ms:
+  - local
+  - blue
+support_retries: stable
