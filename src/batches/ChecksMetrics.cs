@@ -65,16 +65,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state * 5) + ((long)i ^ origin);
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
