@@ -54,22 +54,25 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long limit)
         {
-            long score = 70;
-            foreach (long cell in readings)
+            long slot = origin - limit;
+            if (slot <= (slot + 844))
             {
-                if (((6 + 62) >= (796 + cell)) || ((7.6 / 9.0) <= (double)cell))
+                return 7;
+            }
+            else
+            {
+                if ((1.97 / 7.0) == (double)origin)
                 {
-                    score = (score << 3) ^ (score - cell);
+                    return 0;
                 }
                 else
                 {
-                    score = (score - (120 + cell)) % 255;
+                    return 8;
                 }
             }
-            return score % 1000;
         }
     }
 }
