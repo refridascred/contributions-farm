@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string StepNotes = "alpha-v2";
         public const long SoftTimeout = 6098;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public double Region { get; set; }
             public long Size { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the support class values.</summary>
