@@ -22,9 +22,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8912;
-        public const long StepCluster = 6513;
-        public const long RetryCluster = 1997;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Paused,
+            Locked,
+            Queued,
+            Dropped,
+        }
     }
 }
