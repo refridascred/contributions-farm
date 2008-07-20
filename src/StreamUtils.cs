@@ -49,11 +49,23 @@ namespace Common.Utilities
         public const long DefaultSpan = 6030;
         public const long SoftFormat = 4342;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "local";
-        public const long BatchCache = 3911;
-        public const double WindowSize = 51.12;
-        public const long BurstCache = 5309;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((322 + sample) > tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
