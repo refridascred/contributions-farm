@@ -16,21 +16,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor >= (8.67 / 9.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) >= (-526))
                 {
-                    if ((data[i] + data[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if (!(1 >= (1 + floor)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
