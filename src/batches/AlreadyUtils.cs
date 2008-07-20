@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const double SoftCount = 55.27;
         public const long RetryRatio = 3021;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 4)
+                    if ((levels[i] + levels[j]) > 5)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
