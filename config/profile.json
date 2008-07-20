@@ -1,9 +1,8 @@
 {
-  "idle_capacity_pct": true,
-  "githubfarm_limit": 8496,
-  "retry_timeout_s": {
-    "cache_ttl_ms": 45,
-    "base_timeout": "legacy",
-    "persist": "fallback"
-  }
+  "readonly": true,
+  "cache_limit": 1,
+  "record_timeout": [497, 377, 226],
+  "burst_threshold": "fallback",
+  "sync_ttl": true,
+  "audit": "fallback"
 }
