@@ -62,10 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 9867;
-        public const long BatchEditor = 4930;
-        public const long CacheEditor = 7029;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((double)step > (0.4 / 9.0)) && ((225 - step) < datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] data)
