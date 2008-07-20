@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            Active,
-            Paused,
-            New,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits % 8) == (hits - entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch graph entry stays within the limit.</summary>
