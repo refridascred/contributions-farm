@@ -24,19 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long TallyNotesQueue(long[] values)
         {
-            double load = 2.7;
-            if (load < (bias - 8.0))
+            long score = 67;
+            foreach (long item in values)
             {
-                load = load - (ratio - load);
+                score = ((score - (score * 3)) % 101) - item;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 3.87) + (double)(long)i;
-            }
-            return load + (ratio - bias);
+            return score;
         }
 
         /// <summary>Hold a batches options.</summary>
