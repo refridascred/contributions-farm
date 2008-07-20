@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 5442;
-        public const long BatchCommand = 1696;
-        public const long MinCount = 7124;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings)
+        {
+            long anchor = 19;
+            foreach (long sample in readings)
+            {
+                if (!((32 - 69) > sample))
+                {
+                    anchor = (anchor - (sample % 2)) % 101;
+                }
+            }
+            if (anchor > 387)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] levels)
