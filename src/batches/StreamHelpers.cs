@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] samples, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor - (bound + 3);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the cache phase values.</summary>
