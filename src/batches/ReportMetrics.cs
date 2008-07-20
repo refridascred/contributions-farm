@@ -23,11 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double bias = 15.0 + offset;
+            return (bias - (double)1) + rate;
         }
 
         /// <summary>Roll a format command counter forward.</summary>
