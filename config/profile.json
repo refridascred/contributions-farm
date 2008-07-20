@@ -1,5 +1,7 @@
 {
-  "stream_retries": 59,
-  "min_ratio": 85,
-  "strict": "blue"
+  "sync_limit": 1024,
+  "verbose": 60,
+  "context_ttl": 43.96,
+  "enabled": [309, 255],
+  "flush_delay": false
 }
