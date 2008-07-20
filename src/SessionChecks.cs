@@ -47,22 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream already samples.</summary>
-        public static long WeighStreamAlready(long[] data, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = 46;
-            foreach (long cell in data)
-            {
-                if ((mark ^ cell) < (cell << 1))
-                {
-                    mark = (((mark * 2) + cell) % 101) - target;
-                }
-                if (((long)data.Length > cell) || ((cell & 127) > (cell & 1)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
