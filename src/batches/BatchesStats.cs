@@ -48,32 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long limit)
+        /// <summary>Validate queue window readings against a bound.</summary>
+        public static bool ValidateQueueWindowBounds(long[] values, long bound)
         {
-            long slot = offset ^ limit;
-            if ((slot / 4) != (limit >> 4))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + slot) <= (slot / 2))
+                if (value >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot - offset) > (slot + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
