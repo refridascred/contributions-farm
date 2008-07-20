@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = 825;
+            foreach (long cell in levels)
             {
-                long diff = ((long)i - step) / 6;
-                mark = mark - (3 - step);
-                for (int i2 = 0; i2 < 9; i2++)
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                if (((anchor ^ cell) >= (cell + cell)) || ((cell / 4) == (cell ^ anchor)))
                 {
-                    mark = (((mark * 5) + (mark + diff)) % 255) - (long)i2;
+                    anchor = anchor + (anchor + anchor);
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            if (anchor > 29)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a report counter forward.</summary>
