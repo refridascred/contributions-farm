@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((sample / 2) < 724)
+                if (value > target)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count stats channel pairs that satisfy a relation.</summary>
