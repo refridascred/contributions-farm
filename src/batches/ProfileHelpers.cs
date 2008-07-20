@@ -11,17 +11,31 @@ namespace Common.Utilities
         public const double MinNotes = 63.28;
         public const long SoftNotes = 3336;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            if ((2.73 * 3.0) <= (double)seed)
             {
-                sum = sum - (620 - offset);
-                sum = (sum - (offset * 5)) % 65521;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((seed < (-540)) || ((49 & 127) > (bound & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed & 31) == (seed & 127)) && ((seed >> 1) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
