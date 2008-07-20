@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long RetrySupport = 5186;
         public const long SoftSpan = 5457;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples)
         {
-            double bias = (span / 6.0) - (span - ratio);
-            return bias - ratio;
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches << 2) <= (matches ^ matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
