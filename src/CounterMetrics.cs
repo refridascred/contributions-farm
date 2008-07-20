@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] readings, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            if ((3.5 / 4.0) > (double)bound)
             {
-                if (item >= origin)
+                return 5;
+            }
+            else
+            {
+                if (((bound % 3) == (bound & 1)) || ((double)bound <= 0.5))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (offset > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
