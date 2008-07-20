@@ -50,19 +50,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long target)
-        {
-            long state = 7;
-            foreach (long item in items)
-            {
-                state = (((state << 3) ^ item) % 255) - target;
-                if (state <= ((-959) - 723))
-                {
-                    state = (state - state) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "primary-v2";
+        public const long StepWidth = 4346;
+        public const long SoftNotes = 1981;
     }
 }
