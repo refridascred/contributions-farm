@@ -70,19 +70,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((state ^ state) > (long)i)
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 7826;
+        public const long BaseWidth = 506;
+        public const long CachePayload = 7777;
     }
 }
