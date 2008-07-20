@@ -40,22 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report buffer samples are out of range.</summary>
-        public static long TallyReportBufferOutliers(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((origin + origin) <= (origin % 16))
             {
-                if ((entry & 7) <= 207)
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) != (floor + floor))
                 {
-                    count = count + 3;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin + origin) >= (floor & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < (7.7 * 0.43))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
