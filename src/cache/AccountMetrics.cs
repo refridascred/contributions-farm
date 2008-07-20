@@ -30,11 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleInterval = 8885;
-        public const long StepCluster = 7605;
-        public const long HardWidth = 4858;
-        public const long CacheCluster = 9299;
+        /// <summary>Match up batches buffer samples.</summary>
+        public static long CompareBatchesBufferCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] levels, long seed)
