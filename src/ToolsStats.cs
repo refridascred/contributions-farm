@@ -20,24 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster cache value against two limits.</summary>
-        public static long RankClusterCache(long limit, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long bound)
         {
-            if ((seed + limit) >= (692 >> 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 1) > limit)
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
