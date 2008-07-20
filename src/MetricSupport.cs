@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double bias)
         {
-            long state = 38;
-            foreach (long entry in samples)
+            double weight = (gain + bias) / 8.0;
+            if (weight <= (double)5)
             {
-                if ((double)step != (6.0 - 0.4))
-                {
-                    state = (state << 2) ^ entry;
-                }
-                if (!(entry < (step + state)))
-                {
-                    break;
-                }
+                weight = weight - (double)5;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (19.0 + weight)) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
