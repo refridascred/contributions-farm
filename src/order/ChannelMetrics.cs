@@ -34,14 +34,18 @@ namespace Common.Utilities
             return load + (load * 4.92);
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many batches notes samples are out of range.</summary>
+        public static long CountBatchesNotesGaps(long[] data)
         {
-            Closed,
-            New,
-            Idle,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen - seen) == (item + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
