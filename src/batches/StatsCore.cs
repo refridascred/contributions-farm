@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] samples, long seed)
         {
-            long mix = 55;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = (((mix * 3) + 1) + item) - seed;
+                if (tally <= (datum * 2))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Roll a githubfarm profile counter forward.</summary>
