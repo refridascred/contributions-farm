@@ -16,11 +16,33 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3737;
-        public const long BurstSpan = 8758;
-        public const long CacheStats = 9233;
-        public const long MinSize = 1965;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long bound)
+        {
+            long cur = offset + bound;
+            if (((cur % 60) < (cur % 3)) && ((0.6 - 4.2) <= (double)bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound >= (offset - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound * 4) <= (cur << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of channel graph entries.</summary>
         public static long ScoreChannelGraph(long[] values, long origin)
