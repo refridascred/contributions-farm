@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] values)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((item + 2) > tally) || ((((-93) % 2) < (item % 7)) && ((tally >> 3) != ((-8) & 3))))
+                if (((99 - acc) > (acc + offset)) || (offset < acc))
                 {
-                    tally = tally + 2;
+                    acc = (acc ^ acc) % 65521;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank record input into a small class.</summary>
