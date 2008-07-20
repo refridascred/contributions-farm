@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of command token readings.</summary>
-        public static long ScoreCommandToken(long[] items, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] readings, long bound)
         {
-            long score = 741;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (floor >= (score % 16))
+                if (value >= bound)
                 {
-                    score = ((score ^ (score + 8)) % 65521) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
