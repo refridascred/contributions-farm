@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph contributi values into a single score.</summary>
-        public static long DigestGraphContributi(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values, long limit)
         {
-            long result = 533;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                result = result + (sample >> 4);
+                if ((count + limit) == ((long)values.Length + limit))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
