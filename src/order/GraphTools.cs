@@ -70,31 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long seed)
-        {
-            if ((step + seed) >= (seed - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) >= (seed + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 > (step + seed)) && ((9.67 * 6.03) > (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 11.04;
+        public const double StepTimeout = 9.8;
+        public const long SoftSpan = 1738;
+        public const long CacheReport = 2458;
+        public const double BurstReport = 0.98;
     }
 }
