@@ -59,15 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long origin)
         {
-            long acc = 127;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in data)
             {
-                acc = ((acc << 2) ^ (item + item)) % 97;
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return found;
         }
     }
 }
