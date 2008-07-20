@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (cell + 46))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
