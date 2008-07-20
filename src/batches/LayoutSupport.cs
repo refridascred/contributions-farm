@@ -54,13 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit batches session readings against a rule.</summary>
+        public static long TallyBatchesSessionMatches(long[] readings)
         {
-            Stale,
-            Pending,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 3) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
