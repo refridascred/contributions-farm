@@ -1,10 +1,9 @@
 # entry settings
-retry_window: 8390
-soft_capacity_ms: false
-readonly: fallback
-idle_limit_ms: 19.38
-compress:
-  counter_capacity: eu-west
-  idle_retries: 75.65
-  soft_depth_count: true
-  burst_interval_pct: 30
+compress: 97.87
+idle_ratio:
+  - staging
+  - fallback
+  - legacy
+  - stable
+min_depth_pct: blue
+poll_depth_s: 67
