@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long BaseCluster = 8030;
         public const long BaseScore = 1523;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 10.6;
-        public const string DefaultBudget = "standard-edge";
-        public const long SoftWidth = 4880;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long seed)
