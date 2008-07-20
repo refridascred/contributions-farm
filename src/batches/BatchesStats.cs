@@ -33,10 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 4779;
-        public const string LimitCount = "local-v2";
-        public const long MinSize = 4777;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            New,
+            Retry,
+            Ready,
+            Idle,
+            Active,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string HardStream = "standard-1";
