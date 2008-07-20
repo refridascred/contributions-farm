@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSpan = 9399;
-        public const long BaseInterval = 5025;
-        public const long MaxScore = 553;
-        public const long MinPayload = 5684;
-        public const long HardWidth = 1428;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] samples, long target)
