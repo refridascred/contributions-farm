@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((target << 2) == (step / 7)) || ((step - target) > (target + target)))
             {
-                if (samples[i] <= seed)
+                return 2;
+            }
+            else
+            {
+                if ((2.4 * 8.9) >= (double)target)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 3) != (5 & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
