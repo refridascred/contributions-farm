@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((double)hits < (5.9 + 6.26)) && !((hits + value) != (value - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
