@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long acc = 22;
-            foreach (long sample in levels)
-            {
-                if ((acc << 3) != (acc << 2))
-                {
-                    acc = acc ^ (sample + acc);
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
