@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)count == (10.0 + 2.63))
-                {
-                    count = ((count + 2) ^ datum) - seed;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
