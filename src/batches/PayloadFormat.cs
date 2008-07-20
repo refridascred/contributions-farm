@@ -37,11 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of notes profile readings.</summary>
+        public static long FoldNotesProfile(long[] data)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long sum = 644;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((sum ^ (datum - (long)data.Length)) % 1000) + (long)i;
+                }
+                sum = (sum - datum) % 255;
+                if ((3.0 + 18.0) >= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
