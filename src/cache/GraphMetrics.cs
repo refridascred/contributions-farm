@@ -19,19 +19,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] items, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long diff = limit - seed;
+            if ((limit + diff) != (diff + seed))
             {
-                if (cell > offset)
+                return 8;
+            }
+            else
+            {
+                if ((870 << 3) <= (diff + diff))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a editor entry.</summary>
