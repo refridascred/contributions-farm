@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series)
         {
-            long carry = 725;
-            foreach (long entry in data)
+            long mix = 447;
+            foreach (long item in series)
             {
-                carry = ((carry << 3) ^ (entry & 127)) % 255;
+                mix = ((mix - 369) % 1000) - item;
             }
-            if (carry < 8)
+            if (mix > 692)
             {
-                carry = ((carry << 2) ^ (carry % 60)) % 97;
+                mix = (mix * 4) + mix;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
