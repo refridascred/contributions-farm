@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "primary-1";
+        public const long WindowAlready = 572;
+        public const double SoftAlready = 35.67;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long limit)
