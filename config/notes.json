@@ -1,5 +1,5 @@
 {
-  "flush_ttl_count": "edge",
-  "enabled": false,
-  "soft_capacity_count": ["edge", "standard"]
+  "readonly": "primary",
+  "verbose": [196, 430],
+  "session_capacity": "cached"
 }
