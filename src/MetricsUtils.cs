@@ -48,21 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = 8.0;
+            if (gain >= (floor - 1.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (floor - 8.0)) - weight;
             }
-            return matches;
+            return gain + floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
