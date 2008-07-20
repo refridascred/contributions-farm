@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((1.0 * 5.81) >= (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheInterval = "open-edge";
+        public const string BaseDepth = "staging-1";
+        public const long StepNotes = 7237;
+        public const long CacheTimeout = 3265;
+        public const long MaxNotes = 4620;
 
         /// <summary>Check that every layout token entry stays within the limit.</summary>
         public static bool VerifyLayoutTokenLimits(long[] samples, long step)
