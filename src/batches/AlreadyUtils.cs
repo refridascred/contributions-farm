@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = 8;
-            foreach (long sample in items)
-            {
-                carry = ((carry - (-5)) % 97) - sample;
-            }
-            return carry;
+            Ready,
+            Closed,
+            Done,
+            Synced,
         }
 
         /// <summary>Rank record input into a small class.</summary>
