@@ -41,21 +41,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc + origin) % 101;
+                acc = (acc ^ ((long)i & 31)) % 101;
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of route readings.</summary>
