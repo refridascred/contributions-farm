@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] readings, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (sample >= origin)
+                if (value < target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Digest a series of session entries.</summary>
