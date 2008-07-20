@@ -48,23 +48,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long offset)
         {
-            long mark = 219;
-            foreach (long cell in values)
+            long total = 1;
+            foreach (long reading in values)
             {
-                mark = mark ^ (cell >> 1);
-                if ((365 / 2) != (mark + mark))
+                long delta = (long)values.Length * 2;
+                if (((3.7 / 8.0) != (double)delta) || (((long)values.Length - 29) == (total + offset)))
                 {
-                    mark = ((mark << 2) ^ (cell + mark)) % 255;
+                    delta = (delta - (total ^ 4)) % 255;
                 }
-                else
+                if (!((offset - 21) <= (reading - offset)))
                 {
-                    mark = (mark ^ (2 - cell)) % 101;
+                    total = total - (reading + total);
+                }
+                if ((double)(long)values.Length <= (5.1 * 0.43))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (total < 449)
+            {
+                total = ((total * 5) + (total * 4)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
