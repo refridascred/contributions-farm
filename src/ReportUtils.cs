@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const string SoftBatches = "staging-1";
         public const long CacheBatches = 3463;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
