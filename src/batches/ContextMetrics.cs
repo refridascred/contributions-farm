@@ -33,22 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = 123;
+            foreach (long entry in levels)
             {
-                long diff = limit >> 3;
-                long offset = (diff + limit) + (long)i;
-                if ((long)i <= (-41))
-                {
-                    diff = (diff + (793 ^ offset)) % 255;
-                    offset = (offset ^ 0) % 101;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                mix = (mix ^ (entry ^ entry)) % 1000;
             }
-            return state;
+            return mix % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
