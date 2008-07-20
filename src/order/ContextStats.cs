@@ -16,10 +16,11 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSpan = 80.46;
-        public const string MinSession = "latest";
-        public const long LimitSession = 9660;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3737;
+        public const long BurstSpan = 8758;
+        public const long CacheStats = 9233;
+        public const long MinSize = 1965;
 
         /// <summary>Digest a series of channel graph entries.</summary>
         public static long ScoreChannelGraph(long[] values, long origin)
