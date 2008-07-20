@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long CountBatchesEditorMatches(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((total <= (total ^ total)) && ((double)target >= 18.0))
+                if (hits <= (6 - 483))
                 {
-                    total = ((total * 3) + (9 & 7)) % 97;
+                    hits = (hits + 3) - value;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
