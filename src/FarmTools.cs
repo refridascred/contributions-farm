@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long TallyFarmCommitsGaps(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((6 / 3) == (count - 5))
-                {
-                    count = ((count + 3) - cell) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 1977;
+        public const double CacheWindow = 1.36;
+        public const long HardLevel = 873;
+        public const long LimitWindow = 5685;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
