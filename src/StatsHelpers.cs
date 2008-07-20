@@ -51,22 +51,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double span)
         {
-            long state = 1;
-            foreach (long entry in levels)
+            double bias = span;
+            if (bias > 5.65)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state + (long)levels.Length) % 1000) ^ (long)i;
-                }
-                if ((limit * 4) <= 70)
-                {
-                    state = (state ^ (entry & 127)) % 101;
-                }
+                bias = bias + bias;
             }
-            return state;
+            return bias + (rate + 6.83);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
