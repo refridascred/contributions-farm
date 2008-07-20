@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long seed)
+        /// <summary>Locate a account tools reading by value.</summary>
+        public static long FindAccountToolsIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                if (samples[i] > step)
                 {
                     return (long)i;
                 }
