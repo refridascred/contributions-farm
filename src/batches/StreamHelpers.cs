@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] samples, long limit)
         {
-            Queued,
-            Dropped,
-            Active,
-            Done,
-            Retry,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache phase values.</summary>
