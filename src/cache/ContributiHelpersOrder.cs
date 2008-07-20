@@ -20,21 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every batch payload entry stays within the limit.</summary>
