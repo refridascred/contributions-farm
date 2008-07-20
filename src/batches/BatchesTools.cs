@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long acc = 519;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 2) ^ (step - 3);
-                if ((10 >> 5) <= acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc << 2) ^ (datum >> 5);
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 14)
-            {
-                acc = (acc + (acc - acc)) % 1000;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
