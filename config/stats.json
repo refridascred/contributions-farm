@@ -1,7 +1,8 @@
 {
-  "cache_delay": true,
-  "strict": 30,
-  "notes_delay": false,
-  "flush_interval_count": "legacy",
-  "retry_ttl_count": "open"
+  "cache_ttl": true,
+  "retry_threshold_count": "standard",
+  "batch_threshold_s": "green",
+  "metrics_depth": "stable",
+  "window_capacity": 95,
+  "record_retries": 30
 }
