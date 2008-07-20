@@ -76,15 +76,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Rank context graph input into a small class.</summary>
+        public static long GradeContextGraph(long offset, long seed)
         {
-            double drift = (double)((-9) + 71);
-            if (drift > 0.37)
+            long cur = offset + seed;
+            if ((2 + cur) > (184 >> 3))
             {
-                drift = drift - (span - bias);
+                return 7;
             }
-            return drift + (double)951;
+            else
+            {
+                if ((1 ^ cur) != (seed * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) != (4 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
