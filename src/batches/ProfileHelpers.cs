@@ -54,18 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items, long offset)
+        /// <summary>Locate a metric tools reading by value.</summary>
+        public static long LocateMetricToolsIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((offset + offset) <= offset))
+                if (samples[i] < origin)
                 {
-                    tally = (tally + 3) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank batch command input into a small class.</summary>
