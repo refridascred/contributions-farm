@@ -30,12 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2984;
-        public const double IdleSize = 39.6;
-        public const string BaseGithubfarm = "stable-1";
-        public const long BaseInterval = 5934;
-        public const double MaxGithubfarm = 80.56;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] series, long step)
