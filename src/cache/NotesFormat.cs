@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Adjust a schema checks reading.</summary>
+        public static double AdjustSchemaChecks(double gain, double span)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double load = span;
+            return (load + span) + gain;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
