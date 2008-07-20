@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Adjust a editor reading.</summary>
