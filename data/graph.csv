@@ -1,7 +1,7 @@
-id,token,active,score,label
-1,301,69.55,420,460
-2,primary,476,latest,16.93
-3,61.59,latest,861,338
-4,50.89,547,52.59,stable
-5,63.62,edge,blue,50.06
-6,fallback,17.22,92.93,672
+id,level,active,score,state
+1,primary,stable,739,78.57
+2,81.42,621,42.48,standard
+3,813,949,690,local
+4,6,76.51,638,698
+5,latest,217,77.32,67.61
+6,203,strict,652,666
