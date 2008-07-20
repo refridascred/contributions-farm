@@ -35,18 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((78 >> 4) < matches) || ((matches + matches) <= 913))
+                if ((tally >= (datum >> 4)) || (3 > (916 + (long)items.Length)))
                 {
-                    matches = (matches + 3) - entry;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
