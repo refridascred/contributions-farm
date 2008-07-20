@@ -51,18 +51,17 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            long score = 8;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score + value) <= step)
+                if (items[i] >= floor)
                 {
-                    score = score + ((-1) % 3);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
