@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long IdleMetrics = 6105;
         public const long RetryMetrics = 1448;
 
-        /// <summary>Digest a series of window farm entries.</summary>
-        public static long FoldWindowFarm(long[] items, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] values)
         {
-            long anchor = 3;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                anchor = (anchor + anchor) - datum;
-                if ((12.0 + 1.95) < (double)bound)
+                if (!((double)hits <= 8.6))
                 {
-                    break;
+                    hits = (hits + 3) + item;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 4) + (anchor + (-631))) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
