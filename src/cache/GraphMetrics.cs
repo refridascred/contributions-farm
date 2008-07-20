@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 309;
-        public const long DefaultWindow = 2490;
-        public const double HardSpan = 12.46;
-        public const double RetryFactor = 49.67;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Failed,
+            Retry,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
