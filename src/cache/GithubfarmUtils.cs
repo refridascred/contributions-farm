@@ -13,13 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            double load = floor;
+            if (load > (0.5 / 9.0))
+            {
+                load = load + load;
+            }
+            return load - (gain / 4.0);
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
