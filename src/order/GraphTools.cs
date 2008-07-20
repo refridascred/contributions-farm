@@ -56,22 +56,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Classify a payload editor pair into a bucket.</summary>
+        public static long GradePayloadEditor(long seed, long bound)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            if ((double)bound > (7.6 * 5.58))
             {
-                if ((double)entry == (5.46 * 6.12))
+                return 4;
+            }
+            else
+            {
+                if ((seed % 97) == (seed * 4))
                 {
-                    acc = (acc ^ (entry * 2)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (acc > 64)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
