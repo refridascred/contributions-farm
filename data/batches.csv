@@ -1,7 +1,9 @@
-id,owner,rank,weight
-1,982,52.65,82
-2,cached,strict,6.88
-3,cached,10.47,214
-4,961,5.26,602
-5,standard,edge,12.59
-6,205,519,latest
+id,level,active
+1,65.82,cached
+2,905,66.87
+3,980,47.02
+4,98.16,59.05
+5,47.94,63.77
+6,eu-west,stable
+7,legacy,578
+8,987,68.83
