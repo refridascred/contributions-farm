@@ -34,24 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cache entry value from a seed.</summary>
-        public static long DeriveCacheEntry(long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (703 <= (state >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - origin) % 101;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    state = (state * 4) + (state >> 2);
-                    state = ((state * 3) + (origin / 6)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
     }
 }
