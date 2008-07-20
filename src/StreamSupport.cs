@@ -34,19 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long SeriesFarmChannel(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((step < (step << 2)) || ((step / 9) >= (70 - 0)))
-                {
-                    anchor = anchor ^ (step - anchor);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
