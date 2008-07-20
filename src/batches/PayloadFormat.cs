@@ -28,10 +28,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstInterval = 61.41;
-        public const double CacheCommand = 42.08;
-        public const long BurstSize = 2122;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double floor)
+        {
+            double mean = (double)(49 + 839);
+            if (mean <= gain)
+            {
+                mean = mean + 7.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - (floor + 4.0);
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] readings)
