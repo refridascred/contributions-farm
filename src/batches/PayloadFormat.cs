@@ -24,12 +24,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultWidth = 11.63;
-        public const long CacheBuffer = 7249;
-        public const string BurstScore = "stable-edge";
-        public const long SoftBuffer = 5566;
-        public const string MaxBuffer = "cached-1";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series)
+        {
+            long total = 81;
+            foreach (long reading in series)
+            {
+                total = total - (reading - reading);
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of notes profile readings.</summary>
         public static long FoldNotesProfile(long[] data)
