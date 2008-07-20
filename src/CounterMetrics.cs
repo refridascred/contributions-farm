@@ -55,15 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Accumulate contributi channel samples.</summary>
+        public static long FoldContributiChannel(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long mix = -628;
+            foreach (long item in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                mix = ((mix ^ (324 - (long)values.Length)) % 101) + item;
             }
-            return sum;
+            if (mix > 569)
+            {
+                mix = (mix + (mix % 2)) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
