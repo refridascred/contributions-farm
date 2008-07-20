@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long MaxContributi = 9807;
         public const long LimitRatio = 3376;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] series, long target)
+        /// <summary>Look up the position of a buffer githubfarm sample.</summary>
+        public static long LookupBufferGithubfarmIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length & 3) < (target / 7))
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
