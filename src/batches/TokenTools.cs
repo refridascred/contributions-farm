@@ -43,21 +43,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mark < (5.0 * 2.29))
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 3) + (1 ^ (long)i);
                 }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                    mark = ((mark << 2) ^ (target ^ target)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
