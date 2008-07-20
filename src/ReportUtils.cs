@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long origin, long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            if ((bound - origin) < bound)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (double)origin)
+                long bound = (900 & 31) + (total + limit);
+                if (((8.0 - 14.0) == (double)limit) && (bound > (bound + 8)))
                 {
-                    return 3;
+                    bound = ((bound * 5) + (total * 4)) % 97;
                 }
                 else
                 {
-                    if (bound > (bound ^ 412))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin > (bound + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    bound = bound - ((long)i - total);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
