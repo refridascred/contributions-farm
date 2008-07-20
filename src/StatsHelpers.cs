@@ -32,18 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph cluster readings against a rule.</summary>
-        public static long CountGraphClusterOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading ^ reading) == (reading + seed))
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
