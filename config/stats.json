@@ -1,11 +1,14 @@
 {
-  "hard_depth_s": ["green", "cached"],
-  "format_timeout": 31.47,
-  "retry_limit_ms": 10.85,
-  "idle_retries_pct": "cached",
-  "session_depth": {
-    "strict": 78.53,
-    "verbose": "stable",
-    "support_size": "fallback"
-  }
+  "already_delay": {
+    "verbose": ["blue", "fallback", "latest", "blue"],
+    "dry_run": 54,
+    "cache_threshold": 25.45,
+    "idle_interval_s": "primary"
+  },
+  "filter_ttl": {
+    "persist": ["green", "standard", "fallback"],
+    "readonly": 78.38,
+    "commits_interval": true
+  },
+  "poll_size_ms": true
 }
