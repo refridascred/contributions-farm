@@ -62,13 +62,19 @@ namespace Common.Utilities
             return load - (double)(-70);
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] series, long floor)
         {
-            Closed,
-            Retry,
-            Locked,
-            Idle,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
