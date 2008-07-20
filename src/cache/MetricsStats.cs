@@ -49,22 +49,15 @@ namespace Common.Utilities
             return (ratio + (ratio + offset)) + scale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias3 = 0.8 + (9.0 / 2.0);
+            if (bias3 < (16.0 / 8.0))
             {
-                if ((seen << 1) == (seen << 3))
-                {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias3 = (bias3 + 9.15) + bias;
             }
-            return seen;
+            return bias3 + bias2;
         }
     }
 }
