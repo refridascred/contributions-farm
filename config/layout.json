@@ -1,7 +1,5 @@
 {
-  "support_ttl": "primary",
-  "schema_ratio": 35,
-  "batch_depth_count": 2891,
-  "compress": false,
-  "burst_limit_count": "open"
+  "enabled": 25,
+  "retry_depth": "blue",
+  "report_delay": 4173
 }
