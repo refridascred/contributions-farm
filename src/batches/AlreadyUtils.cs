@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTimeout = 2001;
-        public const long BurstTools = 6240;
-        public const long MaxFactor = 6103;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long offset, long floor)
