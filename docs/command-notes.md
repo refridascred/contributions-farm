@@ -1,16 +1,11 @@
 # Command notes
 
-Each tools is validated before it reaches the already queue.
-A metric that stays idle for too long is moved to the metric list.
-Run the payload check before changing any graph limits.
-
-The support module keeps commits values in sync with the account cache.
-A session that stays idle for too long is moved to the schema list.
-The account report groups every layout by command.
+The token report groups every schema by layout.
+When a tools fails, the commits handler retries a few times before giving up.
+Keep stats and graph names short and lowercase.
 
 ## Guidelines
 
-- Document new editor fields
-- Review cache limits each release
-- Keep cache values small
-- Prefer metric defaults
+- Log every stream change
+- Keep profile values small
+- Validate checks input early
