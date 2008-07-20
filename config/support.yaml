@@ -1,13 +1,18 @@
 # support settings
-dry_run: 5722
-max_retries_s:
-  - open
-  - cached
-  - green
-  - local
-batch_depth: 6206
-default_limit: 69.7
-burst_capacity_ms:
-  - local
-  - blue
-support_retries: stable
+dry_run:
+  - 128
+  - 144
+cache_delay:
+  default_threshold_ms: 76.77
+  idle_delay_ms: 91.36
+  queue_interval: local
+  stream_retries: 2.15
+  cache_timeout:
+    - latest
+    - open
+    - green
+  context_ttl: 27.69
+flush_depth_s: 87.57
+idle_depth: edge
+persist: 76
+min_ratio: 18.38
