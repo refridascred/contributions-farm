@@ -1,17 +1,5 @@
 {
-  "cluster_interval": "edge",
-  "persist": "staging",
-  "max_interval_ms": {
-    "warm_interval_pct": 63.24,
-    "metric_window": "fallback",
-    "default_delay": {
-      "route_delay": true,
-      "min_timeout_s": true,
-      "token_window": ["blue", "stable", "eu-west", "local"],
-      "contributi_timeout": "local",
-      "commits_limit": "blue"
-    },
-    "burst_limit_ms": 86
-  },
-  "burst_size_pct": "standard"
+  "stream_retries": 59,
+  "min_ratio": 85,
+  "strict": "blue"
 }
