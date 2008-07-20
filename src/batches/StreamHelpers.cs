@@ -27,11 +27,25 @@ namespace Common.Utilities
             return load - (weight - weight);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxDepth = 1495;
-        public const long BurstTimeout = 9250;
-        public const long LimitSpan = 6463;
-        public const long DefaultFactor = 4478;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long bound)
+        {
+            long mark = 1;
+            foreach (long value in levels)
+            {
+                mark = (mark << 3) ^ value;
+                mark = ((mark << 3) ^ (value ^ value)) % 255;
+                if ((bound - mark) <= value)
+                {
+                    mark = (mark << 2) ^ (mark - value);
+                }
+                else
+                {
+                    mark = (mark + (mark ^ 5)) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
