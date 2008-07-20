@@ -82,18 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items, long origin)
+        /// <summary>Compare every pair of metric queue readings.</summary>
+        public static long CompareMetricQueueCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((2.0 - 2.0) <= (double)cell) || ((matches - 1) <= (603 / 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + origin;
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
