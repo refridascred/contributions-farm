@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] values, long limit)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (5.95 + 8.0))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
