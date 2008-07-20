@@ -49,23 +49,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long WeighGraphAlready(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series)
         {
-            long carry = 7;
-            foreach (long value in data)
+            long result = 5;
+            foreach (long sample in series)
             {
-                carry = carry - (3 - value);
-                if (!((value + carry) <= (carry - value)))
+                result = result ^ (sample >> 3);
+                result = (result * 3) + (sample - sample);
+                if ((result / 9) < (result * 5))
                 {
-                    carry = ((carry * 5) + (value >> 4)) % 4096;
-                }
-                if (carry <= (carry >> 3))
-                {
-                    carry = (carry + value) % 1000;
+                    result = (result - (sample << 3)) % 255;
                 }
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
