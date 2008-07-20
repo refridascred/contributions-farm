@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 42.88;
-        public const long CacheTools = 5950;
-        public const double BurstTools = 63.08;
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long TallyFarmCommitsGaps(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((6 / 3) == (count - 5))
+                {
+                    count = ((count + 3) - cell) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
