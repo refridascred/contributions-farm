@@ -33,22 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmHits(long[] series, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)sample <= (2.6 - 3.2)))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the order state values.</summary>
