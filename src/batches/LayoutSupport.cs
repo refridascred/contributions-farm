@@ -56,9 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 2072;
-        public const long LimitTimeout = 3609;
-        public const long MinSupport = 2485;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
