@@ -1,12 +1,11 @@
 {
-  "retry_size": false,
-  "strict": {
-    "max_limit_pct": "stable",
-    "min_ttl_pct": 500,
-    "poll_ratio_count": 395,
-    "warm_retries_pct": false
+  "cache_timeout": {
+    "cache_size": "staging",
+    "idle_ttl_ms": 32,
+    "warm_capacity": ["blue", "staging"],
+    "idle_limit_ms": "fallback",
+    "metrics_ratio": 2.78
   },
-  "entry_depth": 89.12,
-  "cache_threshold_pct": false,
-  "poll_retries": false
+  "layout_capacity": [189, 436, 136, 309],
+  "payload_limit": 51
 }
