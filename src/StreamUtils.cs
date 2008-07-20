@@ -74,11 +74,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
