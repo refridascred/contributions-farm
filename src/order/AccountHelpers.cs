@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const string RetryBatches = "primary";
         public const string BatchScore = "primary-edge";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 33;
+            foreach (long cell in series)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ ((-8) + 548)) + (long)i) + cell;
                 }
+                score = (score << 3) ^ (score + score);
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Hold a report stats.</summary>
