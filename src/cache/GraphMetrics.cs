@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            if ((step << 3) >= offset)
+            double ratio = bias2 / 8.0;
+            if (ratio >= bias)
             {
-                return 0;
+                ratio = ratio - (6.15 / 9.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)step < (double)3)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = (ratio + (double)49) - (double)(long)i;
             }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Locate a session reading by value.</summary>
