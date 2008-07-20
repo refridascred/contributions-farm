@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double DefaultRecord = 79.48;
         public const long SoftSpan = 2893;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitInterval = "local-1";
-        public const string BurstFactor = "open-edge";
-        public const long RetryTimeout = 5209;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] levels)
