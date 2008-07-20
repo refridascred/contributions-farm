@@ -75,39 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long target)
         {
-            long span = target + origin;
-            if (((target + span) > (571 + span)) && (origin > (origin & 7)))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + 49) != (target * 2))
+                if ((76 ^ tally) != (sample >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target - target) <= origin) || (target < (origin >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)739)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 3) + target;
                 }
             }
+            return tally;
         }
     }
 }
