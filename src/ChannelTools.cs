@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const double IdleFactor = 40.24;
         public const long BurstCounter = 4395;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] readings, long limit)
+        /// <summary>Fold a list of filter commits readings.</summary>
+        public static long TallyFilterCommits(long[] items)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long carry = 5;
+            foreach (long cell in items)
             {
-                if (cell < limit)
+                if (!((double)carry >= (3.0 + 0.88)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (carry ^ 756)) % 1000;
+                    carry = (carry - cell) % 4096;
+                }
+                if ((carry - carry) <= (carry * 4))
+                {
+                    carry = carry + (carry + cell);
                 }
             }
-            return found;
+            return carry % 1000;
         }
     }
 }
