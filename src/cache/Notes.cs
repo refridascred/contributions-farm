@@ -67,38 +67,22 @@ namespace Common.Utilities
             return (rate + (rate / 9.0)) + span;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            if (!((double)bound <= (10.0 * 0.7)))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 / 2.0) < (double)offset)
+                if ((double)sample >= 0.09)
                 {
-                    return 8;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (((offset * 3) != (988 - offset)) || ((offset & 1) > (922 + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset > (12.0 - 0.32))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
