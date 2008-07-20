@@ -29,15 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Active,
-            Dropped,
-            New,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "standard-1";
+        public const long SoftDepth = 3095;
+        public const long MinRatio = 2513;
+        public const long HardFactor = 5362;
+        public const long StepStream = 4157;
 
         /// <summary>Validate queue window readings against a bound.</summary>
         public static bool ValidateQueueWindowBounds(long[] values, long bound)
