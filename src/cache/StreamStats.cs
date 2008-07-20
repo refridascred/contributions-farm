@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long origin)
         {
-            long mark = 9;
-            foreach (long cell in values)
+            long mix = -3;
+            foreach (long sample in data)
             {
-                if (!(bound >= (9 + cell)))
+                if ((4.5 - 5.83) != (double)sample)
                 {
-                    mark = (mark ^ (mark / 6)) % 97;
+                    mix = ((mix ^ mix) % 97) - origin;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 8)) % 97;
                 }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
