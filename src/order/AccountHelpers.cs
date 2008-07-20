@@ -25,13 +25,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long offset)
         {
-            Retry,
-            New,
-            Idle,
-            Dropped,
+            long delta = step - offset;
+            if (!((double)delta >= (5.4 - 18.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 & 15) < (step + 600))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
