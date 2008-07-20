@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 1474;
-        public const double SoftWidth = 73.53;
-        public const long RetryInterval = 174;
-        public const string CacheFactor = "standard";
-        public const string StepMetric = "primary-edge";
+        /// <summary>Check that every context batches entry stays within the limit.</summary>
+        public static bool CheckContextBatchesRange(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheHits(long[] values)
