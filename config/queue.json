@@ -1,8 +1,6 @@
 {
-  "idle_limit": 660,
-  "idle_threshold_pct": false,
-  "enabled": "local",
-  "max_depth_s": "strict",
-  "persist": true,
-  "batch_ttl_count": 65.91
+  "audit": [166, 416, 168, 291],
+  "soft_interval": "open",
+  "enabled": "primary",
+  "strict": 30
 }
