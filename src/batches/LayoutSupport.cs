@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long CountCounterClusterOutliers(long[] series, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits > (target + datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
