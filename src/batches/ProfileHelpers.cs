@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] items, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((double)step <= (2.06 * 1.0)) || ((reading % 5) >= count))
+                if (((double)seen < (double)468) || !((value - value) <= (step % 3)))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
