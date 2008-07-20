@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long DigestReportBuffer(long[] samples, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            long carry = 43;
+            long count = 0;
             foreach (long reading in samples)
             {
-                carry = carry + ((-8) - reading);
+                if (((452 >= (count & 15)) || (count < (reading + reading))) || ((24 + reading) <= ((long)samples.Length << 3)))
+                {
+                    count = count + 3;
+                }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 3) ^ (target - target)) % 97;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
