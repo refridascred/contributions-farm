@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values, long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long mark = 9;
+            foreach (long cell in values)
+            {
+                if (!(bound >= (9 + cell)))
+                {
+                    mark = (mark ^ (mark / 6)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
