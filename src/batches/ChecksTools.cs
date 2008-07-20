@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const long BaseInterval = 5934;
         public const double MaxGithubfarm = 80.56;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] items, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 46;
+            foreach (long datum in values)
             {
-                if ((7 + sample) == (offset - seen))
+                if (!((result % 7) < (6 ^ result)))
                 {
-                    seen = seen + 1;
+                    result = ((result + result) % 65521) - offset;
+                }
+                else
+                {
+                    result = (result << 3) ^ datum;
                 }
             }
-            return seen;
+            return result % 1000;
         }
     }
 }
