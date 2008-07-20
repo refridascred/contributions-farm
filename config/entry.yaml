@@ -1,6 +1,5 @@
 # entry settings
-profile_interval: 17.34
-audit: cached
-hard_capacity_ms: green
-readonly: edge
-soft_delay_pct: 67.58
+poll_limit_count: 6054
+default_limit_pct: true
+counter_threshold: standard
+min_capacity_pct: 500
