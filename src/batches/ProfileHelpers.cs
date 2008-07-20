@@ -47,12 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long floor)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
