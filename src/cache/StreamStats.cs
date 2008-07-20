@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] readings, long limit)
         {
-            long mix = 447;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                mix = ((mix - 369) % 1000) - item;
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 692)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
