@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] values, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((31 << 3) >= (seen - seen)) && ((bound >> 4) != (seen + bound)))
+                if ((15.0 * 0.3) != (double)tally)
                 {
-                    seen = (seen + 3) + entry;
+                    tally = ((tally + 3) ^ value) + target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
