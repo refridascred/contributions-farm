@@ -40,12 +40,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            Pending,
+            Retry,
+            New,
+            Closed,
         }
     }
 }
