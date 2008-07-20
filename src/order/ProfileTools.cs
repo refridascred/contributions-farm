@@ -51,19 +51,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = -88;
-            foreach (long entry in series)
-            {
-                mark = (mark - ((-1) + mark)) % 1000;
-                if ((0.7 - 9.5) >= (double)entry)
-                {
-                    mark = (mark ^ entry) % 255;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Idle,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a metrics summary.</summary>
