@@ -1,6 +1,8 @@
-id,active,ratio,label
-1,28.85,791,standard
-2,756,277,405
-3,527,448,31.71
-4,3.85,288,35.19
-5,13.39,535,94
+id,level,rank,weight
+1,689,603,strict
+2,green,60.67,eu-west
+3,local,398,395
+4,staging,eu-west,open
+5,fallback,609,64
+6,52.92,28.27,6.73
+7,fallback,eu-west,139
