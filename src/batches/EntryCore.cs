@@ -49,18 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format buffer entries that pass the check.</summary>
-        public static long CountFormatBufferMatches(long[] data, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double ratio = (double)(80 * 4);
+            for (int i = 0; i < 6; i++)
             {
-                if ((17.0 / 7.0) > (double)hits)
-                {
-                    hits = ((hits + 2) ^ cell) - offset;
-                }
+                ratio = (ratio + floor) + (double)(long)i;
             }
-            return hits;
+            return ratio + scale;
         }
 
         /// <summary>Hold a window options.</summary>
