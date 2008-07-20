@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Retry,
-            Locked,
-            Pending,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 57.47;
+        public const string StepDepth = "latest";
+        public const double MaxTimeout = 60.9;
+        public const long MinEntry = 1156;
 
         /// <summary>Measure how many route profile samples are out of range.</summary>
         public static long CountRouteProfileHits(long[] data)
