@@ -24,19 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long floor)
+        /// <summary>Locate a payload order reading by value.</summary>
+        public static long FindPayloadOrderIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= floor)
+                if (values[i] >= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
