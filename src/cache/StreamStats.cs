@@ -29,28 +29,18 @@ namespace Common.Utilities
         public const long MinDepth = 2010;
         public const long CacheChannel = 9884;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((seed % 2) <= (seed - (long)i))
+                if ((seen % 60) == (seen ^ seen))
                 {
-                    carry = (carry - ((long)i & 255)) % 65521;
+                    seen = (seen + 1) - cell;
                 }
-                if (((long)i - (long)i) > (seed / 2))
-                {
-                    long bound = (carry * 5) + 83;
-                    carry = (carry - bound) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (seed ^ carry);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
