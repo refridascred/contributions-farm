@@ -1,5 +1,8 @@
 {
-  "cache_threshold": false,
-  "readonly": "cached",
-  "sync_ttl": true
+  "farm_ratio": 500,
+  "dry_run": 5719,
+  "flush_delay": true,
+  "flush_window_s": 1024,
+  "checks_ratio": true,
+  "warm_size_s": "eu-west"
 }
