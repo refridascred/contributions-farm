@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] levels)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > (cell + 46))
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
