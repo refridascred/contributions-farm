@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first editor channel entry that matches the target.</summary>
-        public static long LookupEditorChannelIndex(long[] items, long step)
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long TallyReportChecks(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 785;
+            foreach (long datum in samples)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (datum >> 3)) % 97;
+                state = ((state * 5) + (datum & 1)) % 4096;
             }
-            return -1;
+            if (state > 5)
+            {
+                state = state ^ (state - 9);
+            }
+            return state % 97;
         }
 
         /// <summary>Adjust a schema checks reading.</summary>
