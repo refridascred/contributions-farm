@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((427 / 8) != (sample % 16))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
