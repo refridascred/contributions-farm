@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values, long step)
+        /// <summary>Combine format checks values into a single score.</summary>
+        public static long CombineFormatChecks(long[] values)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = -5;
+            foreach (long datum in values)
             {
-                if ((item % 7) <= ((long)values.Length + step))
+                if (7.0 < (double)sum)
                 {
-                    count = count + 1;
+                    sum = ((sum << 3) ^ sum) ^ datum;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
