@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const long SoftSpan = 2136;
         public const long LimitGraph = 2009;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound3 = bound + bound2;
+            if (((-170) + 82) < (bound3 & 63))
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound3) >= (bound3 * 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 31) <= (bound2 >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((20.0 / 3.0) > (double)bound) && ((bound2 + bound) == (bound - 665)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
