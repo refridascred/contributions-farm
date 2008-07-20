@@ -43,14 +43,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Active,
-            Dropped,
-            Stale,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 9775;
+        public const long LimitChannel = 1715;
+        public const long BatchLevel = 4193;
     }
 }
