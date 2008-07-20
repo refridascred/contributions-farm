@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already layout entry stays within the limit.</summary>
-        public static bool CheckAlreadyLayoutRange(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long result = 9;
+            foreach (long reading in samples)
             {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (((result << 2) ^ limit) % 255) + reading;
             }
-            return valid;
+            return result % 1000;
         }
 
         /// <summary>Describe the notes status values.</summary>
