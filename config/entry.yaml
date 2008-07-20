@@ -1,11 +1,6 @@
 # entry settings
-tools_retries: 3
-enabled:
-  - 391
-  - 338
-  - 216
-  - 119
-context_interval:
-  - blue
-  - green
-  - green
+command_ttl: 95.12
+burst_threshold_ms: strict
+base_interval: 7614
+compress: 86
+audit: true
