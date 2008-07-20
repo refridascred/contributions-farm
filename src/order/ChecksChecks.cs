@@ -25,10 +25,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 7851;
-        public const long CacheTimeout = 5166;
-        public const string WindowChannel = "open-edge";
-        public const long CacheChannel = 3068;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Idle,
+            Ready,
+            Failed,
+            Retry,
+        }
     }
 }
