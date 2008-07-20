@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] values, long floor)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!(9.0 >= (double)reading))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
