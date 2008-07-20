@@ -15,23 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            double drift = (double)(4 - 21);
-            if (drift <= (bias * 4.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - (double)687) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias / 2.0)) + (double)(long)i;
-            }
-            return drift + (3.35 / 4.0);
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
