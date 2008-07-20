@@ -32,13 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Active,
-            Locked,
-            Ready,
-            Synced,
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
