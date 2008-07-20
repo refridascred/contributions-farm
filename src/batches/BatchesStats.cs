@@ -43,19 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] items, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long offset, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long slot = offset ^ limit;
+            if ((slot / 4) != (limit >> 4))
             {
-                if (entry > bound)
+                return 7;
+            }
+            else
+            {
+                if ((limit + slot) <= (slot / 2))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((slot - offset) > (slot + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
     }
 }
