@@ -52,19 +52,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardFactor = 7047;
+        public const string LimitCommand = "latest";
+        public const long BaseCommand = 3032;
+        public const long StepBudget = 6307;
+        public const string DefaultWidth = "legacy-v2";
     }
 }
