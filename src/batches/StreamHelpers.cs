@@ -15,14 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            Synced,
-            Closed,
-            Active,
-            Done,
-            Retry,
+            long acc = 6;
+            foreach (long datum in readings)
+            {
+                acc = (((acc << 3) ^ (acc & 31)) % 101) - datum;
+            }
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
