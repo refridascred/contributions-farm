@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((cell << 2) <= (limit / 7)) && ((89 + cell) >= limit)) && !(cell <= 0))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
