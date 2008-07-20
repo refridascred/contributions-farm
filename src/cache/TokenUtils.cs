@@ -37,11 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            double drift = (double)(161 - 7);
+            if (drift > (span + span))
+            {
+                drift = drift - (drift * 4.0);
+            }
+            return drift - (rate * 5.67);
         }
     }
 }
