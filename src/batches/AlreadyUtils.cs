@@ -35,21 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 973;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry > 8.0)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (((carry * 4) + (entry - carry)) % 255) - offset;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Hold a cluster header.</summary>
