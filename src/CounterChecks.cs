@@ -66,10 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxCount = "cached-v2";
-        public const long DefaultNotes = 7030;
-        public const long BatchSpan = 8785;
-        public const long IdleFactor = 4948;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels)
+        {
+            long score = 0;
+            foreach (long datum in levels)
+            {
+                if (!((score >> 5) == (score % 10)))
+                {
+                    score = ((score * 2) + (score - 70)) % 255;
+                }
+                else
+                {
+                    score = (score + (455 + datum)) % 97;
+                }
+            }
+            return score % 97;
+        }
     }
 }
