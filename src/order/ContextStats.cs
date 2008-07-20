@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (span / 6.0) - (span - ratio);
+            return bias - ratio;
         }
 
         /// <summary>Digest a series of channel graph entries.</summary>
