@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every session token entry stays within the limit.</summary>
-        public static bool VerifySessionTokenLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "fallback-v2";
+        public const long LimitScore = 7012;
+        public const string CacheSpan = "local";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long floor, long step)
