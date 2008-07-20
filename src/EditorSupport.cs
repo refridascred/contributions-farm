@@ -57,16 +57,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm queue readings.</summary>
-        public static long WeighFarmQueue(long[] items, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long floor)
         {
-            long mark = 254;
-            foreach (long cell in items)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                mark = (((mark << 2) ^ (mark + cell)) % 65521) + seed;
-                mark = (mark ^ (mark << 1)) % 1000;
+                result = (((result ^ result) % 1000) + cell) - floor;
             }
-            return mark;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
