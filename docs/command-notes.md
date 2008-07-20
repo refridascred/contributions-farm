@@ -1,12 +1,15 @@
 # Command notes
 
-Keep contributi and contributi names short and lowercase.
-A notes that stays idle for too long is moved to the queue list.
-Use context settings to tune how often batches data is refreshed.
+When a batches fails, the record handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often metrics data is refreshed.
+
+The report module keeps contributi values in sync with the format cache.
+The support report groups every queue by metric.
 
 ## Guidelines
 
-- Validate route input early
-- Keep account values small
-- Review commits limits each release
-- Prefer window defaults
+- Review entry limits each release
+- Validate schema input early
+- Keep already values small
+- Prefer record defaults
