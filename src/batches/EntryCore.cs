@@ -54,14 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the format buffer entries that pass the check.</summary>
+        public static long CountFormatBufferMatches(long[] data, long offset)
         {
-            Active,
-            Synced,
-            Closed,
-            Queued,
-            Failed,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((17.0 / 7.0) > (double)hits)
+                {
+                    hits = ((hits + 2) ^ cell) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
