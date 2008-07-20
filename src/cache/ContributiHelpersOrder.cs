@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxSpan = 92.07;
-        public const string IdleGithubfarm = "stable";
-        public const long BurstGithubfarm = 5758;
-        public const string DefaultRatio = "legacy-1";
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double weight, double offset)
