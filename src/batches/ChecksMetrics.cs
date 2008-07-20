@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score - ((long)i - 121)) % 97;
-                if ((double)5 < (double)score)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score + (score + (-36));
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = score + (59 * 4);
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the context kind values.</summary>
