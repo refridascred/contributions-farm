@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Draft,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 5442;
+        public const long BatchCommand = 1696;
+        public const long MinCount = 7124;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
