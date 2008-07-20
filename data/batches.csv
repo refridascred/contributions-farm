@@ -1,6 +1,7 @@
-id,weight,token,ratio,state
-1,16.6,fallback,52.85,latest
-2,23.29,legacy,257,19.78
-3,staging,878,local,green
-4,625,stable,legacy,645
-5,blue,940,292,587
+id,label,count,ratio
+1,green,latest,942
+2,primary,939,216
+3,stable,52.2,local
+4,797,641,71.13
+5,staging,primary,572
+6,standard,104,93.79
