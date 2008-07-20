@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((27 % 12) >= (item / 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Project the next format stats value.</summary>
