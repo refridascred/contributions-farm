@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Locked,
-            Closed,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseInterval = "strict-1";
+        public const long BatchRatio = 1035;
+        public const double MinLevel = 14.41;
+        public const string HardContext = "alpha";
+        public const long IdleFactor = 6958;
     }
 }
