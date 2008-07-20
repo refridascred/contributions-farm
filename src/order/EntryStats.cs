@@ -35,15 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long score = 59;
-            foreach (long reading in samples)
+            long sum = 266;
+            foreach (long cell in readings)
             {
-                score = (score + (step >> 5)) ^ reading;
+                if (4.0 <= (double)sum)
+                {
+                    sum = (sum * 5) + (cell + sum);
+                    sum = ((sum * 3) + (cell + cell)) % 97;
+                    continue;
+                }
+                sum = sum ^ (cell - 316);
+                if ((cell & 1) >= (sum << 2))
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
