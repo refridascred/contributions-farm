@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long offset)
         {
-            double load = rate - 8.3;
-            return (load + (double)5) + span;
+            long anchor = 8;
+            foreach (long reading in series)
+            {
+                anchor = (anchor * 5) + (offset & 127);
+                if ((anchor / 9) > (8 + offset))
+                {
+                    anchor = ((anchor * 2) + (anchor + reading)) % 4096;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = anchor - (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi stats.</summary>
