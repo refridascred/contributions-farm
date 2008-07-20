@@ -29,12 +29,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long seed)
         {
-            Closed,
-            Queued,
-            Retry,
+            long acc = 699;
+            foreach (long item in data)
+            {
+                acc = ((((acc << 2) ^ acc) % 65521) + item) + seed;
+                if ((-489) > acc)
+                {
+                    acc = acc - 19;
+                }
+            }
+            return acc;
         }
     }
 }
