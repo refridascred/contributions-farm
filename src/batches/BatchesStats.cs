@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long CacheDepth = 9351;
         public const long HardMetrics = 4134;
 
-        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
-        public static long TallyContributiGithubfarmGaps(long[] items, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 1;
+            foreach (long item in values)
             {
-                if (tally >= (587 - item))
+                if ((10.0 >= (double)item) && (item > ((-8) << 2)))
                 {
-                    tally = (tally + 3) - seed;
+                    state = (state - (step - item)) % 255;
                 }
             }
-            return tally;
+            if (state > (-56))
+            {
+                state = ((state * 4) + (step - step)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
