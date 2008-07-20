@@ -41,18 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks tools entries that pass the check.</summary>
-        public static long CountChecksToolsGaps(long[] items)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double scale = (double)(56 * 5);
+            if (scale >= gain)
             {
-                if ((double)seen > (1.8 - 6.5))
-                {
-                    seen = (seen + 3) - sample;
-                }
+                scale = scale - (double)6;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale + (gain - bias);
         }
     }
 }
