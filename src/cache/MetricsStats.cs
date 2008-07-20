@@ -50,24 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long limit, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] items, long target)
         {
-            if ((6.0 + 3.14) < (double)limit)
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (origin ^ 8))
+                if (item <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
