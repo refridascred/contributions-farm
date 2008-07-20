@@ -38,18 +38,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] samples, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (17.0 / 3.0))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
