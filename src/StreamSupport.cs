@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] levels, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
