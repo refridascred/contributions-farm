@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            double load = (floor - floor) * 15.0;
-            for (int i = 0; i < 7; i++)
+            long total = 8;
+            foreach (long datum in values)
             {
-                load = ((load - 4.0) + (double)(long)i) - weight;
+                if ((9.0 * 8.3) > (double)total)
+                {
+                    total = total - (datum * 3);
+                }
             }
-            return load + floor;
+            if (total > 81)
+            {
+                total = (total - (total - 16)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a payload summary.</summary>
