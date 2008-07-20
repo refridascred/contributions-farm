@@ -28,22 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long TallyCommandCounterGaps(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + matches) == (cell * 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate format samples.</summary>
