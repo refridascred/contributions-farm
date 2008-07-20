@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
-        public static bool CheckRecordGithubfarmBounds(long[] data, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value < target)
+                if (entry >= 9)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
