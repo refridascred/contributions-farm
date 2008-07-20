@@ -50,14 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Draft,
-            Idle,
             Failed,
-            Pending,
-            Locked,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
