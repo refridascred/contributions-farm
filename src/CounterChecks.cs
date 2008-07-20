@@ -61,15 +61,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long state = 148;
-            foreach (long item in series)
+            long score = 8;
+            foreach (long cell in series)
             {
-                state = ((state - (item + state)) % 255) + bound;
+                score = ((score * 4) + ((-3) % 97)) + cell;
             }
-            return state;
+            return score % 65521;
         }
     }
 }
