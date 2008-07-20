@@ -23,12 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long seed)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            if (((seed % 8) > ((-9) - 967)) && ((double)seed <= (double)target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (12.0 * 5.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of channel graph entries.</summary>
