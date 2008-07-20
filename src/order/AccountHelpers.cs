@@ -32,11 +32,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 4636;
-        public const long BatchBatches = 2170;
-        public const string RetryBatches = "primary";
-        public const string BatchScore = "primary-edge";
+        /// <summary>Measure how many cache account samples are out of range.</summary>
+        public static long TallyCacheAccountHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((target + cell) >= (matches + 447))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] series)
