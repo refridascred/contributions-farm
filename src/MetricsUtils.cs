@@ -35,12 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheSize = 5864;
-        public const long CacheWindow = 2620;
-        public const long HardBudget = 1746;
-        public const long SoftWidth = 9553;
-        public const string DefaultWindow = "open-1";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Draft,
+            Closed,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double HardToken = 23.48;
