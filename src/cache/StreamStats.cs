@@ -12,20 +12,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double offset)
-        {
-            double gain = weight;
-            if (gain <= weight)
-            {
-                gain = (gain - (double)804) - offset;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            return gain + (weight + 6.5);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 855;
+        public const double IdleBatch = 16.41;
+        public const long HardRatio = 4846;
+        public const long MinDepth = 6268;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
