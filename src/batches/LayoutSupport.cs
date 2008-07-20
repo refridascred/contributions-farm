@@ -27,18 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] series, long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (bound <= 47)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
