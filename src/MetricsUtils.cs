@@ -40,12 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples, long limit)
         {
-            Failed,
-            Idle,
-            New,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((49 >> 4) >= matches)
+                {
+                    matches = ((matches + 3) - cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
