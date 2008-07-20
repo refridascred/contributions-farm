@@ -70,12 +70,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstInterval = 6966;
-        public const long BatchRatio = 396;
-        public const string StepEntry = "open-v2";
-        public const double MaxEntry = 87.43;
-        public const long BaseEntry = 2232;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long offset2)
+        {
+            if ((((-5) % 12) == (offset ^ offset2)) || ((5.93 / 8.0) > (double)offset2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((14.0 / 9.0) < (double)offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 - 2) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
