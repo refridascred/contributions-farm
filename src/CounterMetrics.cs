@@ -51,38 +51,13 @@ namespace Common.Utilities
         public const long BurstPayload = 9418;
         public const double BasePayload = 55.64;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long target2)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if (!((target - target2) < (target << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (double)target2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= 1)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target * 4) != (target2 ^ target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
