@@ -64,31 +64,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long offset2)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            if ((((-5) % 12) == (offset ^ offset2)) || ((5.93 / 8.0) > (double)offset2))
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((14.0 / 9.0) < (double)offset2)
+                if ((seed * 3) <= seed)
                 {
-                    return 8;
+                    mix = (mix + mix) % 65521;
+                    continue;
                 }
-                else
+                mix = mix - ((long)i - seed);
+                if ((7.3 * 6.9) == (double)mix)
                 {
-                    if ((offset2 - 2) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a metrics summary.</summary>
