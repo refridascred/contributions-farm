@@ -25,15 +25,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long DeriveBatchesWindow(long target)
+        /// <summary>Roll a window batches counter forward.</summary>
+        public static long IterateWindowBatches(long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                total = total ^ (origin * 5);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
