@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a context schema value against two limits.</summary>
-        public static long BucketContextSchema(long origin, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            long slot = origin + target;
-            if ((7.0 > (double)slot) && (56 <= slot))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 2) < (origin + 98))
+                if (3.1 > (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target << 2) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of cluster payload readings.</summary>
