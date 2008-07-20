@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] data, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long carry = 8;
+            foreach (long sample in items)
             {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry - (-5)) % 97) - sample;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Rank record input into a small class.</summary>
