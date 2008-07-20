@@ -1,8 +1,8 @@
-id,owner,region,level,label
-1,legacy,281,575,38
-2,local,787,eu-west,edge
-3,785,legacy,27.55,640
-4,124,841,264,32
-5,800,stable,eu-west,55.54
-6,51.87,154,217,staging
-7,74.67,latest,green,green
+id,rank,label,level,active
+1,121,77.54,366,56.62
+2,70.13,133,133,latest
+3,14.42,791,eu-west,743
+4,open,69.12,local,491
+5,cached,888,legacy,71.54
+6,cached,78,299,14.9
+7,17.0,944,959,blue
