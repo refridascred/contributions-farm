@@ -61,20 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((acc & 7) < (target ^ (-83))) || (((long)i * 4) >= (target + (-82))))
-                {
-                    acc = (acc * 3) + (target - acc);
-                    acc = (acc - acc) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 9373;
+        public const double RetryWindow = 98.09;
+        public const long WindowDepth = 9358;
+        public const long BaseWindow = 3341;
+        public const string LimitWindow = "strict-1";
     }
 }
