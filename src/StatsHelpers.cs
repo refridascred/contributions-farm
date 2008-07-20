@@ -54,26 +54,17 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Locate a schema githubfarm reading by value.</summary>
+        public static long LookupSchemaGithubfarmIndex(long[] series, long step)
         {
-            long carry = 674;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell + carry) == (cell - 137))
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
                 {
-                    carry = carry + (cell + cell);
-                }
-                else
-                {
-                    carry = (carry + (carry * 4)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > (-8))
-            {
-                carry = (carry - (carry + carry)) % 65521;
-            }
-            return carry;
+            return -1;
         }
     }
 }
