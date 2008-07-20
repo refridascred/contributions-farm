@@ -13,16 +13,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Rank already entry input into a small class.</summary>
+        public static long SortAlreadyEntry(long step, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long edge = step + floor;
+            if ((floor >> 5) > edge)
             {
-                carry = carry - (limit / 4);
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((step < edge) || (floor > (floor + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a account counter sample.</summary>
