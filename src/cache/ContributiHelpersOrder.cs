@@ -31,18 +31,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count + entry) > (entry / 6))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 1277;
+        public const long BurstCount = 7473;
+        public const double IdleFactor = 55.42;
     }
 }
