@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Match up command route samples.</summary>
+        public static long PairCommandRouteCount(long[] data)
         {
-            Closed,
-            Retry,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
