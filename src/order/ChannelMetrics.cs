@@ -22,22 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 3;
+            foreach (long entry in samples)
             {
-                if (((double)reading != (7.2 * 4.1)) && ((reading ^ bound) != (matches + bound)))
+                if ((double)state <= (double)origin)
                 {
-                    matches = matches + 2;
+                    state = state + (entry + entry);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = (state - (state % 2)) % 97;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
