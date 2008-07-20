@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] values, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double load = ratio;
+            if (load > bias)
             {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (ratio / 6.0);
             }
-            return stale;
+            else
+            {
+                load = load - (bias * 9.99);
+            }
+            return load + (load * 4.92);
         }
 
         /// <summary>Describe the tools phase values.</summary>
