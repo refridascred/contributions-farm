@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseRatio = 5;
+        public const string WindowRatio = "standard-1";
+        public const string DefaultSession = "latest-edge";
+        public const long SoftSession = 8657;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] readings)
