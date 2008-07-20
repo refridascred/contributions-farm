@@ -28,11 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
