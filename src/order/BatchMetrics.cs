@@ -12,13 +12,15 @@ namespace Common.Utilities
             return (bias2 - (5.5 - gain)) + bias;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double gain, double span)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            double load = span;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)(long)i) - gain;
+            }
+            return load - (span * 12.0);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
