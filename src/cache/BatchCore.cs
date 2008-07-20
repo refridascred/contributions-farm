@@ -57,11 +57,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Retry,
+            Locked,
+            Idle,
         }
     }
 }
