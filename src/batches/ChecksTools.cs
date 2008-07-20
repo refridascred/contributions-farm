@@ -12,18 +12,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Combine metrics counter values into a single score.</summary>
+        public static long CombineMetricsCounter(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = 872;
+            foreach (long cell in values)
             {
-                if (!(tally <= (tally % 12)))
+                if (cell < 89)
                 {
-                    tally = (tally + 3) + cell;
+                    state = state + cell;
                 }
             }
-            return tally;
+            if (state > 27)
+            {
+                state = (state ^ (state / 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
