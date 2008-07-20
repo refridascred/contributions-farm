@@ -41,24 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)mark < (5.0 * 2.29))
+                if (series[i] > floor)
                 {
-                    mark = (mark * 3) + (1 ^ (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                    mark = ((mark << 2) ^ (target ^ target)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
