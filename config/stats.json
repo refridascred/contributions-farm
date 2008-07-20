@@ -1,8 +1,15 @@
 {
-  "max_interval_s": false,
-  "batch_timeout_s": "standard",
-  "base_delay": false,
-  "warm_retries_count": "open",
-  "max_retries_ms": 100,
-  "cache_timeout_pct": 7355
+  "max_delay": {
+    "idle_capacity": 3,
+    "base_size": false,
+    "poll_delay_ms": "local",
+    "entry_delay": "strict",
+    "base_interval_pct": true,
+    "sync_timeout": [408, 323, 467]
+  },
+  "base_size_s": "eu-west",
+  "default_timeout_s": "standard",
+  "account_threshold": 82.94,
+  "flush_limit": 70.6,
+  "profile_retries": true
 }
