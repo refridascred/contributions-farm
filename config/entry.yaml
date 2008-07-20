@@ -1,5 +1,39 @@
 # entry settings
-dry_run: 61.61
-flush_depth: true
-compress: true
-idle_size_pct: local
+readonly: 90.43
+burst_retries_s: eu-west
+verbose:
+  soft_ttl: false
+  burst_ratio_count:
+    - latest
+    - strict
+    - staging
+    - stable
+  burst_window_pct:
+    flush_timeout: staging
+    cache_depth_count: 57.35
+    command_depth: true
+    flush_size_pct:
+      - open
+      - primary
+      - local
+    min_ratio_count: false
+    entry_limit: true
+  verbose: true
+warm_threshold: eu-west
+max_capacity_ms:
+  cache_interval_ms: open
+  account_size:
+    - strict
+    - legacy
+    - standard
+    - standard
+  poll_delay_pct:
+    - 271
+    - 27
+    - 263
+  soft_ratio:
+    - local
+    - stable
+    - primary
+  warm_interval: 36
+enabled: strict
