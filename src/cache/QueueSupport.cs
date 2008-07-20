@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            long score = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)bound > (double)score) || (score >= (score % 97)))
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
                 {
-                    score = ((score ^ ((-674) + score)) % 65521) - datum;
-                }
-                if (((bound * 3) > bound) && (5.49 >= (double)bound))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a report payload value against two limits.</summary>
