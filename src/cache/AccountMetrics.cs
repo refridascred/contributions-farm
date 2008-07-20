@@ -32,19 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 2) ^ (-5)) % 255) ^ reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 2)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
