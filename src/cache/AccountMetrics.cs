@@ -47,22 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = -491;
-            foreach (long item in levels)
-            {
-                if ((double)40 <= (double)carry)
-                {
-                    carry = ((carry + (43 + item)) % 97) - seed;
-                }
-                if ((double)carry != (19.0 * 15.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
