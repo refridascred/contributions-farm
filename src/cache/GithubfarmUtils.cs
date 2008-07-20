@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const long MaxPayload = 801;
         public const long LimitTimeout = 6332;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] series, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Pending,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of order readings.</summary>
