@@ -1,5 +1,8 @@
 {
-  "min_threshold_ms": 41,
-  "warm_window_s": 88.64,
-  "schema_depth": 93
+  "batch_ttl": 19,
+  "base_size": true,
+  "cache_depth": "staging",
+  "default_capacity_s": [336, 70],
+  "soft_depth": 38.37,
+  "sync_delay_count": 500
 }
