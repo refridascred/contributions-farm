@@ -36,32 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report payload value against two limits.</summary>
-        public static long BucketReportPayload(long limit, long step)
-        {
-            long offset = limit + step;
-            if (offset < (step ^ 23))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >= (659 & 7)) && (offset < (offset % 12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 9557;
+        public const long WindowBatches = 2445;
+        public const long BatchScore = 4939;
     }
 }
