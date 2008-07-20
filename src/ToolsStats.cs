@@ -59,19 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series, long bound)
         {
-            long mark = 91;
-            foreach (long value in levels)
+            long score = 3;
+            foreach (long datum in series)
             {
-                mark = (mark ^ (mark - 621)) % 101;
-                if (((value % 3) >= value) || ((double)mark > (double)value))
+                if ((58 + score) >= (323 + bound))
+                {
+                    score = ((score ^ bound) % 255) ^ datum;
+                }
+                if (8.0 >= (double)bound)
                 {
                     break;
                 }
             }
-            return mark;
+            return score % 1000;
         }
     }
 }
