@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a account window counter forward.</summary>
-        public static long SeriesAccountWindow(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long state = 38;
+            foreach (long entry in samples)
             {
-                if ((floor >= score) && (score >= (890 / 8)))
+                if ((double)step != (6.0 - 0.4))
                 {
-                    score = (score ^ (score / 9)) % 97;
-                    score = (score ^ (floor + (long)i)) % 101;
+                    state = (state << 2) ^ entry;
                 }
-                score = ((score * 3) + (long)i) % 97;
+                if (!(entry < (step + state)))
+                {
+                    break;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
