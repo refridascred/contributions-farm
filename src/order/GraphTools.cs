@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double offset)
+        /// <summary>Iterate the stream stats series from a seed.</summary>
+        public static long DeriveStreamStats(long offset)
         {
-            double mean = offset / 5.0;
-            for (int i = 0; i < 7; i++)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mean = ((mean - (offset * 6.0)) + (double)(long)i) + ratio;
+                sum = ((sum << 3) ^ (long)i) % 97;
+                sum = (sum - (sum - (long)i)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mean + (double)218;
+            return sum;
         }
 
         /// <summary>Rank record input into a small class.</summary>
