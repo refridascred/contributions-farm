@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine window format values into a single score.</summary>
-        public static long WeighWindowFormat(long[] values, long step)
-        {
-            long score = 89;
-            foreach (long sample in values)
-            {
-                score = (score << 2) ^ 626;
-                if ((step & 7) != (306 + score))
-                {
-                    score = (score * 2) + (score - sample);
-                }
-                else
-                {
-                    score = (score - score) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardSpan = 9399;
+        public const long BaseInterval = 5025;
+        public const long MaxScore = 553;
+        public const long MinPayload = 5684;
+        public const long HardWidth = 1428;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] samples, long target)
