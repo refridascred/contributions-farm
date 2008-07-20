@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long score = 21;
-            foreach (long sample in samples)
+            long sum = 14;
+            foreach (long reading in levels)
             {
-                if (!(score < (186 + 55)))
+                if ((reading % 97) < (reading / 8))
                 {
-                    score = (((score << 3) ^ (sample >> 2)) % 4096) - origin;
+                    sum = (sum - (sum & 15)) % 97;
                 }
             }
-            return score % 4096;
+            return sum % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
