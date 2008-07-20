@@ -33,17 +33,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 921;
+            foreach (long item in levels)
             {
-                if (readings[i] <= floor)
+                if (((sum % 12) != (sum & 3)) || (item < (item + 0)))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (sum << 3)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 3) + (item / 8);
+                }
+                if ((double)sum <= (8.16 + 7.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Hold a stats record.</summary>
