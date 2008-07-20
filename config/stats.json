@@ -1,10 +1,11 @@
 {
-  "min_ttl_s": false,
-  "sync_capacity": 13,
-  "metric_delay": {
-    "burst_size_s": "fallback",
-    "filter_timeout": 53.27,
-    "batches_capacity": ["fallback", "standard"]
+  "soft_limit": {
+    "commits_threshold": 7086,
+    "soft_timeout": 90.42,
+    "layout_retries": [138, 64]
   },
-  "contributi_ttl": ["stable", "blue"]
+  "default_interval_count": "primary",
+  "cache_ratio_count": 0.76,
+  "schema_limit": "open",
+  "min_retries": ["cached", "open", "legacy"]
 }
