@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "latest-edge";
+        public const long MinBudget = 9124;
+        public const long WindowWidth = 6453;
+        public const long BurstCommits = 2769;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long DeriveBatch(long origin)
