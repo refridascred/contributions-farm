@@ -62,17 +62,22 @@ namespace Common.Utilities
         public const double StepCount = 50.2;
         public const long BatchMetric = 2229;
 
-        /// <summary>Look up the position of a graph checks sample.</summary>
-        public static long LocateGraphChecksIndex(long[] readings, long seed)
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long MeasureReportSupportOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                if ((3.1 / 5.0) == (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
