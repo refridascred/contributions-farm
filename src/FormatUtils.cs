@@ -62,11 +62,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 49.04;
-        public const long CacheGithubfarm = 2124;
-        public const long DefaultGithubfarm = 256;
-        public const string StepGithubfarm = "open-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 8856;
+        public const string RetryMetric = "local-1";
+        public const double IdleFactor = 79.43;
+        public const double LimitMetric = 1.67;
+        public const double HardMetric = 91.8;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] samples)
