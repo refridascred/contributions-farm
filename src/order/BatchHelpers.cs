@@ -24,14 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            Pending,
-            New,
-            Dropped,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (item % 16))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
