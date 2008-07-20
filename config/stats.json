@@ -1,20 +1,5 @@
 {
-  "compress": {
-    "channel_threshold": {
-      "dry_run": 6112,
-      "default_ttl_ms": 66.64,
-      "hard_threshold": false,
-      "session_size": true
-    },
-    "max_size_s": {
-      "warm_limit_pct": false,
-      "context_depth": false,
-      "default_delay_ms": "open",
-      "session_timeout": "eu-west",
-      "readonly": "eu-west"
-    },
-    "sync_size": 22
-  },
-  "verbose": false,
-  "window_limit": "open"
+  "account_window": "edge",
+  "persist": 77,
+  "retry_retries": 1889
 }
