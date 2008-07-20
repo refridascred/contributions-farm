@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen <= 0.22)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultSpan = "open-1";
+        public const long WindowGithubfarm = 4593;
+        public const long RetryTimeout = 647;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmGaps(long[] readings)
