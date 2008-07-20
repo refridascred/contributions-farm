@@ -31,14 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data, long target)
         {
-            Draft,
-            Idle,
-            New,
-            Synced,
-            Pending,
+            long acc = 287;
+            foreach (long entry in data)
+            {
+                double bias = (1.0 * 16.0) * 17.0;
+                if ((bias <= (bias / 4.0)) || ((acc - target) != (acc & 3)))
+                {
+                    acc = (acc + (acc / 4)) % 65521;
+                }
+                if ((target > (target + acc)) || ((entry - target) <= (acc + (-60))))
+                {
+                    acc = acc + (target - 290);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools status values.</summary>
