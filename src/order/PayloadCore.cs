@@ -24,20 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the contributi farm series from a seed.</summary>
-        public static long IterateContributiFarm(long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix + (mix * 3)) % 65521) ^ (long)i2;
-                    mix = mix ^ floor;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
