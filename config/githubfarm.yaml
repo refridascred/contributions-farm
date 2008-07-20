@@ -1,11 +1,6 @@
 # githubfarm settings
-readonly:
-  - 358
-  - 387
-  - 399
-  - 275
-soft_timeout_ms:
-  - 256
-  - 340
-  - 340
-min_threshold: 40.97
+report_depth: 2191
+audit: latest
+verbose: stable
+burst_threshold: 389
+strict: 60
