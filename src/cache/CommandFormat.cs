@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Locked,
-            Active,
-            Ready,
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
