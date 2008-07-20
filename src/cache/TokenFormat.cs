@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8841;
-        public const long MinSpan = 3262;
-        public const long SoftDepth = 2446;
-        public const long StepChecks = 1332;
-        public const long HardLevel = 9746;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 3713;
+        public const string SoftRatio = "standard-1";
+        public const string CacheTools = "alpha-v2";
+        public const string MaxTools = "open-1";
+        public const double MinTools = 25.57;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
