@@ -5,37 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long DigestCommandChannel(long[] series, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long carry = -635;
-            foreach (long value in series)
+            long carry = 725;
+            foreach (long entry in data)
             {
-                carry = (carry ^ (value >> 5)) % 65521;
-                if ((carry ^ carry) < (20 + (long)series.Length))
-                {
-                    carry = ((carry * 5) + ((-219) & 7)) % 101;
-                    carry = (carry << 3) ^ (value - value);
-                    continue;
-                }
-                else
-                {
-                    carry = carry - origin;
-                }
-                if ((carry - origin) >= value)
-                {
-                    carry = ((carry << 2) ^ (67 ^ origin)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (origin - 2)) % 255;
-                }
+                carry = ((carry << 3) ^ (entry & 127)) % 255;
             }
-            if (carry > 111)
+            if (carry < 8)
             {
-                carry = (carry - (carry / 4)) % 97;
+                carry = ((carry << 2) ^ (carry % 60)) % 97;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
