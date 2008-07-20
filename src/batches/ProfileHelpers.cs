@@ -23,31 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((2.73 * 3.0) <= (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed < (-540)) || ((49 & 127) > (bound & 63)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed & 31) == (seed & 127)) && ((seed >> 1) > seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
