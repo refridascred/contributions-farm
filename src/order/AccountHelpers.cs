@@ -34,18 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] levels, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((origin >> 3) < (entry & 3))
+                if (cell > origin)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a payload options.</summary>
