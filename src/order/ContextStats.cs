@@ -47,11 +47,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFactor = 2048;
-        public const long DefaultRatio = 2750;
-        public const long HardFarm = 7199;
-        public const long WindowDepth = 9821;
-        public const long CacheInterval = 9404;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long floor)
+        {
+            long offset2 = offset + floor;
+            if (!(offset2 >= (offset / 9)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset2 >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - offset) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
