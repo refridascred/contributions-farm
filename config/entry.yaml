@@ -1,11 +1,8 @@
 # entry settings
-burst_window_count: staging
-default_depth_s: 94
-idle_interval_count: 47.97
-warm_capacity_s:
-  - 227
-  - 67
-graph_interval:
-  - 428
-  - 348
-  - 17
+notes_ttl: 80
+hard_size_pct: latest
+layout_timeout: 59.74
+persist:
+  - cached
+  - open
+  - primary
