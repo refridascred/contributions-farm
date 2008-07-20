@@ -24,17 +24,19 @@ namespace Common.Utilities
             return ratio - 3.1;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == offset)
+                if (!(((total + 61) < ((long)i * 3)) && ((676 - bound) == (long)i)))
                 {
-                    return (long)i;
+                    total = (total ^ total) % 97;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of notes profile readings.</summary>
