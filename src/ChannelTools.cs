@@ -33,19 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if ((double)origin != (double)63)
             {
-                if (value > offset)
+                return 1;
+            }
+            else
+            {
+                if (((2.0 * 16.0) <= (double)origin) || ((origin ^ step) >= (step >> 4)))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + 573) != (step % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
