@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound - origin) < bound)
             {
-                if (samples[i] <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (double)origin)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (bound > (bound ^ 412))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin > (bound + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
