@@ -23,10 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseScore = "alpha-edge";
-        public const string WindowFactor = "legacy-v2";
-        public const double CacheSchema = 61.61;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBudget = 6586;
+        public const string StepBatches = "fallback";
+        public const string BatchBudget = "stable-1";
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
