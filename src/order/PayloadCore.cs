@@ -43,9 +43,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 9775;
-        public const long LimitChannel = 1715;
-        public const long BatchLevel = 4193;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (bound <= (209 - (-3)))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
