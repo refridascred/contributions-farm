@@ -44,15 +44,18 @@ namespace Common.Utilities
         public const double WindowMetrics = 71.0;
         public const long HardLevel = 6027;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Combine schema filter values into a single score.</summary>
+        public static long CombineSchemaFilter(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long mark = -52;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((double)mark != (4.33 + 4.45))
+                {
+                    mark = ((mark * 2) + (cell ^ mark)) % 101;
+                }
             }
-            return acc;
+            return mark;
         }
     }
 }
