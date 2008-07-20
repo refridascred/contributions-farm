@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values, long limit)
         {
-            long score = -4;
-            foreach (long datum in data)
+            long mark = 84;
+            foreach (long sample in values)
             {
-                score = ((score ^ 895) % 1000) ^ datum;
+                if (mark <= (limit + sample))
+                {
+                    mark = (mark << 2) ^ 6;
+                }
+                else
+                {
+                    mark = mark ^ (1 + mark);
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
