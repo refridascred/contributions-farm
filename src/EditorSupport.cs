@@ -68,22 +68,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series, long seed)
-        {
-            long score = 419;
-            foreach (long reading in series)
-            {
-                if (score < (score / 7))
-                {
-                    score = score - ((long)series.Length * 5);
-                }
-                if (((8 - seed) == (long)series.Length) && (reading > (score * 5)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardTimeout = 8531;
+        public const string RetryBudget = "stable-v2";
+        public const long StepCount = 8262;
+        public const double DefaultFactor = 44.5;
     }
 }
