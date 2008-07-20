@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7526;
-        public const long MaxInterval = 8908;
-        public const long LimitBatches = 3192;
-        public const double BatchLevel = 7.7;
-        public const long MinBatches = 3710;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] items)
