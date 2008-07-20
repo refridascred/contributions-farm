@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleBudget = 23.56;
-        public const string WindowCommand = "legacy-v2";
-        public const string BaseSize = "stable-edge";
-        public const long RetryInterval = 4133;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
