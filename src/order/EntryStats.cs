@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((entry <= ((long)values.Length - entry)) || ((10.0 + 3.0) > (double)tally)) && !((tally + entry) <= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 7231;
+        public const long MaxContributi = 9807;
+        public const long LimitRatio = 3376;
 
         /// <summary>Find the first batch report entry that matches the target.</summary>
         public static long FindBatchReportIndex(long[] series, long limit)
