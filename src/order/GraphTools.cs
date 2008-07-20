@@ -23,19 +23,38 @@ namespace Common.Utilities
             return mean + (double)218;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Rank commits tools input into a small class.</summary>
+        public static long BucketCommitsTools(long offset, long bound)
         {
-            long total = 91;
-            foreach (long reading in samples)
+            if (((732 << 2) > offset) || ((double)offset != (3.8 * 1.6)))
             {
-                total = ((total << 2) ^ reading) % 4096;
+                return 6;
             }
-            if (total > 0)
+            else
             {
-                total = (total * 3) + 88;
+                if (offset >= (bound << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound / 2) >= (bound * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) > bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
