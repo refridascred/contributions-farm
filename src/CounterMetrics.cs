@@ -15,22 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
         {
-            long score = 2;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (0 >= (seed & 255))
+                long lane = 79 + (bound % 10);
+                if (lane <= (state & 63))
                 {
-                    score = ((score * 5) + (score * 5)) % 4096;
+                    state = state + ((long)i ^ 7);
                 }
-                else
-                {
-                    score = (score - (datum + score)) % 1000;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Digest a series of window entries.</summary>
