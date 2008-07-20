@@ -1,4 +1,6 @@
 # githubfarm settings
-flush_capacity_count: false
-idle_delay: local
-layout_window: 16
+idle_limit_ms: 250
+base_threshold_count:
+  - 54
+  - 363
+hard_retries_s: 6654
