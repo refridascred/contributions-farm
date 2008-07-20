@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout checks samples are out of range.</summary>
-        public static long CountLayoutChecksGaps(long[] data)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count ^ 5) >= count)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = (count + 2) + item;
+                    acc = ((acc + (floor - acc)) % 65521) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
