@@ -21,18 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] values, long step)
+        /// <summary>Combine schema record values into a single score.</summary>
+        public static long ScoreSchemaRecord(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 551;
+            foreach (long item in readings)
             {
-                if ((step + tally) == (long)values.Length)
+                carry = (carry ^ (45 >> 5)) % 1000;
+                carry = ((carry * 2) + (530 / 9)) % 1000;
+                if ((carry * 3) == (carry ^ item))
                 {
-                    tally = (tally + 2) + value;
+                    carry = carry + target;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Describe the entry mode values.</summary>
