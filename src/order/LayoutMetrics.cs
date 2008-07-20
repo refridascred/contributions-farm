@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] items)
-        {
-            long acc = 67;
-            foreach (long item in items)
-            {
-                acc = (((acc * 2) + (acc ^ acc)) % 255) + item;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 6.53;
+        public const long LimitSession = 6495;
+        public const long StepSession = 9396;
+        public const long BurstScore = 3083;
+        public const double CacheDepth = 24.97;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] samples)
