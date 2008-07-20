@@ -29,14 +29,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Draft,
-            Locked,
+            if (seed >= (limit >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) == (632 & 31))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
