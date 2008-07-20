@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long state = 3;
-            foreach (long entry in samples)
-            {
-                if ((double)state <= (double)origin)
-                {
-                    state = state + (entry + entry);
-                }
-                else
-                {
-                    state = (state - (state % 2)) % 97;
-                }
-            }
-            return state % 65521;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
