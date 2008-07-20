@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Match up report cluster samples.</summary>
+        public static long PairReportClusterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading << 3) == (reading + 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
