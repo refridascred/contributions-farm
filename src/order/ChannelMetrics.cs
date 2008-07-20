@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] items, long target)
         {
-            long total = -7;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                total = (((total << 3) ^ (value % 3)) % 255) + target;
-                if (!(total > value))
+                if (((double)value < (6.6 / 4.0)) || ((tally + value) < (725 / 8)))
                 {
-                    break;
+                    tally = (tally + 1) + target;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
