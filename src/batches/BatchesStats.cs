@@ -48,12 +48,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "standard-1";
-        public const long SoftDepth = 3095;
-        public const long MinRatio = 2513;
-        public const long HardFactor = 5362;
-        public const long StepStream = 4157;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!!(436 < origin))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a report checks sample.</summary>
         public static long LookupReportChecksIndex(long[] samples, long limit)
