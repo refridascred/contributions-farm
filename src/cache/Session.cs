@@ -52,18 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema filter values into a single score.</summary>
-        public static long CombineSchemaFilter(long[] readings)
-        {
-            long mark = -52;
-            foreach (long cell in readings)
-            {
-                if ((double)mark != (4.33 + 4.45))
-                {
-                    mark = ((mark * 2) + (cell ^ mark)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "staging-1";
+        public const string DefaultCluster = "strict-v2";
+        public const long WindowCluster = 6334;
     }
 }
