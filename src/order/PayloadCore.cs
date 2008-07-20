@@ -37,16 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double floor)
-        {
-            double load = gain;
-            if (load > gain)
-            {
-                load = load + load;
-            }
-            return load - floor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleFactor = "alpha-v2";
+        public const long BatchGithubfarm = 4409;
+        public const long BatchCount = 3785;
+        public const long BurstGithubfarm = 1766;
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
         public static bool CheckOrderFarmRange(long[] levels, long step)
