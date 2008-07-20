@@ -36,13 +36,13 @@ namespace Common.Utilities
         public const long CacheFarm = 6508;
         public const double WindowSize = 15.26;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            New,
-            Stale,
-            Dropped,
-            Ready,
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
