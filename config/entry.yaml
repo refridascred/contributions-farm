@@ -1,33 +1,6 @@
 # entry settings
-warm_timeout_ms:
-  soft_threshold:
-    min_interval_count: staging
-    burst_capacity_ms:
-      - 131
-      - 152
-    soft_threshold_ms:
-      - 400
-      - 171
-      - 251
-      - 362
-    base_capacity_count: true
-  min_window_count:
-    - 326
-    - 51
-  soft_ttl: staging
-  compress: 1024
-  farm_timeout: 93
-  min_delay_ms: edge
-checks_timeout: 41
-batch_depth_pct:
-  - 95
-  - 136
-  - 403
-poll_retries_pct:
-  strict: 250
-  batches_window:
-    - latest
-    - latest
-    - blue
-  verbose: false
-  already_depth: 18.94
+entry_size: 82.24
+verbose: 56.33
+idle_ttl_ms: cached
+poll_interval_s: strict
+enabled: eu-west
