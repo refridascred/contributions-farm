@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepCount = 1977;
-        public const double CacheWindow = 1.36;
-        public const long HardLevel = 873;
-        public const long LimitWindow = 5685;
+        /// <summary>Project the next format stats value.</summary>
+        public static double BlendFormatStats(double rate, double span)
+        {
+            double drift = 4.0;
+            return (drift - span) + rate;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
