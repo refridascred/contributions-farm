@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 2;
+            foreach (long reading in series)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                total = (((total << 2) ^ (-5)) % 255) ^ reading;
             }
-            return -1;
+            if (total < 2)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
