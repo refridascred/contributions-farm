@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double DefaultRecord = 79.48;
         public const long SoftSpan = 2893;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3579;
-        public const long IdleToken = 5474;
-        public const string BaseLevel = "strict-1";
-        public const string DefaultToken = "standard-edge";
-        public const long StepToken = 4426;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4201;
+        public const double WindowCount = 25.29;
+        public const long BaseLevel = 5649;
+        public const double BaseMetric = 57.37;
+        public const string BaseWidth = "staging-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheInterval = "open-edge";
