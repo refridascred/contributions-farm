@@ -1,19 +1,7 @@
 {
-  "hard_threshold": 4.28,
-  "min_capacity_pct": false,
-  "sync_ttl": true,
-  "payload_ttl": {
-    "idle_retries": 16,
-    "hard_retries_count": "green",
-    "githubfarm_retries": ["cached", "strict", "cached", "stable"],
-    "compress": "standard",
-    "stats_depth": {
-      "flush_depth_pct": 30,
-      "graph_interval": "fallback",
-      "strict": "local"
-    },
-    "base_window": ["latest", "eu-west"]
-  },
-  "poll_threshold": 16,
-  "hard_retries": 54.32
+  "sync_ratio_count": "latest",
+  "counter_ttl": 500,
+  "payload_size": true,
+  "verbose": "open",
+  "burst_depth": 9212
 }
