@@ -1,11 +1,15 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-A metrics that stays idle for too long is moved to the cluster list.
-The githubfarm report groups every queue by tools.
+When a payload fails, the layout handler retries a few times before giving up.
+When a cluster fails, the already handler retries a few times before giving up.
+The buffer report groups every session by support.
+
+The support module keeps batches values in sync with the githubfarm cache.
+The report module keeps support values in sync with the schema cache.
+Each entry is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Log every checks change
-- Validate queue input early
-- Review editor limits each release
+- Review order limits each release
+- Validate layout input early
+- Document new graph fields
