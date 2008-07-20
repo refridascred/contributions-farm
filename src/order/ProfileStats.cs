@@ -54,11 +54,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitScore = 6499;
-        public const string BaseCommits = "latest-v2";
-        public const long MaxWidth = 115;
-        public const long WindowCommits = 9892;
-        public const double RetryInterval = 49.53;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long floor)
+        {
+            long span = target ^ floor;
+            if ((floor % 8) < (target << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (span <= (8 - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)span >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
