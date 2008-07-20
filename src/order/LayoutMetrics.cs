@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long BurstScore = 3083;
         public const double CacheDepth = 24.97;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7484;
+        public const long BaseEditor = 9864;
+        public const double SoftTimeout = 10.16;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] values, long step)
