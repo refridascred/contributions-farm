@@ -59,12 +59,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate entry contributi samples.</summary>
+        public static long DigestEntryContributi(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long acc = 2;
+            foreach (long datum in values)
+            {
+                acc = ((acc * 4) + (datum % 8)) % 65521;
+                if ((5.6 - 8.9) > (double)offset)
+                {
+                    acc = (acc ^ (171 * 2)) % 255;
+                }
+            }
+            if (acc > 53)
+            {
+                acc = (acc + (offset << 3)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
