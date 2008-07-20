@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
