@@ -1,19 +1,6 @@
 {
-  "audit": {
-    "max_limit": 60,
-    "min_size_ms": "green",
-    "warm_delay_ms": {
-      "flush_retries_count": true,
-      "batch_delay_ms": "standard",
-      "soft_ttl_pct": ["local", "primary"],
-      "dry_run": 1,
-      "editor_retries": 1963
-    },
-    "enabled": ["standard", "green"],
-    "readonly": ["staging", "legacy", "staging", "standard"]
-  },
-  "soft_window_pct": 58.41,
-  "idle_limit": "strict",
-  "filter_interval": "primary",
-  "dry_run": 500
+  "flush_limit_pct": [350, 174, 21],
+  "min_threshold": 3,
+  "persist": [456, 458],
+  "sync_ttl_s": ["local", "legacy"]
 }
