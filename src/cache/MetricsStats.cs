@@ -39,15 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long entry in values)
             {
-                if (!(((item % 2) == (item + item)) || ((double)item < (9.3 + 3.46))))
+                if (!((entry - seen) > (seen + 6)))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
