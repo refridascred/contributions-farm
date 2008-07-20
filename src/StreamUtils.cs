@@ -54,22 +54,25 @@ namespace Common.Utilities
         public const long DefaultSpan = 6030;
         public const long SoftFormat = 4342;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long bound, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long diff = bound + target;
+            if ((bound >= (diff - diff)) || ((target + bound) < (bound * 2)))
             {
-                if (!!((322 + sample) > tally))
+                return 3;
+            }
+            else
+            {
+                if ((bound >= (bound >> 3)) && ((3.57 / 6.0) < (double)target))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
