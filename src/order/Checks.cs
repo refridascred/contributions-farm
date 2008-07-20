@@ -49,26 +49,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings, long origin)
+        /// <summary>Measure how many batch report samples are out of range.</summary>
+        public static long TallyBatchReportHits(long[] levels)
         {
-            long anchor = -15;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((9.15 + 20.0) == (double)(long)readings.Length)
+                if ((long)levels.Length > ((-90) & 1))
                 {
-                    anchor = (anchor << 2) ^ (item % 10);
+                    seen = (seen + 3) - reading;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (origin / 3)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 994)
-            {
-                anchor = (anchor << 2) ^ origin;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
