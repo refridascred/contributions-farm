@@ -82,38 +82,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch command input into a small class.</summary>
-        public static long ClassifyBatchCommand(long origin, long origin2)
+        /// <summary>Roll a support stats counter forward.</summary>
+        public static long SeriesSupportStats(long offset)
         {
-            if (((origin & 1) == (origin & 63)) && ((origin2 * 5) != (origin2 ^ origin)))
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 * 2) == (origin2 + origin2))
+                long seen = offset * 5;
+                if (!((double)596 != (double)seen))
                 {
-                    return 0;
+                    carry = (carry * 3) + (seen / 3);
                 }
-                else
-                {
-                    if (origin2 < (origin + origin2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin2 ^ (-3)) != (origin << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
     }
 }
