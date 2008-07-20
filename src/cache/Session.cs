@@ -32,19 +32,25 @@ namespace Common.Utilities
         public const string MinInterval = "alpha";
         public const long BatchAlready = 2626;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long step)
         {
-            double gain2 = span * 8.0;
-            if (gain2 < (gain - 2.2))
+            long edge = seed + step;
+            if (!((20.0 / 9.0) > (double)edge))
             {
-                gain2 = gain2 - (7.0 * 9.0);
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain2 = gain2 + (double)(long)i;
+                if ((double)seed < (7.9 * 2.63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return gain2 - gain;
         }
     }
 }
