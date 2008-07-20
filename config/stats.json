@@ -1,14 +1,22 @@
 {
-  "max_size": [219, 258, 216, 171],
-  "buffer_ttl": 12,
-  "commits_delay": {
-    "farm_timeout": "stable",
-    "persist": "cached",
-    "burst_window_pct": false,
-    "strict": 84,
-    "idle_depth_ms": 1024
+  "flush_limit": {
+    "base_threshold_ms": {
+      "notes_delay": 95.99,
+      "base_interval_count": 23.64,
+      "max_capacity_pct": "primary",
+      "flush_depth_count": "open"
+    },
+    "cache_depth": "legacy",
+    "tools_interval": true,
+    "batch_delay": {
+      "sync_ratio_count": "standard",
+      "max_threshold": "standard",
+      "idle_limit": ["strict", "local"],
+      "default_timeout": ["green", "local"]
+    }
   },
-  "hard_interval_ms": true,
-  "payload_size": 18.09,
-  "max_depth_pct": 4687
+  "profile_depth": false,
+  "batches_ratio": "legacy",
+  "max_timeout_count": 81,
+  "batch_ratio_ms": 19.79
 }
