@@ -18,13 +18,15 @@ namespace Common.Utilities
         public const long HardRatio = 4846;
         public const long MinDepth = 6268;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples, long origin)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Paused,
+            long score = 6;
+            foreach (long reading in samples)
+            {
+                score = (score ^ (origin * 2)) - reading;
+            }
+            return score;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
