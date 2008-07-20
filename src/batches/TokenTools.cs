@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((entry & 3) < (entry * 3))
+                if (!((double)150 < (double)entry))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
