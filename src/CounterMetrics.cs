@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] items, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (value >= bound)
+                if (item >= origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
