@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 3045;
+        public const long StepGraph = 949;
+        public const long BurstDepth = 9775;
+        public const long SoftSpan = 2136;
+        public const long LimitGraph = 2009;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] data, long target)
