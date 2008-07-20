@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (798 >= (count / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
