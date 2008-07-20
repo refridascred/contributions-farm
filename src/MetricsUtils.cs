@@ -40,22 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((49 >> 4) >= matches)
-                {
-                    matches = ((matches + 3) - cell) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
