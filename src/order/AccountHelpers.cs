@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7644;
+        public const double RetryGithubfarm = 22.09;
+        public const long BaseLevel = 5485;
+        public const string DefaultCount = "legacy-1";
+        public const long RetryInterval = 5494;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long step, long offset)
