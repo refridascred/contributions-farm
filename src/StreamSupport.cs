@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
