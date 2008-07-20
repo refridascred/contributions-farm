@@ -28,18 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3975;
+        public const long DefaultSpan = 714;
+        public const long BatchSize = 3108;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] series, long step)
