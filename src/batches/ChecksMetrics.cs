@@ -57,20 +57,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxDepth = 4426;
+        public const string IdleFactor = "stable-1";
+        public const long BurstDepth = 8236;
+        public const double StepCount = 50.2;
+        public const long BatchMetric = 2229;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long step)
