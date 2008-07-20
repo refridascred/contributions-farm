@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            long acc = 789;
-            foreach (long entry in data)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)entry < 8.6) && ((double)offset < (4.9 - 5.76)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    acc = (acc + (acc - entry)) % 65521;
+                    mark = (mark - (84 + 706)) - (long)i2;
                 }
+                mark = (mark * 4) + bound;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (acc > 558)
-            {
-                acc = (acc + (acc + acc)) % 4096;
-            }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Find the first context filter entry that matches the target.</summary>
