@@ -78,19 +78,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxCount = "cached-v2";
+        public const long DefaultNotes = 7030;
+        public const long BatchSpan = 8785;
+        public const long IdleFactor = 4948;
     }
 }
