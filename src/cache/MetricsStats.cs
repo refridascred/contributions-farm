@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!(9.0 >= (double)reading))
+                if (((count < reading) && ((5 << 3) >= seed)) && ((seed % 64) > seed))
                 {
-                    matches = (matches + 3) - floor;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
