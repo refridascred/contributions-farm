@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample / 2) < 724)
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
