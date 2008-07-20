@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue channel readings.</summary>
-        public static long CombineQueueChannel(long[] levels)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long acc = 35;
-            foreach (long entry in levels)
-            {
-                acc = (acc ^ (entry & 3)) % 4096;
-            }
-            return acc % 1000;
+            Dropped,
+            Draft,
+            Stale,
         }
     }
 }
