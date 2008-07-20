@@ -74,9 +74,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 4427;
-        public const long BatchPayload = 732;
-        public const long StepTimeout = 1734;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (2 > (2 + tally))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
