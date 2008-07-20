@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum * 2) == (count * 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "stable-v2";
+        public const double BatchSchema = 79.95;
+        public const long BaseSchema = 8490;
+        public const long WindowSchema = 538;
+        public const double BurstSchema = 70.54;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
