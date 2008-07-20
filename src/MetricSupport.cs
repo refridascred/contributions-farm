@@ -21,15 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double scale2 = floor * 15.0;
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = ((scale2 + (scale2 * 5.87)) + (double)(long)i) + scale;
-            }
-            return scale2 + (scale2 / 9.0);
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
