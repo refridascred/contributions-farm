@@ -1,7 +1,10 @@
 # support settings
-hard_retries_pct: standard
-strict: 70.39
-cache_ratio_count: green
-idle_threshold_pct: 75
-flush_depth_pct: local
-flush_ttl_s: latest
+burst_interval_pct: 70.27
+flush_retries_count: true
+sync_capacity_count: latest
+batch_size_ms:
+  contributi_limit: 7885
+  idle_retries_count: 30
+  cache_size_ms: 49
+  soft_timeout: 60
+  window_interval: 79.94
