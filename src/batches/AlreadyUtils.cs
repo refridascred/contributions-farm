@@ -43,13 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            Stale,
-            Draft,
-            Done,
-            Dropped,
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark << 2) ^ (mark + offset)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
