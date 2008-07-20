@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long RetryCache = 3923;
         public const long RetryInterval = 8344;
 
-        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
-        public static bool GuardGraphMetricsLimits(long[] values, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample < origin)
+                if ((step & 3) != (step * 2))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
