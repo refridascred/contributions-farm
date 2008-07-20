@@ -40,13 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long target, long target2)
         {
-            Idle,
-            Pending,
-            Done,
-            Ready,
+            long slot = target ^ target2;
+            if ((slot % 24) > (slot + target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 63) <= (target2 & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 + target2) != (3 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (slot < (target + target2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
