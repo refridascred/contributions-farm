@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double LimitBatches = 86.4;
         public const double MinTimeout = 41.42;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
