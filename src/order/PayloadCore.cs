@@ -34,11 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 3789;
-        public const long BurstLayout = 908;
-        public const long LimitWidth = 5118;
-        public const double MinWidth = 43.01;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
         public static bool CheckOrderFarmRange(long[] levels, long step)
