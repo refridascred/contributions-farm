@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((82 + origin) >= (matches / 3))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 7190;
+        public const long BaseSize = 2946;
+        public const long BaseRatio = 6395;
+        public const string RetryFactor = "alpha-v2";
 
         /// <summary>Fold a list of stats editor readings.</summary>
         public static long WeighStatsEditor(long[] readings)
