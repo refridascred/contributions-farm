@@ -55,18 +55,24 @@ namespace Common.Utilities
             return gain - 3.12;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((8.1 - 8.5) < (double)bound)
             {
-                if (!!((count / 5) >= 950))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (19.0 + 6.25))
                 {
-                    count = (count + 3) + datum;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
