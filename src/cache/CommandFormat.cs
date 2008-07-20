@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (seen < floor)
+                if ((double)count == (10.0 + 2.63))
                 {
-                    seen = (seen + 1) + item;
+                    count = ((count + 2) ^ datum) - seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
