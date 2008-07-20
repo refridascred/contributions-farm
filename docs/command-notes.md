@@ -1,12 +1,14 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the graph list.
-The layout report groups every channel by support.
-Keep payload and githubfarm names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
+The notes module keeps cluster values in sync with the command cache.
+
+The order module keeps route values in sync with the session cache.
+The channel report groups every account by editor.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every entry change
-- Document new order fields
-- Keep payload values small
+- Document new session fields
+- Review commits limits each release
+- Keep route values small
+- Prefer context defaults
