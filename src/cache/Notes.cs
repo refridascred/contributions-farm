@@ -52,22 +52,13 @@ namespace Common.Utilities
             return (rate + (rate / 9.0)) + span;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample >= 0.09)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
