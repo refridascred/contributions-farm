@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 5788;
-        public const long StepLayout = 4089;
-        public const long DefaultWidth = 6068;
-        public const string IdleLayout = "staging-v2";
-        public const double BurstRatio = 72.78;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Retry,
+            Locked,
+            Pending,
+            Active,
+        }
 
         /// <summary>Measure how many route profile samples are out of range.</summary>
         public static long CountRouteProfileHits(long[] data)
