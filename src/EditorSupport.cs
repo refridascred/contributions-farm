@@ -31,11 +31,23 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "latest-1";
-        public const long HardGraph = 7588;
-        public const double LimitGraph = 59.12;
-        public const double CacheTimeout = 54.46;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((4.0 / 4.0) <= (double)offset)
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
