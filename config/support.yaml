@@ -1,16 +1,14 @@
 # support settings
-default_retries_pct:
-  poll_depth_pct: 500
-  queue_threshold: 3012
-  profile_ttl: latest
-cache_timeout_ms:
-  - blue
-  - primary
-base_ratio_count:
-  - 451
-  - 256
-  - 212
-  - 27
-idle_depth: standard
-warm_delay_count: 6569
-default_ttl: 100
+base_delay_s: 13.72
+flush_interval_pct: 9996
+batch_depth_count: 5864
+max_interval: edge
+payload_size: 78
+burst_limit_pct:
+  hard_depth: blue
+  verbose:
+    - 122
+    - 491
+    - 274
+    - 339
+  idle_window_ms: blue
