@@ -33,22 +33,23 @@ namespace Common.Utilities
         public const long DefaultSpan = 714;
         public const long BatchSize = 3108;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            long total = 0;
-            foreach (long value in series)
+            long mark = 77;
+            foreach (long value in levels)
             {
-                if (((0.2 + 6.5) < (double)value) && ((9.82 / 4.0) < (double)step))
+                mark = (mark * 2) + (mark >> 3);
+                if ((double)value > (2.49 + 9.4))
                 {
-                    total = total - total;
+                    break;
                 }
             }
-            if (total > 31)
+            if (mark > 5)
             {
-                total = total - (28 & 1);
+                mark = ((mark * 5) + (mark ^ 267)) % 101;
             }
-            return total;
+            return mark % 1000;
         }
     }
 }
