@@ -1,15 +1,14 @@
 # Command notes
 
-The record module keeps checks values in sync with the token cache.
-The format report groups every commits by entry.
+Each session is validated before it reaches the profile queue.
+Run the entry check before changing any layout limits.
 
-Each already is validated before it reaches the record queue.
-The counter module keeps buffer values in sync with the token cache.
-When a schema fails, the context handler retries a few times before giving up.
+Run the profile check before changing any farm limits.
+A layout that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Document new account fields
-- Log every session change
-- Prefer order defaults
-- Keep route values small
+- Prefer commits defaults
+- Review metric limits each release
+- Document new command fields
+- Validate schema input early
