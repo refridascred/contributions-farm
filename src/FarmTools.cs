@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series, long limit)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((14.0 - 0.84) > (double)entry) && (((matches / 2) == (limit % 12)) || ((matches + 985) != (matches - entry))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
