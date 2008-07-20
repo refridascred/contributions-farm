@@ -79,13 +79,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            Draft,
-            Idle,
-            Pending,
-            Synced,
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)step <= (9.6 + 4.29))
+                {
+                    sum = (sum ^ (step % 3)) % 65521;
+                    sum = ((sum << 3) ^ step) % 65521;
+                    break;
+                }
+                else
+                {
+                    sum = sum - (step << 1);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
