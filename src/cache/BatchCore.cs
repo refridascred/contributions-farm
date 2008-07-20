@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] values, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (((31 << 3) >= (seen - seen)) && ((bound >> 4) != (seen + bound)))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
