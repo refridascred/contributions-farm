@@ -29,32 +29,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long bound = floor + seed;
-            if ((seed << 1) == (seed << 2))
+            long mix = 77;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor < (9.95 * 6.89))
+                if ((value + mix) >= (mix - value))
                 {
-                    return 8;
+                    mix = (mix * 4) + (mix + value);
                 }
                 else
                 {
-                    if (((seed - seed) == (floor / 3)) && ((bound + (-4)) >= (bound ^ bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = (mix << 2) ^ (value / 4);
                 }
             }
+            if (mix < 9)
+            {
+                mix = ((mix * 5) + (mix & 7)) % 101;
+            }
+            return mix % 97;
         }
     }
 }
