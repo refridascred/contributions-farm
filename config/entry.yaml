@@ -1,7 +1,5 @@
 # entry settings
-idle_window: false
-base_retries:
-  - 465
-  - 7
-  - 47
-default_ratio_pct: staging
+dry_run: 61.61
+flush_depth: true
+compress: true
+idle_size_pct: local
