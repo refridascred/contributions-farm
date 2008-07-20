@@ -29,23 +29,23 @@ namespace Common.Utilities
         public const string DefaultCount = "legacy-1";
         public const long RetryInterval = 5494;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long offset)
+        /// <summary>Grade a token counter value against two limits.</summary>
+        public static long ClassifyTokenCounter(long floor, long limit)
         {
-            long delta = step - offset;
-            if (!((double)delta >= (5.4 - 18.0)))
+            long span = floor + limit;
+            if ((floor / 5) >= span)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((6 & 15) < (step + 600))
+                if ((floor % 2) >= 915)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
