@@ -56,11 +56,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 9373;
-        public const double RetryWindow = 98.09;
-        public const long WindowDepth = 9358;
-        public const long BaseWindow = 3341;
-        public const string LimitWindow = "strict-1";
+        /// <summary>Iterate the already checks series from a seed.</summary>
+        public static long DeriveAlreadyChecks(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((result / 3) >= result))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result << 2) ^ step;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
