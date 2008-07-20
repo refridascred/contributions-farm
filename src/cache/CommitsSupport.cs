@@ -62,13 +62,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
