@@ -39,10 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleCount = "fallback-v2";
-        public const long HardInterval = 2384;
-        public const long WindowToken = 9042;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double bias, double bias2)
