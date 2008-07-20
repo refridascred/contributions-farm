@@ -43,11 +43,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxTimeout = 9174;
-        public const long BaseBatch = 9962;
-        public const long CacheBatch = 3897;
-        public const string BurstBudget = "strict-v2";
-        public const long WindowLevel = 9359;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
