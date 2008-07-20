@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every batches support entry stays within the limit.</summary>
+        public static bool VerifyBatchesSupportLimits(long[] levels, long seed)
         {
-            Synced,
-            Pending,
-            New,
-            Idle,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
