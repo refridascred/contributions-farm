@@ -49,12 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Pending,
-            Stale,
-            Active,
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
