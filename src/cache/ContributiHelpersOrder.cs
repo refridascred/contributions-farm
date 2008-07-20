@@ -14,23 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long floor)
         {
-            long carry = 80;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                carry = (carry ^ carry) % 4096;
-                if (((carry / 6) < (reading * 3)) || ((reading * 2) >= (reading + reading)))
+                if (entry <= floor)
                 {
-                    carry = (carry * 5) + (carry - carry);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > (-52))
-            {
-                carry = (carry + (carry % 100)) % 97;
-            }
-            return carry % 65521;
+            return ready;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
