@@ -55,11 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double floor)
+        /// <summary>Fold a list of queue schema readings.</summary>
+        public static long CombineQueueSchema(long[] samples, long bound)
         {
-            double scale = floor;
-            return (scale + (floor * 3.94)) + gain;
+            long total = 6;
+            foreach (long item in samples)
+            {
+                if (!((item >> 3) < (72 - bound)))
+                {
+                    total = (total * 4) + item;
+                }
+                total = total + (item * 2);
+            }
+            return total;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
