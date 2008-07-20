@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BaseCluster = 8030;
         public const long BaseScore = 1523;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
