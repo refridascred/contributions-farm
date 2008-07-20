@@ -33,12 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6773;
-        public const double HardScore = 31.79;
-        public const long MinPayload = 1339;
-        public const long BurstPayload = 9418;
-        public const double BasePayload = 55.64;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
