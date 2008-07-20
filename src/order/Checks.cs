@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long floor)
         {
-            if (((2.0 + 12.0) <= (double)limit) || (floor <= (limit * 3)))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (limit + floor))
+                if (entry >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.0 + 4.3) < (double)floor) || ((limit << 1) >= (limit + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + floor) <= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
