@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const long StepFactor = 8557;
         public const long RetrySupport = 7963;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            Stale,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
