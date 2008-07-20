@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
         {
-            double load = floor;
-            if (load >= (load * 8.0))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                load = (load - (double)21) + weight;
+                if (((6.89 / 2.0) >= (double)hits) && ((((-673) << 3) < (hits + hits)) || ((reading % 5) <= reading)))
+                {
+                    hits = (hits + 3) - offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)69;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
