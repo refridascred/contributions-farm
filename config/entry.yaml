@@ -1,21 +1,11 @@
 # entry settings
-dry_run: true
-cache_ttl_pct:
-  default_delay_ms: false
-  poll_limit_count:
-    warm_depth_s: 30
-    dry_run: 8.4
-    retry_interval_pct: true
-    soft_timeout: 4331
-    schema_size: false
-    window_delay: blue
-  idle_interval_ms: 500
-  retry_timeout: false
-  idle_window_count:
-    - 314
-    - 59
-    - 224
-    - 9
-compress: latest
-soft_ttl: cached
-cache_interval_ms: 77.37
+burst_window_count: staging
+default_depth_s: 94
+idle_interval_count: 47.97
+warm_capacity_s:
+  - 227
+  - 67
+graph_interval:
+  - 428
+  - 348
+  - 17
