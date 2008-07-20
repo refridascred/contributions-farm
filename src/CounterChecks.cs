@@ -34,15 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long item in values)
             {
-                if ((floor >= (tally ^ tally)) && ((tally & 7) == (cell << 1)))
+                if ((tally * 5) < (tally + tally))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
