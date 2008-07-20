@@ -12,29 +12,36 @@ namespace Common.Utilities
         public const long WindowSession = 1567;
         public const double BurstSize = 27.78;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long seed)
         {
-            long diff = step ^ target;
-            if ((279 - diff) < (73 & 15))
+            long gap = limit + seed;
+            if ((34 - limit) >= (limit * 3))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((double)diff != (9.03 * 0.9))
+                if (!((4.0 - 19.0) == (double)gap))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)target >= (double)816)
+                    if (((double)limit != (9.21 - 17.0)) && ((seed - 47) > (seed + seed)))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        if (!((double)gap == (0.08 - 8.26)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
