@@ -27,10 +27,17 @@ namespace Common.Utilities
             return (load + span) + gain;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 7593;
-        public const double StepGithubfarm = 48.64;
-        public const long HardInterval = 9335;
-        public const long BaseGithubfarm = 5668;
+        /// <summary>Find the first already metrics entry that matches the target.</summary>
+        public static long SeekAlreadyMetricsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
