@@ -1,6 +1,7 @@
 {
-  "verbose": [141, 173],
-  "session_timeout": "edge",
-  "audit": "local",
-  "max_interval_pct": 64
+  "base_limit_s": 45,
+  "enabled": false,
+  "idle_limit_count": 60,
+  "warm_retries_count": ["green", "eu-west", "open", "green"],
+  "editor_size": 89.25
 }
