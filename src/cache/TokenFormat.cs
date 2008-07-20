@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
+        public static bool CheckFarmClusterLimits(long[] data, long step)
         {
-            New,
-            Done,
-            Retry,
-            Active,
-            Locked,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a contributi record.</summary>
