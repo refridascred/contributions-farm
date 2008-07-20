@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long TallyOrderMetrics(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] readings, long origin)
         {
-            long score = 182;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                score = score ^ (score - cell);
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score < 7)
-            {
-                score = (score * 4) + score;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Digest a series of session entries.</summary>
