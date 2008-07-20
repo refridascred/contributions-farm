@@ -1,12 +1,7 @@
 {
-  "batch_size_ms": {
-    "hard_threshold": 30,
-    "warm_window_s": "fallback",
-    "context_delay": "local",
-    "dry_run": ["cached", "legacy", "local", "fallback"],
-    "cache_threshold": "local"
-  },
-  "warm_threshold": 41.66,
-  "flush_timeout": "edge",
-  "max_size_pct": 67.55
+  "flush_delay_pct": [144, 328, 187],
+  "route_capacity": true,
+  "batch_timeout": "open",
+  "cache_depth_pct": "open",
+  "metric_delay": 13.96
 }
