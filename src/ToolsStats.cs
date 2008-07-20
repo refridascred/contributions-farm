@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = floor ^ origin;
+            if ((floor + 85) <= (prev * 2))
             {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (origin < (floor - prev))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (-16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin + floor) >= (prev + prev)) && ((-42) > (prev * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
