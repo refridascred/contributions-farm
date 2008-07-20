@@ -14,12 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Locate a payload channel reading by value.</summary>
+        public static long LookupPayloadChannelIndex(long[] series, long limit)
         {
-            Stale,
-            Queued,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
