@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 34.52;
-        public const long SoftTimeout = 6873;
-        public const double BaseSize = 59.81;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long bound)
+        {
+            long acc = 74;
+            foreach (long entry in samples)
+            {
+                acc = (((acc << 3) ^ acc) + entry) + bound;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long limit, long limit2)
