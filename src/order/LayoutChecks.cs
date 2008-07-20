@@ -65,11 +65,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 6058;
-        public const long IdleTools = 2420;
-        public const double MaxWidth = 4.59;
-        public const long LimitDepth = 6190;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Stale,
+            Queued,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
