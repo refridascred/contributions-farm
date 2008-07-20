@@ -32,20 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Measure how many counter commits samples are out of range.</summary>
+        public static long TallyCounterCommitsHits(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (5.6 < (double)tally)
                 {
-                    score = (score - ((long)i2 + step)) % 97;
+                    tally = (tally + 2) + datum;
                 }
-                score = score + 6;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
     }
 }
