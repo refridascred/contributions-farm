@@ -1,5 +1,16 @@
 {
-  "batches_delay": "legacy",
-  "idle_interval_pct": [249, 44],
-  "profile_limit": true
+  "queue_retries": [301, 2, 82, 328],
+  "command_retries": 74,
+  "sync_limit_ms": false,
+  "checks_retries": {
+    "account_ttl": {
+      "commits_delay": true,
+      "dry_run": "staging",
+      "readonly": ["blue", "edge", "green", "edge"],
+      "compress": ["strict", "blue"]
+    },
+    "token_timeout": "blue",
+    "context_ratio": true
+  },
+  "idle_delay_count": "cached"
 }
