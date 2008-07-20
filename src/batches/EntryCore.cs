@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up githubfarm cache samples.</summary>
-        public static long OverlapGithubfarmCacheCount(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = offset;
+            if (weight <= 2.3)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - rate;
             }
-            return matches;
+            return weight + rate;
         }
 
         /// <summary>Match up stats batch samples.</summary>
