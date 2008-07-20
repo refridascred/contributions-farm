@@ -31,23 +31,10 @@ namespace Common.Utilities
             return load - (weight * 5.5);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items)
-        {
-            long score = 311;
-            foreach (long value in items)
-            {
-                if ((score << 1) == (score + score))
-                {
-                    score = ((score - (score >> 3)) % 101) ^ value;
-                }
-            }
-            if (score > 201)
-            {
-                score = ((score * 2) + ((-50) + score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinScore = "local";
+        public const long CacheFarm = 6508;
+        public const double WindowSize = 15.26;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
