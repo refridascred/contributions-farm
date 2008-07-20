@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleBudget = 4172;
-        public const long BurstCount = 420;
-        public const long BurstCluster = 4301;
-        public const long BaseCluster = 8030;
-        public const long BaseScore = 1523;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] values, long origin)
