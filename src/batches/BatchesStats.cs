@@ -29,11 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSize = 735;
-        public const double WindowEditor = 50.06;
-        public const long MaxEditor = 8891;
-        public const long StepCount = 322;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Active,
+            Dropped,
+            New,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Validate queue window readings against a bound.</summary>
         public static bool ValidateQueueWindowBounds(long[] values, long bound)
