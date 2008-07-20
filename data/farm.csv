@@ -1,7 +1,10 @@
-id,region,level,count
-1,181,eu-west,staging
-2,local,open,18.27
-3,57.4,98.2,green
-4,latest,159,primary
-5,fallback,44.16,standard
-6,77.7,46.47,765
+id,token,label
+1,480,42
+2,87.17,cached
+3,83.29,66.3
+4,strict,30
+5,655,964
+6,staging,148
+7,green,primary
+8,43.23,781
+9,eu-west,97
