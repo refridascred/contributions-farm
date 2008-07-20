@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long sum = 14;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading % 97) < (reading / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (sum & 15)) % 97;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
