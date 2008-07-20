@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSpan = 6742;
+        public const string HardEntry = "stable-v2";
+        public const long WindowEntry = 462;
+        public const long MaxEntry = 1676;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string BaseScore = "alpha-edge";
