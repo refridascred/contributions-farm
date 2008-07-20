@@ -42,14 +42,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Ready,
-            Synced,
-            Pending,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardRatio = 4055;
+        public const long RetryFactor = 1115;
+        public const long MaxWidth = 8391;
+        public const long HardCount = 8062;
+        public const long WindowTimeout = 2248;
     }
 }
