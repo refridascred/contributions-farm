@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 2944;
-        public const long MinSupport = 9283;
-        public const long WindowDepth = 2602;
-        public const double WindowSupport = 15.23;
-        public const double IdleTimeout = 59.26;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = carry - (limit / 4);
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] values, long seed)
