@@ -63,19 +63,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Rank route filter input into a small class.</summary>
+        public static long GradeRouteFilter(long limit, long target)
         {
-            double load = bias;
-            if (load >= load)
+            long slot = limit + target;
+            if ((target / 3) != (limit - slot))
             {
-                load = load + 4.2;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - span) + (double)(long)i;
+                if ((slot - slot) <= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + span;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
