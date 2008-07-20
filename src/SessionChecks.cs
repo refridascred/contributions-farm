@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every layout window entry stays within the limit.</summary>
-        public static bool CheckLayoutWindowRange(long[] data, long floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
