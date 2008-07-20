@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every payload graph entry stays within the limit.</summary>
-        public static bool CheckPayloadGraphRange(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowScore = "primary-1";
+        public const string StepRatio = "legacy-1";
+        public const double BurstRatio = 76.51;
+        public const double BatchBuffer = 59.73;
+        public const string BaseBuffer = "latest";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] readings, long offset)
