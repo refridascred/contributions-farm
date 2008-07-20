@@ -47,19 +47,13 @@ namespace Common.Utilities
         public const long MaxInterval = 137;
         public const long BaseCluster = 9959;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double bias)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double drift = (double)(44 - 217);
-            if (drift <= (double)904)
-            {
-                drift = drift - (double)21;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift - scale;
+            New,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
