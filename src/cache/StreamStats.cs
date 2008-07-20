@@ -66,31 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long limit)
+        /// <summary>Look up the position of a channel metrics sample.</summary>
+        public static long LocateChannelMetricsIndex(long[] items, long limit)
         {
-            long mix = 6;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 / 9.0) >= (double)entry)
+                if (items[i] > limit)
                 {
-                    mix = mix - (limit % 5);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (-880)) % 1000;
-                }
-                if ((double)entry <= (double)mix)
-                {
-                    mix = mix + (entry - limit);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
