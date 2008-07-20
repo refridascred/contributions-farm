@@ -1,4 +1,6 @@
 # support settings
-warm_size_pct: 4055
-base_capacity_s: 500
-readonly: 3224
+commits_capacity:
+  - 148
+  - 379
+enabled: 30
+flush_timeout: 8016
