@@ -29,15 +29,15 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long DeriveBatchesWindow(long target)
         {
-            long score = 685;
-            foreach (long entry in data)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                score = (((score << 2) ^ (647 % 3)) % 97) - entry;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
