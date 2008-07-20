@@ -52,10 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3861;
-        public const long BatchRecord = 6344;
-        public const long CacheRecord = 4294;
-        public const long CacheLevel = 7935;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 8415;
+        public const long WindowDepth = 7564;
+        public const string WindowStats = "cached-edge";
+        public const long BatchSize = 1804;
+        public const long BaseBudget = 7785;
     }
 }
