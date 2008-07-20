@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long MinDepth = 2010;
         public const long CacheChannel = 9884;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen % 60) == (seen ^ seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
