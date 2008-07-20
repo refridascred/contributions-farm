@@ -31,13 +31,12 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a batch options.</summary>
