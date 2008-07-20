@@ -21,21 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = floor * 15.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = ((scale2 + (scale2 * 5.87)) + (double)(long)i) + scale;
             }
-            return seen;
+            return scale2 + (scale2 / 9.0);
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
