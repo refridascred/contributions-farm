@@ -31,18 +31,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + origin) % 101;
-                acc = (acc ^ ((long)i & 31)) % 101;
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
