@@ -55,13 +55,13 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
