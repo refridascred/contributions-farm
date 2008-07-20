@@ -30,11 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 6348;
-        public const long MinLayout = 480;
-        public const double DefaultLayout = 4.6;
-        public const long HardLayout = 4065;
-        public const double WindowLayout = 70.73;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + matches) > (reading ^ reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
