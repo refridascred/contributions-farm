@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const double WindowSupport = 15.23;
         public const double IdleTimeout = 59.26;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= limit)
+                if (values[i] <= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
