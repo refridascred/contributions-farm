@@ -21,10 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 2128;
-        public const string IdleSpan = "latest-1";
-        public const long RetryDepth = 6326;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
