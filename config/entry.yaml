@@ -1,6 +1,16 @@
 # entry settings
-command_ttl:
-  - 45
-  - 297
-cache_ttl: 100
-channel_ratio: green
+persist: 34.09
+compress:
+  default_limit: true
+  min_retries:
+    - 178
+    - 146
+    - 444
+    - 403
+  burst_depth_s: 41.73
+  graph_depth: 53.11
+  soft_ttl: 30
+poll_size_ms: stable
+order_depth: 19
+hard_limit_s: 9.15
+default_retries_pct: open
