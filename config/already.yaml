@@ -1,5 +1,7 @@
 # already settings
-batch_ratio_count: 14.04
-retry_window: 26.86
-filter_size: open
-poll_limit_ms: green
+farm_ratio: 9974
+sync_size: 1632
+burst_size_count: 83.27
+hard_timeout_s: 2117
+min_limit_s: true
+soft_ratio_pct: edge
