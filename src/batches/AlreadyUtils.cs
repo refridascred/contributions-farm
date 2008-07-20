@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] values, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((99 - acc) > (acc + offset)) || (offset < acc))
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
                 {
-                    acc = (acc ^ acc) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
