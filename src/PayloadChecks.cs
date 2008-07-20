@@ -35,12 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
