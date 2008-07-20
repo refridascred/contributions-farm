@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            if (gain <= (double)981)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - (double)66) + weight;
             }
-            return seen;
+            return gain + (double)6;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
