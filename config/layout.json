@@ -1,21 +1,6 @@
 {
-  "audit": false,
-  "batch_timeout": {
-    "buffer_window": false,
-    "persist": "stable",
-    "batch_retries_s": "local",
-    "cluster_delay": 49,
-    "default_interval_s": 8555,
-    "session_delay": 17.61
-  },
-  "base_size": {
-    "poll_delay_s": 40,
-    "flush_capacity": [380, 203],
-    "warm_ratio_pct": 14,
-    "contributi_threshold": 1024,
-    "format_delay": "blue",
-    "idle_ratio_count": 24
-  },
-  "base_window_s": 1141,
-  "default_depth": false
+  "profile_window": "local",
+  "base_depth": "local",
+  "base_ttl": 68.64,
+  "hard_delay": 36.6
 }
