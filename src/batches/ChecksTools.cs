@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            long sum = 13;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((7 >= entry) && (entry < (entry + (-126))))
+                if (!(tally <= (tally % 12)))
                 {
-                    sum = ((sum * 5) + entry) % 1000;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
