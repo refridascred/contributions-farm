@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a context record sample.</summary>
-        public static long SeekContextRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleLevel = 8235;
+        public const long StepStream = 4351;
+        public const long HardScore = 8448;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] data, long limit)
