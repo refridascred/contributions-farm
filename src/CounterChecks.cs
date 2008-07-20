@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1474;
+        public const double SoftWidth = 73.53;
+        public const long RetryInterval = 174;
+        public const string CacheFactor = "standard";
+        public const string StepMetric = "primary-edge";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
