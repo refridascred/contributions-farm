@@ -1,8 +1,12 @@
 # githubfarm settings
-min_limit: local
-batch_threshold:
-  - 385
-  - 297
-  - 188
-warm_retries: 28.92
-filter_timeout: stable
+persist: 250
+idle_retries_pct: true
+cache_retries_s: open
+strict:
+  default_depth_ms:
+    - 188
+    - 368
+  enabled: 92.3
+  hard_size_s: 76.09
+default_size: eu-west
+readonly: 250
