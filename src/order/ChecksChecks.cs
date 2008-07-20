@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Iterate the contributi entry series from a seed.</summary>
