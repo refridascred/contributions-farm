@@ -62,13 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
