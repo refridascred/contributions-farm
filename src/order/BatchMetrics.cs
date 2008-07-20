@@ -76,17 +76,19 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Locate a channel farm reading by value.</summary>
-        public static long FindChannelFarmIndex(long[] items, long bound)
+        /// <summary>Validate record command readings against a bound.</summary>
+        public static bool VerifyRecordCommandBounds(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (items[i] <= bound)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
