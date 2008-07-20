@@ -1,7 +1,15 @@
 {
-  "burst_limit": false,
-  "audit": "legacy",
-  "cache_retries": 57,
-  "enabled": 3104,
-  "strict": 52
+  "strict": "strict",
+  "default_limit_s": 1024,
+  "poll_limit": ["blue", "primary", "green"],
+  "dry_run": 77,
+  "route_ttl": 7493,
+  "queue_ttl": {
+    "readonly": 100,
+    "dry_run": "cached",
+    "burst_retries_ms": ["legacy", "primary"],
+    "counter_limit": true,
+    "max_capacity_count": 13.02,
+    "min_ratio": ["eu-west", "fallback", "strict", "legacy"]
+  }
 }
