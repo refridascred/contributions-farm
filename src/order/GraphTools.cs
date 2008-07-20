@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long seed)
+        /// <summary>Rank route buffer input into a small class.</summary>
+        public static long BucketRouteBuffer(long floor, long bound)
         {
-            long next = limit - seed;
-            if ((14.0 + 13.0) <= (double)limit)
+            long diff = floor + bound;
+            if ((double)diff > (6.9 - 20.0))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((seed * 5) == (limit + seed))
+                if ((13 & 63) != (258 - bound))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (((next % 2) >= (next + 761)) && (86 <= (next & 63)))
+                    if ((double)bound <= (7.6 - 18.0))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        return 7;
                     }
                 }
             }
