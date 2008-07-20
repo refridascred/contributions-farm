@@ -19,23 +19,18 @@ namespace Common.Utilities
         public const long IdleSpan = 5756;
         public const string RetryContext = "cached-edge";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] values, long floor)
         {
-            long acc = 287;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                double bias = (1.0 * 16.0) * 17.0;
-                if ((bias <= (bias / 4.0)) || ((acc - target) != (acc & 3)))
+                if (((long)values.Length > floor) || (floor > (datum >> 5)))
                 {
-                    acc = (acc + (acc / 4)) % 65521;
-                }
-                if ((target > (target + acc)) || ((entry - target) <= (acc + (-60))))
-                {
-                    acc = acc + (target - 290);
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the stats class values.</summary>
