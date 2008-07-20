@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit entry route readings against a rule.</summary>
-        public static long CountEntryRouteGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally < (tally - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleBudget = 23.56;
+        public const string WindowCommand = "legacy-v2";
+        public const string BaseSize = "stable-edge";
+        public const long RetryInterval = 4133;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] samples)
