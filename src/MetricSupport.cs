@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 12;
-            foreach (long value in data)
-            {
-                if ((6.2 * 2.7) == (double)result)
-                {
-                    result = result + (result - value);
-                }
-            }
-            if (result > 94)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
