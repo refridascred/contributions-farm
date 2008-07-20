@@ -1,12 +1,7 @@
 {
-  "filter_delay": "edge",
-  "metrics_ttl": "fallback",
-  "retry_size_pct": false,
-  "retry_depth": {
-    "soft_limit_pct": 195,
-    "soft_threshold_count": "cached",
-    "default_size_count": 95.03,
-    "hard_size_pct": 63.51
-  },
-  "default_capacity_s": 78.5
+  "burst_limit": false,
+  "audit": "legacy",
+  "cache_retries": 57,
+  "enabled": 3104,
+  "strict": 52
 }
