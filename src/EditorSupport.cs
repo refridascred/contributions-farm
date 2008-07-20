@@ -19,18 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3927;
+        public const long LimitQueue = 8888;
+        public const long DefaultSpan = 5985;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double gain, double offset)
