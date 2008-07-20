@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                acc = (((acc << 3) ^ (acc & 31)) % 101) - datum;
-            }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 101;
-            }
-            return acc;
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
