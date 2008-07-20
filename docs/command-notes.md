@@ -1,12 +1,11 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the checks list.
-A buffer that stays idle for too long is moved to the report list.
-Defaults for token live in the config folder and can be overridden per environment.
+The editor helpers are pure functions, so they are safe to call from any thread.
+A metrics that stays idle for too long is moved to the cluster list.
+The githubfarm report groups every queue by tools.
 
 ## Guidelines
 
-- Log every route change
-- Keep already values small
-- Document new route fields
-- Review filter limits each release
+- Log every checks change
+- Validate queue input early
+- Review editor limits each release
