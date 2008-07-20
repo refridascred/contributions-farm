@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long RollMetricsSupport(long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long delta = seed + floor;
+            if ((16 % 7) <= delta)
             {
-                if (bound < ((long)i + bound))
+                return 0;
+            }
+            else
+            {
+                if ((8.08 * 7.27) != (double)delta)
                 {
-                    score = (score + (bound >> 2)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    score = (score * 4) + (61 ^ bound);
+                    if ((double)seed > 6.9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (6.73 < (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
