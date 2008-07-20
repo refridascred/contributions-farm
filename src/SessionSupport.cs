@@ -28,20 +28,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the profile session series from a seed.</summary>
-        public static long SeriesProfileSession(long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            double bias2 = (double)((-141) % 2);
+            if (bias2 <= ratio)
             {
-                state = ((state * 5) + (target / 6)) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state << 3) ^ (long)i2) % 101;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                bias2 = (bias2 - bias2) - bias;
             }
-            return state;
+            else
+            {
+                bias2 = bias2 - 12.0;
+            }
+            return bias2 - (bias2 / 2.0);
         }
     }
 }
