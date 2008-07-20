@@ -1,10 +1,12 @@
 # support settings
-min_capacity: 61
-verbose: staging
-max_ttl:
-  - 418
-  - 463
-  - 1
-checks_depth: 38.74
-persist: 8349
-min_ratio_pct: 9578
+default_depth_pct: cached
+default_retries_count: stable
+warm_window:
+  channel_ratio: 8054
+  strict: false
+  burst_threshold_ms: false
+  cache_capacity: fallback
+  burst_window: 54.84
+  already_timeout: cached
+cache_interval: 59
+enabled: 6.5
