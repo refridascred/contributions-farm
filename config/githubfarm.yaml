@@ -1,6 +1,7 @@
 # githubfarm settings
-account_retries: eu-west
-min_window_pct: true
-farm_ratio:
-  - 196
-  - 444
+route_threshold: stable
+readonly:
+  - primary
+  - primary
+flush_limit_count: false
+tools_ratio: 60
