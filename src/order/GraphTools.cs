@@ -73,11 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 11.04;
-        public const double StepTimeout = 9.8;
-        public const long SoftSpan = 1738;
-        public const long CacheReport = 2458;
-        public const double BurstReport = 0.98;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry + entry) <= entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
