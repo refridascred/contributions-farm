@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 127) != (count - 9))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
