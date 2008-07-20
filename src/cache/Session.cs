@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long total = 2;
+            foreach (long entry in data)
             {
-                if (cell > floor)
+                if ((floor >> 5) >= (floor + floor))
                 {
-                    flag = false;
-                    break;
+                    total = (total + (4 * 4)) ^ entry;
                 }
+                total = (total * 4) + total;
+                total = total ^ (4 - total);
             }
-            return flag;
+            if (total > 40)
+            {
+                total = total - ((long)data.Length + 894);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
