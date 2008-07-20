@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 4593;
         public const long RetryTimeout = 647;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits - hits) <= ((-835) - (long)readings.Length))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
