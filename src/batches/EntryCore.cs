@@ -62,21 +62,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score + value) <= step)
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + ((-1) % 3);
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
