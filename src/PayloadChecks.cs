@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 391;
-            foreach (long reading in items)
-            {
-                score = (score ^ (reading / 5)) % 1000;
-                if (!(offset < (62 / 4)))
-                {
-                    score = score + (offset + score);
-                    score = score + reading;
-                }
-                if (!((score << 1) != (930 - reading)))
-                {
-                    score = (score - score) % 1000;
-                }
-            }
-            return score;
+            Failed,
+            Stale,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
