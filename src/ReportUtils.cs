@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            Failed,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a queue record.</summary>
