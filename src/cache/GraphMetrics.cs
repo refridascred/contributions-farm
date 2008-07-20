@@ -61,21 +61,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 1055;
+        public const double HardChecks = 94.68;
+        public const long MaxRatio = 4240;
+        public const long MaxChecks = 9368;
     }
 }
