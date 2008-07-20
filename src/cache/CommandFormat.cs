@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((1.1 * 3.9) == (double)datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 2944;
+        public const long MinSupport = 9283;
+        public const long WindowDepth = 2602;
+        public const double WindowSupport = 15.23;
+        public const double IdleTimeout = 59.26;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsLimits(long[] items, long limit)
