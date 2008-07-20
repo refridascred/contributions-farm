@@ -35,17 +35,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long seed)
+        /// <summary>Grade a contributi cache value against two limits.</summary>
+        public static long BucketContributiCache(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = origin + floor;
+            if ((origin + origin) <= (origin << 2))
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((15.0 - 7.2) < (double)floor))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)origin > (double)93) || ((double)floor > (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + floor) == (floor >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
