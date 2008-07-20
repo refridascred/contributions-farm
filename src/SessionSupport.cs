@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long CountBatchesEditorMatches(long[] series)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (hits <= (6 - 483))
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
