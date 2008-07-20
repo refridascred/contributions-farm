@@ -30,23 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double gain, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long floor)
         {
-            double ratio = gain;
-            if (ratio <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - 2.4;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (floor * 0.41);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - (ratio - 14.0);
+            return -1;
         }
     }
 }
