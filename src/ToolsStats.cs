@@ -31,10 +31,10 @@ namespace Common.Utilities
             return load - (weight * 5.5);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinScore = "local";
-        public const long CacheFarm = 6508;
-        public const double WindowSize = 15.26;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryCount = 7816;
+        public const long StepFactor = 8557;
+        public const long RetrySupport = 7963;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
