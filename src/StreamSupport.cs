@@ -30,11 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long TallySchemaEntryGaps(long[] values, long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((seed / 8) != (cell + cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
