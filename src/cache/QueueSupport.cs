@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long StepStream = 4351;
         public const long HardScore = 8448;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                if (values[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
