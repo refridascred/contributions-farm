@@ -48,25 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long offset, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long span = offset ^ seed;
-            if ((offset + seed) >= (offset * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset > (7.16 - 14.0)) || ((span + 7) < (seed / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
