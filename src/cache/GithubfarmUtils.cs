@@ -13,15 +13,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long target)
         {
-            double load = floor;
-            if (load > (0.5 / 9.0))
+            if ((9.6 / 5.0) >= (double)target)
             {
-                load = load + load;
+                return 0;
             }
-            return load - (gain / 4.0);
+            else
+            {
+                if ((limit & 15) < (target ^ target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) != (target + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit <= 5.78)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of format readings.</summary>
