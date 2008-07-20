@@ -1,11 +1,20 @@
 # githubfarm settings
-profile_limit:
-  - 463
-  - 492
-  - 415
-  - 300
-editor_size: 8582
-warm_interval_count: local
-session_limit: 8
-hard_interval_s: local
-flush_ratio: 71
+stream_window:
+  persist: fallback
+  soft_delay:
+    compress: blue
+    cache_size: staging
+    batch_size: latest
+    hard_threshold_s: 28
+    hard_delay_count: 53.91
+    soft_size_count: 20
+  checks_limit: 7479
+  verbose: standard
+  poll_capacity_s: 60
+  readonly:
+    - 79
+    - 24
+persist: fallback
+default_capacity: 8308
+cache_limit: false
+poll_ttl_s: 9443
