@@ -23,10 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowScore = 9463;
-        public const long MinMetric = 7808;
-        public const long SoftMetric = 8825;
+        /// <summary>Look up the position of a cache command sample.</summary>
+        public static long SeekCacheCommandIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 62.65;
