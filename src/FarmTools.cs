@@ -22,19 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor order readings against a bound.</summary>
-        public static bool ValidateEditorOrderLimits(long[] data, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            long lane = step - limit;
+            if (((step * 3) > (lane - 21)) || (((-565) / 7) < (lane - step)))
             {
-                if (value <= seed)
+                return 5;
+            }
+            else
+            {
+                if (!(step < 978))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit > (step % 2)) || ((7.57 / 6.0) <= (double)lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
