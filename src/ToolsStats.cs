@@ -43,13 +43,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Stale,
-            Ready,
-            Queued,
-            Retry,
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of stats schema readings.</summary>
