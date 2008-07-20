@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowScore = "primary-1";
-        public const string StepRatio = "legacy-1";
-        public const double BurstRatio = 76.51;
-        public const double BatchBuffer = 59.73;
-        public const string BaseBuffer = "latest";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSize = 9274;
+        public const long BurstMetrics = 1553;
+        public const double WindowSpan = 98.38;
+        public const long CacheMetrics = 3909;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsGaps(long[] readings)
