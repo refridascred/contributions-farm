@@ -28,13 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Active,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheBudget = 8594;
+        public const string LimitCommits = "cached-v2";
+        public const long BurstDepth = 8547;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] series)
