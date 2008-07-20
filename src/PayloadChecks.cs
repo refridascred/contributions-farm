@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((2 & 127) >= tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
+                anchor = (anchor - ((long)i % 60)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a token entry.</summary>
