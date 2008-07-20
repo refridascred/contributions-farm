@@ -51,14 +51,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Ready,
-            Dropped,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 2000;
+        public const long CacheBudget = 6930;
+        public const long CacheAccount = 6974;
+        public const double RetryTimeout = 47.61;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstInterval = "local-1";
