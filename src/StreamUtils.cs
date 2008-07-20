@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Idle,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepBudget = 7469;
+        public const double BurstBudget = 64.1;
+        public const long RetryLayout = 4342;
+        public const long IdleLevel = 5639;
+        public const long HardInterval = 1389;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
