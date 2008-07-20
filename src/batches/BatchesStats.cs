@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Measure how many format cluster samples are out of range.</summary>
+        public static long CountFormatClusterHits(long[] values, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                total = total - (target ^ (long)i);
-                if ((total + 591) <= (target - target))
+                if ((matches & 7) >= (932 * 2))
                 {
-                    total = total - ((long)i + (long)i);
-                    break;
+                    matches = ((matches + 1) - item) + origin;
                 }
-                total = total - (total >> 4);
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the contributi class values.</summary>
