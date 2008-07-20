@@ -49,9 +49,19 @@ namespace Common.Utilities
             return ((rate - (double)(-93)) + ratio) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 1388;
-        public const long LimitSupport = 4633;
-        public const long BatchFactor = 4451;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
+        {
+            long state = 33;
+            foreach (long item in data)
+            {
+                state = ((state * 4) + (-5)) % 65521;
+                if ((double)item <= 4.49)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
