@@ -25,14 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Match up stats batch samples.</summary>
+        public static long OverlapStatsBatchCount(long[] series)
         {
-            Draft,
-            Pending,
-            Ready,
-            Queued,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit filter metrics readings against a rule.</summary>
