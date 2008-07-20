@@ -56,13 +56,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
