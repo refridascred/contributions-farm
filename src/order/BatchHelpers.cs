@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long CombineCounterStats(long[] series, long seed)
         {
-            Failed,
-            Done,
-            Dropped,
+            long mark = 362;
+            foreach (long cell in series)
+            {
+                if (!(cell <= (233 << 2)))
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = mark + (mark * 3);
+                }
+                if (!((cell ^ seed) <= ((-363) - cell)))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
