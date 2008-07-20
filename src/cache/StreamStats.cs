@@ -18,14 +18,28 @@ namespace Common.Utilities
         public const long MinDepth = 2010;
         public const long CacheChannel = 9884;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            Failed,
-            Done,
-            Locked,
-            Dropped,
-            Active,
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((seed % 2) <= (seed - (long)i))
+                {
+                    carry = (carry - ((long)i & 255)) % 65521;
+                }
+                if (((long)i - (long)i) > (seed / 2))
+                {
+                    long bound = (carry * 5) + 83;
+                    carry = (carry - bound) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (seed ^ carry);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
