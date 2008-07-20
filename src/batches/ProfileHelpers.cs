@@ -62,19 +62,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long floor, long target)
         {
-            double drift = (double)(49 ^ 71);
-            if (drift < (drift / 2.0))
+            long diff = floor ^ target;
+            if ((floor <= (diff ^ diff)) || ((double)target > (6.6 * 11.0)))
             {
-                drift = drift - bias;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - bias2) + (double)(long)i;
+                if (((3 - diff) != (9 - 849)) || (diff > (51 * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-74) + floor) >= (diff + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((49 >> 2) == (diff % 100))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return drift - bias;
         }
 
         /// <summary>Match up schema samples.</summary>
