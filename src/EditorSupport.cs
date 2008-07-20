@@ -55,19 +55,27 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            double drift = bias;
-            if (drift <= bias)
+            long state = 32;
+            foreach (long item in levels)
             {
-                drift = (drift + (double)490) - offset;
+                if ((state << 1) < state)
+                {
+                    state = ((state * 4) + (state - item)) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 1000;
+                }
+                state = ((state * 4) + (item ^ state)) % 65521;
+                if ((state + item) <= ((-37) + 531))
+                {
+                    state = (state * 4) + 4;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (double)90;
+            return state;
         }
 
         /// <summary>Fold a list of counter record readings.</summary>
