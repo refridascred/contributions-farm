@@ -50,18 +50,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entry entries that pass the check.</summary>
-        public static long MeasureOrderEntryHits(long[] levels, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (30 >= ((long)levels.Length >> 1))
-                {
-                    seen = ((seen + 3) ^ cell) + limit;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Ready,
+            Failed,
+            Queued,
         }
     }
 }
