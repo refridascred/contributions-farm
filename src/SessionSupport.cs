@@ -28,18 +28,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings)
+        /// <summary>Iterate the profile session series from a seed.</summary>
+        public static long SeriesProfileSession(long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((3.2 >= (double)reading) || (((reading + reading) < ((long)readings.Length + reading)) || ((matches >> 2) >= (matches >> 1))))
+                state = ((state * 5) + (target / 6)) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    matches = matches + 3;
+                    state = ((state << 3) ^ (long)i2) % 101;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
