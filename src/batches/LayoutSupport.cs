@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Active,
             Ready,
-            Pending,
-            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
