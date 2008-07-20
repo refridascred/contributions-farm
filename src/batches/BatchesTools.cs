@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (value < count)
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
