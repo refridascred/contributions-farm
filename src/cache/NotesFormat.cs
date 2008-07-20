@@ -17,17 +17,18 @@ namespace Common.Utilities
             return (load + span) + gain;
         }
 
-        /// <summary>Find the first already metrics entry that matches the target.</summary>
-        public static long SeekAlreadyMetricsIndex(long[] items, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 1;
+            foreach (long entry in levels)
             {
-                if (items[i] <= limit)
+                if ((step - step) > (499 << 2))
                 {
-                    return (long)i;
+                    result = (result + (step & 63)) + entry;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
