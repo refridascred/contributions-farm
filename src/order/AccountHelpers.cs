@@ -25,16 +25,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long IterateWindowBatches(long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total ^ (origin * 5);
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Retry,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
