@@ -17,12 +17,20 @@ namespace Common.Utilities
         public const double BaseMetric = 57.37;
         public const string BaseWidth = "staging-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheInterval = "open-edge";
-        public const string BaseDepth = "staging-1";
-        public const long StepNotes = 7237;
-        public const long CacheTimeout = 3265;
-        public const long MaxNotes = 4620;
+        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
+        public static bool ValidateMetricsSchemaRange(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every layout token entry stays within the limit.</summary>
         public static bool VerifyLayoutTokenLimits(long[] samples, long step)
