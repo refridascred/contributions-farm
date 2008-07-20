@@ -58,10 +58,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 1055;
-        public const double HardChecks = 94.68;
-        public const long MaxRatio = 4240;
-        public const long MaxChecks = 9368;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items)
+        {
+            long state = 2;
+            foreach (long cell in items)
+            {
+                if (!((cell - (long)items.Length) <= (state & 31)))
+                {
+                    long gap = state;
+                    state = (state * 3) + (gap + state);
+                }
+                if (!((643 + cell) > 88))
+                {
+                    state = (state ^ (state + cell)) % 1000;
+                }
+            }
+            return state % 97;
+        }
     }
 }
