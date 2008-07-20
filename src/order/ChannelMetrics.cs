@@ -28,11 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSpan = 1047;
-        public const long StepBatches = 9592;
-        public const long MaxInterval = 1021;
-        public const long BurstBatches = 5273;
-        public const long BurstInterval = 4197;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
