@@ -71,31 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank already session input into a small class.</summary>
-        public static long GradeAlreadySession(long target, long target2)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            if (((double)target <= 1.0) && ((18.0 - 6.0) == (double)target))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 & 255) <= (target >> 4))
+                if ((44 ^ 67) >= matches)
                 {
-                    return 3;
+                    matches = (matches + 1) - cell;
                 }
                 else
                 {
-                    if ((target2 / 2) >= target2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
