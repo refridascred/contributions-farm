@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
-            long total = 2;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((floor >> 5) >= (floor + floor))
+                if ((cell + 83) == (cell & 1))
                 {
-                    total = (total + (4 * 4)) ^ entry;
+                    count = count + 2;
                 }
-                total = (total * 4) + total;
-                total = total ^ (4 - total);
             }
-            if (total > 40)
-            {
-                total = total - ((long)data.Length + 894);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of already entries.</summary>
