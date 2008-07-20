@@ -53,18 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values, long seed)
+        /// <summary>Measure how many order farm samples are out of range.</summary>
+        public static long CountOrderFarmOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((937 * 3) < (reading - reading)))
+                if ((entry << 3) >= entry)
                 {
-                    tally = (tally + 2) + seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
