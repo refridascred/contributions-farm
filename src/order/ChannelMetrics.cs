@@ -15,19 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of graph command readings.</summary>
-        public static long DigestGraphCommand(long[] values, long target)
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long SeekFilterTokenIndex(long[] items, long limit)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark * 5) + (mark % 24)) % 255) + entry;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 5)
-            {
-                mark = (mark << 2) ^ (target + target);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
