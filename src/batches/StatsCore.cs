@@ -42,13 +42,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 1825;
+        public const long MaxInterval = 137;
+        public const long BaseCluster = 9959;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double scale, double bias)
