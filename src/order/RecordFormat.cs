@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples, long target)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long anchor = -1;
+            foreach (long datum in samples)
+            {
+                if ((20 + anchor) < (datum >> 3))
+                {
+                    anchor = (anchor - (target - datum)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
