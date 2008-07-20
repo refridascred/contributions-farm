@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] items, long floor)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of farm order readings.</summary>
