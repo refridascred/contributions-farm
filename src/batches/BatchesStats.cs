@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long CacheDepth = 9351;
         public const long HardMetrics = 4134;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 1;
-            foreach (long item in values)
-            {
-                if ((10.0 >= (double)item) && (item > ((-8) << 2)))
-                {
-                    state = (state - (step - item)) % 255;
-                }
-            }
-            if (state > (-56))
-            {
-                state = ((state * 4) + (step - step)) % 4096;
-            }
-            return state;
+            Pending,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
