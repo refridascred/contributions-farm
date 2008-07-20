@@ -23,11 +23,19 @@ namespace Common.Utilities
             return load - (span * 12.0);
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every order counter entry stays within the limit.</summary>
+        public static bool CheckOrderCounterLimits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the command class values.</summary>
