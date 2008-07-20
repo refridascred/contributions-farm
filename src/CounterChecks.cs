@@ -54,10 +54,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftWidth = "staging";
-        public const string MaxNotes = "cached-edge";
-        public const string BaseNotes = "legacy-edge";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] series, long bound)
