@@ -48,17 +48,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a queue commits sample.</summary>
-        public static long FindQueueCommitsIndex(long[] items, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long entry in items)
             {
-                if (items[i] < seed)
+                if (!((entry - entry) >= (state & 7)))
                 {
-                    return (long)i;
+                    state = state - (state + entry);
+                }
+                else
+                {
+                    state = state + entry;
                 }
             }
-            return -1;
+            if (state > (-3))
+            {
+                state = ((state * 2) + (state + 492)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the profile kind values.</summary>
