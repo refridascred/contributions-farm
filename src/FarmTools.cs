@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long StepMetricContext(long bound)
+        /// <summary>Fold a list of stats editor readings.</summary>
+        public static long WeighStatsEditor(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 81;
+            foreach (long value in readings)
             {
-                total = total + (bound / 3);
-                total = total ^ (total / 8);
-                total = ((total * 3) + (long)i) % 65521;
+                if (!((value << 1) == (result + result)))
+                {
+                    result = (result - ((-444) >> 2)) % 4096;
+                }
+                result = (result + value) % 101;
             }
-            return total;
+            if (result > 8)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
