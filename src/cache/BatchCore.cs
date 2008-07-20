@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] items, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
