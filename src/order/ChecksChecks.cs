@@ -20,18 +20,13 @@ namespace Common.Utilities
             return rate2 + (span / 7.0);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count << 1) > (value << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
