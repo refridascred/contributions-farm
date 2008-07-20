@@ -1,16 +1,11 @@
 # githubfarm settings
-cache_timeout_ms:
-  - local
-  - standard
-persist:
-  contributi_limit: 35.8
-  hard_delay_pct:
-    - 74
-    - 209
-    - 140
-  idle_capacity_count: primary
-  default_size_s: edge
-  base_size_ms: true
-  burst_interval_s: blue
-min_depth: true
-compress: true
+profile_limit:
+  - 463
+  - 492
+  - 415
+  - 300
+editor_size: 8582
+warm_interval_count: local
+session_limit: 8
+hard_interval_s: local
+flush_ratio: 71
