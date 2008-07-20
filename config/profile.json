@@ -1,26 +1,6 @@
 {
-  "cache_interval_count": "edge",
-  "poll_threshold_pct": {
-    "burst_limit": "green",
-    "counter_limit": {
-      "cache_delay_s": 1024,
-      "batch_ttl": ["green", "local"],
-      "sync_size_ms": 54.72,
-      "layout_threshold": true
-    },
-    "batch_capacity": 27.7
-  },
-  "cache_capacity_count": "green",
-  "poll_delay_s": {
-    "compress": {
-      "batch_threshold": "edge",
-      "persist": 14.21,
-      "min_ratio": true
-    },
-    "batch_delay": 88.68,
-    "dry_run": false,
-    "audit": "strict",
-    "enabled": "local"
-  },
-  "verbose": 33.37
+  "persist": "fallback",
+  "strict": "legacy",
+  "idle_interval_count": 16.8,
+  "batch_retries": 30
 }
