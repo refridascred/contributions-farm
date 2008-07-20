@@ -73,12 +73,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of schema window readings.</summary>
+        public static long FoldSchemaWindow(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 0;
+            foreach (long item in series)
+            {
+                if ((double)floor <= 0.9)
+                {
+                    mix = (mix ^ (item + item)) % 1000;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
