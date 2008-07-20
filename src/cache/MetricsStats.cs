@@ -53,13 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Done,
-            Synced,
-            New,
-            Draft,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
