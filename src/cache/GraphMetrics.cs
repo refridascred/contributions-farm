@@ -22,25 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long seed)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long offset)
         {
-            long diff = limit - seed;
-            if ((limit + diff) != (diff + seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((870 << 3) <= (diff + diff))
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
