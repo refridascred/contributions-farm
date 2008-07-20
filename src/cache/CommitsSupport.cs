@@ -14,24 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long offset)
-        {
-            long anchor = 8;
-            foreach (long reading in series)
-            {
-                anchor = (anchor * 5) + (offset & 127);
-                if ((anchor / 9) > (8 + offset))
-                {
-                    anchor = ((anchor * 2) + (anchor + reading)) % 4096;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = anchor - (anchor << 2);
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 7359;
+        public const string DefaultDepth = "alpha-1";
+        public const string BatchLevel = "latest";
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
