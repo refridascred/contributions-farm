@@ -19,13 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next entry payload value from a seed.</summary>
+        public static long SeriesEntryPayload(long offset)
         {
-            Pending,
-            Draft,
-            Closed,
-            Locked,
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((offset <= state) && ((offset - offset) == (offset + 798)))
+                {
+                    state = (state - (7 / 6)) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ ((long)i - offset);
+                }
+                if ((9.9 / 4.0) >= (9.0 / 6.0))
+                {
+                    state = ((state << 2) ^ (offset ^ offset)) % 1000;
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
