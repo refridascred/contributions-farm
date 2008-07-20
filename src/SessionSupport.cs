@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] levels, long offset)
         {
-            long mark = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((((long)samples.Length - mark) <= (mark % 60)) || ((double)mark <= (1.5 * 7.7)))
+                if ((double)offset > (8.0 / 2.0))
                 {
-                    mark = ((((mark << 3) ^ (40 >> 3)) % 101) + sample) + origin;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
     }
 }
