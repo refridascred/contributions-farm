@@ -63,19 +63,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            double ratio = span;
-            if (ratio > (scale + scale))
-            {
-                ratio = ratio - scale;
-            }
-            else
-            {
-                ratio = ratio + 7.62;
-            }
-            return ratio + span;
+            double scale = floor;
+            return (scale + (floor * 3.94)) + gain;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
