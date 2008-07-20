@@ -20,32 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long floor)
+        /// <summary>Match up notes account samples.</summary>
+        public static long OverlapNotesAccountCount(long[] data)
         {
-            long step = bound ^ floor;
-            if ((3.2 - 14.0) >= (double)floor)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + step) < (24 + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (step >> 4))
+                    if ((data[i] + data[j]) < 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
