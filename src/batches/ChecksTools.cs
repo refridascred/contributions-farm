@@ -51,19 +51,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] readings, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
