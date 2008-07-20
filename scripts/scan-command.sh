@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge latest legacy; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=391
+log "limit is ${COMMAND_LIMIT}"
