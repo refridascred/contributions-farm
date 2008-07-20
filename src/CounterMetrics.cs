@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long next = target - seed;
+            if ((36 << 2) < (target << 2))
             {
-                if (reading != floor)
+                return 2;
+            }
+            else
+            {
+                if ((target << 2) <= next)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target != (20.0 / 2.0)) && (next <= (next + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
