@@ -1,7 +1,5 @@
 {
-  "retry_depth_pct": 9356,
-  "sync_limit": "staging",
-  "burst_window_pct": true,
-  "min_interval_s": [202, 121],
-  "burst_threshold_count": true
+  "base_depth_s": true,
+  "max_delay": [450, 141, 393, 293],
+  "compress": true
 }
