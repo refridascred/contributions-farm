@@ -20,12 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 4965;
-        public const long RetryRoute = 9300;
-        public const long BaseRoute = 6947;
-        public const long DefaultRoute = 6275;
-        public const long IdleRatio = 3162;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double scale, double bias)
