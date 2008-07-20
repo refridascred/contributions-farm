@@ -17,18 +17,13 @@ namespace Common.Utilities
             return (load + span) + gain;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = 1;
-            foreach (long entry in levels)
-            {
-                if ((step - step) > (499 << 2))
-                {
-                    result = (result + (step & 63)) + entry;
-                }
-            }
-            return result;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
