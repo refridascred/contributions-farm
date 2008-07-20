@@ -33,19 +33,10 @@ namespace Common.Utilities
         public const long IdleCount = 8284;
         public const double BaseOrder = 5.09;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (matches < (cell % 97))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 2664;
+        public const long CacheSpan = 2376;
+        public const double StepWidth = 18.09;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] items, long bound)
