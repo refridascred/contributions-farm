@@ -33,14 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            Closed,
-            Synced,
-            Retry,
-            Idle,
-            Draft,
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix + (limit + (long)i);
+                mix = (mix - 451) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order state values.</summary>
