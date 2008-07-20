@@ -45,13 +45,13 @@ namespace Common.Utilities
         public const long BurstPayload = 9418;
         public const double BasePayload = 55.64;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
             public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
