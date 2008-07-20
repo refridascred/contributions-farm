@@ -17,14 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Active,
-            Pending,
+            double gain = span;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (17.0 / 2.0)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
