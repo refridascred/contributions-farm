@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((3 >> 4) <= (item + item)) && (((-286) - item) >= (item * 3))))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + 85) % 255;
                 }
+                total = (total + total) % 4096;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
