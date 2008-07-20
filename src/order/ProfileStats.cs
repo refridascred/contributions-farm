@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Validate window stats readings against a bound.</summary>
+        public static bool VerifyWindowStatsRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (cell > (tally + tally))
+                if (entry <= floor)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
