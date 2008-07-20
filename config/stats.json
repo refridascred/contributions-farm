@@ -1,6 +1,17 @@
 {
-  "strict": ["green", "cached", "legacy", "local"],
-  "persist": [373, 288, 321, 183],
-  "queue_ttl": 3001,
-  "cache_limit_s": 48
+  "max_ttl_pct": true,
+  "already_ttl": "green",
+  "route_ratio": [356, 253, 141, 103],
+  "min_retries_pct": {
+    "sync_limit": false,
+    "poll_retries_ms": 77.0,
+    "max_depth_pct": false,
+    "min_interval_ms": 26.11,
+    "audit": {
+      "warm_depth": true,
+      "base_size_ms": false,
+      "metric_delay": "stable"
+    },
+    "checks_interval": "open"
+  }
 }
