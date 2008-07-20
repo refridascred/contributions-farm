@@ -47,16 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = mark + ((long)i / 5);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((entry + entry) >= (hits & 31))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
