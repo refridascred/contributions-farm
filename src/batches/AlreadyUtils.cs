@@ -87,21 +87,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric queue readings.</summary>
-        public static long CompareMetricQueueCount(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = bias + weight;
+            if (weight2 < (weight2 / 2.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 - (bias - bias);
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (bias * 0.48)) - (double)(long)i;
+            }
+            return weight2 - 19.0;
         }
     }
 }
