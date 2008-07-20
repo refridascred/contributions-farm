@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
