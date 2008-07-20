@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Grade a record session value against two limits.</summary>
+        public static long GradeRecordSession(long limit, long origin)
         {
-            Pending,
-            Active,
-            Idle,
+            if ((6.5 - 7.0) <= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin - origin) <= (4 % 12)) && ((limit - 3) == (origin * 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 4) < (87 / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
