@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels, long origin)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Draft,
+            long acc = 503;
+            foreach (long value in levels)
+            {
+                acc = acc + (value - (-53));
+            }
+            if (acc > 3)
+            {
+                acc = ((acc * 4) + (origin / 2)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
