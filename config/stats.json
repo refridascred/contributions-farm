@@ -1,15 +1,7 @@
 {
-  "max_delay": {
-    "idle_capacity": 3,
-    "base_size": false,
-    "poll_delay_ms": "local",
-    "entry_delay": "strict",
-    "base_interval_pct": true,
-    "sync_timeout": [408, 323, 467]
-  },
-  "base_size_s": "eu-west",
-  "default_timeout_s": "standard",
-  "account_threshold": 82.94,
-  "flush_limit": 70.6,
-  "profile_retries": true
+  "verbose": true,
+  "cache_threshold_s": "staging",
+  "command_delay": 16.86,
+  "flush_limit_count": 4556,
+  "persist": "open"
 }
