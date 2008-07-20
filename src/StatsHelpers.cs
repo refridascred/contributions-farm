@@ -70,15 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double drift = (offset / 7.0) - gain;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + gain;
+            Idle,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Fold a list of report readings.</summary>
