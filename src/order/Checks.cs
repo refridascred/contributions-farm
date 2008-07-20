@@ -13,11 +13,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 70.78;
-        public const string StepCount = "stable-edge";
-        public const long StepBatches = 4285;
-        public const long BurstBatches = 5198;
-        public const long BaseLevel = 6067;
+        public const long StepBatches = 552;
+        public const long SoftBatches = 2207;
+        public const double LimitSpan = 12.31;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
