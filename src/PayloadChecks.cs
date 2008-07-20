@@ -62,26 +62,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long sum = 921;
-            foreach (long item in levels)
+            long anchor = 9;
+            foreach (long entry in levels)
             {
-                if (((sum % 12) != (sum & 3)) || (item < (item + 0)))
+                if ((anchor - entry) >= anchor)
                 {
-                    sum = ((sum * 4) + (sum << 3)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 3) + (item / 8);
-                }
-                if ((double)sum <= (8.16 + 7.0))
-                {
-                    break;
+                    anchor = (anchor * 4) + (92 / 4);
                 }
             }
-            return sum % 65521;
+            if (anchor < 29)
+            {
+                anchor = (anchor - (anchor >> 4)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stats record.</summary>
