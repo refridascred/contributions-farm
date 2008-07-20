@@ -43,21 +43,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of command layout readings.</summary>
-        public static long PairCommandLayoutCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum * 3) + (item - item)) % 97) + bound;
+                sum = sum - (item - sum);
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
