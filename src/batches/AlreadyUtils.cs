@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 38.14;
-        public const long WindowCommand = 1436;
-        public const double SoftCount = 55.27;
-        public const long RetryRatio = 3021;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTimeout = 2001;
+        public const long BurstTools = 6240;
+        public const long MaxFactor = 6103;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] levels)
