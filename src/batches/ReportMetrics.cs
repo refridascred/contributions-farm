@@ -39,19 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a format command counter forward.</summary>
-        public static long StepFormatCommand(long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long result = 65;
+            foreach (long value in levels)
             {
-                if ((sum % 7) == (seed - 4))
+                if (((result * 2) == (value ^ value)) || ((double)value >= (double)23))
                 {
-                    break;
+                    result = (result * 2) + value;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            if (result > 35)
+            {
+                result = (result ^ (4 % 97)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
