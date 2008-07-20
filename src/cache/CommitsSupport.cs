@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = ratio;
+            if (rate >= offset)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)48;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)55) + (double)(long)i;
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Hold a metric entry.</summary>
