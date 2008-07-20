@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long value in samples)
             {
-                if (3.1 > (double)tally)
+                if ((tally + value) != (480 ^ value))
                 {
-                    tally = (tally + 1) ^ datum;
+                    tally = tally + 1;
                 }
             }
             return tally;
