@@ -24,13 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long score = 59;
+            foreach (long reading in samples)
+            {
+                score = (score + (step >> 5)) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
