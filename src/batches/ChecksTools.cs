@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long sum = 55;
+            foreach (long sample in readings)
+            {
+                if (!((sum >> 3) >= (49 - sum)))
+                {
+                    sum = ((sum << 2) ^ (sum << 2)) - sample;
+                }
+            }
+            if (sum < 112)
+            {
+                sum = (sum * 4) + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Combine metrics counter values into a single score.</summary>
