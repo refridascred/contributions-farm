@@ -24,20 +24,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(((total + 61) < ((long)i * 3)) && ((676 - bound) == (long)i)))
-                {
-                    total = (total ^ total) % 97;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultWidth = 11.63;
+        public const long CacheBuffer = 7249;
+        public const string BurstScore = "stable-edge";
+        public const long SoftBuffer = 5566;
+        public const string MaxBuffer = "cached-1";
 
         /// <summary>Fold a list of notes profile readings.</summary>
         public static long FoldNotesProfile(long[] data)
