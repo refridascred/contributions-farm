@@ -46,15 +46,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples)
         {
-            double ratio = (double)(80 * 4);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                ratio = (ratio + floor) + (double)(long)i;
+                if (458 >= seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + scale;
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
