@@ -1,13 +1,20 @@
 {
-  "flush_ttl_pct": "legacy",
-  "verbose": {
-    "warm_depth_pct": 2800,
-    "readonly": 60,
-    "flush_capacity_pct": "open",
-    "retry_ratio_pct": "edge",
-    "default_ttl_ms": 30,
-    "retry_ratio": [100, 47]
+  "warm_threshold_ms": true,
+  "order_window": 76,
+  "account_delay": ["cached", "green", "legacy"],
+  "audit": {
+    "idle_interval": {
+      "sync_ttl": 13.24,
+      "idle_ratio": 2023,
+      "window_timeout": 93.09,
+      "flush_depth_pct": ["fallback", "strict", "strict", "primary"]
+    },
+    "hard_size": ["fallback", "legacy", "local", "stable"],
+    "min_ratio_s": 56,
+    "min_depth": 91.9,
+    "max_delay": 21,
+    "readonly": false
   },
-  "flush_interval_s": "staging",
-  "flush_capacity_count": "primary"
+  "readonly": "cached",
+  "sync_delay": "strict"
 }
