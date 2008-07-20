@@ -12,25 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long limit2)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long prev = limit ^ limit2;
-            if ((double)prev >= (14.0 / 3.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit % 100) < (-63)) || ((double)limit2 >= (6.2 / 9.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
