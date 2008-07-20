@@ -37,21 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = gain;
+            if (load > gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + load;
             }
-            return seen;
+            return load - floor;
         }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
