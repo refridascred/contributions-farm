@@ -20,11 +20,11 @@ namespace Common.Utilities
             return bias3 - (bias3 / 8.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSize = "stable";
-        public const long SoftWidth = 4811;
-        public const double IdleFactor = 40.24;
-        public const long BurstCounter = 4395;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSpan = "open-v2";
+        public const long WindowBatch = 2904;
+        public const string CacheCount = "legacy-edge";
+        public const long BurstBatch = 3356;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
