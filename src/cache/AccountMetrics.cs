@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "staging-v2";
-        public const long MinScore = 7288;
-        public const long BurstCount = 7498;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "standard-v2";
+        public const double StepSpan = 26.22;
+        public const double BaseInterval = 3.32;
+        public const string MaxDepth = "fallback";
+        public const long SoftCount = 4241;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] levels, long floor)
