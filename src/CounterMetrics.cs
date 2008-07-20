@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultScore = 2525;
-        public const double MinTimeout = 17.1;
-        public const long CacheCount = 5473;
-        public const long BurstWindow = 5604;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCount = 8370;
+        public const long RetryWidth = 1350;
+        public const double CacheCommand = 52.51;
+        public const long HardCommand = 8970;
+        public const long IdleBudget = 3945;
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] items)
