@@ -21,16 +21,39 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Rank context batches input into a small class.</summary>
+        public static long RankContextBatches(long seed, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long bound = seed + target;
+            if ((seed ^ target) >= (target >> 4))
             {
-                acc = (acc + (limit % 2)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((seed < (target * 3)) && (7.5 > (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed < (bound + (-67)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)seed > (7.89 + 8.3)) && (seed >= (bound % 60)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
