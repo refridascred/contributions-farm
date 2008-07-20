@@ -26,18 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long MeasureOrderToolsMatches(long[] values, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long gap = limit + step;
+            if (!(limit > (limit % 5)))
             {
-                if (((tally - entry) <= (entry - origin)) && ((entry ^ tally) > origin))
+                return 3;
+            }
+            else
+            {
+                if ((double)gap == (double)8)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 97) >= 11)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a commits header.</summary>
