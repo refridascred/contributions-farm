@@ -14,10 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 4671;
-        public const long WindowInterval = 6082;
-        public const double RetryCount = 37.79;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstSize = "staging-v2";
+        public const long RetryCache = 3923;
+        public const long RetryInterval = 8344;
 
         /// <summary>Check that every graph metrics entry stays within the limit.</summary>
         public static bool GuardGraphMetricsLimits(long[] values, long origin)
