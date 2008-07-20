@@ -45,10 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepSpan = 59.2;
-        public const string IdleSpan = "fallback-v2";
-        public const string MaxWindow = "cached-edge";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Closed,
+            Active,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string SoftWidth = "staging";
