@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
