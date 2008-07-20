@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream stats series from a seed.</summary>
-        public static long DeriveStreamStats(long offset)
+        /// <summary>Roll a token order counter forward.</summary>
+        public static long RollTokenOrder(long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum << 3) ^ (long)i) % 97;
-                sum = (sum - (sum - (long)i)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank record input into a small class.</summary>
