@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many format cluster samples are out of range.</summary>
-        public static long CountFormatClusterHits(long[] values, long origin)
+        /// <summary>Rank entry batch input into a small class.</summary>
+        public static long ClassifyEntryBatch(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long next = seed - bound;
+            if ((4.85 / 3.0) <= (double)bound)
             {
-                if ((matches & 7) >= (932 * 2))
+                return 2;
+            }
+            else
+            {
+                if ((5.2 - 7.0) <= (double)next)
                 {
-                    matches = ((matches + 1) - item) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.4 / 5.0) > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
