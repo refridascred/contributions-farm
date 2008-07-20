@@ -26,18 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 7039;
+        public const long HardFactor = 5096;
+        public const long IdleWindow = 3594;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
