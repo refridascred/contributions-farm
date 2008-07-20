@@ -35,18 +35,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] readings, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((long)readings.Length > tally))
-                {
-                    tally = ((tally + 1) - cell) - offset;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Project the next contributi value.</summary>
