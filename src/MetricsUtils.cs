@@ -48,15 +48,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double weight, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double gain = 8.0;
-            if (gain >= (floor - 1.0))
-            {
-                gain = (gain + (floor - 8.0)) - weight;
-            }
-            return gain + floor;
+            Queued,
+            Pending,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
