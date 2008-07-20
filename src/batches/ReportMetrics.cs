@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool VerifyBatchesFormatRange(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1396;
+        public const long BurstAlready = 6105;
+        public const long IdleAlready = 8787;
+        public const long HardAlready = 4914;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
