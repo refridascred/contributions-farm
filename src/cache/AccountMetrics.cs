@@ -36,19 +36,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long target, long floor)
         {
-            double rate = weight + 6.83;
-            if (rate > (bias - rate))
+            long slot = target + floor;
+            if (slot > (slot % 64))
             {
-                rate = rate - rate;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - (rate * 5.15)) + (double)(long)i;
+                if ((floor - slot) <= (target >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + 77) < (target + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate + 3.0;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
