@@ -83,19 +83,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long bound)
         {
-            long state = 33;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (-5)) % 65521;
-                if ((double)item <= 4.49)
+                if (items[i] >= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
