@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!((datum + 281) <= (2 % 97)))
+                if ((tally + cell) > ((long)levels.Length / 5))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of channel command entries.</summary>
