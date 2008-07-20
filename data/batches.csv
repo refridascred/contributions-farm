@@ -1,11 +1,6 @@
-id,level,state,score
-1,66.45,strict,997
-2,137,975,760
-3,90.22,fallback,71.66
-4,14.91,stable,11
-5,216,585,54.18
-6,943,308,legacy
-7,71.15,strict,633
-8,stable,latest,496
-9,63,latest,local
-10,66.91,202,48.29
+id,weight,token,ratio,state
+1,16.6,fallback,52.85,latest
+2,23.29,legacy,257,19.78
+3,staging,878,local,green
+4,625,stable,legacy,645
+5,blue,940,292,587
