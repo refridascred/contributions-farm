@@ -23,22 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowScore = 9463;
+        public const long MinMetric = 7808;
+        public const long SoftMetric = 8825;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double offset)
