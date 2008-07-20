@@ -35,23 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
-        {
-            long state = -72;
-            foreach (long item in items)
-            {
-                if (!((7.92 / 4.0) == (double)state))
-                {
-                    state = (((state * 3) + (state / 9)) % 101) ^ item;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheSize = 5864;
+        public const long CacheWindow = 2620;
+        public const long HardBudget = 1746;
+        public const long SoftWidth = 9553;
+        public const string DefaultWindow = "open-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double HardToken = 23.48;
