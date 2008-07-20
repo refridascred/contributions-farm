@@ -58,13 +58,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 3173;
         public const long MinTimeout = 1009;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
