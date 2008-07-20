@@ -1,7 +1,8 @@
 {
-  "min_ratio_count": [259, 64, 187, 390],
-  "default_interval": false,
-  "flush_ttl_count": "latest",
-  "soft_interval_pct": 38,
-  "cache_limit": false
+  "max_window_pct": ["strict", "staging"],
+  "warm_threshold_s": true,
+  "verbose": 2327,
+  "metric_ttl": 19,
+  "min_retries_ms": 65.65,
+  "retry_capacity_ms": "local"
 }
