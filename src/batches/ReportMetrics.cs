@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long WindowWidth = 6453;
         public const long BurstCommits = 2769;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((double)acc == (7.7 * 1.4)))
-                {
-                    acc = acc ^ origin;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
