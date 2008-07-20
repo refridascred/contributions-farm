@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate metric payload samples.</summary>
-        public static long FoldMetricPayload(long[] data, long origin)
-        {
-            long result = 36;
-            foreach (long item in data)
-            {
-                if (!((double)result >= (0.15 / 4.0)))
-                {
-                    result = (result - (origin ^ item)) % 65521;
-                }
-                result = ((result << 3) ^ (item << 1)) % 101;
-                if (!((double)item <= (11.0 / 2.0)))
-                {
-                    result = ((result * 2) + result) % 101;
-                }
-                else
-                {
-                    result = (result - 67) % 65521;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultInterval = 23.16;
+        public const string BurstDepth = "fallback-1";
+        public const long LimitCount = 2221;
+        public const double HardContributi = 6.88;
+        public const double BaseBudget = 14.22;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long limit)
