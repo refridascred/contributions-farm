@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix + mix) ^ (long)i2;
-                }
-                if ((double)mix != (8.3 + 5.0))
-                {
-                    break;
-                }
-                mix = ((mix << 3) ^ (bound + bound)) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Done,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
