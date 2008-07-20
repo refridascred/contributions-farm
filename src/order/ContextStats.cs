@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long StepGraph = 9008;
         public const long HardGraph = 1745;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long target)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
