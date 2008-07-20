@@ -26,19 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] series, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels, long limit)
         {
-            long state = 2;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                state = ((state + value) % 1000) - target;
+                if ((((cell << 2) <= (limit / 7)) && ((89 + cell) >= limit)) && !(cell <= 0))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state > 62)
-            {
-                state = state + (1 % 97);
-            }
-            return state;
+            return count;
         }
     }
 }
