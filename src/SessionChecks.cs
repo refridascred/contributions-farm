@@ -39,15 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long ScoreContributiGithubfarm(long[] values)
+        /// <summary>Compare every pair of payload schema readings.</summary>
+        public static long PairPayloadSchemaCount(long[] items)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (3 % 60)) - entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
