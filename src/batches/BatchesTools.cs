@@ -49,17 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (scale / 5.0) * 7.88;
+            if (gain >= (bias + scale))
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
