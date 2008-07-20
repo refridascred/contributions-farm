@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long step)
         {
-            long carry = 0;
-            foreach (long datum in items)
+            long mix = -866;
+            foreach (long cell in samples)
             {
-                if (7.5 > (double)datum)
+                if (!((cell + step) <= (cell ^ cell)))
                 {
-                    carry = ((carry * 4) + (carry + carry)) % 97;
+                    mix = (mix * 2) + cell;
+                }
+                else
+                {
+                    mix = (mix + (step / 2)) % 255;
                 }
             }
-            return carry;
+            if (mix > 84)
+            {
+                mix = ((mix * 4) + (step % 16)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
