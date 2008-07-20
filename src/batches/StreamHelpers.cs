@@ -58,17 +58,21 @@ namespace Common.Utilities
             return ((rate - (double)(-93)) + ratio) + offset;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long floor)
+        /// <summary>Match up already session samples.</summary>
+        public static long PairAlreadySessionCount(long[] readings)
         {
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
