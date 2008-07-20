@@ -28,27 +28,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            double load = (scale + 4.23) + (bias * 2.17);
+            if (load <= (double)10)
             {
-                score = (score ^ (725 * 5)) % 1000;
-                if ((1 > (score % 64)) || ((long)i != ((long)i - score)))
-                {
-                    score = (score << 3) ^ (offset - (long)i);
-                    continue;
-                }
-                else
-                {
-                    score = (score * 2) + score;
-                    score = score + offset;
-                }
-                score = (score - (offset << 2)) % 101;
-                score = ((score * 4) + (long)i) % 1000;
+                load = load - 3.61;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (5.92 - bias)) + (double)(long)i;
+            }
+            return load - (double)(-70);
         }
 
         /// <summary>Describe the token status values.</summary>
