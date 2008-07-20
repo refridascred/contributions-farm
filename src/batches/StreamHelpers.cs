@@ -52,11 +52,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 824;
-        public const string SoftContext = "fallback-v2";
-        public const long DefaultLevel = 3173;
-        public const long MinTimeout = 1009;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] readings, long floor)
