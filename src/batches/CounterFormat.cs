@@ -24,19 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long MeasureCommitsAccountOutliers(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + offset) <= (value & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 2217;
+        public const double HardProfile = 96.7;
+        public const string SoftInterval = "primary-edge";
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long step, long step2)
