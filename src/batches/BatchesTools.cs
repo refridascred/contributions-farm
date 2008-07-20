@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Accumulate route payload samples.</summary>
+        public static long ScoreRoutePayload(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 65;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor / 4) > anchor)
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 2) + (sample * 2)) % 101;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
     }
 }
