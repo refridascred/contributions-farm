@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            Draft,
-            Synced,
-            Dropped,
+            long mark = 77;
+            foreach (long entry in levels)
+            {
+                mark = (mark * 5) + entry;
+            }
+            if (mark > 0)
+            {
+                mark = ((mark << 3) ^ (mark << 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first context contributi entry that matches the target.</summary>
