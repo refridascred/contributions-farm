@@ -1,12 +1,13 @@
 {
-  "warm_interval_s": ["legacy", "blue", "blue", "primary"],
-  "warm_threshold_pct": {
-    "enabled": 22,
-    "flush_capacity_pct": true,
-    "hard_retries_ms": false,
-    "burst_retries_ms": 10.37
+  "base_ttl_pct": "green",
+  "counter_interval": ["staging", "primary", "primary"],
+  "report_timeout": [299, 232],
+  "default_capacity": "cached",
+  "compress": {
+    "min_depth_s": false,
+    "burst_threshold_count": 38.72,
+    "warm_limit_ms": 898,
+    "burst_threshold_ms": 61.55
   },
-  "token_ratio": [57, 131, 31, 207],
-  "soft_retries_pct": false,
-  "burst_ratio": 4.36
+  "readonly": "fallback"
 }
