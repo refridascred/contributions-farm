@@ -1,16 +1,12 @@
 # Command notes
 
-When a notes fails, the token handler retries a few times before giving up.
-Use stream settings to tune how often layout data is refreshed.
-Run the contributi check before changing any batch limits.
-
-Use buffer settings to tune how often filter data is refreshed.
-A window that stays idle for too long is moved to the payload list.
-Run the cluster check before changing any support limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the order queue.
+A cache that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep payload values small
-- Document new checks fields
-- Validate layout input early
+- Validate window input early
+- Review format limits each release
+- Log every stats change
+- Document new order fields
