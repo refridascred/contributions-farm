@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] values, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell != (5.95 + 8.0))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
