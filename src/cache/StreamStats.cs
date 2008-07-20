@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const long MinDepth = 2010;
         public const long CacheChannel = 9884;
 
-        /// <summary>Look up the position of a channel metrics sample.</summary>
-        public static long LocateChannelMetricsIndex(long[] items, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
