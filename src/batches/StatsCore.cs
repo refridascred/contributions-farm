@@ -31,18 +31,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Roll a githubfarm profile counter forward.</summary>
+        public static long RollGithubfarmProfile(long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.1 + 5.41) <= (double)tally)
-                {
-                    tally = (tally + 1) + value;
-                }
+                result = ((result << 2) ^ (74 * 5)) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a counter entry.</summary>
