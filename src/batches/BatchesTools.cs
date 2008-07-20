@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the already kind values.</summary>
