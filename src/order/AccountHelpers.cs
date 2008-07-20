@@ -55,22 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks cluster samples are out of range.</summary>
-        public static long TallyChecksClusterMatches(long[] levels, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((step + count) <= step)
+                if (datum >= seed)
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
