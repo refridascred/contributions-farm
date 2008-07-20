@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of format metrics readings.</summary>
-        public static long PairFormatMetricsCount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-251) >> 5) > ((long)i * 4))
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ (806 * 3);
                 }
+                else
+                {
+                    score = score - ((long)i << 2);
+                    score = (score ^ (score * 2)) % 101;
+                }
+                score = (score << 3) ^ ((long)i - 18);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
