@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((853 >> 3) != (bound * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (5 <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Match up stats batch samples.</summary>
