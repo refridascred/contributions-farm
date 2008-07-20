@@ -56,18 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] series, long offset)
+        /// <summary>Combine order stats values into a single score.</summary>
+        public static long FoldOrderStats(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = 0;
+            foreach (long value in items)
             {
-                if ((offset >> 4) == (offset ^ entry))
+                if ((total - total) <= (total - origin))
                 {
-                    hits = hits + 1;
+                    total = (total + (total - 24)) ^ value;
                 }
             }
-            return hits;
+            if (total < 531)
+            {
+                total = (total << 2) ^ origin;
+            }
+            return total % 97;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
