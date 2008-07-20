@@ -36,24 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            if (offset > (offset + offset))
+            double rate = weight + 6.83;
+            if (rate > (bias - rate))
             {
-                return 5;
+                rate = rate - rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit >> 5) == (limit / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - (rate * 5.15)) + (double)(long)i;
             }
+            return rate + 3.0;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
