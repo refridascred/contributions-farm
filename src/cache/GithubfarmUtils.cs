@@ -57,11 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultInterval = 49.5;
-        public const long CacheAlready = 5711;
-        public const long StepInterval = 9736;
-        public const long DefaultFactor = 3675;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardRatio = 4055;
