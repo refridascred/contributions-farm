@@ -25,12 +25,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
