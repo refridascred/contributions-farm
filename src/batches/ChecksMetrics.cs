@@ -68,21 +68,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state * 5) + ((long)i ^ origin);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
