@@ -16,12 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4201;
-        public const double WindowCount = 25.29;
-        public const long BaseLevel = 5649;
-        public const double BaseMetric = 57.37;
-        public const string BaseWidth = "staging-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 67.23;
+        public const string BatchToken = "legacy-v2";
+        public const double BurstToken = 51.38;
+        public const long MaxTimeout = 8795;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
