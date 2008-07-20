@@ -1,6 +1,16 @@
 # githubfarm settings
-report_depth: 2191
-audit: latest
-verbose: stable
-burst_threshold: 389
-strict: 60
+cache_timeout_ms:
+  - local
+  - standard
+persist:
+  contributi_limit: 35.8
+  hard_delay_pct:
+    - 74
+    - 209
+    - 140
+  idle_capacity_count: primary
+  default_size_s: edge
+  base_size_ms: true
+  burst_interval_s: blue
+min_depth: true
+compress: true
