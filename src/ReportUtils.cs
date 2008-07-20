@@ -63,25 +63,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((382 - (long)i) == ((long)i * 4))
+                if (value > offset)
                 {
-                    carry = ((carry * 3) + (carry >> 1)) % 97;
+                    found = false;
                     break;
                 }
-                else
-                {
-                    long matches = (carry >> 1) + carry;
-                    carry = ((carry << 3) ^ (limit - matches)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return found;
         }
     }
 }
