@@ -13,14 +13,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a channel editor reading by value.</summary>
+        public static long LookupChannelEditorIndex(long[] readings, long limit)
         {
-            Synced,
-            Dropped,
-            Queued,
-            New,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
