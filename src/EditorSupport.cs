@@ -20,15 +20,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double ratio = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio + offset;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next token stream value from a seed.</summary>
