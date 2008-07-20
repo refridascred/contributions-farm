@@ -20,31 +20,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if ((limit % 97) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 3) <= (limit - 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin & 127) > ((-28) + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
