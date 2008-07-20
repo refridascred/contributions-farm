@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every context batches entry stays within the limit.</summary>
-        public static bool CheckContextBatchesRange(long[] samples, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long carry = 23;
+            foreach (long sample in series)
             {
-                if (entry <= seed)
+                if (floor < (sample / 4))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - (floor % 2)) % 101;
                 }
             }
-            return ok;
+            if (carry > 888)
+            {
+                carry = carry ^ (floor ^ carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
