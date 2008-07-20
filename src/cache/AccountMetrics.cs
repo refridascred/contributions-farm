@@ -49,23 +49,14 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long state = -46;
-            foreach (long item in values)
-            {
-                long step = state;
-                if (step < (item >> 2))
-                {
-                    step = ((step * 3) + (7 - step)) % 1000;
-                }
-                if (((double)item <= (19.0 - 6.6)) || (5.2 < (double)state))
-                {
-                    state = state + (state - state);
-                }
-            }
-            return state % 4096;
+            Paused,
+            Done,
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
