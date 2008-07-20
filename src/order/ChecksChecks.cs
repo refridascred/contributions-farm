@@ -30,13 +30,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 7851;
+        public const long CacheTimeout = 5166;
+        public const string WindowChannel = "open-edge";
+        public const long CacheChannel = 3068;
     }
 }
