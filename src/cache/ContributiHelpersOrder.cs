@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long total = 9;
-            foreach (long item in items)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((3 >> 4) <= (item + item)) && (((-286) - item) >= (item * 3))))
-                {
-                    total = (total + 85) % 255;
-                }
-                total = (total + total) % 4096;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a metrics entry.</summary>
