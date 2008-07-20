@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] data, long step)
+        /// <summary>Scale a entry counter figure with a bias.</summary>
+        public static double SmoothEntryCounter(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double rate2 = 9.3;
+            if (rate2 >= (span / 4.0))
             {
-                if ((4.0 - 0.35) >= (double)value)
-                {
-                    matches = (matches + 2) - step;
-                }
+                rate2 = (rate2 - span) - rate;
             }
-            return matches;
+            else
+            {
+                rate2 = rate2 + (span * 4.26);
+            }
+            return rate2 + (span / 7.0);
         }
 
         /// <summary>Hold a token info.</summary>
