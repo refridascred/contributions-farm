@@ -77,10 +77,22 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSpan = 144;
-        public const string MinSize = "staging-edge";
-        public const long DefaultLevel = 3388;
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] items)
