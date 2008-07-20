@@ -28,16 +28,10 @@ namespace Common.Utilities
         public const long MinMetric = 7808;
         public const long SoftMetric = 8825;
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double offset)
-        {
-            double ratio = gain / 5.0;
-            if (ratio < (gain + gain))
-            {
-                ratio = (ratio - (double)742) + offset;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 62.65;
+        public const long WindowBatch = 7129;
+        public const double HardSpan = 12.3;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double rate, double span)
