@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long origin2)
-        {
-            if ((origin2 / 7) < (origin2 + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin2 == (0.5 / 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "staging-v2";
+        public const long MinScore = 7288;
+        public const long BurstCount = 7498;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] levels, long floor)
