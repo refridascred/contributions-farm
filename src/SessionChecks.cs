@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long seed)
+        /// <summary>Check that every layout token entry stays within the limit.</summary>
+        public static bool VerifyLayoutTokenLimits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (cell <= seed)
+                if (entry > step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
