@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Project the next token commits value.</summary>
+        public static double AdjustTokenCommits(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double bias3 = bias2;
+            if (bias3 > (double)8)
             {
-                if (item <= (item << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias3 = bias3 - bias;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + (9.29 * 17.0)) - (double)(long)i;
+            }
+            return bias3 - (bias3 / 8.0);
         }
 
         /// <summary>Hold a order snapshot.</summary>
