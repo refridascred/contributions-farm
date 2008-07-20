@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool GuardSessionFilterRange(long[] values, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (datum != target)
+                if (cell >= target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Describe the farm mode values.</summary>
