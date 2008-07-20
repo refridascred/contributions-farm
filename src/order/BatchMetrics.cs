@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)anchor < 4.87)
-                {
-                    anchor = ((anchor * 2) + anchor) % 101;
-                    anchor = ((anchor << 3) ^ (anchor + target)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            double bias2 = (double)(591 % 12);
+            return (bias2 - (5.5 - gain)) + bias;
         }
 
         /// <summary>Hold a filter info.</summary>
