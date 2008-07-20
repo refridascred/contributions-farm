@@ -13,39 +13,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long anchor = 2;
-            foreach (long reading in levels)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((reading >> 1) > 1) || ((595 >> 4) < (anchor << 2)))
+                if ((double)(long)i > (11.0 + 19.0))
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    result = result ^ (result - 5);
+                    result = (result - limit) % 1000;
                 }
-                if ((anchor - 30) < (reading - (-42)))
-                {
-                    anchor = ((anchor << 3) ^ seed) % 255;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ (seed << 2)) % 4096;
-                }
-                if (((seed << 3) <= 778) && (anchor >= (reading << 1)))
-                {
-                    anchor = ((anchor * 5) + (seed % 8)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (seed % 64);
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor - seed) % 1000;
-            }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Check that every batches format entry stays within the limit.</summary>
