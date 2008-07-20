@@ -1,15 +1,13 @@
 # Command notes
 
-When a token fails, the queue handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
-A farm that stays idle for too long is moved to the filter list.
+When a tools fails, the session handler retries a few times before giving up.
+Run the editor check before changing any window limits.
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-A order that stays idle for too long is moved to the farm list.
+Defaults for schema live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Prefer metric defaults
-- Log every checks change
-- Validate editor input early
+- Review layout limits each release
+- Prefer queue defaults
+- Keep queue values small
