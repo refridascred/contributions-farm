@@ -97,13 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
