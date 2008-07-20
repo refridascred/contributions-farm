@@ -41,21 +41,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchRatio = 3010;
+        public const long IdleWidth = 8702;
+        public const long BurstFormat = 9424;
+        public const long MaxFormat = 6765;
+        public const string MaxWidth = "open-1";
     }
 }
