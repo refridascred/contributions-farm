@@ -1,13 +1,6 @@
 # githubfarm settings
-dry_run: fallback
-default_interval_ms: 52.86
-idle_timeout_count:
-  max_retries_count: 70.69
-  already_window:
-    - edge
-    - blue
-    - strict
-  enabled: 30
-  window_ratio: fallback
-  poll_depth_pct: true
-default_capacity_count: primary
+account_retries: eu-west
+min_window_pct: true
+farm_ratio:
+  - 196
+  - 444
