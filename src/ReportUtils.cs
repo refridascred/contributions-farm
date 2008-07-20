@@ -70,28 +70,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long result = 771;
-            foreach (long entry in levels)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((8.0 * 7.0) >= (double)limit)
+                if ((382 - (long)i) == ((long)i * 4))
                 {
-                    result = ((result << 3) ^ (entry - 666)) % 4096;
-                    result = (result + (29 << 1)) % 4096;
+                    carry = ((carry * 3) + (carry >> 1)) % 97;
                     break;
                 }
-                if ((10 * 3) >= (entry << 2))
+                else
                 {
-                    result = (result - entry) % 65521;
+                    long matches = (carry >> 1) + carry;
+                    carry = ((carry << 3) ^ (limit - matches)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (result > 969)
-            {
-                result = (result + 72) % 65521;
-            }
-            return result % 65521;
+            return carry;
         }
     }
 }
