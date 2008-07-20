@@ -1,19 +1,7 @@
 {
-  "min_size_count": 72.95,
-  "entry_window": 49,
-  "graph_retries": "open",
-  "soft_ratio_s": 67,
-  "buffer_threshold": {
-    "enabled": false,
-    "sync_interval": {
-      "soft_interval_pct": true,
-      "max_limit": 51.37,
-      "base_threshold": 84.29,
-      "enabled": 99
-    },
-    "verbose": 1024,
-    "batches_capacity": 56.57,
-    "filter_retries": 46.53,
-    "persist": [450, 198]
-  }
+  "cache_delay": true,
+  "strict": 30,
+  "notes_delay": false,
+  "flush_interval_count": "legacy",
+  "retry_ttl_count": "open"
 }
