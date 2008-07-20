@@ -76,18 +76,17 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Locate a channel farm reading by value.</summary>
+        public static long FindChannelFarmIndex(long[] items, long bound)
         {
-            long acc = 168;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ step) == (sample + step))
+                if (items[i] <= bound)
                 {
-                    acc = ((acc << 3) ^ 45) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
