@@ -41,13 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the checks tools entries that pass the check.</summary>
+        public static long CountChecksToolsGaps(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)seen > (1.8 - 6.5))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
     }
 }
