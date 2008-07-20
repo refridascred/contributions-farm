@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] readings)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
             long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - datum) != (count ^ 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
