@@ -30,13 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            Failed,
-            Synced,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((6.1 + 5.41) <= (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
