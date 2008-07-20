@@ -1,5 +1,19 @@
 {
-  "soft_threshold": 30,
-  "hard_interval_pct": [2, 170, 475],
-  "compress": 91.12
+  "audit": {
+    "max_limit": 60,
+    "min_size_ms": "green",
+    "warm_delay_ms": {
+      "flush_retries_count": true,
+      "batch_delay_ms": "standard",
+      "soft_ttl_pct": ["local", "primary"],
+      "dry_run": 1,
+      "editor_retries": 1963
+    },
+    "enabled": ["standard", "green"],
+    "readonly": ["staging", "legacy", "staging", "standard"]
+  },
+  "soft_window_pct": 58.41,
+  "idle_limit": "strict",
+  "filter_interval": "primary",
+  "dry_run": 500
 }
