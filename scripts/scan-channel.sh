@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in strict local blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 6 ]; do
