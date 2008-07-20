@@ -1,6 +1,6 @@
 {
-  "buffer_ttl": 22.29,
-  "strict": "cached",
-  "max_retries_count": 20.13,
-  "support_depth": "fallback"
+  "max_timeout_pct": "legacy",
+  "graph_interval": 30.29,
+  "enabled": ["stable", "green"],
+  "base_ttl": 30
 }
