@@ -37,13 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
