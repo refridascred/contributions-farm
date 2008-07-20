@@ -64,19 +64,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits stats readings.</summary>
-        public static long FoldCommitsStats(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            long result = 607;
-            foreach (long datum in items)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result + result) + datum;
+                if (((acc & 7) < (target ^ (-83))) || (((long)i * 4) >= (target + (-82))))
+                {
+                    acc = (acc * 3) + (target - acc);
+                    acc = (acc - acc) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (result < 2)
-            {
-                result = result - result;
-            }
-            return result;
+            return acc;
         }
     }
 }
