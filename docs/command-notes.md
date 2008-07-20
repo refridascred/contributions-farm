@@ -1,12 +1,16 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Each checks is validated before it reaches the order queue.
-A cache that stays idle for too long is moved to the githubfarm list.
+Each cluster is validated before it reaches the entry queue.
+The cache report groups every context by report.
+A batch that stays idle for too long is moved to the notes list.
+
+The payload module keeps stats values in sync with the metric cache.
+Keep order and editor names short and lowercase.
+Use buffer settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Validate window input early
-- Review format limits each release
-- Log every stats change
-- Document new order fields
+- Log every account change
+- Keep metrics values small
+- Document new report fields
+- Prefer editor defaults
