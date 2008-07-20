@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double load = 5.4;
-            if (load >= (2.45 + span))
-            {
-                load = load + (double)514;
-            }
-            else
-            {
-                load = load - (double)76;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (bias * 6.0);
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
