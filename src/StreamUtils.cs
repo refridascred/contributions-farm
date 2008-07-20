@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "primary";
-        public const string CacheScore = "open-1";
-        public const long BaseContributi = 4962;
-        public const long SoftTimeout = 2439;
-        public const double HardLevel = 36.7;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepBudget = 7469;
