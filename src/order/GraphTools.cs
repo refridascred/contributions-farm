@@ -59,18 +59,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit order window readings against a rule.</summary>
-        public static long MeasureOrderWindowOutliers(long[] samples, long floor)
+        /// <summary>Derive the next notes commits value from a seed.</summary>
+        public static long SeriesNotesCommits(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (matches >= (matches & 63))
+                if (!(anchor <= seed))
                 {
-                    matches = ((matches + 1) + reading) + floor;
+                    anchor = (anchor - (anchor + anchor)) % 65521;
+                    anchor = anchor - (long)i;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
