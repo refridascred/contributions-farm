@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 4050;
+        public const string CacheGraph = "open-edge";
+        public const long LimitGraph = 5828;
+        public const double BaseScore = 14.08;
+        public const double DefaultGraph = 36.35;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterRange(long[] samples, long step)
