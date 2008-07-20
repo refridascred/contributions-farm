@@ -75,24 +75,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a account order value against two limits.</summary>
-        public static long GradeAccountOrder(long seed, long seed2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((1.07 + 7.0) > (double)seed2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed2) >= seed2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            New,
+            Done,
         }
     }
 }
