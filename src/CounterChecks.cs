@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8579;
-        public const long WindowTools = 6030;
-        public const long LimitSpan = 8652;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] values)
