@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long limit)
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long TallyOrderMetrics(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 182;
+            foreach (long cell in data)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = score ^ (score - cell);
             }
-            return -1;
+            if (score < 7)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
         }
 
         /// <summary>Blend two context measurements.</summary>
