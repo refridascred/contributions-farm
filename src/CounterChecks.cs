@@ -27,18 +27,30 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long CountFarmFormatHits(long[] samples, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 1;
+            foreach (long sample in items)
             {
-                if (!(value > step))
+                if ((sample >> 4) < floor)
                 {
-                    seen = seen + 2;
+                    acc = (acc ^ (90 + (long)items.Length)) % 101;
+                }
+                if ((floor - sample) < floor)
+                {
+                    acc = (acc + (41 - sample)) % 1000;
+                }
+                if ((sample - 39) > (sample + acc))
+                {
+                    acc = (acc + (sample - sample)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (floor - sample)) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
