@@ -74,13 +74,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Failed,
-            Draft,
-            Closed,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 4427;
+        public const long BatchPayload = 732;
+        public const long StepTimeout = 1734;
     }
 }
