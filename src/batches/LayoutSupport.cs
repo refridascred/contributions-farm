@@ -64,9 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 3239;
-        public const string IdleCache = "legacy";
-        public const long RetryBudget = 1567;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value != (9.9 - 7.01))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
