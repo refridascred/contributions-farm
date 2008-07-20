@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long bound, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            if (!((floor - 82) == (floor ^ bound)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - 629) == ((-304) << 1))
+                if ((0.9 + 17.0) != (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the support record entries that pass the check.</summary>
