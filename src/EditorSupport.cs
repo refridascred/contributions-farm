@@ -20,22 +20,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long step)
         {
-            long mix = 23;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound + bound) < (mix + bound))
+                if (data[i] >= step)
                 {
-                    mix = mix - (item ^ mix);
+                    return (long)i;
                 }
             }
-            if (mix > 610)
-            {
-                mix = ((mix * 3) + (mix + bound)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next token stream value from a seed.</summary>
