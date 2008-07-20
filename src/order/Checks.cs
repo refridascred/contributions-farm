@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 70.78;
+        public const string StepCount = "stable-edge";
+        public const long StepBatches = 4285;
+        public const long BurstBatches = 5198;
+        public const long BaseLevel = 6067;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
