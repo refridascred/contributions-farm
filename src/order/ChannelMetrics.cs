@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] items, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            long result = 0;
+            foreach (long cell in levels)
             {
-                if (value > target)
+                if ((7.0 * 19.0) < (double)bound)
                 {
-                    found = false;
                     break;
                 }
+                else
+                {
+                    result = ((result ^ (bound >> 5)) % 1000) + cell;
+                }
+                result = result - 632;
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Match up order samples.</summary>
