@@ -41,23 +41,21 @@ namespace Common.Utilities
         public const long CacheSpan = 2376;
         public const double StepWidth = 18.09;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long state = -86;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - (state & 31);
-                if ((item + (-9)) >= (offset + state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 94)
-            {
-                state = ((state * 2) + 87) % 1000;
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
