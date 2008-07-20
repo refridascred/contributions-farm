@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                if (((long)series.Length + bound) < (1 * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
