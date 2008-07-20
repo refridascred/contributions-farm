@@ -18,40 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long bound2)
-        {
-            long bound3 = bound + bound2;
-            if (((-170) + 82) < (bound3 & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound3) >= (bound3 * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 31) <= (bound2 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((20.0 / 3.0) > (double)bound) && ((bound2 + bound) == (bound - 665)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitInterval = "local-1";
+        public const string BurstFactor = "open-edge";
+        public const long RetryTimeout = 5209;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] levels)
