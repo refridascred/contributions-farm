@@ -56,21 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareFormatGithubfarmCount(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
