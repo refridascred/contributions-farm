@@ -47,11 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Paused,
+            Pending,
+            Done,
         }
     }
 }
