@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] series, long target)
         {
-            Draft,
-            Ready,
-            Done,
+            long state = 2;
+            foreach (long value in series)
+            {
+                state = ((state + value) % 1000) - target;
+            }
+            if (state > 62)
+            {
+                state = state + (1 % 97);
+            }
+            return state;
         }
     }
 }
