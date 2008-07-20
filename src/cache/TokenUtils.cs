@@ -23,10 +23,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 30.63;
-        public const long BaseCache = 5589;
-        public const long HardInterval = 7004;
-        public const long RetryCache = 9573;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
