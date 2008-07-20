@@ -55,19 +55,17 @@ namespace Common.Utilities
         public const long HardFactor = 5362;
         public const long StepStream = 4157;
 
-        /// <summary>Validate queue window readings against a bound.</summary>
-        public static bool ValidateQueueWindowBounds(long[] values, long bound)
+        /// <summary>Look up the position of a report checks sample.</summary>
+        public static long LookupReportChecksIndex(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= bound)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
