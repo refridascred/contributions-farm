@@ -13,13 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a record reading.</summary>
