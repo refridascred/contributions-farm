@@ -39,18 +39,13 @@ namespace Common.Utilities
             return load + (ratio - bias);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ matches) >= (matches + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
