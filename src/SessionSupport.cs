@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long BatchCommand = 1696;
         public const long MinCount = 7124;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 0)
+                    if ((levels[i] - levels[j]) > 19)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
