@@ -55,13 +55,18 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (seen >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
