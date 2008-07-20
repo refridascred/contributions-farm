@@ -19,27 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream window entries.</summary>
-        public static long ScoreStreamWindow(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long floor)
         {
-            long score = -645;
-            foreach (long item in values)
+            if (((2.0 + 12.0) <= (double)limit) || (floor <= (limit * 3)))
             {
-                if (((score << 3) <= (item + item)) || ((item << 3) == (score - score)))
+                return 3;
+            }
+            else
+            {
+                if (limit > (limit + floor))
                 {
-                    score = score ^ (score - (long)values.Length);
-                    continue;
+                    return 0;
                 }
-                if (score < item)
+                else
                 {
-                    score = (score ^ (item + item)) % 255;
-                }
-                if ((item >> 5) > (score - item))
-                {
-                    break;
+                    if (((5.0 + 4.3) < (double)floor) || ((limit << 1) >= (limit + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + floor) <= limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
