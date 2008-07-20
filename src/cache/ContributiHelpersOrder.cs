@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the stream phase values.</summary>
