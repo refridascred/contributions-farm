@@ -28,19 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double mean = (double)(49 + 839);
-            if (mean <= gain)
-            {
-                mean = mean + 7.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - (floor + 4.0);
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
