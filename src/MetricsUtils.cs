@@ -44,12 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long carry = 615;
+            foreach (long sample in samples)
+            {
+                if (3.0 < (double)sample)
+                {
+                    carry = (carry ^ 317) % 65521;
+                }
+                carry = (carry - carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
