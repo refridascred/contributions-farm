@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const double LimitFactor = 3.04;
         public const string IdleContributi = "legacy";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "local-1";
-        public const long RetryQueue = 7357;
-        public const long BurstQueue = 9151;
-        public const long IdleInterval = 3588;
-        public const string CacheQueue = "legacy";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long target)
+        {
+            if (!((target - bound) != (70 + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.0 <= (double)bound) && ((bound + target) == (bound + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values)
