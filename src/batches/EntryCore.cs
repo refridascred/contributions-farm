@@ -42,19 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Adjust a filter reading.</summary>
