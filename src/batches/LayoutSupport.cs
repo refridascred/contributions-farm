@@ -24,14 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series, long origin)
         {
-            Stale,
-            Failed,
-            Pending,
-            Retry,
-            Idle,
+            long carry = -356;
+            foreach (long value in series)
+            {
+                if (!((-271) < (origin * 4)))
+                {
+                    carry = (carry + (value + value)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (origin % 16)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph level values.</summary>
