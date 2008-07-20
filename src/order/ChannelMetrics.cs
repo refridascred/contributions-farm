@@ -30,17 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSpan = 1047;
+        public const long StepBatches = 9592;
+        public const long MaxInterval = 1021;
+        public const long BurstBatches = 5273;
+        public const long BurstInterval = 4197;
     }
 }
