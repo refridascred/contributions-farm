@@ -27,15 +27,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a notes batches reading.</summary>
-        public static double AdjustNotesBatches(double weight, double span)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double weight2 = span;
-            if (weight2 > (span / 3.0))
-            {
-                weight2 = (weight2 - (double)86) + weight;
-            }
-            return weight2 - weight2;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
