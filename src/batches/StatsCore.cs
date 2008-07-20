@@ -44,20 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 5.76;
+        public const double BaseBatch = 80.13;
+        public const long DefaultBatch = 70;
+        public const long HardTimeout = 3030;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] readings)
