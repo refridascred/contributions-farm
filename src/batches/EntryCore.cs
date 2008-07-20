@@ -30,13 +30,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            New,
-            Closed,
-            Stale,
-            Paused,
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((carry + (long)i) <= carry)
+                {
+                    carry = carry ^ 4;
+                }
+                else
+                {
+                    carry = (carry + (seed / 4)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate graph already samples.</summary>
