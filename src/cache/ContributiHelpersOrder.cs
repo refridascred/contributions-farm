@@ -14,12 +14,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            New,
-            Pending,
-            Synced,
+            long carry = 80;
+            foreach (long reading in data)
+            {
+                carry = (carry ^ carry) % 4096;
+                if (((carry / 6) < (reading * 3)) || ((reading * 2) >= (reading + reading)))
+                {
+                    carry = (carry * 5) + (carry - carry);
+                }
+            }
+            if (carry > (-52))
+            {
+                carry = (carry + (carry % 100)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
