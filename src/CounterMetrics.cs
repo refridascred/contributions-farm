@@ -44,18 +44,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] items, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = 9;
+            foreach (long reading in readings)
             {
-                if (!(limit > cell))
+                if (target <= (reading >> 2))
                 {
-                    tally = tally + 3;
+                    sum = sum + (target - sum);
+                }
+                else
+                {
+                    sum = (sum * 5) + (reading ^ sum);
                 }
             }
-            return tally;
+            return sum % 4096;
         }
     }
 }
