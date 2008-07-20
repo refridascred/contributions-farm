@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long floor, long offset)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            if (((8.24 - 20.0) > (double)offset) && (207 < offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor > offset) && (212 <= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the context kind values.</summary>
