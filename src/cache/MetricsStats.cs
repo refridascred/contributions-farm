@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < seed)
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
