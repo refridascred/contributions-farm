@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] samples, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long target)
         {
-            long result = 9;
-            foreach (long reading in samples)
+            long step = offset - target;
+            if ((target ^ offset) != (1 ^ step))
             {
-                result = (((result << 2) ^ limit) % 255) + reading;
+                return 4;
             }
-            return result % 1000;
+            else
+            {
+                if (998 >= (323 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset > (target * 4)) || ((target + target) == (target - 64)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target <= (offset % 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
