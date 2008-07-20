@@ -33,12 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            double bias = ratio;
+            if (bias >= (span / 2.0))
+            {
+                bias = bias + (9.38 * 5.71);
+            }
+            return bias - (double)0;
         }
 
         /// <summary>Hold a buffer info.</summary>
