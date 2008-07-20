@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "staging";
+        public const double BurstFactor = 25.5;
+        public const string StepTimeout = "local";
+        public const long IdleMetrics = 6105;
+        public const long RetryMetrics = 1448;
 
         /// <summary>Digest a series of window farm entries.</summary>
         public static long FoldWindowFarm(long[] items, long bound)
