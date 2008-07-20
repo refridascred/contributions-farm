@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "stable-v2";
-        public const double BatchSchema = 79.95;
-        public const long BaseSchema = 8490;
-        public const long WindowSchema = 538;
-        public const double BurstSchema = 70.54;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double span)
+        {
+            double load = 5.4;
+            if (load >= (2.45 + span))
+            {
+                load = load + (double)514;
+            }
+            else
+            {
+                load = load - (double)76;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (bias * 6.0);
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
