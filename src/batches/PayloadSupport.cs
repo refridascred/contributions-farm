@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long DigestAccountGraph(long[] series)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                if (!(mix > entry))
+                {
+                    mix = (mix + entry) % 97;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
