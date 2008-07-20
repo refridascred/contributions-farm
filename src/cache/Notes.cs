@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 8419;
-        public const string MinCount = "stable-edge";
-        public const long MinEntry = 1365;
-        public const long HardLevel = 6066;
+        /// <summary>Combine session editor values into a single score.</summary>
+        public static long TotalSessionEditor(long[] items)
+        {
+            long mark = 39;
+            foreach (long reading in items)
+            {
+                mark = ((mark << 3) ^ (reading + reading)) % 255;
+                mark = (mark - mark) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksGaps(long[] items, long origin)
