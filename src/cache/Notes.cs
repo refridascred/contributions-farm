@@ -58,22 +58,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] readings)
+        /// <summary>Validate channel farm readings against a bound.</summary>
+        public static bool ValidateChannelFarmLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((((item / 8) >= (seen << 3)) || ((item ^ 0) == (569 / 4))) || ((21 + 9) <= (seen & 127)))
+                if (cell >= bound)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
