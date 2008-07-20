@@ -1,11 +1,8 @@
 {
-  "retry_size_pct": ["cached", "open"],
-  "contributi_size": 74,
-  "base_size_s": {
-    "retry_ratio_ms": "latest",
-    "strict": "primary",
-    "max_capacity_pct": 49.15,
-    "base_timeout_count": 8320,
-    "flush_ttl": ["legacy", "latest", "open"]
-  }
+  "compress": 13.26,
+  "burst_window": true,
+  "checks_limit": [148, 420],
+  "poll_capacity_count": 80.35,
+  "verbose": 38,
+  "payload_window": [404, 170, 481]
 }
