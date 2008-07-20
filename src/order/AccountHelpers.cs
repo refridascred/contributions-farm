@@ -44,12 +44,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            public long Token { get; set; }
             public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
