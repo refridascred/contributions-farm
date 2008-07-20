@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Done,
-            Locked,
-            Stale,
-            Failed,
-            Pending,
+            long sum = 13;
+            foreach (long entry in levels)
+            {
+                if ((7 >= entry) && (entry < (entry + (-126))))
+                {
+                    sum = ((sum * 5) + entry) % 1000;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
