@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const double HardContributi = 6.88;
         public const double BaseBudget = 14.22;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Accumulate buffer report samples.</summary>
+        public static long FoldBufferReport(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 607;
+            foreach (long sample in readings)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (!((sample < ((-1) / 7)) && ((27 % 64) <= sample)))
+                {
+                    score = score + score;
+                }
+                score = score ^ score;
             }
-            return state;
+            if (score > (-886))
+            {
+                score = (score * 4) + (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
