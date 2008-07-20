@@ -32,16 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token stream value from a seed.</summary>
-        public static long DeriveTokenStream(long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark - (bound << 3)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            double weight = offset;
+            return (weight + 4.9) + gain;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
