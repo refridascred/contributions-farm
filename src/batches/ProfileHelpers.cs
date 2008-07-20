@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long AuditChecksEntryHits(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = 4;
+            foreach (long cell in data)
             {
-                if ((count & 3) < datum)
+                if (((-26) <= (mark - offset)) || (mark <= (cell % 16)))
                 {
-                    count = count + 3;
+                    mark = (mark - (offset + cell)) % 1000;
                 }
             }
-            return count;
+            if (mark > 95)
+            {
+                mark = (mark - offset) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
