@@ -34,19 +34,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the graph state values.</summary>
