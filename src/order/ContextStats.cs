@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const string BaseSize = "stable-edge";
         public const long RetryInterval = 4133;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if (((double)limit >= 15.0) && ((limit * 3) > target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) > (target * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine tools schema values into a single score.</summary>
