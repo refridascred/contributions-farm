@@ -54,10 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 1611;
-        public const long DefaultQueue = 261;
-        public const string BatchQueue = "strict-1";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = mark + ((long)i / 5);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data, long origin)
