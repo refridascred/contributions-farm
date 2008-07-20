@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 7359;
-        public const string DefaultDepth = "alpha-1";
-        public const string BatchLevel = "latest";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Scale a cache account figure with a bias.</summary>
         public static double BlendCacheAccount(double scale, double offset)
