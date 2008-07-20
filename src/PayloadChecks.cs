@@ -35,18 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally >= (datum >> 4)) || (3 > (916 + (long)items.Length)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
