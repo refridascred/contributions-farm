@@ -1,25 +1,12 @@
 # support settings
-warm_depth_pct: open
-format_ratio:
-  buffer_capacity:
-    - 182
-    - 302
-  persist: 29.96
-  cache_ratio: 78
-  soft_limit_s: 98.64
-hard_ratio_s: 52.32
-readonly:
-  report_window: 1276
-  base_window_pct:
-    warm_capacity: false
-    batch_timeout_ms: green
-    flush_threshold_count: 16.92
-    burst_limit_s: 24
-    default_size_ms: latest
-  max_ratio:
-    - primary
-    - legacy
-    - cached
-    - latest
-  idle_ttl: eu-west
-cache_limit_pct: true
+enabled:
+  soft_ttl_pct: 9.85
+  idle_ratio: legacy
+  compress:
+    - 152
+    - 91
+  stream_window: edge
+  poll_limit_count: 57.1
+verbose: 100
+soft_window_count: 2.97
+compress: 60
