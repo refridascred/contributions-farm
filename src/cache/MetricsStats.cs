@@ -20,10 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3645;
-        public const long BurstLevel = 6386;
-        public const long RetryCount = 5225;
+        /// <summary>Digest a series of window farm entries.</summary>
+        public static long FoldWindowFarm(long[] items, long bound)
+        {
+            long anchor = 3;
+            foreach (long datum in items)
+            {
+                anchor = (anchor + anchor) - datum;
+                if ((12.0 + 1.95) < (double)bound)
+                {
+                    break;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 4) + (anchor + (-631))) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] readings)
