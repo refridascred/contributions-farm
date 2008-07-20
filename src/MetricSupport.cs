@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 29.09;
-        public const long SoftCount = 4191;
-        public const long LimitCache = 9546;
-        public const long DefaultCache = 6499;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Done,
+            Ready,
+        }
     }
 }
