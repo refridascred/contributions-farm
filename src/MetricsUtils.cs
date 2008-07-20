@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long CountSupportRecordHits(long[] levels)
+        /// <summary>Count the commits batches entries that pass the check.</summary>
+        public static long MeasureCommitsBatchesHits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((824 / 9) > sample)
+                if ((hits ^ hits) <= cell)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every already metric entry stays within the limit.</summary>
