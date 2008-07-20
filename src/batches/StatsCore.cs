@@ -51,11 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 5.76;
-        public const double BaseBatch = 80.13;
-        public const long DefaultBatch = 70;
-        public const long HardTimeout = 3030;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double scale, double bias)
