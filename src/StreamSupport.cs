@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)(long)i > (11.0 + 19.0))
-                {
-                    result = result ^ (result - 5);
-                    result = (result - limit) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                result = (result ^ bound) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
