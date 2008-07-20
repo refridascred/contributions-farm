@@ -27,13 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            double ratio2 = 19.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (((ratio2 + 5.48) + (double)(long)i) + ratio) - span;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
