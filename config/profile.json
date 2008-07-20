@@ -1,5 +1,23 @@
 {
-  "persist": "green",
-  "poll_timeout_ms": false,
-  "max_ratio_pct": "latest"
+  "batch_capacity_count": 500,
+  "min_depth": 41,
+  "readonly": {
+    "max_retries": true,
+    "verbose": [473, 281, 347],
+    "notes_window": 53,
+    "route_interval": {
+      "metrics_threshold": "staging",
+      "graph_timeout": 30,
+      "farm_size": [314, 66, 433, 245],
+      "hard_depth_ms": "cached",
+      "record_retries": "eu-west"
+    }
+  },
+  "verbose": {
+    "retry_size_count": ["stable", "green", "staging", "staging"],
+    "poll_retries": "legacy",
+    "default_threshold_ms": 6930
+  },
+  "persist": 30,
+  "batch_delay": "blue"
 }
