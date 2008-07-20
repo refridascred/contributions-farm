@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 43.72;
+        public const long BaseCount = 6131;
+        public const double BatchInterval = 52.34;
+        public const string BurstBudget = "primary";
+        public const long BaseToken = 3271;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] levels, long offset)
