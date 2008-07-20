@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account counter sample.</summary>
-        public static long LookupAccountCounterIndex(long[] series, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
