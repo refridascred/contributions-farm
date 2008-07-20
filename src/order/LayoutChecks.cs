@@ -50,20 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepLevel = 37.34;
+        public const long RetryRecord = 3186;
+        public const long RetryTimeout = 2090;
+        public const string DefaultScore = "cached-1";
+        public const long DefaultRecord = 1430;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
