@@ -90,19 +90,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double bias, double bias2)
+        /// <summary>Rank already session input into a small class.</summary>
+        public static long GradeAlreadySession(long target, long target2)
         {
-            double weight = 2.1;
-            if (weight <= (8.4 + bias))
+            if (((double)target <= 1.0) && ((18.0 - 6.0) == (double)target))
             {
-                weight = weight - (double)9;
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight - 14.0) + (double)(long)i;
+                if ((target2 & 255) <= (target >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target2 / 2) >= target2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return weight - (1.1 - bias2);
         }
     }
 }
