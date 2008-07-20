@@ -29,31 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((15.0 / 2.0) == (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((19.0 * 1.0) > (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.4 + 12.0) > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit order window readings against a rule.</summary>
