@@ -39,18 +39,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long CountFormatNotesGaps(long[] readings)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long WeighGraphAlready(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long carry = 7;
+            foreach (long value in data)
             {
-                if (!((9.93 - 0.53) >= (double)reading))
+                carry = carry - (3 - value);
+                if (!((value + carry) <= (carry - value)))
                 {
-                    count = count + 2;
+                    carry = ((carry * 5) + (value >> 4)) % 4096;
+                }
+                if (carry <= (carry >> 3))
+                {
+                    carry = (carry + value) % 1000;
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
