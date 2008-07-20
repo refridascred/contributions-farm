@@ -39,22 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = -30;
-            foreach (long sample in items)
-            {
-                if ((sample << 1) >= limit)
-                {
-                    mark = ((mark << 3) ^ (sample + (long)items.Length)) % 65521;
-                }
-            }
-            if (mark > (-801))
-            {
-                mark = (mark << 3) ^ (mark * 3);
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count format githubfarm pairs that satisfy a relation.</summary>
