@@ -1,19 +1,8 @@
 {
-  "default_timeout_count": 33,
-  "flush_capacity_ms": 24.96,
-  "entry_retries": {
-    "min_capacity": 100,
-    "channel_ratio": true,
-    "min_capacity_pct": 1024,
-    "warm_size_s": {
-      "max_ratio_count": true,
-      "enabled": 500,
-      "metrics_retries": 3112,
-      "hard_delay_count": "local",
-      "burst_capacity_s": 250
-    },
-    "soft_window": ["standard", "standard", "edge", "blue"]
-  },
-  "format_limit": 30,
-  "readonly": ["green", "primary", "eu-west", "open"]
+  "max_depth_ms": [87, 493, 130, 136],
+  "max_window_s": ["standard", "cached", "latest", "staging"],
+  "batches_depth": 49.71,
+  "farm_size": 27.76,
+  "queue_limit": true,
+  "default_ttl": 1579
 }
