@@ -17,15 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] readings, long bound)
         {
-            double gain = span;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                gain = (gain + (17.0 / 2.0)) + (double)(long)i;
+                if (sample <= (tally + bound))
+                {
+                    tally = tally + 1;
+                }
             }
-            return gain + bias;
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
