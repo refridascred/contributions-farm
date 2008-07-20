@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            long anchor = 16;
-            foreach (long entry in data)
+            double bias = rate;
+            if (bias > (5.3 * 9.0))
             {
-                if (9.04 > (double)offset)
-                {
-                    anchor = (anchor - (offset + entry)) % 4096;
-                }
+                bias = bias - rate;
             }
-            if (anchor < (-532))
-            {
-                anchor = (anchor << 2) ^ (7 << 2);
-            }
-            return anchor;
+            return bias + floor;
         }
 
         /// <summary>Look up the position of a cache command sample.</summary>
