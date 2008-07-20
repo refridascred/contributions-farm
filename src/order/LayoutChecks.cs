@@ -96,11 +96,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Synced,
         }
     }
 }
