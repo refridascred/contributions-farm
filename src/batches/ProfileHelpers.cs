@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a record session value against two limits.</summary>
-        public static long GradeRecordSession(long limit, long origin)
-        {
-            if ((6.5 - 7.0) <= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin - origin) <= (4 % 12)) && ((limit - 3) == (origin * 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 4) < (87 / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleBudget = 9793;
+        public const string BaseWidth = "staging-v2";
+        public const double MinNotes = 63.28;
+        public const long SoftNotes = 3336;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
