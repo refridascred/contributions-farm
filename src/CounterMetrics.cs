@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long bound)
         {
-            long state = 495;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (state < (reading << 1))
+                if (value >= bound)
                 {
-                    state = (state << 2) ^ (state / 4);
-                }
-                else
-                {
-                    state = (state + (state + state)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 82)
-            {
-                state = (state - (state >> 3)) % 97;
-            }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
