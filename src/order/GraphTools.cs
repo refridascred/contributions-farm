@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a token order counter forward.</summary>
-        public static long RollTokenOrder(long origin)
+        /// <summary>Blend two route record measurements.</summary>
+        public static double ProjectRouteRecord(double rate, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            double load = offset + rate;
+            if (load >= (offset / 5.0))
             {
-                total = ((total * 2) + (long)i) % 97;
+                load = load - load;
             }
-            return total;
+            return load - offset;
         }
 
         /// <summary>Hold a stats info.</summary>
