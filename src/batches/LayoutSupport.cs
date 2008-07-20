@@ -24,22 +24,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long step)
         {
-            long carry = -356;
-            foreach (long value in series)
+            long bound = origin + step;
+            if (origin <= (bound + step))
             {
-                if (!((-271) < (origin * 4)))
+                return 7;
+            }
+            else
+            {
+                if ((step + bound) <= step)
                 {
-                    carry = (carry + (value + value)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (origin % 16)) % 65521;
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the graph level values.</summary>
