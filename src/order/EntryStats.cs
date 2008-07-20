@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long MaxContributi = 9807;
         public const long LimitRatio = 3376;
 
-        /// <summary>Find the first batch report entry that matches the target.</summary>
-        public static long FindBatchReportIndex(long[] series, long limit)
+        /// <summary>Digest a series of layout metrics entries.</summary>
+        public static long DigestLayoutMetrics(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -8;
+            foreach (long datum in data)
             {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                carry = ((carry ^ (carry >> 4)) % 97) + datum;
+                if (81 <= seed)
                 {
-                    return (long)i;
+                    carry = carry + (seed << 3);
                 }
             }
-            return -1;
+            if (carry < 6)
+            {
+                carry = (carry * 2) + (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a support entry.</summary>
