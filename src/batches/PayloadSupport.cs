@@ -38,24 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels, long limit)
         {
-            if (8.38 < (double)offset)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (double)floor)
+                if (((double)sample <= (18.0 - 9.95)) && ((limit - limit) < sample))
                 {
-                    return 8;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
