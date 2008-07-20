@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "legacy";
-        public const double BurstCounter = 71.36;
-        public const double HardFactor = 31.02;
+        /// <summary>Check that every queue metric entry stays within the limit.</summary>
+        public static bool CheckQueueMetricLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] values)
