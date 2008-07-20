@@ -32,22 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] data, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if (floor <= (floor & 1))
             {
-                if ((cell - 8) <= (cell >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((floor + seed) > (floor ^ 982))
                 {
-                    matches = (matches + 3) - limit;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((1.0 / 9.0) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
