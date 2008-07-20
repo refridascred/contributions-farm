@@ -1,12 +1,5 @@
 # support settings
-enabled:
-  soft_ttl_pct: 9.85
-  idle_ratio: legacy
-  compress:
-    - 152
-    - 91
-  stream_window: edge
-  poll_limit_count: 57.1
-verbose: 100
-soft_window_count: 2.97
-compress: 60
+sync_limit_count: strict
+retry_timeout_count: 93.85
+report_threshold: 26.55
+enabled: cached
