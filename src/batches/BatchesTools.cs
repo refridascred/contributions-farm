@@ -49,19 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double scale, double bias)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            double gain = (scale / 5.0) * 7.88;
-            if (gain >= (bias + scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - gain;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + bias;
+            return -1;
         }
     }
 }
