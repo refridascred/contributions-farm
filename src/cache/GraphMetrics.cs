@@ -55,21 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Match up report batches samples.</summary>
+        public static long CompareReportBatchesCount(long[] data)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 3)
+                    if ((data[i] ^ data[j]) != 16)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
