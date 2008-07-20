@@ -48,18 +48,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 7) <= seed)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 2072;
+        public const long LimitTimeout = 3609;
+        public const long MinSupport = 2485;
     }
 }
