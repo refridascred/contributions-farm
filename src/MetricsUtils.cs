@@ -44,19 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long carry = 615;
-            foreach (long sample in samples)
-            {
-                if (3.0 < (double)sample)
-                {
-                    carry = (carry ^ 317) % 65521;
-                }
-                carry = (carry - carry) % 4096;
-            }
-            return carry;
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
