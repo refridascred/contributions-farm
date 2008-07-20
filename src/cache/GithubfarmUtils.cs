@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
