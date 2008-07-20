@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            Failed,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the channel phase values.</summary>
