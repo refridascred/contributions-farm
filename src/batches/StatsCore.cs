@@ -75,15 +75,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric payload series from a seed.</summary>
-        public static long DeriveMetricPayload(long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long span = target + origin;
+            if (((target + span) > (571 + span)) && (origin > (origin & 7)))
             {
-                total = ((total * 5) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((origin + 49) != (target * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - target) <= origin) || (target < (origin >> 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)739)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
