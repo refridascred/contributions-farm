@@ -1,34 +1,8 @@
 # githubfarm settings
-batch_delay_s:
-  max_threshold_ms: latest
-  default_interval_ms: 32
-  metrics_delay: 1024
-  tools_threshold: false
-  retry_size_pct:
-    - staging
-    - edge
-channel_limit:
-  - 231
-  - 24
-account_ratio:
-  persist:
-    warm_ratio_count: 63.48
-    verbose: 4314
-    dry_run: local
-    tools_threshold: 9528
-  context_depth:
-    flush_depth_s: false
-    githubfarm_limit: 183
-    max_capacity_s: 30
-    idle_threshold:
-      - 404
-      - 152
-  cache_depth: 60
-  audit: blue
-  flush_timeout: 35.92
-min_retries_pct: 94.41
-idle_depth_count:
-  - standard
-  - staging
+max_interval_count:
   - cached
-sync_timeout_s: 98.67
+  - staging
+cache_retries_pct: false
+sync_delay: 1024
+already_limit: 8221
+retry_depth_count: 5
