@@ -39,19 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long total = 54;
-            foreach (long datum in levels)
-            {
-                total = ((total << 3) ^ ((long)levels.Length - total)) + datum;
-            }
-            if (total < 7)
-            {
-                total = (total << 2) ^ ((-79) % 97);
-            }
-            return total % 97;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
