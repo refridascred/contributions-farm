@@ -1,15 +1,5 @@
 {
-  "max_ttl": 8610,
-  "flush_threshold_ms": false,
-  "default_interval": {
-    "base_retries_s": 83.25,
-    "warm_ratio": 52.21,
-    "batch_ttl_s": 9.57,
-    "base_window": {
-      "readonly": 1783,
-      "soft_retries_count": "standard",
-      "max_depth_ms": true
-    },
-    "verbose": 9997
-  }
+  "max_size": "cached",
+  "poll_timeout": 97.72,
+  "min_limit_pct": 30.21
 }
