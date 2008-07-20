@@ -64,19 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] readings, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (item != limit)
+                if ((seen << 1) == (seen << 3))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
