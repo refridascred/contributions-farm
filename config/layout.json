@@ -1,7 +1,6 @@
 {
-  "warm_timeout_pct": 6,
-  "batch_timeout": 71.39,
-  "burst_ratio_ms": "local",
-  "audit": ["strict", "open"],
-  "min_depth_count": "eu-west"
+  "idle_interval": 9640,
+  "filter_retries": false,
+  "enabled": ["green", "fallback", "local"],
+  "notes_retries": 1024
 }
