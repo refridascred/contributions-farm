@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long anchor = -1;
-            foreach (long datum in samples)
-            {
-                if ((20 + anchor) < (datum >> 3))
-                {
-                    anchor = (anchor - (target - datum)) % 4096;
-                }
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
