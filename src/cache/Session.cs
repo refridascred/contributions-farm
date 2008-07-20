@@ -55,13 +55,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data, long bound)
         {
-            Stale,
-            Retry,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((bound - cell) != (937 ^ bound)) && (cell > bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
