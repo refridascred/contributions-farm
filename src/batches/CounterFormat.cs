@@ -39,17 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph window reading by value.</summary>
-        public static long LookupGraphWindowIndex(long[] samples, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)limit != (14.0 * 2.0))
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((seed + limit) != (limit - limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
