@@ -13,18 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((422 - cell) > (cell - count)) || ((7.4 + 7.9) > (double)cell)) || (10.0 > (double)cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
