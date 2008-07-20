@@ -55,19 +55,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long offset)
+        /// <summary>Count editor order pairs that satisfy a relation.</summary>
+        public static long MatchEditorOrderCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
