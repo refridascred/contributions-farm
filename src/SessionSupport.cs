@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels, long origin)
+        /// <summary>Check that every session token entry stays within the limit.</summary>
+        public static bool VerifySessionTokenLimits(long[] items, long floor)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                carry = ((carry ^ value) % 65521) + origin;
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
