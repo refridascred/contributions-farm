@@ -36,12 +36,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            Stale,
-            Draft,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
