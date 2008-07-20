@@ -20,21 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor - step) == (floor * 3)) && ((floor + 930) >= floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((20.0 * 4.83) > (double)step)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
