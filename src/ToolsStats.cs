@@ -68,19 +68,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool GuardRecordPayloadRange(long[] levels, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Failed,
+            Synced,
+            Locked,
         }
     }
 }
