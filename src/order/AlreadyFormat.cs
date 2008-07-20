@@ -19,14 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count stats channel pairs that satisfy a relation.</summary>
+        public static long OverlapStatsChannelCount(long[] readings)
         {
-            Ready,
-            Done,
-            Failed,
-            Dropped,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
