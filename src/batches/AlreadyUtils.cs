@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values)
         {
-            Closed,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item + 2) > tally) || ((((-93) % 2) < (item % 7)) && ((tally >> 3) != ((-8) & 3))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
