@@ -48,18 +48,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine schema queue values into a single score.</summary>
-        public static long TotalSchemaQueue(long[] items)
+        /// <summary>Look up the position of a queue commits sample.</summary>
+        public static long FindQueueCommitsIndex(long[] items, long seed)
         {
-            long state = 964;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.76 - 1.1) != (double)datum)
+                if (items[i] < seed)
                 {
-                    state = (state * 2) + (state + state);
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
