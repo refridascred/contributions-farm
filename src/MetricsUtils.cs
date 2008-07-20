@@ -52,22 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] readings, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((seed + seed) > (reading & 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
