@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long bound, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            if (!((floor - 82) == (floor ^ bound)))
             {
-                carry = (carry + ((long)i - carry)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((bound - 629) == ((-304) << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the support record entries that pass the check.</summary>
