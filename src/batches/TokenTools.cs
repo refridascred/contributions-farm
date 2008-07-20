@@ -19,28 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long limit2)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long offset)
         {
-            if (9 <= limit)
+            if (((offset + offset) >= limit) || ((484 + offset) <= (limit ^ limit)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((limit2 * 2) <= (84 & 127))
+                if (limit <= (offset >> 5))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit2 / 5) == (limit ^ limit))
+                    if ((offset << 2) > (offset ^ offset))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
