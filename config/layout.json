@@ -1,5 +1,7 @@
 {
-  "enabled": 25,
-  "retry_depth": "blue",
-  "report_delay": 4173
+  "flush_window_pct": 56.03,
+  "audit": 100,
+  "record_depth": "green",
+  "poll_threshold_pct": 94,
+  "base_capacity_s": 3171
 }
