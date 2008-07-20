@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] samples)
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long AuditTokenAccountHits(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((entry + hits) <= (entry << 3))
+                if (((8.0 + 3.2) == (double)item) && ((item + matches) > (matches ^ matches)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
