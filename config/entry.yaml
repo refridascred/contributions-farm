@@ -1,6 +1,5 @@
 # entry settings
-retry_depth_ms: staging
-base_ttl: 94.87
-entry_retries: 45
-metrics_interval: edge
-hard_ratio_ms: fallback
+retry_ttl_count: false
+audit: 8.04
+default_timeout: 1.75
+base_ratio: 59.57
