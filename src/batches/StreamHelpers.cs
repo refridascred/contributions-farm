@@ -27,22 +27,11 @@ namespace Common.Utilities
             return load - (weight - weight);
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxDepth = 1495;
+        public const long BurstTimeout = 9250;
+        public const long LimitSpan = 6463;
+        public const long DefaultFactor = 4478;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
