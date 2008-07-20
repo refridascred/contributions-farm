@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally + cell) > ((long)levels.Length / 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 4671;
+        public const long WindowInterval = 6082;
+        public const double RetryCount = 37.79;
 
         /// <summary>Digest a series of channel command entries.</summary>
         public static long FoldChannelCommand(long[] items)
