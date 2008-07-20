@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 43.72;
-        public const long BaseCount = 6131;
-        public const double BatchInterval = 52.34;
-        public const string BurstBudget = "primary";
-        public const long BaseToken = 3271;
+        /// <summary>Find the first counter stats entry that matches the target.</summary>
+        public static long FindCounterStatsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a contributi command figure with a bias.</summary>
         public static double ScaleContributiCommand(double bias, double floor)
