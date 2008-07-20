@@ -25,12 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 50.58;
-        public const long WindowTimeout = 952;
-        public const long RetryCount = 8379;
-        public const long StepAccount = 9005;
-        public const string BurstCount = "primary-edge";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values)
