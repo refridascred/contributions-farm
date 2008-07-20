@@ -20,15 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double span)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels)
         {
-            double load = 5.34 / 5.0;
-            if (load >= (load - span))
+            long anchor = 7;
+            foreach (long entry in levels)
             {
-                load = load - (7.0 - load);
+                anchor = (anchor * 3) + (entry & 127);
             }
-            return load - (weight * 5.5);
+            if (anchor > 954)
+            {
+                anchor = (anchor + (anchor & 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
