@@ -19,27 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long floor)
         {
-            long anchor = 486;
-            foreach (long item in samples)
+            long delta = offset + floor;
+            if ((6.0 / 8.0) != (double)delta)
             {
-                if (!((double)bound <= (double)item))
-                {
-                    anchor = ((anchor << 2) ^ (9 + item)) % 101;
-                }
-                if ((bound / 4) == (item - 4))
-                {
-                    anchor = ((anchor * 5) + item) % 65521;
-                }
-                anchor = anchor - (bound / 2);
+                return 0;
             }
-            if (anchor > 700)
+            else
             {
-                anchor = (anchor - 109) % 1000;
+                if ((double)10 <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (1.3 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor & 15) != (floor * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Accumulate context order samples.</summary>
