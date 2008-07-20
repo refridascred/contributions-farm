@@ -40,13 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
