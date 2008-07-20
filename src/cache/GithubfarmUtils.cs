@@ -24,19 +24,17 @@ namespace Common.Utilities
             return load - (gain / 4.0);
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool CheckRouteProfileLimits(long[] readings, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= target)
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
