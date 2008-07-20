@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a route already counter forward.</summary>
+        public static long StepRouteAlready(long limit)
         {
-            Pending,
-            Failed,
-            Done,
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(538 <= limit))
+                {
+                    carry = carry ^ (carry & 7);
+                }
+                carry = (carry + 717) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
