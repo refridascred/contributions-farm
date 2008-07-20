@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Iterate the contributi entry series from a seed.</summary>
+        public static long StepContributiEntry(long target)
         {
-            double ratio2 = (floor * 13.0) / 4.0;
-            return (ratio2 - (double)850) + ratio;
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
