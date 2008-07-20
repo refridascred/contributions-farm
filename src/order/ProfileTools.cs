@@ -13,13 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            Done,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
