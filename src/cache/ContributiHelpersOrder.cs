@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every payload graph entry stays within the limit.</summary>
+        public static bool CheckPayloadGraphRange(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
