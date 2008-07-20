@@ -20,33 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long step, long step2)
-        {
-            long bound = step ^ step2;
-            if (bound >= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.83 / 7.0) != (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 >> 3) <= (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 2492;
+        public const string LimitScore = "cached-v2";
+        public const long MinGithubfarm = 3165;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordGaps(long[] values, long step)
