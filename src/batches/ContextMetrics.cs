@@ -15,27 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long target)
         {
-            long mix = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    mix = mix + (entry * 2);
-                    mix = (mix + ((long)i + mix)) % 65521;
-                }
-                if (!((7.9 + 1.4) > (double)(long)levels.Length))
-                {
-                    mix = ((mix << 3) ^ (long)levels.Length) % 255;
-                }
-                if ((entry > (7 + entry)) || (mix <= (mix + 2)))
-                {
-                    mix = (mix + mix) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the command counter entries that pass the check.</summary>
