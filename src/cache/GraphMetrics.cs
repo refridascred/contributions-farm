@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Adjust a report stream reading.</summary>
+        public static double SmoothReportStream(double scale, double offset)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = (double)(7 << 3);
+            if (ratio > (double)0)
+            {
+                ratio = (ratio - (scale + 8.5)) + offset;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (ratio + scale);
         }
 
         /// <summary>Match up counter samples.</summary>
