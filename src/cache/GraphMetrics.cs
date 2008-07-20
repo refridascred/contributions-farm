@@ -55,23 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long state = 2;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell - (long)items.Length) <= (state & 31)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long gap = state;
-                    state = (state * 3) + (gap + state);
-                }
-                if (!((643 + cell) > 88))
-                {
-                    state = (state ^ (state + cell)) % 1000;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
