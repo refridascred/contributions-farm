@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route payload samples.</summary>
-        public static long ScoreRoutePayload(long[] samples)
-        {
-            long anchor = 65;
-            foreach (long sample in samples)
-            {
-                if ((anchor / 4) > anchor)
-                {
-                    anchor = ((anchor * 2) + (sample * 2)) % 101;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "staging";
+        public const double DefaultAlready = 66.91;
+        public const double SoftDepth = 81.2;
+        public const long BaseInterval = 4641;
+        public const double SoftLevel = 11.78;
     }
 }
