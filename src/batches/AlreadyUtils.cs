@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const double SoftCount = 55.27;
         public const long RetryRatio = 3021;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.4 / 9.0) > (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + entry;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
