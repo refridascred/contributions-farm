@@ -27,10 +27,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
             public bool Score { get; set; }
         }
 
