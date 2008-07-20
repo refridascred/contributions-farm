@@ -23,22 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (5.98 > (double)(long)items.Length)
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
