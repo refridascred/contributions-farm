@@ -36,32 +36,12 @@ namespace Common.Utilities
         public const string BaseLevel = "standard-edge";
         public const long BatchQueue = 9621;
 
-        /// <summary>Grade a route schema value against two limits.</summary>
-        public static long SortRouteSchema(long step, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long span = step + origin;
-            if (!(span >= step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step > (origin / 7)) && ((double)span >= (14.0 + 0.35)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((span >> 1) != (origin % 60))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
