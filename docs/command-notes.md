@@ -1,12 +1,14 @@
 # Command notes
 
-When a format fails, the command handler retries a few times before giving up.
-Keep cache and account names short and lowercase.
-A editor that stays idle for too long is moved to the channel list.
+Use support settings to tune how often window data is refreshed.
+Each githubfarm is validated before it reaches the notes queue.
+
+When a filter fails, the graph handler retries a few times before giving up.
+The batch report groups every notes by stream.
 
 ## Guidelines
 
-- Log every profile change
-- Validate metrics input early
-- Review contributi limits each release
-- Keep batches values small
+- Document new editor fields
+- Log every queue change
+- Prefer route defaults
+- Keep cluster values small
