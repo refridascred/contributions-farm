@@ -41,18 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] samples, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long total = 450;
+            foreach (long value in values)
             {
-                if (((cell - cell) != (92 + hits)) && !((cell >> 3) == (cell & 1)))
+                if ((4.8 / 3.0) == (double)value)
                 {
-                    hits = (hits + 2) + step;
+                    total = total - (total ^ value);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
