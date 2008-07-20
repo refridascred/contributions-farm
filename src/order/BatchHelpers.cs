@@ -33,15 +33,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long step)
         {
-            double ratio = rate;
-            for (int i = 0; i < 4; i++)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = ((ratio - (double)96) + (double)(long)i) + span;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score - ((long)i2 + step)) % 97;
+                }
+                score = score + 6;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ratio + (ratio / 7.0);
+            return score;
         }
     }
 }
