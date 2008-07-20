@@ -39,21 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of payload schema readings.</summary>
-        public static long PairPayloadSchemaCount(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
