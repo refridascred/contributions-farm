@@ -24,25 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long step)
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool GuardNotesRouteLimits(long[] samples, long seed)
         {
-            long bound = origin + step;
-            if (origin <= (bound + step))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + bound) <= step)
+                if (item >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the graph level values.</summary>
