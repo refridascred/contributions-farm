@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double weight = (gain + bias) / 8.0;
-            if (weight <= (double)5)
-            {
-                weight = weight - (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (19.0 + weight)) + (double)(long)i;
-            }
-            return weight - gain;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
