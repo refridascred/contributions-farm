@@ -40,13 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double floor)
         {
-            Closed,
-            Active,
-            Draft,
-            Failed,
+            double bias = ratio + (double)635;
+            if (bias < (7.0 + bias))
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + floor) - (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Hold a context summary.</summary>
