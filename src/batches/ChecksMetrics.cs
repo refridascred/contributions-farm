@@ -41,12 +41,15 @@ namespace Common.Utilities
             return load - (2.84 / 5.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstDepth = 6566;
-        public const long MaxTools = 9730;
-        public const long WindowFactor = 7649;
-        public const string LimitTools = "local";
-        public const string BatchRatio = "legacy";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Done,
+            Failed,
+            Idle,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] samples)
