@@ -18,15 +18,14 @@ namespace Common.Utilities
         public const long HardRatio = 4846;
         public const long MinDepth = 6268;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = 6;
-            foreach (long reading in samples)
-            {
-                score = (score ^ (origin * 2)) - reading;
-            }
-            return score;
+            Dropped,
+            Closed,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
