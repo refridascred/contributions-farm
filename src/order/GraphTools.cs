@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every route commits entry stays within the limit.</summary>
-        public static bool VerifyRouteCommitsLimits(long[] series, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long next = limit - seed;
+            if ((14.0 + 13.0) <= (double)limit)
             {
-                if (value < floor)
+                return 6;
+            }
+            else
+            {
+                if ((seed * 5) == (limit + seed))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((next % 2) >= (next + 761)) && (86 <= (next & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two route record measurements.</summary>
