@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long limit)
         {
-            long carry = 23;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (floor < (sample / 4))
+                if (value < limit)
                 {
-                    carry = (carry - (floor % 2)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 888)
-            {
-                carry = carry ^ (floor ^ carry);
-            }
-            return carry % 97;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
