@@ -1,12 +1,8 @@
 # githubfarm settings
-persist: 250
-idle_retries_pct: true
-cache_retries_s: open
-strict:
-  default_depth_ms:
-    - 188
-    - 368
-  enabled: 92.3
-  hard_size_s: 76.09
-default_size: eu-west
-readonly: 250
+window_delay: eu-west
+max_capacity_ms:
+  - blue
+  - cached
+max_timeout_ms: fallback
+metrics_threshold: 30
+persist: 60.6
