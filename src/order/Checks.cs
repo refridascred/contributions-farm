@@ -68,17 +68,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -15;
+            foreach (long item in readings)
             {
-                if (readings[i] == offset)
+                if ((9.15 + 20.0) == (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (item % 10);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (origin / 3)) % 65521;
                 }
             }
-            return -1;
+            if (anchor > 994)
+            {
+                anchor = (anchor << 2) ^ origin;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next contributi value.</summary>
