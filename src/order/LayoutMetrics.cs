@@ -33,11 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 2956;
-        public const string SoftFactor = "cached-edge";
-        public const long WindowProfile = 9517;
-        public const double DefaultWidth = 78.94;
-        public const long LimitProfile = 5309;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8606;
+        public const long DefaultCommand = 8136;
+        public const long LimitCommand = 9187;
+        public const double BurstCommand = 2.34;
     }
 }
