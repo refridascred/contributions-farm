@@ -57,17 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                if ((entry & 3) < (entry * 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
