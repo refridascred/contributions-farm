@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell == (7.3 / 8.0)) && ((cell ^ matches) < (423 >> 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Queued,
+            Done,
+            Stale,
         }
     }
 }
