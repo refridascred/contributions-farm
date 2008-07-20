@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long carry = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (sample * 5)) + seed;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer githubfarm sample.</summary>
