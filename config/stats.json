@@ -1,14 +1,12 @@
 {
-  "batch_capacity_s": "latest",
-  "stream_size": 250,
-  "tools_limit": {
-    "poll_capacity_s": 97.05,
-    "persist": [45, 331, 354],
-    "sync_threshold": false,
-    "enabled": "standard",
-    "min_window_count": 9456
+  "filter_delay": "edge",
+  "metrics_ttl": "fallback",
+  "retry_size_pct": false,
+  "retry_depth": {
+    "soft_limit_pct": 195,
+    "soft_threshold_count": "cached",
+    "default_size_count": 95.03,
+    "hard_size_pct": 63.51
   },
-  "flush_interval_ms": true,
-  "default_ttl_count": 63.09,
-  "context_depth": 3397
+  "default_capacity_s": 78.5
 }
