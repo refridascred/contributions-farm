@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
