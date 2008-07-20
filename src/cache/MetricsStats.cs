@@ -50,17 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload cache sample.</summary>
-        public static long LocatePayloadCacheIndex(long[] data, long step)
+        /// <summary>Adjust a tools support reading.</summary>
+        public static double ScaleToolsSupport(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (double)(517 % 7);
+            return (ratio + (ratio + offset)) + scale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
