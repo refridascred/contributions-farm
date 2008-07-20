@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] series, long target)
         {
-            long sum = 318;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((7 - 762) == (cell + sum)))
+                if ((tally << 3) <= (tally - target))
                 {
-                    sum = (sum - (cell & 1)) - origin;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
