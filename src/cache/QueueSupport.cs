@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit already payload readings against a rule.</summary>
-        public static long MeasureAlreadyPayloadHits(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)entry < (double)matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total + total) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
