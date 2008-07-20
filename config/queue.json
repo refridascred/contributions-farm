@@ -1,7 +1,8 @@
 {
-  "poll_timeout_pct": 15.79,
-  "batch_depth": "strict",
-  "persist": "latest",
-  "retry_threshold_pct": "primary",
-  "min_limit": "local"
+  "layout_interval": true,
+  "burst_window": 250,
+  "sync_interval_s": ["open", "latest"],
+  "strict": [461, 26, 80, 169],
+  "base_ratio": "blue",
+  "base_size_ms": true
 }
