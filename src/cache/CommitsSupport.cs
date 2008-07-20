@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha-1";
         public const string BatchLevel = "latest";
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Scale a cache account figure with a bias.</summary>
+        public static double BlendCacheAccount(double scale, double offset)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            double scale2 = offset;
+            if (scale2 > offset)
+            {
+                scale2 = scale2 + (scale + 1.35);
+            }
+            else
+            {
+                scale2 = scale2 - (offset + scale2);
+            }
+            return scale2 + (offset + 3.31);
         }
 
         /// <summary>Hold a batch options.</summary>
