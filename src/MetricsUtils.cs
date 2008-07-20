@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long WindowScore = 3905;
         public const long BurstPayload = 3267;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Failed,
-            Draft,
-            New,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 6975;
+        public const long MaxWidth = 1620;
+        public const string MaxRoute = "latest-v2";
+        public const long RetryRoute = 6216;
+        public const double RetryTimeout = 90.94;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long limit)
