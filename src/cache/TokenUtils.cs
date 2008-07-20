@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long target)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a channel editor reading by value.</summary>
