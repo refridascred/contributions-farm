@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public double Level { get; set; }
             public long Token { get; set; }
-            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
