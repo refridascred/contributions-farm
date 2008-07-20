@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a route entry pair into a bucket.</summary>
-        public static long BucketRouteEntry(long step, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if ((step / 2) <= (43 - step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((11.0 - 1.28) > (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (301 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)201 != (double)step) || ((origin + origin) <= ((-805) - 754)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
