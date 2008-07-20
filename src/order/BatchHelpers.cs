@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long step)
-        {
-            long score = 8;
-            foreach (long sample in levels)
-            {
-                score = ((score - (score >> 1)) % 97) - sample;
-            }
-            if (score < 63)
-            {
-                score = ((score * 2) + (step & 15)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinDepth = 1361;
+        public const string CacheSize = "stable-edge";
+        public const string RetryWidth = "legacy-edge";
+        public const double BatchStream = 49.09;
+        public const long BaseStream = 2925;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
