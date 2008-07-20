@@ -36,22 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels, long limit)
+        /// <summary>Digest a series of channel command entries.</summary>
+        public static long FoldChannelCommand(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = -894;
+            foreach (long cell in items)
             {
-                if (((double)sample <= (18.0 - 9.95)) && ((limit - limit) < sample))
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = hits + 3;
+                    acc = (((acc * 3) + (acc * 2)) % 65521) - (long)i;
+                }
+                if (!((cell ^ cell) >= (5 + acc)))
+                {
+                    acc = (acc ^ (acc + 36)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc << 2) ^ 39) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
