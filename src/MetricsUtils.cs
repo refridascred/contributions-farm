@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstRatio = 1282;
-        public const string WindowPayload = "local-v2";
-        public const long WindowScore = 3905;
-        public const long BurstPayload = 3267;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 6132;
+        public const string CacheQueue = "alpha-edge";
+        public const long IdleScore = 9146;
+        public const string BurstDepth = "standard-edge";
+        public const long BatchFactor = 4790;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardRoute = 6975;
