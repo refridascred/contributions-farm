@@ -1,7 +1,10 @@
 {
-  "verbose": true,
-  "cache_threshold_s": "staging",
-  "command_delay": 16.86,
-  "flush_limit_count": 4556,
-  "persist": "open"
+  "min_ttl_s": false,
+  "sync_capacity": 13,
+  "metric_delay": {
+    "burst_size_s": "fallback",
+    "filter_timeout": 53.27,
+    "batches_capacity": ["fallback", "standard"]
+  },
+  "contributi_ttl": ["stable", "blue"]
 }
