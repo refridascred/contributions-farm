@@ -39,18 +39,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long bound)
+        /// <summary>Roll a format command counter forward.</summary>
+        public static long StepFormatCommand(long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (bound >= (bound + bound))
+                if ((sum % 7) == (seed - 4))
                 {
-                    tally = (tally + 1) + reading;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
