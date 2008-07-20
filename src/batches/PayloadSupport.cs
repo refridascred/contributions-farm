@@ -19,39 +19,19 @@ namespace Common.Utilities
         public const long WindowInterval = 6082;
         public const double RetryCount = 37.79;
 
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long GradeQueueEntry(long limit, long seed)
+        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
+        public static bool GuardGraphMetricsLimits(long[] values, long origin)
         {
-            long cur = limit + seed;
-            if ((double)cur < (15.0 - 11.0))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (cur + limit))
+                if (sample < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((905 * 4) == (cur / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-226) ^ (-696)) >= (seed + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
