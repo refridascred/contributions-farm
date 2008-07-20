@@ -44,12 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
