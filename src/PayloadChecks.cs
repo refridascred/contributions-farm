@@ -77,18 +77,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double drift = 3.7;
+            if (drift >= (bias - drift))
             {
-                if ((seen - bound) == (bound - bound))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                drift = drift - drift;
             }
-            return seen;
+            else
+            {
+                drift = drift - (drift - bias);
+            }
+            return drift + (bias2 - 3.44);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
