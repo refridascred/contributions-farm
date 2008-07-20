@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
