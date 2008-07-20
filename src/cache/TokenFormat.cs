@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BaseScore = 14.08;
         public const double DefaultGraph = 36.35;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] samples, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (cell > step)
+                if ((1.0 >= (double)origin) && (matches >= reading))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate counter contributi samples.</summary>
