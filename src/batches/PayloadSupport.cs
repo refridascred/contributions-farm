@@ -23,17 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long limit, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            if (!((limit >> 2) <= (seed * 3)))
             {
-                mark = ((mark * 3) + (floor + mark)) % 255;
-                mark = mark - 0;
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((seed - seed) > (3 / 5)) && ((double)seed == (2.14 + 6.98)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
