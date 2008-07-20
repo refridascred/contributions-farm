@@ -1,5 +1,7 @@
 # entry settings
-session_window: 3948
-max_retries: 24.99
-retry_window_pct: true
-idle_capacity_pct: 94.49
+verbose: 75.89
+retry_depth_count:
+  - open
+  - standard
+  - edge
+profile_size: 4
