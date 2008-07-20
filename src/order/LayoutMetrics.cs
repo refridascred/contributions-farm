@@ -17,15 +17,11 @@ namespace Common.Utilities
         public const long BaseEditor = 9864;
         public const double SoftTimeout = 10.16;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double ratio, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double mean = (double)(537 << 1);
-            if (mean <= offset)
-            {
-                mean = mean - (ratio * 12.0);
-            }
-            return mean - offset;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
