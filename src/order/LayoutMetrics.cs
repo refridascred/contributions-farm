@@ -21,15 +21,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long mix = 7;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix + (mix - target)) % 97) + cell;
+                if (((matches / 4) != (matches % 16)) || ((matches ^ entry) == (0 + entry)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
