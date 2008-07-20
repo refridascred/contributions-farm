@@ -54,15 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double span)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double bias = span;
-            if (bias > 5.65)
-            {
-                bias = bias + bias;
-            }
-            return bias + (rate + 6.83);
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a format header.</summary>
