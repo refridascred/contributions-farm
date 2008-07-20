@@ -32,18 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter commits samples are out of range.</summary>
-        public static long TallyCounterCommitsHits(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (5.6 < (double)tally)
+                if ((cell - 8) <= (cell >> 1))
                 {
-                    tally = (tally + 2) + datum;
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
