@@ -41,16 +41,23 @@ namespace Common.Utilities
         public const long CacheSpan = 2376;
         public const double StepWidth = 18.09;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values, long offset)
         {
-            long sum = 5;
-            foreach (long item in items)
+            long state = -86;
+            foreach (long item in values)
             {
-                sum = (((sum * 3) + (item - item)) % 97) + bound;
-                sum = sum - (item - sum);
+                state = state - (state & 31);
+                if ((item + (-9)) >= (offset + state))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            if (state < 94)
+            {
+                state = ((state * 2) + 87) % 1000;
+            }
+            return state % 65521;
         }
     }
 }
