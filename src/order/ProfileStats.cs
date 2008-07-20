@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long origin)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
