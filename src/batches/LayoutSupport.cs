@@ -24,15 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 76;
-            foreach (long value in samples)
-            {
-                state = (state + (target + target)) ^ value;
-            }
-            return state;
+            Stale,
+            Failed,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
