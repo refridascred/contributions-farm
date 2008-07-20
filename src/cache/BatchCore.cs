@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((15.0 * 0.3) != (double)tally)
+                if (sample >= step)
                 {
-                    tally = ((tally + 3) ^ value) + target;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a schema header.</summary>
