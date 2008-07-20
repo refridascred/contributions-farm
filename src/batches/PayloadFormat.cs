@@ -24,15 +24,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = 81;
-            foreach (long reading in series)
-            {
-                total = total - (reading - reading);
-            }
-            return total;
+            Stale,
+            Active,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Fold a list of notes profile readings.</summary>
