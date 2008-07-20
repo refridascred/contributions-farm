@@ -41,22 +41,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long floor)
         {
-            long anchor = 31;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)limit > (0.7 + 0.2)) || ((0 % 7) > (value - anchor)))
+                if (readings[i] < floor)
                 {
-                    anchor = (anchor - (anchor / 8)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 2) + limit;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
