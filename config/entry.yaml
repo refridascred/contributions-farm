@@ -1,7 +1,6 @@
 # entry settings
-verbose: 75.89
-retry_depth_count:
-  - open
-  - standard
-  - edge
-profile_size: 4
+profile_interval: 17.34
+audit: cached
+hard_capacity_ms: green
+readonly: edge
+soft_delay_pct: 67.58
