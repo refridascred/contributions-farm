@@ -58,13 +58,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Idle,
-            New,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinFactor = "cached-v2";
+        public const long HardSize = 4582;
+        public const long MaxQueue = 2515;
+        public const long RetryFactor = 9083;
+        public const double HardLevel = 81.45;
     }
 }
