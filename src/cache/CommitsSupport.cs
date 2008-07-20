@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long sum = 0;
-            foreach (long value in values)
-            {
-                sum = ((sum ^ (value / 9)) % 255) + floor;
-            }
-            return sum;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
