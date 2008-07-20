@@ -13,16 +13,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc - seed) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                score = (score - (score + floor)) % 101;
+                score = (score ^ score) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Digest a series of notes queue entries.</summary>
