@@ -21,12 +21,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Dropped,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 7593;
+        public const double StepGithubfarm = 48.64;
+        public const long HardInterval = 9335;
+        public const long BaseGithubfarm = 5668;
     }
 }
