@@ -19,13 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            if ((1.5 + 2.0) >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 2) == (limit + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset - limit) <= limit) || ((15.0 - 0.48) < (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.0 - 18.0) == (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
