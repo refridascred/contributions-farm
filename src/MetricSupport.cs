@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batches checks entry stays within the limit.</summary>
-        public static bool GuardBatchesChecksRange(long[] levels, long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ target) % 97;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
