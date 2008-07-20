@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((reading & 31) < reading)
+                if ((matches >> 3) > (matches * 5))
                 {
-                    seen = (seen + 1) - limit;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a checks options.</summary>
