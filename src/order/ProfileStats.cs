@@ -57,15 +57,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support buffer counter forward.</summary>
-        public static long RollSupportBuffer(long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
     }
 }
