@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue green; do
+for item in blue strict; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-staging}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
