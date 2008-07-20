@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account tools reading by value.</summary>
-        public static long FindAccountToolsIndex(long[] samples, long step)
+        /// <summary>Locate a graph window reading by value.</summary>
+        public static long LookupGraphWindowIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > step)
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
