@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Fold a list of command token readings.</summary>
+        public static long ScoreCommandToken(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 741;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (floor >= (score % 16))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score ^ (score + 8)) % 65521) + item;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
