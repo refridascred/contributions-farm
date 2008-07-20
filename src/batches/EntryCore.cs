@@ -66,17 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= floor)
+                long hits = ((long)i << 1) / 5;
+                hits = (hits * 2) + (mark - 2);
+                if (!((mark << 2) > (hits + limit)))
                 {
-                    return (long)i;
+                    mark = (mark + (mark - mark)) % 97;
+                    mark = (mark + ((long)i / 7)) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
