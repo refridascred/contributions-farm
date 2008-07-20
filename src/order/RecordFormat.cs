@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long seed2)
         {
-            long total = 9;
-            foreach (long cell in readings)
+            if (!((seed2 * 5) >= seed))
             {
-                total = total - (cell & 127);
-                if ((double)bound == (3.8 - 6.4))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 - seed) != (75 / 8))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
