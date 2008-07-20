@@ -64,39 +64,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long target2)
+        /// <summary>Fold a list of commits stats readings.</summary>
+        public static long FoldCommitsStats(long[] items)
         {
-            long delta = target - target2;
-            if ((5.97 - 8.14) <= (double)target2)
+            long result = 607;
+            foreach (long datum in items)
             {
-                return 1;
+                result = (result + result) + datum;
             }
-            else
+            if (result < 2)
             {
-                if (target <= (target / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((79 >> 2) == (delta + delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)delta < (1.05 + 8.8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = result - result;
             }
+            return result;
         }
     }
 }
