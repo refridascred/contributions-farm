@@ -38,10 +38,22 @@ namespace Common.Utilities
         public const long IdleCount = 8284;
         public const double BaseOrder = 5.09;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 2664;
-        public const long CacheSpan = 2376;
-        public const double StepWidth = 18.09;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] data)
