@@ -48,15 +48,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            long result = 6;
-            foreach (long cell in levels)
+            double drift = bias;
+            if (drift <= bias)
             {
-                result = (((result ^ result) % 1000) + cell) - floor;
+                drift = (drift + (double)490) - offset;
             }
-            return result % 65521;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (double)90;
         }
 
         /// <summary>Fold a list of counter record readings.</summary>
