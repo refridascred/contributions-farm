@@ -28,20 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstInterval = 61.41;
+        public const double CacheCommand = 42.08;
+        public const long BurstSize = 2122;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] readings)
