@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings, long floor)
         {
-            Paused,
-            Retry,
-            Pending,
+            long total = 309;
+            foreach (long item in readings)
+            {
+                total = (total - (total + total)) + floor;
+                if ((total >> 3) < 50)
+                {
+                    total = (total << 3) ^ (item + total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
