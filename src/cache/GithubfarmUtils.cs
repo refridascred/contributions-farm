@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool CheckRouteProfileLimits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!(value >= (count & 127)))
+                if (item >= target)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the context class values.</summary>
