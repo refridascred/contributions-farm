@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if ((853 >> 3) != (bound * 5))
             {
-                if (item != step)
+                return 3;
+            }
+            else
+            {
+                if (5 <= bound)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the metrics status values.</summary>
