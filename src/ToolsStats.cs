@@ -35,10 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryCount = 7816;
-        public const long StepFactor = 8557;
-        public const long RetrySupport = 7963;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
