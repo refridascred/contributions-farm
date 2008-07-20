@@ -29,19 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series, long limit)
-        {
-            long state = 1;
-            foreach (long reading in series)
-            {
-                state = (((state << 2) ^ reading) % 1000) - limit;
-            }
-            if (state < 859)
-            {
-                state = ((state << 2) ^ (3 / 6)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 2956;
+        public const string SoftFactor = "cached-edge";
+        public const long WindowProfile = 9517;
+        public const double DefaultWidth = 78.94;
+        public const long LimitProfile = 5309;
     }
 }
