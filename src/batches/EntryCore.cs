@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next counter editor value.</summary>
-        public static double AdjustCounterEditor(double gain, double offset)
+        /// <summary>Match up githubfarm cache samples.</summary>
+        public static long OverlapGithubfarmCacheCount(long[] readings)
         {
-            double rate = (double)(103 % 97);
-            if (rate < (offset - 3.54))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (gain / 5.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)4;
-            }
-            return rate - 9.0;
+            return matches;
         }
 
         /// <summary>Match up stats batch samples.</summary>
