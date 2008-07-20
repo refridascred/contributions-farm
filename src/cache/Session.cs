@@ -52,10 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepTimeout = "latest-v2";
-        public const long BaseLayout = 2547;
-        public const string WindowLayout = "cached";
-        public const long RetryLayout = 2574;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values, long origin)
+        {
+            long sum = 6;
+            foreach (long sample in values)
+            {
+                sum = (((sum * 2) + (432 % 24)) % 255) ^ sample;
+            }
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ (origin & 255)) % 97;
+            }
+            return sum;
+        }
     }
 }
