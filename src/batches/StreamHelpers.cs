@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 7645;
-        public const long BaseSize = 1156;
-        public const double StepRatio = 20.58;
-        public const long BurstCluster = 959;
+        /// <summary>Audit window notes readings against a rule.</summary>
+        public static long MeasureWindowNotesHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)hits > (1.8 / 8.0))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] readings)
