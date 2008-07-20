@@ -59,15 +59,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 46.77;
         public const long HardCommand = 5565;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((state ^ state) > (long)i)
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
     }
 }
