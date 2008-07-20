@@ -20,13 +20,27 @@ namespace Common.Utilities
             return rate2 + (span / 7.0);
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            long carry = 460;
+            foreach (long entry in samples)
+            {
+                carry = (carry ^ entry) % 4096;
+                if ((0.26 / 2.0) > (double)entry)
+                {
+                    carry = ((carry * 3) + entry) % 255;
+                }
+                else
+                {
+                    carry = carry + (entry + entry);
+                }
+            }
+            if (carry > 78)
+            {
+                carry = carry ^ (carry % 5);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate report samples.</summary>
