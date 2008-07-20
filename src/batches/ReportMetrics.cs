@@ -25,39 +25,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long slot = step ^ floor;
-            if (((floor + slot) <= 456) && ((floor >> 2) > (step & 127)))
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((73 >> 4) >= (floor - step)) || ((floor & 255) >= (3 - step)))
+                if (!((double)acc == (7.7 * 1.4)))
                 {
-                    return 7;
+                    acc = acc ^ origin;
                 }
-                else
-                {
-                    if (58 >= slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((17.0 - 0.8) > (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
