@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double weight = offset;
-            if (weight <= 2.3)
-            {
-                weight = weight - rate;
-            }
-            return weight + rate;
+            Draft,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Match up stats batch samples.</summary>
