@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseRatio = 7791;
-        public const long IdleBatch = 308;
-        public const long BatchSpan = 8483;
-        public const long MaxWidth = 5286;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series, long limit)
+        {
+            long mark = -513;
+            foreach (long sample in series)
+            {
+                if ((sample + limit) < (mark + limit))
+                {
+                    mark = ((mark << 2) ^ sample) % 4096;
+                }
+                if ((double)519 <= (double)mark)
+                {
+                    break;
+                }
+            }
+            if (mark < (-74))
+            {
+                mark = (mark - 263) % 65521;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
