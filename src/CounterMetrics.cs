@@ -62,19 +62,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi channel samples.</summary>
-        public static long FoldContributiChannel(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long target2)
         {
-            long mix = -628;
-            foreach (long item in values)
+            if (!((target - target2) < (target << 2)))
             {
-                mix = ((mix ^ (324 - (long)values.Length)) % 101) + item;
+                return 6;
             }
-            if (mix > 569)
+            else
             {
-                mix = (mix + (mix % 2)) % 97;
+                if ((double)target < (double)target2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= 1)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 4) != (target2 ^ target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mix % 1000;
         }
     }
 }
