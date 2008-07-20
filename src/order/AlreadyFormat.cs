@@ -28,12 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] samples, long limit)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long anchor = 447;
+            foreach (long entry in samples)
+            {
+                if ((370 * 3) >= (entry % 10))
+                {
+                    anchor = ((anchor ^ (52 + anchor)) % 101) + limit;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
