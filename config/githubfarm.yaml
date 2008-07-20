@@ -1,9 +1,20 @@
 # githubfarm settings
-default_window_count: false
-hard_retries_count: 4879
-flush_timeout_ms:
-  - open
-  - strict
-  - green
-  - open
-soft_limit: 785
+flush_capacity_count:
+  poll_timeout_count: primary
+  compress: cached
+  session_size: 250
+  idle_delay: edge
+  min_ratio_count: strict
+retry_interval_pct: 6487
+githubfarm_capacity: 8839
+hard_retries_pct:
+  strict:
+    default_capacity_count: open
+    tools_ratio: 19.06
+    batch_retries:
+      - legacy
+      - legacy
+      - latest
+    cache_size_s: 2.41
+  base_delay: 9442
+  cluster_retries: primary
