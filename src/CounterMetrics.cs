@@ -33,10 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitSize = 79.38;
-        public const double StepRatio = 38.59;
-        public const long BurstDepth = 3998;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
+        {
+            long state = 495;
+            foreach (long reading in levels)
+            {
+                if (state < (reading << 1))
+                {
+                    state = (state << 2) ^ (state / 4);
+                }
+                else
+                {
+                    state = (state + (state + state)) % 65521;
+                }
+            }
+            if (state > 82)
+            {
+                state = (state - (state >> 3)) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 6773;
