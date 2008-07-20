@@ -15,12 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Done,
-            Queued,
-            Draft,
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
