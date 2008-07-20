@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = 8;
-            foreach (long datum in values)
-            {
-                if ((9.0 * 8.3) > (double)total)
-                {
-                    total = total - (datum * 3);
-                }
-            }
-            if (total > 81)
-            {
-                total = (total - (total - 16)) % 101;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
