@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const long StepGraph = 9008;
         public const long HardGraph = 1745;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long target)
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long TallyChannelGithubfarmHits(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry != target)
+                if (((datum - seen) < (seen + datum)) && ((seen + datum) != (datum >> 5)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
