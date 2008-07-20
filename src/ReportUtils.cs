@@ -25,19 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((6.89 / 2.0) >= (double)hits) && ((((-673) << 3) < (hits + hits)) || ((reading % 5) <= reading)))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 50.58;
+        public const long WindowTimeout = 952;
+        public const long RetryCount = 8379;
+        public const long StepAccount = 9005;
+        public const string BurstCount = "primary-edge";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] values)
