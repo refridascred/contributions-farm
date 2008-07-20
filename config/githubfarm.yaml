@@ -1,8 +1,25 @@
 # githubfarm settings
-window_delay: eu-west
-max_capacity_ms:
+strict: 31.49
+githubfarm_window: 58.16
+readonly:
+  flush_ttl_pct: 38.42
+  sync_timeout_count:
+    report_size: legacy
+    schema_retries: blue
+    default_depth_count:
+      - standard
+      - staging
+    persist: standard
+  idle_ratio_count: fallback
+hard_threshold:
+  graph_ttl: true
+  base_depth_ms: cached
+  idle_depth_s:
+    - fallback
+    - cached
+    - standard
+warm_interval_s: 1024
+verbose:
   - blue
-  - cached
-max_timeout_ms: fallback
-metrics_threshold: 30
-persist: 60.6
+  - primary
+  - legacy
