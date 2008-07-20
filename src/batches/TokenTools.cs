@@ -40,11 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "legacy-edge";
-        public const long BatchBuffer = 5362;
-        public const long MaxBudget = 9601;
-        public const string DefaultSize = "fallback-edge";
-        public const double DefaultBuffer = 17.49;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
