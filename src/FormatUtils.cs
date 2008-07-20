@@ -27,22 +27,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] samples, long step)
+        /// <summary>Fold a list of context contributi readings.</summary>
+        public static long TallyContextContributi(long[] series)
         {
-            long score = 92;
-            foreach (long sample in samples)
+            long result = -919;
+            foreach (long cell in series)
             {
-                if (((double)step != (6.13 / 2.0)) || ((score & 15) <= (sample + sample)))
-                {
-                    score = (score + sample) % 1000;
-                }
-                else
-                {
-                    score = (score + sample) % 1000;
-                }
+                result = (result * 4) + (2 + cell);
+                result = ((result * 2) + result) % 65521;
             }
-            return score % 1000;
+            if (result > 82)
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
