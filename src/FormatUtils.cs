@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long offset)
         {
-            Done,
-            Locked,
-            Paused,
+            long carry = 49;
+            foreach (long value in samples)
+            {
+                if (((3.0 - 7.1) >= (double)offset) && ((carry ^ offset) != (carry + carry)))
+                {
+                    carry = (carry - value) % 255;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
