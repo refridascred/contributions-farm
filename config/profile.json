@@ -1,7 +1,12 @@
 {
-  "default_depth_ms": 9.17,
-  "batch_ttl_pct": "cached",
-  "hard_depth_s": 2.96,
-  "stats_threshold": 5131,
-  "burst_depth": "eu-west"
+  "sync_interval_s": {
+    "idle_capacity_pct": true,
+    "min_ratio_s": 72,
+    "token_interval": [161, 315],
+    "flush_threshold_s": 4579,
+    "min_threshold_ms": "edge"
+  },
+  "token_window": 53.94,
+  "default_capacity_ms": "legacy",
+  "filter_size": ["fallback", "fallback"]
 }
