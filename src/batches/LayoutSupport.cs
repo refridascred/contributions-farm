@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long RollMetricsSupport(long bound)
         {
-            Active,
-            Ready,
-            Idle,
-            Locked,
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (bound < ((long)i + bound))
+                {
+                    score = (score + (bound >> 2)) % 4096;
+                }
+                else
+                {
+                    score = (score * 4) + (61 ^ bound);
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a tools already value against two limits.</summary>
