@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route account counter forward.</summary>
-        public static long DeriveRouteAccount(long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + carry) % 101;
-                carry = ((carry << 3) ^ carry) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            double ratio2 = (floor * 13.0) / 4.0;
+            return (ratio2 - (double)850) + ratio;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
