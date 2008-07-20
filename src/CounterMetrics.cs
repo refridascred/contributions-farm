@@ -34,14 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            Stale,
-            Ready,
-            Pending,
-            Idle,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
