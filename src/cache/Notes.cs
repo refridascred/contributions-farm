@@ -28,25 +28,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long origin2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            long edge = origin - origin2;
-            if ((origin > (origin2 % 5)) && ((3 >> 4) >= (origin2 * 2)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + origin) < (edge >> 4))
+                if ((((double)seen <= (1.1 / 8.0)) || ((double)seen < (8.6 - 2.5))) && ((value / 8) < (seen ^ seen)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
