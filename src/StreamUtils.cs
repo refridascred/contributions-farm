@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items, long origin)
+        /// <summary>Count the route stats entries that pass the check.</summary>
+        public static long TallyRouteStatsGaps(long[] samples)
         {
-            long result = 527;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                result = ((result * 4) + sample) - origin;
+                if ((53 ^ entry) == (entry - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
