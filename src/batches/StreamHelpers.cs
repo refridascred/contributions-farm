@@ -59,13 +59,18 @@ namespace Common.Utilities
         public const long DefaultLevel = 3173;
         public const long MinTimeout = 1009;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long TallyContextTokenHits(long[] series, long limit)
         {
-            Queued,
-            Ready,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (5.75 / 2.0))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
