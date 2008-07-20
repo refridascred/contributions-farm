@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= step)
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
