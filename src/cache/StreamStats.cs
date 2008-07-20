@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up token editor samples.</summary>
-        public static long CompareTokenEditorCount(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 454;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc + (0 / 4)) % 97) ^ value;
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
