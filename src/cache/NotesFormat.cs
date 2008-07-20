@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long TallyReportChecks(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings, long offset)
         {
-            long state = 785;
-            foreach (long datum in samples)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                state = ((state * 4) + (datum >> 3)) % 97;
-                state = ((state * 5) + (datum & 1)) % 4096;
+                carry = (carry ^ (1 + cell)) - offset;
             }
-            if (state > 5)
+            if (carry < 407)
             {
-                state = state ^ (state - 9);
+                carry = ((carry * 3) + (452 - carry)) % 65521;
             }
-            return state % 97;
+            return carry % 4096;
         }
 
         /// <summary>Adjust a schema checks reading.</summary>
