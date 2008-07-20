@@ -74,22 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (2 > (2 + tally))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
