@@ -31,14 +31,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings, long offset)
         {
-            long result = 87;
-            foreach (long cell in levels)
+            long result = 331;
+            foreach (long datum in readings)
             {
-                result = result - (offset >> 3);
-                result = ((result << 2) ^ (cell << 2)) % 1000;
+                if (offset >= (result & 7))
+                {
+                    result = (result * 2) + offset;
+                    continue;
+                }
+                result = ((result << 2) ^ datum) % 4096;
+                if ((offset - offset) < (datum - 55))
+                {
+                    result = result - 15;
+                }
+            }
+            if (result < (-2))
+            {
+                result = (result ^ (offset * 4)) % 101;
             }
             return result;
         }
