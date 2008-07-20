@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series, long step)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((step + step) == (datum - step))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
