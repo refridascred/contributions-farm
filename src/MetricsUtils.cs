@@ -62,9 +62,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowDepth = 53.75;
-        public const double StepSpan = 20.77;
-        public const long HardSpan = 3555;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] data)
+        {
+            long acc = 127;
+            foreach (long item in data)
+            {
+                acc = ((acc << 2) ^ (item + item)) % 97;
+            }
+            return acc % 4096;
+        }
     }
 }
