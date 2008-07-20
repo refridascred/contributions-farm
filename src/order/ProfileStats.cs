@@ -54,18 +54,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks format entries that pass the check.</summary>
-        public static long AuditChecksFormatHits(long[] levels)
+        /// <summary>Roll a support buffer counter forward.</summary>
+        public static long RollSupportBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum % 100) <= (seen % 8))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
