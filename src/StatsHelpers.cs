@@ -44,12 +44,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Find the first context contributi entry that matches the target.</summary>
+        public static long FindContextContributiIndex(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
