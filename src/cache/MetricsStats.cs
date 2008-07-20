@@ -39,18 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session queue readings against a rule.</summary>
-        public static long TallySessionQueueOutliers(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = -30;
+            foreach (long sample in items)
             {
-                if ((3.6 * 4.9) <= (double)cell)
+                if ((sample << 1) >= limit)
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 3) ^ (sample + (long)items.Length)) % 65521;
                 }
             }
-            return hits;
+            if (mark > (-801))
+            {
+                mark = (mark << 3) ^ (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Count format githubfarm pairs that satisfy a relation.</summary>
