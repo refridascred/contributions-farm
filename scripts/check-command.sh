@@ -12,12 +12,11 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in edge fallback; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 9); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=175
+log "limit is ${COMMAND_LIMIT}"
