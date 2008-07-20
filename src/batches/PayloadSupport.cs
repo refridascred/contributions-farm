@@ -23,24 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long limit, long seed)
+        /// <summary>Check that every report queue entry stays within the limit.</summary>
+        public static bool ValidateReportQueueLimits(long[] data, long floor)
         {
-            if (!((limit >> 2) <= (seed * 3)))
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) > (3 / 5)) && ((double)seed == (2.14 + 6.98)))
+                if (reading < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
