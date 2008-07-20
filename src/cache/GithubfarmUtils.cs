@@ -46,23 +46,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] series, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] values, long step)
         {
-            long result = -390;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((result - value) >= ((-22) + value)) && (value >= (value << 1)))
+                if (item < step)
                 {
-                    result = ((result << 3) ^ (target >> 4)) % 65521;
-                }
-                result = (result << 3) ^ (718 << 3);
-                if ((target + value) == (value - value))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return result % 97;
+            return ok;
         }
     }
 }
