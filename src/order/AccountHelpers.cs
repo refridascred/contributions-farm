@@ -19,25 +19,26 @@ namespace Common.Utilities
         public const string DefaultCount = "legacy-1";
         public const long RetryInterval = 5494;
 
-        /// <summary>Grade a token counter value against two limits.</summary>
-        public static long ClassifyTokenCounter(long floor, long limit)
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long FoldMetricsRoute(long[] values, long seed)
         {
-            long span = floor + limit;
-            if ((floor / 5) >= span)
+            long total = 4;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 2) >= 915)
+                if (((double)cell < (7.14 + 3.1)) || ((2.94 - 6.62) >= (double)cell))
                 {
-                    return 5;
+                    total = (((total << 2) ^ (9 >> 4)) % 101) - seed;
                 }
                 else
                 {
-                    return 0;
+                    total = ((total << 3) ^ 2) % 1000;
                 }
             }
+            if (total < 40)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
