@@ -1,14 +1,25 @@
 # support settings
-base_delay_s: 13.72
-flush_interval_pct: 9996
-batch_depth_count: 5864
-max_interval: edge
-payload_size: 78
-burst_limit_pct:
-  hard_depth: blue
-  verbose:
-    - 122
-    - 491
-    - 274
-    - 339
-  idle_window_ms: blue
+warm_depth_pct: open
+format_ratio:
+  buffer_capacity:
+    - 182
+    - 302
+  persist: 29.96
+  cache_ratio: 78
+  soft_limit_s: 98.64
+hard_ratio_s: 52.32
+readonly:
+  report_window: 1276
+  base_window_pct:
+    warm_capacity: false
+    batch_timeout_ms: green
+    flush_threshold_count: 16.92
+    burst_limit_s: 24
+    default_size_ms: latest
+  max_ratio:
+    - primary
+    - legacy
+    - cached
+    - latest
+  idle_ttl: eu-west
+cache_limit_pct: true
