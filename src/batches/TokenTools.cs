@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const long SoftTimeout = 6873;
         public const double BaseSize = 59.81;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if (9 <= limit)
             {
-                if (matches <= (reading + reading))
+                return 2;
+            }
+            else
+            {
+                if ((limit2 * 2) <= (84 & 127))
                 {
-                    matches = matches + 3;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit2 / 5) == (limit ^ limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up format batch samples.</summary>
