@@ -51,25 +51,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long mark = -88;
+            foreach (long entry in series)
             {
-                if ((seed * 3) <= seed)
+                mark = (mark - ((-1) + mark)) % 1000;
+                if ((0.7 - 9.5) >= (double)entry)
                 {
-                    mix = (mix + mix) % 65521;
-                    continue;
+                    mark = (mark ^ entry) % 255;
                 }
-                mix = mix - ((long)i - seed);
-                if ((7.3 * 6.9) == (double)mix)
-                {
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Hold a metrics summary.</summary>
