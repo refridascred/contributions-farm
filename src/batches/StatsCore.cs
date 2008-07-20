@@ -34,16 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm profile counter forward.</summary>
-        public static long RollGithubfarmProfile(long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 2) ^ (74 * 5)) % 97;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
