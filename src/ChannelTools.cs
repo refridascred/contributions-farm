@@ -20,13 +20,15 @@ namespace Common.Utilities
             return bias3 - (bias3 / 8.0);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Scale a batch farm figure with a bias.</summary>
+        public static double ProjectBatchFarm(double scale, double span)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            double load = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)(long)i) + span;
+            }
+            return load + 3.9;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
