@@ -21,17 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first context filter entry that matches the target.</summary>
-        public static long LocateContextFilterIndex(long[] data, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
