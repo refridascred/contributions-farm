@@ -1,14 +1,7 @@
 {
-  "batches_retries": "fallback",
-  "command_retries": 22,
-  "batch_delay": true,
-  "retry_size_count": "fallback",
-  "idle_interval": {
-    "min_window_ms": 60,
-    "flush_retries": 500,
-    "tools_ratio": 4946,
-    "hard_capacity_pct": ["open", "open"],
-    "dry_run": 500,
-    "session_retries": "latest"
-  }
+  "poll_timeout_pct": 15.79,
+  "batch_depth": "strict",
+  "persist": "latest",
+  "retry_threshold_pct": "primary",
+  "min_limit": "local"
 }
