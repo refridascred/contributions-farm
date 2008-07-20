@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool VerifyFarmTokenRange(long[] samples, long bound)
+        /// <summary>Compare every pair of farm order readings.</summary>
+        public static long PairFarmOrderCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
