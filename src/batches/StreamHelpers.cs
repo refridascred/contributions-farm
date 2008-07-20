@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor - (bound + 3);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the cache phase values.</summary>
