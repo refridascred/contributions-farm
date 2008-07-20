@@ -63,25 +63,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank route filter input into a small class.</summary>
-        public static long GradeRouteFilter(long limit, long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long slot = limit + target;
-            if ((target / 3) != (limit - slot))
+            double ratio = span;
+            if (ratio > (scale + scale))
             {
-                return 0;
+                ratio = ratio - scale;
             }
             else
             {
-                if ((slot - slot) <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio = ratio + 7.62;
             }
+            return ratio + span;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
