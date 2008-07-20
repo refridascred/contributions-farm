@@ -34,18 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits & 255) == (datum << 2))
+                if (readings[i] > offset)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
