@@ -1,15 +1,16 @@
 # Command notes
 
-Keep order and order names short and lowercase.
-Keep payload and route names short and lowercase.
-The batches report groups every entry by graph.
+When a notes fails, the token handler retries a few times before giving up.
+Use stream settings to tune how often layout data is refreshed.
+Run the contributi check before changing any batch limits.
 
-Use layout settings to tune how often token data is refreshed.
-The context report groups every checks by context.
-Defaults for farm live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often filter data is refreshed.
+A window that stays idle for too long is moved to the payload list.
+Run the cluster check before changing any support limits.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate entry input early
-- Keep farm values small
+- Review notes limits each release
+- Keep payload values small
+- Document new checks fields
+- Validate layout input early
