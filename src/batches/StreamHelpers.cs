@@ -32,24 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long mark = 1;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark << 3) ^ value;
-                mark = ((mark << 3) ^ (value ^ value)) % 255;
-                if ((bound - mark) <= value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark << 2) ^ (mark - value);
-                }
-                else
-                {
-                    mark = (mark + (mark ^ 5)) % 101;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
