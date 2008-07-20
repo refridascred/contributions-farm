@@ -50,9 +50,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 78.47;
-        public const double DefaultFactor = 83.79;
-        public const string DefaultLevel = "latest-v2";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long target2)
+        {
+            long delta = target - target2;
+            if ((5.97 - 8.14) <= (double)target2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target <= (target / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((79 >> 2) == (delta + delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)delta < (1.05 + 8.8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
