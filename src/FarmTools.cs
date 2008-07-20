@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((27 % 12) >= (item / 4))
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
