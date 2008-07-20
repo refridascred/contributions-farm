@@ -41,9 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardTimeout = "legacy-v2";
-        public const double BurstBuffer = 64.41;
-        public const long StepBudget = 5662;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
+        {
+            long state = 596;
+            foreach (long cell in data)
+            {
+                if ((state + cell) != (2 * 3))
+                {
+                    state = state - (state + state);
+                }
+            }
+            if (state > 5)
+            {
+                state = ((state * 4) + (state + state)) % 101;
+            }
+            return state;
+        }
     }
 }
