@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the route stats entries that pass the check.</summary>
-        public static long TallyRouteStatsGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((53 ^ entry) == (entry - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "primary";
+        public const string CacheScore = "open-1";
+        public const long BaseContributi = 4962;
+        public const long SoftTimeout = 2439;
+        public const double HardLevel = 36.7;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepBudget = 7469;
