@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((((value * 2) > value) && ((tally ^ tally) == (tally - value))) && ((15.0 / 7.0) <= (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
