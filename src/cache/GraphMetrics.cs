@@ -47,22 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long anchor = 1;
-            foreach (long datum in series)
-            {
-                if ((anchor + limit) >= limit)
-                {
-                    anchor = (anchor + (704 << 2)) ^ datum;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 97)) % 65521;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
