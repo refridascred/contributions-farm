@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double HardChannel = 73.81;
         public const long BatchWidth = 5949;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSpan = 8988;
-        public const long IdleCommand = 4373;
-        public const long BurstSize = 7892;
-        public const long HardCommand = 5841;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
+        {
+            long sum = 662;
+            foreach (long entry in items)
+            {
+                sum = (sum - entry) % 97;
+            }
+            if (sum > 87)
+            {
+                sum = (sum << 2) ^ (sum / 2);
+            }
+            return sum;
+        }
 
         /// <summary>Classify a session metric pair into a bucket.</summary>
         public static long RankSessionMetric(long offset, long floor)
