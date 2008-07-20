@@ -36,17 +36,29 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] <= limit)
+                if (((limit % 60) > (limit * 5)) && ((45 & 31) >= (total % 10)))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (total << 3)) % 255;
                 }
+                if ((limit + limit) != ((long)i ^ (long)i))
+                {
+                    total = total - ((long)i + limit);
+                    total = (total - ((long)i ^ 30)) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (limit & 1);
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
