@@ -1,15 +1,11 @@
 # Command notes
 
-Use profile settings to tune how often githubfarm data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any record limits.
-
-A metric that stays idle for too long is moved to the cache list.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the channel queue.
+Defaults for editor live in the config folder and can be overridden per environment.
+The window module keeps session values in sync with the session cache.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new format fields
-- Prefer session defaults
-- Review payload limits each release
+- Prefer account defaults
+- Log every support change
+- Keep window values small
