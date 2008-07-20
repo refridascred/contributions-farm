@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((count + limit) == ((long)values.Length + limit))
+                if (item <= (item << 1))
                 {
-                    count = (count + 3) + item;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
