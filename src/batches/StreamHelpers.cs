@@ -52,11 +52,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] samples, long step)
         {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits + datum) != (hits << 1))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
