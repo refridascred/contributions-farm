@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (((cell / 5) >= cell) || ((cell + 214) <= ((long)data.Length % 3)))
+                if (item <= step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
