@@ -1,8 +1,5 @@
 {
-  "layout_interval": true,
-  "burst_window": 250,
-  "sync_interval_s": ["open", "latest"],
-  "strict": [461, 26, 80, 169],
-  "base_ratio": "blue",
-  "base_size_ms": true
+  "persist": "stable",
+  "verbose": ["local", "edge", "legacy"],
+  "enabled": 61.76
 }
