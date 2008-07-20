@@ -33,15 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile stream series from a seed.</summary>
-        public static long IterateProfileStream(long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
