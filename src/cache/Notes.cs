@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                result = result + (45 ^ 19);
-                result = (result - (target % 97)) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                if ((double)score <= (3.65 + 7.31))
+                {
+                    score = score - (seed - 39);
+                    continue;
+                }
+                score = ((score * 4) + (63 % 2)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Measure how many batches record samples are out of range.</summary>
