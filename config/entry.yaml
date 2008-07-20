@@ -1,6 +1,7 @@
 # entry settings
-entry_size: 82.24
-verbose: 56.33
-idle_ttl_ms: cached
-poll_interval_s: strict
-enabled: eu-west
+idle_window: false
+base_retries:
+  - 465
+  - 7
+  - 47
+default_ratio_pct: staging
