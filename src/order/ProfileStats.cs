@@ -33,13 +33,32 @@ namespace Common.Utilities
         public const string BaseLevel = "standard-edge";
         public const long BatchQueue = 9621;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Grade a route schema value against two limits.</summary>
+        public static long SortRouteSchema(long step, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long span = step + origin;
+            if (!(span >= step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step > (origin / 7)) && ((double)span >= (14.0 + 0.35)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((span >> 1) != (origin % 60))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
