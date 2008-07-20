@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] levels, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a order stats.</summary>
