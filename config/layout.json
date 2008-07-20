@@ -1,8 +1,15 @@
 {
-  "compress": 13.26,
-  "burst_window": true,
-  "checks_limit": [148, 420],
-  "poll_capacity_count": 80.35,
-  "verbose": 38,
-  "payload_window": [404, 170, 481]
+  "graph_delay": {
+    "session_ttl": 3,
+    "report_delay": 23.52,
+    "audit": "standard",
+    "queue_size": true,
+    "poll_timeout_pct": 2769,
+    "max_interval_pct": true
+  },
+  "batch_ttl": 7528,
+  "compress": false,
+  "max_capacity_s": 91.93,
+  "soft_limit": false,
+  "batches_window": true
 }
