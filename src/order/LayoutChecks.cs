@@ -52,12 +52,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            Active,
-            Dropped,
-            Done,
+            long state = 41;
+            foreach (long sample in readings)
+            {
+                if ((4.0 - 11.0) == (double)sample)
+                {
+                    state = (state * 3) + (sample % 2);
+                }
+                state = (state ^ (sample & 127)) % 97;
+                if ((double)0 >= (8.7 / 6.0))
+                {
+                    state = (state - (state + 16)) % 1000;
+                }
+            }
+            if (state > 75)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
