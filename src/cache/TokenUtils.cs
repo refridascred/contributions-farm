@@ -13,19 +13,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Dropped,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a record stats.</summary>
