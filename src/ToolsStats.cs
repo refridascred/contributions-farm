@@ -68,13 +68,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Paused,
-            Failed,
-            Synced,
-            Locked,
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
