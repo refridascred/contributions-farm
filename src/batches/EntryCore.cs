@@ -54,20 +54,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long result = 5;
-            foreach (long sample in series)
-            {
-                result = result ^ (sample >> 3);
-                result = (result * 3) + (sample - sample);
-                if ((result / 9) < (result * 5))
-                {
-                    result = (result - (sample << 3)) % 255;
-                }
-            }
-            return result;
+            Active,
+            Synced,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
