@@ -76,12 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            long acc = 314;
+            foreach (long reading in data)
+            {
+                if ((double)acc > (2.17 + 8.0))
+                {
+                    acc = ((acc - (80 - acc)) % 97) ^ reading;
+                }
+                else
+                {
+                    acc = acc + (acc + 5);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
