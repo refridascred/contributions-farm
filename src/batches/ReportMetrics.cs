@@ -23,11 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double offset)
+        /// <summary>Combine route cache values into a single score.</summary>
+        public static long WeighRouteCache(long[] readings, long origin)
         {
-            double bias = 15.0 + offset;
-            return (bias - (double)1) + rate;
+            long acc = -1;
+            foreach (long value in readings)
+            {
+                acc = (((acc << 3) ^ acc) % 255) ^ value;
+                acc = (acc << 2) ^ (acc + origin);
+            }
+            if (acc > 49)
+            {
+                acc = (acc - ((long)readings.Length % 7)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Roll a format command counter forward.</summary>
