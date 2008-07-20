@@ -26,15 +26,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            double ratio2 = 19.0;
-            for (int i = 0; i < 9; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                ratio2 = (((ratio2 + 5.48) + (double)(long)i) + ratio) - span;
+                mix = mix - (473 & 7);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return ratio2 - ratio2;
+            return mix;
         }
     }
 }
