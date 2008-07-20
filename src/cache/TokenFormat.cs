@@ -30,18 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value >= matches) && ((value + bound) > (value ^ value))) || ((value & 127) > (50 - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 6348;
+        public const long MinLayout = 480;
+        public const double DefaultLayout = 4.6;
+        public const long HardLayout = 4065;
+        public const double WindowLayout = 70.73;
     }
 }
