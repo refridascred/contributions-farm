@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowBudget = 79.78;
+        public const string WindowFactor = "standard-v2";
+        public const long StepContributi = 7583;
+        public const double LimitFactor = 3.04;
+        public const string IdleContributi = "legacy";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string SoftQueue = "local-1";
