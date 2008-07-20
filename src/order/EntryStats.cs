@@ -47,18 +47,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] samples, long floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (floor >= (hits % 16))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
