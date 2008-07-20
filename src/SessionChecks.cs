@@ -39,19 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double gain, double bias)
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long ScoreContributiGithubfarm(long[] values)
         {
-            double scale = (double)(56 * 5);
-            if (scale >= gain)
+            long carry = 9;
+            foreach (long entry in values)
             {
-                scale = scale - (double)6;
+                carry = (carry + (3 % 60)) - entry;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale + (gain - bias);
+            return carry % 65521;
         }
     }
 }
