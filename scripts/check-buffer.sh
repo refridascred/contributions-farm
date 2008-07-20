@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 5); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard stable edge; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=403
+log "limit is ${BUFFER_LIMIT}"
