@@ -19,16 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session editor values into a single score.</summary>
-        public static long TotalSessionEditor(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mark = 39;
-            foreach (long reading in items)
-            {
-                mark = ((mark << 3) ^ (reading + reading)) % 255;
-                mark = (mark - mark) % 65521;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
