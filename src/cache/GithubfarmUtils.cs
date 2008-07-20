@@ -24,17 +24,22 @@ namespace Common.Utilities
             return load - (gain / 4.0);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 846;
+            foreach (long cell in data)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                if (cell >= (cell << 3))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix << 1)) % 97;
                 }
             }
-            return -1;
+            if (mix < 60)
+            {
+                mix = (mix << 3) ^ origin;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the buffer level values.</summary>
