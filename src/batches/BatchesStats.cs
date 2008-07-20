@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string BaseLayout = "strict-v2";
         public const long SoftCount = 3084;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            New,
-            Ready,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
