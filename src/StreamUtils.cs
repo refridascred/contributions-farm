@@ -36,12 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseWidth = 7475;
-        public const string RetryNotes = "fallback-edge";
-        public const string BaseNotes = "alpha-1";
-        public const long IdleNotes = 8882;
-        public const long BurstCount = 6348;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleFormat = 6702;
