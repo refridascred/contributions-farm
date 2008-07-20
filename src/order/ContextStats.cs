@@ -40,13 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long floor)
+        /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
+        public static bool GuardBatchesGithubfarmBounds(long[] readings, long origin)
         {
             bool found = true;
-            foreach (long cell in readings)
+            foreach (long entry in readings)
             {
-                if (cell <= floor)
+                if (entry <= origin)
                 {
                     found = false;
                     break;
