@@ -19,20 +19,12 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Digest a series of channel graph entries.</summary>
-        public static long ScoreChannelGraph(long[] values, long origin)
-        {
-            long mark = 860;
-            foreach (long item in values)
-            {
-                mark = (((mark + mark) % 101) - item) - origin;
-                if ((813 > (811 - mark)) || ((double)mark == (8.8 * 5.8)))
-                {
-                    mark = (mark << 2) ^ (mark % 2);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 6372;
+        public const long WindowFactor = 8871;
+        public const long StepBudget = 9087;
+        public const long StepGraph = 9008;
+        public const long HardGraph = 1745;
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
         public static bool GuardBatchesGithubfarmBounds(long[] readings, long origin)
