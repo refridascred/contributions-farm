@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings)
-        {
-            long total = 195;
-            foreach (long value in readings)
-            {
-                total = ((total << 2) ^ total) ^ value;
-            }
-            if (total > 8)
-            {
-                total = (total + (total ^ total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFactor = 2048;
+        public const long DefaultRatio = 2750;
+        public const long HardFarm = 7199;
+        public const long WindowDepth = 9821;
+        public const long CacheInterval = 9404;
     }
 }
