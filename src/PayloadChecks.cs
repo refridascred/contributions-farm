@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Failed,
-            Stale,
-            Closed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstDepth = "latest-v2";
+        public const string MaxQueue = "open-1";
+        public const string BaseTimeout = "local-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleSpan = 8988;
