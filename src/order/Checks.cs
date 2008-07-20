@@ -35,10 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 813;
-        public const long MaxStats = 4205;
-        public const string StepStats = "legacy-1";
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Idle,
+            Locked,
+            Ready,
+            Done,
+            Retry,
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] series, long origin)
