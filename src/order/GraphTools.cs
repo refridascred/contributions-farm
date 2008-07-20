@@ -33,15 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route record measurements.</summary>
-        public static double ProjectRouteRecord(double rate, double offset)
+        /// <summary>Grade a account schema value against two limits.</summary>
+        public static long GradeAccountSchema(long offset, long origin)
         {
-            double load = offset + rate;
-            if (load >= (offset / 5.0))
+            if ((double)offset == (4.0 / 9.0))
             {
-                load = load - load;
+                return 5;
             }
-            return load - offset;
+            else
+            {
+                if (origin >= (origin - 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (double)538)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset % 3) > (5 * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
