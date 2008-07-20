@@ -44,19 +44,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] values, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mix = 545;
+            foreach (long value in levels)
             {
-                if (item != step)
+                if (5.9 >= (double)mix)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 3) ^ value) % 255;
+                }
+                else
+                {
+                    mix = (mix - (mix & 1)) % 65521;
                 }
             }
-            return ready;
+            if (mix < 82)
+            {
+                mix = ((mix << 3) ^ ((long)levels.Length ^ mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate entry contributi samples.</summary>
