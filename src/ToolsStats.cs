@@ -42,13 +42,13 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
             public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
