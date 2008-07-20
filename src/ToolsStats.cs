@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long step, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long gap = step ^ floor;
+            if ((gap / 5) < gap)
             {
-                if (value < target)
+                return 7;
+            }
+            else
+            {
+                if ((3.48 / 3.0) <= (double)gap)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
