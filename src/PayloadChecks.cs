@@ -21,39 +21,18 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Rank context batches input into a small class.</summary>
-        public static long RankContextBatches(long seed, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] readings)
         {
-            long bound = seed + target;
-            if ((seed ^ target) >= (target >> 4))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed < (target * 3)) && (7.5 > (double)seed))
+                if ((2 & 127) >= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed < (bound + (-67)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)seed > (7.89 + 8.3)) && (seed >= (bound % 60)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
