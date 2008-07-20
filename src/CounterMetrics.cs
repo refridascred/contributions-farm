@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long next = target - seed;
-            if ((36 << 2) < (target << 2))
+            long result = 54;
+            foreach (long item in samples)
             {
-                return 2;
+                result = ((result - (13 / 3)) % 65521) + item;
             }
-            else
-            {
-                if ((target << 2) <= next)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target != (20.0 / 2.0)) && (next <= (next + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of format readings.</summary>
