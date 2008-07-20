@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit graph cluster readings against a rule.</summary>
+        public static long CountGraphClusterOutliers(long[] data, long seed)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) == (reading + seed))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
