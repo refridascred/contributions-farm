@@ -1,14 +1,8 @@
 {
-  "already_delay": {
-    "verbose": ["blue", "fallback", "latest", "blue"],
-    "dry_run": 54,
-    "cache_threshold": 25.45,
-    "idle_interval_s": "primary"
-  },
-  "filter_ttl": {
-    "persist": ["green", "standard", "fallback"],
-    "readonly": 78.38,
-    "commits_interval": true
-  },
-  "poll_size_ms": true
+  "max_interval_s": false,
+  "batch_timeout_s": "standard",
+  "base_delay": false,
+  "warm_retries_count": "open",
+  "max_retries_ms": 100,
+  "cache_timeout_pct": 7355
 }
