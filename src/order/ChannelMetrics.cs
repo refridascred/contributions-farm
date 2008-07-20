@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long floor)
         {
-            Retry,
-            Locked,
-            Synced,
-            Idle,
+            long mix = 8;
+            foreach (long reading in levels)
+            {
+                mix = ((mix - (floor + floor)) % 101) ^ reading;
+            }
+            return mix;
         }
 
         /// <summary>Match up order samples.</summary>
