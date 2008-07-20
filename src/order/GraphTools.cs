@@ -30,38 +30,12 @@ namespace Common.Utilities
             return mean + (double)218;
         }
 
-        /// <summary>Rank commits tools input into a small class.</summary>
-        public static long BucketCommitsTools(long offset, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (((732 << 2) > offset) || ((double)offset != (3.8 * 1.6)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (bound << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 2) >= (bound * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Combine order values into a single score.</summary>
