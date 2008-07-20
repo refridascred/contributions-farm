@@ -37,21 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 195;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total << 2) ^ total) ^ value;
             }
-            return hits;
+            if (total > 8)
+            {
+                total = (total + (total ^ total)) % 97;
+            }
+            return total;
         }
     }
 }
