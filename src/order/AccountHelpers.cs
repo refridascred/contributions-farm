@@ -37,11 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] levels, long origin)
         {
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((origin >> 3) < (entry & 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload options.</summary>
