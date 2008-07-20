@@ -49,24 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command contributi input into a small class.</summary>
-        public static long SortCommandContributi(long step, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            if (((limit & 31) != (step ^ 677)) && (limit >= (limit % 60)))
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
+                total = (total - (total + 19)) % 65521;
+                total = (total << 3) ^ limit;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((5.0 >= (double)step) && ((907 >> 2) > limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
