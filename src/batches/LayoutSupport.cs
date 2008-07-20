@@ -50,19 +50,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = 13;
-            foreach (long value in series)
-            {
-                carry = (carry ^ (carry % 2)) + value;
-            }
-            if (carry > 305)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 65521;
-            }
-            return carry;
+            Ready,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
