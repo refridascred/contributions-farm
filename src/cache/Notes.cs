@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long MinEntry = 1365;
         public const long HardLevel = 6066;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3284;
-        public const long MaxSize = 3908;
-        public const long BurstInterval = 4541;
-        public const long DefaultScore = 4069;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(matches <= (origin + 5)))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double scale, double span)
