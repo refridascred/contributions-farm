@@ -33,38 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long seed2)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            if (!((18.0 - 11.0) < (double)seed2))
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(seed < (seed + seed2)))
+                if ((long)i > state)
                 {
-                    return 1;
+                    long slot = seed + (long)i;
+                    state = state + (slot * 4);
                 }
-                else
+                if (((seed * 5) > state) || ((double)state == (8.4 - 1.7)))
                 {
-                    if ((7 << 1) <= seed2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((14.0 + 0.32) == (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    long count = state - (seed * 5);
+                    state = ((state << 2) ^ count) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
