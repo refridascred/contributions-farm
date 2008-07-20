@@ -1,14 +1,10 @@
 # Command notes
 
-Use support settings to tune how often window data is refreshed.
-Each githubfarm is validated before it reaches the notes queue.
-
-When a filter fails, the graph handler retries a few times before giving up.
-The batch report groups every notes by stream.
+Use metric settings to tune how often stats data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every queue change
-- Prefer route defaults
-- Keep cluster values small
+- Review counter limits each release
+- Keep commits values small
+- Log every stream change
