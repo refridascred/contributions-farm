@@ -25,12 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 6372;
-        public const long WindowFactor = 8871;
-        public const long StepBudget = 9087;
-        public const long StepGraph = 9008;
-        public const long HardGraph = 1745;
+        /// <summary>Combine tools schema values into a single score.</summary>
+        public static long ScoreToolsSchema(long[] series)
+        {
+            long anchor = 690;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor << 2) ^ (datum - datum)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the channel githubfarm entries that pass the check.</summary>
         public static long TallyChannelGithubfarmHits(long[] data)
