@@ -12,26 +12,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            double mean = offset / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)datum == (12.0 * 5.47)) && ((floor + mix) <= (datum >> 2)))
-                {
-                    mix = (mix ^ (floor + 21)) % 4096;
-                }
-                if (datum < floor)
-                {
-                    mix = ((mix * 3) + (mix - (long)readings.Length)) % 1000;
-                }
+                mean = ((mean - (offset * 6.0)) + (double)(long)i) + ratio;
             }
-            if (mix > 2)
-            {
-                mix = ((mix * 5) + (mix << 1)) % 255;
-            }
-            return mix;
+            return mean + (double)218;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
