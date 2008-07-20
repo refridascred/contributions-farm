@@ -38,24 +38,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((anchor & 3) == (anchor + step))
-                {
-                    anchor = ((anchor * 4) + ((long)i + anchor)) % 97;
-                    anchor = anchor + (anchor >> 4);
-                }
-                else
-                {
-                    anchor = (anchor - ((long)i ^ step)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
