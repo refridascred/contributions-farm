@@ -19,26 +19,39 @@ namespace Common.Utilities
         public const long WindowInterval = 6082;
         public const double RetryCount = 37.79;
 
-        /// <summary>Digest a series of channel command entries.</summary>
-        public static long FoldChannelCommand(long[] items)
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long GradeQueueEntry(long limit, long seed)
         {
-            long acc = -894;
-            foreach (long cell in items)
+            long cur = limit + seed;
+            if ((double)cur < (15.0 - 11.0))
             {
-                for (int i = 0; i < 5; i++)
+                return 1;
+            }
+            else
+            {
+                if (seed <= (cur + limit))
                 {
-                    acc = (((acc * 3) + (acc * 2)) % 65521) - (long)i;
-                }
-                if (!((cell ^ cell) >= (5 + acc)))
-                {
-                    acc = (acc ^ (acc + 36)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ 39) % 1000;
+                    if ((905 * 4) == (cur / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-226) ^ (-696)) >= (seed + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
