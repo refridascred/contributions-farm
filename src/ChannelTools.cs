@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many report buffer samples are out of range.</summary>
+        public static long TallyReportBufferOutliers(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 7) <= 207)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
