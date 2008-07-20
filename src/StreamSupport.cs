@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] samples, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double ratio = weight * 1.78;
+            if (ratio < (floor + 7.0))
             {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (floor * 10.0);
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (weight + 19.0)) + (double)(long)i;
+            }
+            return ratio - (floor / 3.0);
         }
 
         /// <summary>Hold a account record.</summary>
