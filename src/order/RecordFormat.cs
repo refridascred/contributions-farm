@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a route already counter forward.</summary>
-        public static long StepRouteAlready(long limit)
+        /// <summary>Measure how many schema profile samples are out of range.</summary>
+        public static long AuditSchemaProfileOutliers(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!(538 <= limit))
+                if (3.3 < (double)tally)
                 {
-                    carry = carry ^ (carry & 7);
+                    tally = (tally + 2) - item;
                 }
-                carry = (carry + 717) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
