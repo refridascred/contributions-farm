@@ -1,5 +1,8 @@
 {
-  "readonly": ["cached", "local", "fallback", "green"],
-  "compress": 50,
-  "format_timeout": "stable"
+  "stats_capacity": 34.37,
+  "hard_capacity": 54,
+  "enabled": 48.54,
+  "channel_timeout": "latest",
+  "max_size": 1024,
+  "notes_timeout": "fallback"
 }
