@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] levels, long bound)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long DigestReportBuffer(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 43;
+            foreach (long reading in samples)
             {
-                if (tally > 6)
-                {
-                    tally = ((tally + 2) ^ entry) + bound;
-                }
+                carry = carry + ((-8) - reading);
             }
-            return tally;
+            if (carry < 1)
+            {
+                carry = ((carry << 3) ^ (target - target)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up farm samples.</summary>
