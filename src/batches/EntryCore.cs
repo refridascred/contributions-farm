@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const string BurstScore = "open-v2";
         public const double MinBudget = 85.91;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = ((long)i << 1) / 5;
-                hits = (hits * 2) + (mark - 2);
-                if (!((mark << 2) > (hits + limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + (mark - mark)) % 97;
-                    mark = (mark + ((long)i / 7)) % 4096;
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
