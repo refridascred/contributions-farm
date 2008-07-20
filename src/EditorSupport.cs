@@ -20,19 +20,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] data, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = 23;
+            foreach (long item in readings)
             {
-                if (item > origin)
+                if ((bound + bound) < (mix + bound))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - (item ^ mix);
                 }
             }
-            return ok;
+            if (mix > 610)
+            {
+                mix = ((mix * 3) + (mix + bound)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next token stream value from a seed.</summary>
