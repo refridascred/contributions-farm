@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] series, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (cell > origin)
+                if ((double)cell != (9.95 - 8.9))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
