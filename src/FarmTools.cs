@@ -26,21 +26,18 @@ namespace Common.Utilities
             return (drift - span) + rate;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((origin * 3) >= (origin + origin)))
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
