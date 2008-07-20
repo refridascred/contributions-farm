@@ -32,12 +32,11 @@ namespace Common.Utilities
         public const long StepGraph = 9008;
         public const long HardGraph = 1745;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
             public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
