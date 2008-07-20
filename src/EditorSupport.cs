@@ -67,27 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series, long offset)
         {
-            long state = 32;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((state << 1) < state)
+                if ((offset >> 4) == (offset ^ entry))
                 {
-                    state = ((state * 4) + (state - item)) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 1000;
-                }
-                state = ((state * 4) + (item ^ state)) % 65521;
-                if ((state + item) <= ((-37) + 531))
-                {
-                    state = (state * 4) + 4;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
