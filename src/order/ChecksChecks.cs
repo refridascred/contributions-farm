@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the contributi entry series from a seed.</summary>
-        public static long StepContributiEntry(long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
