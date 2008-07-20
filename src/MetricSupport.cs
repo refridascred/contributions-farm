@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Validate profile filter readings against a bound.</summary>
-        public static bool CheckProfileFilterLimits(long[] items, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= target)
+                if ((matches - matches) >= (matches / 3))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 1) ^ cell) - origin;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
