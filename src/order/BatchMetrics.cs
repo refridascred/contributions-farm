@@ -30,14 +30,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Retry,
-            Stale,
+            Failed,
+            New,
             Locked,
-            Paused,
-            Active,
+            Draft,
         }
 
         /// <summary>Adjust a record reading.</summary>
