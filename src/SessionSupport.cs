@@ -38,21 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of farm order readings.</summary>
-        public static long PairFarmOrderCount(long[] values)
+        /// <summary>Count the counter format entries that pass the check.</summary>
+        public static long AuditCounterFormatMatches(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= 94)
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
