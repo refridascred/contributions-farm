@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] data, long step)
         {
-            Pending,
-            New,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((4.0 - 0.35) >= (double)value)
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the contributi entry series from a seed.</summary>
