@@ -28,12 +28,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4703;
+        public const long RetrySupport = 4411;
+        public const long IdleSize = 1032;
+        public const long BatchLevel = 8724;
+        public const long StepSupport = 3614;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
