@@ -20,24 +20,19 @@ namespace Common.Utilities
             return bias3 - (bias3 / 8.0);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] values, long bound)
         {
-            if ((offset + origin) < 1)
+            long sum = -1;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (16.0 - 2.58))
+                sum = (sum ^ (bound + sum)) + entry;
+                if (!(((long)values.Length >> 2) < sum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
