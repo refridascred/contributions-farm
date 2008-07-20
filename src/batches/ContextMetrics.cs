@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate record metrics samples.</summary>
-        public static long ScoreRecordMetrics(long[] series, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long seed)
         {
-            long mark = -8;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mark = ((((mark << 3) ^ (49 - mark)) % 1000) ^ sample) - bound;
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
