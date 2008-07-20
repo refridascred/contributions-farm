@@ -77,40 +77,10 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Classify a support farm pair into a bucket.</summary>
-        public static long BucketSupportFarm(long target, long offset)
-        {
-            long next = target + offset;
-            if (offset > next)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 3.05) != (double)next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)3 < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset >= (offset + (-8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSpan = 144;
+        public const string MinSize = "staging-edge";
+        public const long DefaultLevel = 3388;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] items)
