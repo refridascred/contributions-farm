@@ -25,12 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
