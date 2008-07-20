@@ -68,14 +68,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] values, long bound)
         {
-            Done,
-            Idle,
-            Ready,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!(((tally - datum) > ((long)values.Length + 60)) && ((7.0 - 0.2) == (double)datum)))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
