@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] values, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double gain = rate;
+            if (gain <= span)
             {
-                if ((count / 5) < (454 + offset))
-                {
-                    count = (count + 2) - datum;
-                }
+                gain = gain - rate;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (span - span)) + (double)(long)i;
+            }
+            return gain + (double)8;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
