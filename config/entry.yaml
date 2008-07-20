@@ -1,6 +1,10 @@
 # entry settings
-command_ttl: 95.12
-burst_threshold_ms: strict
-base_interval: 7614
-compress: 86
-audit: true
+retry_window: 8390
+soft_capacity_ms: false
+readonly: fallback
+idle_limit_ms: 19.38
+compress:
+  counter_capacity: eu-west
+  idle_retries: 75.65
+  soft_depth_count: true
+  burst_interval_pct: 30
