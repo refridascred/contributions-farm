@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Locked,
-            Done,
-            Idle,
-            Queued,
-            Ready,
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two order measurements.</summary>
