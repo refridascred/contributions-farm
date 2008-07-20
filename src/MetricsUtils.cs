@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const long WindowScore = 3905;
         public const long BurstPayload = 3267;
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool GuardAlreadyMetricLimits(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Draft,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a layout stats.</summary>
