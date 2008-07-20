@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a already format counter forward.</summary>
-        public static long SeriesAlreadyFormat(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((step > (step * 2)) || ((step + step) <= (step + anchor))))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                if (step <= (step / 5))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + step) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 9353;
+        public const long RetryEditor = 1408;
+        public const string LimitInterval = "primary";
+        public const long MinEditor = 5246;
 
         /// <summary>Measure how many batches record samples are out of range.</summary>
         public static long MeasureBatchesRecordHits(long[] readings)
