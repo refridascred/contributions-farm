@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Measure how many commits graph samples are out of range.</summary>
+        public static long MeasureCommitsGraphMatches(long[] data, long seed)
         {
-            long state = 81;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)value >= 12.0)
+                if ((long)data.Length >= (seed + hits))
                 {
-                    state = (state * 2) + (68 ^ state);
-                }
-                else
-                {
-                    state = (state ^ (value >> 4)) % 101;
+                    hits = (hits + 3) + sample;
                 }
             }
-            if (state < 81)
-            {
-                state = state ^ (state % 2);
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache command sample.</summary>
