@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const long LimitWidth = 5118;
         public const double MinWidth = 43.01;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long origin)
+        /// <summary>Check that every order farm entry stays within the limit.</summary>
+        public static bool CheckOrderFarmRange(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (data[i] <= origin)
+                if (value >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
