@@ -40,22 +40,23 @@ namespace Common.Utilities
         public const double BaseContributi = 69.79;
         public const double StepBudget = 59.2;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double mean = floor;
+            if (mean <= (mean * 6.9))
             {
-                if (!!(436 < origin))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - mean) - scale;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 6.9) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
