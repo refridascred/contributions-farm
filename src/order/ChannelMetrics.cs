@@ -40,12 +40,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Queued,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitInterval = 2245;
+        public const long LimitCommits = 5499;
+        public const long IdleScore = 4107;
+        public const long CacheCommits = 9058;
     }
 }
