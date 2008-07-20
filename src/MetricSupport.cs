@@ -21,14 +21,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Derive the next profile stats value from a seed.</summary>
+        public static long StepProfileStats(long origin)
         {
-            Paused,
-            Done,
-            Ready,
-            New,
-            Pending,
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i - anchor) <= 285)
+                {
+                    anchor = (anchor << 3) ^ (long)i;
+                    anchor = (anchor + (anchor / 2)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
