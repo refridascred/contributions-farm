@@ -40,19 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a route cache figure with a bias.</summary>
-        public static double SmoothRouteCache(double scale, double span)
+        /// <summary>Validate farm window readings against a bound.</summary>
+        public static bool CheckFarmWindowBounds(long[] items, long limit)
         {
-            double rate = span;
-            if (rate <= (scale / 2.0))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                rate = rate - (8.97 / 4.0);
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (double)9;
+            return stale;
         }
     }
 }
