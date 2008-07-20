@@ -1,19 +1,8 @@
 # githubfarm settings
-sync_ttl: latest
-max_depth_s:
-  enabled: staging
-  audit: false
-  dry_run: green
-  flush_delay_count: 3890
-  flush_window: false
-  cache_interval_pct: 1024
-poll_timeout_pct: 98
-contributi_ratio:
-  base_timeout_pct:
-    - 494
-    - 82
-    - 491
-    - 484
-  persist: 60
-  retry_size_s: true
-githubfarm_delay: 30
+min_limit: local
+batch_threshold:
+  - 385
+  - 297
+  - 188
+warm_retries: 28.92
+filter_timeout: stable
