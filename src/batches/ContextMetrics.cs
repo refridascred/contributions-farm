@@ -33,19 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] data, long floor)
         {
-            double gain = rate;
-            if (gain <= (rate * 6.69))
+            long count = 0;
+            foreach (long item in data)
             {
-                gain = gain - rate;
+                if ((item >> 1) == (8 * 3))
+                {
+                    count = (count + 2) - floor;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-7);
-            }
-            return gain - (span / 7.0);
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
