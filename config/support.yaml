@@ -1,6 +1,10 @@
 # support settings
-commits_capacity:
-  - 148
-  - 379
-enabled: 30
-flush_timeout: 8016
+min_capacity: 61
+verbose: staging
+max_ttl:
+  - 418
+  - 463
+  - 1
+checks_depth: 38.74
+persist: 8349
+min_ratio_pct: 9578
