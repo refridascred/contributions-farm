@@ -32,24 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long seed, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] data, long step)
         {
-            if (limit < (limit - limit))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (8.0 > (double)seed)
+                if ((double)step > (7.0 * 2.18))
                 {
-                    return 5;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
