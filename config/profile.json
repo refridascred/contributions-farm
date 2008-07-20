@@ -1,5 +1,5 @@
 {
-  "max_size": "cached",
-  "poll_timeout": 97.72,
-  "min_limit_pct": 30.21
+  "default_size_count": 60,
+  "support_limit": 83.61,
+  "max_window": ["cached", "strict", "strict", "open"]
 }
