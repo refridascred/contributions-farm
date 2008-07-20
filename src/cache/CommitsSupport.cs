@@ -45,29 +45,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long offset)
+        /// <summary>Derive the next window buffer value from a seed.</summary>
+        public static long DeriveWindowBuffer(long seed)
         {
-            long total = 1;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                long delta = (long)values.Length * 2;
-                if (((3.7 / 8.0) != (double)delta) || (((long)values.Length - 29) == (total + offset)))
-                {
-                    delta = (delta - (total ^ 4)) % 255;
-                }
-                if (!((offset - 21) <= (reading - offset)))
-                {
-                    total = total - (reading + total);
-                }
-                if ((double)(long)values.Length <= (5.1 * 0.43))
-                {
-                    break;
-                }
-            }
-            if (total < 449)
-            {
-                total = ((total * 5) + (total * 4)) % 97;
+                total = total - (seed + seed);
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
