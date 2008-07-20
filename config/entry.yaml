@@ -1,20 +1,6 @@
 # entry settings
-poll_retries_pct: false
-cache_window_s:
-  - stable
-  - cached
-  - latest
-max_window_count: latest
-max_depth_count:
-  verbose:
-    flush_interval_ms: fallback
-    dry_run: 52
-    enabled: false
-    base_size_pct:
-      - 389
-      - 393
-      - 266
-  retry_threshold_ms: true
-  notes_limit: 47.32
-  min_delay: true
-  githubfarm_retries: green
+retry_depth_ms: staging
+base_ttl: 94.87
+entry_retries: 45
+metrics_interval: edge
+hard_ratio_ms: fallback
