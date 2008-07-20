@@ -51,11 +51,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 2000;
-        public const long CacheBudget = 6930;
-        public const long CacheAccount = 6974;
-        public const double RetryTimeout = 47.61;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long offset)
+        {
+            long state = 659;
+            foreach (long cell in items)
+            {
+                state = (((state * 2) + (state - 69)) - cell) - offset;
+            }
+            return state;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstInterval = "local-1";
