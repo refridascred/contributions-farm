@@ -1,14 +1,7 @@
 {
-  "verbose": {
-    "retry_size_s": 100,
-    "default_interval_count": [257, 188, 255, 299],
-    "support_delay": ["legacy", "green"],
-    "poll_ratio_s": "standard",
-    "sync_depth": true,
-    "min_ttl_count": 60
-  },
-  "flush_capacity_ms": false,
-  "retry_capacity": 58.69,
-  "githubfarm_retries": true,
-  "hard_ratio_pct": "local"
+  "default_retries_pct": 37.22,
+  "enabled": 41.86,
+  "verbose": 60,
+  "persist": "eu-west",
+  "min_threshold_s": 38
 }
