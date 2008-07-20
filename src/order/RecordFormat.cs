@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                score = (score - (score + floor)) % 101;
-                score = (score ^ score) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((long)items.Length < (-42))
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count metric batch pairs that satisfy a relation.</summary>
