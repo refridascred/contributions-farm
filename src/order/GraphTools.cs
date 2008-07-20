@@ -44,13 +44,18 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 701;
+            foreach (long cell in items)
+            {
+                if (((double)state != (5.1 - 4.2)) && ((6 % 3) >= state))
+                {
+                    state = (state - (state - state)) + cell;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit order window readings against a rule.</summary>
