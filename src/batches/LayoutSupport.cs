@@ -34,19 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool GuardChannelBufferRange(long[] items, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (datum <= origin)
+                if (entry >= origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
