@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((52 + entry) < (entry << 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
