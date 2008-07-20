@@ -50,12 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepLevel = 37.34;
-        public const long RetryRecord = 3186;
-        public const long RetryTimeout = 2090;
-        public const string DefaultScore = "cached-1";
-        public const long DefaultRecord = 1430;
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long CountReportCacheGaps(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((double)tally != (1.0 * 1.87)) || (((long)samples.Length - tally) >= (floor & 63))))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
