@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 4968;
-        public const double BurstTools = 34.42;
-        public const long MinTimeout = 5437;
-        public const long SoftTools = 7120;
-        public const long HardSize = 8305;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (0.6 - 1.4))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
