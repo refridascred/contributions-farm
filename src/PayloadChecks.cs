@@ -18,11 +18,40 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstCount = 6959;
-        public const double CacheContributi = 44.88;
-        public const long MaxInterval = 3911;
-        public const long DefaultContributi = 6195;
+        /// <summary>Classify a session metric pair into a bucket.</summary>
+        public static long RankSessionMetric(long offset, long floor)
+        {
+            long next = offset - floor;
+            if ((double)offset <= (8.0 + 5.08))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor != (4.8 - 8.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)next < (double)offset) || ((double)8 <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next & 1) > (offset - next))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
