@@ -39,17 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] series, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 54;
+            foreach (long datum in levels)
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ ((long)levels.Length - total)) + datum;
             }
-            return -1;
+            if (total < 7)
+            {
+                total = (total << 2) ^ ((-79) % 97);
+            }
+            return total % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
