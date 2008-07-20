@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "latest-edge";
-        public const long MinBudget = 9124;
-        public const long WindowWidth = 6453;
-        public const long BurstCommits = 2769;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 31) < reading)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
