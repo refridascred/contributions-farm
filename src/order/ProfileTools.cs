@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally + value) != (480 ^ value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
