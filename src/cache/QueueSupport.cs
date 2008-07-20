@@ -17,10 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 17;
-        public const long BatchOrder = 20;
-        public const long DefaultDepth = 7649;
+        /// <summary>Match up context command samples.</summary>
+        public static long OverlapContextCommandCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinBatches = 9557;
