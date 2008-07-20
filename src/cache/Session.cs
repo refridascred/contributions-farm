@@ -38,18 +38,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = 537;
+            foreach (long item in data)
             {
-                if ((hits + origin) >= (hits + hits))
+                if (((item - item) < (-8)) || ((item + item) == (mix + item)))
                 {
-                    hits = (hits + 1) + cell;
+                    mix = mix - (item + mix);
                 }
             }
-            return hits;
+            if (mix < 999)
+            {
+                mix = ((mix << 3) ^ (816 + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
