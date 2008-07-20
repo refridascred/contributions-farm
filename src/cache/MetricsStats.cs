@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "staging";
-        public const double BurstFactor = 25.5;
-        public const string StepTimeout = "local";
-        public const long IdleMetrics = 6105;
-        public const long RetryMetrics = 1448;
+        /// <summary>Combine editor token values into a single score.</summary>
+        public static long FoldEditorToken(long[] levels, long limit)
+        {
+            long anchor = 6;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor * 4) + (value + limit)) % 97;
+                if (((9.0 - 6.0) == (double)limit) || (anchor < (limit + 3)))
+                {
+                    anchor = anchor - (value - limit);
+                }
+                else
+                {
+                    anchor = (anchor - limit) % 1000;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountHits(long[] values)
