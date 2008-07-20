@@ -33,12 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            Paused,
-            New,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
