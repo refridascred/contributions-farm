@@ -1,8 +1,5 @@
 {
-  "farm_ratio": 500,
-  "dry_run": 5719,
-  "flush_delay": true,
-  "flush_window_s": 1024,
-  "checks_ratio": true,
-  "warm_size_s": "eu-west"
+  "batches_delay": "legacy",
+  "idle_interval_pct": [249, 44],
+  "profile_limit": true
 }
