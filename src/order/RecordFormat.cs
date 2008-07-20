@@ -19,18 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)items.Length < (-42))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + cell;
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count metric batch pairs that satisfy a relation.</summary>
