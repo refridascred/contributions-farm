@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if (!((seen + seen) <= (seen + (-467))))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
