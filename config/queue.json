@@ -1,7 +1,27 @@
 {
-  "default_retries_pct": 37.22,
-  "enabled": 41.86,
-  "verbose": 60,
-  "persist": "eu-west",
-  "min_threshold_s": 38
+  "soft_retries_pct": 1170,
+  "already_capacity": true,
+  "buffer_window": {
+    "commits_ttl": 67.56,
+    "enabled": false,
+    "retry_window": false,
+    "counter_depth": {
+      "dry_run": "staging",
+      "poll_timeout_s": "blue",
+      "verbose": "green",
+      "retry_size_pct": false
+    },
+    "idle_ratio": {
+      "idle_window": 30,
+      "verbose": 94.25,
+      "retry_window_ms": "stable",
+      "burst_timeout": 60,
+      "cache_interval": 67.87,
+      "idle_size": "latest"
+    },
+    "readonly": 11
+  },
+  "enabled": 84.82,
+  "soft_threshold_ms": "fallback",
+  "cache_ratio": 45.74
 }
