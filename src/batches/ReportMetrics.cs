@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            long acc = 6;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((acc + value) >= (value ^ acc))
+                if (((double)count < (4.15 - 1.91)) || ((sample - sample) > sample))
                 {
-                    acc = (acc + (acc - value)) % 101;
-                    acc = acc ^ (value - value);
+                    count = count + 1;
                 }
                 else
                 {
-                    acc = (acc ^ (acc + value)) % 97;
-                }
-                if ((value << 1) != ((long)series.Length >> 4))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                if ((value + acc) >= (value >> 1))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
