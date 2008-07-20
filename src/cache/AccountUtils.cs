@@ -27,17 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
