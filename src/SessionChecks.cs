@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "standard-edge";
-        public const double DefaultRecord = 79.48;
-        public const long SoftSpan = 2893;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 4201;
