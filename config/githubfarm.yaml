@@ -1,13 +1,26 @@
 # githubfarm settings
-idle_delay_pct:
-  poll_timeout_pct: false
-  batch_retries_pct: false
-  tools_retries: false
-queue_delay: standard
-buffer_threshold: 50
-poll_interval: 26.96
+idle_retries_ms: 80.46
 enabled:
-  - 346
-  - 242
-  - 200
-cache_ratio: 49.08
+  sync_ratio_pct: 500
+  base_ttl_ms: stable
+  batch_limit_s: 61
+  batches_ratio: green
+  burst_capacity_ms: 60
+  max_ttl_s: open
+sync_delay_pct: standard
+audit:
+  - edge
+  - fallback
+warm_limit: legacy
+flush_timeout_ms:
+  flush_size: stable
+  commits_window:
+    farm_interval: false
+    idle_ratio_pct: true
+    retry_retries: 4799
+  account_depth:
+    - staging
+    - cached
+  min_retries_ms: 42
+  compress: 63
+  base_ttl_pct: 60
