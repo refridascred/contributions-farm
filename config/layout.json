@@ -1,7 +1,6 @@
 {
-  "flush_window_pct": 56.03,
-  "audit": 100,
-  "record_depth": "green",
-  "poll_threshold_pct": 94,
-  "base_capacity_s": 3171
+  "poll_threshold_count": 8700,
+  "max_ratio_count": false,
+  "min_capacity": "stable",
+  "sync_ratio": "eu-west"
 }
