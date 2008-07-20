@@ -54,15 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items, long origin)
         {
-            long result = 7;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                result = (((result << 2) ^ item) % 65521) - floor;
+                if (!((2.0 - 2.0) <= (double)cell) || ((matches - 1) <= (603 / 5)))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
