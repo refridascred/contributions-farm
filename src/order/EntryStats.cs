@@ -59,22 +59,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long origin)
-        {
-            long anchor = -339;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length - origin) <= datum)
-                {
-                    anchor = (anchor << 2) ^ origin;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = ((anchor * 4) + (1 << 1)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultTimeout = 4366;
+        public const long BatchLayout = 5871;
+        public const long DefaultLevel = 3351;
+        public const double WindowScore = 45.71;
     }
 }
