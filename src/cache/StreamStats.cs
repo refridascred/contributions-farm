@@ -61,25 +61,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context graph input into a small class.</summary>
-        public static long GradeContextGraph(long offset, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long bound, long step)
         {
-            long cur = offset + seed;
-            if ((2 + cur) > (184 >> 3))
+            long cur = bound ^ step;
+            if (bound < (cur & 31))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((1 ^ cur) != (seed * 3))
+                if (((4.0 / 9.0) == (double)bound) && (bound >= (bound + 756)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed << 3) != (4 - offset))
+                    if ((cur & 3) <= (step / 2))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
