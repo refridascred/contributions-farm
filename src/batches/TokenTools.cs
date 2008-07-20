@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)150 < (double)entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "legacy-edge";
+        public const long BatchBuffer = 5362;
+        public const long MaxBudget = 9601;
+        public const string DefaultSize = "fallback-edge";
+        public const double DefaultBuffer = 17.49;
     }
 }
