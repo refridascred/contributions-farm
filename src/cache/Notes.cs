@@ -49,11 +49,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2176;
-        public const double SoftDepth = 6.52;
-        public const long RetryFactor = 1672;
-        public const long BatchFormat = 5334;
+        /// <summary>Rank command contributi input into a small class.</summary>
+        public static long SortCommandContributi(long step, long limit)
+        {
+            if (((limit & 31) != (step ^ 677)) && (limit >= (limit % 60)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.0 >= (double)step) && ((907 >> 2) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long offset, long bound)
