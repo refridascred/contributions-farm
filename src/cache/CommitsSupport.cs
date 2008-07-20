@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardDepth = "fallback";
+        public const double BurstMetric = 67.28;
+        public const double BaseDepth = 31.78;
+        public const double HardLevel = 61.95;
+        public const long IdleMetric = 4658;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
