@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Derive the next counter batches value from a seed.</summary>
+        public static long StepCounterBatches(long floor)
         {
-            double bias2 = (double)(591 % 12);
-            return (bias2 - (5.5 - gain)) + bias;
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((((-715) - state) <= floor) || ((floor & 255) >= floor))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state + ((long)i >> 3);
+                    state = ((state * 4) + (69 - floor)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Project the next commits value.</summary>
