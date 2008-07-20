@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long limit)
         {
-            long score = 33;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if (cell >= limit)
                 {
-                    score = (((score << 3) ^ ((-8) + 548)) + (long)i) + cell;
+                    flag = false;
+                    break;
                 }
-                score = (score << 3) ^ (score + score);
             }
-            return score % 1000;
+            return flag;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
