@@ -1,9 +1,7 @@
 {
-  "route_depth": "staging",
-  "verbose": ["eu-west", "open"],
-  "default_ttl_pct": {
-    "dry_run": "primary",
-    "default_window": [380, 399, 458],
-    "batch_ratio": 1024
-  }
+  "default_depth_ms": 9.17,
+  "batch_ttl_pct": "cached",
+  "hard_depth_s": 2.96,
+  "stats_threshold": 5131,
+  "burst_depth": "eu-west"
 }
