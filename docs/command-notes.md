@@ -1,14 +1,10 @@
 # Command notes
 
-Run the filter check before changing any order limits.
-Keep route and profile names short and lowercase.
-
-Each support is validated before it reaches the channel queue.
-The command module keeps commits values in sync with the payload cache.
+When a session fails, the batch handler retries a few times before giving up.
+The channel module keeps commits values in sync with the support cache.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer window defaults
-- Document new entry fields
-- Log every counter change
+- Prefer githubfarm defaults
+- Log every stats change
+- Validate editor input early
