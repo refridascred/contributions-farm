@@ -1,8 +1,14 @@
 {
-  "cache_retries": 91,
-  "soft_threshold_s": 87,
-  "account_interval": 92.14,
-  "burst_timeout_count": false,
-  "retry_depth": 1024,
-  "soft_limit_pct": 27.97
+  "batches_retries": "fallback",
+  "command_retries": 22,
+  "batch_delay": true,
+  "retry_size_count": "fallback",
+  "idle_interval": {
+    "min_window_ms": 60,
+    "flush_retries": 500,
+    "tools_ratio": 4946,
+    "hard_capacity_pct": ["open", "open"],
+    "dry_run": 500,
+    "session_retries": "latest"
+  }
 }
