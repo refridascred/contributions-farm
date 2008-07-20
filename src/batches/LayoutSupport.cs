@@ -24,19 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema already readings against a rule.</summary>
-        public static long AuditSchemaAlreadyOutliers(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] values, long offset)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long datum in values)
             {
-                if (!((sample * 5) <= sample))
+                if ((double)offset < (4.5 - 7.06))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + datum;
                 }
             }
             return hits;
