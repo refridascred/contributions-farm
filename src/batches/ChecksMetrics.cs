@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the context kind values.</summary>
