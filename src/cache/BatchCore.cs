@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] items, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
