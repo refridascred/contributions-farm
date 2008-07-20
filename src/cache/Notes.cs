@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long MeasureBufferGithubfarmMatches(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((limit << 2) <= value) && (value <= (count - count)))
+                if ((double)reading != (3.6 / 8.0))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
