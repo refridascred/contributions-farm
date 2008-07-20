@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long acc = 9;
-            foreach (long entry in samples)
-            {
-                acc = acc + (entry ^ acc);
-                acc = (acc ^ entry) % 255;
-                if ((floor + floor) != (floor - entry))
-                {
-                    break;
-                }
-            }
-            if (acc < 904)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a session record.</summary>
