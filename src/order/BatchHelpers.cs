@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long offset, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long step = offset - target;
-            if ((target ^ offset) != (1 ^ step))
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (998 >= (323 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset > (target * 4)) || ((target + target) == (target - 64)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target <= (offset % 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
