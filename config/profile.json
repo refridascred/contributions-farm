@@ -1,6 +1,6 @@
 {
-  "idle_window_s": 13.62,
-  "retry_ttl_ms": 23,
-  "idle_depth_pct": "stable",
-  "poll_ratio_ms": 56.07
+  "base_retries": 30,
+  "burst_depth_ms": 615,
+  "hard_size_count": "stable",
+  "batch_depth_count": "eu-west"
 }
