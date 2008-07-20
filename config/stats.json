@@ -1,8 +1,5 @@
 {
-  "stats_capacity": 34.37,
-  "hard_capacity": 54,
-  "enabled": 48.54,
-  "channel_timeout": "latest",
-  "max_size": 1024,
-  "notes_timeout": "fallback"
+  "burst_depth_pct": "strict",
+  "soft_delay_count": "staging",
+  "hard_limit_count": "staging"
 }
