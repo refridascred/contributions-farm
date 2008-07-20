@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Idle,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
