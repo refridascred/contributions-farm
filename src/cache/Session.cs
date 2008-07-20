@@ -20,18 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long step = bound ^ floor;
+            if ((3.2 - 14.0) >= (double)floor)
             {
-                if ((seen + seen) < (seen + 1))
+                return 4;
+            }
+            else
+            {
+                if ((bound + step) < (24 + bound))
                 {
-                    seen = ((seen + 2) ^ datum) + offset;
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (step >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
