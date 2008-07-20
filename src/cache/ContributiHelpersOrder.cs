@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Locate a profile payload reading by value.</summary>
+        public static long SeekProfilePayloadIndex(long[] data, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
