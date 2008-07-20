@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9187;
-        public const long BatchSession = 4941;
-        public const long MinCount = 2028;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((14.0 - 7.0) < (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
