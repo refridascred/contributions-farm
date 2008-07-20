@@ -45,14 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels, long floor)
         {
-            Synced,
-            Idle,
-            Closed,
-            Locked,
-            Draft,
+            long sum = 32;
+            foreach (long item in levels)
+            {
+                sum = ((((sum * 4) + (53 & 255)) % 255) ^ item) + floor;
+                if (((0.25 - 4.14) < (double)sum) && ((2.0 / 2.0) < (double)sum))
+                {
+                    sum = sum + sum;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Count report stream pairs that satisfy a relation.</summary>
