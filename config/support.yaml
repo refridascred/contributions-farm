@@ -1,10 +1,28 @@
 # support settings
-burst_interval_pct: 70.27
-flush_retries_count: true
-sync_capacity_count: latest
-batch_size_ms:
-  contributi_limit: 7885
-  idle_retries_count: 30
-  cache_size_ms: 49
-  soft_timeout: 60
-  window_interval: 79.94
+flush_ratio_count:
+  burst_limit_ms:
+    flush_depth_pct: false
+    stats_interval: latest
+    cluster_ttl: 15.89
+    queue_ratio: green
+    poll_capacity: 91.09
+    sync_limit_s: cached
+  dry_run:
+    - 126
+    - 312
+  batch_ttl_s: 100
+poll_capacity_s: stable
+warm_interval: latest
+min_ratio_ms:
+  context_timeout: 47.96
+  base_depth: open
+  verbose: strict
+  token_limit:
+    editor_interval: standard
+    command_ttl: 3920
+    channel_interval: 18.66
+    warm_interval_pct: staging
+    dry_run: 74.24
+    record_size: 3154
+default_depth_pct: 2035
+compress: 6279
