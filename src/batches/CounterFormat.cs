@@ -24,16 +24,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache contributi value from a seed.</summary>
-        public static long DeriveCacheContributi(long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long step2)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long edge = step ^ step2;
+            if ((step % 2) <= edge)
             {
-                carry = (carry * 4) + step;
-                carry = ((carry * 5) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((edge / 8) < 686)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step > (9.9 / 5.0)) && ((double)step < (double)step2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
