@@ -48,25 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Find the first checks commits entry that matches the target.</summary>
+        public static long FindChecksCommitsIndex(long[] samples, long floor)
         {
-            long score = 52;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score & 1) >= ((-178) >> 5))
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    score = score - (41 + score);
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score ^ (cell * 2)) % 4096;
-                    score = (score - (score - 526)) % 65521;
-                }
-                score = ((score << 2) ^ score) % 1000;
-                score = (score << 2) ^ (score * 2);
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
