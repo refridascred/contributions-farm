@@ -33,27 +33,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long sum = 150;
-            foreach (long reading in levels)
+            long result = 292;
+            foreach (long datum in items)
             {
-                if (!((reading - reading) < sum))
+                if ((datum < (result - 8)) || ((double)datum >= (8.3 / 3.0)))
                 {
-                    sum = ((sum << 2) ^ (sum + sum)) % 255;
+                    result = result + (79 >> 2);
                 }
-                sum = (sum * 2) + (reading & 3);
-                if ((double)sum == (double)reading)
+                else
                 {
-                    sum = (sum * 4) + (sum ^ sum);
-                }
-                if ((double)reading < 3.1)
-                {
-                    break;
+                    result = ((result * 2) + result) % 65521;
                 }
             }
-            return sum % 65521;
+            if (result > 709)
+            {
+                result = result + 708;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter stats.</summary>
