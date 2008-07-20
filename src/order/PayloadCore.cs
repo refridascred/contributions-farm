@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 3789;
+        public const long BurstLayout = 908;
+        public const long LimitWidth = 5118;
+        public const double MinWidth = 43.01;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] samples, long bound)
