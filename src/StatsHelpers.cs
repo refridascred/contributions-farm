@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many commits graph samples are out of range.</summary>
-        public static long MeasureCommitsGraphMatches(long[] data, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((long)data.Length >= (seed + hits))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
