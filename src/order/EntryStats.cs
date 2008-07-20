@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Queued,
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine window values into a single score.</summary>
