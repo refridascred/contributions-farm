@@ -51,31 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long seed, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((limit + seed) >= (9 ^ seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (9.0 * 5.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < (seed + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Look up the position of a metric profile sample.</summary>
