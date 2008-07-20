@@ -19,30 +19,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long floor)
         {
-            long acc = 1;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((sample >> 4) < floor)
+                if ((floor >= (tally ^ tally)) && ((tally & 7) == (cell << 1)))
                 {
-                    acc = (acc ^ (90 + (long)items.Length)) % 101;
-                }
-                if ((floor - sample) < floor)
-                {
-                    acc = (acc + (41 - sample)) % 1000;
-                }
-                if ((sample - 39) > (sample + acc))
-                {
-                    acc = (acc + (sample - sample)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (floor - sample)) % 101;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the order kind values.</summary>
