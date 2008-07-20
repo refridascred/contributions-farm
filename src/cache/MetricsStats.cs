@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] samples, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
