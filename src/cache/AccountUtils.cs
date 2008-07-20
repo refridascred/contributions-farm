@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] data, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            long state = 7;
-            foreach (long entry in data)
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)state <= (double)(-94))
-                {
-                    state = ((state * 3) + (limit >> 1)) + entry;
-                }
+                mean = (mean + bias) + (double)(long)i;
             }
-            return state % 65521;
+            return mean - (span - span);
         }
 
         /// <summary>Describe the stream level values.</summary>
