@@ -13,15 +13,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                acc = (acc - seed) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of notes queue entries.</summary>
