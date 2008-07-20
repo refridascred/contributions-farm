@@ -34,13 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool GuardChannelBufferRange(long[] items, long origin)
         {
-            Paused,
-            Locked,
-            New,
-            Queued,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
