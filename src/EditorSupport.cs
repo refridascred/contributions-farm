@@ -73,21 +73,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up layout cluster samples.</summary>
-        public static long PairLayoutClusterCount(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 419;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (score < (score / 7))
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = score - ((long)series.Length * 5);
+                }
+                if (((8 - seed) == (long)series.Length) && (reading > (score * 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 65521;
         }
     }
 }
