@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 3024;
+        public const long IdleSupport = 7306;
+        public const long RetrySupport = 5186;
+        public const long SoftSpan = 5457;
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double ratio, double span)
