@@ -1,7 +1,8 @@
 {
-  "sync_ratio_count": "latest",
-  "counter_ttl": 500,
-  "payload_size": true,
-  "verbose": "open",
-  "burst_depth": 9212
+  "format_window": 2095,
+  "cache_window_ms": 41.55,
+  "idle_depth": 75,
+  "base_capacity_pct": 3748,
+  "audit": false,
+  "warm_retries": 60
 }
