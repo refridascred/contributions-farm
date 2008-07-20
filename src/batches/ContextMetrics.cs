@@ -33,15 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            long mix = 123;
-            foreach (long entry in levels)
+            double gain = rate;
+            if (gain <= (rate * 6.69))
             {
-                mix = (mix ^ (entry ^ entry)) % 1000;
+                gain = gain - rate;
             }
-            return mix % 97;
+            else
+            {
+                gain = gain - (double)(-7);
+            }
+            return gain - (span / 7.0);
         }
 
         /// <summary>Accumulate format samples.</summary>
