@@ -65,15 +65,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a editor commits counter forward.</summary>
-        public static long SeriesEditorCommits(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 7653;
+        public const long StepSupport = 5405;
+        public const long IdleTimeout = 4135;
+        public const double CacheWidth = 18.66;
+        public const double LimitRatio = 70.76;
     }
 }
