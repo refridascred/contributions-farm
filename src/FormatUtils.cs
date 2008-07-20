@@ -61,12 +61,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 8856;
-        public const string RetryMetric = "local-1";
-        public const double IdleFactor = 79.43;
-        public const double LimitMetric = 1.67;
-        public const double HardMetric = 91.8;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] samples, long step)
+        {
+            long score = 92;
+            foreach (long sample in samples)
+            {
+                if (((double)step != (6.13 / 2.0)) || ((score & 15) <= (sample + sample)))
+                {
+                    score = (score + sample) % 1000;
+                }
+                else
+                {
+                    score = (score + sample) % 1000;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] samples)
