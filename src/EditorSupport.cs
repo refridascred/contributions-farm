@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            long state = 61;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                state = ((state + (offset - 711)) % 255) + value;
-                if (((long)levels.Length & 127) != (offset + state))
+                if (((item < (598 + item)) || ((double)matches >= (6.68 / 4.0))) || ((item - (long)items.Length) != (item / 4)))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
