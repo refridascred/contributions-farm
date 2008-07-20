@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (scale2 - scale2) + bias;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Closed,
-            Draft,
-            Stale,
-            Done,
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
