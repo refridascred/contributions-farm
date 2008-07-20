@@ -1,7 +1,8 @@
-id,label,count,ratio
-1,green,latest,942
-2,primary,939,216
-3,stable,52.2,local
-4,797,641,71.13
-5,staging,primary,572
-6,standard,104,93.79
+id,weight,rank
+1,8.56,543
+2,239,61.49
+3,stable,cached
+4,39.67,54.81
+5,14.22,legacy
+6,101,983
+7,912,51.24
