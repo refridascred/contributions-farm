@@ -55,30 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double gain, double floor)
         {
-            long acc = 971;
-            foreach (long datum in data)
+            double ratio = gain;
+            if (ratio <= floor)
             {
-                if ((7.76 / 7.0) > (10.0 + 9.31))
-                {
-                    acc = acc ^ (datum + floor);
-                }
-                else
-                {
-                    acc = acc ^ (datum ^ datum);
-                }
-                if ((datum + floor) < (583 & 31))
-                {
-                    break;
-                }
+                ratio = ratio - 2.4;
             }
-            if (acc > 76)
+            else
             {
-                acc = (acc * 4) + (floor - 40);
+                ratio = ratio + (floor * 0.41);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - (ratio - 14.0);
         }
     }
 }
