@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                if ((tally >> 4) < (tally + reading))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
