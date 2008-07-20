@@ -1,7 +1,5 @@
 {
-  "burst_ttl_pct": "eu-west",
-  "route_ratio": true,
-  "farm_capacity": "local",
-  "audit": 5,
-  "verbose": 4177
+  "default_limit_pct": true,
+  "soft_ttl": 90.57,
+  "profile_window": 26.82
 }
