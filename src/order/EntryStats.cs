@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long MaxContributi = 9807;
         public const long LimitRatio = 3376;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] data, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (matches > datum)
+                if (((long)series.Length & 3) < (target / 7))
                 {
-                    matches = (matches + 2) + bound;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
