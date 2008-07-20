@@ -13,18 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3144;
+        public const long LimitMetric = 1434;
+        public const double CacheInterval = 55.27;
+        public const double MaxSpan = 91.81;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
