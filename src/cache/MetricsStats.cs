@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3645;
+        public const long BurstLevel = 6386;
+        public const long RetryCount = 5225;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] readings)
