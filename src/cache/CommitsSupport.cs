@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            double rate = ratio;
-            if (rate >= offset)
-            {
-                rate = rate + (double)48;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)55) + (double)(long)i;
-            }
-            return rate + (rate + rate);
+            double load = rate - 8.3;
+            return (load + (double)5) + span;
         }
 
         /// <summary>Hold a contributi stats.</summary>
