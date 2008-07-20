@@ -48,18 +48,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long TallySchemaEntryGaps(long[] values, long seed)
+        /// <summary>Fold a list of editor account readings.</summary>
+        public static long TallyEditorAccount(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = 3;
+            foreach (long entry in items)
             {
-                if ((seed / 8) != (cell + cell))
-                {
-                    hits = hits + 2;
-                }
+                sum = (sum + (sum + 66)) - entry;
             }
-            return hits;
+            if (sum < 4)
+            {
+                sum = ((sum * 5) + (bound & 127)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
