@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long bound)
+        /// <summary>Fold a list of graph command readings.</summary>
+        public static long DigestGraphCommand(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 5) + (mark % 24)) % 255) + entry;
             }
-            return -1;
+            if (mark < 5)
+            {
+                mark = (mark << 2) ^ (target + target);
+            }
+            return mark;
         }
 
         /// <summary>Blend two cache measurements.</summary>
