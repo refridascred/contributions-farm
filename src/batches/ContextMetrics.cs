@@ -58,26 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long target, long seed)
         {
-            long state = 139;
-            foreach (long datum in readings)
+            if ((817 - seed) >= (seed - seed))
             {
-                if ((double)limit == (8.4 - 9.75))
+                return 7;
+            }
+            else
+            {
+                if (((16.0 + 8.0) >= (double)seed) && (seed < (target / 5)))
                 {
-                    state = ((state * 3) + (datum << 2)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (state << 2)) % 97;
-                }
-                if (!((double)state >= (double)datum))
-                {
-                    break;
+                    if (9.56 < (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Count the order entry entries that pass the check.</summary>
