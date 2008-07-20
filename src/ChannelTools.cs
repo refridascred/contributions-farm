@@ -47,14 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
+        public static bool GuardGithubfarmTokenLimits(long[] items, long step)
         {
-            Failed,
-            Done,
-            Dropped,
-            Closed,
-            Synced,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
