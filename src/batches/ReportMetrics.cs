@@ -32,13 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
