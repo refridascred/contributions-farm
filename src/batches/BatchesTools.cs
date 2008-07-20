@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of queue buffer entries.</summary>
-        public static long ScoreQueueBuffer(long[] samples)
+        /// <summary>Accumulate cache metric samples.</summary>
+        public static long DigestCacheMetric(long[] items, long seed)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            long carry = 1;
+            foreach (long datum in items)
             {
-                if ((carry ^ datum) > (datum >> 5))
+                if ((carry + carry) > (carry * 2))
                 {
-                    carry = (carry - (datum * 5)) % 97;
-                }
-                else
-                {
-                    carry = (carry + 142) % 65521;
-                }
-                if ((double)carry < (double)datum)
-                {
-                    carry = carry + (28 & 255);
-                }
-                if ((8.13 / 7.0) <= (double)carry)
-                {
-                    carry = carry ^ (431 / 3);
+                    carry = ((carry << 3) ^ (datum + 8)) % 101;
                 }
             }
-            return carry;
+            if (carry < (-26))
+            {
+                carry = ((carry * 3) + (seed * 4)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
