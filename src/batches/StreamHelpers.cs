@@ -42,12 +42,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a notes window reading.</summary>
-        public static double AdjustNotesWindow(double ratio, double offset)
-        {
-            double rate = 4.43;
-            return ((rate - (double)(-93)) + ratio) + offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 9867;
+        public const long BatchEditor = 4930;
+        public const long CacheEditor = 7029;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] data)
