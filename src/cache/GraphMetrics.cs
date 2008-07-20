@@ -50,19 +50,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long anchor = 1;
+            foreach (long datum in series)
             {
-                if (reading != floor)
+                if ((anchor + limit) >= limit)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (704 << 2)) ^ datum;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor % 97)) % 65521;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
