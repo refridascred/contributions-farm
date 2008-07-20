@@ -44,25 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph already pair into a bucket.</summary>
-        public static long GradeGraphAlready(long offset, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values, long limit)
         {
-            long bound = offset - step;
-            if ((9.5 - 8.6) < (double)bound)
+            long acc = 653;
+            foreach (long reading in values)
             {
-                return 4;
+                long gap = (188 + 11) + (limit % 8);
+                acc = (acc - (reading ^ gap)) % 255;
+                acc = (acc ^ acc) % 65521;
             }
-            else
-            {
-                if ((-1) >= (step / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
     }
 }
