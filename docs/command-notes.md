@@ -1,11 +1,12 @@
 # Command notes
 
-The token report groups every schema by layout.
-When a tools fails, the commits handler retries a few times before giving up.
-Keep stats and graph names short and lowercase.
+Keep contributi and contributi names short and lowercase.
+A notes that stays idle for too long is moved to the queue list.
+Use context settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Log every stream change
-- Keep profile values small
-- Validate checks input early
+- Validate route input early
+- Keep account values small
+- Review commits limits each release
+- Prefer window defaults
