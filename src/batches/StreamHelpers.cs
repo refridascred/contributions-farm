@@ -12,19 +12,17 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double weight, double floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long step)
         {
-            double load = (double)(1 * 3);
-            if (load < load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (double)858) - floor;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (18.0 / 9.0);
-            }
-            return load - (weight - weight);
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
