@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            Synced,
-            Locked,
-            Ready,
-            Active,
-            Done,
+            long total = 831;
+            foreach (long cell in items)
+            {
+                if ((double)125 == (double)total)
+                {
+                    total = (total + (cell >> 5)) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + (total & 31)) % 65521;
+                }
+                if (((cell & 7) != (total % 16)) || ((double)cell <= (double)total))
+                {
+                    total = (total + (cell ^ cell)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up layout samples.</summary>
