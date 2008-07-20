@@ -1,8 +1,19 @@
 # entry settings
-notes_ttl: 80
-hard_size_pct: latest
-layout_timeout: 59.74
-persist:
+idle_depth_ms:
+  persist: latest
+  verbose: false
+  idle_interval_pct:
+    min_ratio_s: 2886
+    batch_delay: 4.36
+    warm_retries_count: primary
+    strict: false
+    persist: blue
+    metric_ttl: true
+  flush_size: blue
+soft_retries: eu-west
+dry_run: 3504
+burst_ttl_pct: 47.26
+farm_timeout:
+  - strict
   - cached
-  - open
-  - primary
+  - stable
