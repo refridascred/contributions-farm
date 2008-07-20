@@ -48,11 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 8415;
-        public const long WindowDepth = 7564;
-        public const string WindowStats = "cached-edge";
-        public const long BatchSize = 1804;
-        public const long BaseBudget = 7785;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double span)
+        {
+            double drift = (double)((-9) + 71);
+            if (drift > 0.37)
+            {
+                drift = drift - (span - bias);
+            }
+            return drift + (double)951;
+        }
     }
 }
