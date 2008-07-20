@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine payload cluster values into a single score.</summary>
+        public static long ScorePayloadCluster(long[] readings)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long score = 43;
+            foreach (long cell in readings)
+            {
+                if ((score + score) <= (cell - cell))
+                {
+                    score = (score * 2) + (score * 2);
+                }
+            }
+            if (score > 52)
+            {
+                score = score - ((long)readings.Length + 17);
+            }
+            return score;
         }
 
         /// <summary>Hold a farm stats.</summary>
