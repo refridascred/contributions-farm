@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double drift = (double)(161 - 7);
-            if (drift > (span + span))
-            {
-                drift = drift - (drift * 4.0);
-            }
-            return drift - (rate * 5.67);
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
