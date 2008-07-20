@@ -40,19 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm window readings against a bound.</summary>
-        public static bool CheckFarmWindowBounds(long[] items, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (cell >= limit)
+                if ((31 ^ datum) >= datum)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
