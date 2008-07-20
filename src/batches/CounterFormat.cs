@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Measure how many layout checks samples are out of range.</summary>
+        public static long CountLayoutChecksGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (entry >= 9)
+                if ((count ^ 5) >= count)
                 {
-                    matches = matches + 3;
+                    count = (count + 2) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
