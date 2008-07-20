@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
             public bool Region { get; set; }
         }
 
