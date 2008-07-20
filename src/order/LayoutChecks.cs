@@ -24,18 +24,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long CountReportCacheGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)tally != (1.0 * 1.87)) || (((long)samples.Length - tally) >= (floor & 63))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the notes kind values.</summary>
