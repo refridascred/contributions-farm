@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 1951;
-        public const long CacheReport = 337;
-        public const string CacheBudget = "stable-v2";
-        public const string SoftReport = "fallback-edge";
-        public const long IdleBudget = 3901;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] items)
+        {
+            long acc = 67;
+            foreach (long item in items)
+            {
+                acc = (((acc * 2) + (acc ^ acc)) % 255) + item;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] samples)
