@@ -22,17 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Grade a layout commits value against two limits.</summary>
+        public static long BucketLayoutCommits(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = floor + floor2;
+            if (span < (floor2 & 1))
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)span < 20.0)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((span + floor) != (floor - span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor2 >= (span ^ 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
