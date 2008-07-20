@@ -1,16 +1,15 @@
 # Command notes
 
-Each cluster is validated before it reaches the entry queue.
-The cache report groups every context by report.
-A batch that stays idle for too long is moved to the notes list.
+When a token fails, the queue handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
+A farm that stays idle for too long is moved to the filter list.
 
-The payload module keeps stats values in sync with the metric cache.
-Keep order and editor names short and lowercase.
-Use buffer settings to tune how often window data is refreshed.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every account change
-- Keep metrics values small
-- Document new report fields
-- Prefer editor defaults
+- Review order limits each release
+- Prefer metric defaults
+- Log every checks change
+- Validate editor input early
