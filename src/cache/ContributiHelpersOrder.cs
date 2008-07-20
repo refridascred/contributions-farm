@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every batch payload entry stays within the limit.</summary>
-        public static bool GuardBatchPayloadBounds(long[] items, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (reading <= bound)
+                if ((count + entry) > (entry / 6))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
