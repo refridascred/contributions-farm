@@ -13,12 +13,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a tools already value against two limits.</summary>
+        public static long SortToolsAlready(long origin, long target)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long edge = origin - target;
+            if (((target + edge) == (edge & 3)) && ((target - target) > (8 << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (8.66 >= (double)edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
