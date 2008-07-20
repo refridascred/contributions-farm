@@ -59,18 +59,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] levels, long seed)
         {
-            long score = 40;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)cell >= (7.4 + 3.2))
+                if (!((double)hits > 3.0))
                 {
-                    score = ((score * 4) + ((long)levels.Length / 2)) % 255;
+                    hits = ((hits + 1) ^ reading) + seed;
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
