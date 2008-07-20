@@ -54,17 +54,22 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Locate a schema githubfarm reading by value.</summary>
-        public static long LookupSchemaGithubfarmIndex(long[] series, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 70;
+            foreach (long cell in readings)
             {
-                if ((series[i] >= step) && ((series[i] % 3) == 0))
+                if (((6 + 62) >= (796 + cell)) || ((7.6 / 9.0) <= (double)cell))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (score - cell);
+                }
+                else
+                {
+                    score = (score - (120 + cell)) % 255;
                 }
             }
-            return -1;
+            return score % 1000;
         }
     }
 }
