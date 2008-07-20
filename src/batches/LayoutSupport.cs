@@ -51,15 +51,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long offset)
+        /// <summary>Find the first session filter entry that matches the target.</summary>
+        public static long LocateSessionFilterIndex(long[] readings, long floor)
         {
-            long state = 659;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state * 2) + (state - 69)) - cell) - offset;
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
