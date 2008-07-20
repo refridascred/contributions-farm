@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string WindowAlready = "primary";
         public const string BurstAlready = "open-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((18.0 * 2.78) <= (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
