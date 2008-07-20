@@ -82,19 +82,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate cluster checks readings against a bound.</summary>
-        public static bool CheckClusterChecksLimits(long[] data, long step)
+        /// <summary>Digest a series of entry schema entries.</summary>
+        public static long WeighEntrySchema(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long result = 449;
+            foreach (long value in items)
             {
-                if (entry <= step)
+                if ((step + (-814)) < (value / 6))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 4) + (value << 3);
                 }
             }
-            return valid;
+            return result % 1000;
         }
     }
 }
