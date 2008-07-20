@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
-        public static long MatchMetricsBufferCount(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc + value) >= (value ^ acc))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (acc - value)) % 101;
+                    acc = acc ^ (value - value);
+                }
+                else
+                {
+                    acc = (acc ^ (acc + value)) % 97;
+                }
+                if ((value << 1) != ((long)series.Length >> 4))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if ((value + acc) >= (value >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a batches header.</summary>
