@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
