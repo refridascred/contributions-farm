@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "primary-1";
-        public const long WindowAlready = 572;
-        public const double SoftAlready = 35.67;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Pending,
+            New,
+            Dropped,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long limit)
