@@ -37,19 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double bias)
-        {
-            double bias2 = (double)((-141) % 2);
-            if (bias2 <= ratio)
-            {
-                bias2 = (bias2 - bias2) - bias;
-            }
-            else
-            {
-                bias2 = bias2 - 12.0;
-            }
-            return bias2 - (bias2 / 2.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 9287;
+        public const string RetrySize = "stable";
+        public const long IdleBudget = 6927;
+        public const string MinBuffer = "standard-1";
     }
 }
