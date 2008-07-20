@@ -32,22 +32,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache account samples are out of range.</summary>
-        public static long TallyCacheAccountHits(long[] series, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if (!((double)seed < (7.0 + 8.52)))
             {
-                if ((target + cell) >= (matches + 447))
+                return 8;
+            }
+            else
+            {
+                if (seed < 1)
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((8.6 - 5.0) <= (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4 ^ (-48)) == (seed & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
