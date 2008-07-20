@@ -45,13 +45,12 @@ namespace Common.Utilities
         public const long BurstPayload = 9418;
         public const double BasePayload = 55.64;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            Idle,
+            Draft,
+            Closed,
         }
     }
 }
