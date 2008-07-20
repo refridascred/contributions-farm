@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleLevel = 8235;
-        public const long StepStream = 4351;
-        public const long HardScore = 8448;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Active,
+            Pending,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] values, long limit)
