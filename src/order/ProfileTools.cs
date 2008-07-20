@@ -19,26 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster payload readings.</summary>
-        public static long ScoreClusterPayload(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((sample - sample) > (anchor + (-657))) && ((anchor % 3) <= (sample - sample)))
-                {
-                    anchor = (anchor + (7 >> 5)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (sample << 1);
-                }
-                if (!((17 << 3) < anchor))
-                {
-                    anchor = (anchor << 3) ^ (sample / 3);
-                }
+                anchor = (anchor ^ (anchor & 7)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the notes mode values.</summary>
