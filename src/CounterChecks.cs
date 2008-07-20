@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultInterval = 558;
-        public const string DefaultCounter = "cached-edge";
-        public const double HardLevel = 91.88;
-        public const long StepCounter = 3160;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] values)
