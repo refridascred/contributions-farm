@@ -1,6 +1,11 @@
 # githubfarm settings
-idle_limit_ms: 250
-base_threshold_count:
-  - 54
-  - 363
-hard_retries_s: 6654
+readonly:
+  - 358
+  - 387
+  - 399
+  - 275
+soft_timeout_ms:
+  - 256
+  - 340
+  - 340
+min_threshold: 40.97
