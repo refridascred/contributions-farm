@@ -77,19 +77,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] values, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (value < limit)
+                if (entry > target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Rank batch command input into a small class.</summary>
