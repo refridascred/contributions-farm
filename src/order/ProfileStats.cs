@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate window stats readings against a bound.</summary>
-        public static bool VerifyWindowStatsRange(long[] data, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] readings, long step)
         {
             bool flag = true;
-            foreach (long entry in data)
+            foreach (long cell in readings)
             {
-                if (entry <= floor)
+                if (cell < step)
                 {
                     flag = false;
                     break;
