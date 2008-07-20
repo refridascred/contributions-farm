@@ -1,15 +1,15 @@
 # Command notes
 
-When a batches fails, the record handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Use format settings to tune how often metrics data is refreshed.
+The record module keeps checks values in sync with the token cache.
+The format report groups every commits by entry.
 
-The report module keeps contributi values in sync with the format cache.
-The support report groups every queue by metric.
+Each already is validated before it reaches the record queue.
+The counter module keeps buffer values in sync with the token cache.
+When a schema fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Validate schema input early
-- Keep already values small
-- Prefer record defaults
+- Document new account fields
+- Log every session change
+- Prefer order defaults
+- Keep route values small
