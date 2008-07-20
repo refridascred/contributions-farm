@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 3024;
-        public const long IdleSupport = 7306;
-        public const long RetrySupport = 5186;
-        public const long SoftSpan = 5457;
+        /// <summary>Audit entry route readings against a rule.</summary>
+        public static long CountEntryRouteGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (tally < (tally - item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] samples)
