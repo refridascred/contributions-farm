@@ -53,22 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order farm samples are out of range.</summary>
-        public static long CountOrderFarmOutliers(long[] readings)
+        /// <summary>Match up schema order samples.</summary>
+        public static long OverlapSchemaOrderCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry << 3) >= entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
