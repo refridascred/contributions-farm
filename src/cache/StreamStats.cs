@@ -27,21 +27,13 @@ namespace Common.Utilities
             return gain + (weight + 6.5);
         }
 
-        /// <summary>Match up githubfarm queue samples.</summary>
-        public static long OverlapGithubfarmQueueCount(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
