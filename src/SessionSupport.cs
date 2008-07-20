@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "fallback-v2";
-        public const long LimitScore = 7012;
-        public const string CacheSpan = "local";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series, long offset)
+        {
+            long anchor = 60;
+            foreach (long value in series)
+            {
+                if ((offset - (long)series.Length) <= (value * 3))
+                {
+                    anchor = ((anchor * 3) + ((-840) + value)) % 1000;
+                }
+                if ((offset / 6) >= (offset >> 4))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
