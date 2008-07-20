@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((1.9 - 9.2) >= (double)count) && (count > (entry - (-3))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultInterval = 558;
+        public const string DefaultCounter = "cached-edge";
+        public const double HardLevel = 91.88;
+        public const long StepCounter = 3160;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] values)
