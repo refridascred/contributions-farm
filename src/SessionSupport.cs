@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseRatio = 5;
-        public const string WindowRatio = "standard-1";
-        public const string DefaultSession = "latest-edge";
-        public const long SoftSession = 8657;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] readings)
