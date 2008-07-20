@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long step)
         {
-            Queued,
-            Paused,
-            Dropped,
+            long total = 3;
+            foreach (long value in series)
+            {
+                if (((double)total < (1.2 - 8.83)) && ((5.4 - 9.02) == (double)value))
+                {
+                    total = (((total * 4) + (value << 2)) % 97) - step;
+                }
+            }
+            if (total < 361)
+            {
+                total = ((total << 2) ^ (69 % 24)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
