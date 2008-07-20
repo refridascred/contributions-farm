@@ -1,18 +1,19 @@
 # support settings
-dry_run:
-  - 128
-  - 144
-cache_delay:
-  default_threshold_ms: 76.77
-  idle_delay_ms: 91.36
-  queue_interval: local
-  stream_retries: 2.15
-  cache_timeout:
+readonly: staging
+schema_limit:
+  warm_threshold_s:
     - latest
-    - open
-    - green
-  context_ttl: 27.69
-flush_depth_s: 87.57
-idle_depth: edge
-persist: 76
-min_ratio: 18.38
+    - primary
+    - latest
+    - cached
+  audit: 7.55
+  warm_window_ms: 74
+  enabled: standard
+  poll_threshold_ms: eu-west
+  burst_limit_ms: stable
+base_size_s:
+  - legacy
+  - standard
+idle_retries: edge
+audit: 28.15
+min_ratio_s: 57
