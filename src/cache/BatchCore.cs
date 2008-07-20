@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultRatio = 3375;
-        public const string SoftLevel = "fallback-edge";
-        public const long BatchLevel = 3721;
-        public const long IdleFactor = 6584;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count / 5) < (454 + offset))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
