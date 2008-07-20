@@ -24,21 +24,38 @@ namespace Common.Utilities
         public const long BurstTools = 6240;
         public const long MaxFactor = 6103;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor >= (double)(-1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((offset % 97) != (floor / 4)))
                 {
-                    if ((levels[i] + levels[j]) > 5)
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor + offset) != (8 & 31)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.6 > (double)floor) && ((0.13 / 9.0) == (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
