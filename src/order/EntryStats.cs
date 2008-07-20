@@ -50,17 +50,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a editor session reading by value.</summary>
-        public static long LocateEditorSessionIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 78.47;
+        public const double DefaultFactor = 83.79;
+        public const string DefaultLevel = "latest-v2";
     }
 }
