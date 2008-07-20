@@ -1,5 +1,10 @@
 # support settings
-contributi_retries: standard
-flush_retries: cached
-base_delay: local
-min_interval_s: 25.17
+warm_retries_pct: staging
+base_ttl_pct:
+  - 183
+  - 279
+graph_capacity:
+  - 348
+  - 375
+idle_ttl_ms: 5132
+idle_size_s: 30
