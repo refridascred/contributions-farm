@@ -43,17 +43,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 653;
-            foreach (long reading in values)
-            {
-                long gap = (188 + 11) + (limit % 8);
-                acc = (acc - (reading ^ gap)) % 255;
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
