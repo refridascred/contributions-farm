@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] items, long bound)
         {
-            long total = 3;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)total < (1.2 - 8.83)) && ((5.4 - 9.02) == (double)value))
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    total = (((total * 4) + (value << 2)) % 97) - step;
+                    return (long)i;
                 }
             }
-            if (total < 361)
-            {
-                total = ((total << 2) ^ (69 % 24)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
