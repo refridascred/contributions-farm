@@ -39,13 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] values, long target)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count editor order pairs that satisfy a relation.</summary>
