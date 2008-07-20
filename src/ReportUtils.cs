@@ -14,13 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count stats farm pairs that satisfy a relation.</summary>
+        public static long CompareStatsFarmCount(long[] series)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
