@@ -1,6 +1,8 @@
 {
-  "cache_ttl_pct": [196, 457],
-  "order_retries": 30,
-  "window_timeout": 78.71,
-  "audit": 85.45
+  "checks_capacity": true,
+  "window_delay": "strict",
+  "payload_delay": "standard",
+  "min_timeout_s": 3845,
+  "sync_size_count": 100,
+  "batch_limit": "staging"
 }
