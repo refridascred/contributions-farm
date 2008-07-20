@@ -62,10 +62,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 3173;
         public const long MinTimeout = 1009;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleFactor = 1673;
-        public const string MaxDepth = "fallback";
-        public const long MaxBudget = 5629;
-        public const double SoftRecord = 23.43;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
