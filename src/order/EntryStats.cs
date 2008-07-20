@@ -36,22 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally << 1) > value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
