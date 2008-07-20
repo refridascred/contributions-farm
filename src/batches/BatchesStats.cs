@@ -19,25 +19,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long target)
-        {
-            if (((target * 4) >= target) || ((seed % 64) > (5 << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed > 0) || ((seed << 1) <= (seed ^ target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSize = 735;
+        public const double WindowEditor = 50.06;
+        public const long MaxEditor = 8891;
+        public const long StepCount = 322;
 
         /// <summary>Validate queue window readings against a bound.</summary>
         public static bool ValidateQueueWindowBounds(long[] values, long bound)
