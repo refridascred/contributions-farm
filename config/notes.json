@@ -1,5 +1,21 @@
 {
-  "max_threshold_count": "fallback",
-  "soft_limit_count": "open",
-  "schema_timeout": "staging"
+  "idle_size": {
+    "warm_threshold_pct": 75.71,
+    "retry_retries": 500,
+    "soft_size_s": 30,
+    "dry_run": {
+      "contributi_capacity": 16.36,
+      "cache_capacity": 2.6,
+      "burst_depth_ms": 3635
+    },
+    "strict": true
+  },
+  "hard_window": [452, 27, 373],
+  "idle_ratio_ms": {
+    "max_delay": "cached",
+    "burst_ratio": "strict",
+    "verbose": ["fallback", "cached", "legacy", "staging"]
+  },
+  "tools_retries": false,
+  "cache_timeout": "green"
 }
