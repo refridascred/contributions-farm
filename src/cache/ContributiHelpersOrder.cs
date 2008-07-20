@@ -22,13 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] items, long target)
         {
-            Paused,
-            Locked,
-            Queued,
-            Dropped,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count <= (26 + target))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
