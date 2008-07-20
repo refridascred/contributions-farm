@@ -15,12 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "standard-edge";
-        public const long CacheLevel = 5307;
-        public const long IdleWidth = 2629;
-        public const long IdleFormat = 7758;
-        public const long CacheFormat = 3160;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long offset)
+        {
+            if (6.3 >= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-74) / 9) == (floor - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] levels)
