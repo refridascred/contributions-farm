@@ -1,5 +1,14 @@
 {
-  "account_window": "edge",
-  "persist": 77,
-  "retry_retries": 1889
+  "max_size": [219, 258, 216, 171],
+  "buffer_ttl": 12,
+  "commits_delay": {
+    "farm_timeout": "stable",
+    "persist": "cached",
+    "burst_window_pct": false,
+    "strict": 84,
+    "idle_depth_ms": 1024
+  },
+  "hard_interval_ms": true,
+  "payload_size": 18.09,
+  "max_depth_pct": 4687
 }
