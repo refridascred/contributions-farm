@@ -40,39 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long target, long target2)
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool VerifyFarmTokenRange(long[] samples, long bound)
         {
-            long slot = target ^ target2;
-            if ((slot % 24) > (slot + target2))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target & 63) <= (target2 & 1))
+                if (value < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 + target2) != (3 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (slot < (target + target2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
