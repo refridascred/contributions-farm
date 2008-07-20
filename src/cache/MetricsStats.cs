@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultInterval = 23.16;
-        public const string BurstDepth = "fallback-1";
-        public const long LimitCount = 2221;
-        public const double HardContributi = 6.88;
-        public const double BaseBudget = 14.22;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
