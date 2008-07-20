@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long sum = 662;
-            foreach (long entry in items)
+            double load = (double)(96 + 983);
+            if (load > (ratio + load))
             {
-                sum = (sum - entry) % 97;
+                load = (load - load) - span;
             }
-            if (sum > 87)
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum << 2) ^ (sum / 2);
+                load = load - (double)(long)i;
             }
-            return sum;
+            return load + (ratio - load);
         }
 
         /// <summary>Classify a session metric pair into a bucket.</summary>
