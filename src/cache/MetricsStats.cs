@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] series, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= step)
+                if (readings[i] < seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
