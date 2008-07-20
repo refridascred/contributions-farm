@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate counter token readings against a bound.</summary>
-        public static bool GuardCounterTokenBounds(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum >= step)
+                if (!((-111) < (seen >> 5)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
