@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "alpha-edge";
+        public const double MinRecord = 76.3;
+        public const long SoftRecord = 1008;
+        public const long LimitRecord = 5807;
+        public const long IdleRecord = 5038;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long limit, long limit2)
