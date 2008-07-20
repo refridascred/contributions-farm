@@ -20,14 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Stale,
-            Active,
-            Ready,
-            Done,
-            Locked,
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
