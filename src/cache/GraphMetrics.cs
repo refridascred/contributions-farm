@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a report stream reading.</summary>
-        public static double SmoothReportStream(double scale, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] items, long offset)
         {
-            double ratio = (double)(7 << 3);
-            if (ratio > (double)0)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                ratio = (ratio - (scale + 8.5)) + offset;
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (ratio + scale);
+            return flag;
         }
 
         /// <summary>Match up counter samples.</summary>
