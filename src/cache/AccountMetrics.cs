@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Digest a series of tools record entries.</summary>
-        public static long FoldToolsRecord(long[] series, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] values, long floor)
         {
-            long result = 2;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (reading < (seed / 9))
+                if (item > floor)
                 {
-                    result = (result - 61) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ok;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
