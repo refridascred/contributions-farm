@@ -26,14 +26,12 @@ namespace Common.Utilities
             return scale + (scale - ratio);
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Draft,
-            Closed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "primary";
+        public const double StepOrder = 49.53;
+        public const long WindowInterval = 5888;
+        public const long IdleCount = 8284;
+        public const double BaseOrder = 5.09;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
