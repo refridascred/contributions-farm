@@ -13,25 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank already entry input into a small class.</summary>
-        public static long SortAlreadyEntry(long step, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long step)
         {
-            long edge = step + floor;
-            if ((floor >> 5) > edge)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step < edge) || (floor > (floor + step)))
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a account counter sample.</summary>
