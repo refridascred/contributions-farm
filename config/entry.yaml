@@ -1,4 +1,6 @@
 # entry settings
-hard_ratio_pct: standard
-sync_window_count: local
-audit: local
+readonly: 48.91
+poll_size_pct: stable
+sync_capacity_pct: true
+cache_depth_ms: 18.02
+burst_timeout_ms: primary
