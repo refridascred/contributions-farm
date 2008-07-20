@@ -29,19 +29,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double span)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double weight2 = span;
-            if (weight2 > (double)202)
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (1.94 + 3.8)) + (double)(long)i;
-            }
-            return weight2 - 0.91;
+            Closed,
+            Queued,
+            Retry,
         }
     }
 }
