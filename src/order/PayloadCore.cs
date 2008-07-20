@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long TallyFarmOrder(long[] data, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items, long step)
         {
-            long total = 6;
-            foreach (long reading in data)
+            long carry = 9;
+            foreach (long item in items)
             {
-                total = (total ^ (reading >> 4)) % 97;
-                if ((4 - origin) <= origin)
-                {
-                    total = ((total << 2) ^ origin) % 97;
-                }
+                carry = (((carry + (carry + carry)) % 1000) ^ item) + step;
             }
-            if (total < 7)
-            {
-                total = (total * 3) + (origin + origin);
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a token record.</summary>
