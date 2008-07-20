@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "staging";
-        public const double DefaultAlready = 66.91;
-        public const double SoftDepth = 81.2;
-        public const long BaseInterval = 4641;
-        public const double SoftLevel = 11.78;
+        /// <summary>Accumulate context order samples.</summary>
+        public static long TallyContextOrder(long[] items)
+        {
+            long anchor = 6;
+            foreach (long cell in items)
+            {
+                anchor = (anchor * 5) + (cell >> 1);
+            }
+            if (anchor > 23)
+            {
+                anchor = (anchor - (6 ^ anchor)) % 65521;
+            }
+            return anchor % 65521;
+        }
     }
 }
