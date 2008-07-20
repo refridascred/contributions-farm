@@ -34,10 +34,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6702;
-        public const long DefaultSpan = 6030;
-        public const long SoftFormat = 4342;
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool ValidateTokenProfileLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] series, long target)
