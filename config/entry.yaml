@@ -1,20 +1,21 @@
 # entry settings
-max_limit_s: 48.24
-min_interval_s: 1024
-sync_ratio_count:
-  cache_depth_s:
-    - 61
-    - 90
-    - 212
-  max_interval:
-    - 197
-    - 390
-    - 453
-  filter_size:
-    - fallback
-    - strict
-  default_ttl:
-    - 361
-    - 422
-    - 200
-  enabled: local
+dry_run: true
+cache_ttl_pct:
+  default_delay_ms: false
+  poll_limit_count:
+    warm_depth_s: 30
+    dry_run: 8.4
+    retry_interval_pct: true
+    soft_timeout: 4331
+    schema_size: false
+    window_delay: blue
+  idle_interval_ms: 500
+  retry_timeout: false
+  idle_window_count:
+    - 314
+    - 59
+    - 224
+    - 9
+compress: latest
+soft_ttl: cached
+cache_interval_ms: 77.37
