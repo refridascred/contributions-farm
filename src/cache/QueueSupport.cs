@@ -41,22 +41,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Grade a report payload value against two limits.</summary>
+        public static long BucketReportPayload(long limit, long step)
         {
-            long state = 596;
-            foreach (long cell in data)
+            long offset = limit + step;
+            if (offset < (step ^ 23))
             {
-                if ((state + cell) != (2 * 3))
+                return 0;
+            }
+            else
+            {
+                if ((step - step) <= offset)
                 {
-                    state = state - (state + state);
+                    return 1;
+                }
+                else
+                {
+                    if ((step >= (659 & 7)) && (offset < (offset % 12)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (state > 5)
-            {
-                state = ((state * 4) + (state + state)) % 101;
-            }
-            return state;
         }
     }
 }
