@@ -21,21 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 9;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total - (cell & 127);
+                if ((double)bound == (3.8 - 6.4))
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Count metric batch pairs that satisfy a relation.</summary>
