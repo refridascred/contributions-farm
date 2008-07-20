@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next session stream value.</summary>
+        public static double ProjectSessionStream(double weight, double bias)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            double gain = weight;
+            return gain + bias;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
