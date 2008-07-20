@@ -36,10 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 62.65;
-        public const long WindowBatch = 7129;
-        public const double HardSpan = 12.3;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double rate, double span)
