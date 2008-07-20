@@ -67,18 +67,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit report checks readings against a rule.</summary>
-        public static long MeasureReportChecksGaps(long[] values, long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset ^ reading) > offset)
+                if (data[i] == limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
