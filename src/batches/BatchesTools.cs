@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metrics contributi readings against a rule.</summary>
-        public static long AuditMetricsContributiGaps(long[] data, long origin)
+        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
+        public static double SmoothGithubfarmQueue(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = 7.1;
+            if (mean <= ratio)
             {
-                if ((((count + count) >= (0 / 4)) && ((origin % 60) < (origin - origin))) || (((6.3 * 4.0) <= (double)origin) && ((double)origin > (1.1 / 9.0))))
-                {
-                    count = (count + 2) - value;
-                }
+                mean = mean - (mean / 6.0);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (floor + 3.23);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
