@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 5824;
+        public const double DefaultSession = 58.8;
+        public const long BatchScore = 2349;
+        public const long WindowSession = 1567;
+        public const double BurstSize = 27.78;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long ClassifyBatch(long step, long target)
