@@ -49,26 +49,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mix = 545;
-            foreach (long value in levels)
-            {
-                if (5.9 >= (double)mix)
-                {
-                    mix = ((mix << 3) ^ value) % 255;
-                }
-                else
-                {
-                    mix = (mix - (mix & 1)) % 65521;
-                }
-            }
-            if (mix < 82)
-            {
-                mix = ((mix << 3) ^ ((long)levels.Length ^ mix)) % 1000;
-            }
-            return mix;
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate entry contributi samples.</summary>
