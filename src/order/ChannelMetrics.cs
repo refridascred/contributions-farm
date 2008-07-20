@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            double gain = span;
-            if (gain <= (double)981)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (double)66) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (double)6;
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
