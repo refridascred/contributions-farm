@@ -41,32 +41,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long offset2 = offset + floor;
-            if (!(offset2 >= (offset / 9)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset2 >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - offset) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
