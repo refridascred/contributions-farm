@@ -28,18 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long seed)
         {
-            long anchor = 447;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((370 * 3) >= (entry % 10))
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
                 {
-                    anchor = ((anchor ^ (52 + anchor)) % 101) + limit;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
