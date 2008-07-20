@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long anchor = 825;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                if (((anchor ^ cell) >= (cell + cell)) || ((cell / 4) == (cell ^ anchor)))
-                {
-                    anchor = anchor + (anchor + anchor);
-                }
-            }
-            if (anchor > 29)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 1000;
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
