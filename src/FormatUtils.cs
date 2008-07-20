@@ -41,11 +41,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Combine support entry values into a single score.</summary>
+        public static long TotalSupportEntry(long[] readings)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long acc = 466;
+            foreach (long datum in readings)
+            {
+                if (((datum - acc) != (73 + acc)) && ((datum >> 2) > 52))
+                {
+                    acc = ((acc * 5) + datum) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - 9)) % 1000;
+                }
+                if ((acc - (long)readings.Length) < (datum >> 5))
+                {
+                    acc = (acc << 3) ^ (datum - datum);
+                }
+                else
+                {
+                    acc = acc + (1 - datum);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
