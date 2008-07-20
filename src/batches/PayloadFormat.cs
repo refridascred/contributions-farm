@@ -20,11 +20,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long step2)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long bound = step ^ step2;
+            if (bound >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.83 / 7.0) != (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 >> 3) <= (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
