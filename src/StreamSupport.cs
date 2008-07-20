@@ -48,19 +48,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of editor account readings.</summary>
-        public static long TallyEditorAccount(long[] items, long bound)
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool GuardBatchesFormatBounds(long[] samples, long limit)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                sum = (sum + (sum + 66)) - entry;
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 5) + (bound & 127)) % 255;
-            }
-            return sum % 65521;
+            return ready;
         }
     }
 }
