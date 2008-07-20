@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine payload cluster values into a single score.</summary>
-        public static long ScorePayloadCluster(long[] readings)
+        /// <summary>Validate filter stats readings against a bound.</summary>
+        public static bool GuardFilterStatsLimits(long[] data, long bound)
         {
-            long score = 43;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((score + score) <= (cell - cell))
+                if (value > bound)
                 {
-                    score = (score * 2) + (score * 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 52)
-            {
-                score = score - ((long)readings.Length + 17);
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a farm stats.</summary>
