@@ -36,34 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples, long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long result = 22;
-            foreach (long value in samples)
-            {
-                if (!(7.06 < (double)bound))
-                {
-                    result = ((result << 3) ^ value) % 1000;
-                }
-                if (value > (result / 3))
-                {
-                    result = (result - result) % 1000;
-                }
-                else
-                {
-                    result = (result - (bound >> 1)) % 97;
-                }
-                if (!((0 << 1) > bound))
-                {
-                    result = (result * 3) + (bound << 2);
-                }
-                if (value <= (value ^ bound))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
