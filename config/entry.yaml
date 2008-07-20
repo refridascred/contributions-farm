@@ -1,12 +1,9 @@
 # entry settings
-soft_retries_s:
-  - 411
-  - 248
-  - 364
-  - 178
-default_interval_ms:
-  persist: 18.52
-  support_size: false
-  flush_delay_s: 89
-retry_threshold_ms: 31.65
-enabled: latest
+soft_ratio_pct: false
+persist: 59.5
+compress:
+  base_size: false
+  default_threshold_pct: 7943
+  sync_window_ms: 32.15
+batch_retries: fallback
+enabled: 92.4
