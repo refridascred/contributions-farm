@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string IdleLayout = "staging-v2";
         public const double BurstRatio = 72.78;
 
-        /// <summary>Blend two buffer stream measurements.</summary>
-        public static double AdjustBufferStream(double weight, double bias)
+        /// <summary>Measure how many route profile samples are out of range.</summary>
+        public static long CountRouteProfileHits(long[] data)
         {
-            double gain = weight;
-            if (gain <= gain)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = gain + bias;
+                if (sample > (979 << 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + gain;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
