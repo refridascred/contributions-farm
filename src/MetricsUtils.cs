@@ -39,12 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "primary";
-        public const double StepOrder = 49.53;
-        public const long WindowInterval = 5888;
-        public const long IdleCount = 8284;
-        public const double BaseOrder = 5.09;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] data)
