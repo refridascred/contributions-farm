@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long step)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long score = 8;
+            foreach (long sample in levels)
+            {
+                score = ((score - (score >> 1)) % 97) - sample;
+            }
+            if (score < 63)
+            {
+                score = ((score * 2) + (step & 15)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
