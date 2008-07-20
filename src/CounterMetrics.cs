@@ -33,16 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double ratio, double floor)
-        {
-            double drift = floor;
-            if (drift < (double)76)
-            {
-                drift = drift + (ratio / 3.0);
-            }
-            return drift + 3.95;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitSize = 79.38;
+        public const double StepRatio = 38.59;
+        public const long BurstDepth = 3998;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 6773;
