@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values, long floor)
         {
-            if (((target << 2) == (step / 7)) || ((step - target) > (target + target)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.4 * 8.9) >= (double)target)
+                if (seen < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 3) != (5 & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
