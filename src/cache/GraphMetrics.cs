@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples, long origin)
         {
-            Failed,
-            Retry,
-            Ready,
-            Stale,
+            long score = 21;
+            foreach (long sample in samples)
+            {
+                if (!(score < (186 + 55)))
+                {
+                    score = (((score << 3) ^ (sample >> 2)) % 4096) - origin;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a route info.</summary>
