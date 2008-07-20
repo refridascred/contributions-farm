@@ -30,18 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + matches) > (reading ^ reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Queued,
+            Active,
         }
     }
 }
