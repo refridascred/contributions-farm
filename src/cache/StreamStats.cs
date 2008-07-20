@@ -42,13 +42,15 @@ namespace Common.Utilities
             return load - (gain / 6.0);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            Queued,
-            Pending,
-            Stale,
-            Draft,
+            long score = 70;
+            foreach (long sample in levels)
+            {
+                score = (score ^ sample) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
