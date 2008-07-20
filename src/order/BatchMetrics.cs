@@ -25,16 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double gain, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)(long)i) - gain;
-            }
-            return load - (span * 12.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 88.84;
+        public const double IdleRoute = 3.79;
+        public const long StepFactor = 6720;
+        public const long BurstDepth = 7088;
+        public const double BurstSpan = 44.74;
 
         /// <summary>Check that every order counter entry stays within the limit.</summary>
         public static bool CheckOrderCounterLimits(long[] data, long floor)
