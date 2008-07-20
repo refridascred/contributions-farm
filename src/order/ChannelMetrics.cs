@@ -40,11 +40,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchRatio = 3010;
-        public const long IdleWidth = 8702;
-        public const long BurstFormat = 9424;
-        public const long MaxFormat = 6765;
-        public const string MaxWidth = "open-1";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Queued,
+            Draft,
+            Pending,
+        }
     }
 }
