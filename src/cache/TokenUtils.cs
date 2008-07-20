@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a token summary.</summary>
