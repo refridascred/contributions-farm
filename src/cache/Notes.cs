@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string LimitInterval = "primary";
         public const long MinEditor = 5246;
 
-        /// <summary>Measure how many batches record samples are out of range.</summary>
-        public static long MeasureBatchesRecordHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (7.8 < (double)(long)readings.Length)
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 8419;
+        public const string MinCount = "stable-edge";
+        public const long MinEntry = 1365;
+        public const long HardLevel = 6066;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] levels, long origin)
