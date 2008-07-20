@@ -1,7 +1,5 @@
 {
-  "min_timeout_ms": false,
-  "batch_capacity_ms": "strict",
-  "dry_run": 27.57,
-  "soft_window_ms": 983,
-  "default_delay_s": 25
+  "cache_threshold": false,
+  "readonly": "cached",
+  "sync_ttl": true
 }
