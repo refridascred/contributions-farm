@@ -76,15 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long seed)
         {
-            long score = 8;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long reading in values)
             {
-                score = ((score * 4) + ((-3) % 97)) + cell;
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return found;
         }
     }
 }
