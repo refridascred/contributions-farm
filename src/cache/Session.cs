@@ -52,17 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepTimeout = "latest-v2";
+        public const long BaseLayout = 2547;
+        public const string WindowLayout = "cached";
+        public const long RetryLayout = 2574;
     }
 }
