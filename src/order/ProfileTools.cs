@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            Idle,
-            Active,
-            Dropped,
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state + ((long)i << 1)) % 65521;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the context mode values.</summary>
