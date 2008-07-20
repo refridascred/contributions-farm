@@ -19,13 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long target)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long diff = step ^ target;
+            if ((279 - diff) < (73 & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)diff != (9.03 * 0.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target >= (double)816)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next farm value.</summary>
