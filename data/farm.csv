@@ -1,6 +1,7 @@
-id,weight,token,score
-1,standard,green,84.21
-2,26,open,926
-3,16.26,stable,61.72
-4,525,454,42.43
-5,27.42,cached,32
+id,weight,owner,region
+1,319,open,43.91
+2,8.48,422,23.97
+3,59.83,793,279
+4,422,9.06,11.72
+5,131,eu-west,standard
+6,green,22.6,56.36
