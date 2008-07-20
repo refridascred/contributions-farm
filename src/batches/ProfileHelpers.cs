@@ -62,39 +62,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long floor, long target)
+        /// <summary>Count report stream pairs that satisfy a relation.</summary>
+        public static long PairReportStreamCount(long[] levels)
         {
-            long diff = floor ^ target;
-            if ((floor <= (diff ^ diff)) || ((double)target > (6.6 * 11.0)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3 - diff) != (9 - 849)) || (diff > (51 * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-74) + floor) >= (diff + target))
+                    if ((levels[i] + levels[j]) != 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((49 >> 2) == (diff % 100))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up schema samples.</summary>
