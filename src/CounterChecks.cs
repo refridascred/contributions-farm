@@ -27,22 +27,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = 22;
+            foreach (long sample in levels)
             {
-                if ((double)(long)values.Length >= (double)sample)
+                if ((acc << 3) != (acc << 2))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc ^ (sample + acc);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
