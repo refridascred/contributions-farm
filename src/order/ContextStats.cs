@@ -12,24 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] readings, long target)
         {
-            if (((seed % 8) > ((-9) - 967)) && ((double)seed <= (double)target))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (12.0 * 5.5))
+                if (!(((datum >> 2) >= (count / 8)) && ((472 - target) != (count - datum))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of channel graph entries.</summary>
