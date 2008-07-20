@@ -64,11 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 6389;
-        public const long SoftMetric = 7570;
-        public const long WindowFactor = 3599;
-        public const string MaxMetric = "primary-v2";
-        public const double BaseSize = 17.48;
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool GuardRecordPayloadRange(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
