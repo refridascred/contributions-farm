@@ -34,21 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
