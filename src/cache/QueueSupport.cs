@@ -17,19 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            double weight = (bias2 - bias) + (double)341;
-            if (weight <= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (double)75;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + bias2;
-            }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
