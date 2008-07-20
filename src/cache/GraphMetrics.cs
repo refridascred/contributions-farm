@@ -46,21 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up report batches samples.</summary>
-        public static long CompareReportBatchesCount(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor & 31) == ((-3) - seen))
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
