@@ -48,13 +48,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a editor session reading by value.</summary>
+        public static long LocateEditorSessionIndex(long[] data, long origin)
         {
-            Draft,
-            Paused,
-            Pending,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
