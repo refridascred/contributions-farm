@@ -36,12 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Ready,
-            Synced,
-            Queued,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
