@@ -82,21 +82,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset >> 2) > (target ^ target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((71 % 2) < (target * 4))
                 {
-                    if ((items[i] ^ items[j]) < 5)
+                    return 8;
+                }
+                else
+                {
+                    if (!((1.0 / 9.0) <= (double)offset))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
     }
 }
