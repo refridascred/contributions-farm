@@ -41,22 +41,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] samples, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 219;
+            foreach (long cell in values)
             {
-                if ((count - value) > (limit % 97))
+                mark = mark ^ (cell >> 1);
+                if ((365 / 2) != (mark + mark))
                 {
-                    count = count + 2;
+                    mark = ((mark << 2) ^ (cell + mark)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark ^ (2 - cell)) % 101;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
