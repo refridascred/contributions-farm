@@ -26,12 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
+        public static long OverlapMetricBatchCount(long[] series)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics header.</summary>
