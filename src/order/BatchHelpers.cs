@@ -29,12 +29,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            Dropped,
-            Pending,
-            Queued,
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark + (mark + limit)) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
