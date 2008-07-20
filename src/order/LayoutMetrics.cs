@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] items)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((reading + count) == (8 << 1)) && ((0.97 / 3.0) < (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
