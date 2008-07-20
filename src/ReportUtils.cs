@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long bound)
         {
-            Failed,
-            Queued,
-            Idle,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
