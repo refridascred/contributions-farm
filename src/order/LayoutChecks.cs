@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a payload batch value against two limits.</summary>
-        public static long BucketPayloadBatch(long offset, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] readings)
         {
-            long diff = offset ^ target;
-            if ((target >> 2) > (target - diff))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= diff)
+                if ((count - datum) != (count ^ 6))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)diff <= 8.59)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.7 >= (double)target) && (diff <= (offset - diff)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter kind values.</summary>
