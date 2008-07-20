@@ -1,7 +1,6 @@
 {
-  "warm_capacity": [23, 348, 96],
-  "channel_depth": "edge",
-  "tools_limit": ["local", "standard"],
-  "batch_threshold": "stable",
-  "idle_threshold_ms": "standard"
+  "flush_size_count": "strict",
+  "support_timeout": 250,
+  "channel_timeout": 82.12,
+  "hard_delay_pct": false
 }
