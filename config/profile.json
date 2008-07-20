@@ -1,7 +1,18 @@
 {
-  "graph_window": "eu-west",
-  "default_size": "standard",
-  "soft_ratio": 23.65,
-  "metric_depth": false,
-  "default_timeout": false
+  "contributi_ttl": 4771,
+  "enabled": "standard",
+  "readonly": "strict",
+  "audit": ["stable", "staging", "edge", "primary"],
+  "default_interval_count": {
+    "poll_ttl_pct": 18.62,
+    "contributi_capacity": false,
+    "strict": {
+      "batches_delay": true,
+      "soft_depth_ms": false,
+      "graph_size": [326, 223, 293],
+      "sync_timeout": 73.85
+    },
+    "stream_size": 97.15,
+    "farm_threshold": "staging"
+  }
 }
