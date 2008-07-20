@@ -57,14 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            Done,
-            Stale,
-            Dropped,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((17.0 / 4.0) > (double)seen) && (((double)sample == (1.9 - 2.0)) && ((double)sample <= (4.7 + 5.6))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
