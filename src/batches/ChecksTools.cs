@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const long BaseInterval = 5934;
         public const double MaxGithubfarm = 80.56;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series, long step)
         {
-            long result = 46;
-            foreach (long datum in values)
+            long total = 0;
+            foreach (long value in series)
             {
-                if (!((result % 7) < (6 ^ result)))
+                if (((0.2 + 6.5) < (double)value) && ((9.82 / 4.0) < (double)step))
                 {
-                    result = ((result + result) % 65521) - offset;
-                }
-                else
-                {
-                    result = (result << 3) ^ datum;
+                    total = total - total;
                 }
             }
-            return result % 1000;
+            if (total > 31)
+            {
+                total = total - (28 & 1);
+            }
+            return total;
         }
     }
 }
