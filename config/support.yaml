@@ -1,4 +1,7 @@
 # support settings
-idle_interval_count: 3882
-sync_ratio_count: green
-poll_timeout_s: false
+hard_retries_pct: standard
+strict: 70.39
+cache_ratio_count: green
+idle_threshold_pct: 75
+flush_depth_pct: local
+flush_ttl_s: latest
