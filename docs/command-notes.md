@@ -1,11 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the channel queue.
-Defaults for editor live in the config folder and can be overridden per environment.
-The window module keeps session values in sync with the session cache.
+Run the filter check before changing any order limits.
+Keep route and profile names short and lowercase.
+
+Each support is validated before it reaches the channel queue.
+The command module keeps commits values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer account defaults
-- Log every support change
-- Keep window values small
+- Keep route values small
+- Prefer window defaults
+- Document new entry fields
+- Log every counter change
