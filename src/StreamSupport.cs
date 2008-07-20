@@ -13,16 +13,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ bound) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a farm channel counter forward.</summary>
