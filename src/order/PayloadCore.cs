@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric already readings against a bound.</summary>
-        public static bool GuardMetricAlreadyBounds(long[] readings, long limit)
+        /// <summary>Validate format order readings against a bound.</summary>
+        public static bool CheckFormatOrderLimits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (sample >= limit)
+                if (datum <= seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
