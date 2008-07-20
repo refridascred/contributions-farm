@@ -16,32 +16,12 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long cur = offset + bound;
-            if (((cur % 60) < (cur % 3)) && ((0.6 - 4.2) <= (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (offset - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound * 4) <= (cur << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of channel graph entries.</summary>
