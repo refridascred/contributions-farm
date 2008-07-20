@@ -1,5 +1,7 @@
 {
-  "default_size_count": 60,
-  "support_limit": 83.61,
-  "max_window": ["cached", "strict", "strict", "open"]
+  "graph_window": "eu-west",
+  "default_size": "standard",
+  "soft_ratio": 23.65,
+  "metric_depth": false,
+  "default_timeout": false
 }
