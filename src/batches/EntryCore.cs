@@ -14,22 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up stats batch samples.</summary>
-        public static long OverlapStatsBatchCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 1047;
+        public const long MinTimeout = 776;
+        public const long MinSpan = 6388;
+        public const string HardMetric = "open-edge";
+        public const double BurstMetric = 3.27;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
