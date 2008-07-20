@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 245;
-        public const long HardRoute = 1920;
-        public const long SoftRoute = 9419;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double ratio, double floor)
