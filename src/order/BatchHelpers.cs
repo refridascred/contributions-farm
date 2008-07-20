@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank payload cluster input into a small class.</summary>
-        public static long GradePayloadCluster(long floor, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] series, long offset)
         {
-            long bound2 = floor + bound;
-            if (487 >= (bound - floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound2) != (bound2 + bound))
+                if (series[i] < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
