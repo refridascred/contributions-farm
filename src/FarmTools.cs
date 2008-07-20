@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 243;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix + (step & 3)) ^ cell;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
