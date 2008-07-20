@@ -36,18 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long TallyChannelGithubfarmHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - seen) < (seen + datum)) && ((seen + datum) != (datum >> 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 44.55;
+        public const double BurstRatio = 73.51;
+        public const long BatchSize = 9814;
+        public const long IdleBatch = 8629;
     }
 }
