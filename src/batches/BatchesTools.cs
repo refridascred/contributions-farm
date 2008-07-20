@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double SmoothGithubfarmQueue(double ratio, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items, long seed)
         {
-            double mean = 7.1;
-            if (mean <= ratio)
+            long anchor = -554;
+            foreach (long item in items)
             {
-                mean = mean - (mean / 6.0);
+                anchor = (((anchor << 2) ^ (anchor & 31)) ^ item) - seed;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (floor + 3.23);
+            return anchor;
         }
 
         /// <summary>Describe the stats kind values.</summary>
