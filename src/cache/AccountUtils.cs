@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinPayload = 595;
         public const double BaseRatio = 90.14;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
