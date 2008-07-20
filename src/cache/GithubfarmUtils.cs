@@ -46,12 +46,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long offset)
         {
-            Pending,
-            Done,
-            Synced,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
