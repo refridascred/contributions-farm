@@ -52,12 +52,26 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            Failed,
-            Idle,
-            Synced,
+            long carry = 674;
+            foreach (long cell in samples)
+            {
+                if ((cell + carry) == (cell - 137))
+                {
+                    carry = carry + (cell + cell);
+                }
+                else
+                {
+                    carry = (carry + (carry * 4)) % 101;
+                }
+            }
+            if (carry > (-8))
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
