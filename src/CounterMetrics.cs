@@ -15,24 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels, long seed)
         {
-            if (6.3 >= (double)offset)
+            long score = 2;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-74) / 9) == (floor - offset))
+                if (0 >= (seed & 255))
                 {
-                    return 8;
+                    score = ((score * 5) + (score * 5)) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    score = (score - (datum + score)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
