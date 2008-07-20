@@ -57,19 +57,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (reading > step)
+                if ((entry & 7) <= seed)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
