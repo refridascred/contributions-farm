@@ -24,18 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] data, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)reading == (0.6 - 1.4))
+                if ((double)hits <= (0.5 * 6.0))
                 {
-                    tally = (tally + 1) + target;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
