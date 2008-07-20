@@ -68,12 +68,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Idle,
             Draft,
-            Closed,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
