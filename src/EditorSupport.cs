@@ -78,22 +78,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of counter record readings.</summary>
-        public static long FoldCounterRecord(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long anchor = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-816) <= (anchor - 499))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (((anchor * 3) + (anchor / 8)) % 97) - value;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 16)
-            {
-                anchor = anchor - (5 + (-84));
-            }
-            return anchor;
+            return tally;
         }
     }
 }
