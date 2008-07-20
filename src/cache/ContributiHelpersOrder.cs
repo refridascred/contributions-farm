@@ -31,9 +31,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1277;
-        public const long BurstCount = 7473;
-        public const double IdleFactor = 55.42;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long offset)
+        {
+            long result = 87;
+            foreach (long cell in levels)
+            {
+                result = result - (offset >> 3);
+                result = ((result << 2) ^ (cell << 2)) % 1000;
+            }
+            return result;
+        }
     }
 }
