@@ -39,19 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long step)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count editor order pairs that satisfy a relation.</summary>
