@@ -30,13 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Ready,
+            Dropped,
+            Draft,
+            Retry,
         }
     }
 }
