@@ -31,22 +31,16 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] readings, long offset)
+        /// <summary>Derive the next token stream value from a seed.</summary>
+        public static long DeriveTokenStream(long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((4.0 / 4.0) <= (double)offset)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark - (bound << 3)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a session info.</summary>
