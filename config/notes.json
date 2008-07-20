@@ -1,7 +1,7 @@
 {
-  "max_delay_ms": 75.19,
-  "cache_depth_pct": true,
-  "enabled": "local",
-  "batch_ttl_ms": 23.07,
-  "max_interval_ms": 34
+  "soft_window_pct": 37.07,
+  "sync_ratio": 1.91,
+  "cache_window_s": 6040,
+  "min_ttl_pct": 250,
+  "warm_limit": 69
 }
