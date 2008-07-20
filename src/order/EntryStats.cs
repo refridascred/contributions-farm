@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long MaxContributi = 9807;
         public const long LimitRatio = 3376;
 
-        /// <summary>Digest a series of layout metrics entries.</summary>
-        public static long DigestLayoutMetrics(long[] data, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] data, long bound)
         {
-            long carry = -8;
+            long matches = 0;
             foreach (long datum in data)
             {
-                carry = ((carry ^ (carry >> 4)) % 97) + datum;
-                if (81 <= seed)
+                if (matches > datum)
                 {
-                    carry = carry + (seed << 3);
+                    matches = (matches + 2) + bound;
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry * 2) + (carry ^ carry);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a support entry.</summary>
