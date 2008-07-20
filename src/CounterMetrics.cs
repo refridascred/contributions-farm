@@ -45,28 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data)
-        {
-            long result = 27;
-            foreach (long entry in data)
-            {
-                if ((result + entry) < (result ^ entry))
-                {
-                    result = (result - (64 + entry)) % 97;
-                    result = (result ^ (entry >> 1)) % 4096;
-                }
-                if ((entry >> 3) > result)
-                {
-                    result = (result * 2) + entry;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result ^ (result & 127)) % 97;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 25.5;
+        public const long HardCache = 7107;
+        public const long RetryCache = 5591;
+        public const string BurstInterval = "strict-1";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
