@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 2217;
-        public const double HardProfile = 96.7;
-        public const string SoftInterval = "primary-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 4965;
+        public const long RetryRoute = 9300;
+        public const long BaseRoute = 6947;
+        public const long DefaultRoute = 6275;
+        public const long IdleRatio = 3162;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double scale, double bias)
