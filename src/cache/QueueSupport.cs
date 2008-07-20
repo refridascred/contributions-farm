@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Active,
-            Pending,
-            Dropped,
-            Ready,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
