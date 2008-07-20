@@ -55,9 +55,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "primary-v2";
-        public const long StepWidth = 4346;
-        public const long SoftNotes = 1981;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Stale,
+            Retry,
+            Idle,
+            Pending,
+        }
     }
 }
