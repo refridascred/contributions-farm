@@ -32,36 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long seed, long limit)
         {
-            if (!((double)seed < (7.0 + 8.52)))
+            if (limit < (limit - limit))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (seed < 1)
+                if (8.0 > (double)seed)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (!((8.6 - 5.0) <= (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4 ^ (-48)) == (seed & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
