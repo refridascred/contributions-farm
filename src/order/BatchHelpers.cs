@@ -26,21 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel session pairs that satisfy a relation.</summary>
-        public static long MatchChannelSessionCount(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((427 / 8) != (sample % 16))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
