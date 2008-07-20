@@ -34,13 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long origin)
         {
-            Draft,
-            Locked,
-            Done,
-            Paused,
+            long mark = 0;
+            foreach (long sample in samples)
+            {
+                if ((((long)samples.Length - mark) <= (mark % 60)) || ((double)mark <= (1.5 * 7.7)))
+                {
+                    mark = ((((mark << 3) ^ (40 >> 3)) % 101) + sample) + origin;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
