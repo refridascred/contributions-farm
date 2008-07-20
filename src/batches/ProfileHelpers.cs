@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics graph value against two limits.</summary>
-        public static long GradeMetricsGraph(long floor, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            if ((offset * 2) != (floor << 3))
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                sum = sum - (620 - offset);
+                sum = (sum - (offset * 5)) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor <= (offset >> 3)) && ((floor + floor) <= (floor % 60)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the cache mode values.</summary>
