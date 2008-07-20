@@ -79,21 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < limit)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Rank batch command input into a small class.</summary>
