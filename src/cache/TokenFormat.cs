@@ -30,12 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] items, long bound)
         {
-            Dropped,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((value >= matches) && ((value + bound) > (value ^ value))) || ((value & 127) > (50 - matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
