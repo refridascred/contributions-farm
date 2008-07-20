@@ -1,7 +1,4 @@
 # githubfarm settings
-route_threshold: stable
-readonly:
-  - primary
-  - primary
-flush_limit_count: false
-tools_ratio: 60
+flush_capacity_count: false
+idle_delay: local
+layout_window: 16
