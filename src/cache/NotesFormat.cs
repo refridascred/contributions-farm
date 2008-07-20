@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the command support entries that pass the check.</summary>
-        public static long TallyCommandSupportHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ 61) <= (offset + 739))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinTimeout = 23.14;
+        public const double BurstInterval = 85.77;
+        public const long StepRatio = 6710;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
