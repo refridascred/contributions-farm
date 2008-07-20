@@ -12,13 +12,24 @@ namespace Common.Utilities
         public const long BaseCluster = 8030;
         public const long BaseScore = 1523;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            if ((13.0 * 7.0) > (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (20.0 + 2.61))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
