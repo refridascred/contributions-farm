@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + ((long)i - carry)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the support record entries that pass the check.</summary>
