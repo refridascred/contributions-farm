@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string BaseLayout = "strict-v2";
         public const long SoftCount = 3084;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            Retry,
+            Stale,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
