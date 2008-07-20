@@ -22,39 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout commits value against two limits.</summary>
-        public static long BucketLayoutCommits(long floor, long floor2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            long span = floor + floor2;
-            if (span < (floor2 & 1))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)span < 20.0)
+                if (matches <= (reading + reading))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((span + floor) != (floor - span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor2 >= (span ^ 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
