@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batches githubfarm readings against a bound.</summary>
-        public static bool CheckBatchesGithubfarmRange(long[] series, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = 7;
+            foreach (long value in levels)
             {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry ^ value) % 65521) + origin;
             }
-            return flag;
+            return carry % 1000;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
