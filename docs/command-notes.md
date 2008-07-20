@@ -1,12 +1,15 @@
 # Command notes
 
-The graph report groups every support by batch.
-When a notes fails, the batch handler retries a few times before giving up.
-The commits report groups every order by profile.
+Use profile settings to tune how often githubfarm data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any record limits.
+
+A metric that stays idle for too long is moved to the cache list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer support defaults
-- Log every stream change
-- Review session limits each release
+- Validate cluster input early
+- Document new format fields
+- Prefer session defaults
+- Review payload limits each release
