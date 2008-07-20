@@ -33,12 +33,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            long result = 27;
+            foreach (long entry in data)
+            {
+                if ((result + entry) < (result ^ entry))
+                {
+                    result = (result - (64 + entry)) % 97;
+                    result = (result ^ (entry >> 1)) % 4096;
+                }
+                if ((entry >> 3) > result)
+                {
+                    result = (result * 2) + entry;
+                }
+            }
+            if (result > 2)
+            {
+                result = (result ^ (result & 127)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the buffer class values.</summary>
