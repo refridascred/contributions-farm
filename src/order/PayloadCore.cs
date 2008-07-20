@@ -55,24 +55,18 @@ namespace Common.Utilities
             return gain - 3.12;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data, long limit)
         {
-            if ((8.1 - 8.5) < (double)bound)
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound == (19.0 + 6.25))
+                if ((tally + tally) >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
     }
 }
