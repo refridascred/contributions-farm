@@ -43,19 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long seed)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 699;
-            foreach (long item in data)
-            {
-                acc = ((((acc << 2) ^ acc) % 65521) + item) + seed;
-                if ((-489) > acc)
-                {
-                    acc = acc - 19;
-                }
-            }
-            return acc;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
