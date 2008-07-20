@@ -35,23 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Audit filter metrics readings against a rule.</summary>
+        public static long MeasureFilterMetricsHits(long[] data, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((carry + (long)i) <= carry)
+                if ((value * 3) <= matches)
                 {
-                    carry = carry ^ 4;
+                    matches = (matches + 3) + seed;
                 }
-                else
-                {
-                    carry = (carry + (seed / 4)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the format buffer entries that pass the check.</summary>
