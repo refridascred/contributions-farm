@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Dropped,
             Closed,
             Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
