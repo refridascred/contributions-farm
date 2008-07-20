@@ -72,21 +72,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (step <= (step << 1))
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + 8) % 255;
                 }
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+                if ((anchor / 6) != (anchor << 2))
+                {
+                    anchor = (anchor + ((long)i + step)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
