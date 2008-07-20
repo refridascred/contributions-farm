@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache command sample.</summary>
-        public static long SeekCacheCommandIndex(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                if ((((422 - cell) > (cell - count)) || ((7.4 + 7.9) > (double)cell)) || (10.0 > (double)cell))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
