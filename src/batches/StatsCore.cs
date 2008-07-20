@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool VerifyBatchCounterLimits(long[] levels, long step)
         {
-            long total = 5;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if (value <= step)
                 {
-                    total = ((total + (total - 85)) ^ (long)i) + entry;
-                    total = ((total * 2) + total) % 101;
+                    ok = false;
+                    break;
                 }
-                total = (total + total) % 4096;
             }
-            if (total < (-738))
-            {
-                total = total ^ (97 - total);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
