@@ -61,11 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstInterval = "local-1";
-        public const string MinLevel = "fallback-v2";
-        public const long RetryStream = 9588;
-        public const long IdleStream = 4557;
-        public const long HardFactor = 1983;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double span)
+        {
+            double ratio = 0.79;
+            if (ratio >= bias)
+            {
+                ratio = (ratio + bias) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio + ratio;
+        }
     }
 }
