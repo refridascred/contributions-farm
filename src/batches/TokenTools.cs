@@ -40,13 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Match up format batch samples.</summary>
+        public static long MatchFormatBatchCount(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
