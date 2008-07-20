@@ -47,22 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long bound, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (!((step * 2) >= 16))
             {
-                if (((84 - seen) != (item / 2)) && (seen > (bound ^ bound)))
+                return 2;
+            }
+            else
+            {
+                if (step >= (step + bound))
                 {
-                    seen = seen + 1;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)step < 14.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - step) == ((-2) << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
