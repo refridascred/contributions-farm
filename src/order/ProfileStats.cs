@@ -36,26 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((long)i > state)
-                {
-                    long slot = seed + (long)i;
-                    state = state + (slot * 4);
-                }
-                if (((seed * 5) > state) || ((double)state == (8.4 - 1.7)))
-                {
-                    long count = state - (seed * 5);
-                    state = ((state << 2) ^ count) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleTimeout = 65.97;
+        public const string BaseLevel = "standard-edge";
+        public const long BatchQueue = 9621;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long bound)
