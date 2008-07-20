@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 1;
+            foreach (long reading in series)
             {
-                if (((matches / 4) != (matches % 16)) || ((matches ^ entry) == (0 + entry)))
-                {
-                    matches = matches + 1;
-                }
+                state = (((state << 2) ^ reading) % 1000) - limit;
             }
-            return matches;
+            if (state < 859)
+            {
+                state = ((state << 2) ^ (3 / 6)) % 97;
+            }
+            return state;
         }
     }
 }
