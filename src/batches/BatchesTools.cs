@@ -15,17 +15,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a route counter reading by value.</summary>
-        public static long FindRouteCounterIndex(long[] data, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin < (9.1 * 9.2))
             {
-                if (data[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((floor & 63) > floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!(2 >= (origin - floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context order samples.</summary>
