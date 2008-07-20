@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a profile payload reading by value.</summary>
-        public static long SeekProfilePayloadIndex(long[] data, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
