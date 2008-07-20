@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 9812;
-        public const long RetryBudget = 6879;
-        public const double WindowToken = 83.33;
-        public const long SoftDepth = 8683;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items, long origin)
+        {
+            long result = 527;
+            foreach (long sample in items)
+            {
+                result = ((result * 4) + sample) - origin;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] samples, long floor)
