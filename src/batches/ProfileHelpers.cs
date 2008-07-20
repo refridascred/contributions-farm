@@ -94,17 +94,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long step)
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long ClassifyBatchCommand(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((origin & 1) == (origin & 63)) && ((origin2 * 5) != (origin2 ^ origin)))
             {
-                if (values[i] == step)
+                return 8;
+            }
+            else
+            {
+                if ((origin2 * 2) == (origin2 + origin2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (origin2 < (origin + origin2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin2 ^ (-3)) != (origin << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
