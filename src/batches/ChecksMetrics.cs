@@ -46,23 +46,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 8;
+            foreach (long entry in values)
             {
-                if ((anchor < (seed << 3)) && (anchor > ((long)i ^ seed)))
-                {
-                    anchor = (anchor * 5) + (anchor + seed);
-                }
-                else
-                {
-                    anchor = (anchor ^ (seed - (long)i)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                state = (state ^ (entry << 2)) % 255;
             }
-            return anchor;
+            return state % 4096;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
