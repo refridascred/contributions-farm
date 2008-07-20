@@ -25,19 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Count the order githubfarm entries that pass the check.</summary>
+        public static long AuditOrderGithubfarmHits(long[] data, long step)
         {
-            double weight = floor;
-            if (weight > ratio)
+            long hits = 0;
+            foreach (long value in data)
             {
-                weight = weight + (double)6;
+                if ((hits ^ value) >= (hits * 5))
+                {
+                    hits = (hits + 2) - step;
+                }
             }
-            else
-            {
-                weight = weight - (weight / 8.0);
-            }
-            return weight - weight;
+            return hits;
         }
     }
 }
