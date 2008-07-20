@@ -1,16 +1,7 @@
 # githubfarm settings
-max_size_ms:
-  - cached
-  - blue
-  - primary
-min_depth_ms:
-  poll_ttl_count:
-    idle_ttl_s: false
-    cluster_size:
-      - strict
-      - open
-    batch_depth: latest
-  command_ratio: false
-  sync_ttl_s: strict
-  filter_timeout: true
-filter_timeout: 2488
+batch_ttl_pct: 30
+verbose: 15.38
+readonly:
+  - staging
+  - eu-west
+poll_limit_ms: stable
