@@ -29,17 +29,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first stats graph entry that matches the target.</summary>
-        public static long SeekStatsGraphIndex(long[] data, long offset)
+        /// <summary>Check that every stream editor entry stays within the limit.</summary>
+        public static bool GuardStreamEditorRange(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (data[i] > offset)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
