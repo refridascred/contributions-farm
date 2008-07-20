@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
