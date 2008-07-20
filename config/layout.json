@@ -1,6 +1,6 @@
 {
-  "idle_interval": 9640,
-  "filter_retries": false,
-  "enabled": ["green", "fallback", "local"],
-  "notes_retries": 1024
+  "verbose": [141, 173],
+  "session_timeout": "edge",
+  "audit": "local",
+  "max_interval_pct": 64
 }
