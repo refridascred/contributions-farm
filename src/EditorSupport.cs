@@ -59,10 +59,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardTimeout = 8531;
-        public const string RetryBudget = "stable-v2";
-        public const long StepCount = 8262;
-        public const double DefaultFactor = 44.5;
+        /// <summary>Fold a list of counter record readings.</summary>
+        public static long FoldCounterRecord(long[] samples)
+        {
+            long anchor = 4;
+            foreach (long value in samples)
+            {
+                if ((-816) <= (anchor - 499))
+                {
+                    anchor = (((anchor * 3) + (anchor / 8)) % 97) - value;
+                }
+            }
+            if (anchor > 16)
+            {
+                anchor = anchor - (5 + (-84));
+            }
+            return anchor;
+        }
     }
 }
