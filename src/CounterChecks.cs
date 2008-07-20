@@ -43,11 +43,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
