@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long result = 12;
+            foreach (long value in data)
             {
-                sum = ((sum << 3) ^ target) % 97;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((6.2 * 2.7) == (double)result)
+                {
+                    result = result + (result - value);
+                }
             }
-            return sum;
+            if (result > 94)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
