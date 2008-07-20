@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepInterval = 6.05;
+        public const string BaseLayout = "strict-v2";
+        public const long SoftCount = 3084;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long ScoreRecord(long[] values, long offset)
