@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
