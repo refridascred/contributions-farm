@@ -21,16 +21,31 @@ namespace Common.Utilities
         public const long BurstSize = 7892;
         public const long HardCommand = 5841;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long floor2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            if ((floor2 & 63) != (floor2 % 60))
             {
-                anchor = (anchor - ((long)i % 60)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (floor > (floor2 * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor % 3) < (floor2 ^ floor)) && ((floor2 + 41) == (floor << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token entry.</summary>
