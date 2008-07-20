@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = 309;
-            foreach (long cell in samples)
-            {
-                if ((origin >= (origin >> 2)) || ((double)cell < (double)total))
-                {
-                    total = (total - ((long)samples.Length + 606)) % 101;
-                }
-            }
-            if (total > 52)
-            {
-                total = (total - (total >> 2)) % 101;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
