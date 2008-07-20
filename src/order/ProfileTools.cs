@@ -60,12 +60,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long score = 40;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (7.4 + 3.2))
+                {
+                    score = ((score * 4) + ((long)levels.Length / 2)) % 255;
+                }
+            }
+            return score % 4096;
         }
     }
 }
