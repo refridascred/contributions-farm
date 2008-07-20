@@ -1,5 +1,5 @@
 {
-  "strict": "standard",
-  "queue_timeout": 95,
-  "readonly": ["standard", "cached", "stable", "open"]
+  "readonly": ["cached", "local", "fallback", "green"],
+  "compress": 50,
+  "format_timeout": "stable"
 }
