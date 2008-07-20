@@ -76,22 +76,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] levels)
         {
-            long acc = 314;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)acc > (2.17 + 8.0))
+                if ((((double)datum == (6.5 + 1.5)) && (datum > (count - count))) || (((datum * 2) > (214 - 616)) || (445 < (datum ^ datum))))
                 {
-                    acc = ((acc - (80 - acc)) % 97) ^ reading;
-                }
-                else
-                {
-                    acc = acc + (acc + 5);
+                    count = count + 1;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
