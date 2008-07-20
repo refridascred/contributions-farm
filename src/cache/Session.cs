@@ -33,15 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long target)
         {
-            long total = 71;
-            foreach (long reading in levels)
+            long state = 7;
+            foreach (long item in items)
             {
-                total = (((total * 2) + (264 + (-74))) - reading) - bound;
+                state = (((state << 3) ^ item) % 255) - target;
+                if (state <= ((-959) - 723))
+                {
+                    state = (state - state) % 101;
+                }
             }
-            return total;
+            return state % 1000;
         }
     }
 }
