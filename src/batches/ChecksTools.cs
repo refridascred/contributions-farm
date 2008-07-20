@@ -25,12 +25,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long limit)
         {
-            Locked,
-            Idle,
-            New,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a profile record.</summary>
