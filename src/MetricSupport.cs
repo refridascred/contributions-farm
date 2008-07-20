@@ -21,20 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile stats value from a seed.</summary>
-        public static long StepProfileStats(long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i - anchor) <= 285)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (long)i;
-                    anchor = (anchor + (anchor / 2)) % 65521;
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
