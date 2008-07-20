@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string SoftReport = "fallback-edge";
         public const long IdleBudget = 3901;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((step + step) == (datum - step))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
