@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The notes module keeps cluster values in sync with the command cache.
-
-The order module keeps route values in sync with the session cache.
-The channel report groups every account by editor.
+When a format fails, the command handler retries a few times before giving up.
+Keep cache and account names short and lowercase.
+A editor that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Document new session fields
-- Review commits limits each release
-- Keep route values small
-- Prefer context defaults
+- Log every profile change
+- Validate metrics input early
+- Review contributi limits each release
+- Keep batches values small
