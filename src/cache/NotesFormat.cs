@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the tools state values.</summary>
