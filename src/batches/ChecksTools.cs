@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings)
-        {
-            long mix = 46;
-            foreach (long entry in readings)
-            {
-                mix = ((mix * 3) + (mix + entry)) % 65521;
-                if ((mix % 8) == (325 & 255))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9187;
+        public const long BatchSession = 4941;
+        public const long MinCount = 2028;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
