@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values)
+        /// <summary>Blend two context record measurements.</summary>
+        public static double ScaleContextRecord(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double load = rate + (double)51;
+            if (load < 6.0)
             {
-                if ((seen + reading) == ((-9) << 1))
-                {
-                    seen = seen + 3;
-                }
+                load = (load + (double)(-78)) + floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (load / 4.0);
         }
 
         /// <summary>Describe the metric status values.</summary>
