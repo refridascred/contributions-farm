@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] items, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
