@@ -21,19 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] values, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
