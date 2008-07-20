@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] samples, long origin)
         {
-            New,
-            Retry,
-            Ready,
-            Idle,
-            Active,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
