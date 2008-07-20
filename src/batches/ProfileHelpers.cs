@@ -55,18 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)matches >= 6.42)
+                if ((sample & 31) >= sample)
                 {
-                    matches = (matches + 3) - cell;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
