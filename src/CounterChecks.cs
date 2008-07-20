@@ -58,22 +58,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((17.0 / 4.0) > (double)seen) && (((double)sample == (1.9 - 2.0)) && ((double)sample <= (4.7 + 5.6))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
