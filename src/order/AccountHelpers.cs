@@ -50,19 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long limit)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long TallyChecksClusterMatches(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (cell >= limit)
+                if ((step + count) <= step)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
