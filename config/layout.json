@@ -1,6 +1,9 @@
 {
-  "readonly": 92.89,
-  "farm_ttl": 52.6,
-  "payload_size": "standard",
-  "layout_limit": "green"
+  "poll_delay_s": {
+    "base_depth_pct": "staging",
+    "poll_ratio_ms": true,
+    "persist": 17.35
+  },
+  "counter_threshold": false,
+  "idle_timeout": 76
 }
