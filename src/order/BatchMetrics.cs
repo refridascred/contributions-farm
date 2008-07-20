@@ -36,21 +36,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
