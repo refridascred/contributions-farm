@@ -1,5 +1,6 @@
 {
-  "persist": "stable",
-  "verbose": ["local", "edge", "legacy"],
-  "enabled": 61.76
+  "buffer_ttl": 22.29,
+  "strict": "cached",
+  "max_retries_count": 20.13,
+  "support_depth": "fallback"
 }
