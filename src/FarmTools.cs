@@ -22,32 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long limit)
+        /// <summary>Roll a metric context counter forward.</summary>
+        public static long StepMetricContext(long bound)
         {
-            long lane = step - limit;
-            if (((step * 3) > (lane - 21)) || (((-565) / 7) < (lane - step)))
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                total = total + (bound / 3);
+                total = total ^ (total / 8);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(step < 978))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit > (step % 2)) || ((7.57 / 6.0) <= (double)lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
