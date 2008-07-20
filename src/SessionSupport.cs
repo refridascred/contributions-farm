@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string BurstBudget = "primary";
         public const long BaseToken = 3271;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] levels, long offset)
+        /// <summary>Scale a contributi command figure with a bias.</summary>
+        public static double ScaleContributiCommand(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double bias2 = (double)(382 - (-507));
+            if (bias2 < (bias + bias))
             {
-                if ((double)offset > (8.0 / 2.0))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
+                bias2 = (bias2 + bias) + floor;
             }
-            return tally;
+            return bias2 - bias;
         }
     }
 }
