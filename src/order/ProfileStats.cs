@@ -33,29 +33,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long seed2)
         {
-            long gap = limit + step;
-            if (!(limit > (limit % 5)))
+            if (!((18.0 - 11.0) < (double)seed2))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((double)gap == (double)8)
+                if (!(seed < (seed + seed2)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((limit % 97) >= 11)
+                    if ((7 << 1) <= seed2)
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        if ((14.0 + 0.32) == (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
