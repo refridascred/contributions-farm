@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate batches githubfarm readings against a bound.</summary>
+        public static bool CheckBatchesGithubfarmRange(long[] series, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
