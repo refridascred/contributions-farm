@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] readings, long step)
+        /// <summary>Audit commits metric readings against a rule.</summary>
+        public static long TallyCommitsMetricMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (cell < step)
+                if (!(((tally ^ 448) != (5 / 7)) && (cell < (cell >> 2))))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count token cluster pairs that satisfy a relation.</summary>
