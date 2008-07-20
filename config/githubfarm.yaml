@@ -1,31 +1,17 @@
 # githubfarm settings
-idle_capacity_pct: 60
-filter_size:
-  enabled: fallback
-  flush_size:
-    strict: false
-    already_ratio: local
-    cache_ttl_ms:
-      - 197
-      - 149
-      - 309
-    audit: 55.6
-    checks_capacity: legacy
-  max_window_pct:
-    - open
-    - fallback
-    - edge
-    - green
-  verbose: green
-  soft_retries_s: standard
-  dry_run:
-    warm_limit_pct: edge
-    batches_threshold: 54
-    readonly:
-      - 174
-      - 214
-      - 196
-    order_timeout: 18.48
-default_interval: 250
-cache_threshold_s: true
-max_timeout_pct: local
+enabled: false
+hard_timeout_pct: legacy
+compress: 1024
+already_window:
+  flush_ttl: staging
+  strict:
+    enabled: primary
+    batch_capacity_ms: 88
+    min_window_count: 6909
+    idle_interval: 500
+  order_limit: false
+  contributi_ratio: 50.26
+  persist: 5550
+  retry_window_s: 500
+verbose: latest
+default_threshold_count: 80.18
