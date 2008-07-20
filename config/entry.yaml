@@ -1,5 +1,11 @@
 # entry settings
-poll_limit_count: 6054
-default_limit_pct: true
-counter_threshold: standard
-min_capacity_pct: 500
+batch_timeout_ms: true
+flush_interval_s: cached
+queue_interval:
+  - 128
+  - 349
+  - 304
+  - 55
+sync_limit_count: green
+cluster_depth: 9856
+checks_retries: 60
