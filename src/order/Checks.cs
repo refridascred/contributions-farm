@@ -45,21 +45,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of profile layout readings.</summary>
-        public static long PairProfileLayoutCount(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((long)readings.Length > tally))
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) - cell) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next contributi value.</summary>
