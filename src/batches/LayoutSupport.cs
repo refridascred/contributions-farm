@@ -24,19 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool GuardNotesRouteLimits(long[] samples, long seed)
+        /// <summary>Audit schema already readings against a rule.</summary>
+        public static long AuditSchemaAlreadyOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (item >= seed)
+                if (!((sample * 5) <= sample))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
