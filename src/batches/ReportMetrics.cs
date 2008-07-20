@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 1689;
-        public const string StepNotes = "alpha-v2";
-        public const long SoftTimeout = 6098;
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool VerifyBatchesFormatRange(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
