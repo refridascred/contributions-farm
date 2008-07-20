@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((reading + count) == (8 << 1)) && ((0.97 / 3.0) < (double)count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 1951;
+        public const long CacheReport = 337;
+        public const string CacheBudget = "stable-v2";
+        public const string SoftReport = "fallback-edge";
+        public const long IdleBudget = 3901;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileGaps(long[] series, long step)
