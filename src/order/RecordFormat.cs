@@ -26,15 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long TallyNotesQueue(long[] values)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long score = 67;
-            foreach (long item in values)
-            {
-                score = ((score - (score * 3)) % 101) - item;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
