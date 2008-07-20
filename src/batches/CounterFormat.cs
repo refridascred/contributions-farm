@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 9247;
-        public const long DefaultInterval = 3002;
-        public const long IdleSpan = 9839;
+        /// <summary>Fold a list of metrics order readings.</summary>
+        public static long TotalMetricsOrder(long[] series)
+        {
+            long acc = 315;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc << 3) ^ (acc - value)) % 101) + (long)i;
+                    acc = (acc + (acc + value)) % 4096;
+                }
+                if ((value & 255) <= ((-921) * 4))
+                {
+                    acc = ((acc * 2) + (acc / 4)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
         public static long MeasureCommitsAccountOutliers(long[] items, long offset)
