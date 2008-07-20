@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long MinEntry = 1365;
         public const long HardLevel = 6066;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 3284;
+        public const long MaxSize = 3908;
+        public const long BurstInterval = 4541;
+        public const long DefaultScore = 4069;
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double scale, double span)
