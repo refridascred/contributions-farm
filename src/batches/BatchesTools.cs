@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long offset)
         {
-            Active,
-            Dropped,
-            New,
-            Paused,
-            Pending,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
