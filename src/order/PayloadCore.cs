@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format order readings against a bound.</summary>
-        public static bool CheckFormatOrderLimits(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseScore = "primary-edge";
+        public const long StepSession = 5407;
+        public const long LimitSpan = 764;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] samples)
