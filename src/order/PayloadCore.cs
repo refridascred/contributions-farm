@@ -54,38 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long bound, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            if (!((step * 2) >= 16))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= (step + bound))
+                if (!!((count / 5) >= 950))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step < 14.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - step) == ((-2) << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
     }
 }
