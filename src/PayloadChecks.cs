@@ -27,19 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            double load = (double)(96 + 983);
-            if (load > (ratio + load))
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load - load) - span;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (ratio - load);
+            return anchor;
         }
 
         /// <summary>Classify a session metric pair into a bucket.</summary>
