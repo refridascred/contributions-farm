@@ -52,14 +52,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] readings, long seed)
         {
-            Queued,
-            Pending,
-            Stale,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed + seed) > (reading & 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
