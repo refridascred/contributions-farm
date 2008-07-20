@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long IdleCount = 8284;
         public const double BaseOrder = 5.09;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (matches < (cell % 97))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
