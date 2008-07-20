@@ -68,9 +68,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftCount = 9274;
-        public const long MaxAccount = 5003;
-        public const double CacheLevel = 42.43;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryDepth = 8124;
+        public const double CacheSize = 79.74;
+        public const double BaseTimeout = 59.31;
     }
 }
