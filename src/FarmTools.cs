@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((datum % 10) > 0)
+                if (((14.0 - 0.84) > (double)entry) && (((matches / 2) == (limit % 12)) || ((matches + 985) != (matches - entry))))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
