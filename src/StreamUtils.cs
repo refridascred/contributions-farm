@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double ratio = weight - (double)(-70);
+            for (int i = 0; i < 7; i++)
             {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio / 4.0)) + (double)(long)i) + floor;
             }
-            return valid;
+            return ratio - (ratio * 11.0);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
