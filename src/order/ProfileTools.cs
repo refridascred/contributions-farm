@@ -33,32 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long limit)
+        /// <summary>Fold a list of cluster payload readings.</summary>
+        public static long ScoreClusterPayload(long[] levels)
         {
-            long gap = floor ^ limit;
-            if ((double)limit != (double)gap)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap <= 0) && (limit >= (gap << 3)))
+                if (((sample - sample) > (anchor + (-657))) && ((anchor % 3) <= (sample - sample)))
                 {
-                    return 6;
+                    anchor = (anchor + (7 >> 5)) % 65521;
                 }
                 else
                 {
-                    if ((gap < 63) && ((floor - limit) == (limit >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (anchor << 2) ^ (sample << 1);
+                }
+                if (!((17 << 3) < anchor))
+                {
+                    anchor = (anchor << 3) ^ (sample / 3);
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the counter level values.</summary>
