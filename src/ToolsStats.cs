@@ -36,13 +36,12 @@ namespace Common.Utilities
         public const long CacheFarm = 6508;
         public const double WindowSize = 15.26;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
