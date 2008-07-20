@@ -49,22 +49,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch report samples are out of range.</summary>
-        public static long TallyBatchReportHits(long[] levels)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((long)levels.Length > ((-90) & 1))
-                {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
