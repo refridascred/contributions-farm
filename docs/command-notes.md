@@ -1,13 +1,16 @@
 # Command notes
 
-When a tools fails, the session handler retries a few times before giving up.
-Run the editor check before changing any window limits.
+Each tools is validated before it reaches the already queue.
+A metric that stays idle for too long is moved to the metric list.
+Run the payload check before changing any graph limits.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The support module keeps commits values in sync with the account cache.
+A session that stays idle for too long is moved to the schema list.
+The account report groups every layout by command.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer queue defaults
-- Keep queue values small
+- Document new editor fields
+- Review cache limits each release
+- Keep cache values small
+- Prefer metric defaults
