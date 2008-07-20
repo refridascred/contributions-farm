@@ -14,12 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 1047;
-        public const long MinTimeout = 776;
-        public const long MinSpan = 6388;
-        public const string HardMetric = "open-edge";
-        public const double BurstMetric = 3.27;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Stale,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
