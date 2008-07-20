@@ -14,11 +14,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - 7) <= (cell / 9))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
