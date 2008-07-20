@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstDepth = "latest-v2";
-        public const string MaxQueue = "open-1";
-        public const string BaseTimeout = "local-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 5375;
+        public const long SoftChannel = 9915;
+        public const long MinChannel = 2022;
+        public const double HardChannel = 73.81;
+        public const long BatchWidth = 5949;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleSpan = 8988;
