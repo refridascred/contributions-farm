@@ -23,11 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 123;
-        public const double SoftChannel = 8.44;
-        public const long MinDepth = 2010;
-        public const long CacheChannel = 9884;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double span)
+        {
+            double load = span / 4.0;
+            if (load <= (span * 9.74))
+            {
+                load = load + (gain - span);
+            }
+            else
+            {
+                load = load + (span * 16.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (gain / 6.0);
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
