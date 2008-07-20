@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            Dropped,
-            Locked,
-            New,
-            Paused,
-            Closed,
+            long state = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
