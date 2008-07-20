@@ -54,18 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (!((entry << 1) > (292 - entry)) || ((matches + entry) < (matches ^ entry)))
+                if (sample <= step)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
