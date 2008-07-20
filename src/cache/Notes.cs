@@ -49,11 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double rate = scale;
-            return (rate + (rate / 9.0)) + span;
+            Closed,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a account info.</summary>
