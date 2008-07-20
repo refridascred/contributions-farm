@@ -1,5 +1,6 @@
 # entry settings
-retry_ttl_count: false
-audit: 8.04
-default_timeout: 1.75
-base_ratio: 59.57
+command_ttl:
+  - 45
+  - 297
+cache_ttl: 100
+channel_ratio: green
