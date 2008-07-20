@@ -66,14 +66,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long limit)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Active,
-            Pending,
+            long mix = 6;
+            foreach (long entry in levels)
+            {
+                if ((15.0 / 9.0) >= (double)entry)
+                {
+                    mix = mix - (limit % 5);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (-880)) % 1000;
+                }
+                if ((double)entry <= (double)mix)
+                {
+                    mix = mix + (entry - limit);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
