@@ -1,6 +1,20 @@
 # entry settings
-readonly: 48.91
-poll_size_pct: stable
-sync_capacity_pct: true
-cache_depth_ms: 18.02
-burst_timeout_ms: primary
+max_limit_s: 48.24
+min_interval_s: 1024
+sync_ratio_count:
+  cache_depth_s:
+    - 61
+    - 90
+    - 212
+  max_interval:
+    - 197
+    - 390
+    - 453
+  filter_size:
+    - fallback
+    - strict
+  default_ttl:
+    - 361
+    - 422
+    - 200
+  enabled: local
