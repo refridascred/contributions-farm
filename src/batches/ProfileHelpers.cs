@@ -85,20 +85,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support stats counter forward.</summary>
-        public static long SeriesSupportStats(long offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long seen = offset * 5;
-                if (!((double)596 != (double)seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 3) + (seen / 3);
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
     }
 }
