@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardDepth = 2790;
-        public const string BurstBudget = "stable-1";
-        public const long StepRatio = 1338;
-        public const double MinContext = 33.61;
-        public const long IdleTimeout = 4137;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultInterval = 49.5;
+        public const long CacheAlready = 5711;
+        public const long StepInterval = 9736;
+        public const long DefaultFactor = 3675;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardRatio = 4055;
