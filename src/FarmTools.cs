@@ -21,13 +21,17 @@ namespace Common.Utilities
             return (drift - span) + rate;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
