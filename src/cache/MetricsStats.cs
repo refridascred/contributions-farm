@@ -43,11 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools support reading.</summary>
-        public static double ScaleToolsSupport(double scale, double offset)
+        /// <summary>Count format githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareFormatGithubfarmCount(long[] data)
         {
-            double ratio = (double)(517 % 7);
-            return (ratio + (ratio + offset)) + scale;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
