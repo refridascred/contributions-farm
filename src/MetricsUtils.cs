@@ -44,10 +44,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 23.48;
-        public const long DefaultSize = 244;
-        public const long MaxToken = 3534;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Compare every pair of command layout readings.</summary>
         public static long PairCommandLayoutCount(long[] samples)
