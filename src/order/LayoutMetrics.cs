@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long BaseEditor = 9864;
         public const double SoftTimeout = 10.16;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every counter order entry stays within the limit.</summary>
+        public static bool CheckCounterOrderBounds(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
