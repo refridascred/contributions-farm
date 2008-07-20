@@ -1,8 +1,7 @@
 {
-  "checks_capacity": true,
-  "window_delay": "strict",
-  "payload_delay": "standard",
-  "min_timeout_s": 3845,
-  "sync_size_count": 100,
-  "batch_limit": "staging"
+  "retry_depth_pct": 9356,
+  "sync_limit": "staging",
+  "burst_window_pct": true,
+  "min_interval_s": [202, 121],
+  "burst_threshold_count": true
 }
