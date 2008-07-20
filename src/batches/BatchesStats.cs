@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string BaseLayout = "strict-v2";
         public const long SoftCount = 3084;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] series, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((double)seen <= 4.34) && (seen <= reading))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
