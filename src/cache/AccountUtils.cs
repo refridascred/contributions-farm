@@ -38,14 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            Paused,
-            Done,
-            Locked,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + hits) <= (entry << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
