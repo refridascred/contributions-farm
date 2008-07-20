@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool GuardFilterStatsLimits(long[] data, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > bound)
+                if (data[i] == offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
