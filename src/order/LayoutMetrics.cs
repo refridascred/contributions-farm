@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long BurstScore = 3083;
         public const double CacheDepth = 24.97;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
