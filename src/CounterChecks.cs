@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double floor)
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long MeasureChannelLayoutHits(long[] levels)
         {
-            double bias = ratio + (double)635;
-            if (bias < (7.0 + bias))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                bias = bias - bias;
+                if (!(((matches + matches) >= sample) && (matches >= sample)))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias + ratio;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
