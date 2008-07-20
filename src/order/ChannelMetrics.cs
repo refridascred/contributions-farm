@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long total = -7;
+            foreach (long value in samples)
             {
-                if (value > origin)
+                total = (((total << 3) ^ (value % 3)) % 255) + target;
+                if (!(total > value))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return total % 1000;
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
