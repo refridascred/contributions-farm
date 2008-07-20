@@ -26,10 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 7039;
-        public const long HardFactor = 5096;
-        public const long IdleWindow = 3594;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 2778;
+        public const double SoftInterval = 6.33;
+        public const long MaxReport = 431;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
