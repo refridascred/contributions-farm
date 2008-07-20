@@ -63,19 +63,17 @@ namespace Common.Utilities
             return load - (double)(-70);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] series, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state * 3) + 1;
+                state = state - ((long)i & 63);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
     }
 }
