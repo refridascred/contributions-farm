@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long floor, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            if (((8.24 - 20.0) > (double)offset) && (207 < offset))
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > offset) && (212 <= floor))
+                score = (score - ((long)i - 121)) % 97;
+                if ((double)5 < (double)score)
                 {
-                    return 2;
+                    score = score + (score + (-36));
                 }
-                else
-                {
-                    return 7;
-                }
+                score = score + (59 * 4);
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Describe the context kind values.</summary>
