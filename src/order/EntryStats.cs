@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long TallyLayoutWindowGaps(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (!(((841 + sample) > (seen >> 1)) || ((double)seen >= (17.0 / 6.0))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer githubfarm sample.</summary>
