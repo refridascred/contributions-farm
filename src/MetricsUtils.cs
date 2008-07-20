@@ -47,13 +47,21 @@ namespace Common.Utilities
         public const long DefaultSize = 244;
         public const long MaxToken = 3534;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of command layout readings.</summary>
+        public static long PairCommandLayoutCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
