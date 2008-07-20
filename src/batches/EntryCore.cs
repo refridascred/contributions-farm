@@ -39,13 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Retry,
-            Locked,
-            Synced,
-            Active,
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
