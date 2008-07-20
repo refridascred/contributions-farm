@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long offset)
+        /// <summary>Match up buffer stream samples.</summary>
+        public static long MatchBufferStreamCount(long[] items)
         {
-            long carry = 49;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((3.0 - 7.1) >= (double)offset) && ((carry ^ offset) != (carry + carry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - value) % 255;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
