@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double weight = (double)(0 - 5);
+            if (weight < (bias - bias))
             {
-                if (entry <= (tally - 664))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + 9.53;
             }
-            return tally;
+            else
+            {
+                weight = weight - 11.0;
+            }
+            return weight - (weight + floor);
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
