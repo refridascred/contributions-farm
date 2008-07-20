@@ -1,8 +1,5 @@
 {
-  "max_window_pct": ["strict", "staging"],
-  "warm_threshold_s": true,
-  "verbose": 2327,
-  "metric_ttl": 19,
-  "min_retries_ms": 65.65,
-  "retry_capacity_ms": "local"
+  "commits_ttl": false,
+  "warm_size_pct": 7614,
+  "batches_ttl": 2017
 }
