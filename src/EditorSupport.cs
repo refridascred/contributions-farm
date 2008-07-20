@@ -57,21 +57,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Adjust a queue notes reading.</summary>
+        public static double BlendQueueNotes(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = span;
+            if (mean < span)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - span) + weight;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean - mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
