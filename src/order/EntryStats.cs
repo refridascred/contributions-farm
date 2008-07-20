@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 6;
+            foreach (long value in items)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                result = ((((result << 3) ^ result) % 255) - value) - target;
             }
-            return -1;
+            if (result > 54)
+            {
+                result = (result + ((long)items.Length - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a buffer githubfarm sample.</summary>
