@@ -27,13 +27,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next record filter value.</summary>
+        public static double AdjustRecordFilter(double bias, double floor)
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = (double)((-178) << 1);
+            if (rate >= floor)
+            {
+                rate = rate - (7.0 + bias);
+            }
+            else
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (floor - 3.0)) - (double)(long)i;
+            }
+            return rate - 4.0;
         }
     }
 }
