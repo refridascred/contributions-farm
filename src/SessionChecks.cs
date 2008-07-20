@@ -22,13 +22,22 @@ namespace Common.Utilities
         public const double BurstToken = 51.38;
         public const long MaxTimeout = 8795;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long state = 619;
+            foreach (long sample in series)
+            {
+                if ((double)state <= (13.0 - 8.6))
+                {
+                    state = state + (sample + 0);
+                }
+            }
+            if (state < 239)
+            {
+                state = ((state * 5) + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Scale a route cache figure with a bias.</summary>
