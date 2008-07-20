@@ -52,22 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long sum = 9;
-            foreach (long reading in readings)
-            {
-                if (target <= (reading >> 2))
-                {
-                    sum = sum + (target - sum);
-                }
-                else
-                {
-                    sum = (sum * 5) + (reading ^ sum);
-                }
-            }
-            return sum % 4096;
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
