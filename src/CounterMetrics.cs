@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((452 >= (count & 15)) || (count < (reading + reading))) || ((24 + reading) <= ((long)samples.Length << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultScore = 2525;
+        public const double MinTimeout = 17.1;
+        public const long CacheCount = 5473;
+        public const long BurstWindow = 5604;
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] items)
