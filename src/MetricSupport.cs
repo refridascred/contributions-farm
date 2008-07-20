@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double CacheSchema = 61.61;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] samples, long origin)
+        /// <summary>Find the first batch filter entry that matches the target.</summary>
+        public static long LookupBatchFilterIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - matches) >= (matches / 3))
+                if (data[i] >= origin)
                 {
-                    matches = ((matches + 1) ^ cell) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
