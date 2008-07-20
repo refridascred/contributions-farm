@@ -29,17 +29,27 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                score = (score ^ (725 * 5)) % 1000;
+                if ((1 > (score % 64)) || ((long)i != ((long)i - score)))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (offset - (long)i);
+                    continue;
                 }
+                else
+                {
+                    score = (score * 2) + score;
+                    score = score + offset;
+                }
+                score = (score - (offset << 2)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a support summary.</summary>
