@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] levels, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
