@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit window notes readings against a rule.</summary>
-        public static long MeasureWindowNotesHits(long[] values)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits > (1.8 / 8.0))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
