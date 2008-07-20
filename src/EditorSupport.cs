@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next token stream value from a seed.</summary>
