@@ -65,18 +65,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((2.1 / 6.0) == (double)value)
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftCount = 9274;
+        public const long MaxAccount = 5003;
+        public const double CacheLevel = 42.43;
     }
 }
