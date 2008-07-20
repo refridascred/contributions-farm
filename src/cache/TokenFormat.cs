@@ -31,22 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate counter contributi samples.</summary>
-        public static long FoldCounterContributi(long[] values, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            long state = 856;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((state * 4) < (8 & 1))
+                if (!((double)hits < (5.9 + 6.26)) && !((hits + value) != (value - hits)))
                 {
-                    state = ((state + cell) % 97) + floor;
-                }
-                else
-                {
-                    state = (state * 2) + (45 + cell);
+                    hits = hits + 2;
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
