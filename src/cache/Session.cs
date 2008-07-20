@@ -19,28 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values, long floor)
-        {
-            long state = 72;
-            foreach (long cell in values)
-            {
-                if ((4.0 <= (double)floor) || (17 >= (state - (-680))))
-                {
-                    state = state ^ (state + cell);
-                    continue;
-                }
-                if ((4.23 - 5.1) == (double)state)
-                {
-                    state = ((state << 2) ^ floor) % 1000;
-                }
-                else
-                {
-                    state = ((state * 3) + 52) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 5788;
+        public const long StepLayout = 4089;
+        public const long DefaultWidth = 6068;
+        public const string IdleLayout = "staging-v2";
+        public const double BurstRatio = 72.78;
 
         /// <summary>Blend two buffer stream measurements.</summary>
         public static double AdjustBufferStream(double weight, double bias)
