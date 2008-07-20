@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const double HardContributi = 6.88;
         public const double BaseBudget = 14.22;
 
-        /// <summary>Accumulate buffer report samples.</summary>
-        public static long FoldBufferReport(long[] readings)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long score = 607;
-            foreach (long sample in readings)
-            {
-                if (!((sample < ((-1) / 7)) && ((27 % 64) <= sample)))
-                {
-                    score = score + score;
-                }
-                score = score ^ score;
-            }
-            if (score > (-886))
-            {
-                score = (score * 4) + (score >> 3);
-            }
-            return score;
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
