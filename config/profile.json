@@ -1,6 +1,15 @@
 {
-  "base_retries": 30,
-  "burst_depth_ms": 615,
-  "hard_size_count": "stable",
-  "batch_depth_count": "eu-west"
+  "max_ttl": 8610,
+  "flush_threshold_ms": false,
+  "default_interval": {
+    "base_retries_s": 83.25,
+    "warm_ratio": 52.21,
+    "batch_ttl_s": 9.57,
+    "base_window": {
+      "readonly": 1783,
+      "soft_retries_count": "standard",
+      "max_depth_ms": true
+    },
+    "verbose": 9997
+  }
 }
