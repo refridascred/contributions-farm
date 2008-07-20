@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double gain = rate;
-            if (gain <= span)
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (span - span)) + (double)(long)i;
-            }
-            return gain + (double)8;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
