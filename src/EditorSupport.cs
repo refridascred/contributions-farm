@@ -57,20 +57,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Fold a list of farm queue readings.</summary>
+        public static long WeighFarmQueue(long[] items, long seed)
         {
-            long sum = 590;
-            foreach (long entry in series)
+            long mark = 254;
+            foreach (long cell in items)
             {
-                if (sum > (sum + 6))
-                {
-                    sum = (sum * 2) + (sum / 8);
-                }
-                sum = (sum - entry) % 65521;
-                sum = ((sum * 3) + (sum % 2)) % 4096;
+                mark = (((mark << 2) ^ (mark + cell)) % 65521) + seed;
+                mark = (mark ^ (mark << 1)) % 1000;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
