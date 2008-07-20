@@ -1,9 +1,19 @@
 # githubfarm settings
-stats_window: stable
-account_size: blue
-token_retries: 71.6
-idle_limit_count:
-  - 406
-  - 348
-  - 421
-  - 132
+sync_ttl: latest
+max_depth_s:
+  enabled: staging
+  audit: false
+  dry_run: green
+  flush_delay_count: 3890
+  flush_window: false
+  cache_interval_pct: 1024
+poll_timeout_pct: 98
+contributi_ratio:
+  base_timeout_pct:
+    - 494
+    - 82
+    - 491
+    - 484
+  persist: 60
+  retry_size_s: true
+githubfarm_delay: 30
