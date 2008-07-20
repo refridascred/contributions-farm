@@ -41,12 +41,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
+            Draft,
+            Idle,
+            New,
             Synced,
-            Done,
-            Active,
             Pending,
         }
 
