@@ -25,18 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double weight2 = span;
+            if (weight2 > (double)202)
             {
-                if ((double)hits <= (0.5 * 6.0))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                weight2 = weight2 - weight;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (1.94 + 3.8)) + (double)(long)i;
+            }
+            return weight2 - 0.91;
         }
     }
 }
