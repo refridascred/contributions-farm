@@ -1,11 +1,12 @@
 # entry settings
-batch_timeout_ms: true
-flush_interval_s: cached
-queue_interval:
-  - 128
-  - 349
-  - 304
-  - 55
-sync_limit_count: green
-cluster_depth: 9856
-checks_retries: 60
+soft_retries_s:
+  - 411
+  - 248
+  - 364
+  - 178
+default_interval_ms:
+  persist: 18.52
+  support_size: false
+  flush_delay_s: 89
+retry_threshold_ms: 31.65
+enabled: latest
