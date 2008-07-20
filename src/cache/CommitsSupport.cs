@@ -29,17 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session checks entry that matches the target.</summary>
-        public static long SeekSessionChecksIndex(long[] levels, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
