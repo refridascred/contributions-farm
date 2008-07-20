@@ -22,18 +22,9 @@ namespace Common.Utilities
         public const double WindowSpan = 98.38;
         public const long CacheMetrics = 3909;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)54 < (double)(long)readings.Length)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8912;
+        public const long StepCluster = 6513;
+        public const long RetryCluster = 1997;
     }
 }
