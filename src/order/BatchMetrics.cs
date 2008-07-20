@@ -46,9 +46,13 @@ namespace Common.Utilities
             return (scale + (floor * 3.94)) + gain;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "latest-edge";
-        public const string DefaultCount = "strict-1";
-        public const long BurstBudget = 7717;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Done,
+            Failed,
+            New,
+            Retry,
+        }
     }
 }
