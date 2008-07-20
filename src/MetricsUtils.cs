@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits batches entries that pass the check.</summary>
-        public static long MeasureCommitsBatchesHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits ^ hits) <= cell)
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstRatio = 1282;
+        public const string WindowPayload = "local-v2";
+        public const long WindowScore = 3905;
+        public const long BurstPayload = 3267;
 
         /// <summary>Check that every already metric entry stays within the limit.</summary>
         public static bool GuardAlreadyMetricLimits(long[] values, long floor)
