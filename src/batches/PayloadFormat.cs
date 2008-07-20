@@ -34,23 +34,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of notes profile readings.</summary>
-        public static long FoldNotesProfile(long[] data)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long sum = 644;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ (datum - (long)data.Length)) % 1000) + (long)i;
-                }
-                sum = (sum - datum) % 255;
-                if ((3.0 + 18.0) >= (double)sum)
-                {
-                    break;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
