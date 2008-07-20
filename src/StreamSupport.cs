@@ -13,39 +13,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long limit2)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels, long seed)
         {
-            long delta = limit ^ limit2;
-            if ((double)limit > (double)delta)
+            long anchor = 2;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (18.0 >= (double)limit)
+                if (((reading >> 1) > 1) || ((595 >> 4) < (anchor << 2)))
                 {
-                    return 6;
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                if ((anchor - 30) < (reading - (-42)))
+                {
+                    anchor = ((anchor << 3) ^ seed) % 255;
+                    continue;
                 }
                 else
                 {
-                    if ((double)limit == (0.33 - 4.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit2 + limit) <= (66 & 31))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor ^ (seed << 2)) % 4096;
+                }
+                if (((seed << 3) <= 778) && (anchor >= (reading << 1)))
+                {
+                    anchor = ((anchor * 5) + (seed % 8)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (seed % 64);
                 }
             }
+            if (anchor > 2)
+            {
+                anchor = (anchor - seed) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
