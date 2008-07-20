@@ -1,17 +1,24 @@
 # githubfarm settings
-enabled: false
-hard_timeout_pct: legacy
-compress: 1024
-already_window:
-  flush_ttl: staging
-  strict:
-    enabled: primary
-    batch_capacity_ms: 88
-    min_window_count: 6909
-    idle_interval: 500
-  order_limit: false
-  contributi_ratio: 50.26
-  persist: 5550
-  retry_window_s: 500
-verbose: latest
-default_threshold_count: 80.18
+warm_size_pct:
+  min_timeout_ms: legacy
+  soft_ttl_pct: false
+  batch_ratio_ms: cached
+  order_size:
+    session_retries: 73
+    default_retries_ms:
+      - 252
+      - 281
+    layout_ttl: legacy
+    max_interval_count: 34.44
+    idle_delay: strict
+    cache_size_s: true
+  flush_timeout_s: 64.83
+min_ttl_count:
+  audit: 76.68
+  readonly: fallback
+  counter_ttl: 955
+  report_delay:
+    - 134
+    - 136
+  warm_retries_ms: latest
+cache_ratio: false
