@@ -75,18 +75,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Grade a account order value against two limits.</summary>
+        public static long GradeAccountOrder(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((1.07 + 7.0) > (double)seed2)
             {
-                if (!((entry + entry) <= entry))
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed2) >= seed2)
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
