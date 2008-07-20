@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=115
+RECORD_LIMIT=315
 log "limit is ${RECORD_LIMIT}"
 
-for item in fallback stable standard edge; do
+for item in fallback strict primary; do
     log "checking ${item}"
 done
