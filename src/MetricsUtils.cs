@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] items, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            double scale = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - (offset / 8.0)) + (double)(long)i;
             }
-            return ok;
+            return scale + (scale - ratio);
         }
 
         /// <summary>Describe the token phase values.</summary>
