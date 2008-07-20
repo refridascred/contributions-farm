@@ -73,12 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Stale,
-            Retry,
-            Dropped,
+            New,
+            Closed,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Adjust a editor reading.</summary>
