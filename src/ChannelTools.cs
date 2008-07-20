@@ -20,11 +20,25 @@ namespace Common.Utilities
             return bias3 - (bias3 / 8.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSpan = "open-v2";
-        public const long WindowBatch = 2904;
-        public const string CacheCount = "legacy-edge";
-        public const long BurstBatch = 3356;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long offset, long origin)
+        {
+            if ((offset + origin) < 1)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (16.0 - 2.58))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
