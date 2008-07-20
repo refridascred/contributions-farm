@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4703;
-        public const long RetrySupport = 4411;
-        public const long IdleSize = 1032;
-        public const long BatchLevel = 8724;
-        public const long StepSupport = 3614;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
