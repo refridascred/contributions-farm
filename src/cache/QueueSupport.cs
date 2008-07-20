@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings, long floor)
-        {
-            long total = 309;
-            foreach (long item in readings)
-            {
-                total = (total - (total + total)) + floor;
-                if ((total >> 3) < 50)
-                {
-                    total = (total << 3) ^ (item + total);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 17;
+        public const long BatchOrder = 20;
+        public const long DefaultDepth = 7649;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinBatches = 9557;
