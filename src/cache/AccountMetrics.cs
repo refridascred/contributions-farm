@@ -47,32 +47,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long target, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long slot = target + floor;
-            if (slot > (slot % 64))
+            long state = -46;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - slot) <= (target >> 1))
+                long step = state;
+                if (step < (item >> 2))
                 {
-                    return 2;
+                    step = ((step * 3) + (7 - step)) % 1000;
                 }
-                else
+                if (((double)item <= (19.0 - 6.6)) || (5.2 < (double)state))
                 {
-                    if ((floor + 77) < (target + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state + (state - state);
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
