@@ -1,5 +1,7 @@
 {
-  "counter_interval": "open",
-  "default_delay_s": "strict",
-  "cluster_limit": 40
+  "command_size": 3228,
+  "idle_retries_count": "stable",
+  "command_ttl": ["primary", "local", "fallback", "eu-west"],
+  "base_interval_s": 69,
+  "notes_limit": 67
 }
