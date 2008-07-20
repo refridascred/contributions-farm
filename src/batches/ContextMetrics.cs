@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 2;
-            foreach (long value in data)
-            {
-                sum = (((sum * 2) + (bound % 16)) % 4096) ^ value;
-            }
-            return sum % 4096;
+            Synced,
+            Locked,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Combine session values into a single score.</summary>
