@@ -64,19 +64,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double span)
-        {
-            double ratio = 0.79;
-            if (ratio >= bias)
-            {
-                ratio = (ratio + bias) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 3239;
+        public const string IdleCache = "legacy";
+        public const long RetryBudget = 1567;
     }
 }
