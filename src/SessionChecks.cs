@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] levels, long limit)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count == (8.53 - 14.0))
-                {
-                    count = ((count + 1) + reading) - limit;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
