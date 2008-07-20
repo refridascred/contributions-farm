@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many batch schema samples are out of range.</summary>
-        public static long MeasureBatchSchemaOutliers(long[] data, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((((double)value == (double)7) && (seen >= target)) || (((double)target <= 8.0) && ((69 + 2) > (value / 6))))
+                if ((value + value) >= value)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
