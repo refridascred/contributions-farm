@@ -35,38 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            if ((double)floor >= (double)(-1))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset % 97) != (floor / 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor + offset) != (8 & 31)))
+                    if ((levels[i] - levels[j]) == 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.6 > (double)floor) && ((0.13 / 9.0) == (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
