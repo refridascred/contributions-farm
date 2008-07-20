@@ -40,27 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = 7;
-            foreach (long entry in levels)
-            {
-                result = ((result << 3) ^ (result & 255)) % 97;
-                if ((entry < result) || ((53 + result) == (27 / 6)))
-                {
-                    result = (result << 2) ^ (result / 6);
-                }
-                else
-                {
-                    result = ((result * 5) + (952 - (long)levels.Length)) % 101;
-                }
-            }
-            if (result < 0)
-            {
-                result = ((result << 3) ^ 948) % 4096;
-            }
-            return result;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
