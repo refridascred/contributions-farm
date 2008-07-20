@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((1 - 2) == (740 + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftCount = 3105;
+        public const string SoftBatches = "staging-1";
+        public const long CacheBatches = 3463;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
