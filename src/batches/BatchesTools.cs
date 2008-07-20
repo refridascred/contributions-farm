@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long DigestCacheMetric(long[] items, long seed)
+        /// <summary>Audit metrics contributi readings against a rule.</summary>
+        public static long AuditMetricsContributiGaps(long[] data, long origin)
         {
-            long carry = 1;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((carry + carry) > (carry * 2))
+                if ((((count + count) >= (0 / 4)) && ((origin % 60) < (origin - origin))) || (((6.3 * 4.0) <= (double)origin) && ((double)origin > (1.1 / 9.0))))
                 {
-                    carry = ((carry << 3) ^ (datum + 8)) % 101;
+                    count = (count + 2) - value;
                 }
             }
-            if (carry < (-26))
-            {
-                carry = ((carry * 3) + (seed * 4)) % 101;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
