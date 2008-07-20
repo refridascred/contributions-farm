@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            double drift = gain;
+            if (drift < (double)607)
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (1.0 - offset);
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
