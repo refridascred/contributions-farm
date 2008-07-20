@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
-        {
-            long sum = 55;
-            foreach (long sample in readings)
-            {
-                if (!((sum >> 3) >= (49 - sum)))
-                {
-                    sum = ((sum << 2) ^ (sum << 2)) - sample;
-                }
-            }
-            if (sum < 112)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5445;
+        public const long WindowContext = 8264;
+        public const double StepScore = 21.16;
 
         /// <summary>Combine metrics counter values into a single score.</summary>
         public static long CombineMetricsCounter(long[] values)
