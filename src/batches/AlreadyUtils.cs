@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Ready,
             Closed,
-            Done,
-            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Rank record input into a small class.</summary>
