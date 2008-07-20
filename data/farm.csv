@@ -1,7 +1,6 @@
-id,active,region,state
-1,staging,456,444
-2,92.52,fallback,605
-3,primary,588,strict
-4,staging,41,68
-5,open,283,cached
-6,stable,blue,staging
+id,active,label,owner,level
+1,staging,370,98.15,870
+2,351,173,local,748
+3,blue,54.5,479,legacy
+4,staging,26.83,13.94,874
+5,eu-west,5.52,632,stable
