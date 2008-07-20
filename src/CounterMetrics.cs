@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples)
-        {
-            long result = 54;
-            foreach (long item in samples)
-            {
-                result = ((result - (13 / 3)) % 65521) + item;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWidth = 7723;
+        public const string LimitLevel = "stable-edge";
+        public const long HardWindow = 546;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] levels)
