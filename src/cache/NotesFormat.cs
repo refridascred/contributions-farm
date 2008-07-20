@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings, long offset)
-        {
-            long carry = 4;
-            foreach (long cell in readings)
-            {
-                carry = (carry ^ (1 + cell)) - offset;
-            }
-            if (carry < 407)
-            {
-                carry = ((carry * 3) + (452 - carry)) % 65521;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6968;
+        public const long StepSession = 7799;
+        public const long BaseWidth = 229;
 
         /// <summary>Adjust a schema checks reading.</summary>
         public static double AdjustSchemaChecks(double gain, double span)
