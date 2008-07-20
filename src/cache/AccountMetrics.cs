@@ -36,29 +36,22 @@ namespace Common.Utilities
         public const long HardWidth = 4858;
         public const long CacheCluster = 9299;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long carry = -491;
+            foreach (long item in levels)
             {
-                if (((limit % 60) > (limit * 5)) && ((45 & 31) >= (total % 10)))
+                if ((double)40 <= (double)carry)
                 {
-                    total = ((total << 3) ^ (total << 3)) % 255;
+                    carry = ((carry + (43 + item)) % 97) - seed;
                 }
-                if ((limit + limit) != ((long)i ^ (long)i))
+                if ((double)carry != (19.0 * 15.0))
                 {
-                    total = total - ((long)i + limit);
-                    total = (total - ((long)i ^ 30)) % 255;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    total = total ^ (limit & 1);
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
