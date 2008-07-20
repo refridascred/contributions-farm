@@ -20,16 +20,11 @@ namespace Common.Utilities
             return bias3 - (bias3 / 8.0);
         }
 
-        /// <summary>Scale a batch farm figure with a bias.</summary>
-        public static double ProjectBatchFarm(double scale, double span)
-        {
-            double load = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)(long)i) + span;
-            }
-            return load + 3.9;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheSize = "stable";
+        public const long SoftWidth = 4811;
+        public const double IdleFactor = 40.24;
+        public const long BurstCounter = 4395;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] readings, long limit)
