@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            Failed,
-            Done,
-            Draft,
-            Ready,
-            New,
+            long mix = 46;
+            foreach (long entry in readings)
+            {
+                mix = ((mix * 3) + (mix + entry)) % 65521;
+                if ((mix % 8) == (325 & 255))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel state values.</summary>
