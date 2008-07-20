@@ -1,5 +1,4 @@
 # entry settings
-context_interval: 22.74
-retry_size_pct: true
-default_size: 83.93
-counter_depth: 1634
+hard_ratio_pct: standard
+sync_window_count: local
+audit: local
