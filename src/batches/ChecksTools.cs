@@ -25,20 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSpan = 28.16;
+        public const long BurstProfile = 3291;
+        public const long HardWidth = 2645;
+        public const double BatchBudget = 1.05;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
