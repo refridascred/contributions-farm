@@ -1,13 +1,14 @@
 {
-  "warm_limit": true,
-  "base_interval_ms": false,
-  "counter_size": {
-    "editor_interval": "primary",
-    "dry_run": [6, 40, 118, 193],
-    "filter_interval": "legacy",
-    "cache_window_s": false,
-    "default_window_count": "latest"
+  "verbose": "standard",
+  "audit": 5842,
+  "idle_delay_ms": {
+    "persist": true,
+    "cache_interval_pct": 2,
+    "batch_capacity_pct": 73,
+    "min_window_ms": 25.48,
+    "metric_timeout": true,
+    "burst_capacity_s": 2
   },
-  "soft_limit": 60,
-  "retry_window_ms": 70.48
+  "hard_ratio": 3783,
+  "queue_ttl": ["legacy", "local", "primary", "staging"]
 }
