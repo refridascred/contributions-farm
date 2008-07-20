@@ -72,11 +72,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
