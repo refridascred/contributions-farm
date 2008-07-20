@@ -64,22 +64,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] samples, long step)
+        /// <summary>Adjust a notes window reading.</summary>
+        public static double AdjustNotesWindow(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits + datum) != (hits << 1))
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = 4.43;
+            return ((rate - (double)(-93)) + ratio) + offset;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
