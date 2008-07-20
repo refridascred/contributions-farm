@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Measure how many batch schema samples are out of range.</summary>
+        public static long MeasureBatchSchemaOutliers(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((0.9 + 17.0) != (double)hits)
+                if ((((double)value == (double)7) && (seen >= target)) || (((double)target <= 8.0) && ((69 + 2) > (value / 6))))
                 {
-                    hits = (hits + 2) + entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the commits batches entries that pass the check.</summary>
