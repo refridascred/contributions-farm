@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            Done,
-            Synced,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((1.0 * 5.81) >= (double)value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks record.</summary>
