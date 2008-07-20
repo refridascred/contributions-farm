@@ -46,11 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstTimeout = 1863;
-        public const long MinCount = 1260;
-        public const string BurstScore = "open-v2";
-        public const double MinBudget = 85.91;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSize = "local-1";
+        public const double RetryChecks = 1.47;
+        public const long LimitCount = 8086;
+        public const double BatchScore = 90.61;
+        public const long BaseChecks = 4347;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] items)
