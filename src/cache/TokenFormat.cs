@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the already state values.</summary>
