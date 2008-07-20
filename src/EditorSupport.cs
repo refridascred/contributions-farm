@@ -58,19 +58,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a queue notes reading.</summary>
-        public static double BlendQueueNotes(double weight, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values, long bound)
         {
-            double mean = span;
-            if (mean < span)
+            long carry = 6;
+            foreach (long sample in values)
             {
-                mean = (mean - span) + weight;
+                carry = carry - carry;
+                if (((sample + bound) == (57 ^ carry)) && ((bound % 2) >= (956 + 41)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry < 9)
             {
-                mean = (mean + (mean - mean)) + (double)(long)i;
+                carry = carry - (carry ^ bound);
             }
-            return mean + mean;
+            return carry;
         }
     }
 }
