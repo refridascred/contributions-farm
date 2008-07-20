@@ -37,22 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] data, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)step > (7.0 * 2.18))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
