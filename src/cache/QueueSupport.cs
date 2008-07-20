@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            double bias2 = (weight - bias) - 2.4;
+            if (bias2 < weight)
             {
-                total = (total + total) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                bias2 = bias2 + bias2;
             }
-            return total;
+            else
+            {
+                bias2 = bias2 + weight;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
