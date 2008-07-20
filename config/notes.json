@@ -1,8 +1,7 @@
 {
-  "compress": true,
-  "githubfarm_limit": [50, 35, 3, 452],
-  "flush_depth_pct": [208, 139, 161, 176],
-  "notes_threshold": ["stable", "fallback"],
-  "support_window": "staging",
-  "buffer_size": 56.78
+  "max_delay_ms": 75.19,
+  "cache_depth_pct": true,
+  "enabled": "local",
+  "batch_ttl_ms": 23.07,
+  "max_interval_ms": 34
 }
