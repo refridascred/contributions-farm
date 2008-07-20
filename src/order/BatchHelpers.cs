@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] series, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] < offset)
+                score = ((score * 3) + score) % 1000;
+                if ((floor & 31) <= floor)
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (293 + score);
+                    score = ((score * 2) + 9) % 101;
+                    continue;
                 }
+                score = score ^ (score - 3);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the metric phase values.</summary>
