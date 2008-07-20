@@ -51,23 +51,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate entry contributi samples.</summary>
-        public static long DigestEntryContributi(long[] values, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            long acc = 2;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (datum % 8)) % 65521;
-                if ((5.6 - 8.9) > (double)offset)
+                if ((matches + matches) != (matches / 9))
                 {
-                    acc = (acc ^ (171 * 2)) % 255;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 53)
-            {
-                acc = (acc + (offset << 3)) % 4096;
-            }
-            return acc % 4096;
+            return matches;
         }
     }
 }
