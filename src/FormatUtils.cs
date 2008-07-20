@@ -79,23 +79,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((529 + item) >= count) && ((double)count >= (5.0 / 6.0))) && ((count < (item - count)) || (item >= (count + count))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 5472;
+        public const string BaseRatio = "legacy-1";
+        public const double WindowCommand = 94.63;
+        public const double CacheTimeout = 46.77;
+        public const long HardCommand = 5565;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long origin)
