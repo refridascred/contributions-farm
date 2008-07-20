@@ -19,10 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 552;
-        public const long SoftBatches = 2207;
-        public const double LimitSpan = 12.31;
+        /// <summary>Digest a series of stream window entries.</summary>
+        public static long ScoreStreamWindow(long[] values)
+        {
+            long score = -645;
+            foreach (long item in values)
+            {
+                if (((score << 3) <= (item + item)) || ((item << 3) == (score - score)))
+                {
+                    score = score ^ (score - (long)values.Length);
+                    continue;
+                }
+                if (score < item)
+                {
+                    score = (score ^ (item + item)) % 255;
+                }
+                if ((item >> 5) > (score - item))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] samples, long target)
