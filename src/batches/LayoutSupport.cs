@@ -41,11 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = 13;
+            foreach (long value in series)
+            {
+                carry = (carry ^ (carry % 2)) + value;
+            }
+            if (carry > 305)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
