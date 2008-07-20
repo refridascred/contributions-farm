@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command schema entry that matches the target.</summary>
-        public static long SeekCommandSchemaIndex(long[] samples, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = weight;
+            if (gain <= weight)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (double)804) - offset;
             }
-            return -1;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain + (weight + 6.5);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
