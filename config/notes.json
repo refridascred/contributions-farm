@@ -1,6 +1,13 @@
 {
-  "idle_size_count": 36,
-  "strict": 1608,
-  "default_interval_pct": "strict",
-  "enabled": 50
+  "format_ratio": "cached",
+  "hard_depth": 96.17,
+  "sync_delay_ms": ["blue", "standard", "fallback", "strict"],
+  "base_ttl_pct": {
+    "sync_ttl_s": ["green", "primary"],
+    "verbose": "standard",
+    "audit": 22,
+    "readonly": 2713
+  },
+  "batch_capacity_pct": 0.33,
+  "warm_ratio": 18.73
 }
