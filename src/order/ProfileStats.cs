@@ -54,11 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
