@@ -33,10 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8606;
-        public const long DefaultCommand = 8136;
-        public const long LimitCommand = 9187;
-        public const double BurstCommand = 2.34;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((8.83 + 6.3) == (double)step)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
