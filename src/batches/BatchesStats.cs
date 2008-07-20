@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepInterval = 6.05;
-        public const string BaseLayout = "strict-v2";
-        public const long SoftCount = 3084;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "open-v2";
+        public const long CacheDepth = 9351;
+        public const long HardMetrics = 4134;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] samples, long floor)
