@@ -54,11 +54,19 @@ namespace Common.Utilities
             return load + (double)69;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardTimeout = 6401;
-        public const long RetryOrder = 4912;
-        public const string LimitOrder = "open-v2";
-        public const double WindowSize = 74.01;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((1 - 2) == (740 + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
