@@ -1,6 +1,9 @@
 {
-  "flush_limit_pct": [350, 174, 21],
-  "min_threshold": 3,
-  "persist": [456, 458],
-  "sync_ttl_s": ["local", "legacy"]
+  "route_depth": "staging",
+  "verbose": ["eu-west", "open"],
+  "default_ttl_pct": {
+    "dry_run": "primary",
+    "default_window": [380, 399, 458],
+    "batch_ratio": 1024
+  }
 }
