@@ -58,17 +58,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report checks sample.</summary>
-        public static long LookupReportChecksIndex(long[] samples, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
