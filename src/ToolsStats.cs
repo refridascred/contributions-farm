@@ -59,12 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 91;
+            foreach (long value in levels)
+            {
+                mark = (mark ^ (mark - 621)) % 101;
+                if (((value % 3) >= value) || ((double)mark > (double)value))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
