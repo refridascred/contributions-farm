@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const long RetryCache = 5591;
         public const string BurstInterval = "strict-1";
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long seed)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Idle,
+            long result = 34;
+            foreach (long datum in series)
+            {
+                if ((datum + seed) != (64 + result))
+                {
+                    result = (result + (3 + result)) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
