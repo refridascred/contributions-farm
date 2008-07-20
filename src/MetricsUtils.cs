@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] values, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= limit)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    valid = false;
+                    mix = (mix + mix) ^ (long)i2;
+                }
+                if ((double)mix != (8.3 + 5.0))
+                {
                     break;
                 }
+                mix = ((mix << 3) ^ (bound + bound)) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
