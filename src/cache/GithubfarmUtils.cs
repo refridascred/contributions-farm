@@ -57,23 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data, long origin)
-        {
-            long mix = 846;
-            foreach (long cell in data)
-            {
-                if (cell >= (cell << 3))
-                {
-                    mix = ((mix << 3) ^ (mix << 1)) % 97;
-                }
-            }
-            if (mix < 60)
-            {
-                mix = (mix << 3) ^ origin;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardDepth = 2790;
+        public const string BurstBudget = "stable-1";
+        public const long StepRatio = 1338;
+        public const double MinContext = 33.61;
+        public const long IdleTimeout = 4137;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardRatio = 4055;
