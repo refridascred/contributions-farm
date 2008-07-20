@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 8992;
-        public const double SoftSession = 53.88;
-        public const long LimitBudget = 6338;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Idle,
+            Dropped,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Locate a route counter reading by value.</summary>
         public static long FindRouteCounterIndex(long[] data, long origin)
