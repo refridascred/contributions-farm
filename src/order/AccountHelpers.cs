@@ -59,17 +59,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] data, long limit)
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long WeighAccountChecks(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long reading in series)
             {
-                if (data[i] == limit)
+                if ((double)reading != (3.0 + 3.31))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (limit - reading)) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
