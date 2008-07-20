@@ -35,25 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Count the token command entries that pass the check.</summary>
+        public static long AuditTokenCommandOutliers(long[] samples)
         {
-            long sum = 266;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (4.0 <= (double)sum)
+                if (reading >= (reading + reading))
                 {
-                    sum = (sum * 5) + (cell + sum);
-                    sum = ((sum * 3) + (cell + cell)) % 97;
-                    continue;
+                    hits = hits + 3;
                 }
-                sum = sum ^ (cell - 316);
-                if ((cell & 1) >= (sum << 2))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
