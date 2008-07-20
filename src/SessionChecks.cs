@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 3045;
-        public const long StepGraph = 949;
-        public const long BurstDepth = 9775;
-        public const long SoftSpan = 2136;
-        public const long LimitGraph = 2009;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long bound, long bound2)
