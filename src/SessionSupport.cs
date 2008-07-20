@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings, long origin)
         {
-            long anchor = 60;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((offset - (long)series.Length) <= (value * 3))
+                if (!((count * 3) < (entry >> 3)) || !((double)entry > (1.0 * 8.0)))
                 {
-                    anchor = ((anchor * 3) + ((-840) + value)) % 1000;
-                }
-                if ((offset / 6) >= (offset >> 4))
-                {
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
