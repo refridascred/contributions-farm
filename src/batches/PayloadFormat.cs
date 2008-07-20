@@ -48,14 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] values, long step)
         {
-            Active,
-            Synced,
-            Paused,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 3) != (tally & 255))
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
