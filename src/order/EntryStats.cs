@@ -40,18 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] samples, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((double)tally == (15.0 + 0.4)) || (((5.0 + 8.6) <= (double)step) && ((6.8 + 4.2) < (double)step)))
+                if (floor >= (hits % 16))
                 {
-                    tally = (tally + 2) ^ datum;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
