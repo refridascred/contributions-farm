@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((1.0 >= (double)origin) && (matches >= reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate counter contributi samples.</summary>
