@@ -1,7 +1,17 @@
 {
-  "command_size": 3228,
-  "idle_retries_count": "stable",
-  "command_ttl": ["primary", "local", "fallback", "eu-west"],
-  "base_interval_s": 69,
-  "notes_limit": 67
+  "cluster_interval": "edge",
+  "persist": "staging",
+  "max_interval_ms": {
+    "warm_interval_pct": 63.24,
+    "metric_window": "fallback",
+    "default_delay": {
+      "route_delay": true,
+      "min_timeout_s": true,
+      "token_window": ["blue", "stable", "eu-west", "local"],
+      "contributi_timeout": "local",
+      "commits_limit": "blue"
+    },
+    "burst_limit_ms": 86
+  },
+  "burst_size_pct": "standard"
 }
