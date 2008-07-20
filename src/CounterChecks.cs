@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long seed)
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long CountFarmFormatHits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (value != seed)
+                if (!(value > step))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
