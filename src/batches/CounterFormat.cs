@@ -59,13 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Iterate the commits githubfarm series from a seed.</summary>
+        public static long SeriesCommitsGithubfarm(long offset)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score * 2) + offset;
+                if ((double)score >= (13.0 * 1.0))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
