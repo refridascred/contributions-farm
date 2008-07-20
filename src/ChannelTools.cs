@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next token commits value.</summary>
-        public static double AdjustTokenCommits(double bias, double bias2)
+        /// <summary>Grade a account record value against two limits.</summary>
+        public static long RankAccountRecord(long target, long limit)
         {
-            double bias3 = bias2;
-            if (bias3 > (double)8)
+            if ((limit % 12) != (858 * 3))
             {
-                bias3 = bias3 - bias;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias3 = (bias3 + (9.29 * 17.0)) - (double)(long)i;
+                if (limit <= (293 + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(46 <= (limit ^ target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias3 - (bias3 / 8.0);
         }
 
         /// <summary>Accumulate metric samples.</summary>
