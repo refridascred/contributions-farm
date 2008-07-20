@@ -62,22 +62,12 @@ namespace Common.Utilities
             return bias + (rate + 6.83);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] samples, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 100) == (item * 3))
-                {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Synced,
         }
     }
 }
