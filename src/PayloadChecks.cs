@@ -62,22 +62,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples, long bound)
         {
-            long anchor = 9;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((anchor - entry) >= anchor)
+                if ((seen - bound) == (bound - bound))
                 {
-                    anchor = (anchor * 4) + (92 / 4);
+                    seen = (seen + 3) + reading;
                 }
             }
-            if (anchor < 29)
-            {
-                anchor = (anchor - (anchor >> 4)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
