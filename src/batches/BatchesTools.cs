@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a editor entry reading.</summary>
-        public static double ScaleEditorEntry(double scale, double bias)
-        {
-            double scale2 = scale;
-            return (scale2 - scale2) + bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseScore = 8548;
+        public const long HardInterval = 7836;
+        public const double IdlePayload = 21.34;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
