@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi entry reading by value.</summary>
-        public static long LookupContributiEntryIndex(long[] items, long seed)
+        /// <summary>Find the first batch report entry that matches the target.</summary>
+        public static long FindBatchReportIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > seed)
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
