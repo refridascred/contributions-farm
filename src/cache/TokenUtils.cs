@@ -20,11 +20,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            Ready,
+            Done,
         }
     }
 }
