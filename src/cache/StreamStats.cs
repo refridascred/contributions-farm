@@ -20,33 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long bound)
-        {
-            long cur = seed - bound;
-            if (((bound % 16) < (cur + cur)) && ((2.3 / 2.0) != (double)cur))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((58 <= bound) || ((double)seed > (7.78 - 11.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed - seed) <= bound) || ((cur - 7) <= (seed ^ bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 123;
+        public const double SoftChannel = 8.44;
+        public const long MinDepth = 2010;
+        public const long CacheChannel = 9884;
 
         /// <summary>Look up the position of a channel metrics sample.</summary>
         public static long LocateChannelMetricsIndex(long[] items, long limit)
