@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] samples, long step)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (acc >> 3)) - reading;
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Hold a payload summary.</summary>
