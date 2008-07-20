@@ -27,21 +27,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the tools kind values.</summary>
