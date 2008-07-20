@@ -62,19 +62,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long total = 8;
+            foreach (long value in readings)
             {
-                if (item <= target)
+                if ((value - seed) == (seed >> 1))
                 {
-                    ok = false;
+                    total = ((total << 2) ^ seed) % 4096;
+                    continue;
+                }
+                if ((seed ^ seed) <= (seed >> 4))
+                {
+                    total = (total + (87 - seed)) % 4096;
+                }
+                else
+                {
+                    total = total + (total ^ value);
+                }
+                if ((seed ^ value) != (seed + value))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
     }
 }
