@@ -56,18 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            long acc = 230;
+            foreach (long entry in values)
             {
-                if ((16.0 * 19.0) != (double)value)
+                if (!((seed & 3) >= (entry + acc)))
                 {
-                    count = count + 3;
+                    acc = (acc ^ seed) % 1000;
                 }
             }
-            return count;
+            if (acc > 63)
+            {
+                acc = acc ^ (seed * 4);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a format entry.</summary>
