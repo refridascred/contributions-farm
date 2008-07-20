@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches >= (reading % 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a metrics summary.</summary>
