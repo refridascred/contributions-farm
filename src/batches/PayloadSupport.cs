@@ -19,19 +19,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two context record measurements.</summary>
-        public static double ScaleContextRecord(double rate, double floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double load = rate + (double)51;
-            if (load < 6.0)
-            {
-                load = (load + (double)(-78)) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (load / 4.0);
+            Stale,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the metric status values.</summary>
