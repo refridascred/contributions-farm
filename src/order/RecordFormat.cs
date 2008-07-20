@@ -36,21 +36,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count metric batch pairs that satisfy a relation.</summary>
-        public static long OverlapMetricBatchCount(long[] series)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a metrics header.</summary>
