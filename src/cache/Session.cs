@@ -56,9 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "staging-1";
-        public const string DefaultCluster = "strict-v2";
-        public const long WindowCluster = 6334;
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double gain, double span)
+        {
+            double gain2 = span * 8.0;
+            if (gain2 < (gain - 2.2))
+            {
+                gain2 = gain2 - (7.0 * 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - gain;
+        }
     }
 }
