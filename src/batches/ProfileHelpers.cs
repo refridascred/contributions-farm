@@ -24,17 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] levels, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
+                if (reading >= 0)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count report stream pairs that satisfy a relation.</summary>
