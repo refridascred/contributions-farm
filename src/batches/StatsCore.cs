@@ -59,18 +59,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((76 ^ tally) != (sample >> 2))
+                if (entry < offset)
                 {
-                    tally = (tally + 3) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
