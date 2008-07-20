@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long floor)
+        /// <summary>Count account schema pairs that satisfy a relation.</summary>
+        public static long CompareAccountSchemaCount(long[] items)
         {
-            long prev = offset ^ floor;
-            if ((floor - prev) >= offset)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) <= prev)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
