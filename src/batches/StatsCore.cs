@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleCount = 25.33;
+        public const long CacheBudget = 3951;
+        public const long BaseBatch = 3317;
+        public const double WindowBatch = 57.35;
+        public const long BatchCount = 3125;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] values)
