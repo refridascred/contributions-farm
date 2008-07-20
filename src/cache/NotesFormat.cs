@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] readings, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
