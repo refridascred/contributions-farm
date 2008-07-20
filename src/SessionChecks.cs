@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "standard-edge";
+        public const double DefaultRecord = 79.48;
+        public const long SoftSpan = 2893;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string LimitInterval = "local-1";
