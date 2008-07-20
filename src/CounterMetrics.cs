@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCount = 8370;
-        public const long RetryWidth = 1350;
-        public const double CacheCommand = 52.51;
-        public const long HardCommand = 8970;
-        public const long IdleBudget = 3945;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "standard-edge";
+        public const long CacheLevel = 5307;
+        public const long IdleWidth = 2629;
+        public const long IdleFormat = 7758;
+        public const long CacheFormat = 3160;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long floor)
