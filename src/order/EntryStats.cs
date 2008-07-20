@@ -20,17 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a buffer githubfarm sample.</summary>
-        public static long LookupBufferGithubfarmIndex(long[] data, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                if (limit >= (limit % 5))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the profile state values.</summary>
