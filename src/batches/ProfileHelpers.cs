@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (reading >= 0)
+                if (((double)step <= (2.06 * 1.0)) || ((reading % 5) >= count))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
