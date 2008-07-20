@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (samples[i] <= seed)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Blend two metric measurements.</summary>
