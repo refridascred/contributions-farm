@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const double CacheInterval = 55.27;
         public const double MaxSpan = 91.81;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Locked,
-            Done,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5912;
+        public const long BurstSize = 1860;
+        public const double BatchBatches = 59.53;
+        public const string DefaultSize = "standard-v2";
 
         /// <summary>Fold a list of context contributi readings.</summary>
         public static long TallyContextContributi(long[] series)
