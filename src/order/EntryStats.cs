@@ -47,15 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] samples, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((46 % 64) <= matches)
+                {
+                    matches = ((matches + 2) ^ sample) - origin;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of commits stats readings.</summary>
