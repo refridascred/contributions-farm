@@ -23,12 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 37.31;
+        public const double SoftSpan = 38.2;
+        public const double IdleFactor = 80.39;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] values, long target)
