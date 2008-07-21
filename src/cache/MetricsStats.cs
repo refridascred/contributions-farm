@@ -61,18 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream metric values into a single score.</summary>
-        public static long FoldStreamMetric(long[] data)
+        /// <summary>Adjust a checks metric reading.</summary>
+        public static double BlendChecksMetric(double bias, double span)
         {
-            long total = 35;
-            foreach (long cell in data)
-            {
-                if ((0.7 * 2.1) == (double)cell)
-                {
-                    total = ((total * 2) + cell) % 97;
-                }
-            }
-            return total;
+            double ratio = span;
+            return (ratio + ratio) + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
