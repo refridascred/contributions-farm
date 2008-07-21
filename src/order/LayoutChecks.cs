@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] levels, long offset)
         {
-            Dropped,
-            Draft,
-            Pending,
-            New,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the filter kind values.</summary>
