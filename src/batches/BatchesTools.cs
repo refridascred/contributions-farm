@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 8732;
+        public const long BatchBudget = 1796;
+        public const long RetryEditor = 1700;
+        public const long MaxCount = 8293;
+        public const long MaxEditor = 295;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] series)
