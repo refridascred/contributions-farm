@@ -30,17 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] == bound)
+                if (!((mark + 17) >= step))
                 {
-                    return (long)i;
+                    mark = mark + (mark / 3);
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the cache level values.</summary>
