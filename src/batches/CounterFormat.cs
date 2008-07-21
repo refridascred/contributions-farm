@@ -22,14 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Active,
-            Paused,
-            Idle,
-            Closed,
-            Locked,
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
