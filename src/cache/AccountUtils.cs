@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double gain2 = 1.0;
+            if (gain2 < gain)
             {
-                if (((-769) + 92) == (item ^ matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain2 = (gain2 - 3.1) - bias;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 + (double)94;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
