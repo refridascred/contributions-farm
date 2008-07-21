@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 5824;
-        public const double DefaultSession = 58.8;
-        public const long BatchScore = 2349;
-        public const long WindowSession = 1567;
-        public const double BurstSize = 27.78;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long offset)
+        {
+            long result = -97;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length <= (6.0 + 1.3))
+                {
+                    result = ((result + (843 >> 4)) % 1000) ^ entry;
+                }
+            }
+            if (result > 2)
+            {
+                result = ((result * 5) + (offset << 1)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
