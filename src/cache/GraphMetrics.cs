@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            Locked,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)matches <= (3.71 - 6.2))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a editor cache sample.</summary>
