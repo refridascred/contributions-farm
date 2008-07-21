@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long limit, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long step = limit ^ origin;
-            if ((limit & 31) >= (step - 51))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step < (18 >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin < step) && ((limit - step) < (step / 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
