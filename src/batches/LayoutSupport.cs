@@ -70,11 +70,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 7.16;
-        public const double BatchInterval = 16.58;
-        public const long HardInterval = 856;
-        public const long MaxLevel = 1772;
-        public const string LimitRatio = "latest-edge";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            New,
+            Closed,
+        }
     }
 }
