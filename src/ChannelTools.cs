@@ -30,19 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
-        public static bool GuardGithubfarmTokenLimits(long[] items, long step)
+        /// <summary>Find the first metric editor entry that matches the target.</summary>
+        public static long FindMetricEditorIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < step)
+                if (data[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
