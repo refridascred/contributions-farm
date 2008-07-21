@@ -1,6 +1,8 @@
 {
-  "dry_run": false,
-  "hard_limit_ms": "latest",
-  "flush_limit_s": [457, 314],
-  "schema_threshold": 34.97
+  "order_interval": 56.64,
+  "githubfarm_ttl": "local",
+  "stats_timeout": 3,
+  "strict": "blue",
+  "entry_window": 30,
+  "payload_delay": 41.79
 }
