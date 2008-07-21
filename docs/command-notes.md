@@ -1,14 +1,12 @@
 # Command notes
 
-When a filter fails, the tools handler retries a few times before giving up.
-The farm module keeps buffer values in sync with the channel cache.
-The batches module keeps payload values in sync with the channel cache.
-
-The cluster report groups every channel by buffer.
-When a route fails, the batches handler retries a few times before giving up.
+The contributi report groups every tools by counter.
+Each tools is validated before it reaches the filter queue.
+A stream that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Validate metric input early
-- Log every githubfarm change
-- Review checks limits each release
+- Validate metrics input early
+- Document new batch fields
+- Log every command change
+- Prefer entry defaults
