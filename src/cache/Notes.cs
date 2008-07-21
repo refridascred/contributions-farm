@@ -53,19 +53,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] data, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mix = 495;
+            foreach (long item in series)
             {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix + item;
             }
-            return valid;
+            return mix % 4096;
         }
     }
 }
