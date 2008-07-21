@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double weight = (floor + floor) * 6.3;
+            for (int i = 0; i < 8; i++)
             {
-                if ((31 * 4) < reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + rate) + (double)(long)i;
             }
-            return hits;
+            return weight + (floor + weight);
         }
 
         /// <summary>Hold a metrics options.</summary>
