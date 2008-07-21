@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long HardDepth = 5677;
         public const long WindowBatches = 2537;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            Ready,
-            Active,
-            Failed,
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (mix > limit)
+                {
+                    mix = (mix + (mix + limit)) % 255;
+                }
+                mix = (mix * 5) + mix;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric stats.</summary>
