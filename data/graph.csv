@@ -1,11 +1,6 @@
-id,level,weight
-1,880,staging
-2,blue,814
-3,461,86.21
-4,29.18,local
-5,60,65.77
-6,60.87,1.63
-7,177,11.92
-8,51.92,397
-9,85.31,6.2
-10,local,0.96
+id,level,token,state
+1,open,731,edge
+2,74.62,224,strict
+3,753,500,standard
+4,570,strict,71.67
+5,197,open,staging
