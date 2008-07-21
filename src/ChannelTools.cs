@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long delta = limit ^ offset;
-            if ((limit - offset) < delta)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta <= (delta / 6)) && ((double)limit > (15.0 - 5.8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta % 12) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the layout kind values.</summary>
