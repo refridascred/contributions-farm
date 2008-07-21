@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Paused,
-            Locked,
-            Ready,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinInterval = 57;
+        public const long MinTimeout = 4932;
+        public const double CacheBudget = 23.14;
+        public const string IdleWindow = "latest";
+        public const string MinWindow = "open-1";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] data)
