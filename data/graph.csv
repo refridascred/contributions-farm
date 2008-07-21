@@ -1,10 +1,7 @@
-id,state,owner
-1,452,18.27
-2,91.36,691
-3,1.94,primary
-4,63.39,primary
-5,33.23,78.76
-6,standard,146
-7,556,9
-8,cached,592
-9,primary,56.37
+id,owner,token,weight,score
+1,700,23.06,570,latest
+2,blue,25.98,83.56,199
+3,cached,881,15,latest
+4,17.96,8.28,24.83,legacy
+5,311,617,staging,483
+6,13.6,latest,801,20.37
