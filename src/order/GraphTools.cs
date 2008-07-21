@@ -66,13 +66,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Ready,
-            Done,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 695;
+        public const double BurstLevel = 3.11;
+        public const string SoftStream = "cached";
+        public const double DefaultStream = 74.42;
+        public const double MaxInterval = 20.66;
     }
 }
