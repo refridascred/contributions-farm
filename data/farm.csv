@@ -1,6 +1,10 @@
-id,owner,count
-1,11.97,686
-2,100,390
-3,strict,73.96
-4,881,staging
-5,80.8,171
+id,ratio,rank
+1,839,939
+2,308,22
+3,80.92,73.86
+4,91.74,standard
+5,307,114
+6,stable,685
+7,staging,44.24
+8,standard,612
+9,982,standard
