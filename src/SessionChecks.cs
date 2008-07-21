@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Audit order schema readings against a rule.</summary>
+        public static long AuditOrderSchemaGaps(long[] readings, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally <= (1.0 - 0.34))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) + datum) + limit;
                 }
             }
             return tally;
