@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheRatio = 4.21;
+        public const double LimitPayload = 40.35;
+        public const string DefaultPayload = "staging-v2";
+        public const string DefaultBudget = "local-1";
+        public const string RetryPayload = "alpha-v2";
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long seed)
