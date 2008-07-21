@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxWidth = 4739;
         public const long WindowEditor = 7184;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
             public double Limit { get; set; }
         }
 
