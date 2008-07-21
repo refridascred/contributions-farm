@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long origin)
         {
-            long result = 7;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - (774 ^ item);
-                if ((item - seed) <= (seed >> 1))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    result = (result * 4) + item;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
