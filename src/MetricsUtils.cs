@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cluster already readings against a rule.</summary>
-        public static long AuditClusterAlreadyOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (6.96 <= (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSpan = 7309;
+        public const string SoftBatch = "cached-v2";
+        public const double MaxBatch = 39.65;
+        public const long LimitWidth = 7648;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
