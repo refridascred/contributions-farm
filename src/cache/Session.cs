@@ -22,10 +22,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryDepth = 7.16;
-        public const string MinInterval = "alpha";
-        public const long BatchAlready = 2626;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels)
+        {
+            long state = 64;
+            foreach (long datum in levels)
+            {
+                state = ((state - (state + state)) % 97) - datum;
+            }
+            if (state < 44)
+            {
+                state = state - ((long)levels.Length * 2);
+            }
+            return state;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long seed, long step)
