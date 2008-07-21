@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard fallback; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in stable strict legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=210
-log "limit is ${CHANNEL_LIMIT}"
