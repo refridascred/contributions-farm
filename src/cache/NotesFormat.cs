@@ -25,32 +25,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long origin)
         {
-            long slot = step ^ seed;
-            if ((slot + slot) <= (step & 127))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 9) != (seed << 2))
+                if (datum >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >= (slot & 15)) && ((step / 8) <= (seed + slot)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
