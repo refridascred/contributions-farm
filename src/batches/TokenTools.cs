@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
