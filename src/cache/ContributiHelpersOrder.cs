@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long acc = 90;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading << 3) == (acc + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + 691) % 255;
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate account editor readings against a bound.</summary>
