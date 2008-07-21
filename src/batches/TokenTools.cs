@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] data, long origin)
         {
-            long carry = 7;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in data)
             {
-                carry = (((carry * 2) + (carry << 1)) % 255) + reading;
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 26)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry % 97;
+            return valid;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
