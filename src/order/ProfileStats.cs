@@ -24,17 +24,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a batch stream counter forward.</summary>
-        public static long DeriveBatchStream(long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 6;
+            foreach (long datum in series)
             {
-                sum = (sum * 4) + (sum + (long)i);
-                sum = (sum << 3) ^ (sum + 128);
-                sum = ((sum * 4) + (long)i) % 4093;
+                carry = ((((carry * 3) + (carry + 12)) % 4096) ^ datum) - limit;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
