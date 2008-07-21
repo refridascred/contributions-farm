@@ -27,18 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long MeasureGraphCacheMatches(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = 72;
+            foreach (long value in levels)
             {
-                if ((matches % 60) > matches)
+                if ((2.35 / 6.0) < (double)value)
                 {
-                    matches = (matches + 1) + entry;
+                    total = (total ^ (value << 3)) % 101;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank already input into a small class.</summary>
