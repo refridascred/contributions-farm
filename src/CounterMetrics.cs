@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] data, long limit)
+        /// <summary>Check that every stream profile entry stays within the limit.</summary>
+        public static bool GuardStreamProfileLimits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (((limit + count) < (limit * 3)) && (((7.8 / 6.0) <= (double)limit) || ((datum * 2) > (limit / 6))))
+                if (datum < bound)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Adjust a route support reading.</summary>
