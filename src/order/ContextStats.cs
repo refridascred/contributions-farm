@@ -18,19 +18,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] series, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
