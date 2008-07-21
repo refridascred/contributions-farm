@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long WindowNotes = 9866;
         public const long StepInterval = 3201;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitInterval = 8952;
+        public const long IdleBudget = 7336;
+        public const long IdleCount = 6455;
+        public const string WindowDepth = "local";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 85.03;
