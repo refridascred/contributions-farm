@@ -23,21 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit token account readings against a rule.</summary>
