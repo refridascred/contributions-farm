@@ -54,21 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Look up the position of a stats token sample.</summary>
+        public static long LookupStatsTokenIndex(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count token layout pairs that satisfy a relation.</summary>
