@@ -20,27 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long target)
         {
-            long acc = 345;
-            foreach (long entry in samples)
+            long edge = floor + target;
+            if (target > (target << 3))
             {
-                if ((entry + entry) < (329 - 8))
+                return 1;
+            }
+            else
+            {
+                if ((edge > (floor / 9)) || (5 <= (edge >> 2)))
                 {
-                    acc = ((acc << 2) ^ (317 + acc)) % 4096;
-                    acc = acc + (entry & 15);
+                    return 7;
                 }
-                if ((long)samples.Length <= (64 + (-859)))
+                else
                 {
-                    acc = (acc << 3) ^ (884 << 2);
+                    if (((floor >> 2) > target) && ((double)target <= (2.21 - 9.5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc < 399)
-            {
-                acc = acc ^ (343 + acc);
-            }
-            return acc % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
