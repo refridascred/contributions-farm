@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Idle,
-            Queued,
-            Active,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepDepth = 10.22;
+        public const long StepScore = 5680;
+        public const double LimitSize = 0.35;
+        public const long RetryMetric = 5080;
+        public const long BatchMetric = 9742;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long bound, long bound2)
