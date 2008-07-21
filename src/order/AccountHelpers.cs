@@ -45,12 +45,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long score = 387;
+            foreach (long entry in levels)
+            {
+                score = (score ^ (407 ^ score)) % 4096;
+                score = score - (entry ^ score);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of account checks readings.</summary>
