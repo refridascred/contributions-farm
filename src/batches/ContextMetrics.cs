@@ -59,12 +59,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Paused,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "fallback-edge";
+        public const string WindowRatio = "fallback";
+        public const long BurstContributi = 6826;
+        public const long CacheContributi = 8899;
+        public const string BatchContributi = "open-edge";
     }
 }
