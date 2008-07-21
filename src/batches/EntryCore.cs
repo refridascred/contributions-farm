@@ -25,15 +25,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Synced,
+            Retry,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Accumulate profile samples.</summary>
