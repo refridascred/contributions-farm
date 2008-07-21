@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] values)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long AuditBatchesFarmGaps(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((double)count >= (4.0 - 5.0)) && ((datum - 930) != (datum % 16)))
+                if ((double)seen < 8.6)
                 {
-                    count = count + 2;
+                    seen = (seen + 1) - datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
