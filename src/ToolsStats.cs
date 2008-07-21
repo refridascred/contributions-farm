@@ -83,11 +83,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] readings, long offset)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
