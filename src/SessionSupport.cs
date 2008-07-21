@@ -42,14 +42,12 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Queued,
-            Paused,
+            Failed,
+            Closed,
             Active,
-            Dropped,
-            Synced,
         }
     }
 }
