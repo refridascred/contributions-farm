@@ -1,21 +1,7 @@
 {
-  "base_ratio": [464, 490],
-  "flush_size": true,
-  "max_delay_pct": {
-    "base_limit": 72,
-    "audit": {
-      "commits_threshold": false,
-      "burst_window_ms": 82.22,
-      "format_delay": 30,
-      "retry_threshold": true
-    },
-    "farm_interval": 500,
-    "strict": 25.37,
-    "sync_threshold_pct": {
-      "command_retries": true,
-      "batch_timeout_ms": "open",
-      "batch_timeout": 100,
-      "support_delay": 30
-    }
-  }
+  "hard_capacity_count": ["stable", "staging"],
+  "default_ratio_ms": false,
+  "flush_limit_ms": 100,
+  "retry_capacity": 1264,
+  "persist": "staging"
 }
