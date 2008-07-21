@@ -27,22 +27,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long floor)
+        /// <summary>Iterate the batch support series from a seed.</summary>
+        public static long DeriveBatchSupport(long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen - 7) <= (cell / 9))
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark + ((long)i / 9)) % 1000;
+                mark = (mark - offset) % 4096;
+                mark = ((mark << 2) ^ (mark + offset)) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
