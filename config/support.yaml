@@ -1,16 +1,8 @@
 # support settings
-poll_threshold: 13
-poll_window_count:
-  - edge
-  - edge
+strict: local
+min_ttl_s: open
+flush_size: 4677
+base_window: 45.45
+hard_interval:
   - open
-cache_size:
-  idle_depth: false
-  max_window: 70.64
-  enabled: 25.13
-  dry_run:
-    - 413
-    - 331
-    - 497
-    - 261
-  layout_window: 39.94
+  - latest
