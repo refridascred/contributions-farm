@@ -1,18 +1,30 @@
 # support settings
-default_window_s:
-  poll_limit_s: local
-  token_ttl: 6.0
-  notes_ttl: 3880
-strict:
-  - 463
-  - 474
-  - 252
-  - 139
-schema_ttl: 60
-soft_limit:
-  - blue
-  - cached
-  - legacy
-  - cached
-base_threshold_s: 8636
-entry_size: 250
+soft_size: 9387
+sync_delay: 41.98
+compress:
+  cache_size_s:
+    - local
+    - latest
+    - fallback
+  buffer_size: 37.65
+  record_depth:
+    cache_threshold:
+      - 328
+      - 145
+    hard_delay_s:
+      - 380
+      - 205
+    compress:
+      - strict
+      - local
+      - legacy
+      - staging
+  compress: open
+  default_ratio_count:
+    strict: 76.07
+    support_delay:
+      - 122
+      - 458
+    hard_limit: green
+    default_limit: blue
+  default_ttl_count: 9202
