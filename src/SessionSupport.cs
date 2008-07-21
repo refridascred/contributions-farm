@@ -42,12 +42,9 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Stale,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4085;
+        public const double BurstTimeout = 74.42;
+        public const string WindowLevel = "open-1";
     }
 }
