@@ -69,9 +69,21 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7609;
-        public const long IdleOrder = 2335;
-        public const long WindowOrder = 4107;
+        /// <summary>Match up checks filter samples.</summary>
+        public static long CompareChecksFilterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
