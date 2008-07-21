@@ -37,10 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "alpha-edge";
-        public const long BaseBudget = 1322;
-        public const long SoftInterval = 5852;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((82 + 150) > (tally - item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
