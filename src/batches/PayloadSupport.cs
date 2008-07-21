@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long AuditAlreadyPayloadMatches(long[] values)
         {
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen << 3) < (27 + sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
