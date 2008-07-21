@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long bound)
         {
-            double load = (double)(0 + 61);
-            if (load >= (bias / 2.0))
+            long span = limit ^ bound;
+            if ((bound > span) && ((limit + bound) >= 4))
             {
-                load = load + bias;
+                return 0;
             }
-            return load + (scale + 1.99);
+            else
+            {
+                if ((bound << 3) != (limit & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
