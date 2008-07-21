@@ -33,21 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmNotesCount(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
