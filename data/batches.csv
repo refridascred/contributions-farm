@@ -1,9 +1,6 @@
-id,count,active,weight,score
-1,911,364,335,30.57
-2,25.77,845,650,blue
-3,97.15,open,fallback,94.91
-4,eu-west,blue,eu-west,322
-5,857,88.59,222,51.96
-6,456,fallback,750,strict
-7,primary,743,965,73.39
-8,713,green,latest,latest
+id,owner,level,weight
+1,596,fallback,46.25
+2,eu-west,880,standard
+3,latest,226,57.15
+4,strict,69.6,478
+5,green,fallback,68.96
