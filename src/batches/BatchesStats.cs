@@ -46,16 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series, long origin)
-        {
-            long mix = 524;
-            foreach (long entry in series)
-            {
-                mix = (mix - origin) ^ entry;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWidth = 70.52;
+        public const long CacheCount = 3218;
+        public const long BatchWindow = 4073;
 
         /// <summary>Accumulate format commits samples.</summary>
         public static long DigestFormatCommits(long[] levels)
