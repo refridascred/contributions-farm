@@ -29,13 +29,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                score = ((score << 3) ^ (bound / 2)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
             return score;
         }
