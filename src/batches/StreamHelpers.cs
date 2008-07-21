@@ -86,15 +86,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long mark = 127;
-            foreach (long datum in values)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark ^ datum) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return anchor;
         }
     }
 }
