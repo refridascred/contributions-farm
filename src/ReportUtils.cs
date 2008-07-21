@@ -53,16 +53,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = 4;
-            foreach (long value in series)
-            {
-                total = (((total * 4) + (origin & 63)) % 65521) - value;
-                total = (total - (22 >> 2)) % 255;
-            }
-            return total;
+            Retry,
+            Done,
+            Draft,
         }
     }
 }
