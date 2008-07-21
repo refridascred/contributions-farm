@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowBudget = 79.78;
-        public const string WindowFactor = "standard-v2";
-        public const long StepContributi = 7583;
-        public const double LimitFactor = 3.04;
-        public const string IdleContributi = "legacy";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] data, long origin)
