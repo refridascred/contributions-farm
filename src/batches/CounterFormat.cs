@@ -19,10 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 3458;
-        public const long BurstRoute = 4424;
-        public const long MaxRatio = 3420;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Retry,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] readings)
