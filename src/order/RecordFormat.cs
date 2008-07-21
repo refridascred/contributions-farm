@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Failed,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "local-1";
+        public const long CacheScore = 5678;
+        public const string CacheLevel = "alpha";
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
         public static long RollBatchesProfile(long origin)
