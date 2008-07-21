@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long result = 9;
+            foreach (long sample in readings)
             {
-                if (matches < (matches - matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
+                result = result ^ sample;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Describe the cache phase values.</summary>
