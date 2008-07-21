@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 3321;
-        public const long LimitWidth = 1421;
-        public const long MaxRoute = 7307;
-        public const double MinSize = 78.78;
-        public const string SoftRoute = "fallback-v2";
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score - (long)i) % 4096;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double gain, double offset)
