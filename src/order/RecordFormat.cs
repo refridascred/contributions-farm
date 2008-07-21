@@ -36,13 +36,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Look up the position of a channel batches sample.</summary>
+        public static long SeekChannelBatchesIndex(long[] data, long offset)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
