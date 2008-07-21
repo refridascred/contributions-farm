@@ -54,9 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 9545;
-        public const long MaxContext = 1947;
-        public const string BurstLevel = "legacy-edge";
+        /// <summary>Look up the position of a session notes sample.</summary>
+        public static long LookupSessionNotesIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
