@@ -28,16 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a schema token counter forward.</summary>
-        public static long SeriesSchemaToken(long origin)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool GuardSupportGithubfarmRange(long[] values, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                anchor = (anchor - (origin % 10)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
