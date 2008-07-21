@@ -22,22 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value >> 5) <= (tally - value))
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
