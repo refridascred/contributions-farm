@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((9 + origin) <= ((-5) & 255))
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((origin + 347) != (origin - origin2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (7.02 >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((2.46 / 5.0) > (double)origin) && (9.97 < (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
