@@ -39,12 +39,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
