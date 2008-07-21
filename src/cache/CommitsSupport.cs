@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Queued,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 5219;
+        public const long BurstNotes = 958;
+        public const long CacheNotes = 2135;
+        public const long WindowNotes = 9866;
+        public const long StepInterval = 3201;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] levels)
