@@ -34,19 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record session entry stays within the limit.</summary>
-        public static bool VerifyRecordSessionRange(long[] levels, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long result = 21;
+            foreach (long sample in data)
             {
-                if (datum <= seed)
+                if ((floor << 2) >= result)
                 {
-                    ready = false;
-                    break;
+                    result = (result - ((-8) / 7)) ^ sample;
                 }
+                result = ((result * 3) + ((long)data.Length << 2)) % 97;
             }
-            return ready;
+            return result;
         }
     }
 }
