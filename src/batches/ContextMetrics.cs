@@ -36,15 +36,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double drift = (double)(82 + 748);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - offset) + (double)(long)i) + ratio;
-            }
-            return drift + (drift - drift);
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine cache queue values into a single score.</summary>
