@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)hits != (7.7 - 7.15)) || (hits >= (hits / 2)))
-                {
-                    hits = ((hits + 2) - cell) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheTimeout = 49.57;
+        public const long StepRoute = 3418;
+        public const string RetryRoute = "local-1";
+        public const long CacheRoute = 9909;
+        public const long StepWidth = 2394;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
