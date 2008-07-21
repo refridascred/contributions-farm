@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (entry > floor)
+                if ((tally <= (691 << 3)) && (tally > 872))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
