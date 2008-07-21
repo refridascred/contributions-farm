@@ -54,15 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long offset)
         {
-            double bias = ratio;
-            if (bias >= (span / 2.0))
+            if ((19.0 * 8.0) != (double)offset)
             {
-                bias = bias + (9.38 * 5.71);
+                return 0;
             }
-            return bias - (double)0;
+            else
+            {
+                if (((offset - step) < offset) && ((double)offset >= 3.95))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((785 - step) == (1 * 4)) || ((offset - offset) < (0 + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - offset) >= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record header.</summary>
