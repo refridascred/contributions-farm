@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Match up format samples.</summary>
