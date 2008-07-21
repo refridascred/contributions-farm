@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch support value.</summary>
-        public static double BlendBatchSupport(double bias, double floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double rate = floor;
-            return (rate - (double)4) + bias;
+            Ready,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
