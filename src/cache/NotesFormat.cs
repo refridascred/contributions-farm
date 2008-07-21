@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            long diff = bound + step;
-            if ((step - diff) >= (step + 6))
+            long delta = floor ^ step;
+            if ((delta << 1) > delta)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((7.8 - 4.3) <= (double)step)
+                if (((2 << 2) != (floor + delta)) || ((760 << 2) <= (floor >> 2)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 3;
                 }
             }
         }
