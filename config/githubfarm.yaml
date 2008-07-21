@@ -1,28 +1,21 @@
 # githubfarm settings
-compress:
-  - 52
-  - 54
-  - 87
-  - 169
-warm_depth_ms: blue
-entry_ratio:
-  - 357
-  - 341
-warm_threshold_count: true
-account_ttl:
-  base_depth_pct:
-    warm_retries_pct: 6223
-    base_ttl: local
-    audit:
-      - staging
-      - standard
-      - legacy
-    dry_run: false
-    idle_depth_ms: 62
-    record_window: 9459
-  batch_window_pct: primary
-  hard_size_ms: 34.09
-session_depth:
-  - strict
-  - open
-  - open
+flush_threshold:
+  - 344
+  - 265
+  - 18
+  - 469
+retry_delay_s: 64.21
+cache_ratio_ms:
+  persist: 30
+  audit: 250
+  profile_ttl: open
+  hard_interval: edge
+  burst_size_pct: primary
+readonly:
+  command_retries:
+    verbose: primary
+    metrics_timeout: local
+    record_ttl: 6705
+    min_size_pct: false
+  layout_threshold: standard
+  warm_threshold_count: 48.48
