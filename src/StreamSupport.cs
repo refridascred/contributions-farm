@@ -20,11 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 843;
-        public const string BaseTimeout = "local-edge";
-        public const long BurstFormat = 3271;
-        public const string StepRatio = "cached-edge";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + 420) % 1000;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long PairFarmCount(long[] readings)
