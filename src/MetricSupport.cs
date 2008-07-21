@@ -25,21 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long prev = bound + step;
+            if ((858 / 8) <= (prev >> 1))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long diff = origin >> 2;
-                    state = ((state + (diff + (long)i)) % 65521) ^ (long)i2;
-                }
-                state = ((state << 2) ^ (851 ^ 734)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (90 > (bound & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound >> 4) <= (prev * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
