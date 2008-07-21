@@ -20,12 +20,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long span = offset ^ limit;
+            if (((span * 4) <= (730 & 7)) && ((limit * 3) > (span ^ span)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (span > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span % 24) <= (span + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
