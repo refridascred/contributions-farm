@@ -33,10 +33,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryRatio = 49.86;
-        public const string LimitCluster = "stable-v2";
-        public const string StepTimeout = "legacy-edge";
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardCluster = 5397;
