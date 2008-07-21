@@ -68,11 +68,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 4.12;
-        public const long LimitWidth = 793;
-        public const long BaseScore = 2483;
-        public const double WindowInterval = 65.59;
+        /// <summary>Rank counter farm input into a small class.</summary>
+        public static long GradeCounterFarm(long limit, long offset)
+        {
+            if ((0 % 8) != (limit & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit == (double)4)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((11.0 <= (double)limit) || ((offset - 31) >= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] items, long limit)
