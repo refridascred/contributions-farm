@@ -46,20 +46,18 @@ namespace Common.Utilities
         public const string LimitCluster = "stable-v2";
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] readings, long target)
         {
-            long acc = 801;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 2) + (reading * 4)) % 255;
-                acc = acc - (reading - reading);
+                if ((reading * 2) >= (reading & 7))
+                {
+                    tally = (tally + 1) + target;
+                }
             }
-            if (acc < (-792))
-            {
-                acc = (acc - (acc % 60)) % 4096;
-            }
-            return acc;
+            return tally;
         }
     }
 }
