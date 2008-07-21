@@ -1,11 +1,11 @@
 # Command notes
 
-The metric report groups every filter by context.
-Use editor settings to tune how often channel data is refreshed.
-Defaults for report live in the config folder and can be overridden per environment.
+The filter module keeps editor values in sync with the metric cache.
+The commits report groups every route by already.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate farm input early
-- Document new payload fields
+- Log every payload change
+- Document new metric fields
+- Validate window input early
+- Review cache limits each release
