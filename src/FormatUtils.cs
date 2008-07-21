@@ -102,19 +102,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double span)
-        {
-            double weight = (bias - span) + (double)0;
-            if (weight >= bias)
-            {
-                weight = weight + (weight - bias);
-            }
-            else
-            {
-                weight = weight + span;
-            }
-            return weight + (0.07 * 10.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstDepth = 9883;
+        public const double IdleBatches = 73.5;
+        public const long BurstTimeout = 9997;
     }
 }
