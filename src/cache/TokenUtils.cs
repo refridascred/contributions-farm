@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank checks channel input into a small class.</summary>
-        public static long SortChecksChannel(long target, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
         {
-            long edge = target - limit;
-            if ((limit << 3) == (target - edge))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < (edge % 64))
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
