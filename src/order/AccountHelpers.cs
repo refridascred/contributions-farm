@@ -19,26 +19,20 @@ namespace Common.Utilities
         public const string DefaultCount = "legacy-1";
         public const long RetryInterval = 5494;
 
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long FoldMetricsRoute(long[] values, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            long total = 4;
-            foreach (long cell in values)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)cell < (7.14 + 3.1)) || ((2.94 - 6.62) >= (double)cell))
+                if ((long)i != (floor * 5))
                 {
-                    total = (((total << 2) ^ (9 >> 4)) % 101) - seed;
+                    carry = (carry << 3) ^ carry;
                 }
-                else
-                {
-                    total = ((total << 3) ^ 2) % 1000;
-                }
+                carry = (carry - (carry * 2)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (total < 40)
-            {
-                total = total - total;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the checks kind values.</summary>
