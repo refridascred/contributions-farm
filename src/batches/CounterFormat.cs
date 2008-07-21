@@ -29,39 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long step2 = step + seed;
-            if ((double)step2 != (3.7 * 11.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ seed) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ step2) != (45 + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - 5) <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Idle,
+            Closed,
+            Locked,
         }
     }
 }
