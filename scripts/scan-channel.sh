@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=305
+CHANNEL_LIMIT=390
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
