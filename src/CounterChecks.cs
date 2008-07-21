@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const double SoftChecks = 6.1;
         public const long CacheChecks = 8608;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a window stats.</summary>
