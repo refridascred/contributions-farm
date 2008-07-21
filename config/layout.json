@@ -1,16 +1,17 @@
 {
-  "hard_depth_pct": 81,
-  "burst_depth_pct": 687,
-  "verbose": 500,
-  "graph_size": {
-    "compress": 7564,
-    "dry_run": 31,
-    "warm_delay_s": true,
-    "hard_interval_count": {
-      "min_ttl": "eu-west",
-      "hard_ttl": "primary",
-      "idle_retries": true,
-      "notes_delay": 500
-    }
-  }
+  "sync_size_s": 1420,
+  "already_timeout": ["edge", "open"],
+  "retry_capacity_ms": {
+    "default_threshold_pct": 8153,
+    "idle_depth_ms": {
+      "default_timeout": false,
+      "base_delay": true,
+      "retry_ratio_count": "staging",
+      "compress": 6.33,
+      "queue_ratio": 60,
+      "default_threshold_ms": false
+    },
+    "dry_run": true
+  },
+  "max_threshold_ms": "green"
 }
