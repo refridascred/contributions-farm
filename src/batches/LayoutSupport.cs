@@ -68,17 +68,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session filter entry that matches the target.</summary>
-        public static long LocateSessionFilterIndex(long[] readings, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
