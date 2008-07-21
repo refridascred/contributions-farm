@@ -1,10 +1,18 @@
 {
-  "filter_threshold": false,
-  "warm_size_pct": 14.31,
-  "flush_size_count": [70, 241, 313],
-  "sync_size": {
-    "sync_ratio_pct": [46, 402, 66, 250],
-    "default_ttl_pct": 7443,
-    "burst_threshold_pct": ["primary", "strict", "blue"]
-  }
+  "order_delay": {
+    "persist": 2,
+    "notes_threshold": 1,
+    "cache_depth_count": 3488
+  },
+  "compress": {
+    "context_ttl": "fallback",
+    "min_interval": [149, 497],
+    "hard_depth": [26, 78],
+    "queue_depth": 1087,
+    "batch_timeout": "local"
+  },
+  "retry_window": 74,
+  "default_interval": 250,
+  "sync_depth_count": [173, 346, 480, 395],
+  "graph_size": "cached"
 }
