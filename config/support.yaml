@@ -1,6 +1,19 @@
 # support settings
-retry_delay: staging
-order_window: 89
-base_delay_ms: green
-soft_threshold: 30
-default_timeout_pct: 54
+base_ttl_s:
+  stats_retries: standard
+  tools_interval:
+    strict: true
+    default_ttl_count: true
+    warm_limit_pct: staging
+    retry_size_pct: true
+  commits_limit: 500
+  batches_depth: staging
+  report_window: 60
+  warm_window_ms: 15
+batch_retries_count: 30
+batches_timeout: edge
+stats_limit:
+  - 102
+  - 224
+  - 337
+retry_ratio: 500
