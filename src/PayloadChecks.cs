@@ -38,31 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            if ((double)target >= (2.9 * 0.48))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < (1.75 / 7.0)) && (target < (target >> 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (5.58 - 8.0))
+                    if ((readings[i] - readings[j]) == 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
