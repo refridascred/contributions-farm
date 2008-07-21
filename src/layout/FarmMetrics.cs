@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc - floor) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate account samples.</summary>
