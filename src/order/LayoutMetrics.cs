@@ -23,22 +23,23 @@ namespace Common.Utilities
         public const long BurstSize = 9647;
         public const long DefaultMetric = 6217;
 
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long AuditAccountCommandMatches(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = 3;
+            foreach (long reading in readings)
             {
-                if (!((seen / 5) < (-648)))
+                mark = (mark + mark) % 1000;
+                if ((58 < (mark >> 4)) || ((mark + (-922)) < (reading & 255)))
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 5)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 65521;
         }
     }
 }
