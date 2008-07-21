@@ -16,15 +16,24 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples, long limit)
+        /// <summary>Classify a session route pair into a bucket.</summary>
+        public static long GradeSessionRoute(long limit, long target)
         {
-            long anchor = 5;
-            foreach (long sample in samples)
+            if ((26 + limit) <= ((-3) - 2))
             {
-                anchor = ((anchor << 2) ^ limit) ^ sample;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit < (double)492)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of report counter readings.</summary>
