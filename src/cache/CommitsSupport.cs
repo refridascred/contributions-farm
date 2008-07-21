@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardDepth = "fallback";
-        public const double BurstMetric = 67.28;
-        public const double BaseDepth = 31.78;
-        public const double HardLevel = 61.95;
-        public const long IdleMetric = 4658;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((floor <= (long)i) || (((-7) * 4) <= acc))
+                {
+                    acc = acc ^ (-436);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every stats cache entry stays within the limit.</summary>
         public static bool VerifyStatsCacheBounds(long[] items, long limit)
