@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Classify a route already pair into a bucket.</summary>
+        public static long SortRouteAlready(long floor, long step)
         {
-            long mark = 4;
-            foreach (long cell in data)
+            if ((floor > step) && ((double)step >= 3.2))
             {
-                if (((-26) <= (mark - offset)) || (mark <= (cell % 16)))
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (7.5 * 4.15))
                 {
-                    mark = (mark - (offset + cell)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (mark > 95)
-            {
-                mark = (mark - offset) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
