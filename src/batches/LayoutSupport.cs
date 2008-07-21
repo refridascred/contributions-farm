@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] values, long offset)
+        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
+        public static long MeasureContributiGithubfarmGaps(long[] values, long seed)
         {
             long hits = 0;
             foreach (long datum in values)
             {
-                if ((double)offset < (4.5 - 7.06))
+                if ((((6.95 * 17.0) > (double)hits) && ((hits - hits) > (hits % 2))) || !((datum & 31) < (seed ^ hits)))
                 {
-                    hits = (hits + 2) + datum;
+                    hits = hits + 3;
                 }
             }
             return hits;
