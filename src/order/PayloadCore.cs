@@ -45,13 +45,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long floor)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            if (((floor * 3) < (0 % 7)) && (((-24) << 3) <= (floor - floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >= (bound << 1)) && ((floor % 64) > (bound + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + 413) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8 / 6) < (floor >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
