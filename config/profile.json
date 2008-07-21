@@ -1,5 +1,5 @@
 {
-  "hard_delay_s": false,
-  "verbose": 65.74,
-  "audit": "green"
+  "editor_ratio": ["legacy", "edge"],
+  "audit": "cached",
+  "payload_size": "edge"
 }
