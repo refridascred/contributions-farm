@@ -55,18 +55,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route already readings against a rule.</summary>
-        public static long MeasureRouteAlreadyMatches(long[] samples, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long offset, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if (((953 + offset) >= (step << 1)) || ((step + 0) < (offset - 384)))
             {
-                if (!(((sample / 8) >= (target & 63)) && ((count ^ count) == (84 - sample))))
+                return 0;
+            }
+            else
+            {
+                if (((double)offset != (8.0 / 4.0)) || (offset <= step))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step == (4.0 - 3.29))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
