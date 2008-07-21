@@ -13,18 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Look up the position of a editor cache sample.</summary>
+        public static long LocateEditorCacheIndex(long[] values, long offset)
         {
-            long total = 56;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((7 + cell) < cell))
+                if (values[i] <= offset)
                 {
-                    total = ((total * 4) + (cell - 6)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
