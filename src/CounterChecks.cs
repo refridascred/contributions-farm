@@ -31,11 +31,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitInterval = 3768;
-        public const string MaxScore = "primary-edge";
-        public const double SoftChecks = 6.1;
-        public const long CacheChecks = 8608;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
