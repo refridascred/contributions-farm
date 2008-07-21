@@ -49,15 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long step)
-        {
-            long acc = 877;
-            foreach (long entry in samples)
-            {
-                acc = ((acc ^ ((-8) - step)) % 101) ^ entry;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 2900;
+        public const string MaxTimeout = "open-1";
+        public const long MaxBudget = 4268;
+        public const double MaxPayload = 20.21;
     }
 }
