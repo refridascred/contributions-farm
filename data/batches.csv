@@ -1,6 +1,9 @@
-id,label,token,score
-1,green,393,97.46
-2,62.19,edge,125
-3,97.97,125,194
-4,465,18.65,753
-5,legacy,16.94,cached
+id,count,active,weight,score
+1,911,364,335,30.57
+2,25.77,845,650,blue
+3,97.15,open,fallback,94.91
+4,eu-west,blue,eu-west,322
+5,857,88.59,222,51.96
+6,456,fallback,750,strict
+7,primary,743,965,73.39
+8,713,green,latest,latest
