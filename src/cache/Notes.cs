@@ -39,18 +39,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit githubfarm channel readings against a rule.</summary>
-        public static long MeasureGithubfarmChannelHits(long[] series)
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long CombineStatsSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long reading in data)
             {
-                if (((value - matches) < (matches - value)) && !(value <= (value / 4)))
+                if (((score & 15) < (900 / 8)) && ((reading + score) >= (score >> 4)))
                 {
-                    matches = matches + 2;
+                    score = score ^ reading;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
