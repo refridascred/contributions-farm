@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long limit)
+        /// <summary>Count the metric route entries that pass the check.</summary>
+        public static long TallyMetricRouteGaps(long[] values)
         {
-            long result = 92;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((datum + result) > (result & 15))
+                if ((tally + tally) != (reading ^ tally))
                 {
-                    result = (result << 2) ^ (limit % 16);
+                    tally = tally + 1;
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Hold a stats entry.</summary>
