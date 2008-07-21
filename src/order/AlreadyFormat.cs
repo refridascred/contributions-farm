@@ -70,15 +70,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + floor;
+            Draft,
+            Done,
+            Active,
         }
     }
 }
