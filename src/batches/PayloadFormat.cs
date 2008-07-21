@@ -36,30 +36,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long offset)
         {
-            long offset = limit + step;
-            if (!((offset % 100) != (step >> 4)))
+            long bound2 = bound ^ offset;
+            if (!((double)offset >= (double)bound2))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (offset < (limit * 3))
+                if ((bound << 1) == (bound ^ bound))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((4 % 64) != (offset + 5)) || ((double)offset <= (0.9 / 2.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
