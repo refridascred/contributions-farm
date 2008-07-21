@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every stream profile entry stays within the limit.</summary>
-        public static bool GuardStreamProfileLimits(long[] values, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double weight2 = (weight / 4.0) * 0.2;
+            if (weight2 >= (double)67)
             {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = weight2 - (double)232;
             }
-            return flag;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + bias) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Adjust a route support reading.</summary>
