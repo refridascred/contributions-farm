@@ -48,21 +48,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Iterate the farm cache series from a seed.</summary>
+        public static long IterateFarmCache(long target)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                total = (total * 3) + (target + target);
+                if (((446 - target) >= (target - (long)i)) && (((long)i + target) <= 81))
                 {
-                    total = ((total + (988 + total)) % 65521) - (long)i2;
+                    total = total ^ (total - total);
                 }
-                if ((-859) > (floor - 2))
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                total = (total - (long)i) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
             }
             return total;
         }
