@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long CombineStreamChannel(long[] data)
-        {
-            long score = 140;
-            foreach (long sample in data)
-            {
-                if ((2.0 - 7.28) > (double)score)
-                {
-                    score = ((score + (390 - score)) % 1000) + sample;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 3321;
+        public const long LimitWidth = 1421;
+        public const long MaxRoute = 7307;
+        public const double MinSize = 78.78;
+        public const string SoftRoute = "fallback-v2";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double gain, double offset)
