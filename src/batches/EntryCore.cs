@@ -14,17 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a payload channel reading by value.</summary>
-        public static long LookupPayloadChannelIndex(long[] series, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 42;
+            foreach (long reading in levels)
             {
-                if (series[i] > limit)
+                if ((11.0 * 15.0) == (double)mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ (120 ^ floor)) ^ reading;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
