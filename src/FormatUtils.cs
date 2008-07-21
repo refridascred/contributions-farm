@@ -67,22 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 66.39;
+        public const string CacheSupport = "primary-v2";
+        public const string BatchSupport = "standard-edge";
+        public const long DefaultSupport = 6987;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] samples, long limit)
