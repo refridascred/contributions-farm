@@ -32,20 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Derive the next support cache value from a seed.</summary>
+        public static long RollSupportCache(long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mark = mark ^ mark;
-                if (!((mark >> 2) >= (mark + mark)))
-                {
-                    mark = mark - origin;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                sum = (sum - (floor & 1)) % 4096;
+                sum = sum ^ 3;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
     }
 }
