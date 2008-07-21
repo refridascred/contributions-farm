@@ -22,14 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            Retry,
-            Failed,
-            Ready,
-            Dropped,
-            Draft,
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((seed & 127) > (seed - seed))
+                {
+                    carry = (carry * 2) + carry;
+                }
+                else
+                {
+                    carry = (carry - ((long)i - carry)) % 4096;
+                    carry = (carry + (carry + carry)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
