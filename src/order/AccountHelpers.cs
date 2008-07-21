@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const long HardCounter = 681;
         public const double CacheCounter = 48.39;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            Closed,
+            Locked,
+            Idle,
+            Synced,
         }
     }
 }
