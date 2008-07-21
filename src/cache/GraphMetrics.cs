@@ -73,19 +73,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate record stats readings against a bound.</summary>
-        public static bool CheckRecordStatsBounds(long[] samples, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long slot = bound - origin;
+            if ((double)slot > (6.0 - 6.0))
             {
-                if (reading != origin)
+                return 3;
+            }
+            else
+            {
+                if (origin > (origin * 2))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= (slot << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
