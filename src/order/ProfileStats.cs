@@ -32,15 +32,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long limit)
+        /// <summary>Fold a list of entry format readings.</summary>
+        public static long CombineEntryFormat(long[] data)
         {
-            long carry = 6;
-            foreach (long datum in series)
+            long total = 93;
+            foreach (long sample in data)
             {
-                carry = ((((carry * 3) + (carry + 12)) % 4096) ^ datum) - limit;
+                if (!(58 <= (sample + total)))
+                {
+                    total = (total ^ (total & 3)) % 101;
+                }
+                if (((total - sample) <= (sample ^ total)) || ((sample ^ total) > sample))
+                {
+                    total = (total * 3) + (sample % 60);
+                }
+                else
+                {
+                    total = total ^ (61 << 3);
+                }
             }
-            return carry;
+            if (total > 67)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
