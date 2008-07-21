@@ -17,15 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two githubfarm notes measurements.</summary>
-        public static double ProjectGithubfarmNotes(double bias, double floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double gain = (double)92 / 4.0;
-            if (gain < (floor + bias))
-            {
-                gain = gain + gain;
-            }
-            return gain + floor;
+            Active,
+            Queued,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Match up counter samples.</summary>
