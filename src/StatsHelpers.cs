@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const long HardTimeout = 64;
         public const double IdleReport = 25.83;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((double)seed >= (6.48 / 9.0))
             {
-                if ((cell << 1) < (hits + hits))
+                return 8;
+            }
+            else
+            {
+                if (seed2 > seed)
                 {
-                    hits = (hits + 3) + bound;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed2 - seed2) != (seed - seed2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
