@@ -86,17 +86,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order window reading by value.</summary>
-        public static long LocateOrderWindowIndex(long[] values, long offset)
+        /// <summary>Audit entry metrics readings against a rule.</summary>
+        public static long CountEntryMetricsOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if (((value + 97) < (tally + offset)) || ((offset / 4) >= (tally >> 3)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
