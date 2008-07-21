@@ -25,13 +25,22 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-edge";
         public const long BatchFactor = 4790;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] samples)
         {
-            Retry,
-            Ready,
-            Draft,
-            Locked,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (hits >= ((long)samples.Length & 15))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
