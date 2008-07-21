@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long anchor = 416;
-            foreach (long cell in values)
+            long score = -69;
+            foreach (long entry in items)
             {
-                anchor = anchor - (anchor & 63);
-                anchor = (anchor + anchor) % 101;
-                if (cell <= (anchor >> 5))
+                if (((entry - score) == (score >> 3)) && ((double)entry >= 0.05))
                 {
-                    anchor = (anchor << 2) ^ cell;
+                    score = (score ^ (score << 3)) % 101;
                 }
             }
-            return anchor % 97;
+            if (score > 6)
+            {
+                score = (score * 5) + (score - score);
+            }
+            return score;
         }
 
         /// <summary>Hold a support stats.</summary>
