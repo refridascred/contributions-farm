@@ -55,20 +55,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of layout editor readings.</summary>
-        public static long WeighLayoutEditor(long[] series, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long mark = 15;
-            foreach (long sample in series)
+            long carry = 99;
+            foreach (long reading in readings)
             {
-                mark = ((mark << 2) ^ mark) + target;
-                mark = ((mark * 4) + (sample + sample)) % 65521;
-                if ((double)sample == (7.0 + 6.0))
-                {
-                    mark = (mark << 3) ^ (sample % 3);
-                }
+                carry = (((carry << 3) ^ (carry ^ carry)) % 101) + reading;
             }
-            return mark;
+            if (carry < 347)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every filter profile entry stays within the limit.</summary>
