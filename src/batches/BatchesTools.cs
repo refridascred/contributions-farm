@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long MaxCount = 8293;
         public const long MaxEditor = 295;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long target)
         {
-            long acc = 0;
-            foreach (long reading in series)
+            long mark = 6;
+            foreach (long sample in readings)
             {
-                acc = (acc - (acc - acc)) - reading;
+                mark = (((mark - (mark - mark)) % 4096) ^ sample) + target;
             }
-            if (acc > (-5))
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Describe the already kind values.</summary>
