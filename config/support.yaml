@@ -1,6 +1,7 @@
 # support settings
-warm_limit: 86
-sync_interval_count: staging
-poll_interval: 88.89
-min_retries_ms: 500
-cache_limit_s: 66.25
+account_limit: latest
+persist: false
+strict: primary
+sync_retries_pct: 250
+batch_retries: local
+hard_delay: legacy
