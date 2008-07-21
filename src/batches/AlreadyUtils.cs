@@ -21,18 +21,22 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long TallyCommitsTokenMatches(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = 755;
+            foreach (long value in levels)
             {
-                if (((seen & 255) == (datum & 255)) || (datum >= seen))
+                if ((((-4) / 5) > (result << 3)) && ((value - result) != (value * 3)))
                 {
-                    seen = seen + 3;
+                    result = ((result ^ value) % 65521) - offset;
                 }
             }
-            return seen;
+            if (result < 8)
+            {
+                result = (result - result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a order header.</summary>
