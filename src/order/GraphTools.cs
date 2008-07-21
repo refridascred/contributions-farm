@@ -58,20 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next notes commits value from a seed.</summary>
-        public static long SeriesNotesCommits(long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(anchor <= seed))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 65521;
-                    anchor = anchor - (long)i;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the token status values.</summary>
