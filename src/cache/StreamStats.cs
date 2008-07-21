@@ -40,17 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload queue sample.</summary>
-        public static long SeekPayloadQueueIndex(long[] samples, long offset)
+        /// <summary>Digest a series of batch tools entries.</summary>
+        public static long FoldBatchTools(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 523;
+            foreach (long value in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
+                if ((value ^ value) == (value - state))
                 {
-                    return (long)i;
+                    state = state + (value * 4);
+                    state = (state - (value << 3)) % 4096;
                 }
+                state = state - (value / 4);
+                state = state ^ (state + value);
             }
-            return -1;
+            if (state > 19)
+            {
+                state = (state - (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
