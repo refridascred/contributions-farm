@@ -107,14 +107,20 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long step)
         {
-            Failed,
-            Idle,
-            Draft,
-            Queued,
-            Done,
+            long score = 704;
+            foreach (long sample in levels)
+            {
+                score = ((score + (sample << 2)) % 101) - step;
+                if (((double)score <= (6.3 + 4.9)) && ((sample + score) <= score))
+                {
+                    break;
+                }
+                score = score - 133;
+            }
+            return score;
         }
     }
 }
