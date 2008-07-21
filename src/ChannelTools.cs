@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const double MaxSupport = 14.8;
         public const long HardSupport = 6723;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(2 - 282);
+            if (gain < span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (double)55;
             }
-            return matches;
+            return gain - bias;
         }
     }
 }
