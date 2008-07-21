@@ -20,10 +20,12 @@ namespace Common.Utilities
             return rate + (bias2 * 0.8);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstSize = "staging-v2";
-        public const long RetryCache = 3923;
-        public const long RetryInterval = 8344;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
