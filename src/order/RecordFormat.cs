@@ -26,26 +26,38 @@ namespace Common.Utilities
         public const long CacheRoute = 9909;
         public const long StepWidth = 2394;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long target)
         {
-            long result = 9;
-            foreach (long cell in levels)
+            if ((8.12 - 7.37) > (double)offset)
             {
-                if ((double)cell < (5.0 + 8.8))
+                return 1;
+            }
+            else
+            {
+                if ((offset % 60) < (target + offset))
                 {
-                    result = ((result - ((long)levels.Length << 3)) % 4096) - target;
+                    return 6;
                 }
                 else
                 {
-                    result = (result ^ (cell >> 1)) % 1000;
+                    if (target >= (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) >= (756 / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 0)
-            {
-                result = ((result << 3) ^ (result % 7)) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
