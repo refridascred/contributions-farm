@@ -38,19 +38,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool ValidateTokenProfileLimits(long[] series, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
