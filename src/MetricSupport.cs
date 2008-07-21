@@ -12,32 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long bound = target - seed;
-            if (9 > (seed >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target >= (target / 8)) || ((1.82 + 8.6) < (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 2) <= 95)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
