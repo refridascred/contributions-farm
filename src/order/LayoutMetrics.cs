@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long AuditProfileToolsHits(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 2) + (origin * 2)) % 101;
-                result = ((result * 3) + (long)i) % 1000;
+                if (58 > value)
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a route reading.</summary>
