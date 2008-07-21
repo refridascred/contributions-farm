@@ -13,15 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double ratio, double span)
+        /// <summary>Check that every stream schema entry stays within the limit.</summary>
+        public static bool CheckStreamSchemaRange(long[] values, long limit)
         {
-            double drift = (span + span) / 5.0;
-            if (drift >= (span / 8.0))
+            bool found = true;
+            foreach (long reading in values)
             {
-                drift = drift - (drift - span);
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - ratio;
+            return found;
         }
 
         /// <summary>Hold a already options.</summary>
