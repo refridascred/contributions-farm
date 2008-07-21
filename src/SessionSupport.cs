@@ -20,24 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            if ((floor - limit) >= floor)
+            double scale = ratio + (bias - 4.2);
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                scale = (scale - ratio) + (double)(long)i;
             }
-            else
-            {
-                if ((floor % 24) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale - bias;
         }
 
         /// <summary>Hold a support summary.</summary>
