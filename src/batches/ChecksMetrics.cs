@@ -38,11 +38,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSize = 639;
-        public const long MinCommits = 269;
-        public const long BaseCommits = 3670;
-        public const double HardCount = 35.96;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
