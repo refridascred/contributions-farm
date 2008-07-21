@@ -39,18 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((tally >> 3) < tally) && (((reading + tally) == (reading >> 2)) || ((reading ^ tally) <= reading)))
-                {
-                    tally = tally + 1;
-                }
+                anchor = anchor ^ ((long)i - 93);
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of order readings.</summary>
