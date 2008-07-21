@@ -63,10 +63,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseWidth = 1112;
-        public const string CacheGraph = "standard-v2";
-        public const string BatchLevel = "staging-1";
-        public const string BatchGraph = "local";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark - mark) ^ (long)i2;
+                    mark = (mark - (origin % 5)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
