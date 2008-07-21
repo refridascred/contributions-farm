@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mark = 4;
-            foreach (long item in levels)
-            {
-                mark = (mark - (long)levels.Length) + item;
-                if ((9.22 / 3.0) < (double)bound)
-                {
-                    mark = (mark + (96 - bound)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (bound % 24)) % 101;
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a editor snapshot.</summary>
