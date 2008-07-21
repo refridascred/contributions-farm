@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long DigestProfileCache(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] levels, long limit)
         {
-            long result = 199;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((-39) >> 3) <= result)
+                if (cell >= (cell / 7))
                 {
-                    result = ((result << 2) ^ (value ^ value)) % 1000;
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result < 0)
-            {
-                result = (result + (result ^ result)) % 255;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Check that every order counter entry stays within the limit.</summary>
