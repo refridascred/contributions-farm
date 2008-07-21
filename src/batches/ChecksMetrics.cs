@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long limit)
+        /// <summary>Combine profile buffer values into a single score.</summary>
+        public static long TallyProfileBuffer(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 45;
+            foreach (long value in values)
             {
-                if (readings[i] == limit)
+                if (((carry ^ (-65)) >= carry) && (((long)values.Length & 255) <= (8 / 3)))
                 {
-                    return (long)i;
+                    carry = (carry + carry) + value;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of queue route readings.</summary>
