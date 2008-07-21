@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score - (long)i) % 4096;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSpan = 9870;
+        public const double HardContext = 70.13;
+        public const string BatchRatio = "local-1";
+        public const long DefaultDepth = 9646;
 
         /// <summary>Rank contributi profile input into a small class.</summary>
         public static long BucketContributiProfile(long seed, long origin)
