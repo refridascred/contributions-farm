@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Validate buffer stream readings against a bound.</summary>
+        public static bool ValidateBufferStreamLimits(long[] samples, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
