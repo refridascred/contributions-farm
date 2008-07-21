@@ -1,5 +1,5 @@
 {
-  "sync_ttl": false,
-  "payload_size": 97.6,
-  "base_capacity_pct": "cached"
+  "idle_retries_count": 3651,
+  "soft_timeout": 30,
+  "base_timeout_s": 1079
 }
