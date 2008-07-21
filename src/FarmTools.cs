@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer stream readings against a bound.</summary>
-        public static bool ValidateBufferStreamLimits(long[] samples, long target)
+        /// <summary>Count support stats pairs that satisfy a relation.</summary>
+        public static long OverlapSupportStatsCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
