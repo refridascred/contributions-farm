@@ -26,12 +26,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            New,
-            Retry,
-            Dropped,
+            long total = 85;
+            foreach (long datum in values)
+            {
+                if (datum >= (total * 3))
+                {
+                    total = ((total << 2) ^ datum) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a contributi options.</summary>
