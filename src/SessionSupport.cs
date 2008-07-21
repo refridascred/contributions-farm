@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double scale = ratio + (bias - 4.2);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - bias;
+            Dropped,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a support summary.</summary>
