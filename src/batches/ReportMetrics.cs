@@ -37,17 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total + ((long)i ^ origin)) % 4096;
+                total = (total - (total - origin)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
