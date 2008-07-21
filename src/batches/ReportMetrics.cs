@@ -37,24 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if (!((5.0 - 8.0) != (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + seed) >= (floor - 66)) && ((double)seed > (4.0 * 3.1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
