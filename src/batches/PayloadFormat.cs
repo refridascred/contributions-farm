@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long CacheCluster = 3027;
         public const string HardSpan = "standard-1";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] series, long step)
+        /// <summary>Compare every pair of batch cluster readings.</summary>
+        public static long MatchBatchClusterCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a account entry.</summary>
