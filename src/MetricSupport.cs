@@ -29,21 +29,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 391;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (value ^ anchor)) ^ (long)i;
+                    anchor = ((anchor << 3) ^ (value - anchor)) % 255;
+                }
+                if ((double)anchor > (16.0 + 7.0))
+                {
+                    anchor = ((anchor * 3) + (anchor ^ origin)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
                 }
             }
-            return hits;
+            if (anchor > 639)
+            {
+                anchor = (anchor + (anchor - anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
