@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
