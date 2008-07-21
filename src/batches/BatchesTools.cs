@@ -35,18 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((bound <= (bound - count)) && ((-19) < ((long)values.Length >> 2))))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 8434;
+        public const double MaxRatio = 3.35;
+        public const string MinQueue = "local-v2";
+        public const long StepSpan = 3293;
+        public const long MinRatio = 5814;
     }
 }
