@@ -24,13 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinLevel = "standard";
+        public const double MinBudget = 30.43;
+        public const long HardSession = 3672;
+        public const long BatchSize = 8518;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
