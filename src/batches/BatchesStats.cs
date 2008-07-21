@@ -48,18 +48,11 @@ namespace Common.Utilities
             return rate - (ratio + rate);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            long total = -3;
-            foreach (long value in readings)
-            {
-                if ((floor >> 5) >= 8)
-                {
-                    total = (total ^ (867 - total)) + value;
-                }
-            }
-            return total;
+            double ratio = (double)(93 ^ 9);
+            return (ratio + rate) + span;
         }
     }
 }
