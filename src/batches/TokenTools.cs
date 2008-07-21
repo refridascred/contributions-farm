@@ -25,19 +25,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
-        public static bool GuardContributiToolsLimits(long[] data, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long limit, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            if ((step - limit) != (step ^ step))
             {
-                if (reading >= origin)
+                return 0;
+            }
+            else
+            {
+                if (0.46 < (double)step)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit % 10) >= limit) && ((limit >> 2) < (limit ^ 667)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
     }
 }
