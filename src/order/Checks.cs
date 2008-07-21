@@ -52,25 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long step)
         {
-            long acc = 699;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ sample;
-                if (sample < ((long)readings.Length << 2))
+                if (values[i] >= step)
                 {
-                    long hits = 11;
-                    acc = (acc + (hits & 7)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (sample + acc)) % 101;
             }
-            if (acc < 460)
-            {
-                acc = (acc << 2) ^ (611 & 1);
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
