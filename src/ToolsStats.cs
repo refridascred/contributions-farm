@@ -34,18 +34,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((hits <= (hits + seed)) && ((seed & 15) != (hits + hits))) || (cell < (cell * 2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
