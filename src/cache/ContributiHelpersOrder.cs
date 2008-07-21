@@ -24,18 +24,13 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Accumulate session support samples.</summary>
-        public static long TallySessionSupport(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = 28;
-            foreach (long entry in values)
-            {
-                if (mark <= (11 >> 5))
-                {
-                    mark = (((mark * 2) + (793 >> 4)) % 65521) - entry;
-                }
-            }
-            return mark;
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
