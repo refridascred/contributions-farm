@@ -39,14 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Find the first stats tools entry that matches the target.</summary>
+        public static long SeekStatsToolsIndex(long[] series, long bound)
         {
-            Retry,
-            Pending,
-            Ready,
-            Idle,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
