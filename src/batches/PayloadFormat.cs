@@ -27,13 +27,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long floor)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long bound = seed - floor;
+            if ((bound + seed) < (floor % 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + seed) > (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + bound) >= (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >= (4 ^ seed)) || ((3.89 / 7.0) != (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
