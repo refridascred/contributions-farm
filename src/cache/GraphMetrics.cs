@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double gain, double offset)
-        {
-            double gain2 = offset;
-            if (gain2 >= gain)
-            {
-                gain2 = gain2 + gain2;
-            }
-            else
-            {
-                gain2 = gain2 + offset;
-            }
-            return gain2 - (double)6;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "open-1";
+        public const long StepTimeout = 583;
+        public const long SoftFactor = 1845;
+        public const long IdleSession = 7647;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryMatches(long[] readings, long seed)
