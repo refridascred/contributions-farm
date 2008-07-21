@@ -42,18 +42,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)value != (0.39 - 13.0))
+                if (((step + 24) < count) && (((count + 3) >= (step & 255)) && ((double)78 <= (double)reading)))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
