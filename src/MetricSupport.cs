@@ -25,24 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if ((seed * 3) == (target - (-30)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 - 8.78) > (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Draft,
+            Closed,
         }
     }
 }
