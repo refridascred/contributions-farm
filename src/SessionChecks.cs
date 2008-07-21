@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Audit support queue readings against a rule.</summary>
+        public static long TallySupportQueueHits(long[] levels)
         {
-            long carry = 83;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry + carry) % 255) ^ datum;
+                if ((seen ^ seen) > (17 % 7))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            if (carry < 1)
-            {
-                carry = (carry * 3) + (carry - carry);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
