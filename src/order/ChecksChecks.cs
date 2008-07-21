@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long carry = 5;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry + 8) % 1000) + (long)i;
-                }
-                if (((carry << 1) != (carry + 29)) && ((double)sample > (5.0 * 9.35)))
-                {
-                    carry = (carry + 791) % 101;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
