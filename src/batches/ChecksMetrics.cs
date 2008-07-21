@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (series[i] <= bound)
+                if ((6.8 / 9.0) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
