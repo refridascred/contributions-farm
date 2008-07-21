@@ -22,32 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long origin)
         {
-            long edge = floor + target;
-            if (target > (target << 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge > (floor / 9)) || (5 <= (edge >> 2)))
+                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor >> 2) > target) && ((double)target <= (2.21 - 9.5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
