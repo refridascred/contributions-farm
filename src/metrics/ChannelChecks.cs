@@ -37,18 +37,27 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] items)
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long TallyOrderGraph(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 6;
+            foreach (long entry in levels)
             {
-                if ((double)hits != (4.95 / 8.0))
+                if (((46 ^ anchor) >= (entry ^ offset)) && ((entry / 9) <= (anchor % 16)))
                 {
-                    hits = (hits + 2) ^ item;
+                    anchor = (anchor ^ ((-9) / 6)) % 4096;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (offset * 5)) % 1000;
+                }
+                anchor = (anchor * 2) + (anchor / 7);
             }
-            return hits;
+            if (anchor < 886)
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 4)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a graph command counter forward.</summary>
