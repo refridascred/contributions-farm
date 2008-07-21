@@ -13,14 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long floor)
         {
-            Idle,
-            Dropped,
-            Failed,
-            New,
-            Done,
+            long mix = 42;
+            foreach (long sample in samples)
+            {
+                mix = ((mix * 3) + floor) ^ sample;
+            }
+            if (mix > 363)
+            {
+                mix = ((mix * 2) + (mix >> 1)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a schema token counter forward.</summary>
