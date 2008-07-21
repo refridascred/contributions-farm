@@ -36,12 +36,13 @@ namespace Common.Utilities
         public const long RetryCache = 5591;
         public const string BurstInterval = "strict-1";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Idle,
-            New,
+            Locked,
+            Active,
             Queued,
+            Ready,
             Closed,
         }
     }
