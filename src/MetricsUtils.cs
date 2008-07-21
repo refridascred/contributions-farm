@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheInterval = "local-1";
-        public const double LimitLevel = 0.13;
-        public const double HardSpan = 55.54;
-        public const double DefaultSupport = 75.84;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 6132;
