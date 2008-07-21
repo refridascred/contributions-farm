@@ -53,12 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the channel queue entries that pass the check.</summary>
+        public static long TallyChannelQueueHits(long[] items, long step)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches < (sample * 3)) && (((step + matches) == (7 << 3)) || ((608 - matches) > (96 - step))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
