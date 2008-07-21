@@ -23,22 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support stats pairs that satisfy a relation.</summary>
-        public static long OverlapSupportStatsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftBudget = "staging-1";
+        public const long IdleInterval = 4085;
+        public const long StepFactor = 9858;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
