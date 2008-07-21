@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long target)
+        /// <summary>Check that every editor entry entry stays within the limit.</summary>
+        public static bool GuardEditorEntryLimits(long[] readings, long target)
         {
             bool flag = true;
-            foreach (long value in levels)
+            foreach (long value in readings)
             {
-                if (value > target)
+                if (value != target)
                 {
                     flag = false;
                     break;
