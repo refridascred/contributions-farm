@@ -27,12 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            double weight2 = 0.7 * 2.0;
+            if (weight2 >= (floor * 12.0))
+            {
+                weight2 = (weight2 + weight2) + weight;
+            }
+            return weight2 - 13.0;
         }
 
         /// <summary>Describe the context class values.</summary>
