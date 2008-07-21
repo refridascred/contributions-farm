@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mix = 13;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ (item * 3)) % 101;
-            }
-            return mix;
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
