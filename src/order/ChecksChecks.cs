@@ -29,24 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long bound, long seed)
+        /// <summary>Measure how many context cluster samples are out of range.</summary>
+        public static long MeasureContextClusterGaps(long[] samples, long bound)
         {
-            if ((6 ^ seed) >= (seed % 24))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound & 3) > (bound * 2)) && (5.97 >= (double)bound))
+                if ((sample + sample) > (sample & 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
     }
 }
