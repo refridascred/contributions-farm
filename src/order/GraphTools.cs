@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 12.14;
-        public const string StepMetrics = "staging-v2";
-        public const long LimitMetrics = 2557;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Idle,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
