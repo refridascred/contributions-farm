@@ -51,19 +51,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long CombineChannelSchema(long[] values)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long result = -2;
-            foreach (long value in values)
-            {
-                result = (result ^ (22 + result)) % 101;
-                if ((result - value) != (value & 63))
-                {
-                    result = (result * 4) + (result % 10);
-                }
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
