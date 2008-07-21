@@ -27,23 +27,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long origin)
         {
-            long sum = 20;
-            foreach (long datum in data)
+            long next = floor - origin;
+            if ((origin / 6) <= origin)
             {
-                sum = (sum - (23 + datum)) % 101;
-                if (((3 - datum) == (sum ^ (long)data.Length)) || ((sum * 4) <= ((long)data.Length - datum)))
+                return 6;
+            }
+            else
+            {
+                if (33 >= (floor + next))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + next) != (floor % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor < (5.9 * 4.7)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum + (sum << 2);
-            }
-            return sum;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
