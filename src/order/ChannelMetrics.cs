@@ -34,20 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] samples, long step)
-        {
-            long result = -50;
-            foreach (long item in samples)
-            {
-                result = ((result * 4) + (item / 9)) + step;
-                result = ((result << 3) ^ (item >> 3)) % 97;
-                if (!(0 <= (item + item)))
-                {
-                    result = (result * 4) + (7 >> 2);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinInterval = "legacy-edge";
+        public const double WindowWidth = 7.13;
+        public const double BurstOrder = 4.4;
+        public const long WindowOrder = 2759;
+        public const long MaxOrder = 1817;
     }
 }
