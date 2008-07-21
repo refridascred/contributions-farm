@@ -34,21 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total << 2) ^ (2 + (long)i)) % 4096;
+                total = ((total << 3) ^ ((long)i + total)) % 255;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
