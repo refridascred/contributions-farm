@@ -40,11 +40,15 @@ namespace Common.Utilities
         public const long DefaultBatches = 8880;
         public const long LimitBatches = 245;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            double mean = (double)(51 & 31);
-            return mean + (offset + ratio);
+            double load = (bias - weight) * 6.32;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load - 6.88)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the editor level values.</summary>
