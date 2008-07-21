@@ -1,6 +1,8 @@
 {
-  "min_threshold": "local",
-  "dry_run": 41.79,
-  "farm_threshold": "edge",
-  "strict": "legacy"
+  "base_ttl_s": 5069,
+  "burst_window_count": "eu-west",
+  "min_limit_s": "stable",
+  "sync_threshold_count": true,
+  "dry_run": "staging",
+  "burst_retries": 82.11
 }
