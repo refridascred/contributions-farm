@@ -1,7 +1,15 @@
 {
-  "poll_retries": "blue",
-  "cache_retries_count": 30,
-  "hard_delay": 522,
-  "poll_timeout_pct": "legacy",
-  "verbose": true
+  "dry_run": "green",
+  "retry_ttl_count": 60,
+  "poll_ratio": "strict",
+  "idle_delay": {
+    "poll_ratio": "local",
+    "counter_interval": 1641,
+    "commits_timeout": {
+      "persist": true,
+      "idle_window_ms": "eu-west",
+      "record_timeout": [289, 441, 225]
+    },
+    "queue_threshold": true
+  }
 }
