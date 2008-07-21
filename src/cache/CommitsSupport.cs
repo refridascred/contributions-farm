@@ -35,11 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Compare every pair of payload checks readings.</summary>
+        public static long OverlapPayloadChecksCount(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
