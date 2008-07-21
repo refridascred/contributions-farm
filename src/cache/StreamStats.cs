@@ -24,19 +24,19 @@ namespace Common.Utilities
             return drift + (ratio / 7.0);
         }
 
-        /// <summary>Digest a series of support order entries.</summary>
-        public static long DigestSupportOrder(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            long acc = -123;
-            foreach (long cell in readings)
+            double bias2 = 8.99;
+            if (bias2 <= (bias2 + 0.4))
             {
-                acc = acc ^ acc;
-                if ((cell + cell) < (acc * 5))
-                {
-                    acc = (acc + (4 >> 5)) % 4096;
-                }
+                bias2 = bias2 + (bias + scale);
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - (2.83 / 5.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
