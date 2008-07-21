@@ -1,25 +1,5 @@
 {
-  "base_window_s": "legacy",
-  "burst_ratio": {
-    "profile_depth": "primary",
-    "cache_size_pct": 85,
-    "batches_interval": 250
-  },
-  "soft_ttl_count": 93,
-  "default_window": [225, 43, 289, 80],
-  "notes_window": {
-    "enabled": true,
-    "sync_delay_count": {
-      "retry_limit_s": ["latest", "green"],
-      "batch_window_count": "fallback",
-      "base_interval": 32.45,
-      "enabled": "standard",
-      "commits_ttl": "staging"
-    },
-    "max_interval": 30,
-    "audit": "strict",
-    "support_capacity": "latest",
-    "hard_interval_pct": 7462
-  },
-  "strict": false
+  "soft_window": "cached",
+  "min_capacity_pct": "primary",
+  "filter_window": 30
 }
