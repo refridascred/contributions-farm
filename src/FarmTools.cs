@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 47.08;
-        public const long CacheInterval = 6159;
-        public const long BaseToken = 2823;
-        public const long BurstToken = 9034;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Active,
+            Failed,
+            Retry,
+            Done,
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] data)
