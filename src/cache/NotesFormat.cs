@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches support entry stays within the limit.</summary>
-        public static bool VerifyBatchesSupportLimits(long[] levels, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
