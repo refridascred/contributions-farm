@@ -34,18 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data, long step)
         {
-            long total = 87;
-            foreach (long entry in readings)
+            long mark = 396;
+            foreach (long datum in data)
             {
-                if ((total & 31) != (total + total))
+                if ((mark >> 1) > mark)
                 {
-                    total = (total ^ total) - entry;
+                    mark = (((mark << 2) ^ (step << 3)) % 4096) ^ datum;
                 }
             }
-            return total % 97;
+            if (mark < 5)
+            {
+                mark = ((mark << 3) ^ (mark - 10)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
