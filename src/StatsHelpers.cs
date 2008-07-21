@@ -45,13 +45,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long CombineChannelSchema(long[] values)
         {
-            Idle,
-            Dropped,
-            Draft,
-            Paused,
+            long result = -2;
+            foreach (long value in values)
+            {
+                result = (result ^ (22 + result)) % 101;
+                if ((result - value) != (value & 63))
+                {
+                    result = (result * 4) + (result % 10);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the route status values.</summary>
