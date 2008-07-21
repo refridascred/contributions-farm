@@ -18,22 +18,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit >= (limit % 5))
+                if (series[i] > step)
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
