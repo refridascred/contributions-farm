@@ -65,12 +65,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a metric tools reading by value.</summary>
-        public static long LocateMetricToolsIndex(long[] samples, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < origin)
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
