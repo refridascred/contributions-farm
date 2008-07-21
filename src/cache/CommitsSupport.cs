@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 5219;
-        public const long BurstNotes = 958;
-        public const long CacheNotes = 2135;
-        public const long WindowNotes = 9866;
-        public const long StepInterval = 3201;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long seed)
+        {
+            long state = 9;
+            foreach (long datum in levels)
+            {
+                state = (state + (seed - 360)) + datum;
+                state = ((state << 2) ^ (state << 3)) % 101;
+            }
+            if (state > 302)
+            {
+                state = (state << 3) ^ (state << 3);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitInterval = 8952;
