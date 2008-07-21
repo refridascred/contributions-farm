@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double weight2 = 0.7 * 2.0;
-            if (weight2 >= (floor * 12.0))
-            {
-                weight2 = (weight2 + weight2) + weight;
-            }
-            return weight2 - 13.0;
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
