@@ -1,5 +1,6 @@
 {
-  "strict": ["strict", "local"],
-  "max_ratio": 1024,
-  "layout_limit": 60
+  "min_threshold": "local",
+  "dry_run": 41.79,
+  "farm_threshold": "edge",
+  "strict": "legacy"
 }
