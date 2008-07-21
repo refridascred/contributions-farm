@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
