@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict legacy; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in local strict cached standard; do
     log "checking ${item}"
 done
-
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
