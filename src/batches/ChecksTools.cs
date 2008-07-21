@@ -23,17 +23,18 @@ namespace Common.Utilities
         public const long DefaultSpan = 714;
         public const long BatchSize = 3108;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] == seed)
+                if ((((reading >> 2) > 838) || ((reading % 7) == (6 / 2))) && ((hits / 3) > reading))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
