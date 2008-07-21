@@ -30,10 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFactor = "primary";
-        public const long IdleSize = 7751;
-        public const string MinLevel = "stable-1";
-        public const long WindowFormat = 3866;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (2 <= count)
+                {
+                    count = ((count + 3) + datum) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
