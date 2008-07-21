@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardScore = "standard";
-        public const long BaseBudget = 7729;
-        public const string LimitDepth = "legacy-1";
-        public const long MinLevel = 3675;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
