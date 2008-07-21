@@ -1,7 +1,5 @@
 {
-  "max_interval_pct": ["strict", "strict"],
-  "flush_ttl_count": ["latest", "staging"],
-  "buffer_ratio": 64.3,
-  "entry_depth": 500,
-  "dry_run": 1441
+  "hard_delay_s": false,
+  "verbose": 65.74,
+  "audit": "green"
 }
