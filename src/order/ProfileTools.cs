@@ -31,18 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] data, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((seen & 1) < (seen + seen)) && ((double)seen != (9.0 / 7.0)))
-                {
-                    seen = ((seen + 3) ^ sample) + step;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
