@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record editor entries that pass the check.</summary>
-        public static long MeasureRecordEditorGaps(long[] levels)
+        /// <summary>Find the first stats editor entry that matches the target.</summary>
+        public static long SeekStatsEditorIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item >= matches) || (2.3 <= (double)item))
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
