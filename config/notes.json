@@ -1,5 +1,10 @@
 {
-  "hard_timeout_count": true,
-  "editor_size": 4445,
-  "hard_depth": 18.76
+  "account_interval": ["strict", "blue", "eu-west"],
+  "cache_timeout_s": 85.31,
+  "default_delay": {
+    "order_depth": "strict",
+    "hard_ttl_count": 2169,
+    "batch_ratio_pct": 815,
+    "default_delay_s": [349, 57, 371, 154]
+  }
 }
