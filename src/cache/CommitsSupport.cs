@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double HardLevel = 61.95;
         public const long IdleMetric = 4658;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSize = 3567;
-        public const long WindowBudget = 4439;
-        public const double DefaultMetric = 54.58;
-        public const double MaxDepth = 95.42;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a cache account figure with a bias.</summary>
         public static double BlendCacheAccount(double scale, double offset)
