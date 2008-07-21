@@ -12,17 +12,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a format profile reading by value.</summary>
-        public static long SeekFormatProfileIndex(long[] samples, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + sum) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
