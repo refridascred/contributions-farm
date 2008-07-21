@@ -19,18 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings, long offset)
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long BucketSupportRecord(long offset, long seed)
         {
-            long score = 9;
-            foreach (long reading in readings)
+            if (((double)offset <= (double)seed) || ((double)offset <= (1.01 * 6.0)))
             {
-                if ((score > (score & 3)) || (83 < (reading - 9)))
+                return 6;
+            }
+            else
+            {
+                if (((offset >> 1) >= ((-65) >> 3)) || (((-44) - seed) < (seed + seed)))
                 {
-                    score = (score ^ (93 & 1)) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if (!((7 + seed) < (seed + 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + seed) <= (seed ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
