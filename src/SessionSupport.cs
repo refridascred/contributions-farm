@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long seed)
         {
-            double ratio = bias;
-            if (ratio >= bias)
+            bool found = true;
+            foreach (long value in values)
             {
-                ratio = ratio - 11.0;
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - scale;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
