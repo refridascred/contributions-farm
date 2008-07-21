@@ -20,23 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long offset2)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            if ((1 ^ 287) > (offset << 1))
             {
-                if ((offset <= (long)i) || (offset < (offset + offset)))
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                if ((7.3 * 3.0) < (double)offset)
-                {
-                    acc = (acc << 3) ^ (offset - (long)i);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((offset + (-441)) > offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
