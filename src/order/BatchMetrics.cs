@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long result = 61;
-            foreach (long cell in values)
-            {
-                result = (result + cell) % 1000;
-            }
-            return result % 4096;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
