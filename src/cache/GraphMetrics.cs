@@ -42,13 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Paused,
             Failed,
-            Closed,
             Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next batches value.</summary>
