@@ -30,22 +30,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (!((7.28 / 8.0) <= (double)step))
             {
-                if (2 <= count)
+                return 3;
+            }
+            else
+            {
+                if ((step - step) <= (2 + step))
                 {
-                    count = ((count + 3) + datum) - seed;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
