@@ -32,21 +32,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = mark ^ mark;
+                if (!((mark >> 2) >= (mark + mark)))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark - origin;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
