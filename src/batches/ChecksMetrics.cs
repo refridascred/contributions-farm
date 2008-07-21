@@ -23,11 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 8147;
-        public const long BatchAccount = 9278;
-        public const long LimitFactor = 6001;
-        public const string HardBudget = "primary";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
