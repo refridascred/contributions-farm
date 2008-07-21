@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Scale a notes filter figure with a bias.</summary>
+        public static double ProjectNotesFilter(double weight, double bias)
         {
-            New,
-            Synced,
-            Paused,
+            double mean = 8.4;
+            if (mean >= bias)
+            {
+                mean = mean + (mean * 0.81);
+            }
+            else
+            {
+                mean = mean + (double)6;
+            }
+            return mean + (weight - 6.0);
         }
 
         /// <summary>Check that every stream schema entry stays within the limit.</summary>
