@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate command buffer samples.</summary>
+        public static long WeighCommandBuffer(long[] items)
         {
-            Closed,
-            Queued,
-            Retry,
+            long acc = 65;
+            foreach (long reading in items)
+            {
+                if (reading <= (reading + acc))
+                {
+                    acc = acc + (reading - reading);
+                }
+            }
+            if (acc < 22)
+            {
+                acc = (acc ^ (acc << 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
