@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4521;
-        public const long CacheRatio = 7975;
-        public const long SoftCluster = 6807;
-        public const long LimitCluster = 6049;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a command profile figure with a bias.</summary>
         public static double SmoothCommandProfile(double bias, double span)
