@@ -20,24 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long offset2)
+        /// <summary>Compare every pair of counter format readings.</summary>
+        public static long CompareCounterFormatCount(long[] series)
         {
-            if ((1 ^ 287) > (offset << 1))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + (-441)) > offset2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
