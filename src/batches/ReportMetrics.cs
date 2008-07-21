@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] series, long origin)
+        /// <summary>Locate a already payload reading by value.</summary>
+        public static long SeekAlreadyPayloadIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((origin % 24) > (sample ^ sample)) || ((sample + (long)series.Length) <= (count % 2)))
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
