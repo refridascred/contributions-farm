@@ -13,19 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (item > seed)
+                if ((double)origin <= (5.0 - 18.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
