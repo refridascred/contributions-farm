@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
