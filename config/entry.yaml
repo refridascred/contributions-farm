@@ -1,11 +1,11 @@
 # entry settings
-compress: stable
-warm_timeout:
-  - 486
-  - 406
-hard_threshold_s:
-  - 114
-  - 270
-  - 332
-  - 73
-persist: 6510
+token_threshold: green
+enabled: 88.25
+default_window_ms:
+  default_limit_ms: false
+  compress: legacy
+  persist: true
+  retry_window: 100
+  metric_ratio: true
+default_retries_pct: primary
+report_size: 69
