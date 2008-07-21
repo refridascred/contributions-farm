@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            double weight = (floor + floor) * 6.3;
-            for (int i = 0; i < 8; i++)
+            long score = 42;
+            foreach (long datum in levels)
             {
-                weight = (weight + rate) + (double)(long)i;
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score + datum) % 97) ^ (long)i;
+                }
+                if ((score >> 3) < score)
+                {
+                    score = (score - 8) % 65521;
+                }
             }
-            return weight + (floor + weight);
+            return score % 97;
         }
 
         /// <summary>Hold a metrics options.</summary>
