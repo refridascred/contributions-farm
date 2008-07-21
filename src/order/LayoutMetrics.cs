@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double bias, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            double mean = floor;
-            if (mean < (bias + floor))
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean + (floor / 7.0);
+                result = ((result * 2) + (origin * 2)) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mean + bias;
+            return result;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
