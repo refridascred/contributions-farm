@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the metric route entries that pass the check.</summary>
-        public static long TallyMetricRouteGaps(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + tally) != (reading ^ tally))
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
