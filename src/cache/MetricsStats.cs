@@ -54,12 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Synced,
-            Draft,
-            Retry,
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
