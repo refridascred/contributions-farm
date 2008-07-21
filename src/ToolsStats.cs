@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long HardDepth = 5677;
         public const long WindowBatches = 2537;
 
-        /// <summary>Compare every pair of counter format readings.</summary>
-        public static long CompareCounterFormatCount(long[] series)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 13)
+                    if ((items[i] + items[j]) == 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metric stats.</summary>
