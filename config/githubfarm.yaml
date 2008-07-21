@@ -1,15 +1,6 @@
 # githubfarm settings
-batches_depth:
-  - 345
-  - 4
-report_delay: 1024
-sync_threshold:
-  min_ratio: true
-  cache_threshold:
-    base_threshold_s: 35.52
-    tools_threshold: 100
-    idle_delay: local
-  burst_size_ms:
-    - legacy
-    - cached
-  default_limit_ms: cached
+stream_size: open
+max_ttl_pct: 100
+audit: strict
+persist: 2760
+poll_limit_s: legacy
