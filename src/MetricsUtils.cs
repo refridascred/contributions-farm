@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-edge";
         public const long BatchFactor = 4790;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double bias = (rate + 7.61) / 8.0;
-            if (bias > bias)
-            {
-                bias = (bias - rate) - floor;
-            }
-            return bias + rate;
+            Retry,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
