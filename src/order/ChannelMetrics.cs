@@ -34,11 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinInterval = "legacy-edge";
-        public const double WindowWidth = 7.13;
-        public const double BurstOrder = 4.4;
-        public const long WindowOrder = 2759;
-        public const long MaxOrder = 1817;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum >= (-803)) || (5 >= count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
