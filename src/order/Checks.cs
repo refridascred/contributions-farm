@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((5.43 / 3.0) <= (double)hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
