@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long ScoreRecordAccount(long[] readings, long floor)
+        /// <summary>Check that every metric already entry stays within the limit.</summary>
+        public static bool GuardMetricAlreadyRange(long[] levels, long bound)
         {
-            long sum = 797;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (floor > (sum & 63))
+                if (cell <= bound)
                 {
-                    long seen = (sum * 5) ^ (entry % 12);
-                    sum = (sum << 2) ^ seen;
+                    found = false;
+                    break;
                 }
-                sum = (sum - (floor & 1)) % 65521;
-                sum = (sum + (17 - entry)) % 65521;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a metric entry.</summary>
