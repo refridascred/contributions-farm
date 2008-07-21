@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Fold a list of cache batches readings.</summary>
+        public static long ScoreCacheBatches(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 397;
+            foreach (long value in series)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total - (total * 4)) + value) - seed;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
