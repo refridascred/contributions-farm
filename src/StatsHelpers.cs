@@ -56,15 +56,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double mean = (double)((-22) + 4);
-            if (mean > gain)
-            {
-                mean = mean - 6.9;
-            }
-            return mean + bias;
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
