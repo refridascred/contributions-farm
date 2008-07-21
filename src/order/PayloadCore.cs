@@ -32,11 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleLevel = 8530;
-        public const string SoftStream = "fallback-1";
-        public const long LimitStream = 598;
-        public const string RetryStream = "stable-v2";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample % 3) < ((long)samples.Length << 2))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] levels)
