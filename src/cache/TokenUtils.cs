@@ -24,24 +24,21 @@ namespace Common.Utilities
         public const long RetryPayload = 1258;
         public const long RetryScore = 926;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            if ((double)bound < (9.4 * 9.3))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= 8.4)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
