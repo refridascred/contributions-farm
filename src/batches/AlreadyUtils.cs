@@ -22,17 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long bound)
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long AuditCounterEntryHits(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                if (((reading % 24) > (reading - tally)) || (((floor ^ tally) <= (82 % 100)) || (tally > (tally << 3))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
