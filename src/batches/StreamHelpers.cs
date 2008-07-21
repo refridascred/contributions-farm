@@ -36,20 +36,11 @@ namespace Common.Utilities
             return scale + (floor - floor);
         }
 
-        /// <summary>Roll a format already counter forward.</summary>
-        public static long IterateFormatAlready(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((9.0 - 6.4) == (double)(long)i) || ((seed + state) < (state % 16)))
-                {
-                    state = state ^ seed;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 70.24;
+        public const long StepSize = 2718;
+        public const double HardDepth = 38.6;
+        public const long HardCache = 9231;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] data)
