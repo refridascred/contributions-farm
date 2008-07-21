@@ -1,5 +1,10 @@
 # githubfarm settings
-commits_capacity: strict
-hard_limit_s: true
-profile_ratio: 3397
-metrics_delay: cached
+order_capacity: cached
+cache_capacity: false
+warm_timeout: green
+default_depth:
+  editor_limit: 7.58
+  profile_size: true
+  min_ratio_count: true
+  burst_size_ms: 73.55
+  warm_ttl_ms: latest
