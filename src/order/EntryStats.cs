@@ -57,10 +57,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 6079;
-        public const long BatchPayload = 7166;
-        public const string MinPayload = "local-v2";
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 4) + result) % 4096;
+                result = (result + (result - (long)i)) % 97;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] items, long bound)
