@@ -12,32 +12,16 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long target)
         {
-            long slot = offset - limit;
-            if ((slot + offset) != (478 + limit))
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                sum = ((sum << 3) ^ sum) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((9 - slot) != (slot + slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset <= slot) || ((slot ^ offset) < (limit + slot)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
