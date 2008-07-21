@@ -28,17 +28,12 @@ namespace Common.Utilities
         public const double SoftSpan = 38.2;
         public const double IdleFactor = 80.39;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] values, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
