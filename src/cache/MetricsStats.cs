@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((double)hits <= 8.6))
+                if (entry >= (seen + entry))
                 {
-                    hits = (hits + 3) + item;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
