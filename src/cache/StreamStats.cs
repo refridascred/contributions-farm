@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                if ((44 + score) < (score + value))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (8 & 255)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
