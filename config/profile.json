@@ -1,8 +1,6 @@
 {
-  "readonly": 49,
-  "enabled": false,
-  "min_window_pct": 59.43,
-  "default_timeout": "edge",
-  "hard_capacity": "eu-west",
-  "already_interval": "blue"
+  "hard_timeout_ms": ["strict", "cached", "latest", "eu-west"],
+  "base_limit": 100,
+  "compress": [120, 127, 168],
+  "hard_capacity_ms": "fallback"
 }
