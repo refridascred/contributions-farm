@@ -69,15 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long entry in readings)
             {
-                if ((sample + sample) <= (hits % 64))
+                if ((double)hits >= (3.0 + 6.42))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) + entry;
                 }
             }
             return hits;
