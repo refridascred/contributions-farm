@@ -48,17 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long bound)
+        /// <summary>Iterate the session tools series from a seed.</summary>
+        public static long IterateSessionTools(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    score = ((score ^ (score % 5)) % 65521) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next channel account value from a seed.</summary>
