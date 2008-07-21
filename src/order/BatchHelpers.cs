@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Stale,
-            Paused,
-            Failed,
-            Dropped,
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
