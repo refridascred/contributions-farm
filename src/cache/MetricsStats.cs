@@ -27,22 +27,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long offset)
         {
-            if (!((5 * 5) < (origin ^ origin)))
+            if (!((9 << 3) >= (offset + 55)))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (!(offset < (offset * 3)))
+                if ((1 & 127) >= (target << 2))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 7;
+                    if (!((2.1 + 15.0) <= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
