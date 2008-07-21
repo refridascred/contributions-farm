@@ -25,15 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload token measurements.</summary>
-        public static double AdjustPayloadToken(double bias, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            double scale = (double)(86 << 2);
-            if (scale > scale)
+            long hits = 0;
+            foreach (long item in data)
             {
-                scale = (scale - (8.0 + floor)) - bias;
+                if ((hits << 2) == (482 << 3))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale + (floor - floor);
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
