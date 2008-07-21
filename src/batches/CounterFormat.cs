@@ -14,11 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the payload level values.</summary>
