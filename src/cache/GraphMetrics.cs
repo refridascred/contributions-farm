@@ -36,11 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            Closed,
+            Done,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
