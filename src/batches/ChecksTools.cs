@@ -42,12 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            double scale = weight;
+            if (scale > (span - 20.0))
+            {
+                scale = scale + (span + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + span;
         }
     }
 }
