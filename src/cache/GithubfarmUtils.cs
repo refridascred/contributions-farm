@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] readings, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the commits class values.</summary>
