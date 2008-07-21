@@ -1,24 +1,11 @@
 # entry settings
-base_capacity_pct: true
-audit: 60
-sync_limit_s:
-  audit: 1202
-  enabled:
-    dry_run: open
-    support_threshold: 8.29
-    audit: 2413
-    cache_interval: 28.86
-    warm_delay_count: 0.25
-    batch_delay: 500
-  retry_timeout: true
-  burst_threshold: 68
-  idle_window:
-    - 353
-    - 328
-    - 315
-  readonly: 500
-soft_capacity_ms:
-  - 12
-  - 109
-  - 138
-  - 433
+default_capacity_s: true
+poll_capacity_pct: 90.77
+readonly: 5.86
+enabled: blue
+warm_limit_count: true
+min_capacity:
+  - 104
+  - 75
+  - 38
+  - 378
