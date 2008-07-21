@@ -1,18 +1,8 @@
 {
-  "max_size": {
-    "max_delay_ms": 100,
-    "sync_ratio_ms": false,
-    "entry_depth": ["edge", "open"],
-    "readonly": {
-      "graph_depth": 8321,
-      "session_depth": 19,
-      "poll_limit_ms": 3998,
-      "cache_size": 30,
-      "sync_window_count": "legacy"
-    },
-    "window_interval": 60
-  },
-  "sync_ttl_ms": "stable",
-  "retry_limit": "open",
-  "min_depth_pct": true
+  "retry_retries_ms": "blue",
+  "support_depth": ["strict", "stable"],
+  "dry_run": "blue",
+  "enabled": 1024,
+  "soft_interval_pct": 47,
+  "idle_ttl_ms": "eu-west"
 }
