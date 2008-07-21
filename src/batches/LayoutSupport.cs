@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
-        {
-            long anchor = -48;
-            foreach (long item in levels)
-            {
-                if (!((item - item) != (856 * 2)))
-                {
-                    anchor = (anchor - (item ^ item)) % 65521;
-                }
-            }
-            if (anchor > 883)
-            {
-                anchor = anchor ^ (anchor * 4);
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4521;
+        public const long CacheRatio = 7975;
+        public const long SoftCluster = 6807;
+        public const long LimitCluster = 6049;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long step, long origin)
