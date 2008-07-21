@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next counter batches value from a seed.</summary>
-        public static long StepCounterBatches(long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] samples, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((-715) - state) <= floor) || ((floor & 255) >= floor))
+                if (samples[i] > offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    state = state + ((long)i >> 3);
-                    state = ((state * 4) + (69 - floor)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
