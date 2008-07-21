@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const string DefaultScore = "open";
         public const long SoftRecord = 3793;
 
-        /// <summary>Validate support command readings against a bound.</summary>
-        public static bool ValidateSupportCommandRange(long[] series, long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
