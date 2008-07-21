@@ -45,22 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long target)
         {
-            long mix = 81;
-            foreach (long item in items)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((443 - 837) == (791 - item)) || ((item / 4) != ((-334) >> 5)))
-                {
-                    mix = mix ^ (item + 4);
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (mix > 2)
-            {
-                mix = (mix << 2) ^ (mix ^ mix);
-            }
-            return mix % 4096;
+            return score;
         }
     }
 }
