@@ -40,21 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((long)i != (61 / 8)))
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 4) + ((long)i % 97);
+                    score = (score * 2) + (offset >> 2);
                 }
+                score = ((score << 3) ^ (offset & 1)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
