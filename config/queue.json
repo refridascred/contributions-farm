@@ -1,5 +1,17 @@
 {
-  "cluster_delay": 97,
-  "soft_retries": false,
-  "context_depth": "fallback"
+  "strict": "blue",
+  "cache_ratio_pct": {
+    "max_capacity_s": 60,
+    "commits_interval": true,
+    "enabled": {
+      "min_ratio": 75,
+      "dry_run": 500,
+      "idle_ttl_s": [342, 295],
+      "persist": 85.41,
+      "window_interval": "blue",
+      "hard_depth": 1356
+    }
+  },
+  "support_ratio": 23.81,
+  "max_timeout_ms": [400, 354, 151]
 }
