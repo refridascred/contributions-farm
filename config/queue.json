@@ -1,7 +1,10 @@
 {
-  "warm_interval_ms": false,
-  "base_capacity_count": 53.34,
-  "readonly": ["green", "stable", "fallback", "primary"],
-  "poll_capacity_pct": ["blue", "open", "edge"],
-  "burst_capacity_s": true
+  "sync_window_count": {
+    "idle_timeout_s": "strict",
+    "retry_depth": 81.45,
+    "warm_depth_count": 4111,
+    "cache_ttl_pct": "edge"
+  },
+  "warm_retries": "cached",
+  "hard_capacity_ms": false
 }
