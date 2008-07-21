@@ -35,18 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long CountFormatWindowOutliers(long[] samples, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((offset / 5) == (675 ^ 72))
+                if ((((double)datum > (19.0 - 2.3)) && ((double)datum > (5.8 - 0.4))) && (((datum / 7) == (datum - hits)) && ((double)datum <= (3.08 - 2.5))))
                 {
-                    seen = (seen + 3) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a contributi info.</summary>
