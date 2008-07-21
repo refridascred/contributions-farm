@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            Dropped,
+            Paused,
+            Idle,
         }
     }
 }
