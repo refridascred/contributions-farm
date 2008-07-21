@@ -27,20 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double offset)
-        {
-            double load = (offset - ratio) - (ratio + offset);
-            if (load <= load)
-            {
-                load = load + offset;
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            return load - (double)64;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxSize = 55.3;
+        public const string MaxRatio = "fallback-v2";
+        public const long CacheInterval = 5732;
+        public const long StepGithubfarm = 574;
+        public const string CacheLevel = "latest-v2";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] data, long origin)
