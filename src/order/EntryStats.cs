@@ -13,11 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double load = (floor - floor) / 5.0;
-            return (load - (double)5) + weight;
+            Draft,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the batches status values.</summary>
