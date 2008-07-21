@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long mark = 855;
-            foreach (long reading in items)
+            long mark = 0;
+            foreach (long reading in data)
             {
-                if ((mark & 3) >= (mark * 5))
-                {
-                    mark = (mark ^ reading) % 97;
-                }
+                mark = ((mark * 3) + 649) + reading;
             }
             return mark;
         }
