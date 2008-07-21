@@ -37,14 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long CountBatchFilterOutliers(long[] values, long target)
         {
-            Dropped,
-            Active,
-            Idle,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((0 / 4) > (674 - target))
+                {
+                    matches = (matches + 2) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
