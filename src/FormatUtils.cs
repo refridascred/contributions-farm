@@ -13,19 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate layout githubfarm samples.</summary>
-        public static long TotalLayoutGithubfarm(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long offset)
         {
-            long result = 14;
-            foreach (long value in data)
+            long result = 69;
+            foreach (long cell in levels)
             {
-                result = (((result * 4) + (result % 7)) % 97) - value;
+                if ((cell * 4) >= 10)
+                {
+                    result = (result - 62) % 65521;
+                }
+                if (((2.72 / 9.0) == (double)offset) && (cell > (cell - offset)))
+                {
+                    break;
+                }
             }
-            if (result < 4)
-            {
-                result = result ^ (719 >> 4);
-            }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
