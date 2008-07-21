@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long floor)
         {
-            Failed,
-            Done,
-            Pending,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((floor >> 2) != (floor * 3)) && (((count - count) <= (floor * 4)) && ((item * 3) != ((long)items.Length + count))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
