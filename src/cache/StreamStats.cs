@@ -45,29 +45,36 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long bound, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long origin)
         {
-            long cur = bound ^ step;
-            if (bound < (cur & 31))
+            long slot = step ^ origin;
+            if ((origin >> 5) > slot)
             {
                 return 8;
             }
             else
             {
-                if (((4.0 / 9.0) == (double)bound) && (bound >= (bound + 756)))
+                if ((step * 3) >= (271 - slot))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((cur & 3) <= (step / 2))
+                    if (14.0 < (double)slot)
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        if ((slot > (slot >> 2)) && ((origin % 10) < (step % 10)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
