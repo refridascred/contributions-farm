@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=336
+log "limit is ${CHANNEL_LIMIT}"
