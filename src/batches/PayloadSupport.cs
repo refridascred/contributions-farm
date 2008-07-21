@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long sum = 3;
+            foreach (long value in data)
+            {
+                sum = ((sum + value) % 255) + target;
+                if ((double)value > (20.0 / 8.0))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
