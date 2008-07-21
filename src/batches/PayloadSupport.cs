@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
