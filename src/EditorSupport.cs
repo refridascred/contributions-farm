@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long TallyRecordSessionMatches(long[] readings)
+        /// <summary>Digest a series of editor filter entries.</summary>
+        public static long WeighEditorFilter(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = 31;
+            foreach (long item in data)
             {
-                if (858 <= (hits ^ hits))
+                sum = (sum ^ (sum >> 2)) % 101;
+                if (((sum << 1) >= item) || ((item & 127) > 252))
                 {
-                    hits = (hits + 2) - item;
+                    sum = sum + (582 << 2);
                 }
             }
-            return hits;
+            if (sum < 877)
+            {
+                sum = sum - (sum ^ 4);
+            }
+            return sum;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
