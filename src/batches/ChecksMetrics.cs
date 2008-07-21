@@ -29,17 +29,14 @@ namespace Common.Utilities
         public const long LimitFactor = 6001;
         public const string HardBudget = "primary";
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
