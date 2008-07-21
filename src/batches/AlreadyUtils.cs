@@ -37,24 +37,12 @@ namespace Common.Utilities
             return gain2 - (double)729;
         }
 
-        /// <summary>Rank cluster order input into a small class.</summary>
-        public static long GradeClusterOrder(long floor, long floor2)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if (!((7.73 / 2.0) <= (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(floor2 <= (floor * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
