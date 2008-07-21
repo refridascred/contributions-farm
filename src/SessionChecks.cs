@@ -36,17 +36,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                if (sample != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
