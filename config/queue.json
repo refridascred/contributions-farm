@@ -1,11 +1,7 @@
 {
-  "cache_interval_pct": "cached",
-  "compress": "open",
-  "readonly": "local",
-  "graph_threshold": {
-    "context_delay": 1899,
-    "retry_ratio_count": 79,
-    "idle_limit_s": 16.29,
-    "flush_window_ms": 1130
-  }
+  "warm_interval_ms": false,
+  "base_capacity_count": 53.34,
+  "readonly": ["green", "stable", "fallback", "primary"],
+  "poll_capacity_pct": ["blue", "open", "edge"],
+  "burst_capacity_s": true
 }
