@@ -21,14 +21,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long origin)
         {
-            Synced,
-            Locked,
-            Failed,
-            Done,
-            Stale,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batches level values.</summary>
