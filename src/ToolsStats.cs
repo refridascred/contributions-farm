@@ -88,13 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a report reading.</summary>
