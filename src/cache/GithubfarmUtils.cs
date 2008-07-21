@@ -45,14 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double bias2)
         {
-            Ready,
-            Draft,
-            New,
-            Dropped,
-            Locked,
+            double rate = (7.7 / 4.0) - bias2;
+            if (rate <= rate)
+            {
+                rate = rate - 7.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate + 9.7;
         }
     }
 }
