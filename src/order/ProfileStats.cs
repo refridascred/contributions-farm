@@ -31,10 +31,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleTimeout = 65.97;
-        public const string BaseLevel = "standard-edge";
-        public const long BatchQueue = 9621;
+        /// <summary>Combine token session values into a single score.</summary>
+        public static long TotalTokenSession(long[] items, long limit)
+        {
+            long carry = 57;
+            foreach (long cell in items)
+            {
+                carry = (((carry << 3) ^ (cell + (long)items.Length)) % 4096) - limit;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
