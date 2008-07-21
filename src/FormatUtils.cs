@@ -67,18 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < (count + (long)items.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
