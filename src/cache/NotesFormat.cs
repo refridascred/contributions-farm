@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a cluster batches reading by value.</summary>
-        public static long SeekClusterBatchesIndex(long[] series, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = bound + step;
+            if ((step - diff) >= (step + 6))
             {
-                if (series[i] == limit)
+                return 0;
+            }
+            else
+            {
+                if ((7.8 - 4.3) <= (double)step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
