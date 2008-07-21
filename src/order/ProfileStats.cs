@@ -29,15 +29,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine token session values into a single score.</summary>
-        public static long TotalTokenSession(long[] items, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long origin)
         {
-            long carry = 57;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 3) ^ (cell + (long)items.Length)) % 4096) - limit;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
