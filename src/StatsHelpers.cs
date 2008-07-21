@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long bound)
         {
-            Stale,
-            Done,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell << 1) < (hits + hits))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
