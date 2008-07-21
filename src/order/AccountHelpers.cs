@@ -52,19 +52,24 @@ namespace Common.Utilities
         public const string SoftRatio = "strict";
         public const double RetryFactor = 67.4;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] samples, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long step, long step2)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if ((2.0 * 2.0) <= (double)step)
             {
-                if (datum != floor)
+                return 7;
+            }
+            else
+            {
+                if (step2 < (-807))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
