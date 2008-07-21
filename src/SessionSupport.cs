@@ -35,12 +35,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            Dropped,
-            Paused,
-            Idle,
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total + total) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
