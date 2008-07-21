@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] values, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long anchor = 399;
+            foreach (long sample in series)
             {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor - ((long)series.Length / 4)) % 1000) + sample;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Combine account values into a single score.</summary>
