@@ -1,14 +1,12 @@
 # Command notes
 
-Use filter settings to tune how often record data is refreshed.
-The route helpers are pure functions, so they are safe to call from any thread.
-
-The stats module keeps layout values in sync with the notes cache.
-Keep contributi and format names short and lowercase.
-Run the account check before changing any notes limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the graph list.
+The account report groups every githubfarm by schema.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every notes change
-- Document new report fields
+- Prefer contributi defaults
+- Validate checks input early
+- Log every profile change
+- Review metrics limits each release
