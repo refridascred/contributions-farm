@@ -32,19 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long floor)
         {
-            long sum = 65;
-            foreach (long value in readings)
+            if ((double)origin < 1.94)
             {
-                if (!((9.67 + 0.8) < (double)sum))
-                {
-                    sum = ((sum << 2) ^ (origin / 3)) ^ value;
-                }
-                sum = ((sum * 4) + (origin << 1)) % 4096;
+                return 3;
             }
-            return sum % 65521;
+            else
+            {
+                if (origin < (origin * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
