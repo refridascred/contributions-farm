@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((620 - item) < (mark & 7)) && (705 > (step % 16))))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ 9) % 65521;
                 }
+                mark = ((mark * 2) + mark) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
