@@ -33,19 +33,32 @@ namespace Common.Utilities
         public const long RetryLevel = 3247;
         public const long LimitNotes = 8004;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long step)
         {
-            double bias3 = 3.0;
-            if (bias3 > bias3)
+            long offset = limit + step;
+            if (!((offset % 100) != (step >> 4)))
             {
-                bias3 = bias3 - bias3;
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias3 = (bias3 - (bias2 + bias)) + (double)(long)i;
+                if (offset < (limit * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((4 % 64) != (offset + 5)) || ((double)offset <= (0.9 / 2.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return bias3 + 17.0;
         }
     }
 }
