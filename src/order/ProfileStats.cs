@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            Paused,
-            Draft,
-            Idle,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((81 - (-45)) != (reading << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
