@@ -49,15 +49,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
