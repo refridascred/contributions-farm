@@ -58,13 +58,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a filter batch counter forward.</summary>
