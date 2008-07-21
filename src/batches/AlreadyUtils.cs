@@ -41,21 +41,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm cache series from a seed.</summary>
-        public static long IterateFarmCache(long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total * 3) + (target + target);
-                if (((446 - target) >= (target - (long)i)) && (((long)i + target) <= 81))
-                {
-                    total = total ^ (total - total);
-                }
-                total = (total - (long)i) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
