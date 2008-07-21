@@ -21,19 +21,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a support graph counter forward.</summary>
