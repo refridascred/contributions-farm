@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinInterval = 57;
-        public const long MinTimeout = 4932;
-        public const double CacheBudget = 23.14;
-        public const string IdleWindow = "latest";
-        public const string MinWindow = "open-1";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values, long offset)
+        {
+            long state = 87;
+            foreach (long datum in values)
+            {
+                state = (((state << 2) ^ (offset % 100)) % 1000) + datum;
+            }
+            return state % 97;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] data)
