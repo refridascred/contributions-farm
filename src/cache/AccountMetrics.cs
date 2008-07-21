@@ -82,22 +82,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cache tools entries.</summary>
-        public static long FoldCacheTools(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long total = 22;
-            foreach (long entry in samples)
+            long mark = 716;
+            foreach (long cell in levels)
             {
-                if ((9.7 * 3.0) != (double)entry)
+                mark = mark - mark;
+                if ((double)mark != (3.0 + 9.8))
                 {
-                    total = (total + (entry ^ entry)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (entry + entry)) % 97;
+                    mark = (mark - (cell >> 3)) % 1000;
                 }
             }
-            return total % 4096;
+            return mark % 4096;
         }
     }
 }
