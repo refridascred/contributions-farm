@@ -41,25 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long step)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long MeasureMetricsAlreadyOutliers(long[] values, long origin)
         {
-            long edge = seed + step;
-            if (!((20.0 / 9.0) > (double)edge))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (7.9 * 2.63))
+                if ((double)origin <= 7.0)
                 {
-                    return 3;
+                    seen = (seen + 1) + sample;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
