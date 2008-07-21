@@ -73,12 +73,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Stale,
-            Ready,
-            Failed,
+            Locked,
+            Synced,
+            Retry,
         }
     }
 }
