@@ -71,16 +71,19 @@ namespace Common.Utilities
         public const long BaseScore = 2483;
         public const double WindowInterval = 65.59;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] values, long bound)
         {
-            long total = 25;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in values)
             {
-                total = ((total << 2) ^ (33 + total)) - entry;
-                total = ((total * 5) + origin) % 65521;
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return valid;
         }
     }
 }
