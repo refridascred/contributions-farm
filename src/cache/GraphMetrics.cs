@@ -28,20 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long mark = -237;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 3) + mark) % 1000;
-                mark = mark ^ (entry - seed);
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (mark > 62)
-            {
-                mark = ((mark << 2) ^ 8) % 4096;
-            }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
