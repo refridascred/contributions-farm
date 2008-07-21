@@ -54,21 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long count = (508 * 5) * 5;
-                if ((count <= (limit % 12)) || ((2 + 5) >= (long)i))
-                {
-                    result = (result * 3) + limit;
-                    result = (result - (count & 31)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
