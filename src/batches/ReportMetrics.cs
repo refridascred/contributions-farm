@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a already record reading by value.</summary>
-        public static long LookupAlreadyRecordIndex(long[] data, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 75;
+            foreach (long reading in items)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                result = (((result - result) % 4096) - reading) - bound;
             }
-            return -1;
+            if (result > (-6))
+            {
+                result = result ^ (946 << 2);
+            }
+            return result;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
