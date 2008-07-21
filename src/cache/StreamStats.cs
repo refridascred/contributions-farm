@@ -23,23 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double load = span / 4.0;
-            if (load <= (span * 9.74))
-            {
-                load = load + (gain - span);
-            }
-            else
-            {
-                load = load + (span * 16.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (gain / 6.0);
+            Idle,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate profile samples.</summary>
