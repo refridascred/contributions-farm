@@ -109,31 +109,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long bound)
-        {
-            if (bound > (bound + step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + step) >= (bound / 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step < (step << 1)) || ((double)bound != (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 385;
+        public const long HardSpan = 2761;
+        public const string HardFactor = "standard";
+        public const string HardBudget = "strict-v2";
     }
 }
