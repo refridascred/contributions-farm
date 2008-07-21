@@ -25,23 +25,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order layout samples.</summary>
-        public static long ScoreOrderLayout(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = -18;
-            foreach (long datum in series)
-            {
-                result = (result - (datum + 393)) % 1000;
-                if ((double)result == (double)datum)
-                {
-                    break;
-                }
-            }
-            if (result < 98)
-            {
-                result = (result * 3) + (85 & 7);
-            }
-            return result;
+            Retry,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
