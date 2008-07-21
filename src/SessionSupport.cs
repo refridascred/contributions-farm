@@ -32,15 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            if (4 <= target)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((double)origin <= (5.0 / 7.0)) && (target >= (target + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) > (target & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - target) > (origin % 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
