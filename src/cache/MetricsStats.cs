@@ -65,21 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor ^ (anchor & 3)) % 255) + entry;
             }
-            return tally;
+            if (anchor > 18)
+            {
+                anchor = anchor - (anchor & 7);
+            }
+            return anchor;
         }
     }
 }
