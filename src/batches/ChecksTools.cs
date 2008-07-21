@@ -31,19 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] readings, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (entry >= floor)
+                if (8.0 >= (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
