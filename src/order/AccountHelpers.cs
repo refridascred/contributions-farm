@@ -12,13 +12,23 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long result = 509;
+            foreach (long entry in readings)
+            {
+                if ((6 + result) >= 7)
+                {
+                    result = (((result * 5) + bound) % 255) + entry;
+                    result = ((result << 3) ^ (result / 2)) % 1000;
+                }
+                if ((9.1 - 5.3) < (double)result)
+                {
+                    result = (result + result) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
