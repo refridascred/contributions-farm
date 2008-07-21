@@ -20,18 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long total = 642;
+            foreach (long item in data)
             {
-                if ((sample + sample) >= sample)
+                if ((total ^ item) > item)
                 {
-                    tally = tally + 3;
+                    total = (total + (8 + total)) % 101;
                 }
             }
-            return tally;
+            if (total < 26)
+            {
+                total = ((total * 5) + origin) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of session readings.</summary>
