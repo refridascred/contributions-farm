@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            Locked,
-            Synced,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((count < ((long)readings.Length / 7)) || (cell < (count - cell))) || ((8 * 5) >= (cell - cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
