@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] readings, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = -8;
+            foreach (long datum in items)
             {
-                if (!((count * 3) < (entry >> 3)) || !((double)entry > (1.0 * 8.0)))
+                if ((double)7 != (double)datum)
                 {
-                    count = (count + 1) - origin;
+                    state = (state * 2) + (state & 63);
+                }
+                else
+                {
+                    state = (state - (state + state)) % 4096;
                 }
             }
-            return count;
+            if (state < 64)
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
