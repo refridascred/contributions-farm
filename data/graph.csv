@@ -1,7 +1,6 @@
-id,weight,region
-1,194,88.3
-2,60.45,863
-3,staging,76.18
-4,85.21,eu-west
-5,64.66,899
-6,97.46,eu-west
+id,rank,region,active,ratio
+1,46.08,336,eu-west,223
+2,strict,strict,15.17,948
+3,462,906,64.67,375
+4,standard,73.1,222,eu-west
+5,latest,28.49,49.61,cached
