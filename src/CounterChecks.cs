@@ -62,20 +62,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)(887 & 3);
+            if (mean >= (mean / 8.0))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark - mark) ^ (long)i2;
-                    mark = (mark - (origin % 5)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                mean = mean - (mean + floor);
             }
-            return mark;
+            else
+            {
+                mean = mean - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + 6.9;
         }
     }
 }
