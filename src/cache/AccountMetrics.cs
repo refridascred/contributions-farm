@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine context order values into a single score.</summary>
-        public static long WeighContextOrder(long[] values)
+        /// <summary>Adjust a notes buffer reading.</summary>
+        public static double ScaleNotesBuffer(double gain, double bias)
         {
-            long total = 689;
-            foreach (long datum in values)
+            double gain2 = 3.0;
+            if (gain2 >= bias)
             {
-                if ((2.1 / 2.0) >= (double)total)
-                {
-                    continue;
-                }
-                if (((datum + datum) > datum) || ((4.54 / 6.0) <= (double)datum))
-                {
-                    total = (total ^ ((long)values.Length + total)) % 65521;
-                }
+                gain2 = gain2 + gain;
             }
-            if (total > 339)
-            {
-                total = total ^ (long)values.Length;
-            }
-            return total % 1000;
+            return gain2 + gain2;
         }
 
         /// <summary>Iterate the batch support series from a seed.</summary>
