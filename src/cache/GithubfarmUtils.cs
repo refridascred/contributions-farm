@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            double ratio2 = 15.0 + ratio;
+            if (ratio2 > (ratio2 - 7.0))
+            {
+                ratio2 = (ratio2 - (1.28 / 2.0)) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (double)385) + (double)(long)i;
+            }
+            return ratio2 + (double)95;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
