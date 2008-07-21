@@ -38,14 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
         {
-            New,
-            Pending,
-            Done,
-            Active,
-            Locked,
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    long diff = origin >> 2;
+                    state = ((state + (diff + (long)i)) % 65521) ^ (long)i2;
+                }
+                state = ((state << 2) ^ (851 ^ 734)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
