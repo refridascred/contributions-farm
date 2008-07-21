@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] series, long floor)
         {
-            Done,
-            Ready,
-            Active,
-            Queued,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
