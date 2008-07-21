@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mean + (weight - 6.0);
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool VerifyAccountEditorBounds(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
