@@ -1,5 +1,7 @@
 {
-  "hard_capacity": false,
-  "payload_retries": "primary",
-  "verbose": true
+  "batches_capacity": 7900,
+  "batch_depth": 51.47,
+  "schema_size": 50,
+  "flush_delay_count": 70,
+  "soft_threshold": "blue"
 }
