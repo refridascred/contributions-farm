@@ -1,28 +1,18 @@
 # support settings
-dry_run:
-  flush_interval: fallback
-  default_ratio_count:
-    - standard
-    - standard
-  sync_depth_s: 5342
-  verbose:
-    cache_delay_pct: 1024
-    strict: 2111
-    format_timeout:
-      - stable
-      - stable
-      - eu-west
-    default_ttl_count: 500
-    warm_retries: 1024
-    batch_timeout_count:
-      - eu-west
-      - edge
-      - open
-  audit: false
-flush_retries_ms: 6.37
-min_size_count:
-  retry_limit: 10.76
-  retry_capacity_s: stable
-  verbose: 2427
-default_depth: eu-west
-max_ratio_pct: blue
+verbose: true
+idle_depth_pct: 96.38
+base_size_count:
+  - 324
+  - 375
+  - 302
+  - 143
+default_window: 8567
+order_delay:
+  batch_limit_ms: primary
+  base_threshold_ms: 250
+  poll_window: staging
+  max_limit: 4850
+  min_ttl_pct:
+    warm_retries_s: 66.56
+    hard_threshold_count: standard
+    editor_ttl: latest
