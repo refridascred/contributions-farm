@@ -33,19 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 2;
+            foreach (long entry in levels)
             {
-                if (sample != limit)
+                sum = (sum << 3) ^ (entry << 2);
+                if (((sum - entry) == (entry - entry)) && ((entry & 31) <= (entry - 997)))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 4) + entry) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (entry + entry);
                 }
             }
-            return ok;
+            if (sum > (-311))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
