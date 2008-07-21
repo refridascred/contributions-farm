@@ -16,24 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a payload session value against two limits.</summary>
-        public static long SortPayloadSession(long origin, long bound)
+        /// <summary>Locate a githubfarm buffer reading by value.</summary>
+        public static long FindGithubfarmBufferIndex(long[] readings, long step)
         {
-            if ((bound << 3) == (bound ^ bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-4) - 793) < (bound + 3))
+                if (readings[i] <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
