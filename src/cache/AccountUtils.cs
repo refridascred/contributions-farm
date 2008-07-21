@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Look up the position of a notes stream sample.</summary>
+        public static long LookupNotesStreamIndex(long[] samples, long origin)
         {
-            double gain2 = 1.0;
-            if (gain2 < gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 - 3.1) - bias;
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 + (double)94;
+            return -1;
         }
 
         /// <summary>Rank cache filter input into a small class.</summary>
