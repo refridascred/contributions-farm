@@ -31,23 +31,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long bound, long floor)
         {
-            long result = -31;
-            foreach (long reading in readings)
+            long delta = bound + floor;
+            if (((floor ^ floor) > (bound + bound)) && ((delta / 2) != (bound - floor)))
             {
-                result = ((result * 3) + limit) % 101;
-                if ((limit & 15) <= (result % 10))
+                return 1;
+            }
+            else
+            {
+                if (((floor - floor) != (delta % 16)) || ((bound / 3) <= (bound * 5)))
                 {
-                    result = result ^ limit;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (reading >> 2)) % 255;
+                    if ((bound ^ delta) > (bound << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > 5)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
