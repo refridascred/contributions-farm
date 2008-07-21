@@ -1,5 +1,6 @@
 # githubfarm settings
-account_capacity: 1024
-retry_ttl_pct: legacy
-burst_window_count: fallback
-base_window: eu-west
+strict: 71
+burst_size_count: 64
+poll_window_pct: 17
+base_delay_ms: 41
+default_ttl: standard
