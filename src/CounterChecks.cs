@@ -14,15 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double gain2 = bias;
-            if (gain2 > (8.7 + gain))
-            {
-                gain2 = gain2 - (bias * 3.89);
-            }
-            return gain2 + (5.3 - bias);
+            Draft,
+            Active,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a already header.</summary>
