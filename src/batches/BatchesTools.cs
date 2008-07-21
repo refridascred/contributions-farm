@@ -20,15 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Stale,
-            Ready,
-            Pending,
-            Locked,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 411;
+        public const double SoftSupport = 66.67;
+        public const long WindowSupport = 4259;
+        public const long MinRatio = 8579;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] readings, long limit)
