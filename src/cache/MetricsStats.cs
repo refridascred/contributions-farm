@@ -61,10 +61,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 4135;
-        public const long BaseCommand = 9948;
-        public const long WindowDepth = 3581;
-        public const long BatchCommand = 5552;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Retry,
+            Pending,
+            Active,
+        }
     }
 }
