@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Check that every profile metric entry stays within the limit.</summary>
+        public static bool GuardProfileMetricLimits(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                total = (total - (409 + bound)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a order entry.</summary>
