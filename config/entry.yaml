@@ -1,18 +1,6 @@
 # entry settings
-retry_size_s: 82.56
-sync_ttl_ms: 26.29
-retry_depth:
-  command_limit:
-    flush_ttl_pct: 6363
-    cache_timeout_ms: 3487
-    format_capacity: stable
-    sync_interval_ms: 81.63
-  default_size: 14.19
-  default_delay_pct: eu-west
-max_limit_count: 60
-support_timeout:
-  - edge
-  - stable
-  - eu-west
-  - latest
-verbose: legacy
+cache_threshold_ms: true
+layout_window: 100
+batches_size: 100
+channel_capacity: blue
+poll_window_ms: strict
