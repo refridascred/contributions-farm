@@ -39,23 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] readings, long offset)
         {
-            long state = 276;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ cell) % 101;
-                if ((20 % 97) == (seed / 4))
+                if (readings[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 432)
-            {
-                state = ((state * 3) + (seed / 5)) % 101;
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
