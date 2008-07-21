@@ -29,19 +29,19 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double ratio = 3.0;
+            if (ratio > (scale / 7.0))
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + ratio) - floor;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 5.5) - (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
