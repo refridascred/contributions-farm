@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (tally < (long)items.Length)
+                if (entry > floor)
                 {
-                    tally = (tally + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
