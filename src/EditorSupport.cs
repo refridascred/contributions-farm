@@ -78,16 +78,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate report channel samples.</summary>
-        public static long FoldReportChannel(long[] series, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long result = 5;
-            foreach (long item in series)
+            long acc = 61;
+            foreach (long entry in values)
             {
-                result = result ^ step;
-                result = (result << 2) ^ item;
+                acc = ((acc ^ (acc & 63)) % 255) + entry;
             }
-            return result;
+            return acc % 4096;
         }
     }
 }
