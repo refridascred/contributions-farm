@@ -70,12 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] values)
         {
-            Locked,
-            New,
-            Closed,
+            long acc = 9;
+            foreach (long reading in values)
+            {
+                acc = ((acc + (699 & 255)) % 101) ^ reading;
+            }
+            return acc % 4096;
         }
     }
 }
