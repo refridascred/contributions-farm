@@ -35,25 +35,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits counter entries.</summary>
-        public static long TallyCommitsCounter(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = 25;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (9.43 / 3.0))
-                {
-                    acc = (acc - (acc % 7)) % 97;
-                    break;
-                }
-                acc = acc ^ acc;
-                acc = ((acc << 2) ^ (724 + 873)) % 1000;
-            }
-            if (acc < 483)
-            {
-                acc = ((acc * 3) + (438 * 5)) % 97;
-            }
-            return acc;
+            Locked,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a metrics options.</summary>
