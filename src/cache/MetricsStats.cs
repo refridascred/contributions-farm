@@ -14,26 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i ^ carry) <= ((long)i & 31))
+                if (series[i] > origin)
                 {
-                    carry = carry ^ (carry & 1);
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry << 2) ^ (754 % 100);
-                }
-                carry = ((carry << 3) ^ ((-563) ^ carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
