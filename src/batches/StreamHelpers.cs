@@ -60,15 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
