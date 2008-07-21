@@ -42,19 +42,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] series)
         {
-            long anchor = 720;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor * 4) + (anchor + sample);
-                if ((double)anchor != (2.13 + 4.06))
+                if ((double)value != (0.39 - 13.0))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
