@@ -12,23 +12,13 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = 509;
-            foreach (long entry in readings)
-            {
-                if ((6 + result) >= 7)
-                {
-                    result = (((result * 5) + bound) % 255) + entry;
-                    result = ((result << 3) ^ (result / 2)) % 1000;
-                }
-                if ((9.1 - 5.3) < (double)result)
-                {
-                    result = (result + result) % 101;
-                }
-            }
-            return result;
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a graph payload pair into a bucket.</summary>
