@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryTimeout = 23.61;
-        public const long CacheTimeout = 5113;
-        public const string StepPayload = "local-edge";
-        public const long MaxPayload = 801;
-        public const long LimitTimeout = 6332;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Dropped,
+            Active,
+            Retry,
+        }
 
         /// <summary>Audit commits farm readings against a rule.</summary>
         public static long CountCommitsFarmGaps(long[] levels)
