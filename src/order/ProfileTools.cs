@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cache batches readings.</summary>
-        public static long ScoreCacheBatches(long[] series, long seed)
-        {
-            long total = 397;
-            foreach (long value in series)
-            {
-                total = ((total - (total * 4)) + value) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "staging-1";
+        public const long BurstWidth = 5233;
+        public const long WindowStats = 5365;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] series, long floor)
