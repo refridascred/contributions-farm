@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long WindowSupport = 4259;
         public const long MinRatio = 8579;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long acc = 140;
-            foreach (long datum in readings)
-            {
-                acc = (((acc << 3) ^ (long)readings.Length) + datum) + limit;
-            }
-            return acc;
+            Synced,
+            Queued,
+            Pending,
+            Done,
         }
     }
 }
