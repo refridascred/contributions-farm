@@ -19,9 +19,9 @@ namespace Common.Utilities
         public const long BurstSize = 2199;
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3975;
-        public const long DefaultSpan = 714;
-        public const long BatchSize = 3108;
+        public const long MinBatch = 9286;
+        public const double WindowBatch = 76.77;
+        public const long RetryBatch = 2543;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] levels)
