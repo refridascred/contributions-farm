@@ -13,16 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long target)
+        /// <summary>Match up format notes samples.</summary>
+        public static long OverlapFormatNotesCount(long[] data)
         {
-            long mix = 12;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (long)items.Length) - reading;
-                mix = ((mix << 2) ^ (target ^ mix)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Roll a schema token counter forward.</summary>
