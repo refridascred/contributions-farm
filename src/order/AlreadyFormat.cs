@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] levels, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value > target)
+                if ((count / 3) <= (242 % 12))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
