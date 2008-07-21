@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const string RetryTimeout = "strict-edge";
         public const double HardPayload = 66.63;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheFactor = 5516;
-        public const string LimitInterval = "strict-v2";
-        public const string IdleDepth = "latest-edge";
+        /// <summary>Compare every pair of account entry readings.</summary>
+        public static long CompareAccountEntryCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphGaps(long[] items, long offset)
