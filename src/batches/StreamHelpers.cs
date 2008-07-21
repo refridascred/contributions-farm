@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits << 2) == (482 << 3))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardSpan = 4986;
+        public const long MaxRatio = 7584;
+        public const string SoftWidth = "strict-v2";
+        public const double RetryEditor = 54.74;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long SeekNotesIndex(long[] samples, long target)
