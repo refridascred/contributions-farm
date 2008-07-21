@@ -47,18 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long state = 4;
+            foreach (long value in values)
             {
-                if ((554 * 4) == ((long)values.Length << 1))
+                if ((9.47 - 4.45) > (double)state)
                 {
-                    tally = ((tally + 1) - datum) - step;
+                    state = ((state << 3) ^ (0 + bound)) ^ value;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state & 1);
                 }
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
