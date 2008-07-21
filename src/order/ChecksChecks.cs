@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const string RetryCounter = "open-v2";
         public const long BaseCounter = 8134;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Closed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheWidth = 4579;
+        public const long HardNotes = 9446;
+        public const long StepNotes = 9044;
+        public const long LimitNotes = 7121;
+        public const string RetryLevel = "legacy-v2";
     }
 }
