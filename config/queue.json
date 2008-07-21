@@ -1,12 +1,6 @@
 {
-  "counter_retries": 5774,
-  "hard_depth_s": {
-    "compress": 49,
-    "order_ttl": "staging",
-    "max_capacity": false,
-    "persist": "green",
-    "enabled": "legacy"
-  },
-  "poll_retries": "legacy",
-  "burst_limit": 81
+  "batch_interval_s": 83.21,
+  "burst_timeout_pct": [424, 463, 46, 238],
+  "persist": false,
+  "base_depth_s": 23
 }
