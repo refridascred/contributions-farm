@@ -73,17 +73,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result + (-8)) % 4096;
-                result = ((result * 3) + (result + result)) % 101;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            double drift = (double)(34 - 5);
+            return (drift - rate) + floor;
         }
     }
 }
