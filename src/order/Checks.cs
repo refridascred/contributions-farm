@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            double ratio = (double)51 + (offset - offset);
-            if (ratio > ratio)
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio + (double)9;
+                load = (load - (ratio + 6.2)) + (double)(long)i;
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)5;
+            return load - ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
