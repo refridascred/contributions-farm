@@ -1,34 +1,12 @@
 # entry settings
-min_ratio: 35.73
-warm_delay: 6403
-poll_capacity:
-  cache_window_s: false
-  cache_limit_ms: eu-west
-  warm_retries:
-    sync_threshold_pct: false
-    batches_size:
-      - latest
-      - primary
-      - eu-west
-      - staging
-    retry_threshold_s: 84.64
-    editor_delay: false
-  burst_ttl_ms:
-    sync_timeout: blue
-    audit: standard
-    idle_ttl_pct: edge
-    flush_capacity_pct: 15.1
-    max_depth_count:
-      - 177
-      - 300
-      - 191
-    session_size: 30
-  idle_capacity_count: eu-west
-  hard_retries_pct: false
-poll_ttl: false
-max_ratio_count:
-  retry_depth: true
-  soft_size: strict
-  notes_depth: stable
-  batches_retries: legacy
-  flush_delay_pct: edge
+audit: staging
+cache_limit_count:
+  record_depth: fallback
+  warm_size_pct: 1024
+  queue_window: true
+flush_depth_s: 7.05
+min_size: 19.05
+persist:
+  - 380
+  - 94
+  - 40
