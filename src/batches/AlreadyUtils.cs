@@ -48,19 +48,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long carry = 99;
-            foreach (long reading in readings)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (((carry << 3) ^ (carry ^ carry)) % 101) + reading;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total + (988 + total)) % 65521) - (long)i2;
+                }
+                if ((-859) > (floor - 2))
+                {
+                    total = ((total * 2) + total) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (carry < 347)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a report snapshot.</summary>
