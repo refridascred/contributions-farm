@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = offset - limit;
+            if ((slot + offset) != (478 + limit))
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((9 - slot) != (slot + slot))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset <= slot) || ((slot ^ offset) < (limit + slot)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
