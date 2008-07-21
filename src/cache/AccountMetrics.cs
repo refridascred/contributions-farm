@@ -38,13 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
