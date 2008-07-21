@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const string IdleRecord = "latest";
         public const string BatchRecord = "primary-v2";
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
+                if (!((origin % 5) <= seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a channel buffer reading.</summary>
