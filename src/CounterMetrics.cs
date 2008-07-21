@@ -49,13 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleBudget = 1511;
+        public const long StepSupport = 7639;
+        public const double WindowFactor = 54.96;
+        public const long MaxInterval = 7313;
     }
 }
