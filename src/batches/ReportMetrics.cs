@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2741;
-        public const long BaseBudget = 2841;
-        public const string WindowSpan = "fallback-edge";
-        public const string StepLevel = "staging-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRatio = 6783;
+        public const string HardRecord = "open-v2";
+        public const long SoftRecord = 2098;
+        public const long BatchRecord = 8597;
+        public const long BatchBudget = 6616;
     }
 }
