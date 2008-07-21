@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Paused,
-            Queued,
-            Synced,
-            Failed,
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
