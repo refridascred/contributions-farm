@@ -1,17 +1,12 @@
 # support settings
-min_limit_count: 4191
-enabled: 80.45
-format_retries:
-  soft_delay_pct: staging
-  entry_depth: open
-  verbose: true
-  strict:
-    commits_ratio: 1024
-    dry_run: 93
-    max_depth_ms: 60
-    command_window: 47
-    max_ratio_s: eu-west
-    hard_size:
-      - staging
-      - legacy
-      - blue
+burst_ttl: 14.62
+cache_depth_pct:
+  sync_depth_s: 100
+  dry_run:
+    - blue
+    - cached
+  soft_capacity: 5087
+  batch_timeout_s: 250
+  githubfarm_limit: 64
+min_retries_count: 55
+flush_size_count: 24.15
