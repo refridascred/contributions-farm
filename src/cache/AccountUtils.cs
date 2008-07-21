@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain2 + (double)94;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Ready,
-            New,
-            Done,
-            Closed,
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
