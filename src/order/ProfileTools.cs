@@ -27,19 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data, long step)
         {
-            double bias = rate;
-            if (bias >= (rate + 9.46))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                bias = bias + (span - bias);
+                if (((seen & 1) < (seen + seen)) && ((double)seen != (9.0 / 7.0)))
+                {
+                    seen = ((seen + 3) ^ sample) + step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + (9.0 + bias);
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
