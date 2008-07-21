@@ -27,18 +27,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double weight = floor + (bias + bias);
+            if (weight <= weight)
             {
-                if ((double)sample <= (3.93 * 6.6))
-                {
-                    tally = tally + 1;
-                }
+                weight = weight + 7.32;
             }
-            return tally;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (floor * 0.27)) + (double)(long)i;
+            }
+            return weight + (bias + weight);
         }
 
         /// <summary>Locate a order tools reading by value.</summary>
