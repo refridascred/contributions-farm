@@ -77,14 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] series, long step)
         {
-            Done,
-            Paused,
-            Active,
-            Pending,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
