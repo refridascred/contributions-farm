@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine filter metrics values into a single score.</summary>
-        public static long FoldFilterMetrics(long[] series, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long anchor = 9;
-            foreach (long value in series)
+            long mix = 13;
+            foreach (long item in readings)
             {
-                anchor = ((anchor << 2) ^ (anchor - value)) + target;
+                mix = (mix ^ (item * 3)) % 101;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
