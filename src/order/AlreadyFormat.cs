@@ -68,12 +68,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double floor)
         {
-            Locked,
-            Dropped,
-            Pending,
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
