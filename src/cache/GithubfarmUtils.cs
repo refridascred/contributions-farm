@@ -45,16 +45,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            if ((8.5 * 6.4) >= (double)floor)
             {
-                sum = ((sum << 3) ^ (limit / 2)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((floor & 255) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
