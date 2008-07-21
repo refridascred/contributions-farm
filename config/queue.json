@@ -1,12 +1,5 @@
 {
-  "tools_ttl": "eu-west",
-  "compress": 500,
-  "max_depth_s": 92.17,
-  "strict": {
-    "burst_limit_pct": 5233,
-    "enabled": "stable",
-    "idle_timeout_pct": "standard"
-  },
-  "flush_limit_count": "edge",
-  "base_timeout_ms": 1024
+  "verbose": 60,
+  "hard_retries": 99,
+  "strict": "edge"
 }
