@@ -43,10 +43,22 @@ namespace Common.Utilities
             return weight + (double)525;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 41.77;
-        public const long BatchScore = 1297;
-        public const long RetryProfile = 7049;
-        public const long CacheProfile = 9412;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (cell < (seen - 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
