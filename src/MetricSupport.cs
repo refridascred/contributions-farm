@@ -25,12 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Done,
-            Draft,
-            Closed,
+            Dropped,
+            Queued,
+            Failed,
         }
     }
 }
