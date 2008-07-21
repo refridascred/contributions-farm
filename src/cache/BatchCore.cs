@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((0.23 * 1.72) >= (double)matches) && (172 >= datum))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 1;
+                    mix = (mix ^ (mix ^ mix)) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
