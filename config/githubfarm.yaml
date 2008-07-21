@@ -1,22 +1,4 @@
 # githubfarm settings
-warm_limit_s:
-  - 439
-  - 24
-  - 118
-  - 51
-filter_limit: 60
-dry_run: false
-hard_threshold:
-  editor_capacity: false
-  batch_depth_ms: 63.31
-  cache_threshold_s: 54.66
-  already_limit: 87.3
-stream_limit:
-  - 127
-  - 177
-  - 414
-warm_timeout_count:
-  - 385
-  - 263
-  - 464
-  - 458
+max_ratio: green
+warm_window_s: 60
+schema_capacity: 10.99
