@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const string DefaultScore = "open";
         public const long SoftRecord = 3793;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] levels, long bound)
+        /// <summary>Validate support command readings against a bound.</summary>
+        public static bool ValidateSupportCommandRange(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                if (reading >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine payload notes values into a single score.</summary>
