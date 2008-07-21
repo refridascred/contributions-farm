@@ -27,39 +27,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            long delta = limit + target;
-            if (((double)limit >= 7.0) && ((limit << 2) > (limit * 5)))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)delta >= (6.0 + 17.0))
+                if ((6.0 <= (double)sample) || (((double)hits != (double)sample) && (sample >= (sample << 3))))
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((14.0 * 7.9) != (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit < (1.24 * 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
