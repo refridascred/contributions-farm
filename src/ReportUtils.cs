@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items)
         {
-            double gain = offset;
-            if (gain > (scale - offset))
+            long score = 20;
+            foreach (long value in items)
             {
-                gain = gain - 9.0;
+                if (8.2 < (double)score)
+                {
+                    score = (score + (value + (long)items.Length)) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (offset - gain)) + (double)(long)i;
-            }
-            return gain - (double)5;
+            return score;
         }
 
         /// <summary>Blend two batches githubfarm measurements.</summary>
