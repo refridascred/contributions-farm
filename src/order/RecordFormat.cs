@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a token cache counter forward.</summary>
-        public static long StepTokenCache(long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix << 2) ^ mix) % 255;
-                mix = (mix ^ offset) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
