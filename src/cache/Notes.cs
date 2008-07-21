@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (3.6 / 8.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
