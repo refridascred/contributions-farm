@@ -41,13 +41,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long floor)
         {
-            Retry,
-            Locked,
-            New,
-            Synced,
+            if ((double)target >= (2.9 * 0.48))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target < (1.75 / 7.0)) && (target < (target >> 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (5.58 - 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter cache series from a seed.</summary>
