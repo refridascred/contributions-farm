@@ -55,19 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double bias, double bias2)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            double scale = bias2;
-            if (scale < scale)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (bias / 3.0)) + (double)(long)i;
-            }
-            return scale + (scale * 6.1);
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
