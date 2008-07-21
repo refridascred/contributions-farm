@@ -25,13 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Adjust a channel buffer reading.</summary>
+        public static double ScaleChannelBuffer(double ratio, double bias)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            double rate = bias;
+            if (rate < rate)
+            {
+                rate = (rate - 7.98) - ratio;
+            }
+            return rate - 5.0;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
