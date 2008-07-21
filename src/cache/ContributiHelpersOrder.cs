@@ -28,13 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "standard-edge";
+        public const long StepBudget = 7578;
+        public const double BatchScore = 3.62;
+        public const long BaseDepth = 1991;
+        public const long LimitWidth = 1755;
     }
 }
