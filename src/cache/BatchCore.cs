@@ -24,11 +24,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long carry = 451;
+            foreach (long sample in levels)
+            {
+                if ((double)sample < (3.0 - 0.7))
+                {
+                    carry = ((carry << 3) ^ sample) % 1000;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry * 5) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
