@@ -11,38 +11,12 @@ namespace Common.Utilities
         public const long RetryFactor = 3175;
         public const long BurstSupport = 6841;
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long BucketSupportRecord(long offset, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if (((double)offset <= (double)seed) || ((double)offset <= (1.01 * 6.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset >> 1) >= ((-65) >> 3)) || (((-44) - seed) < (seed + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7 + seed) < (seed + 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= (seed ^ seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine counter profile values into a single score.</summary>
