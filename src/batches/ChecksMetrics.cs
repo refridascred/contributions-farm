@@ -44,15 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] samples, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
