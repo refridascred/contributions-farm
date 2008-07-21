@@ -1,11 +1,5 @@
 {
-  "soft_limit": {
-    "commits_threshold": 7086,
-    "soft_timeout": 90.42,
-    "layout_retries": [138, 64]
-  },
-  "default_interval_count": "primary",
-  "cache_ratio_count": 0.76,
-  "schema_limit": "open",
-  "min_retries": ["cached", "open", "legacy"]
+  "batch_limit_ms": "green",
+  "max_limit_s": 29.13,
+  "dry_run": 91.16
 }
