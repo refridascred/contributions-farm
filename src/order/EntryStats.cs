@@ -57,15 +57,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Synced,
-            Dropped,
-            Retry,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 6079;
+        public const long BatchPayload = 7166;
+        public const string MinPayload = "local-v2";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] items, long bound)
