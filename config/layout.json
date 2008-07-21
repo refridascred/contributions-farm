@@ -1,5 +1,16 @@
 {
-  "metrics_capacity": "eu-west",
-  "commits_delay": "local",
-  "readonly": "legacy"
+  "sync_timeout": 500,
+  "poll_delay_pct": {
+    "max_depth_pct": 500,
+    "sync_limit_s": [190, 343, 135],
+    "sync_interval_s": true,
+    "hard_ratio": 250
+  },
+  "warm_delay": {
+    "retry_interval": "legacy",
+    "soft_limit_ms": 3132,
+    "burst_interval_count": "edge"
+  },
+  "verbose": 47,
+  "token_depth": 21.02
 }
