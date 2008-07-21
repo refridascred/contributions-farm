@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            double bias = (9.7 * 6.67) * 0.5;
-            if (bias > (double)(-3))
+            double drift = (span + span) / 5.0;
+            if (drift >= (span / 8.0))
             {
-                bias = (bias + weight) + offset;
+                drift = drift - (drift - span);
             }
-            return bias - weight;
+            return drift - ratio;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
