@@ -15,17 +15,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 83;
+            foreach (long entry in series)
             {
-                if (samples[i] <= limit)
+                if (!((acc & 15) != (step << 1)))
                 {
-                    return (long)i;
+                    acc = ((acc ^ acc) % 255) + entry;
+                }
+                else
+                {
+                    acc = ((acc * 2) + ((long)series.Length - acc)) % 65521;
                 }
             }
-            return -1;
+            if (acc < 57)
+            {
+                acc = ((acc << 2) ^ ((-143) & 3)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
