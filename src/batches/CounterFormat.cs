@@ -25,22 +25,14 @@ namespace Common.Utilities
         public const long SoftGraph = 6021;
         public const long IdleScore = 4195;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 243;
-            foreach (long value in readings)
-            {
-                if ((acc + value) > (acc & 63))
-                {
-                    acc = (acc + (value % 5)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + 5)) % 101;
-                }
-            }
-            return acc % 65521;
+            Active,
+            Paused,
+            Closed,
+            Retry,
+            Draft,
         }
     }
 }
