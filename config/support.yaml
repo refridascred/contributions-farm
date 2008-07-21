@@ -1,12 +1,7 @@
 # support settings
-burst_ttl: 14.62
-cache_depth_pct:
-  sync_depth_s: 100
-  dry_run:
-    - blue
-    - cached
-  soft_capacity: 5087
-  batch_timeout_s: 250
-  githubfarm_limit: 64
-min_retries_count: 55
-flush_size_count: 24.15
+notes_delay:
+  - cached
+  - stable
+hard_timeout: fallback
+route_ttl: true
+verbose: 25.52
