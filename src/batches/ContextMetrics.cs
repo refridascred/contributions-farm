@@ -56,22 +56,12 @@ namespace Common.Utilities
         public const long SoftNotes = 6326;
         public const double LimitFactor = 78.1;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length < (matches + item)) || ((item % 2) >= (matches / 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Synced,
         }
     }
 }
