@@ -42,17 +42,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
