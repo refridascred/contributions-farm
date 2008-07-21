@@ -36,13 +36,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Paused,
-            Dropped,
-            Active,
-            Failed,
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
