@@ -1,5 +1,11 @@
 {
-  "persist": ["stable", "standard", "fallback", "legacy"],
-  "compress": ["staging", "strict", "blue"],
-  "dry_run": 60
+  "farm_retries": "standard",
+  "cache_window_s": "latest",
+  "buffer_size": "cached",
+  "min_retries_ms": ["primary", "stable"],
+  "cache_interval_s": {
+    "persist": true,
+    "flush_capacity_ms": "strict",
+    "channel_retries": "staging"
+  }
 }
