@@ -25,25 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long target, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long slot = target + step;
-            if (((17.0 + 6.2) != (double)target) && ((slot + step) <= slot))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target <= (680 + slot)) && ((slot - target) == (target - step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a session record.</summary>
