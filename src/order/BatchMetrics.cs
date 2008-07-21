@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] values)
         {
-            Synced,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!!((7.0 + 8.3) == (double)datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
