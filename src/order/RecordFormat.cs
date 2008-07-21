@@ -70,12 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)tally < 7.32) && (value <= (value + value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
