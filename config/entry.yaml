@@ -1,5 +1,7 @@
 # entry settings
-warm_retries: false
-account_ratio: 24.72
-poll_delay_pct: local
-base_ttl: true
+batch_ratio_count: 86.88
+metric_retries: true
+support_limit: blue
+stream_timeout: 17.84
+burst_window_count: cached
+readonly: strict
