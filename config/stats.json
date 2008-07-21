@@ -1,6 +1,7 @@
 {
-  "strict": false,
-  "poll_interval_pct": [61, 274, 218, 426],
-  "burst_size_s": 100,
-  "readonly": "staging"
+  "default_capacity": "legacy",
+  "persist": "latest",
+  "queue_delay": 53.21,
+  "batch_delay_count": 36.95,
+  "audit": true
 }
