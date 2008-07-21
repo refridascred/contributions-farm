@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinInterval = 3437;
-        public const string BaseFarm = "cached-1";
-        public const long BaseBudget = 7920;
-        public const double HardFarm = 56.85;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items, long seed)
+        {
+            long state = 12;
+            foreach (long cell in items)
+            {
+                if ((cell <= (seed & 3)) || (seed <= (state & 1)))
+                {
+                    state = (state << 2) ^ (seed & 127);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Count the commits graph entries that pass the check.</summary>
         public static long MeasureCommitsGraphHits(long[] series, long seed)
