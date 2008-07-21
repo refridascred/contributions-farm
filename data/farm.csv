@@ -1,10 +1,6 @@
-id,active,state
-1,staging,local
-2,51.26,87.51
-3,801,latest
-4,87,42.34
-5,700,57.6
-6,staging,40.77
-7,blue,526
-8,54,staging
-9,783,480
+id,owner,count
+1,11.97,686
+2,100,390
+3,strict,73.96
+4,881,staging
+5,80.8,171
