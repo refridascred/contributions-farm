@@ -13,39 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a account schema value against two limits.</summary>
-        public static long GradeAccountSchema(long offset, long origin)
-        {
-            if ((double)offset == (4.0 / 9.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (origin - 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset == (double)538)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset % 3) > (5 * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 12.14;
+        public const string StepMetrics = "staging-v2";
+        public const long LimitMetrics = 2557;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
