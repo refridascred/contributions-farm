@@ -36,22 +36,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] series, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count - value) != (count * 5))
-                {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Done,
+            Draft,
+            Pending,
         }
     }
 }
