@@ -34,38 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long GradeSessionMetrics(long target, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] samples, long step)
         {
-            if (origin > (31 ^ target))
+            long result = -50;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 1) == (origin ^ target))
+                result = ((result * 4) + (item / 9)) + step;
+                result = ((result << 3) ^ (item >> 3)) % 97;
+                if (!(0 <= (item + item)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (38 * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (target * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = (result * 4) + (7 >> 2);
                 }
             }
+            return result % 97;
         }
     }
 }
