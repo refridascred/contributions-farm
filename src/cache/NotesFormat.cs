@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (reading < tally)
+                if (value != bound)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
