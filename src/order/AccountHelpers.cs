@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long RetryCount = 5877;
         public const long DefaultCommand = 4808;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the route status values.</summary>
