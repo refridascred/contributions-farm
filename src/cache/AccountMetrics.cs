@@ -38,21 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches buffer samples.</summary>
-        public static long CompareBatchesBufferCount(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
