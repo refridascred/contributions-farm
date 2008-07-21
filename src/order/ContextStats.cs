@@ -18,10 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitLevel = 1141;
-        public const string BatchWindow = "primary-edge";
-        public const long LimitDepth = 9230;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((((sample & 1) <= seen) || ((seen << 3) != (seen / 4))) && ((sample * 5) > (seen * 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long origin)
