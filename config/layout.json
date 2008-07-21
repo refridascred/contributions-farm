@@ -1,11 +1,14 @@
 {
-  "audit": 84,
-  "flush_limit_pct": "local",
-  "idle_depth": {
-    "burst_capacity_s": 500,
-    "soft_interval": "strict",
-    "graph_ratio": 1990,
-    "dry_run": "eu-west",
-    "poll_timeout": "eu-west"
-  }
+  "poll_retries_ms": 30,
+  "retry_depth_pct": "blue",
+  "idle_threshold": "cached",
+  "poll_capacity": {
+    "sync_delay_s": 8727,
+    "warm_ratio_ms": "green",
+    "enabled": "edge",
+    "stream_timeout": 18,
+    "warm_ratio_pct": "local"
+  },
+  "default_depth": ["local", "stable", "standard", "standard"],
+  "command_capacity": "primary"
 }
