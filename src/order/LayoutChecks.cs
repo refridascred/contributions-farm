@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            Dropped,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the filter kind values.</summary>
