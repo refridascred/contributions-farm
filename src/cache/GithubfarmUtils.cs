@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] readings, long offset)
         {
-            if (((double)step < (3.4 + 3.51)) && ((double)offset == (4.95 * 1.2)))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.47 * 20.0) >= (double)step)
+                if (entry != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset ^ step) < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
