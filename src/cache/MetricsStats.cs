@@ -14,17 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 6;
+            foreach (long datum in values)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                score = (score ^ 322) - datum;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
