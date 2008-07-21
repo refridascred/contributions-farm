@@ -36,11 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double scale = 1.5;
-            return (scale + (scale + offset)) + weight;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
