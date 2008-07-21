@@ -49,13 +49,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
