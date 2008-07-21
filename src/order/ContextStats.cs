@@ -18,18 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format buffer samples are out of range.</summary>
-        public static long CountFormatBufferHits(long[] data)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 1) >= (tally * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
