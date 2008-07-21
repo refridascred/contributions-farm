@@ -24,12 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Failed,
-            Done,
-            Paused,
+            Active,
+            Retry,
             Closed,
         }
 
