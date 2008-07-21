@@ -98,18 +98,19 @@ namespace Common.Utilities
             return drift + (bias2 - 3.44);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((((double)datum == (6.5 + 1.5)) && (datum > (count - count))) || (((datum * 2) > (214 - 616)) || (445 < (datum ^ datum))))
+                if (datum <= step)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
