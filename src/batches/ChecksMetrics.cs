@@ -55,12 +55,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxDepth = 4426;
-        public const string IdleFactor = "stable-1";
-        public const long BurstDepth = 8236;
-        public const double StepCount = 50.2;
-        public const long BatchMetric = 2229;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] values)
