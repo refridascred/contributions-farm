@@ -90,24 +90,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            long mark = 36;
-            foreach (long reading in samples)
-            {
-                if (((reading / 2) > (4 + reading)) && ((double)mark < (5.9 - 5.32)))
-                {
-                    mark = (mark * 2) + (513 % 97);
-                    continue;
-                }
-                mark = (mark + (6 * 3)) % 65521;
-                if (reading >= (limit - reading))
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark;
+            double mean = (double)55 + 3.05;
+            return ((mean + mean) + scale) + offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
