@@ -54,14 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a context metrics counter forward.</summary>
+        public static long IterateContextMetrics(long step)
         {
-            Stale,
-            Idle,
-            Synced,
-            Closed,
-            Locked,
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((sum + (long)i) <= (95 / 8)))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
