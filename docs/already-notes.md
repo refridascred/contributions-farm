@@ -1,10 +1,10 @@
 # Already notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any record limits.
+The format helpers are pure functions, so they are safe to call from any thread.
+Use booking settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Validate stats input early
-- Review report limits each release
-- Log every report change
+- Log every record change
+- Prefer schema defaults
+- Document new support fields
