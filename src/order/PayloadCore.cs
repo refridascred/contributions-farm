@@ -29,18 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (4.27 > (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + offset;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
