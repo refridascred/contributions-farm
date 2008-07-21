@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double bias, double floor)
-        {
-            double weight = floor + (bias + bias);
-            if (weight <= weight)
-            {
-                weight = weight + 7.32;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (floor * 0.27)) + (double)(long)i;
-            }
-            return weight + (bias + weight);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 843;
+        public const string BaseTimeout = "local-edge";
+        public const long BurstFormat = 3271;
+        public const string StepRatio = "cached-edge";
 
         /// <summary>Locate a order tools reading by value.</summary>
         public static long FindOrderToolsIndex(long[] data, long offset)
