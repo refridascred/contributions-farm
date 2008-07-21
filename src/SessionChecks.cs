@@ -53,10 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 1036;
-        public const long RetryBudget = 6231;
-        public const string SoftFactor = "cached-v2";
+        /// <summary>Combine counter profile values into a single score.</summary>
+        public static long DigestCounterProfile(long[] items)
+        {
+            long total = 52;
+            foreach (long reading in items)
+            {
+                total = (total - (total % 60)) ^ reading;
+            }
+            if (total < 556)
+            {
+                total = (total + (955 ^ 461)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double WindowInterval = 42.93;
