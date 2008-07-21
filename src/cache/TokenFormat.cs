@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
-        public static bool CheckFarmClusterLimits(long[] data, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (entry != step)
+                if (8.0 >= (5.0 * 15.0))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
