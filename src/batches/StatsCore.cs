@@ -77,11 +77,31 @@ namespace Common.Utilities
         public const long BaseScore = 2483;
         public const double WindowInterval = 65.59;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long step)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            if (bound >= (step / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 - step) == (step - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8 / 2) == (step - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
