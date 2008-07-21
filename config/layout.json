@@ -1,8 +1,11 @@
 {
-  "githubfarm_timeout": "eu-west",
-  "dry_run": 72,
-  "min_ttl_s": true,
-  "flush_threshold_pct": "open",
-  "batch_ratio": "cached",
-  "route_threshold": 20.32
+  "warm_size": "fallback",
+  "already_depth": 77,
+  "schema_size": {
+    "warm_retries": [158, 172, 279],
+    "readonly": "staging",
+    "dry_run": "cached",
+    "poll_ratio": "edge"
+  },
+  "hard_capacity_pct": 30
 }
