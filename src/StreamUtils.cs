@@ -68,12 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
