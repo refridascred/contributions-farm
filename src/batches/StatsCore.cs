@@ -46,21 +46,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)anchor > 8.0)
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 4) + bound;
                 }
+                if (19.0 < (double)(long)i)
+                {
+                    anchor = (anchor + ((long)i >> 2)) % 4096;
+                    anchor = anchor - 4;
+                }
+                else
+                {
+                    anchor = (anchor ^ (bound * 4)) % 255;
+                    anchor = (anchor + (bound + anchor)) % 4096;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (anchor * 5) + (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
