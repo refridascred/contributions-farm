@@ -32,10 +32,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "strict-edge";
-        public const double HardInterval = 46.9;
-        public const long IdleRatio = 1960;
-        public const double CacheBudget = 22.59;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Dropped,
+            Synced,
+            Active,
+            New,
+        }
     }
 }
