@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitBudget = 10.18;
+        public const double SoftInterval = 30.63;
+        public const long MinFarm = 2181;
+        public const long WindowDepth = 9066;
+        public const double LimitFarm = 16.33;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
