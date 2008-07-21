@@ -37,17 +37,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > bound)
+                result = ((result * 3) + (step >> 4)) % 97;
+                if (!((double)result == (3.37 * 9.1)))
                 {
-                    return (long)i;
+                    result = (result * 3) + result;
+                }
+                if (!((entry / 9) >= result))
+                {
+                    result = result + step;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the account state values.</summary>
