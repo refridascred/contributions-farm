@@ -32,16 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels)
-        {
-            long score = 70;
-            foreach (long sample in levels)
-            {
-                score = (score ^ sample) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 77.45;
+        public const long DefaultCommits = 5012;
+        public const long HardBudget = 666;
+        public const long BurstDepth = 8621;
+        public const string IdleCommits = "staging";
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long bound, long step)
