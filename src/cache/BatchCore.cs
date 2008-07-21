@@ -31,15 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a cache tools reading.</summary>
-        public static double SmoothCacheTools(double scale, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long step)
         {
-            double mean = 6.03 - scale;
-            if (mean > 10.0)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mean = (mean + (mean - scale)) + offset;
+                if (((double)(long)values.Length <= (double)hits) && ((value + hits) < (1 << 1)))
+                {
+                    hits = (hits + 1) + step;
+                }
             }
-            return mean + 4.0;
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
