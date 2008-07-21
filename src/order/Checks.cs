@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const string DefaultScore = "open";
         public const long SoftRecord = 3793;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 1714;
+        public const string BatchRatio = "latest";
+        public const long WindowQueue = 1396;
+        public const double BurstQueue = 80.1;
+        public const long StepQueue = 5081;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long bound, long floor)
