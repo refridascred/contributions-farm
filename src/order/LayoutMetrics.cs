@@ -27,17 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 704;
+            foreach (long value in items)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + value) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
